@@ -81,12 +81,8 @@ type LookupNetworkPolicyResult struct {
 }
 
 func LookupNetworkPolicyOutput(ctx *pulumi.Context, args LookupNetworkPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkPolicyResultOutput, error) {
-			args := v.(LookupNetworkPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args, LookupNetworkPolicyResultOutput{}, options).(LookupNetworkPolicyResultOutput), nil
-		}).(LookupNetworkPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args, LookupNetworkPolicyResultOutput{}, options).(LookupNetworkPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkPolicy.

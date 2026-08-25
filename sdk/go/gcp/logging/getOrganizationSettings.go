@@ -87,12 +87,8 @@ type LookupOrganizationSettingsResult struct {
 }
 
 func LookupOrganizationSettingsOutput(ctx *pulumi.Context, args LookupOrganizationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationSettingsResultOutput, error) {
-			args := v.(LookupOrganizationSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:logging/getOrganizationSettings:getOrganizationSettings", args, LookupOrganizationSettingsResultOutput{}, options).(LookupOrganizationSettingsResultOutput), nil
-		}).(LookupOrganizationSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:logging/getOrganizationSettings:getOrganizationSettings", args, LookupOrganizationSettingsResultOutput{}, options).(LookupOrganizationSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationSettings.

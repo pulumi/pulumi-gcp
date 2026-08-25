@@ -83,12 +83,8 @@ type LookupRouterResult struct {
 }
 
 func LookupRouterOutput(ctx *pulumi.Context, args LookupRouterOutputArgs, opts ...pulumi.InvokeOption) LookupRouterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRouterResultOutput, error) {
-			args := v.(LookupRouterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRouter:getRouter", args, LookupRouterResultOutput{}, options).(LookupRouterResultOutput), nil
-		}).(LookupRouterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRouter:getRouter", args, LookupRouterResultOutput{}, options).(LookupRouterResultOutput)
 }
 
 // A collection of arguments for invoking getRouter.

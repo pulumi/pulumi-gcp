@@ -85,12 +85,8 @@ type LookupKeyHandleResult struct {
 }
 
 func LookupKeyHandleOutput(ctx *pulumi.Context, args LookupKeyHandleOutputArgs, opts ...pulumi.InvokeOption) LookupKeyHandleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKeyHandleResultOutput, error) {
-			args := v.(LookupKeyHandleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getKeyHandle:getKeyHandle", args, LookupKeyHandleResultOutput{}, options).(LookupKeyHandleResultOutput), nil
-		}).(LookupKeyHandleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getKeyHandle:getKeyHandle", args, LookupKeyHandleResultOutput{}, options).(LookupKeyHandleResultOutput)
 }
 
 // A collection of arguments for invoking getKeyHandle.

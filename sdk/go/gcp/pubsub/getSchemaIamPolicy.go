@@ -72,12 +72,8 @@ type LookupSchemaIamPolicyResult struct {
 }
 
 func LookupSchemaIamPolicyOutput(ctx *pulumi.Context, args LookupSchemaIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchemaIamPolicyResultOutput, error) {
-			args := v.(LookupSchemaIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:pubsub/getSchemaIamPolicy:getSchemaIamPolicy", args, LookupSchemaIamPolicyResultOutput{}, options).(LookupSchemaIamPolicyResultOutput), nil
-		}).(LookupSchemaIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:pubsub/getSchemaIamPolicy:getSchemaIamPolicy", args, LookupSchemaIamPolicyResultOutput{}, options).(LookupSchemaIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSchemaIamPolicy.

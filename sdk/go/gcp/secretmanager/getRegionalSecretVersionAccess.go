@@ -93,12 +93,8 @@ type GetRegionalSecretVersionAccessResult struct {
 }
 
 func GetRegionalSecretVersionAccessOutput(ctx *pulumi.Context, args GetRegionalSecretVersionAccessOutputArgs, opts ...pulumi.InvokeOption) GetRegionalSecretVersionAccessResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegionalSecretVersionAccessResultOutput, error) {
-			args := v.(GetRegionalSecretVersionAccessArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args, GetRegionalSecretVersionAccessResultOutput{}, options).(GetRegionalSecretVersionAccessResultOutput), nil
-		}).(GetRegionalSecretVersionAccessResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args, GetRegionalSecretVersionAccessResultOutput{}, options).(GetRegionalSecretVersionAccessResultOutput)
 }
 
 // A collection of arguments for invoking getRegionalSecretVersionAccess.

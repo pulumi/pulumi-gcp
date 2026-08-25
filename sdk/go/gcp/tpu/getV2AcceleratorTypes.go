@@ -104,12 +104,8 @@ type GetV2AcceleratorTypesResult struct {
 }
 
 func GetV2AcceleratorTypesOutput(ctx *pulumi.Context, args GetV2AcceleratorTypesOutputArgs, opts ...pulumi.InvokeOption) GetV2AcceleratorTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetV2AcceleratorTypesResultOutput, error) {
-			args := v.(GetV2AcceleratorTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args, GetV2AcceleratorTypesResultOutput{}, options).(GetV2AcceleratorTypesResultOutput), nil
-		}).(GetV2AcceleratorTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args, GetV2AcceleratorTypesResultOutput{}, options).(GetV2AcceleratorTypesResultOutput)
 }
 
 // A collection of arguments for invoking getV2AcceleratorTypes.

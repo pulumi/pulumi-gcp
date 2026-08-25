@@ -76,12 +76,8 @@ type GetDiscoveredWorkloadResult struct {
 }
 
 func GetDiscoveredWorkloadOutput(ctx *pulumi.Context, args GetDiscoveredWorkloadOutputArgs, opts ...pulumi.InvokeOption) GetDiscoveredWorkloadResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDiscoveredWorkloadResultOutput, error) {
-			args := v.(GetDiscoveredWorkloadArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args, GetDiscoveredWorkloadResultOutput{}, options).(GetDiscoveredWorkloadResultOutput), nil
-		}).(GetDiscoveredWorkloadResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args, GetDiscoveredWorkloadResultOutput{}, options).(GetDiscoveredWorkloadResultOutput)
 }
 
 // A collection of arguments for invoking getDiscoveredWorkload.

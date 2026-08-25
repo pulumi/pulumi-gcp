@@ -79,12 +79,8 @@ type LookupAppConnectorResult struct {
 }
 
 func LookupAppConnectorOutput(ctx *pulumi.Context, args LookupAppConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAppConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppConnectorResultOutput, error) {
-			args := v.(LookupAppConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:beyondcorp/getAppConnector:getAppConnector", args, LookupAppConnectorResultOutput{}, options).(LookupAppConnectorResultOutput), nil
-		}).(LookupAppConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:beyondcorp/getAppConnector:getAppConnector", args, LookupAppConnectorResultOutput{}, options).(LookupAppConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getAppConnector.

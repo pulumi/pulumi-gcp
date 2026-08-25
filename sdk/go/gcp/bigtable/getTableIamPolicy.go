@@ -73,12 +73,8 @@ type LookupTableIamPolicyResult struct {
 }
 
 func LookupTableIamPolicyOutput(ctx *pulumi.Context, args LookupTableIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTableIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTableIamPolicyResultOutput, error) {
-			args := v.(LookupTableIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, LookupTableIamPolicyResultOutput{}, options).(LookupTableIamPolicyResultOutput), nil
-		}).(LookupTableIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, LookupTableIamPolicyResultOutput{}, options).(LookupTableIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTableIamPolicy.

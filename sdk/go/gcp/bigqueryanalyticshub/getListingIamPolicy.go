@@ -83,12 +83,8 @@ type LookupListingIamPolicyResult struct {
 }
 
 func LookupListingIamPolicyOutput(ctx *pulumi.Context, args LookupListingIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupListingIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupListingIamPolicyResultOutput, error) {
-			args := v.(LookupListingIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args, LookupListingIamPolicyResultOutput{}, options).(LookupListingIamPolicyResultOutput), nil
-		}).(LookupListingIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args, LookupListingIamPolicyResultOutput{}, options).(LookupListingIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getListingIamPolicy.

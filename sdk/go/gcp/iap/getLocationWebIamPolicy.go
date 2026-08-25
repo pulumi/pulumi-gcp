@@ -72,12 +72,8 @@ type LookupLocationWebIamPolicyResult struct {
 }
 
 func LookupLocationWebIamPolicyOutput(ctx *pulumi.Context, args LookupLocationWebIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupLocationWebIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLocationWebIamPolicyResultOutput, error) {
-			args := v.(LookupLocationWebIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy", args, LookupLocationWebIamPolicyResultOutput{}, options).(LookupLocationWebIamPolicyResultOutput), nil
-		}).(LookupLocationWebIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy", args, LookupLocationWebIamPolicyResultOutput{}, options).(LookupLocationWebIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getLocationWebIamPolicy.

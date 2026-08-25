@@ -54,12 +54,8 @@ type GetAppleAppConfigResult struct {
 }
 
 func GetAppleAppConfigOutput(ctx *pulumi.Context, args GetAppleAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetAppleAppConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAppleAppConfigResultOutput, error) {
-			args := v.(GetAppleAppConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args, GetAppleAppConfigResultOutput{}, options).(GetAppleAppConfigResultOutput), nil
-		}).(GetAppleAppConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args, GetAppleAppConfigResultOutput{}, options).(GetAppleAppConfigResultOutput)
 }
 
 // A collection of arguments for invoking getAppleAppConfig.

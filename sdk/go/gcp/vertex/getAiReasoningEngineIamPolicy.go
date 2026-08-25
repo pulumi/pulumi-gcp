@@ -78,12 +78,8 @@ type LookupAiReasoningEngineIamPolicyResult struct {
 }
 
 func LookupAiReasoningEngineIamPolicyOutput(ctx *pulumi.Context, args LookupAiReasoningEngineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAiReasoningEngineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiReasoningEngineIamPolicyResultOutput, error) {
-			args := v.(LookupAiReasoningEngineIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy", args, LookupAiReasoningEngineIamPolicyResultOutput{}, options).(LookupAiReasoningEngineIamPolicyResultOutput), nil
-		}).(LookupAiReasoningEngineIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy", args, LookupAiReasoningEngineIamPolicyResultOutput{}, options).(LookupAiReasoningEngineIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAiReasoningEngineIamPolicy.

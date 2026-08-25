@@ -94,12 +94,8 @@ type GetRegionSSLPolicyResult struct {
 }
 
 func GetRegionSSLPolicyOutput(ctx *pulumi.Context, args GetRegionSSLPolicyOutputArgs, opts ...pulumi.InvokeOption) GetRegionSSLPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegionSSLPolicyResultOutput, error) {
-			args := v.(GetRegionSSLPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", args, GetRegionSSLPolicyResultOutput{}, options).(GetRegionSSLPolicyResultOutput), nil
-		}).(GetRegionSSLPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", args, GetRegionSSLPolicyResultOutput{}, options).(GetRegionSSLPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRegionSSLPolicy.

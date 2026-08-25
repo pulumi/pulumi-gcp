@@ -87,12 +87,8 @@ type LookupFolderSettingsResult struct {
 }
 
 func LookupFolderSettingsOutput(ctx *pulumi.Context, args LookupFolderSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupFolderSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFolderSettingsResultOutput, error) {
-			args := v.(LookupFolderSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:logging/getFolderSettings:getFolderSettings", args, LookupFolderSettingsResultOutput{}, options).(LookupFolderSettingsResultOutput), nil
-		}).(LookupFolderSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:logging/getFolderSettings:getFolderSettings", args, LookupFolderSettingsResultOutput{}, options).(LookupFolderSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getFolderSettings.

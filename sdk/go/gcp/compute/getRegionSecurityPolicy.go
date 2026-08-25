@@ -80,12 +80,8 @@ type LookupRegionSecurityPolicyResult struct {
 }
 
 func LookupRegionSecurityPolicyOutput(ctx *pulumi.Context, args LookupRegionSecurityPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionSecurityPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionSecurityPolicyResultOutput, error) {
-			args := v.(LookupRegionSecurityPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy", args, LookupRegionSecurityPolicyResultOutput{}, options).(LookupRegionSecurityPolicyResultOutput), nil
-		}).(LookupRegionSecurityPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy", args, LookupRegionSecurityPolicyResultOutput{}, options).(LookupRegionSecurityPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRegionSecurityPolicy.

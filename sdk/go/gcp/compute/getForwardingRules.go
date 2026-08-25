@@ -72,12 +72,8 @@ type GetForwardingRulesResult struct {
 }
 
 func GetForwardingRulesOutput(ctx *pulumi.Context, args GetForwardingRulesOutputArgs, opts ...pulumi.InvokeOption) GetForwardingRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetForwardingRulesResultOutput, error) {
-			args := v.(GetForwardingRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getForwardingRules:getForwardingRules", args, GetForwardingRulesResultOutput{}, options).(GetForwardingRulesResultOutput), nil
-		}).(GetForwardingRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getForwardingRules:getForwardingRules", args, GetForwardingRulesResultOutput{}, options).(GetForwardingRulesResultOutput)
 }
 
 // A collection of arguments for invoking getForwardingRules.

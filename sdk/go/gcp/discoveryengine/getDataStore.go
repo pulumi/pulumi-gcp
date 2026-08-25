@@ -114,12 +114,8 @@ type LookupDataStoreResult struct {
 }
 
 func LookupDataStoreOutput(ctx *pulumi.Context, args LookupDataStoreOutputArgs, opts ...pulumi.InvokeOption) LookupDataStoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataStoreResultOutput, error) {
-			args := v.(LookupDataStoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:discoveryengine/getDataStore:getDataStore", args, LookupDataStoreResultOutput{}, options).(LookupDataStoreResultOutput), nil
-		}).(LookupDataStoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:discoveryengine/getDataStore:getDataStore", args, LookupDataStoreResultOutput{}, options).(LookupDataStoreResultOutput)
 }
 
 // A collection of arguments for invoking getDataStore.

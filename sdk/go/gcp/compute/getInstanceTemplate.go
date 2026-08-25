@@ -143,12 +143,8 @@ type LookupInstanceTemplateResult struct {
 }
 
 func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInstanceTemplateResultOutput, error) {
-			args := v.(LookupInstanceTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInstanceTemplate:getInstanceTemplate", args, LookupInstanceTemplateResultOutput{}, options).(LookupInstanceTemplateResultOutput), nil
-		}).(LookupInstanceTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInstanceTemplate:getInstanceTemplate", args, LookupInstanceTemplateResultOutput{}, options).(LookupInstanceTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceTemplate.

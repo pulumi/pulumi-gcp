@@ -82,12 +82,8 @@ type GetBackupRunResult struct {
 }
 
 func GetBackupRunOutput(ctx *pulumi.Context, args GetBackupRunOutputArgs, opts ...pulumi.InvokeOption) GetBackupRunResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBackupRunResultOutput, error) {
-			args := v.(GetBackupRunArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:sql/getBackupRun:getBackupRun", args, GetBackupRunResultOutput{}, options).(GetBackupRunResultOutput), nil
-		}).(GetBackupRunResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:sql/getBackupRun:getBackupRun", args, GetBackupRunResultOutput{}, options).(GetBackupRunResultOutput)
 }
 
 // A collection of arguments for invoking getBackupRun.

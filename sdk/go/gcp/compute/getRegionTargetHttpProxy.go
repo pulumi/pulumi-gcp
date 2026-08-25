@@ -86,12 +86,8 @@ type LookupRegionTargetHttpProxyResult struct {
 }
 
 func LookupRegionTargetHttpProxyOutput(ctx *pulumi.Context, args LookupRegionTargetHttpProxyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionTargetHttpProxyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionTargetHttpProxyResultOutput, error) {
-			args := v.(LookupRegionTargetHttpProxyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionTargetHttpProxy:getRegionTargetHttpProxy", args, LookupRegionTargetHttpProxyResultOutput{}, options).(LookupRegionTargetHttpProxyResultOutput), nil
-		}).(LookupRegionTargetHttpProxyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionTargetHttpProxy:getRegionTargetHttpProxy", args, LookupRegionTargetHttpProxyResultOutput{}, options).(LookupRegionTargetHttpProxyResultOutput)
 }
 
 // A collection of arguments for invoking getRegionTargetHttpProxy.

@@ -89,12 +89,8 @@ type LookupMembershipBindingResult struct {
 }
 
 func LookupMembershipBindingOutput(ctx *pulumi.Context, args LookupMembershipBindingOutputArgs, opts ...pulumi.InvokeOption) LookupMembershipBindingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMembershipBindingResultOutput, error) {
-			args := v.(LookupMembershipBindingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:gkehub/getMembershipBinding:getMembershipBinding", args, LookupMembershipBindingResultOutput{}, options).(LookupMembershipBindingResultOutput), nil
-		}).(LookupMembershipBindingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:gkehub/getMembershipBinding:getMembershipBinding", args, LookupMembershipBindingResultOutput{}, options).(LookupMembershipBindingResultOutput)
 }
 
 // A collection of arguments for invoking getMembershipBinding.

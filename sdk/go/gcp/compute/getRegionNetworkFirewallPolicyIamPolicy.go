@@ -78,12 +78,8 @@ type LookupRegionNetworkFirewallPolicyIamPolicyResult struct {
 }
 
 func LookupRegionNetworkFirewallPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupRegionNetworkFirewallPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionNetworkFirewallPolicyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionNetworkFirewallPolicyIamPolicyResultOutput, error) {
-			args := v.(LookupRegionNetworkFirewallPolicyIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy", args, LookupRegionNetworkFirewallPolicyIamPolicyResultOutput{}, options).(LookupRegionNetworkFirewallPolicyIamPolicyResultOutput), nil
-		}).(LookupRegionNetworkFirewallPolicyIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy", args, LookupRegionNetworkFirewallPolicyIamPolicyResultOutput{}, options).(LookupRegionNetworkFirewallPolicyIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRegionNetworkFirewallPolicyIamPolicy.

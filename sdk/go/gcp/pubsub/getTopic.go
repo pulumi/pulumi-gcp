@@ -81,12 +81,8 @@ type LookupTopicResult struct {
 }
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTopicResultOutput, error) {
-			args := v.(LookupTopicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:pubsub/getTopic:getTopic", args, LookupTopicResultOutput{}, options).(LookupTopicResultOutput), nil
-		}).(LookupTopicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:pubsub/getTopic:getTopic", args, LookupTopicResultOutput{}, options).(LookupTopicResultOutput)
 }
 
 // A collection of arguments for invoking getTopic.

@@ -76,12 +76,8 @@ type LookupOrganizationPolicyResult struct {
 }
 
 func LookupOrganizationPolicyOutput(ctx *pulumi.Context, args LookupOrganizationPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationPolicyResultOutput, error) {
-			args := v.(LookupOrganizationPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args, LookupOrganizationPolicyResultOutput{}, options).(LookupOrganizationPolicyResultOutput), nil
-		}).(LookupOrganizationPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args, LookupOrganizationPolicyResultOutput{}, options).(LookupOrganizationPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationPolicy.

@@ -76,12 +76,8 @@ type GetCertificateMapResult struct {
 }
 
 func GetCertificateMapOutput(ctx *pulumi.Context, args GetCertificateMapOutputArgs, opts ...pulumi.InvokeOption) GetCertificateMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCertificateMapResultOutput, error) {
-			args := v.(GetCertificateMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:certificatemanager/getCertificateMap:getCertificateMap", args, GetCertificateMapResultOutput{}, options).(GetCertificateMapResultOutput), nil
-		}).(GetCertificateMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:certificatemanager/getCertificateMap:getCertificateMap", args, GetCertificateMapResultOutput{}, options).(GetCertificateMapResultOutput)
 }
 
 // A collection of arguments for invoking getCertificateMap.

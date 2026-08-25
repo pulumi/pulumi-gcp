@@ -72,12 +72,8 @@ type LookupImageIamPolicyResult struct {
 }
 
 func LookupImageIamPolicyOutput(ctx *pulumi.Context, args LookupImageIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupImageIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupImageIamPolicyResultOutput, error) {
-			args := v.(LookupImageIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getImageIamPolicy:getImageIamPolicy", args, LookupImageIamPolicyResultOutput{}, options).(LookupImageIamPolicyResultOutput), nil
-		}).(LookupImageIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getImageIamPolicy:getImageIamPolicy", args, LookupImageIamPolicyResultOutput{}, options).(LookupImageIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getImageIamPolicy.

@@ -80,12 +80,8 @@ type GetAiFeaturestoreIamPolicyResult struct {
 }
 
 func GetAiFeaturestoreIamPolicyOutput(ctx *pulumi.Context, args GetAiFeaturestoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAiFeaturestoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAiFeaturestoreIamPolicyResultOutput, error) {
-			args := v.(GetAiFeaturestoreIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args, GetAiFeaturestoreIamPolicyResultOutput{}, options).(GetAiFeaturestoreIamPolicyResultOutput), nil
-		}).(GetAiFeaturestoreIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args, GetAiFeaturestoreIamPolicyResultOutput{}, options).(GetAiFeaturestoreIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAiFeaturestoreIamPolicy.

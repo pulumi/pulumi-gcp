@@ -72,12 +72,8 @@ type LookupWebForwardingRuleServiceIamPolicyResult struct {
 }
 
 func LookupWebForwardingRuleServiceIamPolicyOutput(ctx *pulumi.Context, args LookupWebForwardingRuleServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebForwardingRuleServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebForwardingRuleServiceIamPolicyResultOutput, error) {
-			args := v.(LookupWebForwardingRuleServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getWebForwardingRuleServiceIamPolicy:getWebForwardingRuleServiceIamPolicy", args, LookupWebForwardingRuleServiceIamPolicyResultOutput{}, options).(LookupWebForwardingRuleServiceIamPolicyResultOutput), nil
-		}).(LookupWebForwardingRuleServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getWebForwardingRuleServiceIamPolicy:getWebForwardingRuleServiceIamPolicy", args, LookupWebForwardingRuleServiceIamPolicyResultOutput{}, options).(LookupWebForwardingRuleServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWebForwardingRuleServiceIamPolicy.

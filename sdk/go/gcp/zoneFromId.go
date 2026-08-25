@@ -44,19 +44,15 @@ func ZoneFromIdOutput(ctx *pulumi.Context, id pulumi.StringInput, opts ...pulumi
 	args := zoneFromIdOutputArgs{
 		Id: id,
 	}
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (pulumi.StringOutput, error) {
-			args := v.(zoneFromIdArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			rv := ctx.InvokeOutput("gcp:index/zoneFromId:zoneFromId", args, pulumi.StringMapOutput{}, options).(pulumi.StringMapOutput)
-			return rv.ApplyT(func(rv map[string]string) string {
-				var result string
-				for _, v := range rv {
-					result = v
-				}
-				return result
-			}).(pulumi.StringOutput), nil
-		}).(pulumi.StringOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	rv := ctx.InvokeOutput("gcp:index/zoneFromId:zoneFromId", args, pulumi.StringMapOutput{}, options).(pulumi.StringMapOutput)
+	return rv.ApplyT(func(rv map[string]string) string {
+		var result string
+		for _, v := range rv {
+			result = v
+		}
+		return result
+	}).(pulumi.StringOutput)
 }
 
 type zoneFromIdOutputArgs struct {

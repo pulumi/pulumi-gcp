@@ -73,12 +73,8 @@ type GetWebAppConfigResult struct {
 }
 
 func GetWebAppConfigOutput(ctx *pulumi.Context, args GetWebAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetWebAppConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWebAppConfigResultOutput, error) {
-			args := v.(GetWebAppConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getWebAppConfig:getWebAppConfig", args, GetWebAppConfigResultOutput{}, options).(GetWebAppConfigResultOutput), nil
-		}).(GetWebAppConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getWebAppConfig:getWebAppConfig", args, GetWebAppConfigResultOutput{}, options).(GetWebAppConfigResultOutput)
 }
 
 // A collection of arguments for invoking getWebAppConfig.

@@ -76,12 +76,8 @@ type GetSubnetworksResult struct {
 }
 
 func GetSubnetworksOutput(ctx *pulumi.Context, args GetSubnetworksOutputArgs, opts ...pulumi.InvokeOption) GetSubnetworksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSubnetworksResultOutput, error) {
-			args := v.(GetSubnetworksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getSubnetworks:getSubnetworks", args, GetSubnetworksResultOutput{}, options).(GetSubnetworksResultOutput), nil
-		}).(GetSubnetworksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getSubnetworks:getSubnetworks", args, GetSubnetworksResultOutput{}, options).(GetSubnetworksResultOutput)
 }
 
 // A collection of arguments for invoking getSubnetworks.

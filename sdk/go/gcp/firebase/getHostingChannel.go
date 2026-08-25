@@ -51,12 +51,8 @@ type LookupHostingChannelResult struct {
 }
 
 func LookupHostingChannelOutput(ctx *pulumi.Context, args LookupHostingChannelOutputArgs, opts ...pulumi.InvokeOption) LookupHostingChannelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHostingChannelResultOutput, error) {
-			args := v.(LookupHostingChannelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getHostingChannel:getHostingChannel", args, LookupHostingChannelResultOutput{}, options).(LookupHostingChannelResultOutput), nil
-		}).(LookupHostingChannelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getHostingChannel:getHostingChannel", args, LookupHostingChannelResultOutput{}, options).(LookupHostingChannelResultOutput)
 }
 
 // A collection of arguments for invoking getHostingChannel.

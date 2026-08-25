@@ -93,12 +93,8 @@ type LookupStoragePoolResult struct {
 }
 
 func LookupStoragePoolOutput(ctx *pulumi.Context, args LookupStoragePoolOutputArgs, opts ...pulumi.InvokeOption) LookupStoragePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStoragePoolResultOutput, error) {
-			args := v.(LookupStoragePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getStoragePool:getStoragePool", args, LookupStoragePoolResultOutput{}, options).(LookupStoragePoolResultOutput), nil
-		}).(LookupStoragePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getStoragePool:getStoragePool", args, LookupStoragePoolResultOutput{}, options).(LookupStoragePoolResultOutput)
 }
 
 // A collection of arguments for invoking getStoragePool.

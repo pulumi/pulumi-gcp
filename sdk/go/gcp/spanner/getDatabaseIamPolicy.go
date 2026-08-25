@@ -75,12 +75,8 @@ type GetDatabaseIamPolicyResult struct {
 }
 
 func GetDatabaseIamPolicyOutput(ctx *pulumi.Context, args GetDatabaseIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatabaseIamPolicyResultOutput, error) {
-			args := v.(GetDatabaseIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args, GetDatabaseIamPolicyResultOutput{}, options).(GetDatabaseIamPolicyResultOutput), nil
-		}).(GetDatabaseIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args, GetDatabaseIamPolicyResultOutput{}, options).(GetDatabaseIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseIamPolicy.

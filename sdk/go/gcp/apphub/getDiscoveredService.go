@@ -76,12 +76,8 @@ type GetDiscoveredServiceResult struct {
 }
 
 func GetDiscoveredServiceOutput(ctx *pulumi.Context, args GetDiscoveredServiceOutputArgs, opts ...pulumi.InvokeOption) GetDiscoveredServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDiscoveredServiceResultOutput, error) {
-			args := v.(GetDiscoveredServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:apphub/getDiscoveredService:getDiscoveredService", args, GetDiscoveredServiceResultOutput{}, options).(GetDiscoveredServiceResultOutput), nil
-		}).(GetDiscoveredServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:apphub/getDiscoveredService:getDiscoveredService", args, GetDiscoveredServiceResultOutput{}, options).(GetDiscoveredServiceResultOutput)
 }
 
 // A collection of arguments for invoking getDiscoveredService.

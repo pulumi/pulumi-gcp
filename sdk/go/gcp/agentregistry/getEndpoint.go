@@ -89,12 +89,8 @@ type GetEndpointResult struct {
 }
 
 func GetEndpointOutput(ctx *pulumi.Context, args GetEndpointOutputArgs, opts ...pulumi.InvokeOption) GetEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEndpointResultOutput, error) {
-			args := v.(GetEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:agentregistry/getEndpoint:getEndpoint", args, GetEndpointResultOutput{}, options).(GetEndpointResultOutput), nil
-		}).(GetEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:agentregistry/getEndpoint:getEndpoint", args, GetEndpointResultOutput{}, options).(GetEndpointResultOutput)
 }
 
 // A collection of arguments for invoking getEndpoint.

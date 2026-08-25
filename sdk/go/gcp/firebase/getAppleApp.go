@@ -60,12 +60,8 @@ type LookupAppleAppResult struct {
 }
 
 func LookupAppleAppOutput(ctx *pulumi.Context, args LookupAppleAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppleAppResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppleAppResultOutput, error) {
-			args := v.(LookupAppleAppArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getAppleApp:getAppleApp", args, LookupAppleAppResultOutput{}, options).(LookupAppleAppResultOutput), nil
-		}).(LookupAppleAppResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getAppleApp:getAppleApp", args, LookupAppleAppResultOutput{}, options).(LookupAppleAppResultOutput)
 }
 
 // A collection of arguments for invoking getAppleApp.

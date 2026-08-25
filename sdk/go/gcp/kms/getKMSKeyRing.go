@@ -80,12 +80,8 @@ type GetKMSKeyRingResult struct {
 }
 
 func GetKMSKeyRingOutput(ctx *pulumi.Context, args GetKMSKeyRingOutputArgs, opts ...pulumi.InvokeOption) GetKMSKeyRingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKMSKeyRingResultOutput, error) {
-			args := v.(GetKMSKeyRingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getKMSKeyRing:getKMSKeyRing", args, GetKMSKeyRingResultOutput{}, options).(GetKMSKeyRingResultOutput), nil
-		}).(GetKMSKeyRingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getKMSKeyRing:getKMSKeyRing", args, GetKMSKeyRingResultOutput{}, options).(GetKMSKeyRingResultOutput)
 }
 
 // A collection of arguments for invoking getKMSKeyRing.

@@ -68,12 +68,8 @@ type LookupWebIamPolicyResult struct {
 }
 
 func LookupWebIamPolicyOutput(ctx *pulumi.Context, args LookupWebIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebIamPolicyResultOutput, error) {
-			args := v.(LookupWebIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getWebIamPolicy:getWebIamPolicy", args, LookupWebIamPolicyResultOutput{}, options).(LookupWebIamPolicyResultOutput), nil
-		}).(LookupWebIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getWebIamPolicy:getWebIamPolicy", args, LookupWebIamPolicyResultOutput{}, options).(LookupWebIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWebIamPolicy.

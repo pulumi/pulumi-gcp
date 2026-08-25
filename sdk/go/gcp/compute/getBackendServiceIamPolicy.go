@@ -74,12 +74,8 @@ type LookupBackendServiceIamPolicyResult struct {
 }
 
 func LookupBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBackendServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackendServiceIamPolicyResultOutput, error) {
-			args := v.(LookupBackendServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args, LookupBackendServiceIamPolicyResultOutput{}, options).(LookupBackendServiceIamPolicyResultOutput), nil
-		}).(LookupBackendServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args, LookupBackendServiceIamPolicyResultOutput{}, options).(LookupBackendServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getBackendServiceIamPolicy.

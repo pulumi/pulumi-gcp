@@ -70,12 +70,8 @@ type GetSubscriptionIamPolicyResult struct {
 }
 
 func GetSubscriptionIamPolicyOutput(ctx *pulumi.Context, args GetSubscriptionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSubscriptionIamPolicyResultOutput, error) {
-			args := v.(GetSubscriptionIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, GetSubscriptionIamPolicyResultOutput{}, options).(GetSubscriptionIamPolicyResultOutput), nil
-		}).(GetSubscriptionIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, GetSubscriptionIamPolicyResultOutput{}, options).(GetSubscriptionIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSubscriptionIamPolicy.

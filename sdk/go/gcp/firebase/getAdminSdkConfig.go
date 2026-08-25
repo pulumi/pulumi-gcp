@@ -52,12 +52,8 @@ type GetAdminSdkConfigResult struct {
 }
 
 func GetAdminSdkConfigOutput(ctx *pulumi.Context, args GetAdminSdkConfigOutputArgs, opts ...pulumi.InvokeOption) GetAdminSdkConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAdminSdkConfigResultOutput, error) {
-			args := v.(GetAdminSdkConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getAdminSdkConfig:getAdminSdkConfig", args, GetAdminSdkConfigResultOutput{}, options).(GetAdminSdkConfigResultOutput), nil
-		}).(GetAdminSdkConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getAdminSdkConfig:getAdminSdkConfig", args, GetAdminSdkConfigResultOutput{}, options).(GetAdminSdkConfigResultOutput)
 }
 
 // A collection of arguments for invoking getAdminSdkConfig.

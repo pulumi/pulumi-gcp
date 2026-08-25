@@ -82,12 +82,8 @@ type GetOrganizationResult struct {
 }
 
 func GetOrganizationOutput(ctx *pulumi.Context, args GetOrganizationOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationResultOutput, error) {
-			args := v.(GetOrganizationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:organizations/getOrganization:getOrganization", args, GetOrganizationResultOutput{}, options).(GetOrganizationResultOutput), nil
-		}).(GetOrganizationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:organizations/getOrganization:getOrganization", args, GetOrganizationResultOutput{}, options).(GetOrganizationResultOutput)
 }
 
 // A collection of arguments for invoking getOrganization.

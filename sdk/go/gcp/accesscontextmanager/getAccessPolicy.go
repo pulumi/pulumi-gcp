@@ -78,12 +78,8 @@ type LookupAccessPolicyResult struct {
 }
 
 func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessPolicyResultOutput, error) {
-			args := v.(LookupAccessPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy", args, LookupAccessPolicyResultOutput{}, options).(LookupAccessPolicyResultOutput), nil
-		}).(LookupAccessPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy", args, LookupAccessPolicyResultOutput{}, options).(LookupAccessPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAccessPolicy.

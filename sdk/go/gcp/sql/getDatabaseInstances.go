@@ -78,12 +78,8 @@ type GetDatabaseInstancesResult struct {
 }
 
 func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatabaseInstancesResultOutput, error) {
-			args := v.(GetDatabaseInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:sql/getDatabaseInstances:getDatabaseInstances", args, GetDatabaseInstancesResultOutput{}, options).(GetDatabaseInstancesResultOutput), nil
-		}).(GetDatabaseInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:sql/getDatabaseInstances:getDatabaseInstances", args, GetDatabaseInstancesResultOutput{}, options).(GetDatabaseInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseInstances.

@@ -84,12 +84,8 @@ type LookupTaskIamPolicyResult struct {
 }
 
 func LookupTaskIamPolicyOutput(ctx *pulumi.Context, args LookupTaskIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTaskIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTaskIamPolicyResultOutput, error) {
-			args := v.(LookupTaskIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy", args, LookupTaskIamPolicyResultOutput{}, options).(LookupTaskIamPolicyResultOutput), nil
-		}).(LookupTaskIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy", args, LookupTaskIamPolicyResultOutput{}, options).(LookupTaskIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTaskIamPolicy.

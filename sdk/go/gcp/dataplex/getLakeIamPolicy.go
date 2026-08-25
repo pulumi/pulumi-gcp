@@ -78,12 +78,8 @@ type LookupLakeIamPolicyResult struct {
 }
 
 func LookupLakeIamPolicyOutput(ctx *pulumi.Context, args LookupLakeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupLakeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLakeIamPolicyResultOutput, error) {
-			args := v.(LookupLakeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args, LookupLakeIamPolicyResultOutput{}, options).(LookupLakeIamPolicyResultOutput), nil
-		}).(LookupLakeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args, LookupLakeIamPolicyResultOutput{}, options).(LookupLakeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getLakeIamPolicy.

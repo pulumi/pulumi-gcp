@@ -71,12 +71,8 @@ type LookupClientResult struct {
 }
 
 func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts ...pulumi.InvokeOption) LookupClientResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClientResultOutput, error) {
-			args := v.(LookupClientArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getClient:getClient", args, LookupClientResultOutput{}, options).(LookupClientResultOutput), nil
-		}).(LookupClientResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getClient:getClient", args, LookupClientResultOutput{}, options).(LookupClientResultOutput)
 }
 
 // A collection of arguments for invoking getClient.

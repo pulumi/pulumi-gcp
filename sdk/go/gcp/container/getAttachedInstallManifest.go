@@ -78,12 +78,8 @@ type GetAttachedInstallManifestResult struct {
 }
 
 func GetAttachedInstallManifestOutput(ctx *pulumi.Context, args GetAttachedInstallManifestOutputArgs, opts ...pulumi.InvokeOption) GetAttachedInstallManifestResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAttachedInstallManifestResultOutput, error) {
-			args := v.(GetAttachedInstallManifestArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args, GetAttachedInstallManifestResultOutput{}, options).(GetAttachedInstallManifestResultOutput), nil
-		}).(GetAttachedInstallManifestResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args, GetAttachedInstallManifestResultOutput{}, options).(GetAttachedInstallManifestResultOutput)
 }
 
 // A collection of arguments for invoking getAttachedInstallManifest.

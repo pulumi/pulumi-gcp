@@ -78,12 +78,8 @@ type LookupWebRegionBackendServiceIamPolicyResult struct {
 }
 
 func LookupWebRegionBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupWebRegionBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebRegionBackendServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebRegionBackendServiceIamPolicyResultOutput, error) {
-			args := v.(LookupWebRegionBackendServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", args, LookupWebRegionBackendServiceIamPolicyResultOutput{}, options).(LookupWebRegionBackendServiceIamPolicyResultOutput), nil
-		}).(LookupWebRegionBackendServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", args, LookupWebRegionBackendServiceIamPolicyResultOutput{}, options).(LookupWebRegionBackendServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWebRegionBackendServiceIamPolicy.

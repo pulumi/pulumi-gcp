@@ -78,12 +78,8 @@ type LookupStoragePoolIamPolicyResult struct {
 }
 
 func LookupStoragePoolIamPolicyOutput(ctx *pulumi.Context, args LookupStoragePoolIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupStoragePoolIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStoragePoolIamPolicyResultOutput, error) {
-			args := v.(LookupStoragePoolIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getStoragePoolIamPolicy:getStoragePoolIamPolicy", args, LookupStoragePoolIamPolicyResultOutput{}, options).(LookupStoragePoolIamPolicyResultOutput), nil
-		}).(LookupStoragePoolIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getStoragePoolIamPolicy:getStoragePoolIamPolicy", args, LookupStoragePoolIamPolicyResultOutput{}, options).(LookupStoragePoolIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getStoragePoolIamPolicy.

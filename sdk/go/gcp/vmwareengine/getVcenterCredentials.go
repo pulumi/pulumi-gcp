@@ -69,12 +69,8 @@ type GetVcenterCredentialsResult struct {
 }
 
 func GetVcenterCredentialsOutput(ctx *pulumi.Context, args GetVcenterCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetVcenterCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVcenterCredentialsResultOutput, error) {
-			args := v.(GetVcenterCredentialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args, GetVcenterCredentialsResultOutput{}, options).(GetVcenterCredentialsResultOutput), nil
-		}).(GetVcenterCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args, GetVcenterCredentialsResultOutput{}, options).(GetVcenterCredentialsResultOutput)
 }
 
 // A collection of arguments for invoking getVcenterCredentials.

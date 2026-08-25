@@ -78,12 +78,8 @@ type LookupDatapolicyv2DataPolicyIamPolicyResult struct {
 }
 
 func LookupDatapolicyv2DataPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupDatapolicyv2DataPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatapolicyv2DataPolicyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatapolicyv2DataPolicyIamPolicyResultOutput, error) {
-			args := v.(LookupDatapolicyv2DataPolicyIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy", args, LookupDatapolicyv2DataPolicyIamPolicyResultOutput{}, options).(LookupDatapolicyv2DataPolicyIamPolicyResultOutput), nil
-		}).(LookupDatapolicyv2DataPolicyIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy", args, LookupDatapolicyv2DataPolicyIamPolicyResultOutput{}, options).(LookupDatapolicyv2DataPolicyIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getDatapolicyv2DataPolicyIamPolicy.

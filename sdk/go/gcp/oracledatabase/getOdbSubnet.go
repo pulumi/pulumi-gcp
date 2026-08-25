@@ -91,12 +91,8 @@ type LookupOdbSubnetResult struct {
 }
 
 func LookupOdbSubnetOutput(ctx *pulumi.Context, args LookupOdbSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupOdbSubnetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOdbSubnetResultOutput, error) {
-			args := v.(LookupOdbSubnetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:oracledatabase/getOdbSubnet:getOdbSubnet", args, LookupOdbSubnetResultOutput{}, options).(LookupOdbSubnetResultOutput), nil
-		}).(LookupOdbSubnetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:oracledatabase/getOdbSubnet:getOdbSubnet", args, LookupOdbSubnetResultOutput{}, options).(LookupOdbSubnetResultOutput)
 }
 
 // A collection of arguments for invoking getOdbSubnet.

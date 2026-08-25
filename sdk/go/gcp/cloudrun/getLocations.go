@@ -69,12 +69,8 @@ type GetLocationsResult struct {
 }
 
 func GetLocationsOutput(ctx *pulumi.Context, args GetLocationsOutputArgs, opts ...pulumi.InvokeOption) GetLocationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLocationsResultOutput, error) {
-			args := v.(GetLocationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudrun/getLocations:getLocations", args, GetLocationsResultOutput{}, options).(GetLocationsResultOutput), nil
-		}).(GetLocationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudrun/getLocations:getLocations", args, GetLocationsResultOutput{}, options).(GetLocationsResultOutput)
 }
 
 // A collection of arguments for invoking getLocations.

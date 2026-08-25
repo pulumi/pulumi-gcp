@@ -79,12 +79,8 @@ type LookupVPNGatewayResult struct {
 }
 
 func LookupVPNGatewayOutput(ctx *pulumi.Context, args LookupVPNGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupVPNGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVPNGatewayResultOutput, error) {
-			args := v.(LookupVPNGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getVPNGateway:getVPNGateway", args, LookupVPNGatewayResultOutput{}, options).(LookupVPNGatewayResultOutput), nil
-		}).(LookupVPNGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getVPNGateway:getVPNGateway", args, LookupVPNGatewayResultOutput{}, options).(LookupVPNGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getVPNGateway.

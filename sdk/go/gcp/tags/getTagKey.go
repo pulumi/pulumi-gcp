@@ -103,12 +103,8 @@ type LookupTagKeyResult struct {
 }
 
 func LookupTagKeyOutput(ctx *pulumi.Context, args LookupTagKeyOutputArgs, opts ...pulumi.InvokeOption) LookupTagKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTagKeyResultOutput, error) {
-			args := v.(LookupTagKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:tags/getTagKey:getTagKey", args, LookupTagKeyResultOutput{}, options).(LookupTagKeyResultOutput), nil
-		}).(LookupTagKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:tags/getTagKey:getTagKey", args, LookupTagKeyResultOutput{}, options).(LookupTagKeyResultOutput)
 }
 
 // A collection of arguments for invoking getTagKey.

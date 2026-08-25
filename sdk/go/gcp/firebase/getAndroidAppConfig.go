@@ -37,12 +37,8 @@ type GetAndroidAppConfigResult struct {
 }
 
 func GetAndroidAppConfigOutput(ctx *pulumi.Context, args GetAndroidAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetAndroidAppConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAndroidAppConfigResultOutput, error) {
-			args := v.(GetAndroidAppConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, GetAndroidAppConfigResultOutput{}, options).(GetAndroidAppConfigResultOutput), nil
-		}).(GetAndroidAppConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, GetAndroidAppConfigResultOutput{}, options).(GetAndroidAppConfigResultOutput)
 }
 
 // A collection of arguments for invoking getAndroidAppConfig.

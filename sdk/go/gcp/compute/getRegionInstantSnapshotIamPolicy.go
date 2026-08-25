@@ -78,12 +78,8 @@ type LookupRegionInstantSnapshotIamPolicyResult struct {
 }
 
 func LookupRegionInstantSnapshotIamPolicyOutput(ctx *pulumi.Context, args LookupRegionInstantSnapshotIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstantSnapshotIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionInstantSnapshotIamPolicyResultOutput, error) {
-			args := v.(LookupRegionInstantSnapshotIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy", args, LookupRegionInstantSnapshotIamPolicyResultOutput{}, options).(LookupRegionInstantSnapshotIamPolicyResultOutput), nil
-		}).(LookupRegionInstantSnapshotIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy", args, LookupRegionInstantSnapshotIamPolicyResultOutput{}, options).(LookupRegionInstantSnapshotIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRegionInstantSnapshotIamPolicy.

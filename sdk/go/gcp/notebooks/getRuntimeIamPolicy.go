@@ -80,12 +80,8 @@ type LookupRuntimeIamPolicyResult struct {
 }
 
 func LookupRuntimeIamPolicyOutput(ctx *pulumi.Context, args LookupRuntimeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRuntimeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuntimeIamPolicyResultOutput, error) {
-			args := v.(LookupRuntimeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", args, LookupRuntimeIamPolicyResultOutput{}, options).(LookupRuntimeIamPolicyResultOutput), nil
-		}).(LookupRuntimeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", args, LookupRuntimeIamPolicyResultOutput{}, options).(LookupRuntimeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRuntimeIamPolicy.

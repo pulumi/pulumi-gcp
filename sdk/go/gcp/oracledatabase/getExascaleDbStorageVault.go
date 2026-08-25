@@ -87,12 +87,8 @@ type LookupExascaleDbStorageVaultResult struct {
 }
 
 func LookupExascaleDbStorageVaultOutput(ctx *pulumi.Context, args LookupExascaleDbStorageVaultOutputArgs, opts ...pulumi.InvokeOption) LookupExascaleDbStorageVaultResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExascaleDbStorageVaultResultOutput, error) {
-			args := v.(LookupExascaleDbStorageVaultArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:oracledatabase/getExascaleDbStorageVault:getExascaleDbStorageVault", args, LookupExascaleDbStorageVaultResultOutput{}, options).(LookupExascaleDbStorageVaultResultOutput), nil
-		}).(LookupExascaleDbStorageVaultResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:oracledatabase/getExascaleDbStorageVault:getExascaleDbStorageVault", args, LookupExascaleDbStorageVaultResultOutput{}, options).(LookupExascaleDbStorageVaultResultOutput)
 }
 
 // A collection of arguments for invoking getExascaleDbStorageVault.

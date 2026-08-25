@@ -81,12 +81,8 @@ type LookupGatewayIamPolicyResult struct {
 }
 
 func LookupGatewayIamPolicyOutput(ctx *pulumi.Context, args LookupGatewayIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGatewayIamPolicyResultOutput, error) {
-			args := v.(LookupGatewayIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args, LookupGatewayIamPolicyResultOutput{}, options).(LookupGatewayIamPolicyResultOutput), nil
-		}).(LookupGatewayIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args, LookupGatewayIamPolicyResultOutput{}, options).(LookupGatewayIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getGatewayIamPolicy.

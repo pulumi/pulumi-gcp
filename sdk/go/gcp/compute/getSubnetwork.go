@@ -103,12 +103,8 @@ type LookupSubnetworkResult struct {
 }
 
 func LookupSubnetworkOutput(ctx *pulumi.Context, args LookupSubnetworkOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetworkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSubnetworkResultOutput, error) {
-			args := v.(LookupSubnetworkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getSubnetwork:getSubnetwork", args, LookupSubnetworkResultOutput{}, options).(LookupSubnetworkResultOutput), nil
-		}).(LookupSubnetworkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getSubnetwork:getSubnetwork", args, LookupSubnetworkResultOutput{}, options).(LookupSubnetworkResultOutput)
 }
 
 // A collection of arguments for invoking getSubnetwork.

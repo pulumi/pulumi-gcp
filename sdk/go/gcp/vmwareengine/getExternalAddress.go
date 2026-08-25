@@ -77,12 +77,8 @@ type LookupExternalAddressResult struct {
 }
 
 func LookupExternalAddressOutput(ctx *pulumi.Context, args LookupExternalAddressOutputArgs, opts ...pulumi.InvokeOption) LookupExternalAddressResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExternalAddressResultOutput, error) {
-			args := v.(LookupExternalAddressArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, LookupExternalAddressResultOutput{}, options).(LookupExternalAddressResultOutput), nil
-		}).(LookupExternalAddressResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, LookupExternalAddressResultOutput{}, options).(LookupExternalAddressResultOutput)
 }
 
 // A collection of arguments for invoking getExternalAddress.

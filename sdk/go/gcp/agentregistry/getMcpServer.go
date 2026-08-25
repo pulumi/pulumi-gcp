@@ -91,12 +91,8 @@ type GetMcpServerResult struct {
 }
 
 func GetMcpServerOutput(ctx *pulumi.Context, args GetMcpServerOutputArgs, opts ...pulumi.InvokeOption) GetMcpServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMcpServerResultOutput, error) {
-			args := v.(GetMcpServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:agentregistry/getMcpServer:getMcpServer", args, GetMcpServerResultOutput{}, options).(GetMcpServerResultOutput), nil
-		}).(GetMcpServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:agentregistry/getMcpServer:getMcpServer", args, GetMcpServerResultOutput{}, options).(GetMcpServerResultOutput)
 }
 
 // A collection of arguments for invoking getMcpServer.

@@ -66,12 +66,8 @@ type LookupAccountIamPolicyResult struct {
 }
 
 func LookupAccountIamPolicyOutput(ctx *pulumi.Context, args LookupAccountIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccountIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountIamPolicyResultOutput, error) {
-			args := v.(LookupAccountIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", args, LookupAccountIamPolicyResultOutput{}, options).(LookupAccountIamPolicyResultOutput), nil
-		}).(LookupAccountIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", args, LookupAccountIamPolicyResultOutput{}, options).(LookupAccountIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAccountIamPolicy.

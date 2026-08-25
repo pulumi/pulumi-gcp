@@ -78,12 +78,8 @@ type GetServiceIamPolicyResult struct {
 }
 
 func GetServiceIamPolicyOutput(ctx *pulumi.Context, args GetServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceIamPolicyResultOutput, error) {
-			args := v.(GetServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy", args, GetServiceIamPolicyResultOutput{}, options).(GetServiceIamPolicyResultOutput), nil
-		}).(GetServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy", args, GetServiceIamPolicyResultOutput{}, options).(GetServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getServiceIamPolicy.

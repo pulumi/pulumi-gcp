@@ -136,12 +136,8 @@ type GetAppEngineServiceResult struct {
 }
 
 func GetAppEngineServiceOutput(ctx *pulumi.Context, args GetAppEngineServiceOutputArgs, opts ...pulumi.InvokeOption) GetAppEngineServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAppEngineServiceResultOutput, error) {
-			args := v.(GetAppEngineServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:monitoring/getAppEngineService:getAppEngineService", args, GetAppEngineServiceResultOutput{}, options).(GetAppEngineServiceResultOutput), nil
-		}).(GetAppEngineServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:monitoring/getAppEngineService:getAppEngineService", args, GetAppEngineServiceResultOutput{}, options).(GetAppEngineServiceResultOutput)
 }
 
 // A collection of arguments for invoking getAppEngineService.

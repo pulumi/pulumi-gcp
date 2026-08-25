@@ -38,12 +38,8 @@ type LookupManagedFolderIamPolicyResult struct {
 }
 
 func LookupManagedFolderIamPolicyOutput(ctx *pulumi.Context, args LookupManagedFolderIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedFolderIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedFolderIamPolicyResultOutput, error) {
-			args := v.(LookupManagedFolderIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, LookupManagedFolderIamPolicyResultOutput{}, options).(LookupManagedFolderIamPolicyResultOutput), nil
-		}).(LookupManagedFolderIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, LookupManagedFolderIamPolicyResultOutput{}, options).(LookupManagedFolderIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getManagedFolderIamPolicy.

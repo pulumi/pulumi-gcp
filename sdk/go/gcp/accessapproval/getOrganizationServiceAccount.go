@@ -82,12 +82,8 @@ type GetOrganizationServiceAccountResult struct {
 }
 
 func GetOrganizationServiceAccountOutput(ctx *pulumi.Context, args GetOrganizationServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationServiceAccountResultOutput, error) {
-			args := v.(GetOrganizationServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args, GetOrganizationServiceAccountResultOutput{}, options).(GetOrganizationServiceAccountResultOutput), nil
-		}).(GetOrganizationServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args, GetOrganizationServiceAccountResultOutput{}, options).(GetOrganizationServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationServiceAccount.

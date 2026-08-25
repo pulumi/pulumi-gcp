@@ -63,12 +63,8 @@ type LookupAndroidAppResult struct {
 }
 
 func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs, opts ...pulumi.InvokeOption) LookupAndroidAppResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAndroidAppResultOutput, error) {
-			args := v.(LookupAndroidAppArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getAndroidApp:getAndroidApp", args, LookupAndroidAppResultOutput{}, options).(LookupAndroidAppResultOutput), nil
-		}).(LookupAndroidAppResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getAndroidApp:getAndroidApp", args, LookupAndroidAppResultOutput{}, options).(LookupAndroidAppResultOutput)
 }
 
 // A collection of arguments for invoking getAndroidApp.

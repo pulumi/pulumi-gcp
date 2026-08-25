@@ -69,12 +69,8 @@ type LookupFhirStoreIamPolicyResult struct {
 }
 
 func LookupFhirStoreIamPolicyOutput(ctx *pulumi.Context, args LookupFhirStoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupFhirStoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFhirStoreIamPolicyResultOutput, error) {
-			args := v.(LookupFhirStoreIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args, LookupFhirStoreIamPolicyResultOutput{}, options).(LookupFhirStoreIamPolicyResultOutput), nil
-		}).(LookupFhirStoreIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args, LookupFhirStoreIamPolicyResultOutput{}, options).(LookupFhirStoreIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getFhirStoreIamPolicy.

@@ -82,12 +82,8 @@ type GetFolderServiceAccountResult struct {
 }
 
 func GetFolderServiceAccountOutput(ctx *pulumi.Context, args GetFolderServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetFolderServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFolderServiceAccountResultOutput, error) {
-			args := v.(GetFolderServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args, GetFolderServiceAccountResultOutput{}, options).(GetFolderServiceAccountResultOutput), nil
-		}).(GetFolderServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args, GetFolderServiceAccountResultOutput{}, options).(GetFolderServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getFolderServiceAccount.

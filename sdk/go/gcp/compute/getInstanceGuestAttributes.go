@@ -125,12 +125,8 @@ type GetInstanceGuestAttributesResult struct {
 }
 
 func GetInstanceGuestAttributesOutput(ctx *pulumi.Context, args GetInstanceGuestAttributesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceGuestAttributesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceGuestAttributesResultOutput, error) {
-			args := v.(GetInstanceGuestAttributesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args, GetInstanceGuestAttributesResultOutput{}, options).(GetInstanceGuestAttributesResultOutput), nil
-		}).(GetInstanceGuestAttributesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args, GetInstanceGuestAttributesResultOutput{}, options).(GetInstanceGuestAttributesResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceGuestAttributes.

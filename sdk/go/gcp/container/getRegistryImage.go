@@ -81,12 +81,8 @@ type GetRegistryImageResult struct {
 }
 
 func GetRegistryImageOutput(ctx *pulumi.Context, args GetRegistryImageOutputArgs, opts ...pulumi.InvokeOption) GetRegistryImageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegistryImageResultOutput, error) {
-			args := v.(GetRegistryImageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:container/getRegistryImage:getRegistryImage", args, GetRegistryImageResultOutput{}, options).(GetRegistryImageResultOutput), nil
-		}).(GetRegistryImageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:container/getRegistryImage:getRegistryImage", args, GetRegistryImageResultOutput{}, options).(GetRegistryImageResultOutput)
 }
 
 // A collection of arguments for invoking getRegistryImage.

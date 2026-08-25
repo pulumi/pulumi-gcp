@@ -79,12 +79,8 @@ type LookupProjectSettingsResult struct {
 }
 
 func LookupProjectSettingsOutput(ctx *pulumi.Context, args LookupProjectSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupProjectSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectSettingsResultOutput, error) {
-			args := v.(LookupProjectSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:observability/getProjectSettings:getProjectSettings", args, LookupProjectSettingsResultOutput{}, options).(LookupProjectSettingsResultOutput), nil
-		}).(LookupProjectSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:observability/getProjectSettings:getProjectSettings", args, LookupProjectSettingsResultOutput{}, options).(LookupProjectSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getProjectSettings.

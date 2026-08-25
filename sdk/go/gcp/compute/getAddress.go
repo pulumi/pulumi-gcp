@@ -110,12 +110,8 @@ type LookupAddressResult struct {
 }
 
 func LookupAddressOutput(ctx *pulumi.Context, args LookupAddressOutputArgs, opts ...pulumi.InvokeOption) LookupAddressResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAddressResultOutput, error) {
-			args := v.(LookupAddressArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getAddress:getAddress", args, LookupAddressResultOutput{}, options).(LookupAddressResultOutput), nil
-		}).(LookupAddressResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getAddress:getAddress", args, LookupAddressResultOutput{}, options).(LookupAddressResultOutput)
 }
 
 // A collection of arguments for invoking getAddress.

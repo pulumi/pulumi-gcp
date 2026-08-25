@@ -104,12 +104,8 @@ type LookupJobResult struct {
 }
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJobResultOutput, error) {
-			args := v.(LookupJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudrunv2/getJob:getJob", args, LookupJobResultOutput{}, options).(LookupJobResultOutput), nil
-		}).(LookupJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudrunv2/getJob:getJob", args, LookupJobResultOutput{}, options).(LookupJobResultOutput)
 }
 
 // A collection of arguments for invoking getJob.

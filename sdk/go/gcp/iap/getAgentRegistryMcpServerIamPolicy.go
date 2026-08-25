@@ -78,12 +78,8 @@ type LookupAgentRegistryMcpServerIamPolicyResult struct {
 }
 
 func LookupAgentRegistryMcpServerIamPolicyOutput(ctx *pulumi.Context, args LookupAgentRegistryMcpServerIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAgentRegistryMcpServerIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAgentRegistryMcpServerIamPolicyResultOutput, error) {
-			args := v.(LookupAgentRegistryMcpServerIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getAgentRegistryMcpServerIamPolicy:getAgentRegistryMcpServerIamPolicy", args, LookupAgentRegistryMcpServerIamPolicyResultOutput{}, options).(LookupAgentRegistryMcpServerIamPolicyResultOutput), nil
-		}).(LookupAgentRegistryMcpServerIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getAgentRegistryMcpServerIamPolicy:getAgentRegistryMcpServerIamPolicy", args, LookupAgentRegistryMcpServerIamPolicyResultOutput{}, options).(LookupAgentRegistryMcpServerIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAgentRegistryMcpServerIamPolicy.

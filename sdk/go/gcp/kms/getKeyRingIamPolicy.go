@@ -69,12 +69,8 @@ type GetKeyRingIamPolicyResult struct {
 }
 
 func GetKeyRingIamPolicyOutput(ctx *pulumi.Context, args GetKeyRingIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetKeyRingIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKeyRingIamPolicyResultOutput, error) {
-			args := v.(GetKeyRingIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, GetKeyRingIamPolicyResultOutput{}, options).(GetKeyRingIamPolicyResultOutput), nil
-		}).(GetKeyRingIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, GetKeyRingIamPolicyResultOutput{}, options).(GetKeyRingIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getKeyRingIamPolicy.

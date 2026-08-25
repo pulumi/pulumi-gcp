@@ -98,12 +98,8 @@ type GetGoldengateDeploymentVersionsResult struct {
 }
 
 func GetGoldengateDeploymentVersionsOutput(ctx *pulumi.Context, args GetGoldengateDeploymentVersionsOutputArgs, opts ...pulumi.InvokeOption) GetGoldengateDeploymentVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGoldengateDeploymentVersionsResultOutput, error) {
-			args := v.(GetGoldengateDeploymentVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions", args, GetGoldengateDeploymentVersionsResultOutput{}, options).(GetGoldengateDeploymentVersionsResultOutput), nil
-		}).(GetGoldengateDeploymentVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions", args, GetGoldengateDeploymentVersionsResultOutput{}, options).(GetGoldengateDeploymentVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getGoldengateDeploymentVersions.

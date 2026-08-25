@@ -79,12 +79,8 @@ type LookupMetastoreFederationIamPolicyResult struct {
 }
 
 func LookupMetastoreFederationIamPolicyOutput(ctx *pulumi.Context, args LookupMetastoreFederationIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreFederationIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMetastoreFederationIamPolicyResultOutput, error) {
-			args := v.(LookupMetastoreFederationIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args, LookupMetastoreFederationIamPolicyResultOutput{}, options).(LookupMetastoreFederationIamPolicyResultOutput), nil
-		}).(LookupMetastoreFederationIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args, LookupMetastoreFederationIamPolicyResultOutput{}, options).(LookupMetastoreFederationIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getMetastoreFederationIamPolicy.

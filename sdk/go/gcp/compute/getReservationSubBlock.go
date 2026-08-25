@@ -107,12 +107,8 @@ type GetReservationSubBlockResult struct {
 }
 
 func GetReservationSubBlockOutput(ctx *pulumi.Context, args GetReservationSubBlockOutputArgs, opts ...pulumi.InvokeOption) GetReservationSubBlockResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetReservationSubBlockResultOutput, error) {
-			args := v.(GetReservationSubBlockArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getReservationSubBlock:getReservationSubBlock", args, GetReservationSubBlockResultOutput{}, options).(GetReservationSubBlockResultOutput), nil
-		}).(GetReservationSubBlockResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getReservationSubBlock:getReservationSubBlock", args, GetReservationSubBlockResultOutput{}, options).(GetReservationSubBlockResultOutput)
 }
 
 // A collection of arguments for invoking getReservationSubBlock.

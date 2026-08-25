@@ -68,12 +68,8 @@ type GetUpgradesResult struct {
 }
 
 func GetUpgradesOutput(ctx *pulumi.Context, args GetUpgradesOutputArgs, opts ...pulumi.InvokeOption) GetUpgradesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUpgradesResultOutput, error) {
-			args := v.(GetUpgradesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vmwareengine/getUpgrades:getUpgrades", args, GetUpgradesResultOutput{}, options).(GetUpgradesResultOutput), nil
-		}).(GetUpgradesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vmwareengine/getUpgrades:getUpgrades", args, GetUpgradesResultOutput{}, options).(GetUpgradesResultOutput)
 }
 
 // A collection of arguments for invoking getUpgrades.

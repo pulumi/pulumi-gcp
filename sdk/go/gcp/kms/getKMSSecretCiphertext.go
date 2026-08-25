@@ -146,12 +146,8 @@ type GetKMSSecretCiphertextResult struct {
 }
 
 func GetKMSSecretCiphertextOutput(ctx *pulumi.Context, args GetKMSSecretCiphertextOutputArgs, opts ...pulumi.InvokeOption) GetKMSSecretCiphertextResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKMSSecretCiphertextResultOutput, error) {
-			args := v.(GetKMSSecretCiphertextArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, GetKMSSecretCiphertextResultOutput{}, options).(GetKMSSecretCiphertextResultOutput), nil
-		}).(GetKMSSecretCiphertextResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, GetKMSSecretCiphertextResultOutput{}, options).(GetKMSSecretCiphertextResultOutput)
 }
 
 // A collection of arguments for invoking getKMSSecretCiphertext.

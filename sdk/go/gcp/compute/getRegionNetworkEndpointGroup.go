@@ -96,12 +96,8 @@ type LookupRegionNetworkEndpointGroupResult struct {
 }
 
 func LookupRegionNetworkEndpointGroupOutput(ctx *pulumi.Context, args LookupRegionNetworkEndpointGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRegionNetworkEndpointGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionNetworkEndpointGroupResultOutput, error) {
-			args := v.(LookupRegionNetworkEndpointGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", args, LookupRegionNetworkEndpointGroupResultOutput{}, options).(LookupRegionNetworkEndpointGroupResultOutput), nil
-		}).(LookupRegionNetworkEndpointGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", args, LookupRegionNetworkEndpointGroupResultOutput{}, options).(LookupRegionNetworkEndpointGroupResultOutput)
 }
 
 // A collection of arguments for invoking getRegionNetworkEndpointGroup.

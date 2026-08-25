@@ -67,12 +67,8 @@ type GetTransferProjectServiceAccountResult struct {
 }
 
 func GetTransferProjectServiceAccountOutput(ctx *pulumi.Context, args GetTransferProjectServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetTransferProjectServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransferProjectServiceAccountResultOutput, error) {
-			args := v.(GetTransferProjectServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args, GetTransferProjectServiceAccountResultOutput{}, options).(GetTransferProjectServiceAccountResultOutput), nil
-		}).(GetTransferProjectServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args, GetTransferProjectServiceAccountResultOutput{}, options).(GetTransferProjectServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getTransferProjectServiceAccount.

@@ -60,12 +60,8 @@ type GetMavenArtifactResult struct {
 }
 
 func GetMavenArtifactOutput(ctx *pulumi.Context, args GetMavenArtifactOutputArgs, opts ...pulumi.InvokeOption) GetMavenArtifactResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMavenArtifactResultOutput, error) {
-			args := v.(GetMavenArtifactArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args, GetMavenArtifactResultOutput{}, options).(GetMavenArtifactResultOutput), nil
-		}).(GetMavenArtifactResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args, GetMavenArtifactResultOutput{}, options).(GetMavenArtifactResultOutput)
 }
 
 // A collection of arguments for invoking getMavenArtifact.

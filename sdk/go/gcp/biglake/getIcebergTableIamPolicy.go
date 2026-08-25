@@ -82,12 +82,8 @@ type LookupIcebergTableIamPolicyResult struct {
 }
 
 func LookupIcebergTableIamPolicyOutput(ctx *pulumi.Context, args LookupIcebergTableIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIcebergTableIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIcebergTableIamPolicyResultOutput, error) {
-			args := v.(LookupIcebergTableIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy", args, LookupIcebergTableIamPolicyResultOutput{}, options).(LookupIcebergTableIamPolicyResultOutput), nil
-		}).(LookupIcebergTableIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy", args, LookupIcebergTableIamPolicyResultOutput{}, options).(LookupIcebergTableIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getIcebergTableIamPolicy.

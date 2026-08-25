@@ -86,12 +86,8 @@ type LookupTaxonomyResult struct {
 }
 
 func LookupTaxonomyOutput(ctx *pulumi.Context, args LookupTaxonomyOutputArgs, opts ...pulumi.InvokeOption) LookupTaxonomyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTaxonomyResultOutput, error) {
-			args := v.(LookupTaxonomyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:datacatalog/getTaxonomy:getTaxonomy", args, LookupTaxonomyResultOutput{}, options).(LookupTaxonomyResultOutput), nil
-		}).(LookupTaxonomyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:datacatalog/getTaxonomy:getTaxonomy", args, LookupTaxonomyResultOutput{}, options).(LookupTaxonomyResultOutput)
 }
 
 // A collection of arguments for invoking getTaxonomy.

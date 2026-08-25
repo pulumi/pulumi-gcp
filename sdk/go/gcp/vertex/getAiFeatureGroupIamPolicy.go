@@ -79,12 +79,8 @@ type LookupAiFeatureGroupIamPolicyResult struct {
 }
 
 func LookupAiFeatureGroupIamPolicyOutput(ctx *pulumi.Context, args LookupAiFeatureGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAiFeatureGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiFeatureGroupIamPolicyResultOutput, error) {
-			args := v.(LookupAiFeatureGroupIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", args, LookupAiFeatureGroupIamPolicyResultOutput{}, options).(LookupAiFeatureGroupIamPolicyResultOutput), nil
-		}).(LookupAiFeatureGroupIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", args, LookupAiFeatureGroupIamPolicyResultOutput{}, options).(LookupAiFeatureGroupIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAiFeatureGroupIamPolicy.

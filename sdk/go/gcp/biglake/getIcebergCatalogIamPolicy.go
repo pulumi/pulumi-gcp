@@ -72,12 +72,8 @@ type LookupIcebergCatalogIamPolicyResult struct {
 }
 
 func LookupIcebergCatalogIamPolicyOutput(ctx *pulumi.Context, args LookupIcebergCatalogIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIcebergCatalogIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIcebergCatalogIamPolicyResultOutput, error) {
-			args := v.(LookupIcebergCatalogIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:biglake/getIcebergCatalogIamPolicy:getIcebergCatalogIamPolicy", args, LookupIcebergCatalogIamPolicyResultOutput{}, options).(LookupIcebergCatalogIamPolicyResultOutput), nil
-		}).(LookupIcebergCatalogIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:biglake/getIcebergCatalogIamPolicy:getIcebergCatalogIamPolicy", args, LookupIcebergCatalogIamPolicyResultOutput{}, options).(LookupIcebergCatalogIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getIcebergCatalogIamPolicy.

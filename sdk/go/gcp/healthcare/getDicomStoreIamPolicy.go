@@ -69,12 +69,8 @@ type LookupDicomStoreIamPolicyResult struct {
 }
 
 func LookupDicomStoreIamPolicyOutput(ctx *pulumi.Context, args LookupDicomStoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDicomStoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDicomStoreIamPolicyResultOutput, error) {
-			args := v.(LookupDicomStoreIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", args, LookupDicomStoreIamPolicyResultOutput{}, options).(LookupDicomStoreIamPolicyResultOutput), nil
-		}).(LookupDicomStoreIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", args, LookupDicomStoreIamPolicyResultOutput{}, options).(LookupDicomStoreIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getDicomStoreIamPolicy.

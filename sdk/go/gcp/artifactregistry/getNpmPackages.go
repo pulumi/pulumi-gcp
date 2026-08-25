@@ -73,12 +73,8 @@ type GetNpmPackagesResult struct {
 }
 
 func GetNpmPackagesOutput(ctx *pulumi.Context, args GetNpmPackagesOutputArgs, opts ...pulumi.InvokeOption) GetNpmPackagesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNpmPackagesResultOutput, error) {
-			args := v.(GetNpmPackagesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:artifactregistry/getNpmPackages:getNpmPackages", args, GetNpmPackagesResultOutput{}, options).(GetNpmPackagesResultOutput), nil
-		}).(GetNpmPackagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:artifactregistry/getNpmPackages:getNpmPackages", args, GetNpmPackagesResultOutput{}, options).(GetNpmPackagesResultOutput)
 }
 
 // A collection of arguments for invoking getNpmPackages.

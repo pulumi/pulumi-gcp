@@ -106,12 +106,8 @@ type LookupWorkerPoolResult struct {
 }
 
 func LookupWorkerPoolOutput(ctx *pulumi.Context, args LookupWorkerPoolOutputArgs, opts ...pulumi.InvokeOption) LookupWorkerPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkerPoolResultOutput, error) {
-			args := v.(LookupWorkerPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudrunv2/getWorkerPool:getWorkerPool", args, LookupWorkerPoolResultOutput{}, options).(LookupWorkerPoolResultOutput), nil
-		}).(LookupWorkerPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudrunv2/getWorkerPool:getWorkerPool", args, LookupWorkerPoolResultOutput{}, options).(LookupWorkerPoolResultOutput)
 }
 
 // A collection of arguments for invoking getWorkerPool.

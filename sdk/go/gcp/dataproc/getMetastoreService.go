@@ -99,12 +99,8 @@ type LookupMetastoreServiceResult struct {
 }
 
 func LookupMetastoreServiceOutput(ctx *pulumi.Context, args LookupMetastoreServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMetastoreServiceResultOutput, error) {
-			args := v.(LookupMetastoreServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataproc/getMetastoreService:getMetastoreService", args, LookupMetastoreServiceResultOutput{}, options).(LookupMetastoreServiceResultOutput), nil
-		}).(LookupMetastoreServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataproc/getMetastoreService:getMetastoreService", args, LookupMetastoreServiceResultOutput{}, options).(LookupMetastoreServiceResultOutput)
 }
 
 // A collection of arguments for invoking getMetastoreService.

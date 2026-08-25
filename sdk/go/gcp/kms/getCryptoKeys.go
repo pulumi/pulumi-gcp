@@ -54,12 +54,8 @@ type GetCryptoKeysResult struct {
 }
 
 func GetCryptoKeysOutput(ctx *pulumi.Context, args GetCryptoKeysOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCryptoKeysResultOutput, error) {
-			args := v.(GetCryptoKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getCryptoKeys:getCryptoKeys", args, GetCryptoKeysResultOutput{}, options).(GetCryptoKeysResultOutput), nil
-		}).(GetCryptoKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getCryptoKeys:getCryptoKeys", args, GetCryptoKeysResultOutput{}, options).(GetCryptoKeysResultOutput)
 }
 
 // A collection of arguments for invoking getCryptoKeys.

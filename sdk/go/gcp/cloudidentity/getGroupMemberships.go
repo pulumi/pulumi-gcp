@@ -72,12 +72,8 @@ type GetGroupMembershipsResult struct {
 }
 
 func GetGroupMembershipsOutput(ctx *pulumi.Context, args GetGroupMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupMembershipsResultOutput, error) {
-			args := v.(GetGroupMembershipsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args, GetGroupMembershipsResultOutput{}, options).(GetGroupMembershipsResultOutput), nil
-		}).(GetGroupMembershipsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args, GetGroupMembershipsResultOutput{}, options).(GetGroupMembershipsResultOutput)
 }
 
 // A collection of arguments for invoking getGroupMemberships.

@@ -77,12 +77,8 @@ type LookupIcebergNamespaceIamPolicyResult struct {
 }
 
 func LookupIcebergNamespaceIamPolicyOutput(ctx *pulumi.Context, args LookupIcebergNamespaceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIcebergNamespaceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIcebergNamespaceIamPolicyResultOutput, error) {
-			args := v.(LookupIcebergNamespaceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", args, LookupIcebergNamespaceIamPolicyResultOutput{}, options).(LookupIcebergNamespaceIamPolicyResultOutput), nil
-		}).(LookupIcebergNamespaceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", args, LookupIcebergNamespaceIamPolicyResultOutput{}, options).(LookupIcebergNamespaceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getIcebergNamespaceIamPolicy.

@@ -84,12 +84,8 @@ type LookupParameterVersionResult struct {
 }
 
 func LookupParameterVersionOutput(ctx *pulumi.Context, args LookupParameterVersionOutputArgs, opts ...pulumi.InvokeOption) LookupParameterVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupParameterVersionResultOutput, error) {
-			args := v.(LookupParameterVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:parametermanager/getParameterVersion:getParameterVersion", args, LookupParameterVersionResultOutput{}, options).(LookupParameterVersionResultOutput), nil
-		}).(LookupParameterVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:parametermanager/getParameterVersion:getParameterVersion", args, LookupParameterVersionResultOutput{}, options).(LookupParameterVersionResultOutput)
 }
 
 // A collection of arguments for invoking getParameterVersion.

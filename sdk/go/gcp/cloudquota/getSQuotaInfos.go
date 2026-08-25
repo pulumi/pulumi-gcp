@@ -68,12 +68,8 @@ type GetSQuotaInfosResult struct {
 }
 
 func GetSQuotaInfosOutput(ctx *pulumi.Context, args GetSQuotaInfosOutputArgs, opts ...pulumi.InvokeOption) GetSQuotaInfosResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSQuotaInfosResultOutput, error) {
-			args := v.(GetSQuotaInfosArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", args, GetSQuotaInfosResultOutput{}, options).(GetSQuotaInfosResultOutput), nil
-		}).(GetSQuotaInfosResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", args, GetSQuotaInfosResultOutput{}, options).(GetSQuotaInfosResultOutput)
 }
 
 // A collection of arguments for invoking getSQuotaInfos.

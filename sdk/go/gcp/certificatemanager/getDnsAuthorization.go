@@ -79,12 +79,8 @@ type LookupDnsAuthorizationResult struct {
 }
 
 func LookupDnsAuthorizationOutput(ctx *pulumi.Context, args LookupDnsAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupDnsAuthorizationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsAuthorizationResultOutput, error) {
-			args := v.(LookupDnsAuthorizationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization", args, LookupDnsAuthorizationResultOutput{}, options).(LookupDnsAuthorizationResultOutput), nil
-		}).(LookupDnsAuthorizationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization", args, LookupDnsAuthorizationResultOutput{}, options).(LookupDnsAuthorizationResultOutput)
 }
 
 // A collection of arguments for invoking getDnsAuthorization.

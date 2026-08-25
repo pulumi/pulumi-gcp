@@ -109,12 +109,8 @@ type GetReservationBlockResult struct {
 }
 
 func GetReservationBlockOutput(ctx *pulumi.Context, args GetReservationBlockOutputArgs, opts ...pulumi.InvokeOption) GetReservationBlockResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetReservationBlockResultOutput, error) {
-			args := v.(GetReservationBlockArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getReservationBlock:getReservationBlock", args, GetReservationBlockResultOutput{}, options).(GetReservationBlockResultOutput), nil
-		}).(GetReservationBlockResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getReservationBlock:getReservationBlock", args, GetReservationBlockResultOutput{}, options).(GetReservationBlockResultOutput)
 }
 
 // A collection of arguments for invoking getReservationBlock.

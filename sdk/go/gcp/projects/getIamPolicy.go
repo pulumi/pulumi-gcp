@@ -67,12 +67,8 @@ type GetIamPolicyResult struct {
 }
 
 func GetIamPolicyOutput(ctx *pulumi.Context, args GetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIamPolicyResultOutput, error) {
-			args := v.(GetIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:projects/getIamPolicy:getIamPolicy", args, GetIamPolicyResultOutput{}, options).(GetIamPolicyResultOutput), nil
-		}).(GetIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:projects/getIamPolicy:getIamPolicy", args, GetIamPolicyResultOutput{}, options).(GetIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getIamPolicy.

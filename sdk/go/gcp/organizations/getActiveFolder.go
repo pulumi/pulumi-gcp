@@ -71,12 +71,8 @@ type GetActiveFolderResult struct {
 }
 
 func GetActiveFolderOutput(ctx *pulumi.Context, args GetActiveFolderOutputArgs, opts ...pulumi.InvokeOption) GetActiveFolderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetActiveFolderResultOutput, error) {
-			args := v.(GetActiveFolderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:organizations/getActiveFolder:getActiveFolder", args, GetActiveFolderResultOutput{}, options).(GetActiveFolderResultOutput), nil
-		}).(GetActiveFolderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:organizations/getActiveFolder:getActiveFolder", args, GetActiveFolderResultOutput{}, options).(GetActiveFolderResultOutput)
 }
 
 // A collection of arguments for invoking getActiveFolder.

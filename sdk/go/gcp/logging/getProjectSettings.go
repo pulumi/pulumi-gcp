@@ -87,12 +87,8 @@ type GetProjectSettingsResult struct {
 }
 
 func GetProjectSettingsOutput(ctx *pulumi.Context, args GetProjectSettingsOutputArgs, opts ...pulumi.InvokeOption) GetProjectSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectSettingsResultOutput, error) {
-			args := v.(GetProjectSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:logging/getProjectSettings:getProjectSettings", args, GetProjectSettingsResultOutput{}, options).(GetProjectSettingsResultOutput), nil
-		}).(GetProjectSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:logging/getProjectSettings:getProjectSettings", args, GetProjectSettingsResultOutput{}, options).(GetProjectSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getProjectSettings.

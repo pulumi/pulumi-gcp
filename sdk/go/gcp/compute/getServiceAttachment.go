@@ -92,12 +92,8 @@ type LookupServiceAttachmentResult struct {
 }
 
 func LookupServiceAttachmentOutput(ctx *pulumi.Context, args LookupServiceAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupServiceAttachmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceAttachmentResultOutput, error) {
-			args := v.(LookupServiceAttachmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getServiceAttachment:getServiceAttachment", args, LookupServiceAttachmentResultOutput{}, options).(LookupServiceAttachmentResultOutput), nil
-		}).(LookupServiceAttachmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getServiceAttachment:getServiceAttachment", args, LookupServiceAttachmentResultOutput{}, options).(LookupServiceAttachmentResultOutput)
 }
 
 // A collection of arguments for invoking getServiceAttachment.

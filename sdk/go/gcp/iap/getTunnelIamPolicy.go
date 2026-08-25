@@ -68,12 +68,8 @@ type LookupTunnelIamPolicyResult struct {
 }
 
 func LookupTunnelIamPolicyOutput(ctx *pulumi.Context, args LookupTunnelIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTunnelIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTunnelIamPolicyResultOutput, error) {
-			args := v.(LookupTunnelIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy", args, LookupTunnelIamPolicyResultOutput{}, options).(LookupTunnelIamPolicyResultOutput), nil
-		}).(LookupTunnelIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy", args, LookupTunnelIamPolicyResultOutput{}, options).(LookupTunnelIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTunnelIamPolicy.

@@ -72,12 +72,8 @@ type LookupSecretIamPolicyResult struct {
 }
 
 func LookupSecretIamPolicyOutput(ctx *pulumi.Context, args LookupSecretIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSecretIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretIamPolicyResultOutput, error) {
-			args := v.(LookupSecretIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", args, LookupSecretIamPolicyResultOutput{}, options).(LookupSecretIamPolicyResultOutput), nil
-		}).(LookupSecretIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", args, LookupSecretIamPolicyResultOutput{}, options).(LookupSecretIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSecretIamPolicy.

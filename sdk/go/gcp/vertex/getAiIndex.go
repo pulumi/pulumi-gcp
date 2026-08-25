@@ -59,12 +59,8 @@ type LookupAiIndexResult struct {
 }
 
 func LookupAiIndexOutput(ctx *pulumi.Context, args LookupAiIndexOutputArgs, opts ...pulumi.InvokeOption) LookupAiIndexResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiIndexResultOutput, error) {
-			args := v.(LookupAiIndexArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vertex/getAiIndex:getAiIndex", args, LookupAiIndexResultOutput{}, options).(LookupAiIndexResultOutput), nil
-		}).(LookupAiIndexResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vertex/getAiIndex:getAiIndex", args, LookupAiIndexResultOutput{}, options).(LookupAiIndexResultOutput)
 }
 
 // A collection of arguments for invoking getAiIndex.

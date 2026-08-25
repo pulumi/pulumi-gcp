@@ -72,12 +72,8 @@ type LookupScopeIamPolicyResult struct {
 }
 
 func LookupScopeIamPolicyOutput(ctx *pulumi.Context, args LookupScopeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupScopeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScopeIamPolicyResultOutput, error) {
-			args := v.(LookupScopeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args, LookupScopeIamPolicyResultOutput{}, options).(LookupScopeIamPolicyResultOutput), nil
-		}).(LookupScopeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args, LookupScopeIamPolicyResultOutput{}, options).(LookupScopeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getScopeIamPolicy.

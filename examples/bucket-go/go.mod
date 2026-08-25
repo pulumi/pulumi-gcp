@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-gcp/examples/bucket-go
 go 1.25.11
 
 require (
-	github.com/pulumi/pulumi-gcp/sdk/v9 v9.34.1
+	github.com/pulumi/pulumi-gcp/sdk/v9 v9.35.1
 	github.com/pulumi/pulumi/sdk/v3 v3.256.0
 )
 
