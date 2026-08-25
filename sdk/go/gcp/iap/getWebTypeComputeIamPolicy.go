@@ -68,12 +68,8 @@ type LookupWebTypeComputeIamPolicyResult struct {
 }
 
 func LookupWebTypeComputeIamPolicyOutput(ctx *pulumi.Context, args LookupWebTypeComputeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebTypeComputeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebTypeComputeIamPolicyResultOutput, error) {
-			args := v.(LookupWebTypeComputeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", args, LookupWebTypeComputeIamPolicyResultOutput{}, options).(LookupWebTypeComputeIamPolicyResultOutput), nil
-		}).(LookupWebTypeComputeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", args, LookupWebTypeComputeIamPolicyResultOutput{}, options).(LookupWebTypeComputeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWebTypeComputeIamPolicy.

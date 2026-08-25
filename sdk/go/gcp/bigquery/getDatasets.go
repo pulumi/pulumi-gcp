@@ -67,12 +67,8 @@ type GetDatasetsResult struct {
 }
 
 func GetDatasetsOutput(ctx *pulumi.Context, args GetDatasetsOutputArgs, opts ...pulumi.InvokeOption) GetDatasetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatasetsResultOutput, error) {
-			args := v.(GetDatasetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigquery/getDatasets:getDatasets", args, GetDatasetsResultOutput{}, options).(GetDatasetsResultOutput), nil
-		}).(GetDatasetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigquery/getDatasets:getDatasets", args, GetDatasetsResultOutput{}, options).(GetDatasetsResultOutput)
 }
 
 // A collection of arguments for invoking getDatasets.

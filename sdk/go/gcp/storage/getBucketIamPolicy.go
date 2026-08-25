@@ -67,12 +67,8 @@ type GetBucketIamPolicyResult struct {
 }
 
 func GetBucketIamPolicyOutput(ctx *pulumi.Context, args GetBucketIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetBucketIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBucketIamPolicyResultOutput, error) {
-			args := v.(GetBucketIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args, GetBucketIamPolicyResultOutput{}, options).(GetBucketIamPolicyResultOutput), nil
-		}).(GetBucketIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args, GetBucketIamPolicyResultOutput{}, options).(GetBucketIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getBucketIamPolicy.

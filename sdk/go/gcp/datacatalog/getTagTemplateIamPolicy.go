@@ -79,12 +79,8 @@ type LookupTagTemplateIamPolicyResult struct {
 }
 
 func LookupTagTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupTagTemplateIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTagTemplateIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTagTemplateIamPolicyResultOutput, error) {
-			args := v.(LookupTagTemplateIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args, LookupTagTemplateIamPolicyResultOutput{}, options).(LookupTagTemplateIamPolicyResultOutput), nil
-		}).(LookupTagTemplateIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args, LookupTagTemplateIamPolicyResultOutput{}, options).(LookupTagTemplateIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTagTemplateIamPolicy.

@@ -70,12 +70,8 @@ type GetGroupTransitiveMembershipsResult struct {
 }
 
 func GetGroupTransitiveMembershipsOutput(ctx *pulumi.Context, args GetGroupTransitiveMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupTransitiveMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupTransitiveMembershipsResultOutput, error) {
-			args := v.(GetGroupTransitiveMembershipsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, GetGroupTransitiveMembershipsResultOutput{}, options).(GetGroupTransitiveMembershipsResultOutput), nil
-		}).(GetGroupTransitiveMembershipsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, GetGroupTransitiveMembershipsResultOutput{}, options).(GetGroupTransitiveMembershipsResultOutput)
 }
 
 // A collection of arguments for invoking getGroupTransitiveMemberships.

@@ -79,12 +79,8 @@ type LookupEntryTypeIamPolicyResult struct {
 }
 
 func LookupEntryTypeIamPolicyOutput(ctx *pulumi.Context, args LookupEntryTypeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupEntryTypeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEntryTypeIamPolicyResultOutput, error) {
-			args := v.(LookupEntryTypeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy", args, LookupEntryTypeIamPolicyResultOutput{}, options).(LookupEntryTypeIamPolicyResultOutput), nil
-		}).(LookupEntryTypeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy", args, LookupEntryTypeIamPolicyResultOutput{}, options).(LookupEntryTypeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getEntryTypeIamPolicy.

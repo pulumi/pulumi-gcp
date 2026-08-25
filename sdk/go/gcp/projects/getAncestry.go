@@ -71,12 +71,8 @@ type GetAncestryResult struct {
 }
 
 func GetAncestryOutput(ctx *pulumi.Context, args GetAncestryOutputArgs, opts ...pulumi.InvokeOption) GetAncestryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAncestryResultOutput, error) {
-			args := v.(GetAncestryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:projects/getAncestry:getAncestry", args, GetAncestryResultOutput{}, options).(GetAncestryResultOutput), nil
-		}).(GetAncestryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:projects/getAncestry:getAncestry", args, GetAncestryResultOutput{}, options).(GetAncestryResultOutput)
 }
 
 // A collection of arguments for invoking getAncestry.

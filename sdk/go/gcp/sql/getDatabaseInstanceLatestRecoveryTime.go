@@ -75,12 +75,8 @@ type GetDatabaseInstanceLatestRecoveryTimeResult struct {
 }
 
 func GetDatabaseInstanceLatestRecoveryTimeOutput(ctx *pulumi.Context, args GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstanceLatestRecoveryTimeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatabaseInstanceLatestRecoveryTimeResultOutput, error) {
-			args := v.(GetDatabaseInstanceLatestRecoveryTimeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args, GetDatabaseInstanceLatestRecoveryTimeResultOutput{}, options).(GetDatabaseInstanceLatestRecoveryTimeResultOutput), nil
-		}).(GetDatabaseInstanceLatestRecoveryTimeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args, GetDatabaseInstanceLatestRecoveryTimeResultOutput{}, options).(GetDatabaseInstanceLatestRecoveryTimeResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseInstanceLatestRecoveryTime.

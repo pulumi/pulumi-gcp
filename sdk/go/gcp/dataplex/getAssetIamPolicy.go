@@ -86,12 +86,8 @@ type LookupAssetIamPolicyResult struct {
 }
 
 func LookupAssetIamPolicyOutput(ctx *pulumi.Context, args LookupAssetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAssetIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAssetIamPolicyResultOutput, error) {
-			args := v.(LookupAssetIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, LookupAssetIamPolicyResultOutput{}, options).(LookupAssetIamPolicyResultOutput), nil
-		}).(LookupAssetIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, LookupAssetIamPolicyResultOutput{}, options).(LookupAssetIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAssetIamPolicy.

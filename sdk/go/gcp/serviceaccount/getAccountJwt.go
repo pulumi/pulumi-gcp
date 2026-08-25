@@ -88,12 +88,8 @@ type GetAccountJwtResult struct {
 }
 
 func GetAccountJwtOutput(ctx *pulumi.Context, args GetAccountJwtOutputArgs, opts ...pulumi.InvokeOption) GetAccountJwtResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountJwtResultOutput, error) {
-			args := v.(GetAccountJwtArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:serviceaccount/getAccountJwt:getAccountJwt", args, GetAccountJwtResultOutput{}, options).(GetAccountJwtResultOutput), nil
-		}).(GetAccountJwtResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:serviceaccount/getAccountJwt:getAccountJwt", args, GetAccountJwtResultOutput{}, options).(GetAccountJwtResultOutput)
 }
 
 // A collection of arguments for invoking getAccountJwt.

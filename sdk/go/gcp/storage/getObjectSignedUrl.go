@@ -143,12 +143,8 @@ type GetObjectSignedUrlResult struct {
 }
 
 func GetObjectSignedUrlOutput(ctx *pulumi.Context, args GetObjectSignedUrlOutputArgs, opts ...pulumi.InvokeOption) GetObjectSignedUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetObjectSignedUrlResultOutput, error) {
-			args := v.(GetObjectSignedUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, GetObjectSignedUrlResultOutput{}, options).(GetObjectSignedUrlResultOutput), nil
-		}).(GetObjectSignedUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, GetObjectSignedUrlResultOutput{}, options).(GetObjectSignedUrlResultOutput)
 }
 
 // A collection of arguments for invoking getObjectSignedUrl.

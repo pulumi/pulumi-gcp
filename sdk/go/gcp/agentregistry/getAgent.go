@@ -95,12 +95,8 @@ type GetAgentResult struct {
 }
 
 func GetAgentOutput(ctx *pulumi.Context, args GetAgentOutputArgs, opts ...pulumi.InvokeOption) GetAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAgentResultOutput, error) {
-			args := v.(GetAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:agentregistry/getAgent:getAgent", args, GetAgentResultOutput{}, options).(GetAgentResultOutput), nil
-		}).(GetAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:agentregistry/getAgent:getAgent", args, GetAgentResultOutput{}, options).(GetAgentResultOutput)
 }
 
 // A collection of arguments for invoking getAgent.

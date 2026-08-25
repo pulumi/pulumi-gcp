@@ -80,12 +80,8 @@ type LookupMembershipIamPolicyResult struct {
 }
 
 func LookupMembershipIamPolicyOutput(ctx *pulumi.Context, args LookupMembershipIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMembershipIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMembershipIamPolicyResultOutput, error) {
-			args := v.(LookupMembershipIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args, LookupMembershipIamPolicyResultOutput{}, options).(LookupMembershipIamPolicyResultOutput), nil
-		}).(LookupMembershipIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args, LookupMembershipIamPolicyResultOutput{}, options).(LookupMembershipIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getMembershipIamPolicy.

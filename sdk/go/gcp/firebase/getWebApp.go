@@ -54,12 +54,8 @@ type LookupWebAppResult struct {
 }
 
 func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppResultOutput, error) {
-			args := v.(LookupWebAppArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:firebase/getWebApp:getWebApp", args, LookupWebAppResultOutput{}, options).(LookupWebAppResultOutput), nil
-		}).(LookupWebAppResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:firebase/getWebApp:getWebApp", args, LookupWebAppResultOutput{}, options).(LookupWebAppResultOutput)
 }
 
 // A collection of arguments for invoking getWebApp.

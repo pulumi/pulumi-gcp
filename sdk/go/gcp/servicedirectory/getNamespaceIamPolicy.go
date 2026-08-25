@@ -67,12 +67,8 @@ type LookupNamespaceIamPolicyResult struct {
 }
 
 func LookupNamespaceIamPolicyOutput(ctx *pulumi.Context, args LookupNamespaceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceIamPolicyResultOutput, error) {
-			args := v.(LookupNamespaceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args, LookupNamespaceIamPolicyResultOutput{}, options).(LookupNamespaceIamPolicyResultOutput), nil
-		}).(LookupNamespaceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args, LookupNamespaceIamPolicyResultOutput{}, options).(LookupNamespaceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getNamespaceIamPolicy.

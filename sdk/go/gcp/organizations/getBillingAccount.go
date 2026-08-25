@@ -89,12 +89,8 @@ type GetBillingAccountResult struct {
 }
 
 func GetBillingAccountOutput(ctx *pulumi.Context, args GetBillingAccountOutputArgs, opts ...pulumi.InvokeOption) GetBillingAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBillingAccountResultOutput, error) {
-			args := v.(GetBillingAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:organizations/getBillingAccount:getBillingAccount", args, GetBillingAccountResultOutput{}, options).(GetBillingAccountResultOutput), nil
-		}).(GetBillingAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:organizations/getBillingAccount:getBillingAccount", args, GetBillingAccountResultOutput{}, options).(GetBillingAccountResultOutput)
 }
 
 // A collection of arguments for invoking getBillingAccount.

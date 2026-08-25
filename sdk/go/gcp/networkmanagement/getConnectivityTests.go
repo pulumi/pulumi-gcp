@@ -77,12 +77,8 @@ type GetConnectivityTestsResult struct {
 }
 
 func GetConnectivityTestsOutput(ctx *pulumi.Context, args GetConnectivityTestsOutputArgs, opts ...pulumi.InvokeOption) GetConnectivityTestsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConnectivityTestsResultOutput, error) {
-			args := v.(GetConnectivityTestsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:networkmanagement/getConnectivityTests:getConnectivityTests", args, GetConnectivityTestsResultOutput{}, options).(GetConnectivityTestsResultOutput), nil
-		}).(GetConnectivityTestsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:networkmanagement/getConnectivityTests:getConnectivityTests", args, GetConnectivityTestsResultOutput{}, options).(GetConnectivityTestsResultOutput)
 }
 
 // A collection of arguments for invoking getConnectivityTests.

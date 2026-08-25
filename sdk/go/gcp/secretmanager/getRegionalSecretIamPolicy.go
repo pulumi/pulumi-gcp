@@ -79,12 +79,8 @@ type LookupRegionalSecretIamPolicyResult struct {
 }
 
 func LookupRegionalSecretIamPolicyOutput(ctx *pulumi.Context, args LookupRegionalSecretIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalSecretIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionalSecretIamPolicyResultOutput, error) {
-			args := v.(LookupRegionalSecretIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args, LookupRegionalSecretIamPolicyResultOutput{}, options).(LookupRegionalSecretIamPolicyResultOutput), nil
-		}).(LookupRegionalSecretIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args, LookupRegionalSecretIamPolicyResultOutput{}, options).(LookupRegionalSecretIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRegionalSecretIamPolicy.

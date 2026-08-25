@@ -85,12 +85,8 @@ type GetImageVersionsResult struct {
 }
 
 func GetImageVersionsOutput(ctx *pulumi.Context, args GetImageVersionsOutputArgs, opts ...pulumi.InvokeOption) GetImageVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetImageVersionsResultOutput, error) {
-			args := v.(GetImageVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:composer/getImageVersions:getImageVersions", args, GetImageVersionsResultOutput{}, options).(GetImageVersionsResultOutput), nil
-		}).(GetImageVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:composer/getImageVersions:getImageVersions", args, GetImageVersionsResultOutput{}, options).(GetImageVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getImageVersions.

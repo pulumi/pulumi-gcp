@@ -79,12 +79,8 @@ type GetNodeTypesResult struct {
 }
 
 func GetNodeTypesOutput(ctx *pulumi.Context, args GetNodeTypesOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNodeTypesResultOutput, error) {
-			args := v.(GetNodeTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getNodeTypes:getNodeTypes", args, GetNodeTypesResultOutput{}, options).(GetNodeTypesResultOutput), nil
-		}).(GetNodeTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getNodeTypes:getNodeTypes", args, GetNodeTypesResultOutput{}, options).(GetNodeTypesResultOutput)
 }
 
 // A collection of arguments for invoking getNodeTypes.

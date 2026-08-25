@@ -77,12 +77,8 @@ type LookupTaxonomyIamPolicyResult struct {
 }
 
 func LookupTaxonomyIamPolicyOutput(ctx *pulumi.Context, args LookupTaxonomyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTaxonomyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTaxonomyIamPolicyResultOutput, error) {
-			args := v.(LookupTaxonomyIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, LookupTaxonomyIamPolicyResultOutput{}, options).(LookupTaxonomyIamPolicyResultOutput), nil
-		}).(LookupTaxonomyIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, LookupTaxonomyIamPolicyResultOutput{}, options).(LookupTaxonomyIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTaxonomyIamPolicy.

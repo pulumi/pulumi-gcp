@@ -84,12 +84,8 @@ type LookupSearchEngineIamPolicyResult struct {
 }
 
 func LookupSearchEngineIamPolicyOutput(ctx *pulumi.Context, args LookupSearchEngineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSearchEngineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSearchEngineIamPolicyResultOutput, error) {
-			args := v.(LookupSearchEngineIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:discoveryengine/getSearchEngineIamPolicy:getSearchEngineIamPolicy", args, LookupSearchEngineIamPolicyResultOutput{}, options).(LookupSearchEngineIamPolicyResultOutput), nil
-		}).(LookupSearchEngineIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:discoveryengine/getSearchEngineIamPolicy:getSearchEngineIamPolicy", args, LookupSearchEngineIamPolicyResultOutput{}, options).(LookupSearchEngineIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSearchEngineIamPolicy.

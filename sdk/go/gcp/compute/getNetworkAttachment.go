@@ -87,12 +87,8 @@ type LookupNetworkAttachmentResult struct {
 }
 
 func LookupNetworkAttachmentOutput(ctx *pulumi.Context, args LookupNetworkAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkAttachmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkAttachmentResultOutput, error) {
-			args := v.(LookupNetworkAttachmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getNetworkAttachment:getNetworkAttachment", args, LookupNetworkAttachmentResultOutput{}, options).(LookupNetworkAttachmentResultOutput), nil
-		}).(LookupNetworkAttachmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getNetworkAttachment:getNetworkAttachment", args, LookupNetworkAttachmentResultOutput{}, options).(LookupNetworkAttachmentResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkAttachment.

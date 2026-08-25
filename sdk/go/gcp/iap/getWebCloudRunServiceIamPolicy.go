@@ -78,12 +78,8 @@ type LookupWebCloudRunServiceIamPolicyResult struct {
 }
 
 func LookupWebCloudRunServiceIamPolicyOutput(ctx *pulumi.Context, args LookupWebCloudRunServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebCloudRunServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebCloudRunServiceIamPolicyResultOutput, error) {
-			args := v.(LookupWebCloudRunServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getWebCloudRunServiceIamPolicy:getWebCloudRunServiceIamPolicy", args, LookupWebCloudRunServiceIamPolicyResultOutput{}, options).(LookupWebCloudRunServiceIamPolicyResultOutput), nil
-		}).(LookupWebCloudRunServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getWebCloudRunServiceIamPolicy:getWebCloudRunServiceIamPolicy", args, LookupWebCloudRunServiceIamPolicyResultOutput{}, options).(LookupWebCloudRunServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWebCloudRunServiceIamPolicy.

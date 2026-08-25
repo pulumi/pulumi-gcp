@@ -86,10 +86,8 @@ type GetLBIPRangesResult struct {
 }
 
 func GetLBIPRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLBIPRangesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetLBIPRangesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("gcp:compute/getLBIPRanges:getLBIPRanges", nil, GetLBIPRangesResultOutput{}, options).(GetLBIPRangesResultOutput), nil
-	}).(GetLBIPRangesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getLBIPRanges:getLBIPRanges", nil, GetLBIPRangesResultOutput{}, options).(GetLBIPRangesResultOutput)
 }
 
 // A collection of values returned by getLBIPRanges.

@@ -72,12 +72,8 @@ type LookupAttestorIamPolicyResult struct {
 }
 
 func LookupAttestorIamPolicyOutput(ctx *pulumi.Context, args LookupAttestorIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAttestorIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAttestorIamPolicyResultOutput, error) {
-			args := v.(LookupAttestorIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args, LookupAttestorIamPolicyResultOutput{}, options).(LookupAttestorIamPolicyResultOutput), nil
-		}).(LookupAttestorIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args, LookupAttestorIamPolicyResultOutput{}, options).(LookupAttestorIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAttestorIamPolicy.

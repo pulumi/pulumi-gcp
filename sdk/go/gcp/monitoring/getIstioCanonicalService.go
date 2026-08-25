@@ -106,12 +106,8 @@ type GetIstioCanonicalServiceResult struct {
 }
 
 func GetIstioCanonicalServiceOutput(ctx *pulumi.Context, args GetIstioCanonicalServiceOutputArgs, opts ...pulumi.InvokeOption) GetIstioCanonicalServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIstioCanonicalServiceResultOutput, error) {
-			args := v.(GetIstioCanonicalServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, GetIstioCanonicalServiceResultOutput{}, options).(GetIstioCanonicalServiceResultOutput), nil
-		}).(GetIstioCanonicalServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, GetIstioCanonicalServiceResultOutput{}, options).(GetIstioCanonicalServiceResultOutput)
 }
 
 // A collection of arguments for invoking getIstioCanonicalService.

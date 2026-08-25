@@ -67,12 +67,8 @@ type GetSupportedDatabaseFlagsResult struct {
 }
 
 func GetSupportedDatabaseFlagsOutput(ctx *pulumi.Context, args GetSupportedDatabaseFlagsOutputArgs, opts ...pulumi.InvokeOption) GetSupportedDatabaseFlagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSupportedDatabaseFlagsResultOutput, error) {
-			args := v.(GetSupportedDatabaseFlagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args, GetSupportedDatabaseFlagsResultOutput{}, options).(GetSupportedDatabaseFlagsResultOutput), nil
-		}).(GetSupportedDatabaseFlagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args, GetSupportedDatabaseFlagsResultOutput{}, options).(GetSupportedDatabaseFlagsResultOutput)
 }
 
 // A collection of arguments for invoking getSupportedDatabaseFlags.

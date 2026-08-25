@@ -76,12 +76,8 @@ type GetFoldersResult struct {
 }
 
 func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pulumi.InvokeOption) GetFoldersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFoldersResultOutput, error) {
-			args := v.(GetFoldersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:organizations/getFolders:getFolders", args, GetFoldersResultOutput{}, options).(GetFoldersResultOutput), nil
-		}).(GetFoldersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:organizations/getFolders:getFolders", args, GetFoldersResultOutput{}, options).(GetFoldersResultOutput)
 }
 
 // A collection of arguments for invoking getFolders.

@@ -69,10 +69,8 @@ type GetClientOpenIdUserInfoResult struct {
 }
 
 func GetClientOpenIdUserInfoOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetClientOpenIdUserInfoResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetClientOpenIdUserInfoResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", nil, GetClientOpenIdUserInfoResultOutput{}, options).(GetClientOpenIdUserInfoResultOutput), nil
-	}).(GetClientOpenIdUserInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", nil, GetClientOpenIdUserInfoResultOutput{}, options).(GetClientOpenIdUserInfoResultOutput)
 }
 
 // A collection of values returned by getClientOpenIdUserInfo.

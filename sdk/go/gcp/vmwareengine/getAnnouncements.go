@@ -68,12 +68,8 @@ type GetAnnouncementsResult struct {
 }
 
 func GetAnnouncementsOutput(ctx *pulumi.Context, args GetAnnouncementsOutputArgs, opts ...pulumi.InvokeOption) GetAnnouncementsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAnnouncementsResultOutput, error) {
-			args := v.(GetAnnouncementsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vmwareengine/getAnnouncements:getAnnouncements", args, GetAnnouncementsResultOutput{}, options).(GetAnnouncementsResultOutput), nil
-		}).(GetAnnouncementsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vmwareengine/getAnnouncements:getAnnouncements", args, GetAnnouncementsResultOutput{}, options).(GetAnnouncementsResultOutput)
 }
 
 // A collection of arguments for invoking getAnnouncements.

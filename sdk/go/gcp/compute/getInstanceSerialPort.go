@@ -152,12 +152,8 @@ type GetInstanceSerialPortResult struct {
 }
 
 func GetInstanceSerialPortOutput(ctx *pulumi.Context, args GetInstanceSerialPortOutputArgs, opts ...pulumi.InvokeOption) GetInstanceSerialPortResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceSerialPortResultOutput, error) {
-			args := v.(GetInstanceSerialPortArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args, GetInstanceSerialPortResultOutput{}, options).(GetInstanceSerialPortResultOutput), nil
-		}).(GetInstanceSerialPortResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args, GetInstanceSerialPortResultOutput{}, options).(GetInstanceSerialPortResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceSerialPort.

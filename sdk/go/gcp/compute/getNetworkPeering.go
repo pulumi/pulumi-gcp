@@ -106,12 +106,8 @@ type LookupNetworkPeeringResult struct {
 }
 
 func LookupNetworkPeeringOutput(ctx *pulumi.Context, args LookupNetworkPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPeeringResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkPeeringResultOutput, error) {
-			args := v.(LookupNetworkPeeringArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getNetworkPeering:getNetworkPeering", args, LookupNetworkPeeringResultOutput{}, options).(LookupNetworkPeeringResultOutput), nil
-		}).(LookupNetworkPeeringResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getNetworkPeering:getNetworkPeering", args, LookupNetworkPeeringResultOutput{}, options).(LookupNetworkPeeringResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkPeering.

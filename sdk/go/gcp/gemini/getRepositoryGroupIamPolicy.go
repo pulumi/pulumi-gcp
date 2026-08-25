@@ -82,12 +82,8 @@ type LookupRepositoryGroupIamPolicyResult struct {
 }
 
 func LookupRepositoryGroupIamPolicyOutput(ctx *pulumi.Context, args LookupRepositoryGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRepositoryGroupIamPolicyResultOutput, error) {
-			args := v.(LookupRepositoryGroupIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args, LookupRepositoryGroupIamPolicyResultOutput{}, options).(LookupRepositoryGroupIamPolicyResultOutput), nil
-		}).(LookupRepositoryGroupIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args, LookupRepositoryGroupIamPolicyResultOutput{}, options).(LookupRepositoryGroupIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRepositoryGroupIamPolicy.

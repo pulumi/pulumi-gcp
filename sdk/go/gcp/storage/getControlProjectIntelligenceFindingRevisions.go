@@ -73,12 +73,8 @@ type GetControlProjectIntelligenceFindingRevisionsResult struct {
 }
 
 func GetControlProjectIntelligenceFindingRevisionsOutput(ctx *pulumi.Context, args GetControlProjectIntelligenceFindingRevisionsOutputArgs, opts ...pulumi.InvokeOption) GetControlProjectIntelligenceFindingRevisionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetControlProjectIntelligenceFindingRevisionsResultOutput, error) {
-			args := v.(GetControlProjectIntelligenceFindingRevisionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions", args, GetControlProjectIntelligenceFindingRevisionsResultOutput{}, options).(GetControlProjectIntelligenceFindingRevisionsResultOutput), nil
-		}).(GetControlProjectIntelligenceFindingRevisionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions", args, GetControlProjectIntelligenceFindingRevisionsResultOutput{}, options).(GetControlProjectIntelligenceFindingRevisionsResultOutput)
 }
 
 // A collection of arguments for invoking getControlProjectIntelligenceFindingRevisions.

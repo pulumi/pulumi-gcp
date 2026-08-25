@@ -111,12 +111,8 @@ type GetAddressGroupsResult struct {
 }
 
 func GetAddressGroupsOutput(ctx *pulumi.Context, args GetAddressGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAddressGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAddressGroupsResultOutput, error) {
-			args := v.(GetAddressGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:networksecurity/getAddressGroups:getAddressGroups", args, GetAddressGroupsResultOutput{}, options).(GetAddressGroupsResultOutput), nil
-		}).(GetAddressGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:networksecurity/getAddressGroups:getAddressGroups", args, GetAddressGroupsResultOutput{}, options).(GetAddressGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getAddressGroups.

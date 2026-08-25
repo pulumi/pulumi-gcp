@@ -84,12 +84,8 @@ type LookupTargetHttpProxyResult struct {
 }
 
 func LookupTargetHttpProxyOutput(ctx *pulumi.Context, args LookupTargetHttpProxyOutputArgs, opts ...pulumi.InvokeOption) LookupTargetHttpProxyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTargetHttpProxyResultOutput, error) {
-			args := v.(LookupTargetHttpProxyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getTargetHttpProxy:getTargetHttpProxy", args, LookupTargetHttpProxyResultOutput{}, options).(LookupTargetHttpProxyResultOutput), nil
-		}).(LookupTargetHttpProxyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getTargetHttpProxy:getTargetHttpProxy", args, LookupTargetHttpProxyResultOutput{}, options).(LookupTargetHttpProxyResultOutput)
 }
 
 // A collection of arguments for invoking getTargetHttpProxy.

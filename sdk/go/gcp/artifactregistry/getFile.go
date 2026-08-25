@@ -80,12 +80,8 @@ type GetFileResult struct {
 }
 
 func GetFileOutput(ctx *pulumi.Context, args GetFileOutputArgs, opts ...pulumi.InvokeOption) GetFileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFileResultOutput, error) {
-			args := v.(GetFileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:artifactregistry/getFile:getFile", args, GetFileResultOutput{}, options).(GetFileResultOutput), nil
-		}).(GetFileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:artifactregistry/getFile:getFile", args, GetFileResultOutput{}, options).(GetFileResultOutput)
 }
 
 // A collection of arguments for invoking getFile.

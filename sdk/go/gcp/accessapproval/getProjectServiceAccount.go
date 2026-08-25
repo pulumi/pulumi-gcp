@@ -82,12 +82,8 @@ type GetProjectServiceAccountResult struct {
 }
 
 func GetProjectServiceAccountOutput(ctx *pulumi.Context, args GetProjectServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetProjectServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectServiceAccountResultOutput, error) {
-			args := v.(GetProjectServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args, GetProjectServiceAccountResultOutput{}, options).(GetProjectServiceAccountResultOutput), nil
-		}).(GetProjectServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args, GetProjectServiceAccountResultOutput{}, options).(GetProjectServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getProjectServiceAccount.

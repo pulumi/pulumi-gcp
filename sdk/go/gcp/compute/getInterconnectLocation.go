@@ -95,12 +95,8 @@ type GetInterconnectLocationResult struct {
 }
 
 func GetInterconnectLocationOutput(ctx *pulumi.Context, args GetInterconnectLocationOutputArgs, opts ...pulumi.InvokeOption) GetInterconnectLocationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInterconnectLocationResultOutput, error) {
-			args := v.(GetInterconnectLocationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInterconnectLocation:getInterconnectLocation", args, GetInterconnectLocationResultOutput{}, options).(GetInterconnectLocationResultOutput), nil
-		}).(GetInterconnectLocationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInterconnectLocation:getInterconnectLocation", args, GetInterconnectLocationResultOutput{}, options).(GetInterconnectLocationResultOutput)
 }
 
 // A collection of arguments for invoking getInterconnectLocation.

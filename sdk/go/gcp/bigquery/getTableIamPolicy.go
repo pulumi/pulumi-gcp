@@ -76,12 +76,8 @@ type GetTableIamPolicyResult struct {
 }
 
 func GetTableIamPolicyOutput(ctx *pulumi.Context, args GetTableIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetTableIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTableIamPolicyResultOutput, error) {
-			args := v.(GetTableIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", args, GetTableIamPolicyResultOutput{}, options).(GetTableIamPolicyResultOutput), nil
-		}).(GetTableIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", args, GetTableIamPolicyResultOutput{}, options).(GetTableIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTableIamPolicy.

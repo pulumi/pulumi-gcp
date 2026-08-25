@@ -44,19 +44,15 @@ func ProjectFromIdOutput(ctx *pulumi.Context, id pulumi.StringInput, opts ...pul
 	args := projectFromIdOutputArgs{
 		Id: id,
 	}
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (pulumi.StringOutput, error) {
-			args := v.(projectFromIdArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			rv := ctx.InvokeOutput("gcp:index/projectFromId:projectFromId", args, pulumi.StringMapOutput{}, options).(pulumi.StringMapOutput)
-			return rv.ApplyT(func(rv map[string]string) string {
-				var result string
-				for _, v := range rv {
-					result = v
-				}
-				return result
-			}).(pulumi.StringOutput), nil
-		}).(pulumi.StringOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	rv := ctx.InvokeOutput("gcp:index/projectFromId:projectFromId", args, pulumi.StringMapOutput{}, options).(pulumi.StringMapOutput)
+	return rv.ApplyT(func(rv map[string]string) string {
+		var result string
+		for _, v := range rv {
+			result = v
+		}
+		return result
+	}).(pulumi.StringOutput)
 }
 
 type projectFromIdOutputArgs struct {

@@ -57,10 +57,8 @@ type GetSupportedServicesResult struct {
 }
 
 func GetSupportedServicesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetSupportedServicesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetSupportedServicesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("gcp:accesscontextmanager/getSupportedServices:getSupportedServices", nil, GetSupportedServicesResultOutput{}, options).(GetSupportedServicesResultOutput), nil
-	}).(GetSupportedServicesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:accesscontextmanager/getSupportedServices:getSupportedServices", nil, GetSupportedServicesResultOutput{}, options).(GetSupportedServicesResultOutput)
 }
 
 // A collection of values returned by getSupportedServices.

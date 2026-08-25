@@ -66,12 +66,8 @@ type GetCryptoKeyIamPolicyResult struct {
 }
 
 func GetCryptoKeyIamPolicyOutput(ctx *pulumi.Context, args GetCryptoKeyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCryptoKeyIamPolicyResultOutput, error) {
-			args := v.(GetCryptoKeyIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, GetCryptoKeyIamPolicyResultOutput{}, options).(GetCryptoKeyIamPolicyResultOutput), nil
-		}).(GetCryptoKeyIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, GetCryptoKeyIamPolicyResultOutput{}, options).(GetCryptoKeyIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getCryptoKeyIamPolicy.

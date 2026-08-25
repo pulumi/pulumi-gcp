@@ -83,12 +83,8 @@ type LookupAiFeatureOnlineStoreFeatureviewIamPolicyResult struct {
 }
 
 func LookupAiFeatureOnlineStoreFeatureviewIamPolicyOutput(ctx *pulumi.Context, args LookupAiFeatureOnlineStoreFeatureviewIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAiFeatureOnlineStoreFeatureviewIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiFeatureOnlineStoreFeatureviewIamPolicyResultOutput, error) {
-			args := v.(LookupAiFeatureOnlineStoreFeatureviewIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", args, LookupAiFeatureOnlineStoreFeatureviewIamPolicyResultOutput{}, options).(LookupAiFeatureOnlineStoreFeatureviewIamPolicyResultOutput), nil
-		}).(LookupAiFeatureOnlineStoreFeatureviewIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", args, LookupAiFeatureOnlineStoreFeatureviewIamPolicyResultOutput{}, options).(LookupAiFeatureOnlineStoreFeatureviewIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAiFeatureOnlineStoreFeatureviewIamPolicy.

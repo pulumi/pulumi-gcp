@@ -73,12 +73,8 @@ type LookupAutokeyConfigResult struct {
 }
 
 func LookupAutokeyConfigOutput(ctx *pulumi.Context, args LookupAutokeyConfigOutputArgs, opts ...pulumi.InvokeOption) LookupAutokeyConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAutokeyConfigResultOutput, error) {
-			args := v.(LookupAutokeyConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getAutokeyConfig:getAutokeyConfig", args, LookupAutokeyConfigResultOutput{}, options).(LookupAutokeyConfigResultOutput), nil
-		}).(LookupAutokeyConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getAutokeyConfig:getAutokeyConfig", args, LookupAutokeyConfigResultOutput{}, options).(LookupAutokeyConfigResultOutput)
 }
 
 // A collection of arguments for invoking getAutokeyConfig.

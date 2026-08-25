@@ -82,12 +82,8 @@ type LookupRegionBackendServiceIamPolicyResult struct {
 }
 
 func LookupRegionBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupRegionBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionBackendServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionBackendServiceIamPolicyResultOutput, error) {
-			args := v.(LookupRegionBackendServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args, LookupRegionBackendServiceIamPolicyResultOutput{}, options).(LookupRegionBackendServiceIamPolicyResultOutput), nil
-		}).(LookupRegionBackendServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args, LookupRegionBackendServiceIamPolicyResultOutput{}, options).(LookupRegionBackendServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRegionBackendServiceIamPolicy.

@@ -75,12 +75,8 @@ type GetClusterIamPolicyResult struct {
 }
 
 func GetClusterIamPolicyOutput(ctx *pulumi.Context, args GetClusterIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetClusterIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetClusterIamPolicyResultOutput, error) {
-			args := v.(GetClusterIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, GetClusterIamPolicyResultOutput{}, options).(GetClusterIamPolicyResultOutput), nil
-		}).(GetClusterIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, GetClusterIamPolicyResultOutput{}, options).(GetClusterIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getClusterIamPolicy.

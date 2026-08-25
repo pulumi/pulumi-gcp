@@ -65,12 +65,8 @@ type GetVersionResult struct {
 }
 
 func GetVersionOutput(ctx *pulumi.Context, args GetVersionOutputArgs, opts ...pulumi.InvokeOption) GetVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVersionResultOutput, error) {
-			args := v.(GetVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:artifactregistry/getVersion:getVersion", args, GetVersionResultOutput{}, options).(GetVersionResultOutput), nil
-		}).(GetVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:artifactregistry/getVersion:getVersion", args, GetVersionResultOutput{}, options).(GetVersionResultOutput)
 }
 
 // A collection of arguments for invoking getVersion.

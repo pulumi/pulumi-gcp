@@ -72,12 +72,8 @@ type LookupHubIamPolicyResult struct {
 }
 
 func LookupHubIamPolicyOutput(ctx *pulumi.Context, args LookupHubIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupHubIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHubIamPolicyResultOutput, error) {
-			args := v.(LookupHubIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:networkconnectivity/getHubIamPolicy:getHubIamPolicy", args, LookupHubIamPolicyResultOutput{}, options).(LookupHubIamPolicyResultOutput), nil
-		}).(LookupHubIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:networkconnectivity/getHubIamPolicy:getHubIamPolicy", args, LookupHubIamPolicyResultOutput{}, options).(LookupHubIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getHubIamPolicy.

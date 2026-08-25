@@ -72,12 +72,8 @@ type LookupNoteIamPolicyResult struct {
 }
 
 func LookupNoteIamPolicyOutput(ctx *pulumi.Context, args LookupNoteIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupNoteIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNoteIamPolicyResultOutput, error) {
-			args := v.(LookupNoteIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", args, LookupNoteIamPolicyResultOutput{}, options).(LookupNoteIamPolicyResultOutput), nil
-		}).(LookupNoteIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", args, LookupNoteIamPolicyResultOutput{}, options).(LookupNoteIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getNoteIamPolicy.

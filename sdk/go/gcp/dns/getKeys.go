@@ -89,12 +89,8 @@ type GetKeysResult struct {
 }
 
 func GetKeysOutput(ctx *pulumi.Context, args GetKeysOutputArgs, opts ...pulumi.InvokeOption) GetKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKeysResultOutput, error) {
-			args := v.(GetKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dns/getKeys:getKeys", args, GetKeysResultOutput{}, options).(GetKeysResultOutput), nil
-		}).(GetKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dns/getKeys:getKeys", args, GetKeysResultOutput{}, options).(GetKeysResultOutput)
 }
 
 // A collection of arguments for invoking getKeys.

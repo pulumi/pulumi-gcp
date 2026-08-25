@@ -78,12 +78,8 @@ type LookupDiskIamPolicyResult struct {
 }
 
 func LookupDiskIamPolicyOutput(ctx *pulumi.Context, args LookupDiskIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDiskIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiskIamPolicyResultOutput, error) {
-			args := v.(LookupDiskIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", args, LookupDiskIamPolicyResultOutput{}, options).(LookupDiskIamPolicyResultOutput), nil
-		}).(LookupDiskIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", args, LookupDiskIamPolicyResultOutput{}, options).(LookupDiskIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getDiskIamPolicy.

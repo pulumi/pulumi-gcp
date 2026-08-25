@@ -151,12 +151,8 @@ type GetKMSSecretResult struct {
 }
 
 func GetKMSSecretOutput(ctx *pulumi.Context, args GetKMSSecretOutputArgs, opts ...pulumi.InvokeOption) GetKMSSecretResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKMSSecretResultOutput, error) {
-			args := v.(GetKMSSecretArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:kms/getKMSSecret:getKMSSecret", args, GetKMSSecretResultOutput{}, options).(GetKMSSecretResultOutput), nil
-		}).(GetKMSSecretResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:kms/getKMSSecret:getKMSSecret", args, GetKMSSecretResultOutput{}, options).(GetKMSSecretResultOutput)
 }
 
 // A collection of arguments for invoking getKMSSecret.

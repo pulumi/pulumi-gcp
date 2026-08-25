@@ -106,12 +106,8 @@ type LookupGlobalAddressResult struct {
 }
 
 func LookupGlobalAddressOutput(ctx *pulumi.Context, args LookupGlobalAddressOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalAddressResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGlobalAddressResultOutput, error) {
-			args := v.(LookupGlobalAddressArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getGlobalAddress:getGlobalAddress", args, LookupGlobalAddressResultOutput{}, options).(LookupGlobalAddressResultOutput), nil
-		}).(LookupGlobalAddressResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getGlobalAddress:getGlobalAddress", args, LookupGlobalAddressResultOutput{}, options).(LookupGlobalAddressResultOutput)
 }
 
 // A collection of arguments for invoking getGlobalAddress.

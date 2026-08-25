@@ -67,12 +67,8 @@ type LookupControlOrganizationIntelligenceConfigResult struct {
 }
 
 func LookupControlOrganizationIntelligenceConfigOutput(ctx *pulumi.Context, args LookupControlOrganizationIntelligenceConfigOutputArgs, opts ...pulumi.InvokeOption) LookupControlOrganizationIntelligenceConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupControlOrganizationIntelligenceConfigResultOutput, error) {
-			args := v.(LookupControlOrganizationIntelligenceConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", args, LookupControlOrganizationIntelligenceConfigResultOutput{}, options).(LookupControlOrganizationIntelligenceConfigResultOutput), nil
-		}).(LookupControlOrganizationIntelligenceConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", args, LookupControlOrganizationIntelligenceConfigResultOutput{}, options).(LookupControlOrganizationIntelligenceConfigResultOutput)
 }
 
 // A collection of arguments for invoking getControlOrganizationIntelligenceConfig.

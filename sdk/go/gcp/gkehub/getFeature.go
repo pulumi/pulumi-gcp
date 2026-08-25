@@ -81,12 +81,8 @@ type LookupFeatureResult struct {
 }
 
 func LookupFeatureOutput(ctx *pulumi.Context, args LookupFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFeatureResultOutput, error) {
-			args := v.(LookupFeatureArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:gkehub/getFeature:getFeature", args, LookupFeatureResultOutput{}, options).(LookupFeatureResultOutput), nil
-		}).(LookupFeatureResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:gkehub/getFeature:getFeature", args, LookupFeatureResultOutput{}, options).(LookupFeatureResultOutput)
 }
 
 // A collection of arguments for invoking getFeature.

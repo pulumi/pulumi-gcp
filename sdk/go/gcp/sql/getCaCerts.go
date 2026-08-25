@@ -46,12 +46,8 @@ type GetCaCertsResult struct {
 }
 
 func GetCaCertsOutput(ctx *pulumi.Context, args GetCaCertsOutputArgs, opts ...pulumi.InvokeOption) GetCaCertsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCaCertsResultOutput, error) {
-			args := v.(GetCaCertsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:sql/getCaCerts:getCaCerts", args, GetCaCertsResultOutput{}, options).(GetCaCertsResultOutput), nil
-		}).(GetCaCertsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:sql/getCaCerts:getCaCerts", args, GetCaCertsResultOutput{}, options).(GetCaCertsResultOutput)
 }
 
 // A collection of arguments for invoking getCaCerts.

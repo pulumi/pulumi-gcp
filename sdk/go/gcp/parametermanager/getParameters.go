@@ -66,12 +66,8 @@ type GetParametersResult struct {
 }
 
 func GetParametersOutput(ctx *pulumi.Context, args GetParametersOutputArgs, opts ...pulumi.InvokeOption) GetParametersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetParametersResultOutput, error) {
-			args := v.(GetParametersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:parametermanager/getParameters:getParameters", args, GetParametersResultOutput{}, options).(GetParametersResultOutput), nil
-		}).(GetParametersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:parametermanager/getParameters:getParameters", args, GetParametersResultOutput{}, options).(GetParametersResultOutput)
 }
 
 // A collection of arguments for invoking getParameters.

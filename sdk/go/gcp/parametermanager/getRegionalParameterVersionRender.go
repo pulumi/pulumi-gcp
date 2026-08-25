@@ -87,12 +87,8 @@ type GetRegionalParameterVersionRenderResult struct {
 }
 
 func GetRegionalParameterVersionRenderOutput(ctx *pulumi.Context, args GetRegionalParameterVersionRenderOutputArgs, opts ...pulumi.InvokeOption) GetRegionalParameterVersionRenderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegionalParameterVersionRenderResultOutput, error) {
-			args := v.(GetRegionalParameterVersionRenderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", args, GetRegionalParameterVersionRenderResultOutput{}, options).(GetRegionalParameterVersionRenderResultOutput), nil
-		}).(GetRegionalParameterVersionRenderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", args, GetRegionalParameterVersionRenderResultOutput{}, options).(GetRegionalParameterVersionRenderResultOutput)
 }
 
 // A collection of arguments for invoking getRegionalParameterVersionRender.

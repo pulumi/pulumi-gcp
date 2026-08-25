@@ -78,12 +78,8 @@ type LookupDeliveryPipelineIamPolicyResult struct {
 }
 
 func LookupDeliveryPipelineIamPolicyOutput(ctx *pulumi.Context, args LookupDeliveryPipelineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDeliveryPipelineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDeliveryPipelineIamPolicyResultOutput, error) {
-			args := v.(LookupDeliveryPipelineIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args, LookupDeliveryPipelineIamPolicyResultOutput{}, options).(LookupDeliveryPipelineIamPolicyResultOutput), nil
-		}).(LookupDeliveryPipelineIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args, LookupDeliveryPipelineIamPolicyResultOutput{}, options).(LookupDeliveryPipelineIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getDeliveryPipelineIamPolicy.

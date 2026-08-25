@@ -80,12 +80,8 @@ type LookupBackendBucketResult struct {
 }
 
 func LookupBackendBucketOutput(ctx *pulumi.Context, args LookupBackendBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBackendBucketResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackendBucketResultOutput, error) {
-			args := v.(LookupBackendBucketArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getBackendBucket:getBackendBucket", args, LookupBackendBucketResultOutput{}, options).(LookupBackendBucketResultOutput), nil
-		}).(LookupBackendBucketResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getBackendBucket:getBackendBucket", args, LookupBackendBucketResultOutput{}, options).(LookupBackendBucketResultOutput)
 }
 
 // A collection of arguments for invoking getBackendBucket.

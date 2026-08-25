@@ -78,12 +78,8 @@ type LookupCustomTargetTypeIamPolicyResult struct {
 }
 
 func LookupCustomTargetTypeIamPolicyOutput(ctx *pulumi.Context, args LookupCustomTargetTypeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCustomTargetTypeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomTargetTypeIamPolicyResultOutput, error) {
-			args := v.(LookupCustomTargetTypeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args, LookupCustomTargetTypeIamPolicyResultOutput{}, options).(LookupCustomTargetTypeIamPolicyResultOutput), nil
-		}).(LookupCustomTargetTypeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args, LookupCustomTargetTypeIamPolicyResultOutput{}, options).(LookupCustomTargetTypeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getCustomTargetTypeIamPolicy.

@@ -86,12 +86,8 @@ type LookupRegionalSecretResult struct {
 }
 
 func LookupRegionalSecretOutput(ctx *pulumi.Context, args LookupRegionalSecretOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalSecretResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionalSecretResultOutput, error) {
-			args := v.(LookupRegionalSecretArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:secretmanager/getRegionalSecret:getRegionalSecret", args, LookupRegionalSecretResultOutput{}, options).(LookupRegionalSecretResultOutput), nil
-		}).(LookupRegionalSecretResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:secretmanager/getRegionalSecret:getRegionalSecret", args, LookupRegionalSecretResultOutput{}, options).(LookupRegionalSecretResultOutput)
 }
 
 // A collection of arguments for invoking getRegionalSecret.

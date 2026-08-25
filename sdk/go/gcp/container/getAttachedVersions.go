@@ -70,12 +70,8 @@ type GetAttachedVersionsResult struct {
 }
 
 func GetAttachedVersionsOutput(ctx *pulumi.Context, args GetAttachedVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAttachedVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAttachedVersionsResultOutput, error) {
-			args := v.(GetAttachedVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:container/getAttachedVersions:getAttachedVersions", args, GetAttachedVersionsResultOutput{}, options).(GetAttachedVersionsResultOutput), nil
-		}).(GetAttachedVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:container/getAttachedVersions:getAttachedVersions", args, GetAttachedVersionsResultOutput{}, options).(GetAttachedVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getAttachedVersions.

@@ -76,12 +76,8 @@ type LookupAppEngineServiceIamPolicyResult struct {
 }
 
 func LookupAppEngineServiceIamPolicyOutput(ctx *pulumi.Context, args LookupAppEngineServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAppEngineServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppEngineServiceIamPolicyResultOutput, error) {
-			args := v.(LookupAppEngineServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args, LookupAppEngineServiceIamPolicyResultOutput{}, options).(LookupAppEngineServiceIamPolicyResultOutput), nil
-		}).(LookupAppEngineServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args, LookupAppEngineServiceIamPolicyResultOutput{}, options).(LookupAppEngineServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAppEngineServiceIamPolicy.

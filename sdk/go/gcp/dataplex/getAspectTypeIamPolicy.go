@@ -79,12 +79,8 @@ type LookupAspectTypeIamPolicyResult struct {
 }
 
 func LookupAspectTypeIamPolicyOutput(ctx *pulumi.Context, args LookupAspectTypeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAspectTypeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAspectTypeIamPolicyResultOutput, error) {
-			args := v.(LookupAspectTypeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", args, LookupAspectTypeIamPolicyResultOutput{}, options).(LookupAspectTypeIamPolicyResultOutput), nil
-		}).(LookupAspectTypeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", args, LookupAspectTypeIamPolicyResultOutput{}, options).(LookupAspectTypeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAspectTypeIamPolicy.

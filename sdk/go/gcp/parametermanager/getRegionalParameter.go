@@ -79,12 +79,8 @@ type LookupRegionalParameterResult struct {
 }
 
 func LookupRegionalParameterOutput(ctx *pulumi.Context, args LookupRegionalParameterOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalParameterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionalParameterResultOutput, error) {
-			args := v.(LookupRegionalParameterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:parametermanager/getRegionalParameter:getRegionalParameter", args, LookupRegionalParameterResultOutput{}, options).(LookupRegionalParameterResultOutput), nil
-		}).(LookupRegionalParameterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:parametermanager/getRegionalParameter:getRegionalParameter", args, LookupRegionalParameterResultOutput{}, options).(LookupRegionalParameterResultOutput)
 }
 
 // A collection of arguments for invoking getRegionalParameter.

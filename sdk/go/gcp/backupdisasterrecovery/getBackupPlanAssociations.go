@@ -76,12 +76,8 @@ type GetBackupPlanAssociationsResult struct {
 }
 
 func GetBackupPlanAssociationsOutput(ctx *pulumi.Context, args GetBackupPlanAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetBackupPlanAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBackupPlanAssociationsResultOutput, error) {
-			args := v.(GetBackupPlanAssociationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", args, GetBackupPlanAssociationsResultOutput{}, options).(GetBackupPlanAssociationsResultOutput), nil
-		}).(GetBackupPlanAssociationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", args, GetBackupPlanAssociationsResultOutput{}, options).(GetBackupPlanAssociationsResultOutput)
 }
 
 // A collection of arguments for invoking getBackupPlanAssociations.

@@ -44,12 +44,8 @@ type GetServiceConsumersIamPolicyResult struct {
 }
 
 func GetServiceConsumersIamPolicyOutput(ctx *pulumi.Context, args GetServiceConsumersIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetServiceConsumersIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceConsumersIamPolicyResultOutput, error) {
-			args := v.(GetServiceConsumersIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", args, GetServiceConsumersIamPolicyResultOutput{}, options).(GetServiceConsumersIamPolicyResultOutput), nil
-		}).(GetServiceConsumersIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", args, GetServiceConsumersIamPolicyResultOutput{}, options).(GetServiceConsumersIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getServiceConsumersIamPolicy.

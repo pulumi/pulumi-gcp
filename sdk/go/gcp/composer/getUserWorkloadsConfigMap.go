@@ -103,12 +103,8 @@ type LookupUserWorkloadsConfigMapResult struct {
 }
 
 func LookupUserWorkloadsConfigMapOutput(ctx *pulumi.Context, args LookupUserWorkloadsConfigMapOutputArgs, opts ...pulumi.InvokeOption) LookupUserWorkloadsConfigMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserWorkloadsConfigMapResultOutput, error) {
-			args := v.(LookupUserWorkloadsConfigMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, LookupUserWorkloadsConfigMapResultOutput{}, options).(LookupUserWorkloadsConfigMapResultOutput), nil
-		}).(LookupUserWorkloadsConfigMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, LookupUserWorkloadsConfigMapResultOutput{}, options).(LookupUserWorkloadsConfigMapResultOutput)
 }
 
 // A collection of arguments for invoking getUserWorkloadsConfigMap.

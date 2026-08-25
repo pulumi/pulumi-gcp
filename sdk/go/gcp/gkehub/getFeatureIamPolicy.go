@@ -78,12 +78,8 @@ type LookupFeatureIamPolicyResult struct {
 }
 
 func LookupFeatureIamPolicyOutput(ctx *pulumi.Context, args LookupFeatureIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFeatureIamPolicyResultOutput, error) {
-			args := v.(LookupFeatureIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args, LookupFeatureIamPolicyResultOutput{}, options).(LookupFeatureIamPolicyResultOutput), nil
-		}).(LookupFeatureIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args, LookupFeatureIamPolicyResultOutput{}, options).(LookupFeatureIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getFeatureIamPolicy.

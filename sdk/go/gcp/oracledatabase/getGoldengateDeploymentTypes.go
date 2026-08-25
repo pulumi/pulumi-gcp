@@ -100,12 +100,8 @@ type GetGoldengateDeploymentTypesResult struct {
 }
 
 func GetGoldengateDeploymentTypesOutput(ctx *pulumi.Context, args GetGoldengateDeploymentTypesOutputArgs, opts ...pulumi.InvokeOption) GetGoldengateDeploymentTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGoldengateDeploymentTypesResultOutput, error) {
-			args := v.(GetGoldengateDeploymentTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes", args, GetGoldengateDeploymentTypesResultOutput{}, options).(GetGoldengateDeploymentTypesResultOutput), nil
-		}).(GetGoldengateDeploymentTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes", args, GetGoldengateDeploymentTypesResultOutput{}, options).(GetGoldengateDeploymentTypesResultOutput)
 }
 
 // A collection of arguments for invoking getGoldengateDeploymentTypes.

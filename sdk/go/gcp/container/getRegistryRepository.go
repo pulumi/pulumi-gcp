@@ -70,12 +70,8 @@ type GetRegistryRepositoryResult struct {
 }
 
 func GetRegistryRepositoryOutput(ctx *pulumi.Context, args GetRegistryRepositoryOutputArgs, opts ...pulumi.InvokeOption) GetRegistryRepositoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegistryRepositoryResultOutput, error) {
-			args := v.(GetRegistryRepositoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:container/getRegistryRepository:getRegistryRepository", args, GetRegistryRepositoryResultOutput{}, options).(GetRegistryRepositoryResultOutput), nil
-		}).(GetRegistryRepositoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:container/getRegistryRepository:getRegistryRepository", args, GetRegistryRepositoryResultOutput{}, options).(GetRegistryRepositoryResultOutput)
 }
 
 // A collection of arguments for invoking getRegistryRepository.

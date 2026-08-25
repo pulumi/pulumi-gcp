@@ -72,12 +72,8 @@ type GetWebTypeAppEngineIamPolicyResult struct {
 }
 
 func GetWebTypeAppEngineIamPolicyOutput(ctx *pulumi.Context, args GetWebTypeAppEngineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetWebTypeAppEngineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWebTypeAppEngineIamPolicyResultOutput, error) {
-			args := v.(GetWebTypeAppEngineIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args, GetWebTypeAppEngineIamPolicyResultOutput{}, options).(GetWebTypeAppEngineIamPolicyResultOutput), nil
-		}).(GetWebTypeAppEngineIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args, GetWebTypeAppEngineIamPolicyResultOutput{}, options).(GetWebTypeAppEngineIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWebTypeAppEngineIamPolicy.

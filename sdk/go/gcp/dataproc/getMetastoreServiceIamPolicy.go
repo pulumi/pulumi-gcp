@@ -80,12 +80,8 @@ type LookupMetastoreServiceIamPolicyResult struct {
 }
 
 func LookupMetastoreServiceIamPolicyOutput(ctx *pulumi.Context, args LookupMetastoreServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMetastoreServiceIamPolicyResultOutput, error) {
-			args := v.(LookupMetastoreServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, LookupMetastoreServiceIamPolicyResultOutput{}, options).(LookupMetastoreServiceIamPolicyResultOutput), nil
-		}).(LookupMetastoreServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, LookupMetastoreServiceIamPolicyResultOutput{}, options).(LookupMetastoreServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getMetastoreServiceIamPolicy.

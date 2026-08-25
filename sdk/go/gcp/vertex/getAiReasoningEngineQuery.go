@@ -103,12 +103,8 @@ type GetAiReasoningEngineQueryResult struct {
 }
 
 func GetAiReasoningEngineQueryOutput(ctx *pulumi.Context, args GetAiReasoningEngineQueryOutputArgs, opts ...pulumi.InvokeOption) GetAiReasoningEngineQueryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAiReasoningEngineQueryResultOutput, error) {
-			args := v.(GetAiReasoningEngineQueryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery", args, GetAiReasoningEngineQueryResultOutput{}, options).(GetAiReasoningEngineQueryResultOutput), nil
-		}).(GetAiReasoningEngineQueryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery", args, GetAiReasoningEngineQueryResultOutput{}, options).(GetAiReasoningEngineQueryResultOutput)
 }
 
 // A collection of arguments for invoking getAiReasoningEngineQuery.

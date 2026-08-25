@@ -78,12 +78,8 @@ type LookupWebRegionForwardingRuleServiceIamPolicyResult struct {
 }
 
 func LookupWebRegionForwardingRuleServiceIamPolicyOutput(ctx *pulumi.Context, args LookupWebRegionForwardingRuleServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebRegionForwardingRuleServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebRegionForwardingRuleServiceIamPolicyResultOutput, error) {
-			args := v.(LookupWebRegionForwardingRuleServiceIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getWebRegionForwardingRuleServiceIamPolicy:getWebRegionForwardingRuleServiceIamPolicy", args, LookupWebRegionForwardingRuleServiceIamPolicyResultOutput{}, options).(LookupWebRegionForwardingRuleServiceIamPolicyResultOutput), nil
-		}).(LookupWebRegionForwardingRuleServiceIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getWebRegionForwardingRuleServiceIamPolicy:getWebRegionForwardingRuleServiceIamPolicy", args, LookupWebRegionForwardingRuleServiceIamPolicyResultOutput{}, options).(LookupWebRegionForwardingRuleServiceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWebRegionForwardingRuleServiceIamPolicy.

@@ -84,12 +84,8 @@ type GetHcVpnGatewayResult struct {
 }
 
 func GetHcVpnGatewayOutput(ctx *pulumi.Context, args GetHcVpnGatewayOutputArgs, opts ...pulumi.InvokeOption) GetHcVpnGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHcVpnGatewayResultOutput, error) {
-			args := v.(GetHcVpnGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getHcVpnGateway:getHcVpnGateway", args, GetHcVpnGatewayResultOutput{}, options).(GetHcVpnGatewayResultOutput), nil
-		}).(GetHcVpnGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getHcVpnGateway:getHcVpnGateway", args, GetHcVpnGatewayResultOutput{}, options).(GetHcVpnGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getHcVpnGateway.

@@ -115,12 +115,8 @@ type LookupUserWorkloadsSecretResult struct {
 }
 
 func LookupUserWorkloadsSecretOutput(ctx *pulumi.Context, args LookupUserWorkloadsSecretOutputArgs, opts ...pulumi.InvokeOption) LookupUserWorkloadsSecretResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserWorkloadsSecretResultOutput, error) {
-			args := v.(LookupUserWorkloadsSecretArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args, LookupUserWorkloadsSecretResultOutput{}, options).(LookupUserWorkloadsSecretResultOutput), nil
-		}).(LookupUserWorkloadsSecretResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args, LookupUserWorkloadsSecretResultOutput{}, options).(LookupUserWorkloadsSecretResultOutput)
 }
 
 // A collection of arguments for invoking getUserWorkloadsSecret.

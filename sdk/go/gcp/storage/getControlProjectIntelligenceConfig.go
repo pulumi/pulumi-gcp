@@ -67,12 +67,8 @@ type LookupControlProjectIntelligenceConfigResult struct {
 }
 
 func LookupControlProjectIntelligenceConfigOutput(ctx *pulumi.Context, args LookupControlProjectIntelligenceConfigOutputArgs, opts ...pulumi.InvokeOption) LookupControlProjectIntelligenceConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupControlProjectIntelligenceConfigResultOutput, error) {
-			args := v.(LookupControlProjectIntelligenceConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", args, LookupControlProjectIntelligenceConfigResultOutput{}, options).(LookupControlProjectIntelligenceConfigResultOutput), nil
-		}).(LookupControlProjectIntelligenceConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", args, LookupControlProjectIntelligenceConfigResultOutput{}, options).(LookupControlProjectIntelligenceConfigResultOutput)
 }
 
 // A collection of arguments for invoking getControlProjectIntelligenceConfig.

@@ -114,12 +114,8 @@ type GetTokenResult struct {
 }
 
 func GetTokenOutput(ctx *pulumi.Context, args GetTokenOutputArgs, opts ...pulumi.InvokeOption) GetTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTokenResultOutput, error) {
-			args := v.(GetTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:siteverification/getToken:getToken", args, GetTokenResultOutput{}, options).(GetTokenResultOutput), nil
-		}).(GetTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:siteverification/getToken:getToken", args, GetTokenResultOutput{}, options).(GetTokenResultOutput)
 }
 
 // A collection of arguments for invoking getToken.

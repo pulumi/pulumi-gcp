@@ -91,12 +91,8 @@ type LookupPrivateCloudResult struct {
 }
 
 func LookupPrivateCloudOutput(ctx *pulumi.Context, args LookupPrivateCloudOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateCloudResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateCloudResultOutput, error) {
-			args := v.(LookupPrivateCloudArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args, LookupPrivateCloudResultOutput{}, options).(LookupPrivateCloudResultOutput), nil
-		}).(LookupPrivateCloudResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args, LookupPrivateCloudResultOutput{}, options).(LookupPrivateCloudResultOutput)
 }
 
 // A collection of arguments for invoking getPrivateCloud.

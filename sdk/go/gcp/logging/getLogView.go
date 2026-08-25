@@ -81,12 +81,8 @@ type LookupLogViewResult struct {
 }
 
 func LookupLogViewOutput(ctx *pulumi.Context, args LookupLogViewOutputArgs, opts ...pulumi.InvokeOption) LookupLogViewResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogViewResultOutput, error) {
-			args := v.(LookupLogViewArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:logging/getLogView:getLogView", args, LookupLogViewResultOutput{}, options).(LookupLogViewResultOutput), nil
-		}).(LookupLogViewResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:logging/getLogView:getLogView", args, LookupLogViewResultOutput{}, options).(LookupLogViewResultOutput)
 }
 
 // A collection of arguments for invoking getLogView.

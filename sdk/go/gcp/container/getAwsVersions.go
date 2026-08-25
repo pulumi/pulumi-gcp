@@ -72,12 +72,8 @@ type GetAwsVersionsResult struct {
 }
 
 func GetAwsVersionsOutput(ctx *pulumi.Context, args GetAwsVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAwsVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAwsVersionsResultOutput, error) {
-			args := v.(GetAwsVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:container/getAwsVersions:getAwsVersions", args, GetAwsVersionsResultOutput{}, options).(GetAwsVersionsResultOutput), nil
-		}).(GetAwsVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:container/getAwsVersions:getAwsVersions", args, GetAwsVersionsResultOutput{}, options).(GetAwsVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getAwsVersions.

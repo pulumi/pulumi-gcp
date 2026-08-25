@@ -74,12 +74,8 @@ type GetNetworkEndpointGroupsResult struct {
 }
 
 func GetNetworkEndpointGroupsOutput(ctx *pulumi.Context, args GetNetworkEndpointGroupsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkEndpointGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkEndpointGroupsResultOutput, error) {
-			args := v.(GetNetworkEndpointGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups", args, GetNetworkEndpointGroupsResultOutput{}, options).(GetNetworkEndpointGroupsResultOutput), nil
-		}).(GetNetworkEndpointGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups", args, GetNetworkEndpointGroupsResultOutput{}, options).(GetNetworkEndpointGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkEndpointGroups.

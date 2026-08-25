@@ -103,12 +103,8 @@ type LookupRouterNatResult struct {
 }
 
 func LookupRouterNatOutput(ctx *pulumi.Context, args LookupRouterNatOutputArgs, opts ...pulumi.InvokeOption) LookupRouterNatResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRouterNatResultOutput, error) {
-			args := v.(LookupRouterNatArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRouterNat:getRouterNat", args, LookupRouterNatResultOutput{}, options).(LookupRouterNatResultOutput), nil
-		}).(LookupRouterNatResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRouterNat:getRouterNat", args, LookupRouterNatResultOutput{}, options).(LookupRouterNatResultOutput)
 }
 
 // A collection of arguments for invoking getRouterNat.

@@ -86,12 +86,8 @@ type LookupInstanceGroupResult struct {
 }
 
 func LookupInstanceGroupOutput(ctx *pulumi.Context, args LookupInstanceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInstanceGroupResultOutput, error) {
-			args := v.(LookupInstanceGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInstanceGroup:getInstanceGroup", args, LookupInstanceGroupResultOutput{}, options).(LookupInstanceGroupResultOutput), nil
-		}).(LookupInstanceGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInstanceGroup:getInstanceGroup", args, LookupInstanceGroupResultOutput{}, options).(LookupInstanceGroupResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceGroup.

@@ -129,12 +129,8 @@ type LookupBackendServiceResult struct {
 }
 
 func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupBackendServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackendServiceResultOutput, error) {
-			args := v.(LookupBackendServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getBackendService:getBackendService", args, LookupBackendServiceResultOutput{}, options).(LookupBackendServiceResultOutput), nil
-		}).(LookupBackendServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getBackendService:getBackendService", args, LookupBackendServiceResultOutput{}, options).(LookupBackendServiceResultOutput)
 }
 
 // A collection of arguments for invoking getBackendService.

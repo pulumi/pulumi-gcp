@@ -108,12 +108,8 @@ type LookupRegionBackendServiceResult struct {
 }
 
 func LookupRegionBackendServiceOutput(ctx *pulumi.Context, args LookupRegionBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupRegionBackendServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionBackendServiceResultOutput, error) {
-			args := v.(LookupRegionBackendServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionBackendService:getRegionBackendService", args, LookupRegionBackendServiceResultOutput{}, options).(LookupRegionBackendServiceResultOutput), nil
-		}).(LookupRegionBackendServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionBackendService:getRegionBackendService", args, LookupRegionBackendServiceResultOutput{}, options).(LookupRegionBackendServiceResultOutput)
 }
 
 // A collection of arguments for invoking getRegionBackendService.

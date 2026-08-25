@@ -79,12 +79,8 @@ type LookupTunnelDestGroupIamPolicyResult struct {
 }
 
 func LookupTunnelDestGroupIamPolicyOutput(ctx *pulumi.Context, args LookupTunnelDestGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTunnelDestGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTunnelDestGroupIamPolicyResultOutput, error) {
-			args := v.(LookupTunnelDestGroupIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args, LookupTunnelDestGroupIamPolicyResultOutput{}, options).(LookupTunnelDestGroupIamPolicyResultOutput), nil
-		}).(LookupTunnelDestGroupIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args, LookupTunnelDestGroupIamPolicyResultOutput{}, options).(LookupTunnelDestGroupIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTunnelDestGroupIamPolicy.

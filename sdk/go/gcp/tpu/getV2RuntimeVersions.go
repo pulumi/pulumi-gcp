@@ -99,12 +99,8 @@ type GetV2RuntimeVersionsResult struct {
 }
 
 func GetV2RuntimeVersionsOutput(ctx *pulumi.Context, args GetV2RuntimeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetV2RuntimeVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetV2RuntimeVersionsResultOutput, error) {
-			args := v.(GetV2RuntimeVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args, GetV2RuntimeVersionsResultOutput{}, options).(GetV2RuntimeVersionsResultOutput), nil
-		}).(GetV2RuntimeVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args, GetV2RuntimeVersionsResultOutput{}, options).(GetV2RuntimeVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getV2RuntimeVersions.

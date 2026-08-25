@@ -84,12 +84,8 @@ type LookupWorkstationConfigIamPolicyResult struct {
 }
 
 func LookupWorkstationConfigIamPolicyOutput(ctx *pulumi.Context, args LookupWorkstationConfigIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWorkstationConfigIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkstationConfigIamPolicyResultOutput, error) {
-			args := v.(LookupWorkstationConfigIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args, LookupWorkstationConfigIamPolicyResultOutput{}, options).(LookupWorkstationConfigIamPolicyResultOutput), nil
-		}).(LookupWorkstationConfigIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args, LookupWorkstationConfigIamPolicyResultOutput{}, options).(LookupWorkstationConfigIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getWorkstationConfigIamPolicy.

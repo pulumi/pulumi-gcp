@@ -78,12 +78,8 @@ type LookupRuntimeTemplateIamPolicyResult struct {
 }
 
 func LookupRuntimeTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupRuntimeTemplateIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRuntimeTemplateIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuntimeTemplateIamPolicyResultOutput, error) {
-			args := v.(LookupRuntimeTemplateIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:colab/getRuntimeTemplateIamPolicy:getRuntimeTemplateIamPolicy", args, LookupRuntimeTemplateIamPolicyResultOutput{}, options).(LookupRuntimeTemplateIamPolicyResultOutput), nil
-		}).(LookupRuntimeTemplateIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:colab/getRuntimeTemplateIamPolicy:getRuntimeTemplateIamPolicy", args, LookupRuntimeTemplateIamPolicyResultOutput{}, options).(LookupRuntimeTemplateIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRuntimeTemplateIamPolicy.

@@ -78,12 +78,8 @@ type GetWorkloadIdentityPoolOpenidConfigResult struct {
 }
 
 func GetWorkloadIdentityPoolOpenidConfigOutput(ctx *pulumi.Context, args GetWorkloadIdentityPoolOpenidConfigOutputArgs, opts ...pulumi.InvokeOption) GetWorkloadIdentityPoolOpenidConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWorkloadIdentityPoolOpenidConfigResultOutput, error) {
-			args := v.(GetWorkloadIdentityPoolOpenidConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iam/getWorkloadIdentityPoolOpenidConfig:getWorkloadIdentityPoolOpenidConfig", args, GetWorkloadIdentityPoolOpenidConfigResultOutput{}, options).(GetWorkloadIdentityPoolOpenidConfigResultOutput), nil
-		}).(GetWorkloadIdentityPoolOpenidConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iam/getWorkloadIdentityPoolOpenidConfig:getWorkloadIdentityPoolOpenidConfig", args, GetWorkloadIdentityPoolOpenidConfigResultOutput{}, options).(GetWorkloadIdentityPoolOpenidConfigResultOutput)
 }
 
 // A collection of arguments for invoking getWorkloadIdentityPoolOpenidConfig.

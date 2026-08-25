@@ -94,12 +94,8 @@ type LookupInsightsDatasetConfigResult struct {
 }
 
 func LookupInsightsDatasetConfigOutput(ctx *pulumi.Context, args LookupInsightsDatasetConfigOutputArgs, opts ...pulumi.InvokeOption) LookupInsightsDatasetConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInsightsDatasetConfigResultOutput, error) {
-			args := v.(LookupInsightsDatasetConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig", args, LookupInsightsDatasetConfigResultOutput{}, options).(LookupInsightsDatasetConfigResultOutput), nil
-		}).(LookupInsightsDatasetConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig", args, LookupInsightsDatasetConfigResultOutput{}, options).(LookupInsightsDatasetConfigResultOutput)
 }
 
 // A collection of arguments for invoking getInsightsDatasetConfig.

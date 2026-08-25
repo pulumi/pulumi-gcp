@@ -82,12 +82,8 @@ type LookupAppGatewayResult struct {
 }
 
 func LookupAppGatewayOutput(ctx *pulumi.Context, args LookupAppGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAppGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppGatewayResultOutput, error) {
-			args := v.(LookupAppGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:beyondcorp/getAppGateway:getAppGateway", args, LookupAppGatewayResultOutput{}, options).(LookupAppGatewayResultOutput), nil
-		}).(LookupAppGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:beyondcorp/getAppGateway:getAppGateway", args, LookupAppGatewayResultOutput{}, options).(LookupAppGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getAppGateway.

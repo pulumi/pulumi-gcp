@@ -89,12 +89,8 @@ type GetRecordSetsResult struct {
 }
 
 func GetRecordSetsOutput(ctx *pulumi.Context, args GetRecordSetsOutputArgs, opts ...pulumi.InvokeOption) GetRecordSetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRecordSetsResultOutput, error) {
-			args := v.(GetRecordSetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dns/getRecordSets:getRecordSets", args, GetRecordSetsResultOutput{}, options).(GetRecordSetsResultOutput), nil
-		}).(GetRecordSetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dns/getRecordSets:getRecordSets", args, GetRecordSetsResultOutput{}, options).(GetRecordSetsResultOutput)
 }
 
 // A collection of arguments for invoking getRecordSets.

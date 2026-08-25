@@ -79,12 +79,8 @@ type LookupDataExchangeIamPolicyResult struct {
 }
 
 func LookupDataExchangeIamPolicyOutput(ctx *pulumi.Context, args LookupDataExchangeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDataExchangeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataExchangeIamPolicyResultOutput, error) {
-			args := v.(LookupDataExchangeIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", args, LookupDataExchangeIamPolicyResultOutput{}, options).(LookupDataExchangeIamPolicyResultOutput), nil
-		}).(LookupDataExchangeIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", args, LookupDataExchangeIamPolicyResultOutput{}, options).(LookupDataExchangeIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getDataExchangeIamPolicy.

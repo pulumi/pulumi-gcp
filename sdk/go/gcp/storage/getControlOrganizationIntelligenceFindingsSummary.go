@@ -73,12 +73,8 @@ type GetControlOrganizationIntelligenceFindingsSummaryResult struct {
 }
 
 func GetControlOrganizationIntelligenceFindingsSummaryOutput(ctx *pulumi.Context, args GetControlOrganizationIntelligenceFindingsSummaryOutputArgs, opts ...pulumi.InvokeOption) GetControlOrganizationIntelligenceFindingsSummaryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetControlOrganizationIntelligenceFindingsSummaryResultOutput, error) {
-			args := v.(GetControlOrganizationIntelligenceFindingsSummaryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary", args, GetControlOrganizationIntelligenceFindingsSummaryResultOutput{}, options).(GetControlOrganizationIntelligenceFindingsSummaryResultOutput), nil
-		}).(GetControlOrganizationIntelligenceFindingsSummaryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary", args, GetControlOrganizationIntelligenceFindingsSummaryResultOutput{}, options).(GetControlOrganizationIntelligenceFindingsSummaryResultOutput)
 }
 
 // A collection of arguments for invoking getControlOrganizationIntelligenceFindingsSummary.

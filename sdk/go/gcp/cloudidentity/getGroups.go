@@ -66,12 +66,8 @@ type GetGroupsResult struct {
 }
 
 func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupsResultOutput, error) {
-			args := v.(GetGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:cloudidentity/getGroups:getGroups", args, GetGroupsResultOutput{}, options).(GetGroupsResultOutput), nil
-		}).(GetGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:cloudidentity/getGroups:getGroups", args, GetGroupsResultOutput{}, options).(GetGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getGroups.

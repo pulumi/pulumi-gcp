@@ -84,12 +84,8 @@ type RouterStatusResult struct {
 }
 
 func RouterStatusOutput(ctx *pulumi.Context, args RouterStatusOutputArgs, opts ...pulumi.InvokeOption) RouterStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (RouterStatusResultOutput, error) {
-			args := v.(RouterStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/routerStatus:RouterStatus", args, RouterStatusResultOutput{}, options).(RouterStatusResultOutput), nil
-		}).(RouterStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/routerStatus:RouterStatus", args, RouterStatusResultOutput{}, options).(RouterStatusResultOutput)
 }
 
 // A collection of arguments for invoking RouterStatus.

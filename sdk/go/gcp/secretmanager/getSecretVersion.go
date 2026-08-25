@@ -89,12 +89,8 @@ type LookupSecretVersionResult struct {
 }
 
 func LookupSecretVersionOutput(ctx *pulumi.Context, args LookupSecretVersionOutputArgs, opts ...pulumi.InvokeOption) LookupSecretVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretVersionResultOutput, error) {
-			args := v.(LookupSecretVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:secretmanager/getSecretVersion:getSecretVersion", args, LookupSecretVersionResultOutput{}, options).(LookupSecretVersionResultOutput), nil
-		}).(LookupSecretVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:secretmanager/getSecretVersion:getSecretVersion", args, LookupSecretVersionResultOutput{}, options).(LookupSecretVersionResultOutput)
 }
 
 // A collection of arguments for invoking getSecretVersion.

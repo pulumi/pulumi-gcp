@@ -80,12 +80,8 @@ type GetBucketObjectContentsResult struct {
 }
 
 func GetBucketObjectContentsOutput(ctx *pulumi.Context, args GetBucketObjectContentsOutputArgs, opts ...pulumi.InvokeOption) GetBucketObjectContentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBucketObjectContentsResultOutput, error) {
-			args := v.(GetBucketObjectContentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getBucketObjectContents:getBucketObjectContents", args, GetBucketObjectContentsResultOutput{}, options).(GetBucketObjectContentsResultOutput), nil
-		}).(GetBucketObjectContentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getBucketObjectContents:getBucketObjectContents", args, GetBucketObjectContentsResultOutput{}, options).(GetBucketObjectContentsResultOutput)
 }
 
 // A collection of arguments for invoking getBucketObjectContents.

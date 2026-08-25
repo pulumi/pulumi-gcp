@@ -73,12 +73,8 @@ type LookupEnvironmentIamPolicyResult struct {
 }
 
 func LookupEnvironmentIamPolicyOutput(ctx *pulumi.Context, args LookupEnvironmentIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentIamPolicyResultOutput, error) {
-			args := v.(LookupEnvironmentIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args, LookupEnvironmentIamPolicyResultOutput{}, options).(LookupEnvironmentIamPolicyResultOutput), nil
-		}).(LookupEnvironmentIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args, LookupEnvironmentIamPolicyResultOutput{}, options).(LookupEnvironmentIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentIamPolicy.

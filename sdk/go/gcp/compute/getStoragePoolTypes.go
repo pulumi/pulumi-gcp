@@ -51,12 +51,8 @@ type GetStoragePoolTypesResult struct {
 }
 
 func GetStoragePoolTypesOutput(ctx *pulumi.Context, args GetStoragePoolTypesOutputArgs, opts ...pulumi.InvokeOption) GetStoragePoolTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStoragePoolTypesResultOutput, error) {
-			args := v.(GetStoragePoolTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", args, GetStoragePoolTypesResultOutput{}, options).(GetStoragePoolTypesResultOutput), nil
-		}).(GetStoragePoolTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", args, GetStoragePoolTypesResultOutput{}, options).(GetStoragePoolTypesResultOutput)
 }
 
 // A collection of arguments for invoking getStoragePoolTypes.

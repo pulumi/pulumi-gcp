@@ -100,12 +100,8 @@ type LookupBackupVaultResult struct {
 }
 
 func LookupBackupVaultOutput(ctx *pulumi.Context, args LookupBackupVaultOutputArgs, opts ...pulumi.InvokeOption) LookupBackupVaultResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackupVaultResultOutput, error) {
-			args := v.(LookupBackupVaultArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:backupdisasterrecovery/getBackupVault:getBackupVault", args, LookupBackupVaultResultOutput{}, options).(LookupBackupVaultResultOutput), nil
-		}).(LookupBackupVaultResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:backupdisasterrecovery/getBackupVault:getBackupVault", args, LookupBackupVaultResultOutput{}, options).(LookupBackupVaultResultOutput)
 }
 
 // A collection of arguments for invoking getBackupVault.

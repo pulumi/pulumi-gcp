@@ -69,12 +69,8 @@ type GetNsxCredentialsResult struct {
 }
 
 func GetNsxCredentialsOutput(ctx *pulumi.Context, args GetNsxCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetNsxCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNsxCredentialsResultOutput, error) {
-			args := v.(GetNsxCredentialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args, GetNsxCredentialsResultOutput{}, options).(GetNsxCredentialsResultOutput), nil
-		}).(GetNsxCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args, GetNsxCredentialsResultOutput{}, options).(GetNsxCredentialsResultOutput)
 }
 
 // A collection of arguments for invoking getNsxCredentials.

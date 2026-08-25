@@ -51,12 +51,8 @@ type LookupAddressGroupIamPolicyResult struct {
 }
 
 func LookupAddressGroupIamPolicyOutput(ctx *pulumi.Context, args LookupAddressGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAddressGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAddressGroupIamPolicyResultOutput, error) {
-			args := v.(LookupAddressGroupIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args, LookupAddressGroupIamPolicyResultOutput{}, options).(LookupAddressGroupIamPolicyResultOutput), nil
-		}).(LookupAddressGroupIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args, LookupAddressGroupIamPolicyResultOutput{}, options).(LookupAddressGroupIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAddressGroupIamPolicy.

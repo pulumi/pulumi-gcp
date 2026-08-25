@@ -54,12 +54,8 @@ type GetTagResult struct {
 }
 
 func GetTagOutput(ctx *pulumi.Context, args GetTagOutputArgs, opts ...pulumi.InvokeOption) GetTagResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTagResultOutput, error) {
-			args := v.(GetTagArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:artifactregistry/getTag:getTag", args, GetTagResultOutput{}, options).(GetTagResultOutput), nil
-		}).(GetTagResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:artifactregistry/getTag:getTag", args, GetTagResultOutput{}, options).(GetTagResultOutput)
 }
 
 // A collection of arguments for invoking getTag.

@@ -82,12 +82,8 @@ type GetDefaultServiceAccountResult struct {
 }
 
 func GetDefaultServiceAccountOutput(ctx *pulumi.Context, args GetDefaultServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetDefaultServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDefaultServiceAccountResultOutput, error) {
-			args := v.(GetDefaultServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args, GetDefaultServiceAccountResultOutput{}, options).(GetDefaultServiceAccountResultOutput), nil
-		}).(GetDefaultServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args, GetDefaultServiceAccountResultOutput{}, options).(GetDefaultServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getDefaultServiceAccount.

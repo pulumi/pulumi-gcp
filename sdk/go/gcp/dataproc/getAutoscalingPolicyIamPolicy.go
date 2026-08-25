@@ -80,12 +80,8 @@ type LookupAutoscalingPolicyIamPolicyResult struct {
 }
 
 func LookupAutoscalingPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAutoscalingPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAutoscalingPolicyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAutoscalingPolicyIamPolicyResultOutput, error) {
-			args := v.(LookupAutoscalingPolicyIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, LookupAutoscalingPolicyIamPolicyResultOutput{}, options).(LookupAutoscalingPolicyIamPolicyResultOutput), nil
-		}).(LookupAutoscalingPolicyIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, LookupAutoscalingPolicyIamPolicyResultOutput{}, options).(LookupAutoscalingPolicyIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getAutoscalingPolicyIamPolicy.

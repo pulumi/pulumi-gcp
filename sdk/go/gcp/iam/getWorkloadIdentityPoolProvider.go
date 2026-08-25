@@ -89,12 +89,8 @@ type LookupWorkloadIdentityPoolProviderResult struct {
 }
 
 func LookupWorkloadIdentityPoolProviderOutput(ctx *pulumi.Context, args LookupWorkloadIdentityPoolProviderOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadIdentityPoolProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkloadIdentityPoolProviderResultOutput, error) {
-			args := v.(LookupWorkloadIdentityPoolProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args, LookupWorkloadIdentityPoolProviderResultOutput{}, options).(LookupWorkloadIdentityPoolProviderResultOutput), nil
-		}).(LookupWorkloadIdentityPoolProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args, LookupWorkloadIdentityPoolProviderResultOutput{}, options).(LookupWorkloadIdentityPoolProviderResultOutput)
 }
 
 // A collection of arguments for invoking getWorkloadIdentityPoolProvider.

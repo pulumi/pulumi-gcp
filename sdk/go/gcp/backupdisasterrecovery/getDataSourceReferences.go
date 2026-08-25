@@ -45,12 +45,8 @@ type GetDataSourceReferencesResult struct {
 }
 
 func GetDataSourceReferencesOutput(ctx *pulumi.Context, args GetDataSourceReferencesOutputArgs, opts ...pulumi.InvokeOption) GetDataSourceReferencesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDataSourceReferencesResultOutput, error) {
-			args := v.(GetDataSourceReferencesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences", args, GetDataSourceReferencesResultOutput{}, options).(GetDataSourceReferencesResultOutput), nil
-		}).(GetDataSourceReferencesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences", args, GetDataSourceReferencesResultOutput{}, options).(GetDataSourceReferencesResultOutput)
 }
 
 // A collection of arguments for invoking getDataSourceReferences.

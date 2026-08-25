@@ -66,12 +66,8 @@ type GetSResult struct {
 }
 
 func GetSOutput(ctx *pulumi.Context, args GetSOutputArgs, opts ...pulumi.InvokeOption) GetSResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSResultOutput, error) {
-			args := v.(GetSArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:organizations/getS:getS", args, GetSResultOutput{}, options).(GetSResultOutput), nil
-		}).(GetSResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:organizations/getS:getS", args, GetSResultOutput{}, options).(GetSResultOutput)
 }
 
 // A collection of arguments for invoking getS.

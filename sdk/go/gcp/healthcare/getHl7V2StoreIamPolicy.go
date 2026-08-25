@@ -69,12 +69,8 @@ type GetHl7V2StoreIamPolicyResult struct {
 }
 
 func GetHl7V2StoreIamPolicyOutput(ctx *pulumi.Context, args GetHl7V2StoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetHl7V2StoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHl7V2StoreIamPolicyResultOutput, error) {
-			args := v.(GetHl7V2StoreIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args, GetHl7V2StoreIamPolicyResultOutput{}, options).(GetHl7V2StoreIamPolicyResultOutput), nil
-		}).(GetHl7V2StoreIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args, GetHl7V2StoreIamPolicyResultOutput{}, options).(GetHl7V2StoreIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getHl7V2StoreIamPolicy.

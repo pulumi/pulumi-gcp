@@ -79,12 +79,8 @@ type LookupHiveDatabaseIamPolicyResult struct {
 }
 
 func LookupHiveDatabaseIamPolicyOutput(ctx *pulumi.Context, args LookupHiveDatabaseIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupHiveDatabaseIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHiveDatabaseIamPolicyResultOutput, error) {
-			args := v.(LookupHiveDatabaseIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy", args, LookupHiveDatabaseIamPolicyResultOutput{}, options).(LookupHiveDatabaseIamPolicyResultOutput), nil
-		}).(LookupHiveDatabaseIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy", args, LookupHiveDatabaseIamPolicyResultOutput{}, options).(LookupHiveDatabaseIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getHiveDatabaseIamPolicy.

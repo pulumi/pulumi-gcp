@@ -72,12 +72,8 @@ type LookupInstanceTemplateIamPolicyResult struct {
 }
 
 func LookupInstanceTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupInstanceTemplateIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceTemplateIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInstanceTemplateIamPolicyResultOutput, error) {
-			args := v.(LookupInstanceTemplateIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy", args, LookupInstanceTemplateIamPolicyResultOutput{}, options).(LookupInstanceTemplateIamPolicyResultOutput), nil
-		}).(LookupInstanceTemplateIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy", args, LookupInstanceTemplateIamPolicyResultOutput{}, options).(LookupInstanceTemplateIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceTemplateIamPolicy.

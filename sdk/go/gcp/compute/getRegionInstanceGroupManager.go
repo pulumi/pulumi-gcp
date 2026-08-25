@@ -106,12 +106,8 @@ type LookupRegionInstanceGroupManagerResult struct {
 }
 
 func LookupRegionInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupRegionInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceGroupManagerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionInstanceGroupManagerResultOutput, error) {
-			args := v.(LookupRegionInstanceGroupManagerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args, LookupRegionInstanceGroupManagerResultOutput{}, options).(LookupRegionInstanceGroupManagerResultOutput), nil
-		}).(LookupRegionInstanceGroupManagerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args, LookupRegionInstanceGroupManagerResultOutput{}, options).(LookupRegionInstanceGroupManagerResultOutput)
 }
 
 // A collection of arguments for invoking getRegionInstanceGroupManager.

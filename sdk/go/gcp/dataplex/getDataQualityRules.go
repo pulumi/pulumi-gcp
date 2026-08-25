@@ -75,12 +75,8 @@ type GetDataQualityRulesResult struct {
 }
 
 func GetDataQualityRulesOutput(ctx *pulumi.Context, args GetDataQualityRulesOutputArgs, opts ...pulumi.InvokeOption) GetDataQualityRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDataQualityRulesResultOutput, error) {
-			args := v.(GetDataQualityRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataplex/getDataQualityRules:getDataQualityRules", args, GetDataQualityRulesResultOutput{}, options).(GetDataQualityRulesResultOutput), nil
-		}).(GetDataQualityRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataplex/getDataQualityRules:getDataQualityRules", args, GetDataQualityRulesResultOutput{}, options).(GetDataQualityRulesResultOutput)
 }
 
 // A collection of arguments for invoking getDataQualityRules.

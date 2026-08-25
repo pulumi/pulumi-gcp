@@ -109,12 +109,8 @@ type LookupInstanceGroupManagerResult struct {
 }
 
 func LookupInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceGroupManagerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInstanceGroupManagerResultOutput, error) {
-			args := v.(LookupInstanceGroupManagerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args, LookupInstanceGroupManagerResultOutput{}, options).(LookupInstanceGroupManagerResultOutput), nil
-		}).(LookupInstanceGroupManagerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args, LookupInstanceGroupManagerResultOutput{}, options).(LookupInstanceGroupManagerResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceGroupManager.

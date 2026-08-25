@@ -69,12 +69,8 @@ type GetDataStoresResult struct {
 }
 
 func GetDataStoresOutput(ctx *pulumi.Context, args GetDataStoresOutputArgs, opts ...pulumi.InvokeOption) GetDataStoresResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDataStoresResultOutput, error) {
-			args := v.(GetDataStoresArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:discoveryengine/getDataStores:getDataStores", args, GetDataStoresResultOutput{}, options).(GetDataStoresResultOutput), nil
-		}).(GetDataStoresResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:discoveryengine/getDataStores:getDataStores", args, GetDataStoresResultOutput{}, options).(GetDataStoresResultOutput)
 }
 
 // A collection of arguments for invoking getDataStores.

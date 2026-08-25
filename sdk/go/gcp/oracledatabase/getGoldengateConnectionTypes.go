@@ -84,12 +84,8 @@ type GetGoldengateConnectionTypesResult struct {
 }
 
 func GetGoldengateConnectionTypesOutput(ctx *pulumi.Context, args GetGoldengateConnectionTypesOutputArgs, opts ...pulumi.InvokeOption) GetGoldengateConnectionTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGoldengateConnectionTypesResultOutput, error) {
-			args := v.(GetGoldengateConnectionTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateConnectionTypes:getGoldengateConnectionTypes", args, GetGoldengateConnectionTypesResultOutput{}, options).(GetGoldengateConnectionTypesResultOutput), nil
-		}).(GetGoldengateConnectionTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateConnectionTypes:getGoldengateConnectionTypes", args, GetGoldengateConnectionTypesResultOutput{}, options).(GetGoldengateConnectionTypesResultOutput)
 }
 
 // A collection of arguments for invoking getGoldengateConnectionTypes.

@@ -78,12 +78,8 @@ type LookupSecurityGatewayIamPolicyResult struct {
 }
 
 func LookupSecurityGatewayIamPolicyOutput(ctx *pulumi.Context, args LookupSecurityGatewayIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityGatewayIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecurityGatewayIamPolicyResultOutput, error) {
-			args := v.(LookupSecurityGatewayIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy", args, LookupSecurityGatewayIamPolicyResultOutput{}, options).(LookupSecurityGatewayIamPolicyResultOutput), nil
-		}).(LookupSecurityGatewayIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy", args, LookupSecurityGatewayIamPolicyResultOutput{}, options).(LookupSecurityGatewayIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSecurityGatewayIamPolicy.

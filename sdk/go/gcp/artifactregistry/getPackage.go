@@ -80,12 +80,8 @@ type GetPackageResult struct {
 }
 
 func GetPackageOutput(ctx *pulumi.Context, args GetPackageOutputArgs, opts ...pulumi.InvokeOption) GetPackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPackageResultOutput, error) {
-			args := v.(GetPackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:artifactregistry/getPackage:getPackage", args, GetPackageResultOutput{}, options).(GetPackageResultOutput), nil
-		}).(GetPackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:artifactregistry/getPackage:getPackage", args, GetPackageResultOutput{}, options).(GetPackageResultOutput)
 }
 
 // A collection of arguments for invoking getPackage.

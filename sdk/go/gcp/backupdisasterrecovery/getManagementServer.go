@@ -71,12 +71,8 @@ type LookupManagementServerResult struct {
 }
 
 func LookupManagementServerOutput(ctx *pulumi.Context, args LookupManagementServerOutputArgs, opts ...pulumi.InvokeOption) LookupManagementServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagementServerResultOutput, error) {
-			args := v.(LookupManagementServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args, LookupManagementServerResultOutput{}, options).(LookupManagementServerResultOutput), nil
-		}).(LookupManagementServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args, LookupManagementServerResultOutput{}, options).(LookupManagementServerResultOutput)
 }
 
 // A collection of arguments for invoking getManagementServer.

@@ -80,12 +80,8 @@ type GetParameterVersionRenderResult struct {
 }
 
 func GetParameterVersionRenderOutput(ctx *pulumi.Context, args GetParameterVersionRenderOutputArgs, opts ...pulumi.InvokeOption) GetParameterVersionRenderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetParameterVersionRenderResultOutput, error) {
-			args := v.(GetParameterVersionRenderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", args, GetParameterVersionRenderResultOutput{}, options).(GetParameterVersionRenderResultOutput), nil
-		}).(GetParameterVersionRenderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", args, GetParameterVersionRenderResultOutput{}, options).(GetParameterVersionRenderResultOutput)
 }
 
 // A collection of arguments for invoking getParameterVersionRender.

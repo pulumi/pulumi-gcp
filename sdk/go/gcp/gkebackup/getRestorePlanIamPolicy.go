@@ -79,12 +79,8 @@ type LookupRestorePlanIamPolicyResult struct {
 }
 
 func LookupRestorePlanIamPolicyOutput(ctx *pulumi.Context, args LookupRestorePlanIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRestorePlanIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRestorePlanIamPolicyResultOutput, error) {
-			args := v.(LookupRestorePlanIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", args, LookupRestorePlanIamPolicyResultOutput{}, options).(LookupRestorePlanIamPolicyResultOutput), nil
-		}).(LookupRestorePlanIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", args, LookupRestorePlanIamPolicyResultOutput{}, options).(LookupRestorePlanIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRestorePlanIamPolicy.

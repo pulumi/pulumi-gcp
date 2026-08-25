@@ -79,12 +79,8 @@ type LookupGlossaryIamPolicyResult struct {
 }
 
 func LookupGlossaryIamPolicyOutput(ctx *pulumi.Context, args LookupGlossaryIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGlossaryIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGlossaryIamPolicyResultOutput, error) {
-			args := v.(LookupGlossaryIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy", args, LookupGlossaryIamPolicyResultOutput{}, options).(LookupGlossaryIamPolicyResultOutput), nil
-		}).(LookupGlossaryIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy", args, LookupGlossaryIamPolicyResultOutput{}, options).(LookupGlossaryIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getGlossaryIamPolicy.

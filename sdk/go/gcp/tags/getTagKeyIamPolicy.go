@@ -67,12 +67,8 @@ type LookupTagKeyIamPolicyResult struct {
 }
 
 func LookupTagKeyIamPolicyOutput(ctx *pulumi.Context, args LookupTagKeyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTagKeyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTagKeyIamPolicyResultOutput, error) {
-			args := v.(LookupTagKeyIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", args, LookupTagKeyIamPolicyResultOutput{}, options).(LookupTagKeyIamPolicyResultOutput), nil
-		}).(LookupTagKeyIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", args, LookupTagKeyIamPolicyResultOutput{}, options).(LookupTagKeyIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTagKeyIamPolicy.

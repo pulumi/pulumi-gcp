@@ -75,12 +75,8 @@ type GetInstanceGroupsResult struct {
 }
 
 func GetInstanceGroupsOutput(ctx *pulumi.Context, args GetInstanceGroupsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceGroupsResultOutput, error) {
-			args := v.(GetInstanceGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getInstanceGroups:getInstanceGroups", args, GetInstanceGroupsResultOutput{}, options).(GetInstanceGroupsResultOutput), nil
-		}).(GetInstanceGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getInstanceGroups:getInstanceGroups", args, GetInstanceGroupsResultOutput{}, options).(GetInstanceGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceGroups.

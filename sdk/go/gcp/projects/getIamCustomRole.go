@@ -79,12 +79,8 @@ type GetIamCustomRoleResult struct {
 }
 
 func GetIamCustomRoleOutput(ctx *pulumi.Context, args GetIamCustomRoleOutputArgs, opts ...pulumi.InvokeOption) GetIamCustomRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIamCustomRoleResultOutput, error) {
-			args := v.(GetIamCustomRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:projects/getIamCustomRole:getIamCustomRole", args, GetIamCustomRoleResultOutput{}, options).(GetIamCustomRoleResultOutput), nil
-		}).(GetIamCustomRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:projects/getIamCustomRole:getIamCustomRole", args, GetIamCustomRoleResultOutput{}, options).(GetIamCustomRoleResultOutput)
 }
 
 // A collection of arguments for invoking getIamCustomRole.

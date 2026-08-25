@@ -101,12 +101,8 @@ type LookupDatabaseInstanceResult struct {
 }
 
 func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseInstanceResultOutput, error) {
-			args := v.(LookupDatabaseInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:sql/getDatabaseInstance:getDatabaseInstance", args, LookupDatabaseInstanceResultOutput{}, options).(LookupDatabaseInstanceResultOutput), nil
-		}).(LookupDatabaseInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:sql/getDatabaseInstance:getDatabaseInstance", args, LookupDatabaseInstanceResultOutput{}, options).(LookupDatabaseInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseInstance.

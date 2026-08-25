@@ -128,12 +128,8 @@ type GetAccountIdTokenResult struct {
 }
 
 func GetAccountIdTokenOutput(ctx *pulumi.Context, args GetAccountIdTokenOutputArgs, opts ...pulumi.InvokeOption) GetAccountIdTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountIdTokenResultOutput, error) {
-			args := v.(GetAccountIdTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args, GetAccountIdTokenResultOutput{}, options).(GetAccountIdTokenResultOutput), nil
-		}).(GetAccountIdTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args, GetAccountIdTokenResultOutput{}, options).(GetAccountIdTokenResultOutput)
 }
 
 // A collection of arguments for invoking getAccountIdToken.

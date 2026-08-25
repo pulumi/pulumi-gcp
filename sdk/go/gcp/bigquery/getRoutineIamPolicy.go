@@ -76,12 +76,8 @@ type LookupRoutineIamPolicyResult struct {
 }
 
 func LookupRoutineIamPolicyOutput(ctx *pulumi.Context, args LookupRoutineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRoutineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoutineIamPolicyResultOutput, error) {
-			args := v.(LookupRoutineIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:bigquery/getRoutineIamPolicy:getRoutineIamPolicy", args, LookupRoutineIamPolicyResultOutput{}, options).(LookupRoutineIamPolicyResultOutput), nil
-		}).(LookupRoutineIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:bigquery/getRoutineIamPolicy:getRoutineIamPolicy", args, LookupRoutineIamPolicyResultOutput{}, options).(LookupRoutineIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRoutineIamPolicy.

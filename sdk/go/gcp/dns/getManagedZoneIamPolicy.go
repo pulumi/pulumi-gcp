@@ -72,12 +72,8 @@ type GetManagedZoneIamPolicyResult struct {
 }
 
 func GetManagedZoneIamPolicyOutput(ctx *pulumi.Context, args GetManagedZoneIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetManagedZoneIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetManagedZoneIamPolicyResultOutput, error) {
-			args := v.(GetManagedZoneIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args, GetManagedZoneIamPolicyResultOutput{}, options).(GetManagedZoneIamPolicyResultOutput), nil
-		}).(GetManagedZoneIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args, GetManagedZoneIamPolicyResultOutput{}, options).(GetManagedZoneIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getManagedZoneIamPolicy.

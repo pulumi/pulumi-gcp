@@ -90,12 +90,8 @@ type LookupManagedZoneResult struct {
 }
 
 func LookupManagedZoneOutput(ctx *pulumi.Context, args LookupManagedZoneOutputArgs, opts ...pulumi.InvokeOption) LookupManagedZoneResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedZoneResultOutput, error) {
-			args := v.(LookupManagedZoneArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:dns/getManagedZone:getManagedZone", args, LookupManagedZoneResultOutput{}, options).(LookupManagedZoneResultOutput), nil
-		}).(LookupManagedZoneResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:dns/getManagedZone:getManagedZone", args, LookupManagedZoneResultOutput{}, options).(LookupManagedZoneResultOutput)
 }
 
 // A collection of arguments for invoking getManagedZone.

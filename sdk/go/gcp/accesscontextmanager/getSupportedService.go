@@ -101,12 +101,8 @@ type GetSupportedServiceResult struct {
 }
 
 func GetSupportedServiceOutput(ctx *pulumi.Context, args GetSupportedServiceOutputArgs, opts ...pulumi.InvokeOption) GetSupportedServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSupportedServiceResultOutput, error) {
-			args := v.(GetSupportedServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:accesscontextmanager/getSupportedService:getSupportedService", args, GetSupportedServiceResultOutput{}, options).(GetSupportedServiceResultOutput), nil
-		}).(GetSupportedServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:accesscontextmanager/getSupportedService:getSupportedService", args, GetSupportedServiceResultOutput{}, options).(GetSupportedServiceResultOutput)
 }
 
 // A collection of arguments for invoking getSupportedService.

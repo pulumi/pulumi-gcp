@@ -88,12 +88,8 @@ type LookupOdbNetworkResult struct {
 }
 
 func LookupOdbNetworkOutput(ctx *pulumi.Context, args LookupOdbNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupOdbNetworkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOdbNetworkResultOutput, error) {
-			args := v.(LookupOdbNetworkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:oracledatabase/getOdbNetwork:getOdbNetwork", args, LookupOdbNetworkResultOutput{}, options).(LookupOdbNetworkResultOutput), nil
-		}).(LookupOdbNetworkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:oracledatabase/getOdbNetwork:getOdbNetwork", args, LookupOdbNetworkResultOutput{}, options).(LookupOdbNetworkResultOutput)
 }
 
 // A collection of arguments for invoking getOdbNetwork.

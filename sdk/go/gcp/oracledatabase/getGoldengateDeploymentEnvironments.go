@@ -100,12 +100,8 @@ type GetGoldengateDeploymentEnvironmentsResult struct {
 }
 
 func GetGoldengateDeploymentEnvironmentsOutput(ctx *pulumi.Context, args GetGoldengateDeploymentEnvironmentsOutputArgs, opts ...pulumi.InvokeOption) GetGoldengateDeploymentEnvironmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGoldengateDeploymentEnvironmentsResultOutput, error) {
-			args := v.(GetGoldengateDeploymentEnvironmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments", args, GetGoldengateDeploymentEnvironmentsResultOutput{}, options).(GetGoldengateDeploymentEnvironmentsResultOutput), nil
-		}).(GetGoldengateDeploymentEnvironmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments", args, GetGoldengateDeploymentEnvironmentsResultOutput{}, options).(GetGoldengateDeploymentEnvironmentsResultOutput)
 }
 
 // A collection of arguments for invoking getGoldengateDeploymentEnvironments.

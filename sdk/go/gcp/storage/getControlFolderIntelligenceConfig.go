@@ -67,12 +67,8 @@ type LookupControlFolderIntelligenceConfigResult struct {
 }
 
 func LookupControlFolderIntelligenceConfigOutput(ctx *pulumi.Context, args LookupControlFolderIntelligenceConfigOutputArgs, opts ...pulumi.InvokeOption) LookupControlFolderIntelligenceConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupControlFolderIntelligenceConfigResultOutput, error) {
-			args := v.(LookupControlFolderIntelligenceConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", args, LookupControlFolderIntelligenceConfigResultOutput{}, options).(LookupControlFolderIntelligenceConfigResultOutput), nil
-		}).(LookupControlFolderIntelligenceConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig", args, LookupControlFolderIntelligenceConfigResultOutput{}, options).(LookupControlFolderIntelligenceConfigResultOutput)
 }
 
 // A collection of arguments for invoking getControlFolderIntelligenceConfig.

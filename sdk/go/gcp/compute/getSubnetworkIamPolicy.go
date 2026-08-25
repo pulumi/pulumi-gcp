@@ -79,12 +79,8 @@ type GetSubnetworkIamPolicyResult struct {
 }
 
 func GetSubnetworkIamPolicyOutput(ctx *pulumi.Context, args GetSubnetworkIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetSubnetworkIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSubnetworkIamPolicyResultOutput, error) {
-			args := v.(GetSubnetworkIamPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args, GetSubnetworkIamPolicyResultOutput{}, options).(GetSubnetworkIamPolicyResultOutput), nil
-		}).(GetSubnetworkIamPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args, GetSubnetworkIamPolicyResultOutput{}, options).(GetSubnetworkIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSubnetworkIamPolicy.
