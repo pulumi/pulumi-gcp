@@ -2,7 +2,7 @@
     "name": "bucket-ts",
     "main": "index.ts",
     "devDependencies": {
-        "@types/node": "^16"
+        "@types/node": "^24.0.0"
     },
     "dependencies": {
         "@pulumi/pulumi": "3.259.0"
