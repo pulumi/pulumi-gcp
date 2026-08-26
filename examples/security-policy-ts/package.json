@@ -1,7 +1,7 @@
 {
 	"name": "test",
 	"devDependencies": {
-		"@types/node": "^18"
+		"@types/node": "^24.0.0"
 	},
 	"dependencies": {
 		"typescript": "^4.0.0",

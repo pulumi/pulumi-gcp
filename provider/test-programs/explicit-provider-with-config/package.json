@@ -2,7 +2,7 @@
     "name": "explicit-provider-with-config",
     "main": "index.ts",
     "devDependencies": {
-        "@types/node": "^18"
+        "@types/node": "^24.0.0"
     },
     "dependencies": {
         "@pulumi/gcp": "latest",
