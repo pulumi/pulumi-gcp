@@ -4,13 +4,13 @@ go 1.25.11
 
 require (
 	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-gcp/sdk/v9 v9.35.1
+	github.com/pulumi/pulumi-gcp/sdk/v10 v10.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi/pkg/v3 v3.259.0
 	github.com/pulumi/pulumi/sdk/v3 v3.259.0
 	github.com/stretchr/testify v1.11.1
 )
 
-replace github.com/pulumi/pulumi-gcp/sdk/v9 => ../sdk
+replace github.com/pulumi/pulumi-gcp/sdk/v10 => ../sdk
 
 require (
 	cel.dev/expr v0.25.2 // indirect
