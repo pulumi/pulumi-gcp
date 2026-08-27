@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/sdk/v9
+module github.com/pulumi/pulumi-gcp/sdk/v10
 
 go 1.25.11
 

@@ -3,11 +3,11 @@ module github.com/pulumi/pulumi-aws/examples/tags-combinations-go
 go 1.25.11
 
 require (
-	github.com/pulumi/pulumi-gcp/sdk/v9 v9.35.1
+	github.com/pulumi/pulumi-gcp/sdk/v10 v10.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi/sdk/v3 v3.256.0
 )
 
-replace github.com/pulumi/pulumi-gcp/sdk/v9 => ../../sdk
+replace github.com/pulumi/pulumi-gcp/sdk/v10 => ../../sdk
 
 require (
 	github.com/BurntSushi/toml v1.6.0 // indirect
