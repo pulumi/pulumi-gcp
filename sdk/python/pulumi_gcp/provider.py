@@ -160,7 +160,6 @@ class ProviderArgs:
                  memcache_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  memorystore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 ml_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  model_armor_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  model_armor_global_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  monitoring_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -170,7 +169,6 @@ class ProviderArgs:
                  network_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  network_security_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  network_services_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 notebooks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  oracle_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  org_policy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -522,8 +520,6 @@ class ProviderArgs:
             pulumi.set(__self__, "memorystore_custom_endpoint", memorystore_custom_endpoint)
         if migration_center_custom_endpoint is not None:
             pulumi.set(__self__, "migration_center_custom_endpoint", migration_center_custom_endpoint)
-        if ml_engine_custom_endpoint is not None:
-            pulumi.set(__self__, "ml_engine_custom_endpoint", ml_engine_custom_endpoint)
         if model_armor_custom_endpoint is not None:
             pulumi.set(__self__, "model_armor_custom_endpoint", model_armor_custom_endpoint)
         if model_armor_global_custom_endpoint is not None:
@@ -542,8 +538,6 @@ class ProviderArgs:
             pulumi.set(__self__, "network_security_custom_endpoint", network_security_custom_endpoint)
         if network_services_custom_endpoint is not None:
             pulumi.set(__self__, "network_services_custom_endpoint", network_services_custom_endpoint)
-        if notebooks_custom_endpoint is not None:
-            pulumi.set(__self__, "notebooks_custom_endpoint", notebooks_custom_endpoint)
         if observability_custom_endpoint is not None:
             pulumi.set(__self__, "observability_custom_endpoint", observability_custom_endpoint)
         if oracle_database_custom_endpoint is not None:
@@ -1948,15 +1942,6 @@ class ProviderArgs:
         pulumi.set(self, "migration_center_custom_endpoint", value)
 
     @_builtins.property
-    @pulumi.getter(name="mlEngineCustomEndpoint")
-    def ml_engine_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "ml_engine_custom_endpoint")
-
-    @ml_engine_custom_endpoint.setter
-    def ml_engine_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "ml_engine_custom_endpoint", value)
-
-    @_builtins.property
     @pulumi.getter(name="modelArmorCustomEndpoint")
     def model_armor_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "model_armor_custom_endpoint")
@@ -2036,15 +2021,6 @@ class ProviderArgs:
     @network_services_custom_endpoint.setter
     def network_services_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_services_custom_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="notebooksCustomEndpoint")
-    def notebooks_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "notebooks_custom_endpoint")
-
-    @notebooks_custom_endpoint.setter
-    def notebooks_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "notebooks_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="observabilityCustomEndpoint")
@@ -2805,7 +2781,6 @@ class Provider(pulumi.ProviderResource):
                  memcache_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  memorystore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 ml_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  model_armor_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  model_armor_global_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  monitoring_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2815,7 +2790,6 @@ class Provider(pulumi.ProviderResource):
                  network_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  network_security_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  network_services_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 notebooks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  oracle_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  org_policy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3063,7 +3037,6 @@ class Provider(pulumi.ProviderResource):
                  memcache_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  memorystore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 ml_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  model_armor_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  model_armor_global_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  monitoring_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3073,7 +3046,6 @@ class Provider(pulumi.ProviderResource):
                  network_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  network_security_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  network_services_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 notebooks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  oracle_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  org_policy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3291,7 +3263,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["memcache_custom_endpoint"] = memcache_custom_endpoint
             __props__.__dict__["memorystore_custom_endpoint"] = memorystore_custom_endpoint
             __props__.__dict__["migration_center_custom_endpoint"] = migration_center_custom_endpoint
-            __props__.__dict__["ml_engine_custom_endpoint"] = ml_engine_custom_endpoint
             __props__.__dict__["model_armor_custom_endpoint"] = model_armor_custom_endpoint
             __props__.__dict__["model_armor_global_custom_endpoint"] = model_armor_global_custom_endpoint
             __props__.__dict__["monitoring_custom_endpoint"] = monitoring_custom_endpoint
@@ -3301,7 +3272,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["network_management_custom_endpoint"] = network_management_custom_endpoint
             __props__.__dict__["network_security_custom_endpoint"] = network_security_custom_endpoint
             __props__.__dict__["network_services_custom_endpoint"] = network_services_custom_endpoint
-            __props__.__dict__["notebooks_custom_endpoint"] = notebooks_custom_endpoint
             __props__.__dict__["observability_custom_endpoint"] = observability_custom_endpoint
             __props__.__dict__["oracle_database_custom_endpoint"] = oracle_database_custom_endpoint
             __props__.__dict__["org_policy_custom_endpoint"] = org_policy_custom_endpoint
@@ -4055,11 +4025,6 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "migration_center_custom_endpoint")
 
     @_builtins.property
-    @pulumi.getter(name="mlEngineCustomEndpoint")
-    def ml_engine_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "ml_engine_custom_endpoint")
-
-    @_builtins.property
     @pulumi.getter(name="modelArmorCustomEndpoint")
     def model_armor_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "model_armor_custom_endpoint")
@@ -4103,11 +4068,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="networkServicesCustomEndpoint")
     def network_services_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "network_services_custom_endpoint")
-
-    @_builtins.property
-    @pulumi.getter(name="notebooksCustomEndpoint")
-    def notebooks_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "notebooks_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="observabilityCustomEndpoint")

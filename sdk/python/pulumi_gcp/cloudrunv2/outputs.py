@@ -111,13 +111,13 @@ __all__ = [
     'WorkerPoolTemplateContainerLivenessProbe',
     'WorkerPoolTemplateContainerLivenessProbeGrpc',
     'WorkerPoolTemplateContainerLivenessProbeHttpGet',
-    'WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders',
+    'WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader',
     'WorkerPoolTemplateContainerLivenessProbeTcpSocket',
     'WorkerPoolTemplateContainerResources',
     'WorkerPoolTemplateContainerStartupProbe',
     'WorkerPoolTemplateContainerStartupProbeGrpc',
     'WorkerPoolTemplateContainerStartupProbeHttpGet',
-    'WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders',
+    'WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader',
     'WorkerPoolTemplateContainerStartupProbeTcpSocket',
     'WorkerPoolTemplateContainerVolumeMount',
     'WorkerPoolTemplateNodeSelector',
@@ -6784,11 +6784,11 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 http_headers: Optional['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders'] = None,
+                 http_headers: Optional[Sequence['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader']] = None,
                  path: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None):
         """
-        :param 'WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs' http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param _builtins.str path: Optional. Path to access on the HTTP server. Defaults to '/'.
         :param _builtins.int port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -6802,7 +6802,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet(dict):
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders']:
+    def http_headers(self) -> Optional[Sequence['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader']]:
         """
         Optional. Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -6827,45 +6827,25 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders(dict):
+class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 port: Optional[_builtins.int] = None,
+                 name: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: Required. The header field name
-        :param _builtins.int port: (Optional, Deprecated)
-               Required. The header field name
-               
-               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param _builtins.str value: Optional. The header field value
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         Required. The header field name
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
-    def port(self) -> Optional[_builtins.int]:
-        """
-        (Optional, Deprecated)
-        Required. The header field name
-
-        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
@@ -7089,11 +7069,11 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 http_headers: Optional['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders'] = None,
+                 http_headers: Optional[Sequence['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
                  path: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None):
         """
-        :param 'WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs' http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param _builtins.str path: Optional. Path to access on the HTTP server. Defaults to '/'.
         :param _builtins.int port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -7107,7 +7087,7 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet(dict):
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders']:
+    def http_headers(self) -> Optional[Sequence['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader']]:
         """
         Optional. Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -7132,45 +7112,25 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders(dict):
+class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 port: Optional[_builtins.int] = None,
+                 name: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: Required. The header field name
-        :param _builtins.int port: (Optional, Deprecated)
-               Required. The header field name
-               
-               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param _builtins.str value: Optional. The header field value
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         Required. The header field name
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
-    def port(self) -> Optional[_builtins.int]:
-        """
-        (Optional, Deprecated)
-        Required. The header field name
-
-        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
@@ -12615,15 +12575,12 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGetResult(dict):
 class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
-                 port: _builtins.int,
                  value: _builtins.str):
         """
         :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
-        :param _builtins.int port: Required. The header field name
         :param _builtins.str value: Optional. The header field value
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
@@ -12633,14 +12590,6 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
         The name of the Cloud Run v2 Worker Pool.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Required. The header field name
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
@@ -12844,15 +12793,12 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGetResult(dict):
 class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
-                 port: _builtins.int,
                  value: _builtins.str):
         """
         :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
-        :param _builtins.int port: Required. The header field name
         :param _builtins.str value: Optional. The header field value
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
@@ -12862,14 +12808,6 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
         The name of the Cloud Run v2 Worker Pool.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Required. The header field name
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -11958,7 +11958,7 @@ type UptimeCheckConfigHttpCheckAuthInfo struct {
 	//
 	// > **Note:** One of `password` or `passwordWo` can only be set.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// The password write-only version.
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
 	Username string `pulumi:"username"`
@@ -11986,7 +11986,7 @@ type UptimeCheckConfigHttpCheckAuthInfoArgs struct {
 	//
 	// > **Note:** One of `password` or `passwordWo` can only be set.
 	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
-	// The password write-only version.
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -12085,7 +12085,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWo() pulumi.StringPtrO
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
-// The password write-only version.
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
 }
@@ -12145,7 +12145,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) PasswordWo() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The password write-only version.
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) PasswordWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
 		if v == nil {

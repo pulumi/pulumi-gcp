@@ -150,15 +150,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// User input run-as service account, if empty, will bring up a new default service account.
-        /// 
-        /// &gt; **Warning:** `RunAsServiceAccount` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Output("runAsServiceAccount")]
-        public Output<string?> RunAsServiceAccount { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Client resource with the given unique name, arguments, and options.
@@ -242,15 +233,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// User input run-as service account, if empty, will bring up a new default service account.
-        /// 
-        /// &gt; **Warning:** `RunAsServiceAccount` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Input("runAsServiceAccount")]
-        public Input<string>? RunAsServiceAccount { get; set; }
-
         public ClientArgs()
         {
         }
@@ -295,15 +277,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// User input run-as service account, if empty, will bring up a new default service account.
-        /// 
-        /// &gt; **Warning:** `RunAsServiceAccount` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Input("runAsServiceAccount")]
-        public Input<string>? RunAsServiceAccount { get; set; }
 
         public ClientState()
         {

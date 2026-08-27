@@ -28,13 +28,6 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionPubSub? PubSub;
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Publish findings of a DlpJob to Data Catalog.
-        /// 
-        /// &gt; **Warning:** `PublishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `PublishFindingsToDataplexCatalog` instead.
-        /// </summary>
-        public readonly Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? PublishFindingsToCloudDataCatalog;
-        /// <summary>
         /// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog? PublishFindingsToDataplexCatalog;
@@ -60,8 +53,6 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionJobTriggerInspectJobActionPubSub? pubSub,
 
-            Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? publishFindingsToCloudDataCatalog,
-
             Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog? publishFindingsToDataplexCatalog,
 
             Outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc? publishSummaryToCscc,
@@ -73,7 +64,6 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             Deidentify = deidentify;
             JobNotificationEmails = jobNotificationEmails;
             PubSub = pubSub;
-            PublishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             PublishFindingsToDataplexCatalog = publishFindingsToDataplexCatalog;
             PublishSummaryToCscc = publishSummaryToCscc;
             PublishToStackdriver = publishToStackdriver;

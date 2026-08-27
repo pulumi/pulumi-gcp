@@ -289,7 +289,7 @@ export class Dataset extends pulumi.CustomResource {
      * - 'und:ci': undetermined locale, case insensitive.
      * - '': empty string. Default to case-sensitive behavior.
      */
-    declare public readonly defaultCollation: pulumi.Output<string>;
+    declare public readonly defaultCollation: pulumi.Output<string | undefined>;
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to

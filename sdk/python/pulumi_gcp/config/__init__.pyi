@@ -297,8 +297,6 @@ memorystoreCustomEndpoint: Optional[str]
 
 migrationCenterCustomEndpoint: Optional[str]
 
-mlEngineCustomEndpoint: Optional[str]
-
 modelArmorCustomEndpoint: Optional[str]
 
 modelArmorGlobalCustomEndpoint: Optional[str]
@@ -316,8 +314,6 @@ networkManagementCustomEndpoint: Optional[str]
 networkSecurityCustomEndpoint: Optional[str]
 
 networkServicesCustomEndpoint: Optional[str]
-
-notebooksCustomEndpoint: Optional[str]
 
 observabilityCustomEndpoint: Optional[str]
 

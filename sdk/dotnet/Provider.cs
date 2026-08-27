@@ -420,9 +420,6 @@ namespace Pulumi.Gcp
         [Output("migrationCenterCustomEndpoint")]
         public Output<string?> MigrationCenterCustomEndpoint { get; private set; } = null!;
 
-        [Output("mlEngineCustomEndpoint")]
-        public Output<string?> MlEngineCustomEndpoint { get; private set; } = null!;
-
         [Output("modelArmorCustomEndpoint")]
         public Output<string?> ModelArmorCustomEndpoint { get; private set; } = null!;
 
@@ -449,9 +446,6 @@ namespace Pulumi.Gcp
 
         [Output("networkServicesCustomEndpoint")]
         public Output<string?> NetworkServicesCustomEndpoint { get; private set; } = null!;
-
-        [Output("notebooksCustomEndpoint")]
-        public Output<string?> NotebooksCustomEndpoint { get; private set; } = null!;
 
         [Output("observabilityCustomEndpoint")]
         public Output<string?> ObservabilityCustomEndpoint { get; private set; } = null!;
@@ -1122,9 +1116,6 @@ namespace Pulumi.Gcp
         [Input("migrationCenterCustomEndpoint")]
         public Input<string>? MigrationCenterCustomEndpoint { get; set; }
 
-        [Input("mlEngineCustomEndpoint")]
-        public Input<string>? MlEngineCustomEndpoint { get; set; }
-
         [Input("modelArmorCustomEndpoint")]
         public Input<string>? ModelArmorCustomEndpoint { get; set; }
 
@@ -1151,9 +1142,6 @@ namespace Pulumi.Gcp
 
         [Input("networkServicesCustomEndpoint")]
         public Input<string>? NetworkServicesCustomEndpoint { get; set; }
-
-        [Input("notebooksCustomEndpoint")]
-        public Input<string>? NotebooksCustomEndpoint { get; set; }
 
         [Input("observabilityCustomEndpoint")]
         public Input<string>? ObservabilityCustomEndpoint { get; set; }

@@ -64,7 +64,6 @@ export interface GetWorkerPoolResult {
     readonly conditions: outputs.cloudrunv2.GetWorkerPoolCondition[];
     readonly createTime: string;
     readonly creator: string;
-    readonly customAudiences: string[];
     readonly deleteTime: string;
     readonly deletionPolicy: string;
     readonly deletionProtection: boolean;

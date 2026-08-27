@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -4749,7 +4749,7 @@ type GetClusterNodePool struct {
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
 	Name string `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix string `pulumi:"namePrefix"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfigs []GetClusterNodePoolNetworkConfig `pulumi:"networkConfigs"`
@@ -4801,7 +4801,7 @@ type GetClusterNodePoolArgs struct {
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix pulumi.StringInput `pulumi:"namePrefix"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfigs GetClusterNodePoolNetworkConfigArrayInput `pulumi:"networkConfigs"`
@@ -4919,7 +4919,7 @@ func (o GetClusterNodePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 func (o GetClusterNodePoolOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePool) string { return v.NamePrefix }).(pulumi.StringOutput)
 }

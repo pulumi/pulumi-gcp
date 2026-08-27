@@ -195,7 +195,14 @@ export class NodePool extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
+     * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+     * Prefixes with lengths longer than 14 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     *
+     * Resulting name for a `namePrefix` <= 14 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 15 - 31 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
     declare public readonly namePrefix: pulumi.Output<string>;
     /**
@@ -409,7 +416,14 @@ export interface NodePoolState {
     name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
+     * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+     * Prefixes with lengths longer than 14 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     *
+     * Resulting name for a `namePrefix` <= 14 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 15 - 31 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**
@@ -544,7 +558,14 @@ export interface NodePoolArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
+     * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+     * Prefixes with lengths longer than 14 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     *
+     * Resulting name for a `namePrefix` <= 14 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 15 - 31 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**

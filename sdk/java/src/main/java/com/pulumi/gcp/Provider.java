@@ -827,12 +827,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> migrationCenterCustomEndpoint() {
         return Codegen.optional(this.migrationCenterCustomEndpoint);
     }
-    @Export(name="mlEngineCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mlEngineCustomEndpoint;
-
-    public Output<Optional<String>> mlEngineCustomEndpoint() {
-        return Codegen.optional(this.mlEngineCustomEndpoint);
-    }
     @Export(name="modelArmorCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modelArmorCustomEndpoint;
 
@@ -886,12 +880,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> networkServicesCustomEndpoint() {
         return Codegen.optional(this.networkServicesCustomEndpoint);
-    }
-    @Export(name="notebooksCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> notebooksCustomEndpoint;
-
-    public Output<Optional<String>> notebooksCustomEndpoint() {
-        return Codegen.optional(this.notebooksCustomEndpoint);
     }
     @Export(name="observabilityCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> observabilityCustomEndpoint;

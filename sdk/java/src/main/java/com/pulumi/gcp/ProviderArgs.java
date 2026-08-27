@@ -1001,13 +1001,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.migrationCenterCustomEndpoint);
     }
 
-    @Import(name="mlEngineCustomEndpoint")
-    private @Nullable Output<String> mlEngineCustomEndpoint;
-
-    public Optional<Output<String>> mlEngineCustomEndpoint() {
-        return Optional.ofNullable(this.mlEngineCustomEndpoint);
-    }
-
     @Import(name="modelArmorCustomEndpoint")
     private @Nullable Output<String> modelArmorCustomEndpoint;
 
@@ -1069,13 +1062,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> networkServicesCustomEndpoint() {
         return Optional.ofNullable(this.networkServicesCustomEndpoint);
-    }
-
-    @Import(name="notebooksCustomEndpoint")
-    private @Nullable Output<String> notebooksCustomEndpoint;
-
-    public Optional<Output<String>> notebooksCustomEndpoint() {
-        return Optional.ofNullable(this.notebooksCustomEndpoint);
     }
 
     @Import(name="observabilityCustomEndpoint")
@@ -1697,7 +1683,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.memcacheCustomEndpoint = $.memcacheCustomEndpoint;
         this.memorystoreCustomEndpoint = $.memorystoreCustomEndpoint;
         this.migrationCenterCustomEndpoint = $.migrationCenterCustomEndpoint;
-        this.mlEngineCustomEndpoint = $.mlEngineCustomEndpoint;
         this.modelArmorCustomEndpoint = $.modelArmorCustomEndpoint;
         this.modelArmorGlobalCustomEndpoint = $.modelArmorGlobalCustomEndpoint;
         this.monitoringCustomEndpoint = $.monitoringCustomEndpoint;
@@ -1707,7 +1692,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.networkManagementCustomEndpoint = $.networkManagementCustomEndpoint;
         this.networkSecurityCustomEndpoint = $.networkSecurityCustomEndpoint;
         this.networkServicesCustomEndpoint = $.networkServicesCustomEndpoint;
-        this.notebooksCustomEndpoint = $.notebooksCustomEndpoint;
         this.observabilityCustomEndpoint = $.observabilityCustomEndpoint;
         this.oracleDatabaseCustomEndpoint = $.oracleDatabaseCustomEndpoint;
         this.orgPolicyCustomEndpoint = $.orgPolicyCustomEndpoint;
@@ -3060,15 +3044,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return migrationCenterCustomEndpoint(Output.of(migrationCenterCustomEndpoint));
         }
 
-        public Builder mlEngineCustomEndpoint(@Nullable Output<String> mlEngineCustomEndpoint) {
-            $.mlEngineCustomEndpoint = mlEngineCustomEndpoint;
-            return this;
-        }
-
-        public Builder mlEngineCustomEndpoint(String mlEngineCustomEndpoint) {
-            return mlEngineCustomEndpoint(Output.of(mlEngineCustomEndpoint));
-        }
-
         public Builder modelArmorCustomEndpoint(@Nullable Output<String> modelArmorCustomEndpoint) {
             $.modelArmorCustomEndpoint = modelArmorCustomEndpoint;
             return this;
@@ -3148,15 +3123,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder networkServicesCustomEndpoint(String networkServicesCustomEndpoint) {
             return networkServicesCustomEndpoint(Output.of(networkServicesCustomEndpoint));
-        }
-
-        public Builder notebooksCustomEndpoint(@Nullable Output<String> notebooksCustomEndpoint) {
-            $.notebooksCustomEndpoint = notebooksCustomEndpoint;
-            return this;
-        }
-
-        public Builder notebooksCustomEndpoint(String notebooksCustomEndpoint) {
-            return notebooksCustomEndpoint(Output.of(notebooksCustomEndpoint));
         }
 
         public Builder observabilityCustomEndpoint(@Nullable Output<String> observabilityCustomEndpoint) {

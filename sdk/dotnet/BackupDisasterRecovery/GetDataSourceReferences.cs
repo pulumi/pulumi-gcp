@@ -42,12 +42,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Input("project")]
         public string? Project { get; set; }
 
-        /// <summary>
-        /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `ResourceType` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Input("resourceType")]
-        public string? ResourceType { get; set; }
-
         public GetDataSourceReferencesArgs()
         {
         }
@@ -64,12 +58,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `ResourceType` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Input("resourceType")]
-        public Input<string>? ResourceType { get; set; }
 
         public GetDataSourceReferencesInvokeArgs()
         {
@@ -88,7 +76,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly string Id;
         public readonly string Location;
         public readonly string Project;
-        public readonly string? ResourceType;
 
         [OutputConstructor]
         private GetDataSourceReferencesResult(
@@ -98,15 +85,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string location,
 
-            string project,
-
-            string? resourceType)
+            string project)
         {
             DataSourceReferences = dataSourceReferences;
             Id = id;
             Location = location;
             Project = project;
-            ResourceType = resourceType;
         }
     }
 }

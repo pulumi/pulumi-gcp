@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53419,13 +53419,6 @@ type PreventionJobTriggerInspectJobAction struct {
 	// Publish a message into a given Pub/Sub topic when the job completes.
 	// Structure is documented below.
 	PubSub *PreventionJobTriggerInspectJobActionPubSub `pulumi:"pubSub"`
-	// (Optional, Deprecated)
-	// Publish findings of a DlpJob to Data Catalog.
-	//
-	// > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	//
-	// Deprecated: `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	PublishFindingsToCloudDataCatalog *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog `pulumi:"publishFindingsToCloudDataCatalog"`
 	// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
 	PublishFindingsToDataplexCatalog *PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog `pulumi:"publishFindingsToDataplexCatalog"`
 	// Publish the result summary of a DlpJob to the Cloud Security Command Center.
@@ -53457,13 +53450,6 @@ type PreventionJobTriggerInspectJobActionArgs struct {
 	// Publish a message into a given Pub/Sub topic when the job completes.
 	// Structure is documented below.
 	PubSub PreventionJobTriggerInspectJobActionPubSubPtrInput `pulumi:"pubSub"`
-	// (Optional, Deprecated)
-	// Publish findings of a DlpJob to Data Catalog.
-	//
-	// > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	//
-	// Deprecated: `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	PublishFindingsToCloudDataCatalog PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput `pulumi:"publishFindingsToCloudDataCatalog"`
 	// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
 	PublishFindingsToDataplexCatalog PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogPtrInput `pulumi:"publishFindingsToDataplexCatalog"`
 	// Publish the result summary of a DlpJob to the Cloud Security Command Center.
@@ -53547,18 +53533,6 @@ func (o PreventionJobTriggerInspectJobActionOutput) PubSub() PreventionJobTrigge
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionPubSub {
 		return v.PubSub
 	}).(PreventionJobTriggerInspectJobActionPubSubPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Publish findings of a DlpJob to Data Catalog.
-//
-// > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-//
-// Deprecated: `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-func (o PreventionJobTriggerInspectJobActionOutput) PublishFindingsToCloudDataCatalog() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
-		return v.PublishFindingsToCloudDataCatalog
-	}).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput)
 }
 
 // Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
@@ -54610,124 +54584,6 @@ func (o PreventionJobTriggerInspectJobActionPubSubPtrOutput) Topic() pulumi.Stri
 		}
 		return &v.Topic
 	}).(pulumi.StringPtrOutput)
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog struct {
-}
-
-// PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput is an input type that accepts PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs and PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput values.
-// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput` via:
-//
-//	PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{...}
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput interface {
-	pulumi.Input
-
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs struct {
-}
-
-func (PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return i.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(context.Background())
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput)
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return i.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Background())
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput).ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx)
-}
-
-// PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs, PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtr and PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput values.
-// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput` via:
-//
-//	        PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{...}
-//
-//	or:
-//
-//	        nil
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput interface {
-	pulumi.Input
-
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput
-}
-
-type preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs
-
-func PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtr(v *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput {
-	return (*preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType)(v)
-}
-
-func (*preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (i *preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return i.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Background())
-}
-
-func (i *preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput)
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput struct{ *pulumi.OutputState }
-
-func (PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Background())
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog) *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
-		return &v
-	}).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput)
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput struct{ *pulumi.OutputState }
-
-func (PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) Elem() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
-		if v != nil {
-			return *v
-		}
-		var ret PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog
-		return ret
-	}).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput)
 }
 
 type PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog struct {
@@ -67033,8 +66889,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishSummaryToCsccInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs{})
@@ -67824,8 +67678,6 @@ func init() {
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubPtrOutput{})
-	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput{})
-	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishSummaryToCsccOutput{})

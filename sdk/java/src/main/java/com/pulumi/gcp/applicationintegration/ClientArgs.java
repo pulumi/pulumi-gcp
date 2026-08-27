@@ -107,35 +107,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
-    /**
-     * (Optional, Deprecated)
-     * User input run-as service account, if empty, will bring up a new default service account.
-     * 
-     * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     * 
-     * @deprecated
-     * `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
-    @Import(name="runAsServiceAccount")
-    private @Nullable Output<String> runAsServiceAccount;
-
-    /**
-     * @return (Optional, Deprecated)
-     * User input run-as service account, if empty, will bring up a new default service account.
-     * 
-     * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     * 
-     * @deprecated
-     * `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
-    public Optional<Output<String>> runAsServiceAccount() {
-        return Optional.ofNullable(this.runAsServiceAccount);
-    }
-
     private ClientArgs() {}
 
     private ClientArgs(ClientArgs $) {
@@ -144,7 +115,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.location = $.location;
         this.project = $.project;
-        this.runAsServiceAccount = $.runAsServiceAccount;
     }
 
     public static Builder builder() {
@@ -282,41 +252,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param runAsServiceAccount (Optional, Deprecated)
-         * User input run-as service account, if empty, will bring up a new default service account.
-         * 
-         * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `runAsServiceAccount` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
-        public Builder runAsServiceAccount(@Nullable Output<String> runAsServiceAccount) {
-            $.runAsServiceAccount = runAsServiceAccount;
-            return this;
-        }
-
-        /**
-         * @param runAsServiceAccount (Optional, Deprecated)
-         * User input run-as service account, if empty, will bring up a new default service account.
-         * 
-         * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `runAsServiceAccount` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
-        public Builder runAsServiceAccount(String runAsServiceAccount) {
-            return runAsServiceAccount(Output.of(runAsServiceAccount));
         }
 
         public ClientArgs build() {

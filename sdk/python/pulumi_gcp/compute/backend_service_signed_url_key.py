@@ -275,11 +275,14 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             base_instance_name="webserver",
             zone="us-central1-f",
             target_size=1)
-        default = gcp.compute.HttpHealthCheck("default",
+        default = gcp.compute.HealthCheck("default",
             name="test",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         example_backend = gcp.compute.BackendService("example_backend",
             name="my-backend-service",
             description="Our company website",
@@ -363,11 +366,14 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             base_instance_name="webserver",
             zone="us-central1-f",
             target_size=1)
-        default = gcp.compute.HttpHealthCheck("default",
+        default = gcp.compute.HealthCheck("default",
             name="test",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         example_backend = gcp.compute.BackendService("example_backend",
             name="my-backend-service",
             description="Our company website",

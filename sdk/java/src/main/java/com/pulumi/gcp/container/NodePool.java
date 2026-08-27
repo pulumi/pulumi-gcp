@@ -394,7 +394,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
+     * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+     * Prefixes with lengths longer than 14 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     * 
+     * Resulting name for a `namePrefix` &lt;= 14 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 15 - 31 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     @Export(name="namePrefix", refs={String.class}, tree="[0]")
@@ -402,7 +409,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
+     * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+     * Prefixes with lengths longer than 14 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     * 
+     * Resulting name for a `namePrefix` &lt;= 14 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 15 - 31 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     public Output<String> namePrefix() {

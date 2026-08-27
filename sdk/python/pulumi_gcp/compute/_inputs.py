@@ -31451,13 +31451,6 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs:
 
 
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict(TypedDict):
-    attachment: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    """
-    (Output, Deprecated)
-    URLs of Attachments in the given zone, to the given
-    region, on Interconnects in the given facility and metro. Every
-    Attachment in the AG has such an entry.
-    """
     attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Attachments in the AttachmentGroup. Keys are arbitrary user-specified
@@ -31478,14 +31471,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict
 @pulumi.input_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
     def __init__(__self__, *,
-                 attachment: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachment: (Output, Deprecated)
-               URLs of Attachments in the given zone, to the given
-               region, on Interconnects in the given facility and metro. Every
-               Attachment in the AG has such an entry.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -31497,31 +31485,10 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
-        if attachment is not None:
-            warnings.warn("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""", DeprecationWarning)
-            pulumi.log.warn("""attachment is deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-        if attachment is not None:
-            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-    def attachment(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        (Output, Deprecated)
-        URLs of Attachments in the given zone, to the given
-        region, on Interconnects in the given facility and metro. Every
-        Attachment in the AG has such an entry.
-        """
-        return pulumi.get(self, "attachment")
-
-    @attachment.setter
-    def attachment(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter

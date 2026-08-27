@@ -4761,7 +4761,7 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
                **Note**: This property is write-only and will not be read from the API.
                
                > **Note:** One of `password` or `password_wo` can only be set.
-        :param _builtins.str password_wo_version: The password write-only version.
+        :param _builtins.str password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         pulumi.set(__self__, "username", username)
         if password is not None:
@@ -4805,7 +4805,7 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> Optional[_builtins.str]:
         """
-        The password write-only version.
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "password_wo_version")
 

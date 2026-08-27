@@ -27,7 +27,7 @@ class GetReservationResult:
     """
     A collection of values returned by getReservation.
     """
-    def __init__(__self__, block_names=None, commitment=None, creation_timestamp=None, delete_after_durations=None, delete_at_time=None, deletion_policy=None, description=None, enable_emergent_maintenance=None, id=None, kind=None, linked_commitments=None, name=None, params=None, project=None, reservation_block_count=None, reservation_sharing_policies=None, resource_statuses=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
+    def __init__(__self__, block_names=None, commitment=None, creation_timestamp=None, delete_after_durations=None, delete_at_time=None, deletion_policy=None, description=None, enable_emergent_maintenance=None, id=None, kind=None, linked_commitments=None, name=None, params=None, project=None, reservation_sharing_policies=None, resource_statuses=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
         if block_names and not isinstance(block_names, list):
             raise TypeError("Expected argument 'block_names' to be a list")
         pulumi.set(__self__, "block_names", block_names)
@@ -70,9 +70,6 @@ class GetReservationResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if reservation_block_count and not isinstance(reservation_block_count, int):
-            raise TypeError("Expected argument 'reservation_block_count' to be a int")
-        pulumi.set(__self__, "reservation_block_count", reservation_block_count)
         if reservation_sharing_policies and not isinstance(reservation_sharing_policies, list):
             raise TypeError("Expected argument 'reservation_sharing_policies' to be a list")
         pulumi.set(__self__, "reservation_sharing_policies", reservation_sharing_policies)
@@ -172,11 +169,6 @@ class GetReservationResult:
         return pulumi.get(self, "project")
 
     @_builtins.property
-    @pulumi.getter(name="reservationBlockCount")
-    def reservation_block_count(self) -> _builtins.int:
-        return pulumi.get(self, "reservation_block_count")
-
-    @_builtins.property
     @pulumi.getter(name="reservationSharingPolicies")
     def reservation_sharing_policies(self) -> Sequence['outputs.GetReservationReservationSharingPolicyResult']:
         return pulumi.get(self, "reservation_sharing_policies")
@@ -242,7 +234,6 @@ class AwaitableGetReservationResult(GetReservationResult):
             name=self.name,
             params=self.params,
             project=self.project,
-            reservation_block_count=self.reservation_block_count,
             reservation_sharing_policies=self.reservation_sharing_policies,
             resource_statuses=self.resource_statuses,
             satisfies_pzs=self.satisfies_pzs,
@@ -297,7 +288,6 @@ def get_reservation(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
-        reservation_block_count=pulumi.get(__ret__, 'reservation_block_count'),
         reservation_sharing_policies=pulumi.get(__ret__, 'reservation_sharing_policies'),
         resource_statuses=pulumi.get(__ret__, 'resource_statuses'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
@@ -349,7 +339,6 @@ def get_reservation_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),
-        reservation_block_count=pulumi.get(__response__, 'reservation_block_count'),
         reservation_sharing_policies=pulumi.get(__response__, 'reservation_sharing_policies'),
         resource_statuses=pulumi.get(__response__, 'resource_statuses'),
         satisfies_pzs=pulumi.get(__response__, 'satisfies_pzs'),
