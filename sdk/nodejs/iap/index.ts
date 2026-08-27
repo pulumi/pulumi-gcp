@@ -95,16 +95,6 @@ export type AppEngineVersionIamPolicy = import("./appEngineVersionIamPolicy").Ap
 export const AppEngineVersionIamPolicy: typeof import("./appEngineVersionIamPolicy").AppEngineVersionIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AppEngineVersionIamPolicy"], () => require("./appEngineVersionIamPolicy"));
 
-export { BrandArgs, BrandState } from "./brand";
-export type Brand = import("./brand").Brand;
-export const Brand: typeof import("./brand").Brand = null as any;
-utilities.lazyLoad(exports, ["Brand"], () => require("./brand"));
-
-export { ClientArgs, ClientState } from "./client";
-export type Client = import("./client").Client;
-export const Client: typeof import("./client").Client = null as any;
-utilities.lazyLoad(exports, ["Client"], () => require("./client"));
-
 export { GetAgentRegistryAgentIamPolicyArgs, GetAgentRegistryAgentIamPolicyResult, GetAgentRegistryAgentIamPolicyOutputArgs } from "./getAgentRegistryAgentIamPolicy";
 export const getAgentRegistryAgentIamPolicy: typeof import("./getAgentRegistryAgentIamPolicy").getAgentRegistryAgentIamPolicy = null as any;
 export const getAgentRegistryAgentIamPolicyOutput: typeof import("./getAgentRegistryAgentIamPolicy").getAgentRegistryAgentIamPolicyOutput = null as any;
@@ -134,11 +124,6 @@ export { GetAppEngineVersionIamPolicyArgs, GetAppEngineVersionIamPolicyResult, G
 export const getAppEngineVersionIamPolicy: typeof import("./getAppEngineVersionIamPolicy").getAppEngineVersionIamPolicy = null as any;
 export const getAppEngineVersionIamPolicyOutput: typeof import("./getAppEngineVersionIamPolicy").getAppEngineVersionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAppEngineVersionIamPolicy","getAppEngineVersionIamPolicyOutput"], () => require("./getAppEngineVersionIamPolicy"));
-
-export { GetClientArgs, GetClientResult, GetClientOutputArgs } from "./getClient";
-export const getClient: typeof import("./getClient").getClient = null as any;
-export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
-utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
 
 export { GetLocationWebIamPolicyArgs, GetLocationWebIamPolicyResult, GetLocationWebIamPolicyOutputArgs } from "./getLocationWebIamPolicy";
 export const getLocationWebIamPolicy: typeof import("./getLocationWebIamPolicy").getLocationWebIamPolicy = null as any;
@@ -431,10 +416,6 @@ const _module = {
                 return new AppEngineVersionIamMember(name, <any>undefined, { urn })
             case "gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy":
                 return new AppEngineVersionIamPolicy(name, <any>undefined, { urn })
-            case "gcp:iap/brand:Brand":
-                return new Brand(name, <any>undefined, { urn })
-            case "gcp:iap/client:Client":
-                return new Client(name, <any>undefined, { urn })
             case "gcp:iap/locationWebIamBinding:LocationWebIamBinding":
                 return new LocationWebIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/locationWebIamMember:LocationWebIamMember":
@@ -534,8 +515,6 @@ pulumi.runtime.registerResourceModule("gcp", "iap/appEngineServiceIamPolicy", _m
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamPolicy", _module)
-pulumi.runtime.registerResourceModule("gcp", "iap/brand", _module)
-pulumi.runtime.registerResourceModule("gcp", "iap/client", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/locationWebIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/locationWebIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/locationWebIamPolicy", _module)

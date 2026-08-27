@@ -697,6 +697,10 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The name of the ACL policy to attach to the cluster.
+     */
+    declare public readonly aclPolicy: pulumi.Output<string | undefined>;
+    /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -762,6 +766,10 @@ export class Cluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly gcsSource: pulumi.Output<outputs.redis.ClusterGcsSource | undefined>;
+    /**
+     * Optional. Whether the ACL policy is in sync with the cluster.
+     */
+    declare public /*out*/ readonly isAclPolicyInSync: pulumi.Output<boolean>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
@@ -917,6 +925,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["aclPolicy"] = state?.aclPolicy;
             resourceInputs["authorizationMode"] = state?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = state?.automatedBackupConfig;
             resourceInputs["availableMaintenanceVersions"] = state?.availableMaintenanceVersions;
@@ -929,6 +938,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["effectiveMaintenanceVersion"] = state?.effectiveMaintenanceVersion;
             resourceInputs["gcsSource"] = state?.gcsSource;
+            resourceInputs["isAclPolicyInSync"] = state?.isAclPolicyInSync;
             resourceInputs["kmsKey"] = state?.kmsKey;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
@@ -962,6 +972,7 @@ export class Cluster extends pulumi.CustomResource {
             if (args?.shardCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shardCount'");
             }
+            resourceInputs["aclPolicy"] = args?.aclPolicy;
             resourceInputs["authorizationMode"] = args?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
             resourceInputs["crossClusterReplicationConfig"] = args?.crossClusterReplicationConfig;
@@ -992,6 +1003,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["effectiveMaintenanceVersion"] = undefined /*out*/;
+            resourceInputs["isAclPolicyInSync"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["managedServerCas"] = undefined /*out*/;
             resourceInputs["preciseSizeGb"] = undefined /*out*/;
@@ -1014,6 +1026,10 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Optional. The name of the ACL policy to attach to the cluster.
+     */
+    aclPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
@@ -1080,6 +1096,10 @@ export interface ClusterState {
      * Structure is documented below.
      */
     gcsSource?: pulumi.Input<inputs.redis.ClusterGcsSource | undefined>;
+    /**
+     * Optional. Whether the ACL policy is in sync with the cluster.
+     */
+    isAclPolicyInSync?: pulumi.Input<boolean | undefined>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
@@ -1227,6 +1247,10 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Optional. The name of the ACL policy to attach to the cluster.
+     */
+    aclPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.

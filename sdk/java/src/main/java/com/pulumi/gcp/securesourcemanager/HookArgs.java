@@ -63,7 +63,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The events that trigger hook on.
-     * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+     * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
      * 
      */
     @Import(name="events")
@@ -71,7 +71,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The events that trigger hook on.
-     * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+     * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
      * 
      */
     public Optional<Output<List<String>>> events() {
@@ -278,7 +278,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param events The events that trigger hook on.
-         * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+         * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param events The events that trigger hook on.
-         * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+         * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param events The events that trigger hook on.
-         * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+         * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
          * 
          * @return builder
          * 

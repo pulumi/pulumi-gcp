@@ -291,7 +291,6 @@ class _ReservationState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  params: pulumi.Input[Optional['ReservationParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 reservation_block_count: pulumi.Input[Optional[_builtins.int]] = None,
                  reservation_sharing_policy: pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']] = None,
                  resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationResourceStatusArgs']]]] = None,
                  satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -334,8 +333,6 @@ class _ReservationState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
-               The number of reservation blocks associated with this reservation.
         :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusArgs']]] resource_statuses: Status information for Reservation resource.
@@ -378,8 +375,6 @@ class _ReservationState:
             pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if reservation_block_count is not None:
-            pulumi.set(__self__, "reservation_block_count", reservation_block_count)
         if reservation_sharing_policy is not None:
             pulumi.set(__self__, "reservation_sharing_policy", reservation_sharing_policy)
         if resource_statuses is not None:
@@ -571,19 +566,6 @@ class _ReservationState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reservationBlockCount")
-    def reservation_block_count(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        (Output)
-        The number of reservation blocks associated with this reservation.
-        """
-        return pulumi.get(self, "reservation_block_count")
-
-    @reservation_block_count.setter
-    def reservation_block_count(self, value: pulumi.Input[Optional[_builtins.int]]):
-        pulumi.set(self, "reservation_block_count", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationSharingPolicy")
@@ -1172,7 +1154,6 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["linked_commitments"] = None
-            __props__.__dict__["reservation_block_count"] = None
             __props__.__dict__["resource_statuses"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
@@ -1200,7 +1181,6 @@ class Reservation(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            reservation_block_count: pulumi.Input[Optional[_builtins.int]] = None,
             reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
             resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict']]]]] = None,
             satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1247,8 +1227,6 @@ class Reservation(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
-               The number of reservation blocks associated with this reservation.
         :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict']]]] resource_statuses: Status information for Reservation resource.
@@ -1282,7 +1260,6 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
-        __props__.__dict__["reservation_block_count"] = reservation_block_count
         __props__.__dict__["reservation_sharing_policy"] = reservation_sharing_policy
         __props__.__dict__["resource_statuses"] = resource_statuses
         __props__.__dict__["satisfies_pzs"] = satisfies_pzs
@@ -1414,15 +1391,6 @@ class Reservation(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    @_builtins.property
-    @pulumi.getter(name="reservationBlockCount")
-    def reservation_block_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        (Output)
-        The number of reservation blocks associated with this reservation.
-        """
-        return pulumi.get(self, "reservation_block_count")
 
     @_builtins.property
     @pulumi.getter(name="reservationSharingPolicy")

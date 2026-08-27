@@ -80,7 +80,14 @@ class NodePoolArgs:
         :param pulumi.Input[_builtins.str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning
-               with the specified prefix. Conflicts with `name`.
+               with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+               Prefixes with lengths longer than 14 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 14 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 15 - 31 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -302,7 +309,14 @@ class NodePoolArgs:
     def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creates a unique name for the node pool beginning
-        with the specified prefix. Conflicts with `name`.
+        with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+        Prefixes with lengths longer than 14 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 14 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 15 - 31 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -517,7 +531,14 @@ class _NodePoolState:
         :param pulumi.Input[_builtins.str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning
-               with the specified prefix. Conflicts with `name`.
+               with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+               Prefixes with lengths longer than 14 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 14 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 15 - 31 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -770,7 +791,14 @@ class _NodePoolState:
     def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creates a unique name for the node pool beginning
-        with the specified prefix. Conflicts with `name`.
+        with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+        Prefixes with lengths longer than 14 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 14 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 15 - 31 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -1074,7 +1102,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning
-               with the specified prefix. Conflicts with `name`.
+               with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+               Prefixes with lengths longer than 14 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 14 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 15 - 31 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -1342,7 +1377,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning
-               with the specified prefix. Conflicts with `name`.
+               with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+               Prefixes with lengths longer than 14 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 14 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 15 - 31 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -1528,7 +1570,14 @@ class NodePool(pulumi.CustomResource):
     def name_prefix(self) -> pulumi.Output[_builtins.str]:
         """
         Creates a unique name for the node pool beginning
-        with the specified prefix. Conflicts with `name`.
+        with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+        Prefixes with lengths longer than 14 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 14 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 15 - 31 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 

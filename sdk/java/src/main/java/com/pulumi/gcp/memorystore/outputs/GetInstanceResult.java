@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
+    private String aclPolicy;
     private String authorizationMode;
     private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
     private List<String> availableMaintenanceVersions;
@@ -56,6 +57,7 @@ public final class GetInstanceResult {
      */
     private String id;
     private String instanceId;
+    private Boolean isAclPolicyInSync;
     private String kmsKey;
     private Map<String,String> labels;
     private @Nullable String location;
@@ -85,6 +87,9 @@ public final class GetInstanceResult {
     private List<GetInstanceZoneDistributionConfig> zoneDistributionConfigs;
 
     private GetInstanceResult() {}
+    public String aclPolicy() {
+        return this.aclPolicy;
+    }
     public String authorizationMode() {
         return this.authorizationMode;
     }
@@ -145,6 +150,9 @@ public final class GetInstanceResult {
     }
     public String instanceId() {
         return this.instanceId;
+    }
+    public Boolean isAclPolicyInSync() {
+        return this.isAclPolicyInSync;
     }
     public String kmsKey() {
         return this.kmsKey;
@@ -237,6 +245,7 @@ public final class GetInstanceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String aclPolicy;
         private String authorizationMode;
         private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
         private List<String> availableMaintenanceVersions;
@@ -256,6 +265,7 @@ public final class GetInstanceResult {
         private List<GetInstanceGcsSource> gcsSources;
         private String id;
         private String instanceId;
+        private Boolean isAclPolicyInSync;
         private String kmsKey;
         private Map<String,String> labels;
         private @Nullable String location;
@@ -286,6 +296,7 @@ public final class GetInstanceResult {
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aclPolicy = defaults.aclPolicy;
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
     	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
@@ -305,6 +316,7 @@ public final class GetInstanceResult {
     	      this.gcsSources = defaults.gcsSources;
     	      this.id = defaults.id;
     	      this.instanceId = defaults.instanceId;
+    	      this.isAclPolicyInSync = defaults.isAclPolicyInSync;
     	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
@@ -334,6 +346,14 @@ public final class GetInstanceResult {
     	      this.zoneDistributionConfigs = defaults.zoneDistributionConfigs;
         }
 
+        @CustomType.Setter
+        public Builder aclPolicy(String aclPolicy) {
+            if (aclPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "aclPolicy");
+            }
+            this.aclPolicy = aclPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder authorizationMode(String authorizationMode) {
             if (authorizationMode == null) {
@@ -508,6 +528,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "instanceId");
             }
             this.instanceId = instanceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isAclPolicyInSync(Boolean isAclPolicyInSync) {
+            if (isAclPolicyInSync == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "isAclPolicyInSync");
+            }
+            this.isAclPolicyInSync = isAclPolicyInSync;
             return this;
         }
         @CustomType.Setter
@@ -754,6 +782,7 @@ public final class GetInstanceResult {
         }
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
+            _resultValue.aclPolicy = aclPolicy;
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.automatedBackupConfigs = automatedBackupConfigs;
             _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
@@ -773,6 +802,7 @@ public final class GetInstanceResult {
             _resultValue.gcsSources = gcsSources;
             _resultValue.id = id;
             _resultValue.instanceId = instanceId;
+            _resultValue.isAclPolicyInSync = isAclPolicyInSync;
             _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.location = location;

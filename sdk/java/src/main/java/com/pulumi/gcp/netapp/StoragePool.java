@@ -532,34 +532,6 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.replicaZone);
     }
     /**
-     * (Optional, Beta, Deprecated)
-     * The effective scale tier of the storage pool. If `scaleTier` is not
-     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-     * 
-     * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     * 
-     * @deprecated
-     * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     * 
-     */
-    @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
-    @Export(name="scaleTier", refs={String.class}, tree="[0]")
-    private Output<String> scaleTier;
-
-    /**
-     * @return (Optional, Beta, Deprecated)
-     * The effective scale tier of the storage pool. If `scaleTier` is not
-     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-     * 
-     * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     * 
-     */
-    public Output<String> scaleTier() {
-        return this.scaleTier;
-    }
-    /**
      * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
      * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
      * 

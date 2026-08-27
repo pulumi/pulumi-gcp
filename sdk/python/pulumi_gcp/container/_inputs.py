@@ -369,6 +369,8 @@ __all__ = [
     'ClusterNodeConfigGvnicArgsDict',
     'ClusterNodeConfigHostMaintenancePolicyArgs',
     'ClusterNodeConfigHostMaintenancePolicyArgsDict',
+    'ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs',
+    'ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict',
     'ClusterNodeConfigKubeletConfigArgs',
     'ClusterNodeConfigKubeletConfigArgsDict',
     'ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs',
@@ -543,6 +545,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigGvnicArgsDict',
     'ClusterNodePoolNodeConfigHostMaintenancePolicyArgs',
     'ClusterNodePoolNodeConfigHostMaintenancePolicyArgsDict',
+    'ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs',
+    'ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict',
     'ClusterNodePoolNodeConfigKubeletConfigArgs',
     'ClusterNodePoolNodeConfigKubeletConfigArgsDict',
     'ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs',
@@ -737,6 +741,8 @@ __all__ = [
     'NodePoolNodeConfigGvnicArgsDict',
     'NodePoolNodeConfigHostMaintenancePolicyArgs',
     'NodePoolNodeConfigHostMaintenancePolicyArgsDict',
+    'NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs',
+    'NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict',
     'NodePoolNodeConfigKubeletConfigArgs',
     'NodePoolNodeConfigKubeletConfigArgsDict',
     'NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs',
@@ -9981,7 +9987,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     host_maintenance_policy: NotRequired[pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyArgsDict']]]
     """
-    The maintenance policy for the hosts on which the GKE VMs run on.
+    The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
     """
     image_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -10230,7 +10236,7 @@ class ClusterNodeConfigArgs:
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
                Structure is documented below.
-        :param pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArgs'] host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on.
+        :param pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArgs'] host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         :param pulumi.Input[_builtins.str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: Node kubelet configs. Structure is documented below.
@@ -10622,7 +10628,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="hostMaintenancePolicy")
     def host_maintenance_policy(self) -> pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyArgs']]:
         """
-        The maintenance policy for the hosts on which the GKE VMs run on.
+        The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         """
         return pulumi.get(self, "host_maintenance_policy")
 
@@ -12291,29 +12297,115 @@ class ClusterNodeConfigGvnicArgs:
 class ClusterNodeConfigHostMaintenancePolicyArgsDict(TypedDict):
     maintenance_interval: pulumi.Input[_builtins.str]
     """
-    .
+    Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
+    """
+    opportunistic_maintenance_strategy: NotRequired[pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict']]]
+    """
+    Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
     """
 
 @pulumi.input_type
 class ClusterNodeConfigHostMaintenancePolicyArgs:
     def __init__(__self__, *,
-                 maintenance_interval: pulumi.Input[_builtins.str]):
+                 maintenance_interval: pulumi.Input[_builtins.str],
+                 opportunistic_maintenance_strategy: pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] maintenance_interval: .
+        :param pulumi.Input[_builtins.str] maintenance_interval: Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
+        :param pulumi.Input['ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs'] opportunistic_maintenance_strategy: Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
         """
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        if opportunistic_maintenance_strategy is not None:
+            pulumi.set(__self__, "opportunistic_maintenance_strategy", opportunistic_maintenance_strategy)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> pulumi.Input[_builtins.str]:
         """
-        .
+        Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
     @maintenance_interval.setter
     def maintenance_interval(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "maintenance_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="opportunisticMaintenanceStrategy")
+    def opportunistic_maintenance_strategy(self) -> pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']]:
+        """
+        Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+        """
+        return pulumi.get(self, "opportunistic_maintenance_strategy")
+
+    @opportunistic_maintenance_strategy.setter
+    def opportunistic_maintenance_strategy(self, value: pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']]):
+        pulumi.set(self, "opportunistic_maintenance_strategy", value)
+
+
+class ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict(TypedDict):
+    maintenance_availability_window: pulumi.Input[_builtins.str]
+    """
+    The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+    """
+    min_nodes_per_pool: pulumi.Input[_builtins.int]
+    """
+    The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+    """
+    node_idle_time_window: pulumi.Input[_builtins.str]
+    """
+    The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs:
+    def __init__(__self__, *,
+                 maintenance_availability_window: pulumi.Input[_builtins.str],
+                 min_nodes_per_pool: pulumi.Input[_builtins.int],
+                 node_idle_time_window: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] maintenance_availability_window: The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+        :param pulumi.Input[_builtins.int] min_nodes_per_pool: The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+        :param pulumi.Input[_builtins.str] node_idle_time_window: The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+        """
+        pulumi.set(__self__, "maintenance_availability_window", maintenance_availability_window)
+        pulumi.set(__self__, "min_nodes_per_pool", min_nodes_per_pool)
+        pulumi.set(__self__, "node_idle_time_window", node_idle_time_window)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceAvailabilityWindow")
+    def maintenance_availability_window(self) -> pulumi.Input[_builtins.str]:
+        """
+        The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+        """
+        return pulumi.get(self, "maintenance_availability_window")
+
+    @maintenance_availability_window.setter
+    def maintenance_availability_window(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "maintenance_availability_window", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodesPerPool")
+    def min_nodes_per_pool(self) -> pulumi.Input[_builtins.int]:
+        """
+        The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+        """
+        return pulumi.get(self, "min_nodes_per_pool")
+
+    @min_nodes_per_pool.setter
+    def min_nodes_per_pool(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min_nodes_per_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeIdleTimeWindow")
+    def node_idle_time_window(self) -> pulumi.Input[_builtins.str]:
+        """
+        The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+        """
+        return pulumi.get(self, "node_idle_time_window")
+
+    @node_idle_time_window.setter
+    def node_idle_time_window(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "node_idle_time_window", value)
 
 
 class ClusterNodeConfigKubeletConfigArgsDict(TypedDict):
@@ -14739,7 +14831,7 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     name_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+    Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
     """
     network_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigArgsDict']]]
     """
@@ -14830,7 +14922,7 @@ class ClusterNodePoolArgs:
                location.
                
                ***
-        :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         :param pulumi.Input['ClusterNodePoolNodeConfigArgs'] node_config: The node configuration of the pool. Structure is documented below.
@@ -15012,7 +15104,7 @@ class ClusterNodePoolArgs:
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         """
         return pulumi.get(self, "name_prefix")
 
@@ -16890,7 +16982,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     host_maintenance_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyArgsDict']]]
     """
-    The maintenance policy for the hosts on which the GKE VMs run on.
+    The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
     """
     image_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -17139,7 +17231,7 @@ class ClusterNodePoolNodeConfigArgs:
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
                Structure is documented below.
-        :param pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs'] host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on.
+        :param pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs'] host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         :param pulumi.Input[_builtins.str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: Node kubelet configs. Structure is documented below.
@@ -17531,7 +17623,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="hostMaintenancePolicy")
     def host_maintenance_policy(self) -> pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs']]:
         """
-        The maintenance policy for the hosts on which the GKE VMs run on.
+        The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         """
         return pulumi.get(self, "host_maintenance_policy")
 
@@ -19200,29 +19292,115 @@ class ClusterNodePoolNodeConfigGvnicArgs:
 class ClusterNodePoolNodeConfigHostMaintenancePolicyArgsDict(TypedDict):
     maintenance_interval: pulumi.Input[_builtins.str]
     """
-    .
+    Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
+    """
+    opportunistic_maintenance_strategy: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict']]]
+    """
+    Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
     """
 
 @pulumi.input_type
 class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs:
     def __init__(__self__, *,
-                 maintenance_interval: pulumi.Input[_builtins.str]):
+                 maintenance_interval: pulumi.Input[_builtins.str],
+                 opportunistic_maintenance_strategy: pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] maintenance_interval: .
+        :param pulumi.Input[_builtins.str] maintenance_interval: Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
+        :param pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs'] opportunistic_maintenance_strategy: Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
         """
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        if opportunistic_maintenance_strategy is not None:
+            pulumi.set(__self__, "opportunistic_maintenance_strategy", opportunistic_maintenance_strategy)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> pulumi.Input[_builtins.str]:
         """
-        .
+        Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
     @maintenance_interval.setter
     def maintenance_interval(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "maintenance_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="opportunisticMaintenanceStrategy")
+    def opportunistic_maintenance_strategy(self) -> pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']]:
+        """
+        Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+        """
+        return pulumi.get(self, "opportunistic_maintenance_strategy")
+
+    @opportunistic_maintenance_strategy.setter
+    def opportunistic_maintenance_strategy(self, value: pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']]):
+        pulumi.set(self, "opportunistic_maintenance_strategy", value)
+
+
+class ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict(TypedDict):
+    maintenance_availability_window: pulumi.Input[_builtins.str]
+    """
+    The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+    """
+    min_nodes_per_pool: pulumi.Input[_builtins.int]
+    """
+    The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+    """
+    node_idle_time_window: pulumi.Input[_builtins.str]
+    """
+    The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs:
+    def __init__(__self__, *,
+                 maintenance_availability_window: pulumi.Input[_builtins.str],
+                 min_nodes_per_pool: pulumi.Input[_builtins.int],
+                 node_idle_time_window: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] maintenance_availability_window: The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+        :param pulumi.Input[_builtins.int] min_nodes_per_pool: The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+        :param pulumi.Input[_builtins.str] node_idle_time_window: The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+        """
+        pulumi.set(__self__, "maintenance_availability_window", maintenance_availability_window)
+        pulumi.set(__self__, "min_nodes_per_pool", min_nodes_per_pool)
+        pulumi.set(__self__, "node_idle_time_window", node_idle_time_window)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceAvailabilityWindow")
+    def maintenance_availability_window(self) -> pulumi.Input[_builtins.str]:
+        """
+        The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+        """
+        return pulumi.get(self, "maintenance_availability_window")
+
+    @maintenance_availability_window.setter
+    def maintenance_availability_window(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "maintenance_availability_window", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodesPerPool")
+    def min_nodes_per_pool(self) -> pulumi.Input[_builtins.int]:
+        """
+        The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+        """
+        return pulumi.get(self, "min_nodes_per_pool")
+
+    @min_nodes_per_pool.setter
+    def min_nodes_per_pool(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min_nodes_per_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeIdleTimeWindow")
+    def node_idle_time_window(self) -> pulumi.Input[_builtins.str]:
+        """
+        The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+        """
+        return pulumi.get(self, "node_idle_time_window")
+
+    @node_idle_time_window.setter
+    def node_idle_time_window(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "node_idle_time_window", value)
 
 
 class ClusterNodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
@@ -26257,15 +26435,23 @@ class NodePoolNodeConfigHostMaintenancePolicyArgsDict(TypedDict):
     """
     .
     """
+    opportunistic_maintenance_strategy: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict']]]
+    """
+    Strategy that will trigger maintenance on behalf of the customer.
+    """
 
 @pulumi.input_type
 class NodePoolNodeConfigHostMaintenancePolicyArgs:
     def __init__(__self__, *,
-                 maintenance_interval: pulumi.Input[_builtins.str]):
+                 maintenance_interval: pulumi.Input[_builtins.str],
+                 opportunistic_maintenance_strategy: pulumi.Input[Optional['NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] maintenance_interval: .
+        :param pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs'] opportunistic_maintenance_strategy: Strategy that will trigger maintenance on behalf of the customer.
         """
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        if opportunistic_maintenance_strategy is not None:
+            pulumi.set(__self__, "opportunistic_maintenance_strategy", opportunistic_maintenance_strategy)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceInterval")
@@ -26278,6 +26464,84 @@ class NodePoolNodeConfigHostMaintenancePolicyArgs:
     @maintenance_interval.setter
     def maintenance_interval(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "maintenance_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="opportunisticMaintenanceStrategy")
+    def opportunistic_maintenance_strategy(self) -> pulumi.Input[Optional['NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']]:
+        """
+        Strategy that will trigger maintenance on behalf of the customer.
+        """
+        return pulumi.get(self, "opportunistic_maintenance_strategy")
+
+    @opportunistic_maintenance_strategy.setter
+    def opportunistic_maintenance_strategy(self, value: pulumi.Input[Optional['NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs']]):
+        pulumi.set(self, "opportunistic_maintenance_strategy", value)
+
+
+class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgsDict(TypedDict):
+    maintenance_availability_window: pulumi.Input[_builtins.str]
+    """
+    The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+    """
+    min_nodes_per_pool: pulumi.Input[_builtins.int]
+    """
+    The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+    """
+    node_idle_time_window: pulumi.Input[_builtins.str]
+    """
+    The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs:
+    def __init__(__self__, *,
+                 maintenance_availability_window: pulumi.Input[_builtins.str],
+                 min_nodes_per_pool: pulumi.Input[_builtins.int],
+                 node_idle_time_window: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] maintenance_availability_window: The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+        :param pulumi.Input[_builtins.int] min_nodes_per_pool: The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+        :param pulumi.Input[_builtins.str] node_idle_time_window: The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+        """
+        pulumi.set(__self__, "maintenance_availability_window", maintenance_availability_window)
+        pulumi.set(__self__, "min_nodes_per_pool", min_nodes_per_pool)
+        pulumi.set(__self__, "node_idle_time_window", node_idle_time_window)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceAvailabilityWindow")
+    def maintenance_availability_window(self) -> pulumi.Input[_builtins.str]:
+        """
+        The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+        """
+        return pulumi.get(self, "maintenance_availability_window")
+
+    @maintenance_availability_window.setter
+    def maintenance_availability_window(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "maintenance_availability_window", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodesPerPool")
+    def min_nodes_per_pool(self) -> pulumi.Input[_builtins.int]:
+        """
+        The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+        """
+        return pulumi.get(self, "min_nodes_per_pool")
+
+    @min_nodes_per_pool.setter
+    def min_nodes_per_pool(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min_nodes_per_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeIdleTimeWindow")
+    def node_idle_time_window(self) -> pulumi.Input[_builtins.str]:
+        """
+        The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+        """
+        return pulumi.get(self, "node_idle_time_window")
+
+    @node_idle_time_window.setter
+    def node_idle_time_window(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "node_idle_time_window", value)
 
 
 class NodePoolNodeConfigKubeletConfigArgsDict(TypedDict):

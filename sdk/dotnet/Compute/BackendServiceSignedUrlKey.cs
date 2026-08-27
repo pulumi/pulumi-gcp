@@ -74,12 +74,16 @@ namespace Pulumi.Gcp.Compute
     ///         TargetSize = 1,
     ///     });
     /// 
-    ///     var @default = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var @default = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "test",
-    ///         RequestPath = "/",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             RequestPath = "/",
+    ///         },
     ///     });
     /// 
     ///     var exampleBackend = new Gcp.Compute.BackendService("example_backend", new()

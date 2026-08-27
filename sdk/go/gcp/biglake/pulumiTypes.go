@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -6262,6 +6262,9 @@ type TableHiveOptionsStorageDescriptor struct {
 	LocationUri *string `pulumi:"locationUri"`
 	// The fully qualified Java class name of the output format.
 	OutputFormat *string `pulumi:"outputFormat"`
+	// Serializer and deserializer information.
+	// Structure is documented below.
+	SerdeInfo *TableHiveOptionsStorageDescriptorSerdeInfo `pulumi:"serdeInfo"`
 }
 
 // TableHiveOptionsStorageDescriptorInput is an input type that accepts TableHiveOptionsStorageDescriptorArgs and TableHiveOptionsStorageDescriptorOutput values.
@@ -6282,6 +6285,9 @@ type TableHiveOptionsStorageDescriptorArgs struct {
 	LocationUri pulumi.StringPtrInput `pulumi:"locationUri"`
 	// The fully qualified Java class name of the output format.
 	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Serializer and deserializer information.
+	// Structure is documented below.
+	SerdeInfo TableHiveOptionsStorageDescriptorSerdeInfoPtrInput `pulumi:"serdeInfo"`
 }
 
 func (TableHiveOptionsStorageDescriptorArgs) ElementType() reflect.Type {
@@ -6376,6 +6382,14 @@ func (o TableHiveOptionsStorageDescriptorOutput) OutputFormat() pulumi.StringPtr
 	return o.ApplyT(func(v TableHiveOptionsStorageDescriptor) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
 }
 
+// Serializer and deserializer information.
+// Structure is documented below.
+func (o TableHiveOptionsStorageDescriptorOutput) SerdeInfo() TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyT(func(v TableHiveOptionsStorageDescriptor) *TableHiveOptionsStorageDescriptorSerdeInfo {
+		return v.SerdeInfo
+	}).(TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
 type TableHiveOptionsStorageDescriptorPtrOutput struct{ *pulumi.OutputState }
 
 func (TableHiveOptionsStorageDescriptorPtrOutput) ElementType() reflect.Type {
@@ -6427,6 +6441,154 @@ func (o TableHiveOptionsStorageDescriptorPtrOutput) OutputFormat() pulumi.String
 			return nil
 		}
 		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Serializer and deserializer information.
+// Structure is documented below.
+func (o TableHiveOptionsStorageDescriptorPtrOutput) SerdeInfo() TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyT(func(v *TableHiveOptionsStorageDescriptor) *TableHiveOptionsStorageDescriptorSerdeInfo {
+		if v == nil {
+			return nil
+		}
+		return v.SerdeInfo
+	}).(TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
+type TableHiveOptionsStorageDescriptorSerdeInfo struct {
+	// The fully qualified Java class name of the serialization library.
+	SerializationLib *string `pulumi:"serializationLib"`
+}
+
+// TableHiveOptionsStorageDescriptorSerdeInfoInput is an input type that accepts TableHiveOptionsStorageDescriptorSerdeInfoArgs and TableHiveOptionsStorageDescriptorSerdeInfoOutput values.
+// You can construct a concrete instance of `TableHiveOptionsStorageDescriptorSerdeInfoInput` via:
+//
+//	TableHiveOptionsStorageDescriptorSerdeInfoArgs{...}
+type TableHiveOptionsStorageDescriptorSerdeInfoInput interface {
+	pulumi.Input
+
+	ToTableHiveOptionsStorageDescriptorSerdeInfoOutput() TableHiveOptionsStorageDescriptorSerdeInfoOutput
+	ToTableHiveOptionsStorageDescriptorSerdeInfoOutputWithContext(context.Context) TableHiveOptionsStorageDescriptorSerdeInfoOutput
+}
+
+type TableHiveOptionsStorageDescriptorSerdeInfoArgs struct {
+	// The fully qualified Java class name of the serialization library.
+	SerializationLib pulumi.StringPtrInput `pulumi:"serializationLib"`
+}
+
+func (TableHiveOptionsStorageDescriptorSerdeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableHiveOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (i TableHiveOptionsStorageDescriptorSerdeInfoArgs) ToTableHiveOptionsStorageDescriptorSerdeInfoOutput() TableHiveOptionsStorageDescriptorSerdeInfoOutput {
+	return i.ToTableHiveOptionsStorageDescriptorSerdeInfoOutputWithContext(context.Background())
+}
+
+func (i TableHiveOptionsStorageDescriptorSerdeInfoArgs) ToTableHiveOptionsStorageDescriptorSerdeInfoOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorSerdeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorSerdeInfoOutput)
+}
+
+func (i TableHiveOptionsStorageDescriptorSerdeInfoArgs) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutput() TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return i.ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i TableHiveOptionsStorageDescriptorSerdeInfoArgs) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorSerdeInfoOutput).ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx)
+}
+
+// TableHiveOptionsStorageDescriptorSerdeInfoPtrInput is an input type that accepts TableHiveOptionsStorageDescriptorSerdeInfoArgs, TableHiveOptionsStorageDescriptorSerdeInfoPtr and TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput values.
+// You can construct a concrete instance of `TableHiveOptionsStorageDescriptorSerdeInfoPtrInput` via:
+//
+//	        TableHiveOptionsStorageDescriptorSerdeInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableHiveOptionsStorageDescriptorSerdeInfoPtrInput interface {
+	pulumi.Input
+
+	ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutput() TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput
+	ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Context) TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput
+}
+
+type tableHiveOptionsStorageDescriptorSerdeInfoPtrType TableHiveOptionsStorageDescriptorSerdeInfoArgs
+
+func TableHiveOptionsStorageDescriptorSerdeInfoPtr(v *TableHiveOptionsStorageDescriptorSerdeInfoArgs) TableHiveOptionsStorageDescriptorSerdeInfoPtrInput {
+	return (*tableHiveOptionsStorageDescriptorSerdeInfoPtrType)(v)
+}
+
+func (*tableHiveOptionsStorageDescriptorSerdeInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableHiveOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (i *tableHiveOptionsStorageDescriptorSerdeInfoPtrType) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutput() TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return i.ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *tableHiveOptionsStorageDescriptorSerdeInfoPtrType) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
+type TableHiveOptionsStorageDescriptorSerdeInfoOutput struct{ *pulumi.OutputState }
+
+func (TableHiveOptionsStorageDescriptorSerdeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableHiveOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (o TableHiveOptionsStorageDescriptorSerdeInfoOutput) ToTableHiveOptionsStorageDescriptorSerdeInfoOutput() TableHiveOptionsStorageDescriptorSerdeInfoOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorSerdeInfoOutput) ToTableHiveOptionsStorageDescriptorSerdeInfoOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorSerdeInfoOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorSerdeInfoOutput) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutput() TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (o TableHiveOptionsStorageDescriptorSerdeInfoOutput) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableHiveOptionsStorageDescriptorSerdeInfo) *TableHiveOptionsStorageDescriptorSerdeInfo {
+		return &v
+	}).(TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
+// The fully qualified Java class name of the serialization library.
+func (o TableHiveOptionsStorageDescriptorSerdeInfoOutput) SerializationLib() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableHiveOptionsStorageDescriptorSerdeInfo) *string { return v.SerializationLib }).(pulumi.StringPtrOutput)
+}
+
+type TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableHiveOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (o TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutput() TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput) ToTableHiveOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput) Elem() TableHiveOptionsStorageDescriptorSerdeInfoOutput {
+	return o.ApplyT(func(v *TableHiveOptionsStorageDescriptorSerdeInfo) TableHiveOptionsStorageDescriptorSerdeInfo {
+		if v != nil {
+			return *v
+		}
+		var ret TableHiveOptionsStorageDescriptorSerdeInfo
+		return ret
+	}).(TableHiveOptionsStorageDescriptorSerdeInfoOutput)
+}
+
+// The fully qualified Java class name of the serialization library.
+func (o TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput) SerializationLib() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableHiveOptionsStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializationLib
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6511,6 +6673,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsPtrInput)(nil)).Elem(), TableHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorPtrInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorSerdeInfoInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorSerdeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorSerdeInfoPtrInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorSerdeInfoArgs{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsOutput{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HiveCatalogIamBindingConditionOutput{})
@@ -6591,4 +6755,6 @@ func init() {
 	pulumi.RegisterOutputType(TableHiveOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorPtrOutput{})
+	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorSerdeInfoOutput{})
+	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorSerdeInfoPtrOutput{})
 }

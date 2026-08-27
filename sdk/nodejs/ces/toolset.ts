@@ -603,6 +603,11 @@ export class Toolset extends pulumi.CustomResource {
      */
     declare public readonly app: pulumi.Output<string>;
     /**
+     * A toolset that generates tools from an Integration Connectors Connection.
+     * Structure is documented below.
+     */
+    declare public readonly connectorToolset: pulumi.Output<outputs.ces.ToolsetConnectorToolset | undefined>;
+    /**
      * Timestamp when the toolset was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -663,6 +668,12 @@ export class Toolset extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * The timeout for the toolset execution. If not set, the default timeout is
+     * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+     * toolsets.
+     */
+    declare public readonly timeout: pulumi.Output<string | undefined>;
+    /**
      * Configuration for tools behavior in fake mode.
      * Structure is documented below.
      */
@@ -692,6 +703,7 @@ export class Toolset extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ToolsetState | undefined;
             resourceInputs["app"] = state?.app;
+            resourceInputs["connectorToolset"] = state?.connectorToolset;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
@@ -703,6 +715,7 @@ export class Toolset extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["openApiToolset"] = state?.openApiToolset;
             resourceInputs["project"] = state?.project;
+            resourceInputs["timeout"] = state?.timeout;
             resourceInputs["toolFakeConfig"] = state?.toolFakeConfig;
             resourceInputs["toolsetId"] = state?.toolsetId;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -718,6 +731,7 @@ export class Toolset extends pulumi.CustomResource {
                 throw new Error("Missing required property 'toolsetId'");
             }
             resourceInputs["app"] = args?.app;
+            resourceInputs["connectorToolset"] = args?.connectorToolset;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
@@ -726,6 +740,7 @@ export class Toolset extends pulumi.CustomResource {
             resourceInputs["mcpToolset"] = args?.mcpToolset;
             resourceInputs["openApiToolset"] = args?.openApiToolset;
             resourceInputs["project"] = args?.project;
+            resourceInputs["timeout"] = args?.timeout;
             resourceInputs["toolFakeConfig"] = args?.toolFakeConfig;
             resourceInputs["toolsetId"] = args?.toolsetId;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -746,6 +761,11 @@ export interface ToolsetState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     app?: pulumi.Input<string | undefined>;
+    /**
+     * A toolset that generates tools from an Integration Connectors Connection.
+     * Structure is documented below.
+     */
+    connectorToolset?: pulumi.Input<inputs.ces.ToolsetConnectorToolset | undefined>;
     /**
      * Timestamp when the toolset was created.
      */
@@ -807,6 +827,12 @@ export interface ToolsetState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * The timeout for the toolset execution. If not set, the default timeout is
+     * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+     * toolsets.
+     */
+    timeout?: pulumi.Input<string | undefined>;
+    /**
      * Configuration for tools behavior in fake mode.
      * Structure is documented below.
      */
@@ -831,6 +857,11 @@ export interface ToolsetArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     app: pulumi.Input<string>;
+    /**
+     * A toolset that generates tools from an Integration Connectors Connection.
+     * Structure is documented below.
+     */
+    connectorToolset?: pulumi.Input<inputs.ces.ToolsetConnectorToolset | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -875,6 +906,12 @@ export interface ToolsetArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The timeout for the toolset execution. If not set, the default timeout is
+     * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+     * toolsets.
+     */
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * Configuration for tools behavior in fake mode.
      * Structure is documented below.

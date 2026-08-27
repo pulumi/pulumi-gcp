@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope":
+		r = &AiAgentAnomalyDetectionScope{}
 	case "gcp:vertex/aiCacheConfig:AiCacheConfig":
 		r = &AiCacheConfig{}
 	case "gcp:vertex/aiDataset:AiDataset":
@@ -105,8 +107,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiReasoningEngineIamMember{}
 	case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
 		r = &AiReasoningEngineIamPolicy{}
-	case "gcp:vertex/aiSchedule:AiSchedule":
-		r = &AiSchedule{}
 	case "gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine":
 		r = &AiSemanticGovernancePolicyEngine{}
 	case "gcp:vertex/aiTensorboard:AiTensorboard":
@@ -128,6 +128,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiAgentAnomalyDetectionScope",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiCacheConfig",
@@ -336,11 +341,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiReasoningEngineIamPolicy",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"vertex/aiSchedule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -415,6 +415,58 @@ import * as utilities from "../utilities";
  *                             managedTopicEnum: "USER_PREFERENCES",
  *                         },
  *                     }],
+ *                     generateMemoriesExamples: [{
+ *                         conversationSource: {
+ *                             events: [{
+ *                                 content: {
+ *                                     role: "user",
+ *                                     parts: [
+ *                                         {
+ *                                             text: "I like pepperoni pizza",
+ *                                         },
+ *                                         {
+ *                                             functionCall: {
+ *                                                 id: "fn-call-1",
+ *                                                 name: "order_pizza",
+ *                                                 args: JSON.stringify({
+ *                                                     type: "pepperoni",
+ *                                                 }),
+ *                                             },
+ *                                         },
+ *                                         {
+ *                                             functionResponse: {
+ *                                                 id: "fn-resp-1",
+ *                                                 name: "order_pizza",
+ *                                                 response: JSON.stringify({
+ *                                                     status: "ordered",
+ *                                                 }),
+ *                                             },
+ *                                         },
+ *                                         {
+ *                                             executableCode: {
+ *                                                 id: "exec-code-1",
+ *                                                 language: "PYTHON",
+ *                                                 code: "print('pizza')",
+ *                                             },
+ *                                         },
+ *                                         {
+ *                                             codeExecutionResult: {
+ *                                                 id: "exec-result-1",
+ *                                                 outcome: "OUTCOME_OK",
+ *                                                 output: "pizza",
+ *                                             },
+ *                                         },
+ *                                     ],
+ *                                 },
+ *                             }],
+ *                         },
+ *                         generatedMemories: [{
+ *                             fact: "User likes pepperoni pizza.",
+ *                             topics: [{
+ *                                 managedMemoryTopic: "USER_PREFERENCES",
+ *                             }],
+ *                         }],
+ *                     }],
  *                 },
  *                 {
  *                     scopeKeys: [

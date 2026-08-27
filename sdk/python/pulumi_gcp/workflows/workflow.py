@@ -19,6 +19,7 @@ __all__ = ['WorkflowArgs', 'Workflow']
 @pulumi.input_type
 class WorkflowArgs:
     def __init__(__self__, *,
+                 source_contents: pulumi.Input[_builtins.str],
                  call_log_level: pulumi.Input[Optional[_builtins.str]] = None,
                  crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -31,12 +32,13 @@ class WorkflowArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_contents: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_env_vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
 
+        :param pulumi.Input[_builtins.str] source_contents: Workflow code to be executed. The size limit is 128KB.
+               > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         :param pulumi.Input[_builtins.str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
                executions of this workflow. If both the workflow and the execution specify a logging level,
                the execution level takes precedence.
@@ -77,13 +79,12 @@ class WorkflowArgs:
                The {account} value can be the email address or the unique_id of the service account.
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
-        :param pulumi.Input[_builtins.str] source_contents: Workflow code to be executed. The size limit is 128KB.
-               > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
                the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         """
+        pulumi.set(__self__, "source_contents", source_contents)
         if call_log_level is not None:
             pulumi.set(__self__, "call_log_level", call_log_level)
         if crypto_key_name is not None:
@@ -108,12 +109,23 @@ class WorkflowArgs:
             pulumi.set(__self__, "region", region)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
-        if source_contents is not None:
-            pulumi.set(__self__, "source_contents", source_contents)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_env_vars is not None:
             pulumi.set(__self__, "user_env_vars", user_env_vars)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceContents")
+    def source_contents(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workflow code to be executed. The size limit is 128KB.
+        > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
+        """
+        return pulumi.get(self, "source_contents")
+
+    @source_contents.setter
+    def source_contents(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source_contents", value)
 
     @_builtins.property
     @pulumi.getter(name="callLogLevel")
@@ -286,19 +298,6 @@ class WorkflowArgs:
     @service_account.setter
     def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceContents")
-    def source_contents(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Workflow code to be executed. The size limit is 128KB.
-        > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-        """
-        return pulumi.get(self, "source_contents")
-
-    @source_contents.setter
-    def source_contents(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "source_contents", value)
 
     @_builtins.property
     @pulumi.getter
@@ -935,7 +934,7 @@ class Workflow(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[WorkflowArgs] = None,
+                 args: WorkflowArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Workflow program to be executed by Workflows.
@@ -1112,6 +1111,8 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["service_account"] = service_account
+            if source_contents is None and not opts.urn:
+                raise TypeError("Missing required property 'source_contents'")
             __props__.__dict__["source_contents"] = source_contents
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_env_vars"] = user_env_vars
@@ -1401,7 +1402,7 @@ class Workflow(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sourceContents")
-    def source_contents(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def source_contents(self) -> pulumi.Output[_builtins.str]:
         """
         Workflow code to be executed. The size limit is 128KB.
         > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.

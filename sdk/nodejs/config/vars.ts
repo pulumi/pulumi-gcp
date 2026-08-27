@@ -1137,14 +1137,6 @@ Object.defineProperty(exports, "migrationCenterCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const mlEngineCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "mlEngineCustomEndpoint", {
-    get() {
-        return __config.get("mlEngineCustomEndpoint");
-    },
-    enumerable: true,
-});
-
 export declare const modelArmorCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "modelArmorCustomEndpoint", {
     get() {
@@ -1213,14 +1205,6 @@ export declare const networkServicesCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "networkServicesCustomEndpoint", {
     get() {
         return __config.get("networkServicesCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const notebooksCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "notebooksCustomEndpoint", {
-    get() {
-        return __config.get("notebooksCustomEndpoint");
     },
     enumerable: true,
 });
@@ -1701,6 +1685,14 @@ export declare const vectorSearchCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "vectorSearchCustomEndpoint", {
     get() {
         return __config.get("vectorSearchCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const vertexAiAadCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "vertexAiAadCustomEndpoint", {
+    get() {
+        return __config.get("vertexAiAadCustomEndpoint");
     },
     enumerable: true,
 });

@@ -181,14 +181,14 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
      * 
      */
     @Import(name="namePrefix")
     private @Nullable Output<String> namePrefix;
 
     /**
-     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -633,7 +633,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param namePrefix Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         * @param namePrefix Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param namePrefix Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         * @param namePrefix Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
          * 
          * @return builder
          * 

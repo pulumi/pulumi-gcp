@@ -20,9 +20,25 @@ public final class BackendServiceIap {
     private Boolean enabled;
     /**
      * @return OAuth2 Client ID for IAP
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String oauth2ClientId;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client ID for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+     * 
+     */
+    private @Nullable String oauth2ClientIdWo;
+    /**
+     * @return Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String oauth2ClientIdWoVersion;
     /**
      * @return OAuth2 Client Secret for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -36,6 +52,21 @@ public final class BackendServiceIap {
      * 
      */
     private @Nullable String oauth2ClientSecretSha256;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client Secret for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+     * 
+     */
+    private @Nullable String oauth2ClientSecretWo;
+    /**
+     * @return Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String oauth2ClientSecretWoVersion;
 
     private BackendServiceIap() {}
     /**
@@ -47,10 +78,30 @@ public final class BackendServiceIap {
     }
     /**
      * @return OAuth2 Client ID for IAP
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> oauth2ClientId() {
         return Optional.ofNullable(this.oauth2ClientId);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client ID for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+     * 
+     */
+    public Optional<String> oauth2ClientIdWo() {
+        return Optional.ofNullable(this.oauth2ClientIdWo);
+    }
+    /**
+     * @return Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> oauth2ClientIdWoVersion() {
+        return Optional.ofNullable(this.oauth2ClientIdWoVersion);
     }
     /**
      * @return OAuth2 Client Secret for IAP
@@ -69,6 +120,25 @@ public final class BackendServiceIap {
     public Optional<String> oauth2ClientSecretSha256() {
         return Optional.ofNullable(this.oauth2ClientSecretSha256);
     }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client Secret for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+     * 
+     */
+    public Optional<String> oauth2ClientSecretWo() {
+        return Optional.ofNullable(this.oauth2ClientSecretWo);
+    }
+    /**
+     * @return Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> oauth2ClientSecretWoVersion() {
+        return Optional.ofNullable(this.oauth2ClientSecretWoVersion);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -81,15 +151,23 @@ public final class BackendServiceIap {
     public static final class Builder {
         private Boolean enabled;
         private @Nullable String oauth2ClientId;
+        private @Nullable String oauth2ClientIdWo;
+        private @Nullable String oauth2ClientIdWoVersion;
         private @Nullable String oauth2ClientSecret;
         private @Nullable String oauth2ClientSecretSha256;
+        private @Nullable String oauth2ClientSecretWo;
+        private @Nullable String oauth2ClientSecretWoVersion;
         public Builder() {}
         public Builder(BackendServiceIap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.oauth2ClientId = defaults.oauth2ClientId;
+    	      this.oauth2ClientIdWo = defaults.oauth2ClientIdWo;
+    	      this.oauth2ClientIdWoVersion = defaults.oauth2ClientIdWoVersion;
     	      this.oauth2ClientSecret = defaults.oauth2ClientSecret;
     	      this.oauth2ClientSecretSha256 = defaults.oauth2ClientSecretSha256;
+    	      this.oauth2ClientSecretWo = defaults.oauth2ClientSecretWo;
+    	      this.oauth2ClientSecretWoVersion = defaults.oauth2ClientSecretWoVersion;
         }
 
         @CustomType.Setter
@@ -107,6 +185,18 @@ public final class BackendServiceIap {
             return this;
         }
         @CustomType.Setter
+        public Builder oauth2ClientIdWo(@Nullable String oauth2ClientIdWo) {
+
+            this.oauth2ClientIdWo = oauth2ClientIdWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2ClientIdWoVersion(@Nullable String oauth2ClientIdWoVersion) {
+
+            this.oauth2ClientIdWoVersion = oauth2ClientIdWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder oauth2ClientSecret(@Nullable String oauth2ClientSecret) {
 
             this.oauth2ClientSecret = oauth2ClientSecret;
@@ -118,12 +208,28 @@ public final class BackendServiceIap {
             this.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
             return this;
         }
+        @CustomType.Setter
+        public Builder oauth2ClientSecretWo(@Nullable String oauth2ClientSecretWo) {
+
+            this.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2ClientSecretWoVersion(@Nullable String oauth2ClientSecretWoVersion) {
+
+            this.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
+            return this;
+        }
         public BackendServiceIap build() {
             final var _resultValue = new BackendServiceIap();
             _resultValue.enabled = enabled;
             _resultValue.oauth2ClientId = oauth2ClientId;
+            _resultValue.oauth2ClientIdWo = oauth2ClientIdWo;
+            _resultValue.oauth2ClientIdWoVersion = oauth2ClientIdWoVersion;
             _resultValue.oauth2ClientSecret = oauth2ClientSecret;
             _resultValue.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            _resultValue.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            _resultValue.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
             return _resultValue;
         }
     }

@@ -161,7 +161,6 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly memcacheCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly memorystoreCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly migrationCenterCustomEndpoint: pulumi.Output<string | undefined>;
-    declare public readonly mlEngineCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly modelArmorCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly modelArmorGlobalCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly monitoringCustomEndpoint: pulumi.Output<string | undefined>;
@@ -171,7 +170,6 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly networkManagementCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkSecurityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkServicesCustomEndpoint: pulumi.Output<string | undefined>;
-    declare public readonly notebooksCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly observabilityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly oracleDatabaseCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly orgPolicyCustomEndpoint: pulumi.Output<string | undefined>;
@@ -227,6 +225,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly transcoderCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly universeDomain: pulumi.Output<string | undefined>;
     declare public readonly vectorSearchCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly vertexAiAadCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vertexAiCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vmwareengineCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vpcAccessCustomEndpoint: pulumi.Output<string | undefined>;
@@ -387,7 +386,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["memcacheCustomEndpoint"] = args?.memcacheCustomEndpoint;
             resourceInputs["memorystoreCustomEndpoint"] = args?.memorystoreCustomEndpoint;
             resourceInputs["migrationCenterCustomEndpoint"] = args?.migrationCenterCustomEndpoint;
-            resourceInputs["mlEngineCustomEndpoint"] = args?.mlEngineCustomEndpoint;
             resourceInputs["modelArmorCustomEndpoint"] = args?.modelArmorCustomEndpoint;
             resourceInputs["modelArmorGlobalCustomEndpoint"] = args?.modelArmorGlobalCustomEndpoint;
             resourceInputs["monitoringCustomEndpoint"] = args?.monitoringCustomEndpoint;
@@ -397,7 +395,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["networkManagementCustomEndpoint"] = args?.networkManagementCustomEndpoint;
             resourceInputs["networkSecurityCustomEndpoint"] = args?.networkSecurityCustomEndpoint;
             resourceInputs["networkServicesCustomEndpoint"] = args?.networkServicesCustomEndpoint;
-            resourceInputs["notebooksCustomEndpoint"] = args?.notebooksCustomEndpoint;
             resourceInputs["observabilityCustomEndpoint"] = args?.observabilityCustomEndpoint;
             resourceInputs["oracleDatabaseCustomEndpoint"] = args?.oracleDatabaseCustomEndpoint;
             resourceInputs["orgPolicyCustomEndpoint"] = args?.orgPolicyCustomEndpoint;
@@ -457,6 +454,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["universeDomain"] = args?.universeDomain;
             resourceInputs["userProjectOverride"] = pulumi.output(args?.userProjectOverride).apply(JSON.stringify);
             resourceInputs["vectorSearchCustomEndpoint"] = args?.vectorSearchCustomEndpoint;
+            resourceInputs["vertexAiAadCustomEndpoint"] = args?.vertexAiAadCustomEndpoint;
             resourceInputs["vertexAiCustomEndpoint"] = args?.vertexAiCustomEndpoint;
             resourceInputs["vmwareengineCustomEndpoint"] = args?.vmwareengineCustomEndpoint;
             resourceInputs["vpcAccessCustomEndpoint"] = args?.vpcAccessCustomEndpoint;
@@ -626,7 +624,6 @@ export interface ProviderArgs {
     memcacheCustomEndpoint?: pulumi.Input<string | undefined>;
     memorystoreCustomEndpoint?: pulumi.Input<string | undefined>;
     migrationCenterCustomEndpoint?: pulumi.Input<string | undefined>;
-    mlEngineCustomEndpoint?: pulumi.Input<string | undefined>;
     modelArmorCustomEndpoint?: pulumi.Input<string | undefined>;
     modelArmorGlobalCustomEndpoint?: pulumi.Input<string | undefined>;
     monitoringCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -636,7 +633,6 @@ export interface ProviderArgs {
     networkManagementCustomEndpoint?: pulumi.Input<string | undefined>;
     networkSecurityCustomEndpoint?: pulumi.Input<string | undefined>;
     networkServicesCustomEndpoint?: pulumi.Input<string | undefined>;
-    notebooksCustomEndpoint?: pulumi.Input<string | undefined>;
     observabilityCustomEndpoint?: pulumi.Input<string | undefined>;
     oracleDatabaseCustomEndpoint?: pulumi.Input<string | undefined>;
     orgPolicyCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -696,6 +692,7 @@ export interface ProviderArgs {
     universeDomain?: pulumi.Input<string | undefined>;
     userProjectOverride?: pulumi.Input<boolean | undefined>;
     vectorSearchCustomEndpoint?: pulumi.Input<string | undefined>;
+    vertexAiAadCustomEndpoint?: pulumi.Input<string | undefined>;
     vertexAiCustomEndpoint?: pulumi.Input<string | undefined>;
     vmwareengineCustomEndpoint?: pulumi.Input<string | undefined>;
     vpcAccessCustomEndpoint?: pulumi.Input<string | undefined>;

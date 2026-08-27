@@ -439,9 +439,6 @@ public final class Config {
     public Optional<String> migrationCenterCustomEndpoint() {
         return Codegen.stringProp("migrationCenterCustomEndpoint").config(config).get();
     }
-    public Optional<String> mlEngineCustomEndpoint() {
-        return Codegen.stringProp("mlEngineCustomEndpoint").config(config).get();
-    }
     public Optional<String> modelArmorCustomEndpoint() {
         return Codegen.stringProp("modelArmorCustomEndpoint").config(config).get();
     }
@@ -468,9 +465,6 @@ public final class Config {
     }
     public Optional<String> networkServicesCustomEndpoint() {
         return Codegen.stringProp("networkServicesCustomEndpoint").config(config).get();
-    }
-    public Optional<String> notebooksCustomEndpoint() {
-        return Codegen.stringProp("notebooksCustomEndpoint").config(config).get();
     }
     public Optional<String> observabilityCustomEndpoint() {
         return Codegen.stringProp("observabilityCustomEndpoint").config(config).get();
@@ -651,6 +645,9 @@ public final class Config {
     }
     public Optional<String> vectorSearchCustomEndpoint() {
         return Codegen.stringProp("vectorSearchCustomEndpoint").config(config).get();
+    }
+    public Optional<String> vertexAiAadCustomEndpoint() {
+        return Codegen.stringProp("vertexAiAadCustomEndpoint").config(config).get();
     }
     public Optional<String> vertexAiCustomEndpoint() {
         return Codegen.stringProp("vertexAiCustomEndpoint").config(config).get();

@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Backend Service Basic
@@ -38,18 +41,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "health-check",
-    ///         RequestPath = "/",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             RequestPath = "/",
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     /// });
@@ -89,18 +96,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "health-check",
-    ///         RequestPath = "/",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             RequestPath = "/",
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///         EnableCdn = true,
     ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
     ///         {
@@ -188,18 +199,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "health-check",
-    ///         RequestPath = "/",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             RequestPath = "/",
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///         EnableCdn = true,
     ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
     ///         {
@@ -224,18 +239,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "health-check",
-    ///         RequestPath = "/",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             RequestPath = "/",
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///         EnableCdn = true,
     ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
     ///         {
@@ -951,7 +970,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("iap")]
-        public Output<Outputs.BackendServiceIap> Iap { get; private set; } = null!;
+        public Output<Outputs.BackendServiceIap?> Iap { get; private set; } = null!;
 
         /// <summary>
         /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -965,7 +984,7 @@ namespace Pulumi.Gcp.Compute
         /// external load balancing. A backend service created for one type of
         /// load balancing cannot be used with the other. For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-        /// Default value is `EXTERNAL`.
+        /// Default value is `EXTERNAL_MANAGED`.
         /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
@@ -1430,7 +1449,7 @@ namespace Pulumi.Gcp.Compute
         /// external load balancing. A backend service created for one type of
         /// load balancing cannot be used with the other. For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-        /// Default value is `EXTERNAL`.
+        /// Default value is `EXTERNAL_MANAGED`.
         /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
@@ -1876,7 +1895,7 @@ namespace Pulumi.Gcp.Compute
         /// external load balancing. A backend service created for one type of
         /// load balancing cannot be used with the other. For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-        /// Default value is `EXTERNAL`.
+        /// Default value is `EXTERNAL_MANAGED`.
         /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]

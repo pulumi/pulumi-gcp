@@ -30,6 +30,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
+     * The name of the ACL policy to attach to the instance.
+     * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+     * 
+     */
+    @Import(name="aclPolicy")
+    private @Nullable Output<String> aclPolicy;
+
+    /**
+     * @return The name of the ACL policy to attach to the instance.
+     * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+     * 
+     */
+    public Optional<Output<String>> aclPolicy() {
+        return Optional.ofNullable(this.aclPolicy);
+    }
+
+    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH.
@@ -541,6 +558,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.aclPolicy = $.aclPolicy;
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
@@ -586,6 +604,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPolicy The name of the ACL policy to attach to the instance.
+         * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPolicy(@Nullable Output<String> aclPolicy) {
+            $.aclPolicy = aclPolicy;
+            return this;
+        }
+
+        /**
+         * @param aclPolicy The name of the ACL policy to attach to the instance.
+         * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPolicy(String aclPolicy) {
+            return aclPolicy(Output.of(aclPolicy));
         }
 
         /**

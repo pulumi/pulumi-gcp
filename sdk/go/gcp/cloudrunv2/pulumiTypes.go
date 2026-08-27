@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16299,7 +16299,7 @@ func (o WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) Service() pulumi.
 type WorkerPoolTemplateContainerLivenessProbeHttpGet struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders `pulumi:"httpHeaders"`
+	HttpHeaders []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -16320,7 +16320,7 @@ type WorkerPoolTemplateContainerLivenessProbeHttpGetInput interface {
 type WorkerPoolTemplateContainerLivenessProbeHttpGetArgs struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput `pulumi:"httpHeaders"`
+	HttpHeaders WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -16406,10 +16406,10 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToWorkerPoolTempl
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGet) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGet) []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -16448,13 +16448,13 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Elem() WorkerP
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
 		if v == nil {
 			return nil
 		}
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -16477,199 +16477,110 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders struct {
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader struct {
 	// Required. The header field name
-	Name *string `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port *int `pulumi:"port"`
+	Name string `pulumi:"name"`
 	// Optional. The header field value
 	Value *string `pulumi:"value"`
 }
 
-// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput` via:
+// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput` via:
 //
-//	WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{...}
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput interface {
+//	WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...}
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs struct {
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
 	// Required. The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
-	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
 }
 
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput)
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
 }
 
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput).ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx)
-}
-
-// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs, WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtr and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput` via:
+// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
 //
-//	        WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput interface {
+//	WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{ WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...} }
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
 }
 
-type workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput
 
-func WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtr(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput {
-	return (*workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType)(v)
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (*workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
 }
 
-func (i *workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
-func (i *workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput struct{ *pulumi.OutputState }
-
-func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
-}
-
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
-		return &v
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
-}
-
 // Required. The header field name
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Optional. The header field value
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput struct{ *pulumi.OutputState }
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
 
-func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Elem() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders
-		return ret
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput)
-}
-
-// Required. The header field name
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. The header field value
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
+		return vs[0].([]WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
 }
 
 type WorkerPoolTemplateContainerLivenessProbeTcpSocket struct {
@@ -17374,7 +17285,7 @@ func (o WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.S
 type WorkerPoolTemplateContainerStartupProbeHttpGet struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders `pulumi:"httpHeaders"`
+	HttpHeaders []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -17395,7 +17306,7 @@ type WorkerPoolTemplateContainerStartupProbeHttpGetInput interface {
 type WorkerPoolTemplateContainerStartupProbeHttpGetArgs struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput `pulumi:"httpHeaders"`
+	HttpHeaders WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -17481,10 +17392,10 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToWorkerPoolTempla
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGet) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGet) []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -17523,13 +17434,13 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Elem() WorkerPo
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
 		if v == nil {
 			return nil
 		}
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -17552,199 +17463,110 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Port() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders struct {
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader struct {
 	// Required. The header field name
-	Name *string `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port *int `pulumi:"port"`
+	Name string `pulumi:"name"`
 	// Optional. The header field value
 	Value *string `pulumi:"value"`
 }
 
-// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput` via:
+// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput` via:
 //
-//	WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{...}
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput interface {
+//	WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs struct {
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
 	// Required. The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
-	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
 }
 
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput)
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
 }
 
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput).ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx)
-}
-
-// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs, WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtr and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput` via:
+// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
 //
-//	        WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput interface {
+//	WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray{ WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
 }
 
-type workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput
 
-func WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtr(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput {
-	return (*workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType)(v)
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (*workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
 }
 
-func (i *workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
-func (i *workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput struct{ *pulumi.OutputState }
-
-func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
-}
-
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
-		return &v
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
-}
-
 // Required. The header field name
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Optional. The header field value
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput struct{ *pulumi.OutputState }
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
 
-func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Elem() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders
-		return ret
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput)
-}
-
-// Required. The header field name
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. The header field value
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
 }
 
 type WorkerPoolTemplateContainerStartupProbeTcpSocket struct {
@@ -31094,8 +30916,6 @@ func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput) Index(i p
 type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name string `pulumi:"name"`
-	// Required. The header field name
-	Port int `pulumi:"port"`
 	// Optional. The header field value
 	Value string `pulumi:"value"`
 }
@@ -31114,8 +30934,6 @@ type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface
 type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The header field name
-	Port pulumi.IntInput `pulumi:"port"`
 	// Optional. The header field value
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -31174,11 +30992,6 @@ func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGe
 // The name of the Cloud Run v2 Worker Pool.
 func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Required. The header field name
-func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Optional. The header field value
@@ -31783,8 +31596,6 @@ func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput) Index(i pu
 type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name string `pulumi:"name"`
-	// Required. The header field name
-	Port int `pulumi:"port"`
 	// Optional. The header field value
 	Value string `pulumi:"value"`
 }
@@ -31803,8 +31614,6 @@ type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput interface 
 type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The header field name
-	Port pulumi.IntInput `pulumi:"port"`
 	// Optional. The header field value
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -31863,11 +31672,6 @@ func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGet
 // The name of the Cloud Run v2 Worker Pool.
 func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Required. The header field name
-func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Optional. The header field value
@@ -33609,8 +33413,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeGrpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocketInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerResourcesInput)(nil)).Elem(), WorkerPoolTemplateContainerResourcesArgs{})
@@ -33621,8 +33425,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeGrpcPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeGrpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocketInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerVolumeMountInput)(nil)).Elem(), WorkerPoolTemplateContainerVolumeMountArgs{})
@@ -34057,8 +33861,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerResourcesOutput{})
@@ -34069,8 +33873,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerVolumeMountOutput{})

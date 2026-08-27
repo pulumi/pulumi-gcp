@@ -34,6 +34,7 @@ public final class BackendServiceIapArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * OAuth2 Client ID for IAP
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="oauth2ClientId")
@@ -41,10 +42,51 @@ public final class BackendServiceIapArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return OAuth2 Client ID for IAP
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> oauth2ClientId() {
         return Optional.ofNullable(this.oauth2ClientId);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client ID for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+     * 
+     */
+    @Import(name="oauth2ClientIdWo")
+    private @Nullable Output<String> oauth2ClientIdWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client ID for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> oauth2ClientIdWo() {
+        return Optional.ofNullable(this.oauth2ClientIdWo);
+    }
+
+    /**
+     * Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="oauth2ClientIdWoVersion")
+    private @Nullable Output<String> oauth2ClientIdWoVersion;
+
+    /**
+     * @return Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> oauth2ClientIdWoVersion() {
+        return Optional.ofNullable(this.oauth2ClientIdWoVersion);
     }
 
     /**
@@ -83,13 +125,57 @@ public final class BackendServiceIapArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.oauth2ClientSecretSha256);
     }
 
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client Secret for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+     * 
+     */
+    @Import(name="oauth2ClientSecretWo")
+    private @Nullable Output<String> oauth2ClientSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * OAuth2 Client Secret for IAP
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> oauth2ClientSecretWo() {
+        return Optional.ofNullable(this.oauth2ClientSecretWo);
+    }
+
+    /**
+     * Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="oauth2ClientSecretWoVersion")
+    private @Nullable Output<String> oauth2ClientSecretWoVersion;
+
+    /**
+     * @return Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> oauth2ClientSecretWoVersion() {
+        return Optional.ofNullable(this.oauth2ClientSecretWoVersion);
+    }
+
     private BackendServiceIapArgs() {}
 
     private BackendServiceIapArgs(BackendServiceIapArgs $) {
         this.enabled = $.enabled;
         this.oauth2ClientId = $.oauth2ClientId;
+        this.oauth2ClientIdWo = $.oauth2ClientIdWo;
+        this.oauth2ClientIdWoVersion = $.oauth2ClientIdWoVersion;
         this.oauth2ClientSecret = $.oauth2ClientSecret;
         this.oauth2ClientSecretSha256 = $.oauth2ClientSecretSha256;
+        this.oauth2ClientSecretWo = $.oauth2ClientSecretWo;
+        this.oauth2ClientSecretWoVersion = $.oauth2ClientSecretWoVersion;
     }
 
     public static Builder builder() {
@@ -133,6 +219,7 @@ public final class BackendServiceIapArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param oauth2ClientId OAuth2 Client ID for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -144,12 +231,65 @@ public final class BackendServiceIapArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param oauth2ClientId OAuth2 Client ID for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
         public Builder oauth2ClientId(String oauth2ClientId) {
             return oauth2ClientId(Output.of(oauth2ClientId));
+        }
+
+        /**
+         * @param oauth2ClientIdWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client ID for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientIdWo(@Nullable Output<String> oauth2ClientIdWo) {
+            $.oauth2ClientIdWo = oauth2ClientIdWo;
+            return this;
+        }
+
+        /**
+         * @param oauth2ClientIdWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client ID for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientIdWo(String oauth2ClientIdWo) {
+            return oauth2ClientIdWo(Output.of(oauth2ClientIdWo));
+        }
+
+        /**
+         * @param oauth2ClientIdWoVersion Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientIdWoVersion(@Nullable Output<String> oauth2ClientIdWoVersion) {
+            $.oauth2ClientIdWoVersion = oauth2ClientIdWoVersion;
+            return this;
+        }
+
+        /**
+         * @param oauth2ClientIdWoVersion Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientIdWoVersion(String oauth2ClientIdWoVersion) {
+            return oauth2ClientIdWoVersion(Output.of(oauth2ClientIdWoVersion));
         }
 
         /**
@@ -198,6 +338,58 @@ public final class BackendServiceIapArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder oauth2ClientSecretSha256(String oauth2ClientSecretSha256) {
             return oauth2ClientSecretSha256(Output.of(oauth2ClientSecretSha256));
+        }
+
+        /**
+         * @param oauth2ClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client Secret for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWo(@Nullable Output<String> oauth2ClientSecretWo) {
+            $.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            return this;
+        }
+
+        /**
+         * @param oauth2ClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client Secret for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWo(String oauth2ClientSecretWo) {
+            return oauth2ClientSecretWo(Output.of(oauth2ClientSecretWo));
+        }
+
+        /**
+         * @param oauth2ClientSecretWoVersion Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWoVersion(@Nullable Output<String> oauth2ClientSecretWoVersion) {
+            $.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
+            return this;
+        }
+
+        /**
+         * @param oauth2ClientSecretWoVersion Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWoVersion(String oauth2ClientSecretWoVersion) {
+            return oauth2ClientSecretWoVersion(Output.of(oauth2ClientSecretWoVersion));
         }
 
         public BackendServiceIapArgs build() {

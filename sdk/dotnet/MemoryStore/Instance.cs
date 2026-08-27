@@ -618,6 +618,13 @@ namespace Pulumi.Gcp.MemoryStore
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the ACL policy to attach to the instance.
+        /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+        /// </summary>
+        [Output("aclPolicy")]
+        public Output<string?> AclPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
         /// IAM_AUTH.
@@ -746,6 +753,12 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the ACL policy is in sync with the cluster.
+        /// </summary>
+        [Output("isAclPolicyInSync")]
+        public Output<bool> IsAclPolicyInSync { get; private set; } = null!;
 
         /// <summary>
         /// The KMS key used to encrypt the at-rest data of the cluster
@@ -1005,6 +1018,13 @@ namespace Pulumi.Gcp.MemoryStore
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the ACL policy to attach to the instance.
+        /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+        /// </summary>
+        [Input("aclPolicy")]
+        public Input<string>? AclPolicy { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
         /// IAM_AUTH.
@@ -1248,6 +1268,13 @@ namespace Pulumi.Gcp.MemoryStore
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the ACL policy to attach to the instance.
+        /// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+        /// </summary>
+        [Input("aclPolicy")]
+        public Input<string>? AclPolicy { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
         /// IAM_AUTH.
@@ -1424,6 +1451,12 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Whether the ACL policy is in sync with the cluster.
+        /// </summary>
+        [Input("isAclPolicyInSync")]
+        public Input<bool>? IsAclPolicyInSync { get; set; }
 
         /// <summary>
         /// The KMS key used to encrypt the at-rest data of the cluster

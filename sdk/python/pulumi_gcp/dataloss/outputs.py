@@ -342,7 +342,6 @@ __all__ = [
     'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable',
     'PreventionJobTriggerInspectJobActionJobNotificationEmails',
     'PreventionJobTriggerInspectJobActionPubSub',
-    'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog',
     'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog',
     'PreventionJobTriggerInspectJobActionPublishSummaryToCscc',
     'PreventionJobTriggerInspectJobActionPublishToStackdriver',
@@ -16802,8 +16801,6 @@ class PreventionJobTriggerInspectJobAction(dict):
             suggest = "job_notification_emails"
         elif key == "pubSub":
             suggest = "pub_sub"
-        elif key == "publishFindingsToCloudDataCatalog":
-            suggest = "publish_findings_to_cloud_data_catalog"
         elif key == "publishFindingsToDataplexCatalog":
             suggest = "publish_findings_to_dataplex_catalog"
         elif key == "publishSummaryToCscc":
@@ -16828,7 +16825,6 @@ class PreventionJobTriggerInspectJobAction(dict):
                  deidentify: Optional['outputs.PreventionJobTriggerInspectJobActionDeidentify'] = None,
                  job_notification_emails: Optional['outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails'] = None,
                  pub_sub: Optional['outputs.PreventionJobTriggerInspectJobActionPubSub'] = None,
-                 publish_findings_to_cloud_data_catalog: Optional['outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog'] = None,
                  publish_findings_to_dataplex_catalog: Optional['outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog'] = None,
                  publish_summary_to_cscc: Optional['outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc'] = None,
                  publish_to_stackdriver: Optional['outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver'] = None,
@@ -16839,10 +16835,6 @@ class PreventionJobTriggerInspectJobAction(dict):
         :param 'PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs' job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
         :param 'PreventionJobTriggerInspectJobActionPubSubArgs' pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs' publish_findings_to_cloud_data_catalog: (Optional, Deprecated)
-               Publish findings of a DlpJob to Data Catalog.
-               
-               > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
         :param 'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs' publish_findings_to_dataplex_catalog: Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
         :param 'PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs' publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
         :param 'PreventionJobTriggerInspectJobActionPublishToStackdriverArgs' publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/findingCount.
@@ -16855,8 +16847,6 @@ class PreventionJobTriggerInspectJobAction(dict):
             pulumi.set(__self__, "job_notification_emails", job_notification_emails)
         if pub_sub is not None:
             pulumi.set(__self__, "pub_sub", pub_sub)
-        if publish_findings_to_cloud_data_catalog is not None:
-            pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
         if publish_findings_to_dataplex_catalog is not None:
             pulumi.set(__self__, "publish_findings_to_dataplex_catalog", publish_findings_to_dataplex_catalog)
         if publish_summary_to_cscc is not None:
@@ -16891,18 +16881,6 @@ class PreventionJobTriggerInspectJobAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "pub_sub")
-
-    @_builtins.property
-    @pulumi.getter(name="publishFindingsToCloudDataCatalog")
-    @_utilities.deprecated("""`publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""")
-    def publish_findings_to_cloud_data_catalog(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog']:
-        """
-        (Optional, Deprecated)
-        Publish findings of a DlpJob to Data Catalog.
-
-        > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
-        """
-        return pulumi.get(self, "publish_findings_to_cloud_data_catalog")
 
     @_builtins.property
     @pulumi.getter(name="publishFindingsToDataplexCatalog")
@@ -17205,12 +17183,6 @@ class PreventionJobTriggerInspectJobActionPubSub(dict):
         Cloud Pub/Sub topic to send notifications to.
         """
         return pulumi.get(self, "topic")
-
-
-@pulumi.output_type
-class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog(dict):
-    def __init__(__self__):
-        pass
 
 
 @pulumi.output_type

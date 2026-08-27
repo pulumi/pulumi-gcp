@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.ces.ToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetState;
+import com.pulumi.gcp.ces.outputs.ToolsetConnectorToolset;
 import com.pulumi.gcp.ces.outputs.ToolsetMcpToolset;
 import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolset;
 import com.pulumi.gcp.ces.outputs.ToolsetToolFakeConfig;
@@ -924,6 +925,22 @@ public class Toolset extends com.pulumi.resources.CustomResource {
         return this.app;
     }
     /**
+     * A toolset that generates tools from an Integration Connectors Connection.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="connectorToolset", refs={ToolsetConnectorToolset.class}, tree="[0]")
+    private Output</* @Nullable */ ToolsetConnectorToolset> connectorToolset;
+
+    /**
+     * @return A toolset that generates tools from an Integration Connectors Connection.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ToolsetConnectorToolset>> connectorToolset() {
+        return Codegen.optional(this.connectorToolset);
+    }
+    /**
      * Timestamp when the toolset was created.
      * 
      */
@@ -1108,6 +1125,24 @@ public class Toolset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The timeout for the toolset execution. If not set, the default timeout is
+     * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+     * toolsets.
+     * 
+     */
+    @Export(name="timeout", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> timeout;
+
+    /**
+     * @return The timeout for the toolset execution. If not set, the default timeout is
+     * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+     * toolsets.
+     * 
+     */
+    public Output<Optional<String>> timeout() {
+        return Codegen.optional(this.timeout);
     }
     /**
      * Configuration for tools behavior in fake mode.

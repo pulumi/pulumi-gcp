@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.biglake.TableArgs;
  * import com.pulumi.gcp.biglake.inputs.TableHiveOptionsArgs;
  * import com.pulumi.gcp.biglake.inputs.TableHiveOptionsStorageDescriptorArgs;
+ * import com.pulumi.gcp.biglake.inputs.TableHiveOptionsStorageDescriptorSerdeInfoArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -113,6 +114,9 @@ import javax.annotation.Nullable;
  *                     }))
  *                     .inputFormat("org.apache.hadoop.mapred.SequenceFileInputFormat")
  *                     .outputFormat("org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat")
+ *                     .serdeInfo(TableHiveOptionsStorageDescriptorSerdeInfoArgs.builder()
+ *                         .serializationLib("org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe")
+ *                         .build())
  *                     .build())
  *                 .parameters(Map.ofEntries(
  *                     Map.entry("spark.sql.create.version", "3.1.3"),

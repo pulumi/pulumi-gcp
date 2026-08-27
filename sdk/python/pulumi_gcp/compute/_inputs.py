@@ -5480,6 +5480,20 @@ class BackendServiceIapArgsDict(TypedDict):
     oauth2_client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OAuth2 Client ID for IAP
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    oauth2_client_id_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    OAuth2 Client ID for IAP
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `oauth2_client_id` or `oauth2_client_id_wo` can only be set.
+    """
+    oauth2_client_id_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `oauth2_client_id_wo` write-only. Increment this value when an update to `oauth2_client_id_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
     oauth2_client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5492,30 +5506,70 @@ class BackendServiceIapArgsDict(TypedDict):
     OAuth2 Client Secret SHA-256 for IAP
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
+    oauth2_client_secret_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    OAuth2 Client Secret for IAP
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `oauth2_client_secret` or `oauth2_client_secret_wo` can only be set.
+    """
+    oauth2_client_secret_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `oauth2_client_secret_wo` write-only. Increment this value when an update to `oauth2_client_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
 
 @pulumi.input_type
 class BackendServiceIapArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  oauth2_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_id_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_id_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth2_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
-                 oauth2_client_secret_sha256: pulumi.Input[Optional[_builtins.str]] = None):
+                 oauth2_client_secret_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_secret_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests.
         :param pulumi.Input[_builtins.str] oauth2_client_id: OAuth2 Client ID for IAP
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] oauth2_client_id_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               OAuth2 Client ID for IAP
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `oauth2_client_id` or `oauth2_client_id_wo` can only be set.
+        :param pulumi.Input[_builtins.str] oauth2_client_id_wo_version: Triggers update of `oauth2_client_id_wo` write-only. Increment this value when an update to `oauth2_client_id_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] oauth2_client_secret: OAuth2 Client Secret for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] oauth2_client_secret_sha256: (Output)
                OAuth2 Client Secret SHA-256 for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] oauth2_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               OAuth2 Client Secret for IAP
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `oauth2_client_secret` or `oauth2_client_secret_wo` can only be set.
+        :param pulumi.Input[_builtins.str] oauth2_client_secret_wo_version: Triggers update of `oauth2_client_secret_wo` write-only. Increment this value when an update to `oauth2_client_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         pulumi.set(__self__, "enabled", enabled)
         if oauth2_client_id is not None:
             pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        if oauth2_client_id_wo is not None:
+            pulumi.set(__self__, "oauth2_client_id_wo", oauth2_client_id_wo)
+        if oauth2_client_id_wo_version is not None:
+            pulumi.set(__self__, "oauth2_client_id_wo_version", oauth2_client_id_wo_version)
         if oauth2_client_secret is not None:
             pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
         if oauth2_client_secret_sha256 is not None:
             pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
+        if oauth2_client_secret_wo is not None:
+            pulumi.set(__self__, "oauth2_client_secret_wo", oauth2_client_secret_wo)
+        if oauth2_client_secret_wo_version is not None:
+            pulumi.set(__self__, "oauth2_client_secret_wo_version", oauth2_client_secret_wo_version)
 
     @_builtins.property
     @pulumi.getter
@@ -5534,12 +5588,42 @@ class BackendServiceIapArgs:
     def oauth2_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OAuth2 Client ID for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "oauth2_client_id")
 
     @oauth2_client_id.setter
     def oauth2_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2ClientIdWo")
+    def oauth2_client_id_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        OAuth2 Client ID for IAP
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `oauth2_client_id` or `oauth2_client_id_wo` can only be set.
+        """
+        return pulumi.get(self, "oauth2_client_id_wo")
+
+    @oauth2_client_id_wo.setter
+    def oauth2_client_id_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oauth2_client_id_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2ClientIdWoVersion")
+    def oauth2_client_id_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `oauth2_client_id_wo` write-only. Increment this value when an update to `oauth2_client_id_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "oauth2_client_id_wo_version")
+
+    @oauth2_client_id_wo_version.setter
+    def oauth2_client_id_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oauth2_client_id_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientSecret")
@@ -5567,6 +5651,35 @@ class BackendServiceIapArgs:
     @oauth2_client_secret_sha256.setter
     def oauth2_client_secret_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_client_secret_sha256", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2ClientSecretWo")
+    def oauth2_client_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        OAuth2 Client Secret for IAP
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `oauth2_client_secret` or `oauth2_client_secret_wo` can only be set.
+        """
+        return pulumi.get(self, "oauth2_client_secret_wo")
+
+    @oauth2_client_secret_wo.setter
+    def oauth2_client_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oauth2_client_secret_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2ClientSecretWoVersion")
+    def oauth2_client_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `oauth2_client_secret_wo` write-only. Increment this value when an update to `oauth2_client_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "oauth2_client_secret_wo_version")
+
+    @oauth2_client_secret_wo_version.setter
+    def oauth2_client_secret_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oauth2_client_secret_wo_version", value)
 
 
 class BackendServiceLocalityLbPolicyArgsDict(TypedDict):
@@ -31338,13 +31451,6 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs:
 
 
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict(TypedDict):
-    attachment: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    """
-    (Output, Deprecated)
-    URLs of Attachments in the given zone, to the given
-    region, on Interconnects in the given facility and metro. Every
-    Attachment in the AG has such an entry.
-    """
     attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Attachments in the AttachmentGroup. Keys are arbitrary user-specified
@@ -31365,14 +31471,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict
 @pulumi.input_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
     def __init__(__self__, *,
-                 attachment: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachment: (Output, Deprecated)
-               URLs of Attachments in the given zone, to the given
-               region, on Interconnects in the given facility and metro. Every
-               Attachment in the AG has such an entry.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -31384,31 +31485,10 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
-        if attachment is not None:
-            warnings.warn("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""", DeprecationWarning)
-            pulumi.log.warn("""attachment is deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-        if attachment is not None:
-            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-    def attachment(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        (Output, Deprecated)
-        URLs of Attachments in the given zone, to the given
-        region, on Interconnects in the given facility and metro. Every
-        Attachment in the AG has such an entry.
-        """
-        return pulumi.get(self, "attachment")
-
-    @attachment.setter
-    def attachment(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter

@@ -804,6 +804,13 @@ namespace Pulumi.Gcp.Ces
         public Output<string> App { get; private set; } = null!;
 
         /// <summary>
+        /// A toolset that generates tools from an Integration Connectors Connection.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("connectorToolset")]
+        public Output<Outputs.ToolsetConnectorToolset?> ConnectorToolset { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the toolset was created.
         /// </summary>
         [Output("createTime")]
@@ -886,6 +893,14 @@ namespace Pulumi.Gcp.Ces
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The timeout for the toolset execution. If not set, the default timeout is
+        /// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+        /// toolsets.
+        /// </summary>
+        [Output("timeout")]
+        public Output<string?> Timeout { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for tools behavior in fake mode.
         /// Structure is documented below.
         /// </summary>
@@ -959,6 +974,13 @@ namespace Pulumi.Gcp.Ces
         public Input<string> App { get; set; } = null!;
 
         /// <summary>
+        /// A toolset that generates tools from an Integration Connectors Connection.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectorToolset")]
+        public Input<Inputs.ToolsetConnectorToolsetArgs>? ConnectorToolset { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1019,6 +1041,14 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The timeout for the toolset execution. If not set, the default timeout is
+        /// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+        /// toolsets.
+        /// </summary>
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
+
+        /// <summary>
         /// Configuration for tools behavior in fake mode.
         /// Structure is documented below.
         /// </summary>
@@ -1046,6 +1076,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("app")]
         public Input<string>? App { get; set; }
+
+        /// <summary>
+        /// A toolset that generates tools from an Integration Connectors Connection.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectorToolset")]
+        public Input<Inputs.ToolsetConnectorToolsetGetArgs>? ConnectorToolset { get; set; }
 
         /// <summary>
         /// Timestamp when the toolset was created.
@@ -1128,6 +1165,14 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The timeout for the toolset execution. If not set, the default timeout is
+        /// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+        /// toolsets.
+        /// </summary>
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
 
         /// <summary>
         /// Configuration for tools behavior in fake mode.

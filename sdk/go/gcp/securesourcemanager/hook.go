@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,7 +53,7 @@ type Hook struct {
 	// Set to true to stop sending traffic.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The events that trigger hook on.
-	// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+	// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
 	Events pulumi.StringArrayOutput `pulumi:"events"`
 	// The ID for the Hook.
 	HookId pulumi.StringOutput `pulumi:"hookId"`
@@ -143,7 +143,7 @@ type hookState struct {
 	// Set to true to stop sending traffic.
 	Disabled *bool `pulumi:"disabled"`
 	// The events that trigger hook on.
-	// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+	// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
 	Events []string `pulumi:"events"`
 	// The ID for the Hook.
 	HookId *string `pulumi:"hookId"`
@@ -185,7 +185,7 @@ type HookState struct {
 	// Set to true to stop sending traffic.
 	Disabled pulumi.BoolPtrInput
 	// The events that trigger hook on.
-	// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+	// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
 	Events pulumi.StringArrayInput
 	// The ID for the Hook.
 	HookId pulumi.StringPtrInput
@@ -229,7 +229,7 @@ type hookArgs struct {
 	// Set to true to stop sending traffic.
 	Disabled *bool `pulumi:"disabled"`
 	// The events that trigger hook on.
-	// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+	// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
 	Events []string `pulumi:"events"`
 	// The ID for the Hook.
 	HookId string `pulumi:"hookId"`
@@ -263,7 +263,7 @@ type HookArgs struct {
 	// Set to true to stop sending traffic.
 	Disabled pulumi.BoolPtrInput
 	// The events that trigger hook on.
-	// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+	// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
 	Events pulumi.StringArrayInput
 	// The ID for the Hook.
 	HookId pulumi.StringInput
@@ -393,7 +393,7 @@ func (o HookOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 // The events that trigger hook on.
-// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
 func (o HookOutput) Events() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Hook) pulumi.StringArrayOutput { return v.Events }).(pulumi.StringArrayOutput)
 }

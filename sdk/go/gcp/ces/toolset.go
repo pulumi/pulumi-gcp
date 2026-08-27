@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -108,7 +108,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -196,7 +196,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -276,7 +276,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -362,7 +362,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -444,7 +444,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -515,7 +515,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -589,7 +589,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -658,7 +658,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -730,7 +730,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -812,6 +812,9 @@ type Toolset struct {
 
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringOutput `pulumi:"app"`
+	// A toolset that generates tools from an Integration Connectors Connection.
+	// Structure is documented below.
+	ConnectorToolset ToolsetConnectorToolsetPtrOutput `pulumi:"connectorToolset"`
 	// Timestamp when the toolset was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -850,6 +853,10 @@ type Toolset struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The timeout for the toolset execution. If not set, the default timeout is
+	// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+	// toolsets.
+	Timeout pulumi.StringPtrOutput `pulumi:"timeout"`
 	// Configuration for tools behavior in fake mode.
 	// Structure is documented below.
 	ToolFakeConfig ToolsetToolFakeConfigPtrOutput `pulumi:"toolFakeConfig"`
@@ -902,6 +909,9 @@ func GetToolset(ctx *pulumi.Context,
 type toolsetState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App *string `pulumi:"app"`
+	// A toolset that generates tools from an Integration Connectors Connection.
+	// Structure is documented below.
+	ConnectorToolset *ToolsetConnectorToolset `pulumi:"connectorToolset"`
 	// Timestamp when the toolset was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -940,6 +950,10 @@ type toolsetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The timeout for the toolset execution. If not set, the default timeout is
+	// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+	// toolsets.
+	Timeout *string `pulumi:"timeout"`
 	// Configuration for tools behavior in fake mode.
 	// Structure is documented below.
 	ToolFakeConfig *ToolsetToolFakeConfig `pulumi:"toolFakeConfig"`
@@ -954,6 +968,9 @@ type toolsetState struct {
 type ToolsetState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringPtrInput
+	// A toolset that generates tools from an Integration Connectors Connection.
+	// Structure is documented below.
+	ConnectorToolset ToolsetConnectorToolsetPtrInput
 	// Timestamp when the toolset was created.
 	CreateTime pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -992,6 +1009,10 @@ type ToolsetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The timeout for the toolset execution. If not set, the default timeout is
+	// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+	// toolsets.
+	Timeout pulumi.StringPtrInput
 	// Configuration for tools behavior in fake mode.
 	// Structure is documented below.
 	ToolFakeConfig ToolsetToolFakeConfigPtrInput
@@ -1010,6 +1031,9 @@ func (ToolsetState) ElementType() reflect.Type {
 type toolsetArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App string `pulumi:"app"`
+	// A toolset that generates tools from an Integration Connectors Connection.
+	// Structure is documented below.
+	ConnectorToolset *ToolsetConnectorToolset `pulumi:"connectorToolset"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1038,6 +1062,10 @@ type toolsetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The timeout for the toolset execution. If not set, the default timeout is
+	// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+	// toolsets.
+	Timeout *string `pulumi:"timeout"`
 	// Configuration for tools behavior in fake mode.
 	// Structure is documented below.
 	ToolFakeConfig *ToolsetToolFakeConfig `pulumi:"toolFakeConfig"`
@@ -1051,6 +1079,9 @@ type toolsetArgs struct {
 type ToolsetArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringInput
+	// A toolset that generates tools from an Integration Connectors Connection.
+	// Structure is documented below.
+	ConnectorToolset ToolsetConnectorToolsetPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1079,6 +1110,10 @@ type ToolsetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The timeout for the toolset execution. If not set, the default timeout is
+	// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+	// toolsets.
+	Timeout pulumi.StringPtrInput
 	// Configuration for tools behavior in fake mode.
 	// Structure is documented below.
 	ToolFakeConfig ToolsetToolFakeConfigPtrInput
@@ -1180,6 +1215,12 @@ func (o ToolsetOutput) App() pulumi.StringOutput {
 	return o.ApplyT(func(v *Toolset) pulumi.StringOutput { return v.App }).(pulumi.StringOutput)
 }
 
+// A toolset that generates tools from an Integration Connectors Connection.
+// Structure is documented below.
+func (o ToolsetOutput) ConnectorToolset() ToolsetConnectorToolsetPtrOutput {
+	return o.ApplyT(func(v *Toolset) ToolsetConnectorToolsetPtrOutput { return v.ConnectorToolset }).(ToolsetConnectorToolsetPtrOutput)
+}
+
 // Timestamp when the toolset was created.
 func (o ToolsetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Toolset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -1249,6 +1290,13 @@ func (o ToolsetOutput) OpenApiToolset() ToolsetOpenApiToolsetPtrOutput {
 // If it is not provided, the provider project is used.
 func (o ToolsetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Toolset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The timeout for the toolset execution. If not set, the default timeout is
+// 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+// toolsets.
+func (o ToolsetOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Toolset) pulumi.StringPtrOutput { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
 // Configuration for tools behavior in fake mode.

@@ -25,6 +25,11 @@ namespace Pulumi.Gcp.BigLake.Outputs
         /// The fully qualified Java class name of the output format.
         /// </summary>
         public readonly string? OutputFormat;
+        /// <summary>
+        /// Serializer and deserializer information.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TableHiveOptionsStorageDescriptorSerdeInfo? SerdeInfo;
 
         [OutputConstructor]
         private TableHiveOptionsStorageDescriptor(
@@ -32,11 +37,14 @@ namespace Pulumi.Gcp.BigLake.Outputs
 
             string? locationUri,
 
-            string? outputFormat)
+            string? outputFormat,
+
+            Outputs.TableHiveOptionsStorageDescriptorSerdeInfo? serdeInfo)
         {
             InputFormat = inputFormat;
             LocationUri = locationUri;
             OutputFormat = outputFormat;
+            SerdeInfo = serdeInfo;
         }
     }
 }

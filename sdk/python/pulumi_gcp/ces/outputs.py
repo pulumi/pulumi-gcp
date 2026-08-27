@@ -304,6 +304,12 @@ __all__ = [
     'ToolWidgetToolDataMappingPythonFunction',
     'ToolWidgetToolParameters',
     'ToolWidgetToolTextResponseConfig',
+    'ToolsetConnectorToolset',
+    'ToolsetConnectorToolsetAuthConfig',
+    'ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig',
+    'ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig',
+    'ToolsetConnectorToolsetConnectorAction',
+    'ToolsetConnectorToolsetConnectorActionEntityOperation',
     'ToolsetMcpToolset',
     'ToolsetMcpToolsetApiAuthentication',
     'ToolsetMcpToolsetApiAuthenticationApiKeyConfig',
@@ -22686,6 +22692,372 @@ class ToolWidgetToolTextResponseConfig(dict):
         Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ToolsetConnectorToolset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorActions":
+            suggest = "connector_actions"
+        elif key == "authConfig":
+            suggest = "auth_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetConnectorToolset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetConnectorToolset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetConnectorToolset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: _builtins.str,
+                 connector_actions: Sequence['outputs.ToolsetConnectorToolsetConnectorAction'],
+                 auth_config: Optional['outputs.ToolsetConnectorToolsetAuthConfig'] = None):
+        """
+        :param _builtins.str connection: The full resource name of the referenced Integration Connectors
+               Connection.
+               Format:
+               `projects/{project}/locations/{location}/connections/{connection}`
+        :param Sequence['ToolsetConnectorToolsetConnectorActionArgs'] connector_actions: The list of connector actions/entity operations to generate tools for.
+               Structure is documented below.
+        :param 'ToolsetConnectorToolsetAuthConfigArgs' auth_config: Configures how authentication is handled in Integration Connectors.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "connector_actions", connector_actions)
+        if auth_config is not None:
+            pulumi.set(__self__, "auth_config", auth_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def connection(self) -> _builtins.str:
+        """
+        The full resource name of the referenced Integration Connectors
+        Connection.
+        Format:
+        `projects/{project}/locations/{location}/connections/{connection}`
+        """
+        return pulumi.get(self, "connection")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorActions")
+    def connector_actions(self) -> Sequence['outputs.ToolsetConnectorToolsetConnectorAction']:
+        """
+        The list of connector actions/entity operations to generate tools for.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_actions")
+
+    @_builtins.property
+    @pulumi.getter(name="authConfig")
+    def auth_config(self) -> Optional['outputs.ToolsetConnectorToolsetAuthConfig']:
+        """
+        Configures how authentication is handled in Integration Connectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auth_config")
+
+
+@pulumi.output_type
+class ToolsetConnectorToolsetAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2AuthCodeConfig":
+            suggest = "oauth2_auth_code_config"
+        elif key == "oauth2JwtBearerConfig":
+            suggest = "oauth2_jwt_bearer_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetConnectorToolsetAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetConnectorToolsetAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetConnectorToolsetAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth2_auth_code_config: Optional['outputs.ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig'] = None,
+                 oauth2_jwt_bearer_config: Optional['outputs.ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig'] = None):
+        """
+        :param 'ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs' oauth2_auth_code_config: Oauth 2.0 Authorization Code authentication configuration.
+               Structure is documented below.
+        :param 'ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs' oauth2_jwt_bearer_config: JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+               Structure is documented below.
+               
+               <a name="nested_connector_toolset_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        if oauth2_auth_code_config is not None:
+            pulumi.set(__self__, "oauth2_auth_code_config", oauth2_auth_code_config)
+        if oauth2_jwt_bearer_config is not None:
+            pulumi.set(__self__, "oauth2_jwt_bearer_config", oauth2_jwt_bearer_config)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2AuthCodeConfig")
+    def oauth2_auth_code_config(self) -> Optional['outputs.ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig']:
+        """
+        Oauth 2.0 Authorization Code authentication configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_auth_code_config")
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2JwtBearerConfig")
+    def oauth2_jwt_bearer_config(self) -> Optional['outputs.ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig']:
+        """
+        JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+        Structure is documented below.
+
+        <a name="nested_connector_toolset_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        return pulumi.get(self, "oauth2_jwt_bearer_config")
+
+
+@pulumi.output_type
+class ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauthToken":
+            suggest = "oauth_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth_token: _builtins.str):
+        """
+        :param _builtins.str oauth_token: Oauth token parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        pulumi.set(__self__, "oauth_token", oauth_token)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> _builtins.str:
+        """
+        Oauth token parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "oauth_token")
+
+
+@pulumi.output_type
+class ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientKey":
+            suggest = "client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_key: _builtins.str,
+                 issuer: _builtins.str,
+                 subject: _builtins.str):
+        """
+        :param _builtins.str client_key: Client parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        :param _builtins.str issuer: Issuer parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        :param _builtins.str subject: Subject parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> _builtins.str:
+        """
+        Client parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> _builtins.str:
+        """
+        Issuer parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "issuer")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Subject parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
+class ToolsetConnectorToolsetConnectorAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionActionId":
+            suggest = "connection_action_id"
+        elif key == "entityOperation":
+            suggest = "entity_operation"
+        elif key == "inputFields":
+            suggest = "input_fields"
+        elif key == "outputFields":
+            suggest = "output_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetConnectorToolsetConnectorAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetConnectorToolsetConnectorAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetConnectorToolsetConnectorAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_action_id: Optional[_builtins.str] = None,
+                 entity_operation: Optional['outputs.ToolsetConnectorToolsetConnectorActionEntityOperation'] = None,
+                 input_fields: Optional[Sequence[_builtins.str]] = None,
+                 output_fields: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str connection_action_id: ID of a Connection action for the tool to use.
+        :param 'ToolsetConnectorToolsetConnectorActionEntityOperationArgs' entity_operation: Entity operation configuration for the tool to use.
+               Structure is documented below.
+        :param Sequence[_builtins.str] input_fields: Entity fields to use as inputs for the operation.
+        :param Sequence[_builtins.str] output_fields: Entity fields to return from the operation.
+        """
+        if connection_action_id is not None:
+            pulumi.set(__self__, "connection_action_id", connection_action_id)
+        if entity_operation is not None:
+            pulumi.set(__self__, "entity_operation", entity_operation)
+        if input_fields is not None:
+            pulumi.set(__self__, "input_fields", input_fields)
+        if output_fields is not None:
+            pulumi.set(__self__, "output_fields", output_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionActionId")
+    def connection_action_id(self) -> Optional[_builtins.str]:
+        """
+        ID of a Connection action for the tool to use.
+        """
+        return pulumi.get(self, "connection_action_id")
+
+    @_builtins.property
+    @pulumi.getter(name="entityOperation")
+    def entity_operation(self) -> Optional['outputs.ToolsetConnectorToolsetConnectorActionEntityOperation']:
+        """
+        Entity operation configuration for the tool to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entity_operation")
+
+    @_builtins.property
+    @pulumi.getter(name="inputFields")
+    def input_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity fields to use as inputs for the operation.
+        """
+        return pulumi.get(self, "input_fields")
+
+    @_builtins.property
+    @pulumi.getter(name="outputFields")
+    def output_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity fields to return from the operation.
+        """
+        return pulumi.get(self, "output_fields")
+
+
+@pulumi.output_type
+class ToolsetConnectorToolsetConnectorActionEntityOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityId":
+            suggest = "entity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetConnectorToolsetConnectorActionEntityOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetConnectorToolsetConnectorActionEntityOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetConnectorToolsetConnectorActionEntityOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_id: _builtins.str,
+                 operation: _builtins.str):
+        """
+        :param _builtins.str entity_id: ID of the entity.
+        :param _builtins.str operation: Operation to perform on the entity.
+               Possible values:
+               LIST
+               GET
+               CREATE
+               UPDATE
+               DELETE
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "operation", operation)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> _builtins.str:
+        """
+        ID of the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> _builtins.str:
+        """
+        Operation to perform on the entity.
+        Possible values:
+        LIST
+        GET
+        CREATE
+        UPDATE
+        DELETE
+        """
+        return pulumi.get(self, "operation")
 
 
 @pulumi.output_type

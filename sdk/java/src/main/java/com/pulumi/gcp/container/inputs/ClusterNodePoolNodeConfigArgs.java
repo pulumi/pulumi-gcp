@@ -334,14 +334,14 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maintenance policy for the hosts on which the GKE VMs run on.
+     * The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     @Import(name="hostMaintenancePolicy")
     private @Nullable Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy;
 
     /**
-     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * @return The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs>> hostMaintenancePolicy() {
@@ -1368,7 +1368,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on.
+         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1379,7 +1379,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on.
+         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          * 
          * @return builder
          * 

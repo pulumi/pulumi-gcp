@@ -19,9 +19,18 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig? ConsolidationConfig;
         /// <summary>
+        /// Indicates whether natural language memory generation should be disabled.
+        /// </summary>
+        public readonly bool? DisableNaturalLanguageMemories;
+        /// <summary>
         /// Optional. Generate memories in the third person if set to true.
         /// </summary>
         public readonly bool? EnableThirdPersonMemories;
+        /// <summary>
+        /// Provides examples of how to generate memories for a particular scope.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample> GenerateMemoriesExamples;
         /// <summary>
         /// Optional. List of topics that the memory should be associated with.
         /// Structure is documented below.
@@ -36,14 +45,20 @@ namespace Pulumi.Gcp.Vertex.Outputs
         private AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig(
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig? consolidationConfig,
 
+            bool? disableNaturalLanguageMemories,
+
             bool? enableThirdPersonMemories,
+
+            ImmutableArray<Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample> generateMemoriesExamples,
 
             ImmutableArray<Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic> memoryTopics,
 
             ImmutableArray<string> scopeKeys)
         {
             ConsolidationConfig = consolidationConfig;
+            DisableNaturalLanguageMemories = disableNaturalLanguageMemories;
             EnableThirdPersonMemories = enableThirdPersonMemories;
+            GenerateMemoriesExamples = generateMemoriesExamples;
             MemoryTopics = memoryTopics;
             ScopeKeys = scopeKeys;
         }

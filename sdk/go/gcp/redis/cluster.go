@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,9 +109,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -204,9 +204,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -295,9 +295,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -380,9 +380,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -556,9 +556,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -654,9 +654,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -751,10 +751,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -825,10 +825,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -955,6 +955,8 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Optional. The name of the ACL policy to attach to the cluster.
+	AclPolicy pulumi.StringPtrOutput `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -997,6 +999,8 @@ type Cluster struct {
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
 	// Structure is documented below.
 	GcsSource ClusterGcsSourcePtrOutput `pulumi:"gcsSource"`
+	// Optional. Whether the ACL policy is in sync with the cluster.
+	IsAclPolicyInSync pulumi.BoolOutput `pulumi:"isAclPolicyInSync"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Resource labels to represent user provided metadata.
@@ -1122,6 +1126,8 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Optional. The name of the ACL policy to attach to the cluster.
+	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1164,6 +1170,8 @@ type clusterState struct {
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
 	// Structure is documented below.
 	GcsSource *ClusterGcsSource `pulumi:"gcsSource"`
+	// Optional. Whether the ACL policy is in sync with the cluster.
+	IsAclPolicyInSync *bool `pulumi:"isAclPolicyInSync"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Resource labels to represent user provided metadata.
@@ -1252,6 +1260,8 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// Optional. The name of the ACL policy to attach to the cluster.
+	AclPolicy pulumi.StringPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1294,6 +1304,8 @@ type ClusterState struct {
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
 	// Structure is documented below.
 	GcsSource ClusterGcsSourcePtrInput
+	// Optional. Whether the ACL policy is in sync with the cluster.
+	IsAclPolicyInSync pulumi.BoolPtrInput
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
@@ -1386,6 +1398,8 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Optional. The name of the ACL policy to attach to the cluster.
+	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1473,6 +1487,8 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Optional. The name of the ACL policy to attach to the cluster.
+	AclPolicy pulumi.StringPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1645,6 +1661,11 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Optional. The name of the ACL policy to attach to the cluster.
+func (o ClusterOutput) AclPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AclPolicy }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 // Default value is `AUTH_MODE_DISABLED`.
 // Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1721,6 +1742,11 @@ func (o ClusterOutput) EffectiveMaintenanceVersion() pulumi.StringOutput {
 // Structure is documented below.
 func (o ClusterOutput) GcsSource() ClusterGcsSourcePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterGcsSourcePtrOutput { return v.GcsSource }).(ClusterGcsSourcePtrOutput)
+}
+
+// Optional. Whether the ACL policy is in sync with the cluster.
+func (o ClusterOutput) IsAclPolicyInSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.IsAclPolicyInSync }).(pulumi.BoolOutput)
 }
 
 // The KMS key used to encrypt the at-rest data of the cluster.

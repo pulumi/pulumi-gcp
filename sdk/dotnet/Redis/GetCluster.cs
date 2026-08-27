@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.Redis
     [OutputType]
     public sealed class GetClusterResult
     {
+        public readonly string AclPolicy;
         public readonly string AuthorizationMode;
         public readonly ImmutableArray<Outputs.GetClusterAutomatedBackupConfigResult> AutomatedBackupConfigs;
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
@@ -162,6 +163,7 @@ namespace Pulumi.Gcp.Redis
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool IsAclPolicyInSync;
         public readonly string KmsKey;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> MaintenancePolicies;
@@ -193,6 +195,8 @@ namespace Pulumi.Gcp.Redis
 
         [OutputConstructor]
         private GetClusterResult(
+            string aclPolicy,
+
             string authorizationMode,
 
             ImmutableArray<Outputs.GetClusterAutomatedBackupConfigResult> automatedBackupConfigs,
@@ -218,6 +222,8 @@ namespace Pulumi.Gcp.Redis
             ImmutableArray<Outputs.GetClusterGcsSourceResult> gcsSources,
 
             string id,
+
+            bool isAclPolicyInSync,
 
             string kmsKey,
 
@@ -275,6 +281,7 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetClusterZoneDistributionConfigResult> zoneDistributionConfigs)
         {
+            AclPolicy = aclPolicy;
             AuthorizationMode = authorizationMode;
             AutomatedBackupConfigs = automatedBackupConfigs;
             AvailableMaintenanceVersions = availableMaintenanceVersions;
@@ -288,6 +295,7 @@ namespace Pulumi.Gcp.Redis
             EffectiveMaintenanceVersion = effectiveMaintenanceVersion;
             GcsSources = gcsSources;
             Id = id;
+            IsAclPolicyInSync = isAclPolicyInSync;
             KmsKey = kmsKey;
             Labels = labels;
             MaintenancePolicies = maintenancePolicies;

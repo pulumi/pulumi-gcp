@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .ai_agent_anomaly_detection_scope import *
 from .ai_cache_config import *
 from .ai_dataset import *
 from .ai_deployment_resource_pool import *
@@ -48,7 +49,6 @@ from .ai_reasoning_engine import *
 from .ai_reasoning_engine_iam_binding import *
 from .ai_reasoning_engine_iam_member import *
 from .ai_reasoning_engine_iam_policy import *
-from .ai_schedule import *
 from .ai_semantic_governance_policy_engine import *
 from .ai_tensorboard import *
 from .ai_tensorboard_experiment import *

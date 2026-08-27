@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const defaultURLMap = new gcp.compute.URLMap("default", {
@@ -180,6 +181,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const defaultURLMap = new gcp.compute.URLMap("default", {
@@ -282,6 +284,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const defaultURLMap = new gcp.compute.URLMap("default", {

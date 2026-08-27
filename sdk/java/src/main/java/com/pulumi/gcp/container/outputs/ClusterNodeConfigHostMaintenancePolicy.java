@@ -5,24 +5,39 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeConfigHostMaintenancePolicy {
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     private String maintenanceInterval;
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy opportunisticMaintenanceStrategy;
 
     private ClusterNodeConfigHostMaintenancePolicy() {}
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
+    }
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy> opportunisticMaintenanceStrategy() {
+        return Optional.ofNullable(this.opportunisticMaintenanceStrategy);
     }
 
     public static Builder builder() {
@@ -35,10 +50,12 @@ public final class ClusterNodeConfigHostMaintenancePolicy {
     @CustomType.Builder
     public static final class Builder {
         private String maintenanceInterval;
+        private @Nullable ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy opportunisticMaintenanceStrategy;
         public Builder() {}
         public Builder(ClusterNodeConfigHostMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maintenanceInterval = defaults.maintenanceInterval;
+    	      this.opportunisticMaintenanceStrategy = defaults.opportunisticMaintenanceStrategy;
         }
 
         @CustomType.Setter
@@ -49,9 +66,16 @@ public final class ClusterNodeConfigHostMaintenancePolicy {
             this.maintenanceInterval = maintenanceInterval;
             return this;
         }
+        @CustomType.Setter
+        public Builder opportunisticMaintenanceStrategy(@Nullable ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy opportunisticMaintenanceStrategy) {
+
+            this.opportunisticMaintenanceStrategy = opportunisticMaintenanceStrategy;
+            return this;
+        }
         public ClusterNodeConfigHostMaintenancePolicy build() {
             final var _resultValue = new ClusterNodeConfigHostMaintenancePolicy();
             _resultValue.maintenanceInterval = maintenanceInterval;
+            _resultValue.opportunisticMaintenanceStrategy = opportunisticMaintenanceStrategy;
             return _resultValue;
         }
     }

@@ -9,8 +9,6 @@ import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationsAs
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPlanAssociationsResult {
@@ -30,13 +28,6 @@ public final class GetBackupPlanAssociationsResult {
      * 
      */
     private String project;
-    /**
-     * @deprecated
-     * `resourceType` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
-    private @Nullable String resourceType;
 
     private GetBackupPlanAssociationsResult() {}
     /**
@@ -63,15 +54,6 @@ public final class GetBackupPlanAssociationsResult {
     public String project() {
         return this.project;
     }
-    /**
-     * @deprecated
-     * `resourceType` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
-    public Optional<String> resourceType() {
-        return Optional.ofNullable(this.resourceType);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,7 +68,6 @@ public final class GetBackupPlanAssociationsResult {
         private String id;
         private String location;
         private String project;
-        private @Nullable String resourceType;
         public Builder() {}
         public Builder(GetBackupPlanAssociationsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -94,7 +75,6 @@ public final class GetBackupPlanAssociationsResult {
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.project = defaults.project;
-    	      this.resourceType = defaults.resourceType;
         }
 
         @CustomType.Setter
@@ -132,19 +112,12 @@ public final class GetBackupPlanAssociationsResult {
             this.project = project;
             return this;
         }
-        @CustomType.Setter
-        public Builder resourceType(@Nullable String resourceType) {
-
-            this.resourceType = resourceType;
-            return this;
-        }
         public GetBackupPlanAssociationsResult build() {
             final var _resultValue = new GetBackupPlanAssociationsResult();
             _resultValue.associations = associations;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.project = project;
-            _resultValue.resourceType = resourceType;
             return _resultValue;
         }
     }

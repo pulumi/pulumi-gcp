@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Optional. Custom headers to set in the request. HTTP allows repeated headers.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders? HttpHeaders;
+        public readonly ImmutableArray<Outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader> HttpHeaders;
         /// <summary>
         /// Optional. Path to access on the HTTP server. Defaults to '/'.
         /// </summary>
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
         [OutputConstructor]
         private WorkerPoolTemplateContainerStartupProbeHttpGet(
-            Outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders? httpHeaders,
+            ImmutableArray<Outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders,
 
             string? path,
 

@@ -64,6 +64,9 @@ import * as utilities from "../utilities";
  *             locationUri: pulumi.interpolate`gs://${bucket.name}/${dataFolder.name}`,
  *             inputFormat: "org.apache.hadoop.mapred.SequenceFileInputFormat",
  *             outputFormat: "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+ *             serdeInfo: {
+ *                 serializationLib: "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+ *             },
  *         },
  *         parameters: {
  *             "spark.sql.create.version": "3.1.3",

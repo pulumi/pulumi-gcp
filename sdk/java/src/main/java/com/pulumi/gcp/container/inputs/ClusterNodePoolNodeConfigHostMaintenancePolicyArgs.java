@@ -6,8 +6,11 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,24 +18,40 @@ public final class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs extends co
     public static final ClusterNodePoolNodeConfigHostMaintenancePolicyArgs Empty = new ClusterNodePoolNodeConfigHostMaintenancePolicyArgs();
 
     /**
-     * .
+     * Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     @Import(name="maintenanceInterval", required=true)
     private Output<String> maintenanceInterval;
 
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     public Output<String> maintenanceInterval() {
         return this.maintenanceInterval;
     }
 
+    /**
+     * Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+     * 
+     */
+    @Import(name="opportunisticMaintenanceStrategy")
+    private @Nullable Output<ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs> opportunisticMaintenanceStrategy;
+
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs>> opportunisticMaintenanceStrategy() {
+        return Optional.ofNullable(this.opportunisticMaintenanceStrategy);
+    }
+
     private ClusterNodePoolNodeConfigHostMaintenancePolicyArgs() {}
 
     private ClusterNodePoolNodeConfigHostMaintenancePolicyArgs(ClusterNodePoolNodeConfigHostMaintenancePolicyArgs $) {
         this.maintenanceInterval = $.maintenanceInterval;
+        this.opportunisticMaintenanceStrategy = $.opportunisticMaintenanceStrategy;
     }
 
     public static Builder builder() {
@@ -54,7 +73,7 @@ public final class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs extends co
         }
 
         /**
-         * @param maintenanceInterval .
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          * 
          * @return builder
          * 
@@ -65,13 +84,34 @@ public final class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs extends co
         }
 
         /**
-         * @param maintenanceInterval .
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          * 
          * @return builder
          * 
          */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
+        }
+
+        /**
+         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opportunisticMaintenanceStrategy(@Nullable Output<ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs> opportunisticMaintenanceStrategy) {
+            $.opportunisticMaintenanceStrategy = opportunisticMaintenanceStrategy;
+            return this;
+        }
+
+        /**
+         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opportunisticMaintenanceStrategy(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs opportunisticMaintenanceStrategy) {
+            return opportunisticMaintenanceStrategy(Output.of(opportunisticMaintenanceStrategy));
         }
 
         public ClusterNodePoolNodeConfigHostMaintenancePolicyArgs build() {

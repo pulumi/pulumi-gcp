@@ -27,7 +27,6 @@ class WorkerPoolArgs:
                  binary_authorization: pulumi.Input[Optional['WorkerPoolBinaryAuthorizationArgs']] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -53,11 +52,6 @@ class WorkerPoolArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: (Optional, Deprecated)
-               One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-               
-               > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -99,11 +93,6 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "client", client)
         if client_version is not None:
             pulumi.set(__self__, "client_version", client_version)
-        if custom_audiences is not None:
-            warnings.warn("""`custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""custom_audiences is deprecated: `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
-        if custom_audiences is not None:
-            pulumi.set(__self__, "custom_audiences", custom_audiences)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
@@ -201,23 +190,6 @@ class WorkerPoolArgs:
     @client_version.setter
     def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customAudiences")
-    @_utilities.deprecated("""`custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
-    def custom_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        (Optional, Deprecated)
-        One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-
-        > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-        """
-        return pulumi.get(self, "custom_audiences")
-
-    @custom_audiences.setter
-    def custom_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "custom_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -359,7 +331,6 @@ class _WorkerPoolState:
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolConditionArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -404,11 +375,6 @@ class _WorkerPoolState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] creator: Email address of the authenticated creator.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: (Optional, Deprecated)
-               One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-               
-               > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -479,11 +445,6 @@ class _WorkerPoolState:
             pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
-        if custom_audiences is not None:
-            warnings.warn("""`custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""custom_audiences is deprecated: `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
-        if custom_audiences is not None:
-            pulumi.set(__self__, "custom_audiences", custom_audiences)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
         if deletion_policy is not None:
@@ -629,23 +590,6 @@ class _WorkerPoolState:
     @creator.setter
     def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customAudiences")
-    @_utilities.deprecated("""`custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
-    def custom_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        (Optional, Deprecated)
-        One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-
-        > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-        """
-        return pulumi.get(self, "custom_audiences")
-
-    @custom_audiences.setter
-    def custom_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "custom_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
@@ -1010,7 +954,6 @@ class WorkerPool(pulumi.CustomResource):
                  binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1501,11 +1444,6 @@ class WorkerPool(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: (Optional, Deprecated)
-               One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-               
-               > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -2031,7 +1969,6 @@ class WorkerPool(pulumi.CustomResource):
                  binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2056,7 +1993,6 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
-            __props__.__dict__["custom_audiences"] = custom_audiences
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
@@ -2110,7 +2046,6 @@ class WorkerPool(pulumi.CustomResource):
             conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2159,11 +2094,6 @@ class WorkerPool(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] creator: Email address of the authenticated creator.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: (Optional, Deprecated)
-               One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-               
-               > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -2231,7 +2161,6 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
-        __props__.__dict__["custom_audiences"] = custom_audiences
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
@@ -2323,19 +2252,6 @@ class WorkerPool(pulumi.CustomResource):
         Email address of the authenticated creator.
         """
         return pulumi.get(self, "creator")
-
-    @_builtins.property
-    @pulumi.getter(name="customAudiences")
-    @_utilities.deprecated("""`custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
-    def custom_audiences(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        (Optional, Deprecated)
-        One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-
-        > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-        """
-        return pulumi.get(self, "custom_audiences")
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")

@@ -19,8 +19,22 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly bool Enabled;
         /// <summary>
         /// OAuth2 Client ID for IAP
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? Oauth2ClientId;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// OAuth2 Client ID for IAP
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Oauth2ClientId` or `Oauth2ClientIdWo` can only be set.
+        /// </summary>
+        public readonly string? Oauth2ClientIdWo;
+        /// <summary>
+        /// Triggers update of `Oauth2ClientIdWo` write-only. Increment this value when an update to `Oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? Oauth2ClientIdWoVersion;
         /// <summary>
         /// OAuth2 Client Secret for IAP
         /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -32,6 +46,19 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? Oauth2ClientSecretSha256;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// OAuth2 Client Secret for IAP
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Oauth2ClientSecret` or `Oauth2ClientSecretWo` can only be set.
+        /// </summary>
+        public readonly string? Oauth2ClientSecretWo;
+        /// <summary>
+        /// Triggers update of `Oauth2ClientSecretWo` write-only. Increment this value when an update to `Oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? Oauth2ClientSecretWoVersion;
 
         [OutputConstructor]
         private BackendServiceIap(
@@ -39,14 +66,26 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? oauth2ClientId,
 
+            string? oauth2ClientIdWo,
+
+            string? oauth2ClientIdWoVersion,
+
             string? oauth2ClientSecret,
 
-            string? oauth2ClientSecretSha256)
+            string? oauth2ClientSecretSha256,
+
+            string? oauth2ClientSecretWo,
+
+            string? oauth2ClientSecretWoVersion)
         {
             Enabled = enabled;
             Oauth2ClientId = oauth2ClientId;
+            Oauth2ClientIdWo = oauth2ClientIdWo;
+            Oauth2ClientIdWoVersion = oauth2ClientIdWoVersion;
             Oauth2ClientSecret = oauth2ClientSecret;
             Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            Oauth2ClientSecretWo = oauth2ClientSecretWo;
+            Oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
         }
     }
 }

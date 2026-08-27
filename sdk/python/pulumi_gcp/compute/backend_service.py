@@ -140,7 +140,7 @@ class BackendServiceArgs:
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
@@ -638,7 +638,7 @@ class BackendServiceArgs:
         external load balancing. A backend service created for one type of
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-        Default value is `EXTERNAL`.
+        Default value is `EXTERNAL_MANAGED`.
         Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
@@ -1091,7 +1091,7 @@ class _BackendServiceState:
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
@@ -1635,7 +1635,7 @@ class _BackendServiceState:
         external load balancing. A backend service created for one type of
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-        Default value is `EXTERNAL`.
+        Default value is `EXTERNAL_MANAGED`.
         Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
@@ -2033,6 +2033,9 @@ class BackendService(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Backend Service Basic
@@ -2041,14 +2044,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id)
+            health_checks=default_health_check.id)
         ```
         ### Backend Service External Iap
 
@@ -2072,14 +2078,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id,
+            health_checks=default_health_check.id,
             enable_cdn=True,
             cdn_policy={
                 "signed_url_cache_max_age_sec": 7200,
@@ -2135,14 +2144,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id,
+            health_checks=default_health_check.id,
             enable_cdn=True,
             cdn_policy={
                 "cache_mode": "CACHE_ALL_STATIC",
@@ -2159,14 +2171,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id,
+            health_checks=default_health_check.id,
             enable_cdn=True,
             cdn_policy={
                 "cache_mode": "CACHE_ALL_STATIC",
@@ -2580,7 +2595,7 @@ class BackendService(pulumi.CustomResource):
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
@@ -2721,6 +2736,9 @@ class BackendService(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Backend Service Basic
@@ -2729,14 +2747,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id)
+            health_checks=default_health_check.id)
         ```
         ### Backend Service External Iap
 
@@ -2760,14 +2781,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id,
+            health_checks=default_health_check.id,
             enable_cdn=True,
             cdn_policy={
                 "signed_url_cache_max_age_sec": 7200,
@@ -2823,14 +2847,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id,
+            health_checks=default_health_check.id,
             enable_cdn=True,
             cdn_policy={
                 "cache_mode": "CACHE_ALL_STATIC",
@@ -2847,14 +2874,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="health-check",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default = gcp.compute.BackendService("default",
             name="backend-service",
-            health_checks=default_http_health_check.id,
+            health_checks=default_health_check.id,
             enable_cdn=True,
             cdn_policy={
                 "cache_mode": "CACHE_ALL_STATIC",
@@ -3436,7 +3466,7 @@ class BackendService(pulumi.CustomResource):
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
@@ -3825,7 +3855,7 @@ class BackendService(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def iap(self) -> pulumi.Output['outputs.BackendServiceIap']:
+    def iap(self) -> pulumi.Output[Optional['outputs.BackendServiceIap']]:
         """
         Settings for enabling Cloud Identity Aware Proxy.
         If OAuth client is not set, the Google-managed OAuth client is used.
@@ -3850,7 +3880,7 @@ class BackendService(pulumi.CustomResource):
         external load balancing. A backend service created for one type of
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-        Default value is `EXTERNAL`.
+        Default value is `EXTERNAL_MANAGED`.
         Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")

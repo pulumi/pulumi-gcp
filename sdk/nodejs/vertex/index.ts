@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AiAgentAnomalyDetectionScopeArgs, AiAgentAnomalyDetectionScopeState } from "./aiAgentAnomalyDetectionScope";
+export type AiAgentAnomalyDetectionScope = import("./aiAgentAnomalyDetectionScope").AiAgentAnomalyDetectionScope;
+export const AiAgentAnomalyDetectionScope: typeof import("./aiAgentAnomalyDetectionScope").AiAgentAnomalyDetectionScope = null as any;
+utilities.lazyLoad(exports, ["AiAgentAnomalyDetectionScope"], () => require("./aiAgentAnomalyDetectionScope"));
+
 export { AiCacheConfigArgs, AiCacheConfigState } from "./aiCacheConfig";
 export type AiCacheConfig = import("./aiCacheConfig").AiCacheConfig;
 export const AiCacheConfig: typeof import("./aiCacheConfig").AiCacheConfig = null as any;
@@ -215,11 +220,6 @@ export type AiReasoningEngineIamPolicy = import("./aiReasoningEngineIamPolicy").
 export const AiReasoningEngineIamPolicy: typeof import("./aiReasoningEngineIamPolicy").AiReasoningEngineIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AiReasoningEngineIamPolicy"], () => require("./aiReasoningEngineIamPolicy"));
 
-export { AiScheduleArgs, AiScheduleState } from "./aiSchedule";
-export type AiSchedule = import("./aiSchedule").AiSchedule;
-export const AiSchedule: typeof import("./aiSchedule").AiSchedule = null as any;
-utilities.lazyLoad(exports, ["AiSchedule"], () => require("./aiSchedule"));
-
 export { AiSemanticGovernancePolicyEngineArgs, AiSemanticGovernancePolicyEngineState } from "./aiSemanticGovernancePolicyEngine";
 export type AiSemanticGovernancePolicyEngine = import("./aiSemanticGovernancePolicyEngine").AiSemanticGovernancePolicyEngine;
 export const AiSemanticGovernancePolicyEngine: typeof import("./aiSemanticGovernancePolicyEngine").AiSemanticGovernancePolicyEngine = null as any;
@@ -290,6 +290,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope":
+                return new AiAgentAnomalyDetectionScope(name, <any>undefined, { urn })
             case "gcp:vertex/aiCacheConfig:AiCacheConfig":
                 return new AiCacheConfig(name, <any>undefined, { urn })
             case "gcp:vertex/aiDataset:AiDataset":
@@ -374,8 +376,6 @@ const _module = {
                 return new AiReasoningEngineIamMember(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
                 return new AiReasoningEngineIamPolicy(name, <any>undefined, { urn })
-            case "gcp:vertex/aiSchedule:AiSchedule":
-                return new AiSchedule(name, <any>undefined, { urn })
             case "gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine":
                 return new AiSemanticGovernancePolicyEngine(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
@@ -389,6 +389,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiAgentAnomalyDetectionScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiCacheConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDeploymentResourcePool", _module)
@@ -431,7 +432,6 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamPolicy", _module)
-pulumi.runtime.registerResourceModule("gcp", "vertex/aiSchedule", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiSemanticGovernancePolicyEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardExperiment", _module)

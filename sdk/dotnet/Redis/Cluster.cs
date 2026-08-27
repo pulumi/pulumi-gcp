@@ -971,6 +971,12 @@ namespace Pulumi.Gcp.Redis
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The name of the ACL policy to attach to the cluster.
+        /// </summary>
+        [Output("aclPolicy")]
+        public Output<string?> AclPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
         /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1059,6 +1065,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("gcsSource")]
         public Output<Outputs.ClusterGcsSource?> GcsSource { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Whether the ACL policy is in sync with the cluster.
+        /// </summary>
+        [Output("isAclPolicyInSync")]
+        public Output<bool> IsAclPolicyInSync { get; private set; } = null!;
 
         /// <summary>
         /// The KMS key used to encrypt the at-rest data of the cluster.
@@ -1309,6 +1321,12 @@ namespace Pulumi.Gcp.Redis
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The name of the ACL policy to attach to the cluster.
+        /// </summary>
+        [Input("aclPolicy")]
+        public Input<string>? AclPolicy { get; set; }
+
+        /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
         /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1514,6 +1532,12 @@ namespace Pulumi.Gcp.Redis
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The name of the ACL policy to attach to the cluster.
+        /// </summary>
+        [Input("aclPolicy")]
+        public Input<string>? AclPolicy { get; set; }
+
+        /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
         /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1624,6 +1648,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("gcsSource")]
         public Input<Inputs.ClusterGcsSourceGetArgs>? GcsSource { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the ACL policy is in sync with the cluster.
+        /// </summary>
+        [Input("isAclPolicyInSync")]
+        public Input<bool>? IsAclPolicyInSync { get; set; }
 
         /// <summary>
         /// The KMS key used to encrypt the at-rest data of the cluster.

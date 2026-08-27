@@ -163,7 +163,6 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly ImmutableArray<Outputs.GetWorkerPoolConditionResult> Conditions;
         public readonly string CreateTime;
         public readonly string Creator;
-        public readonly ImmutableArray<string> CustomAudiences;
         public readonly string DeleteTime;
         public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
@@ -211,8 +210,6 @@ namespace Pulumi.Gcp.CloudRunV2
             string createTime,
 
             string creator,
-
-            ImmutableArray<string> customAudiences,
 
             string deleteTime,
 
@@ -277,7 +274,6 @@ namespace Pulumi.Gcp.CloudRunV2
             Conditions = conditions;
             CreateTime = createTime;
             Creator = creator;
-            CustomAudiences = customAudiences;
             DeleteTime = deleteTime;
             DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;

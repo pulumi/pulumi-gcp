@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic;
 import java.lang.Boolean;
 import java.lang.String;
@@ -22,10 +23,21 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
      */
     private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig consolidationConfig;
     /**
+     * @return Indicates whether natural language memory generation should be disabled.
+     * 
+     */
+    private @Nullable Boolean disableNaturalLanguageMemories;
+    /**
      * @return Optional. Generate memories in the third person if set to true.
      * 
      */
     private @Nullable Boolean enableThirdPersonMemories;
+    /**
+     * @return Provides examples of how to generate memories for a particular scope.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample> generateMemoriesExamples;
     /**
      * @return Optional. List of topics that the memory should be associated with.
      * Structure is documented below.
@@ -48,11 +60,26 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         return Optional.ofNullable(this.consolidationConfig);
     }
     /**
+     * @return Indicates whether natural language memory generation should be disabled.
+     * 
+     */
+    public Optional<Boolean> disableNaturalLanguageMemories() {
+        return Optional.ofNullable(this.disableNaturalLanguageMemories);
+    }
+    /**
      * @return Optional. Generate memories in the third person if set to true.
      * 
      */
     public Optional<Boolean> enableThirdPersonMemories() {
         return Optional.ofNullable(this.enableThirdPersonMemories);
+    }
+    /**
+     * @return Provides examples of how to generate memories for a particular scope.
+     * Structure is documented below.
+     * 
+     */
+    public List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample> generateMemoriesExamples() {
+        return this.generateMemoriesExamples == null ? List.of() : this.generateMemoriesExamples;
     }
     /**
      * @return Optional. List of topics that the memory should be associated with.
@@ -80,14 +107,18 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     @CustomType.Builder
     public static final class Builder {
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig consolidationConfig;
+        private @Nullable Boolean disableNaturalLanguageMemories;
         private @Nullable Boolean enableThirdPersonMemories;
+        private @Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample> generateMemoriesExamples;
         private @Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic> memoryTopics;
         private @Nullable List<String> scopeKeys;
         public Builder() {}
         public Builder(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consolidationConfig = defaults.consolidationConfig;
+    	      this.disableNaturalLanguageMemories = defaults.disableNaturalLanguageMemories;
     	      this.enableThirdPersonMemories = defaults.enableThirdPersonMemories;
+    	      this.generateMemoriesExamples = defaults.generateMemoriesExamples;
     	      this.memoryTopics = defaults.memoryTopics;
     	      this.scopeKeys = defaults.scopeKeys;
         }
@@ -99,10 +130,25 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
             return this;
         }
         @CustomType.Setter
+        public Builder disableNaturalLanguageMemories(@Nullable Boolean disableNaturalLanguageMemories) {
+
+            this.disableNaturalLanguageMemories = disableNaturalLanguageMemories;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableThirdPersonMemories(@Nullable Boolean enableThirdPersonMemories) {
 
             this.enableThirdPersonMemories = enableThirdPersonMemories;
             return this;
+        }
+        @CustomType.Setter
+        public Builder generateMemoriesExamples(@Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample> generateMemoriesExamples) {
+
+            this.generateMemoriesExamples = generateMemoriesExamples;
+            return this;
+        }
+        public Builder generateMemoriesExamples(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample... generateMemoriesExamples) {
+            return generateMemoriesExamples(List.of(generateMemoriesExamples));
         }
         @CustomType.Setter
         public Builder memoryTopics(@Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic> memoryTopics) {
@@ -125,7 +171,9 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         public AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig build() {
             final var _resultValue = new AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig();
             _resultValue.consolidationConfig = consolidationConfig;
+            _resultValue.disableNaturalLanguageMemories = disableNaturalLanguageMemories;
             _resultValue.enableThirdPersonMemories = enableThirdPersonMemories;
+            _resultValue.generateMemoriesExamples = generateMemoriesExamples;
             _resultValue.memoryTopics = memoryTopics;
             _resultValue.scopeKeys = scopeKeys;
             return _resultValue;

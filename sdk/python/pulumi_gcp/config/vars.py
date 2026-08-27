@@ -586,10 +586,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('migrationCenterCustomEndpoint')
 
     @_builtins.property
-    def ml_engine_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('mlEngineCustomEndpoint')
-
-    @_builtins.property
     def model_armor_custom_endpoint(self) -> Optional[str]:
         return __config__.get('modelArmorCustomEndpoint')
 
@@ -624,10 +620,6 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def network_services_custom_endpoint(self) -> Optional[str]:
         return __config__.get('networkServicesCustomEndpoint')
-
-    @_builtins.property
-    def notebooks_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('notebooksCustomEndpoint')
 
     @_builtins.property
     def observability_custom_endpoint(self) -> Optional[str]:
@@ -868,6 +860,10 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def vector_search_custom_endpoint(self) -> Optional[str]:
         return __config__.get('vectorSearchCustomEndpoint')
+
+    @_builtins.property
+    def vertex_ai_aad_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('vertexAiAadCustomEndpoint')
 
     @_builtins.property
     def vertex_ai_custom_endpoint(self) -> Optional[str]:

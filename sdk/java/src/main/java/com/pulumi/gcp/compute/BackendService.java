@@ -51,6 +51,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Backend Service Basic
@@ -62,8 +65,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import java.util.ArrayList;
@@ -79,16 +83,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
- *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath("/")
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *     }
@@ -144,8 +151,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -162,16 +170,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
- *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath("/")
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .healthChecks(defaultHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
  *                 .signedUrlCacheMaxAgeSec(7200)
@@ -284,8 +295,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -302,16 +314,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
- *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath("/")
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .healthChecks(defaultHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
  *                 .cacheMode("CACHE_ALL_STATIC")
@@ -336,8 +351,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -355,16 +371,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("health-check")
- *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath("/")
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .healthChecks(defaultHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
  *                 .cacheMode("CACHE_ALL_STATIC")
@@ -1426,7 +1445,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="iap", refs={BackendServiceIap.class}, tree="[0]")
-    private Output<BackendServiceIap> iap;
+    private Output</* @Nullable */ BackendServiceIap> iap;
 
     /**
      * @return Settings for enabling Cloud Identity Aware Proxy.
@@ -1434,8 +1453,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<BackendServiceIap> iap() {
-        return this.iap;
+    public Output<Optional<BackendServiceIap>> iap() {
+        return Codegen.optional(this.iap);
     }
     /**
      * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -1458,7 +1477,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
@@ -1470,7 +1489,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */

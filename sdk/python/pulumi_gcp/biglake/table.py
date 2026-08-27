@@ -411,6 +411,9 @@ class Table(pulumi.CustomResource):
         ,
                     "input_format": "org.apache.hadoop.mapred.SequenceFileInputFormat",
                     "output_format": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+                    "serde_info": {
+                        "serialization_lib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+                    },
                 },
                 "parameters": {
                     "spark.sql.create.version": "3.1.3",
@@ -521,6 +524,9 @@ class Table(pulumi.CustomResource):
         ,
                     "input_format": "org.apache.hadoop.mapred.SequenceFileInputFormat",
                     "output_format": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+                    "serde_info": {
+                        "serialization_lib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+                    },
                 },
                 "parameters": {
                     "spark.sql.create.version": "3.1.3",

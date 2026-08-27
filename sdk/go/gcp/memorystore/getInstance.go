@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,6 +61,7 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
+	AclPolicy                       string                                      `pulumi:"aclPolicy"`
 	AuthorizationMode               string                                      `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs          []GetInstanceAutomatedBackupConfig          `pulumi:"automatedBackupConfigs"`
 	AvailableMaintenanceVersions    []string                                    `pulumi:"availableMaintenanceVersions"`
@@ -81,6 +82,7 @@ type LookupInstanceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                              `pulumi:"id"`
 	InstanceId              string                              `pulumi:"instanceId"`
+	IsAclPolicyInSync       bool                                `pulumi:"isAclPolicyInSync"`
 	KmsKey                  string                              `pulumi:"kmsKey"`
 	Labels                  map[string]string                   `pulumi:"labels"`
 	Location                *string                             `pulumi:"location"`
@@ -145,6 +147,10 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
+}
+
+func (o LookupInstanceResultOutput) AclPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AclPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) AuthorizationMode() pulumi.StringOutput {
@@ -226,6 +232,10 @@ func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) IsAclPolicyInSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.IsAclPolicyInSync }).(pulumi.BoolOutput)
 }
 
 func (o LookupInstanceResultOutput) KmsKey() pulumi.StringOutput {

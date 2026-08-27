@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +27,9 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Backend Service Basic
@@ -36,25 +39,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
-//				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +77,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -103,25 +109,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
-//				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				EnableCdn:    pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 //					SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
@@ -142,7 +151,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -179,7 +188,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -220,25 +229,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
-//				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				EnableCdn:    pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 //					CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -264,25 +276,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
-//				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				EnableCdn:    pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 //					CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -316,7 +331,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -353,7 +368,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -414,7 +429,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -461,7 +476,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -518,7 +533,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -625,7 +640,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -662,7 +677,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -689,7 +704,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -778,8 +793,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -837,7 +852,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -976,7 +991,7 @@ type BackendService struct {
 	// Settings for enabling Cloud Identity Aware Proxy.
 	// If OAuth client is not set, the Google-managed OAuth client is used.
 	// Structure is documented below.
-	Iap BackendServiceIapOutput `pulumi:"iap"`
+	Iap BackendServiceIapPtrOutput `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
 	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
 	IpAddressSelectionPolicy pulumi.StringPtrOutput `pulumi:"ipAddressSelectionPolicy"`
@@ -984,7 +999,7 @@ type BackendService struct {
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
@@ -1258,7 +1273,7 @@ type backendServiceState struct {
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
@@ -1503,7 +1518,7 @@ type BackendServiceState struct {
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
@@ -1745,7 +1760,7 @@ type backendServiceArgs struct {
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
@@ -1982,7 +1997,7 @@ type BackendServiceArgs struct {
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
@@ -2366,8 +2381,8 @@ func (o BackendServiceOutput) HealthChecks() pulumi.StringPtrOutput {
 // Settings for enabling Cloud Identity Aware Proxy.
 // If OAuth client is not set, the Google-managed OAuth client is used.
 // Structure is documented below.
-func (o BackendServiceOutput) Iap() BackendServiceIapOutput {
-	return o.ApplyT(func(v *BackendService) BackendServiceIapOutput { return v.Iap }).(BackendServiceIapOutput)
+func (o BackendServiceOutput) Iap() BackendServiceIapPtrOutput {
+	return o.ApplyT(func(v *BackendService) BackendServiceIapPtrOutput { return v.Iap }).(BackendServiceIapPtrOutput)
 }
 
 // Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -2380,7 +2395,7 @@ func (o BackendServiceOutput) IpAddressSelectionPolicy() pulumi.StringPtrOutput 
 // external load balancing. A backend service created for one type of
 // load balancing cannot be used with the other. For more information, refer to
 // [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-// Default value is `EXTERNAL`.
+// Default value is `EXTERNAL_MANAGED`.
 // Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 func (o BackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)

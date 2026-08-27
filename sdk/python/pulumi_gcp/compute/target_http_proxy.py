@@ -459,6 +459,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_http_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
@@ -549,6 +550,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_http_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
@@ -654,6 +656,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_http_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
@@ -744,6 +747,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_http_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",

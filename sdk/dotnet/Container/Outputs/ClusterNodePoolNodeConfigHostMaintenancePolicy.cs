@@ -14,14 +14,22 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNodeConfigHostMaintenancePolicy
     {
         /// <summary>
-        /// .
+        /// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
         /// </summary>
         public readonly string MaintenanceInterval;
+        /// <summary>
+        /// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy? OpportunisticMaintenanceStrategy;
 
         [OutputConstructor]
-        private ClusterNodePoolNodeConfigHostMaintenancePolicy(string maintenanceInterval)
+        private ClusterNodePoolNodeConfigHostMaintenancePolicy(
+            string maintenanceInterval,
+
+            Outputs.ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy? opportunisticMaintenanceStrategy)
         {
             MaintenanceInterval = maintenanceInterval;
+            OpportunisticMaintenanceStrategy = opportunisticMaintenanceStrategy;
         }
     }
 }

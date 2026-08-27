@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -8851,7 +8851,7 @@ func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) DisablePrivateKg
 
 type SearchEngineSearchEngineConfig struct {
 	// The required subscription tier of this engine.
-	// They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+	// If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
 	// Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
 	RequiredSubscriptionTier *string `pulumi:"requiredSubscriptionTier"`
 	// The add-on that this search engine enables.
@@ -8876,7 +8876,7 @@ type SearchEngineSearchEngineConfigInput interface {
 
 type SearchEngineSearchEngineConfigArgs struct {
 	// The required subscription tier of this engine.
-	// They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+	// If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
 	// Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
 	RequiredSubscriptionTier pulumi.StringPtrInput `pulumi:"requiredSubscriptionTier"`
 	// The add-on that this search engine enables.
@@ -8966,7 +8966,7 @@ func (o SearchEngineSearchEngineConfigOutput) ToSearchEngineSearchEngineConfigPt
 }
 
 // The required subscription tier of this engine.
-// They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+// If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
 // Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
 func (o SearchEngineSearchEngineConfigOutput) RequiredSubscriptionTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SearchEngineSearchEngineConfig) *string { return v.RequiredSubscriptionTier }).(pulumi.StringPtrOutput)
@@ -9010,7 +9010,7 @@ func (o SearchEngineSearchEngineConfigPtrOutput) Elem() SearchEngineSearchEngine
 }
 
 // The required subscription tier of this engine.
-// They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+// If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
 // Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
 func (o SearchEngineSearchEngineConfigPtrOutput) RequiredSubscriptionTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SearchEngineSearchEngineConfig) *string {

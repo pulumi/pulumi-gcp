@@ -1012,6 +1012,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:redis/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
+     * Optional. The name of the ACL policy to attach to the cluster.
+     * 
+     */
+    @Export(name="aclPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> aclPolicy;
+
+    /**
+     * @return Optional. The name of the ACL policy to attach to the cluster.
+     * 
+     */
+    public Output<Optional<String>> aclPolicy() {
+        return Codegen.optional(this.aclPolicy);
+    }
+    /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1214,6 +1228,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterGcsSource>> gcsSource() {
         return Codegen.optional(this.gcsSource);
+    }
+    /**
+     * Optional. Whether the ACL policy is in sync with the cluster.
+     * 
+     */
+    @Export(name="isAclPolicyInSync", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isAclPolicyInSync;
+
+    /**
+     * @return Optional. Whether the ACL policy is in sync with the cluster.
+     * 
+     */
+    public Output<Boolean> isAclPolicyInSync() {
+        return this.isAclPolicyInSync;
     }
     /**
      * The KMS key used to encrypt the at-rest data of the cluster.

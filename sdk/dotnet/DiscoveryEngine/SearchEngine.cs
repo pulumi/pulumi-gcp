@@ -108,6 +108,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         {
     ///             { "agent-sharing-without-admin-approval", "FEATURE_STATE_ON" },
     ///             { "disable-agent-sharing", "FEATURE_STATE_OFF" },
+    ///             { "enable-end-user-sharing-with-groups", "FEATURE_STATE_OFF" },
     ///         },
     ///         KnowledgeGraphConfig = null,
     ///     });
