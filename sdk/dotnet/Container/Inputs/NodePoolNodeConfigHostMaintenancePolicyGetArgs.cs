@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("maintenanceInterval", required: true)]
         public Input<string> MaintenanceInterval { get; set; } = null!;
 
+        /// <summary>
+        /// Strategy that will trigger maintenance on behalf of the customer.
+        /// </summary>
+        [Input("opportunisticMaintenanceStrategy")]
+        public Input<Inputs.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyGetArgs>? OpportunisticMaintenanceStrategy { get; set; }
+
         public NodePoolNodeConfigHostMaintenancePolicyGetArgs()
         {
         }

@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AclPolicyArgs, AclPolicyState } from "./aclPolicy";
+export type AclPolicy = import("./aclPolicy").AclPolicy;
+export const AclPolicy: typeof import("./aclPolicy").AclPolicy = null as any;
+utilities.lazyLoad(exports, ["AclPolicy"], () => require("./aclPolicy"));
+
+export { GetAclPolicyArgs, GetAclPolicyResult, GetAclPolicyOutputArgs } from "./getAclPolicy";
+export const getAclPolicy: typeof import("./getAclPolicy").getAclPolicy = null as any;
+export const getAclPolicyOutput: typeof import("./getAclPolicy").getAclPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAclPolicy","getAclPolicyOutput"], () => require("./getAclPolicy"));
+
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
@@ -25,6 +35,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:memorystore/aclPolicy:AclPolicy":
+                return new AclPolicy(name, <any>undefined, { urn })
             case "gcp:memorystore/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints":
@@ -34,5 +46,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "memorystore/aclPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "memorystore/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "memorystore/instanceDesiredUserCreatedEndpoints", _module)

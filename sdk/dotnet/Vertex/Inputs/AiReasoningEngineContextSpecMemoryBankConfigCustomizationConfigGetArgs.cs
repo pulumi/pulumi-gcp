@@ -20,10 +20,29 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigGetArgs>? ConsolidationConfig { get; set; }
 
         /// <summary>
+        /// Indicates whether natural language memory generation should be disabled.
+        /// </summary>
+        [Input("disableNaturalLanguageMemories")]
+        public Input<bool>? DisableNaturalLanguageMemories { get; set; }
+
+        /// <summary>
         /// Optional. Generate memories in the third person if set to true.
         /// </summary>
         [Input("enableThirdPersonMemories")]
         public Input<bool>? EnableThirdPersonMemories { get; set; }
+
+        [Input("generateMemoriesExamples")]
+        private InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGetArgs>? _generateMemoriesExamples;
+
+        /// <summary>
+        /// Provides examples of how to generate memories for a particular scope.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGetArgs> GenerateMemoriesExamples
+        {
+            get => _generateMemoriesExamples ?? (_generateMemoriesExamples = new InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGetArgs>());
+            set => _generateMemoriesExamples = value;
+        }
 
         [Input("memoryTopics")]
         private InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicGetArgs>? _memoryTopics;

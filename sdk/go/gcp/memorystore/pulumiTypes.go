@@ -13,6 +13,121 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AclPolicyRule struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Valkey OSS:
+	// https://valkey.io/topics/acl/
+	Rule string `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Valkey OSS.
+	Username string `pulumi:"username"`
+}
+
+// AclPolicyRuleInput is an input type that accepts AclPolicyRuleArgs and AclPolicyRuleOutput values.
+// You can construct a concrete instance of `AclPolicyRuleInput` via:
+//
+//	AclPolicyRuleArgs{...}
+type AclPolicyRuleInput interface {
+	pulumi.Input
+
+	ToAclPolicyRuleOutput() AclPolicyRuleOutput
+	ToAclPolicyRuleOutputWithContext(context.Context) AclPolicyRuleOutput
+}
+
+type AclPolicyRuleArgs struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Valkey OSS:
+	// https://valkey.io/topics/acl/
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Valkey OSS.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (AclPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclPolicyRule)(nil)).Elem()
+}
+
+func (i AclPolicyRuleArgs) ToAclPolicyRuleOutput() AclPolicyRuleOutput {
+	return i.ToAclPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i AclPolicyRuleArgs) ToAclPolicyRuleOutputWithContext(ctx context.Context) AclPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyRuleOutput)
+}
+
+// AclPolicyRuleArrayInput is an input type that accepts AclPolicyRuleArray and AclPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `AclPolicyRuleArrayInput` via:
+//
+//	AclPolicyRuleArray{ AclPolicyRuleArgs{...} }
+type AclPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToAclPolicyRuleArrayOutput() AclPolicyRuleArrayOutput
+	ToAclPolicyRuleArrayOutputWithContext(context.Context) AclPolicyRuleArrayOutput
+}
+
+type AclPolicyRuleArray []AclPolicyRuleInput
+
+func (AclPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclPolicyRule)(nil)).Elem()
+}
+
+func (i AclPolicyRuleArray) ToAclPolicyRuleArrayOutput() AclPolicyRuleArrayOutput {
+	return i.ToAclPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AclPolicyRuleArray) ToAclPolicyRuleArrayOutputWithContext(ctx context.Context) AclPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyRuleArrayOutput)
+}
+
+type AclPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (AclPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclPolicyRule)(nil)).Elem()
+}
+
+func (o AclPolicyRuleOutput) ToAclPolicyRuleOutput() AclPolicyRuleOutput {
+	return o
+}
+
+func (o AclPolicyRuleOutput) ToAclPolicyRuleOutputWithContext(ctx context.Context) AclPolicyRuleOutput {
+	return o
+}
+
+// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+// The format of the rule is defined by Valkey OSS:
+// https://valkey.io/topics/acl/
+func (o AclPolicyRuleOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v AclPolicyRule) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// Specifies the IAM user or service account to be added to the ACL policy.
+// This username will be directly set on the Valkey OSS.
+func (o AclPolicyRuleOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v AclPolicyRule) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type AclPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AclPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclPolicyRule)(nil)).Elem()
+}
+
+func (o AclPolicyRuleArrayOutput) ToAclPolicyRuleArrayOutput() AclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o AclPolicyRuleArrayOutput) ToAclPolicyRuleArrayOutputWithContext(ctx context.Context) AclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o AclPolicyRuleArrayOutput) Index(i pulumi.IntInput) AclPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclPolicyRule {
+		return vs[0].([]AclPolicyRule)[vs[1].(int)]
+	}).(AclPolicyRuleOutput)
+}
+
 type InstanceAutomatedBackupConfig struct {
 	// Trigger automated backups at a fixed frequency.
 	// Structure is documented below.
@@ -5253,6 +5368,121 @@ func (o InstanceZoneDistributionConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAclPolicyRule struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Valkey OSS:
+	// https://valkey.io/topics/acl/
+	Rule string `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Valkey OSS.
+	Username string `pulumi:"username"`
+}
+
+// GetAclPolicyRuleInput is an input type that accepts GetAclPolicyRuleArgs and GetAclPolicyRuleOutput values.
+// You can construct a concrete instance of `GetAclPolicyRuleInput` via:
+//
+//	GetAclPolicyRuleArgs{...}
+type GetAclPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetAclPolicyRuleOutput() GetAclPolicyRuleOutput
+	ToGetAclPolicyRuleOutputWithContext(context.Context) GetAclPolicyRuleOutput
+}
+
+type GetAclPolicyRuleArgs struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Valkey OSS:
+	// https://valkey.io/topics/acl/
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Valkey OSS.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetAclPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclPolicyRule)(nil)).Elem()
+}
+
+func (i GetAclPolicyRuleArgs) ToGetAclPolicyRuleOutput() GetAclPolicyRuleOutput {
+	return i.ToGetAclPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetAclPolicyRuleArgs) ToGetAclPolicyRuleOutputWithContext(ctx context.Context) GetAclPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclPolicyRuleOutput)
+}
+
+// GetAclPolicyRuleArrayInput is an input type that accepts GetAclPolicyRuleArray and GetAclPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetAclPolicyRuleArrayInput` via:
+//
+//	GetAclPolicyRuleArray{ GetAclPolicyRuleArgs{...} }
+type GetAclPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetAclPolicyRuleArrayOutput() GetAclPolicyRuleArrayOutput
+	ToGetAclPolicyRuleArrayOutputWithContext(context.Context) GetAclPolicyRuleArrayOutput
+}
+
+type GetAclPolicyRuleArray []GetAclPolicyRuleInput
+
+func (GetAclPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclPolicyRule)(nil)).Elem()
+}
+
+func (i GetAclPolicyRuleArray) ToGetAclPolicyRuleArrayOutput() GetAclPolicyRuleArrayOutput {
+	return i.ToGetAclPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclPolicyRuleArray) ToGetAclPolicyRuleArrayOutputWithContext(ctx context.Context) GetAclPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclPolicyRuleArrayOutput)
+}
+
+type GetAclPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetAclPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclPolicyRule)(nil)).Elem()
+}
+
+func (o GetAclPolicyRuleOutput) ToGetAclPolicyRuleOutput() GetAclPolicyRuleOutput {
+	return o
+}
+
+func (o GetAclPolicyRuleOutput) ToGetAclPolicyRuleOutputWithContext(ctx context.Context) GetAclPolicyRuleOutput {
+	return o
+}
+
+// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+// The format of the rule is defined by Valkey OSS:
+// https://valkey.io/topics/acl/
+func (o GetAclPolicyRuleOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclPolicyRule) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// Specifies the IAM user or service account to be added to the ACL policy.
+// This username will be directly set on the Valkey OSS.
+func (o GetAclPolicyRuleOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclPolicyRule) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetAclPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclPolicyRule)(nil)).Elem()
+}
+
+func (o GetAclPolicyRuleArrayOutput) ToGetAclPolicyRuleArrayOutput() GetAclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetAclPolicyRuleArrayOutput) ToGetAclPolicyRuleArrayOutputWithContext(ctx context.Context) GetAclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetAclPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetAclPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclPolicyRule {
+		return vs[0].([]GetAclPolicyRule)[vs[1].(int)]
+	}).(GetAclPolicyRuleOutput)
+}
+
 type GetInstanceAutomatedBackupConfig struct {
 	// Trigger automated backups at a fixed frequency.
 	FixedFrequencySchedules []GetInstanceAutomatedBackupConfigFixedFrequencySchedule `pulumi:"fixedFrequencySchedules"`
@@ -9037,6 +9267,8 @@ func (o GetInstanceZoneDistributionConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclPolicyRuleInput)(nil)).Elem(), AclPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclPolicyRuleArrayInput)(nil)).Elem(), AclPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigInput)(nil)).Elem(), InstanceAutomatedBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigPtrInput)(nil)).Elem(), InstanceAutomatedBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencyScheduleInput)(nil)).Elem(), InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{})
@@ -9106,6 +9338,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), InstanceStateInfoUpdateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigPtrInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclPolicyRuleInput)(nil)).Elem(), GetAclPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclPolicyRuleArrayInput)(nil)).Elem(), GetAclPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigArrayInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencyScheduleInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{})
@@ -9170,6 +9404,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), GetInstanceStateInfoUpdateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigArrayInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArray{})
+	pulumi.RegisterOutputType(AclPolicyRuleOutput{})
+	pulumi.RegisterOutputType(AclPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigOutput{})
 	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput{})
@@ -9239,6 +9475,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceStateInfoUpdateInfoArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetAclPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetAclPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput{})

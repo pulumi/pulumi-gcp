@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+ *
  * A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates
  * all the necessary GCP components needed for creating a BeyondCorp protected AppGateway. Multiple connectors can be
  * authorised for a single AppGateway.

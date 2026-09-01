@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         BootstrapClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         OnPremVersion = "1.31.0-gke.35",
     ///         ImageType = "ubuntu_containerd",
-    ///         Annotations = null,
+    ///         Annotations = new() { },
     ///         Vcenter = new Gcp.GkeOnPrem.Inputs.VmwareAdminClusterVcenterArgs
     ///         {
     ///             ResourcePool = "test resource pool",

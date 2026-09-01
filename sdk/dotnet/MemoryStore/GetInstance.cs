@@ -138,6 +138,7 @@ namespace Pulumi.Gcp.MemoryStore
     [OutputType]
     public sealed class GetInstanceResult
     {
+        public readonly string AclPolicy;
         public readonly string AuthorizationMode;
         public readonly ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> AutomatedBackupConfigs;
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
@@ -160,6 +161,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         public readonly string Id;
         public readonly string InstanceId;
+        public readonly bool IsAclPolicyInSync;
         public readonly string KmsKey;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string? Location;
@@ -190,6 +192,8 @@ namespace Pulumi.Gcp.MemoryStore
 
         [OutputConstructor]
         private GetInstanceResult(
+            string aclPolicy,
+
             string authorizationMode,
 
             ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> automatedBackupConfigs,
@@ -227,6 +231,8 @@ namespace Pulumi.Gcp.MemoryStore
             string id,
 
             string instanceId,
+
+            bool isAclPolicyInSync,
 
             string kmsKey,
 
@@ -282,6 +288,7 @@ namespace Pulumi.Gcp.MemoryStore
 
             ImmutableArray<Outputs.GetInstanceZoneDistributionConfigResult> zoneDistributionConfigs)
         {
+            AclPolicy = aclPolicy;
             AuthorizationMode = authorizationMode;
             AutomatedBackupConfigs = automatedBackupConfigs;
             AvailableMaintenanceVersions = availableMaintenanceVersions;
@@ -301,6 +308,7 @@ namespace Pulumi.Gcp.MemoryStore
             GcsSources = gcsSources;
             Id = id;
             InstanceId = instanceId;
+            IsAclPolicyInSync = isAclPolicyInSync;
             KmsKey = kmsKey;
             Labels = labels;
             Location = location;

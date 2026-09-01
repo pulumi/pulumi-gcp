@@ -591,6 +591,18 @@ __all__ = [
     'ToolWidgetToolParametersArgsDict',
     'ToolWidgetToolTextResponseConfigArgs',
     'ToolWidgetToolTextResponseConfigArgsDict',
+    'ToolsetConnectorToolsetArgs',
+    'ToolsetConnectorToolsetArgsDict',
+    'ToolsetConnectorToolsetAuthConfigArgs',
+    'ToolsetConnectorToolsetAuthConfigArgsDict',
+    'ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs',
+    'ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgsDict',
+    'ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs',
+    'ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgsDict',
+    'ToolsetConnectorToolsetConnectorActionArgs',
+    'ToolsetConnectorToolsetConnectorActionArgsDict',
+    'ToolsetConnectorToolsetConnectorActionEntityOperationArgs',
+    'ToolsetConnectorToolsetConnectorActionEntityOperationArgsDict',
     'ToolsetMcpToolsetArgs',
     'ToolsetMcpToolsetArgsDict',
     'ToolsetMcpToolsetApiAuthenticationArgs',
@@ -28994,6 +29006,412 @@ class ToolWidgetToolTextResponseConfigArgs:
     @type.setter
     def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+
+class ToolsetConnectorToolsetArgsDict(TypedDict):
+    connection: pulumi.Input[_builtins.str]
+    """
+    The full resource name of the referenced Integration Connectors
+    Connection.
+    Format:
+    `projects/{project}/locations/{location}/connections/{connection}`
+    """
+    connector_actions: pulumi.Input[Sequence[pulumi.Input['ToolsetConnectorToolsetConnectorActionArgsDict']]]
+    """
+    The list of connector actions/entity operations to generate tools for.
+    Structure is documented below.
+    """
+    auth_config: NotRequired[pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigArgsDict']]]
+    """
+    Configures how authentication is handled in Integration Connectors.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ToolsetConnectorToolsetArgs:
+    def __init__(__self__, *,
+                 connection: pulumi.Input[_builtins.str],
+                 connector_actions: pulumi.Input[Sequence[pulumi.Input['ToolsetConnectorToolsetConnectorActionArgs']]],
+                 auth_config: pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection: The full resource name of the referenced Integration Connectors
+               Connection.
+               Format:
+               `projects/{project}/locations/{location}/connections/{connection}`
+        :param pulumi.Input[Sequence[pulumi.Input['ToolsetConnectorToolsetConnectorActionArgs']]] connector_actions: The list of connector actions/entity operations to generate tools for.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetConnectorToolsetAuthConfigArgs'] auth_config: Configures how authentication is handled in Integration Connectors.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "connector_actions", connector_actions)
+        if auth_config is not None:
+            pulumi.set(__self__, "auth_config", auth_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def connection(self) -> pulumi.Input[_builtins.str]:
+        """
+        The full resource name of the referenced Integration Connectors
+        Connection.
+        Format:
+        `projects/{project}/locations/{location}/connections/{connection}`
+        """
+        return pulumi.get(self, "connection")
+
+    @connection.setter
+    def connection(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "connection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorActions")
+    def connector_actions(self) -> pulumi.Input[Sequence[pulumi.Input['ToolsetConnectorToolsetConnectorActionArgs']]]:
+        """
+        The list of connector actions/entity operations to generate tools for.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_actions")
+
+    @connector_actions.setter
+    def connector_actions(self, value: pulumi.Input[Sequence[pulumi.Input['ToolsetConnectorToolsetConnectorActionArgs']]]):
+        pulumi.set(self, "connector_actions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authConfig")
+    def auth_config(self) -> pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigArgs']]:
+        """
+        Configures how authentication is handled in Integration Connectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auth_config")
+
+    @auth_config.setter
+    def auth_config(self, value: pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigArgs']]):
+        pulumi.set(self, "auth_config", value)
+
+
+class ToolsetConnectorToolsetAuthConfigArgsDict(TypedDict):
+    oauth2_auth_code_config: NotRequired[pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgsDict']]]
+    """
+    Oauth 2.0 Authorization Code authentication configuration.
+    Structure is documented below.
+    """
+    oauth2_jwt_bearer_config: NotRequired[pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgsDict']]]
+    """
+    JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+    Structure is documented below.
+
+    <a name="nested_connector_toolset_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+    """
+
+@pulumi.input_type
+class ToolsetConnectorToolsetAuthConfigArgs:
+    def __init__(__self__, *,
+                 oauth2_auth_code_config: pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs']] = None,
+                 oauth2_jwt_bearer_config: pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs']] = None):
+        """
+        :param pulumi.Input['ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs'] oauth2_auth_code_config: Oauth 2.0 Authorization Code authentication configuration.
+               Structure is documented below.
+        :param pulumi.Input['ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs'] oauth2_jwt_bearer_config: JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+               Structure is documented below.
+               
+               <a name="nested_connector_toolset_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        if oauth2_auth_code_config is not None:
+            pulumi.set(__self__, "oauth2_auth_code_config", oauth2_auth_code_config)
+        if oauth2_jwt_bearer_config is not None:
+            pulumi.set(__self__, "oauth2_jwt_bearer_config", oauth2_jwt_bearer_config)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2AuthCodeConfig")
+    def oauth2_auth_code_config(self) -> pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs']]:
+        """
+        Oauth 2.0 Authorization Code authentication configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_auth_code_config")
+
+    @oauth2_auth_code_config.setter
+    def oauth2_auth_code_config(self, value: pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs']]):
+        pulumi.set(self, "oauth2_auth_code_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2JwtBearerConfig")
+    def oauth2_jwt_bearer_config(self) -> pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs']]:
+        """
+        JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+        Structure is documented below.
+
+        <a name="nested_connector_toolset_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        return pulumi.get(self, "oauth2_jwt_bearer_config")
+
+    @oauth2_jwt_bearer_config.setter
+    def oauth2_jwt_bearer_config(self, value: pulumi.Input[Optional['ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs']]):
+        pulumi.set(self, "oauth2_jwt_bearer_config", value)
+
+
+class ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgsDict(TypedDict):
+    oauth_token: pulumi.Input[_builtins.str]
+    """
+    Oauth token parameter name to pass through.
+    Must be in the format '$context.variables.<name_of_variable>'.
+    """
+
+@pulumi.input_type
+class ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs:
+    def __init__(__self__, *,
+                 oauth_token: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] oauth_token: Oauth token parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        pulumi.set(__self__, "oauth_token", oauth_token)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> pulumi.Input[_builtins.str]:
+        """
+        Oauth token parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "oauth_token")
+
+    @oauth_token.setter
+    def oauth_token(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "oauth_token", value)
+
+
+class ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgsDict(TypedDict):
+    client_key: pulumi.Input[_builtins.str]
+    """
+    Client parameter name to pass through.
+    Must be in the format '$context.variables.<name_of_variable>'.
+    """
+    issuer: pulumi.Input[_builtins.str]
+    """
+    Issuer parameter name to pass through.
+    Must be in the format '$context.variables.<name_of_variable>'.
+    """
+    subject: pulumi.Input[_builtins.str]
+    """
+    Subject parameter name to pass through.
+    Must be in the format '$context.variables.<name_of_variable>'.
+    """
+
+@pulumi.input_type
+class ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs:
+    def __init__(__self__, *,
+                 client_key: pulumi.Input[_builtins.str],
+                 issuer: pulumi.Input[_builtins.str],
+                 subject: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] client_key: Client parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        :param pulumi.Input[_builtins.str] issuer: Issuer parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        :param pulumi.Input[_builtins.str] subject: Subject parameter name to pass through.
+               Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        Client parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> pulumi.Input[_builtins.str]:
+        """
+        Issuer parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "issuer", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[_builtins.str]:
+        """
+        Subject parameter name to pass through.
+        Must be in the format '$context.variables.<name_of_variable>'.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "subject", value)
+
+
+class ToolsetConnectorToolsetConnectorActionArgsDict(TypedDict):
+    connection_action_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    ID of a Connection action for the tool to use.
+    """
+    entity_operation: NotRequired[pulumi.Input[Optional['ToolsetConnectorToolsetConnectorActionEntityOperationArgsDict']]]
+    """
+    Entity operation configuration for the tool to use.
+    Structure is documented below.
+    """
+    input_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entity fields to use as inputs for the operation.
+    """
+    output_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entity fields to return from the operation.
+    """
+
+@pulumi.input_type
+class ToolsetConnectorToolsetConnectorActionArgs:
+    def __init__(__self__, *,
+                 connection_action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_operation: pulumi.Input[Optional['ToolsetConnectorToolsetConnectorActionEntityOperationArgs']] = None,
+                 input_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection_action_id: ID of a Connection action for the tool to use.
+        :param pulumi.Input['ToolsetConnectorToolsetConnectorActionEntityOperationArgs'] entity_operation: Entity operation configuration for the tool to use.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_fields: Entity fields to use as inputs for the operation.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_fields: Entity fields to return from the operation.
+        """
+        if connection_action_id is not None:
+            pulumi.set(__self__, "connection_action_id", connection_action_id)
+        if entity_operation is not None:
+            pulumi.set(__self__, "entity_operation", entity_operation)
+        if input_fields is not None:
+            pulumi.set(__self__, "input_fields", input_fields)
+        if output_fields is not None:
+            pulumi.set(__self__, "output_fields", output_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionActionId")
+    def connection_action_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ID of a Connection action for the tool to use.
+        """
+        return pulumi.get(self, "connection_action_id")
+
+    @connection_action_id.setter
+    def connection_action_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_action_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityOperation")
+    def entity_operation(self) -> pulumi.Input[Optional['ToolsetConnectorToolsetConnectorActionEntityOperationArgs']]:
+        """
+        Entity operation configuration for the tool to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entity_operation")
+
+    @entity_operation.setter
+    def entity_operation(self, value: pulumi.Input[Optional['ToolsetConnectorToolsetConnectorActionEntityOperationArgs']]):
+        pulumi.set(self, "entity_operation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputFields")
+    def input_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity fields to use as inputs for the operation.
+        """
+        return pulumi.get(self, "input_fields")
+
+    @input_fields.setter
+    def input_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputFields")
+    def output_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity fields to return from the operation.
+        """
+        return pulumi.get(self, "output_fields")
+
+    @output_fields.setter
+    def output_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "output_fields", value)
+
+
+class ToolsetConnectorToolsetConnectorActionEntityOperationArgsDict(TypedDict):
+    entity_id: pulumi.Input[_builtins.str]
+    """
+    ID of the entity.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    Operation to perform on the entity.
+    Possible values:
+    LIST
+    GET
+    CREATE
+    UPDATE
+    DELETE
+    """
+
+@pulumi.input_type
+class ToolsetConnectorToolsetConnectorActionEntityOperationArgs:
+    def __init__(__self__, *,
+                 entity_id: pulumi.Input[_builtins.str],
+                 operation: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] entity_id: ID of the entity.
+        :param pulumi.Input[_builtins.str] operation: Operation to perform on the entity.
+               Possible values:
+               LIST
+               GET
+               CREATE
+               UPDATE
+               DELETE
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "operation", operation)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "entity_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operation to perform on the entity.
+        Possible values:
+        LIST
+        GET
+        CREATE
+        UPDATE
+        DELETE
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operation", value)
 
 
 class ToolsetMcpToolsetArgsDict(TypedDict):

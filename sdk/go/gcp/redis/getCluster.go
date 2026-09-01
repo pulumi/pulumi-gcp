@@ -62,6 +62,7 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
+	AclPolicy                      string                                    `pulumi:"aclPolicy"`
 	AuthorizationMode              string                                    `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs         []GetClusterAutomatedBackupConfig         `pulumi:"automatedBackupConfigs"`
 	AvailableMaintenanceVersions   []string                                  `pulumi:"availableMaintenanceVersions"`
@@ -76,6 +77,7 @@ type LookupClusterResult struct {
 	GcsSources                     []GetClusterGcsSource                     `pulumi:"gcsSources"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                             `pulumi:"id"`
+	IsAclPolicyInSync       bool                               `pulumi:"isAclPolicyInSync"`
 	KmsKey                  string                             `pulumi:"kmsKey"`
 	Labels                  map[string]string                  `pulumi:"labels"`
 	MaintenancePolicies     []GetClusterMaintenancePolicy      `pulumi:"maintenancePolicies"`
@@ -141,6 +143,10 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+func (o LookupClusterResultOutput) AclPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AclPolicy }).(pulumi.StringOutput)
+}
+
 func (o LookupClusterResultOutput) AuthorizationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.AuthorizationMode }).(pulumi.StringOutput)
 }
@@ -194,6 +200,10 @@ func (o LookupClusterResultOutput) GcsSources() GetClusterGcsSourceArrayOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) IsAclPolicyInSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.IsAclPolicyInSync }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) KmsKey() pulumi.StringOutput {

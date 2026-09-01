@@ -466,7 +466,7 @@ namespace Pulumi.Gcp.Vertex
     ///             { "foo", "bar" },
     ///         },
     ///         Region = "us-central1",
-    ///         Optimized = null,
+    ///         Optimized = new() { },
     ///         EmbeddingManagement = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreEmbeddingManagementArgs
     ///         {
     ///             Enabled = true,

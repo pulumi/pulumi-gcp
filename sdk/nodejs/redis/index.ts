@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ClusterAclPolicyArgs, ClusterAclPolicyState } from "./clusterAclPolicy";
+export type ClusterAclPolicy = import("./clusterAclPolicy").ClusterAclPolicy;
+export const ClusterAclPolicy: typeof import("./clusterAclPolicy").ClusterAclPolicy = null as any;
+utilities.lazyLoad(exports, ["ClusterAclPolicy"], () => require("./clusterAclPolicy"));
+
 export { ClusterUserCreatedConnectionsArgs, ClusterUserCreatedConnectionsState } from "./clusterUserCreatedConnections";
 export type ClusterUserCreatedConnections = import("./clusterUserCreatedConnections").ClusterUserCreatedConnections;
 export const ClusterUserCreatedConnections: typeof import("./clusterUserCreatedConnections").ClusterUserCreatedConnections = null as any;
@@ -19,6 +24,11 @@ export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getClu
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+
+export { GetClusterAclPolicyArgs, GetClusterAclPolicyResult, GetClusterAclPolicyOutputArgs } from "./getClusterAclPolicy";
+export const getClusterAclPolicy: typeof import("./getClusterAclPolicy").getClusterAclPolicy = null as any;
+export const getClusterAclPolicyOutput: typeof import("./getClusterAclPolicy").getClusterAclPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterAclPolicy","getClusterAclPolicyOutput"], () => require("./getClusterAclPolicy"));
 
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
@@ -37,6 +47,8 @@ const _module = {
         switch (type) {
             case "gcp:redis/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "gcp:redis/clusterAclPolicy:ClusterAclPolicy":
+                return new ClusterAclPolicy(name, <any>undefined, { urn })
             case "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections":
                 return new ClusterUserCreatedConnections(name, <any>undefined, { urn })
             case "gcp:redis/instance:Instance":
@@ -47,5 +59,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "redis/cluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "redis/clusterAclPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "redis/clusterUserCreatedConnections", _module)
 pulumi.runtime.registerResourceModule("gcp", "redis/instance", _module)

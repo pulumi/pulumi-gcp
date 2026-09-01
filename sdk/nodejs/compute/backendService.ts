@@ -23,6 +23,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+ * Read more about Write-only Arguments.
+ *
  * ## Example Usage
  *
  * ### Backend Service Basic
@@ -694,7 +697,7 @@ export class BackendService extends pulumi.CustomResource {
      * If OAuth client is not set, the Google-managed OAuth client is used.
      * Structure is documented below.
      */
-    declare public readonly iap: pulumi.Output<outputs.compute.BackendServiceIap>;
+    declare public readonly iap: pulumi.Output<outputs.compute.BackendServiceIap | undefined>;
     /**
      * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
      * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.

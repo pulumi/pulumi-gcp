@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Firestore
     ///         Database = database.Name,
     ///         Name = "my-change-stream",
     ///         RetentionPeriod = "86400s",
-    ///         DatabaseScope = null,
+    ///         DatabaseScope = new() { },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

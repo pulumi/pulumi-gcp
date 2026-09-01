@@ -24,6 +24,7 @@ class ToolsetArgs:
                  app: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  toolset_id: pulumi.Input[_builtins.str],
+                 connector_toolset: pulumi.Input[Optional['ToolsetConnectorToolsetArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -31,6 +32,7 @@ class ToolsetArgs:
                  mcp_toolset: pulumi.Input[Optional['ToolsetMcpToolsetArgs']] = None,
                  open_api_toolset: pulumi.Input[Optional['ToolsetOpenApiToolsetArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  tool_fake_config: pulumi.Input[Optional['ToolsetToolFakeConfigArgs']] = None):
         """
         The set of arguments for constructing a Toolset resource.
@@ -40,6 +42,8 @@ class ToolsetArgs:
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
                the toolset's resource name. If not provided, a unique ID will be
                automatically assigned for the toolset.
+        :param pulumi.Input['ToolsetConnectorToolsetArgs'] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -59,12 +63,17 @@ class ToolsetArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the toolset execution. If not set, the default timeout is
+               30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+               toolsets.
         :param pulumi.Input['ToolsetToolFakeConfigArgs'] tool_fake_config: Configuration for tools behavior in fake mode.
                Structure is documented below.
         """
         pulumi.set(__self__, "app", app)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "toolset_id", toolset_id)
+        if connector_toolset is not None:
+            pulumi.set(__self__, "connector_toolset", connector_toolset)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -79,6 +88,8 @@ class ToolsetArgs:
             pulumi.set(__self__, "open_api_toolset", open_api_toolset)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
         if tool_fake_config is not None:
             pulumi.set(__self__, "tool_fake_config", tool_fake_config)
 
@@ -119,6 +130,19 @@ class ToolsetArgs:
     @toolset_id.setter
     def toolset_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "toolset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorToolset")
+    def connector_toolset(self) -> pulumi.Input[Optional['ToolsetConnectorToolsetArgs']]:
+        """
+        A toolset that generates tools from an Integration Connectors Connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_toolset")
+
+    @connector_toolset.setter
+    def connector_toolset(self, value: pulumi.Input[Optional['ToolsetConnectorToolsetArgs']]):
+        pulumi.set(self, "connector_toolset", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -217,6 +241,20 @@ class ToolsetArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The timeout for the toolset execution. If not set, the default timeout is
+        30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+        toolsets.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
     @pulumi.getter(name="toolFakeConfig")
     def tool_fake_config(self) -> pulumi.Input[Optional['ToolsetToolFakeConfigArgs']]:
         """
@@ -234,6 +272,7 @@ class ToolsetArgs:
 class _ToolsetState:
     def __init__(__self__, *,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_toolset: pulumi.Input[Optional['ToolsetConnectorToolsetArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -245,6 +284,7 @@ class _ToolsetState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  open_api_toolset: pulumi.Input[Optional['ToolsetOpenApiToolsetArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  tool_fake_config: pulumi.Input[Optional['ToolsetToolFakeConfigArgs']] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
@@ -252,6 +292,8 @@ class _ToolsetState:
         Input properties used for looking up and filtering Toolset resources.
 
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input['ToolsetConnectorToolsetArgs'] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the toolset was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -279,6 +321,9 @@ class _ToolsetState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the toolset execution. If not set, the default timeout is
+               30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+               toolsets.
         :param pulumi.Input['ToolsetToolFakeConfigArgs'] tool_fake_config: Configuration for tools behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
@@ -288,6 +333,8 @@ class _ToolsetState:
         """
         if app is not None:
             pulumi.set(__self__, "app", app)
+        if connector_toolset is not None:
+            pulumi.set(__self__, "connector_toolset", connector_toolset)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
@@ -310,6 +357,8 @@ class _ToolsetState:
             pulumi.set(__self__, "open_api_toolset", open_api_toolset)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
         if tool_fake_config is not None:
             pulumi.set(__self__, "tool_fake_config", tool_fake_config)
         if toolset_id is not None:
@@ -328,6 +377,19 @@ class _ToolsetState:
     @app.setter
     def app(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorToolset")
+    def connector_toolset(self) -> pulumi.Input[Optional['ToolsetConnectorToolsetArgs']]:
+        """
+        A toolset that generates tools from an Integration Connectors Connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_toolset")
+
+    @connector_toolset.setter
+    def connector_toolset(self, value: pulumi.Input[Optional['ToolsetConnectorToolsetArgs']]):
+        pulumi.set(self, "connector_toolset", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -478,6 +540,20 @@ class _ToolsetState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The timeout for the toolset execution. If not set, the default timeout is
+        30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+        toolsets.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
     @pulumi.getter(name="toolFakeConfig")
     def tool_fake_config(self) -> pulumi.Input[Optional['ToolsetToolFakeConfigArgs']]:
         """
@@ -524,6 +600,7 @@ class Toolset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -532,6 +609,7 @@ class Toolset(pulumi.CustomResource):
                  mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
                  open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1083,6 +1161,8 @@ class Toolset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1103,6 +1183,9 @@ class Toolset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the toolset execution. If not set, the default timeout is
+               30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+               toolsets.
         :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']] tool_fake_config: Configuration for tools behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
@@ -1676,6 +1759,7 @@ class Toolset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1684,6 +1768,7 @@ class Toolset(pulumi.CustomResource):
                  mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
                  open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1698,6 +1783,7 @@ class Toolset(pulumi.CustomResource):
             if app is None and not opts.urn:
                 raise TypeError("Missing required property 'app'")
             __props__.__dict__["app"] = app
+            __props__.__dict__["connector_toolset"] = connector_toolset
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -1708,6 +1794,7 @@ class Toolset(pulumi.CustomResource):
             __props__.__dict__["mcp_toolset"] = mcp_toolset
             __props__.__dict__["open_api_toolset"] = open_api_toolset
             __props__.__dict__["project"] = project
+            __props__.__dict__["timeout"] = timeout
             __props__.__dict__["tool_fake_config"] = tool_fake_config
             if toolset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'toolset_id'")
@@ -1727,6 +1814,7 @@ class Toolset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1738,6 +1826,7 @@ class Toolset(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None,
             tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
             toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Toolset':
@@ -1749,6 +1838,8 @@ class Toolset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the toolset was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1776,6 +1867,9 @@ class Toolset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] timeout: The timeout for the toolset execution. If not set, the default timeout is
+               30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+               toolsets.
         :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']] tool_fake_config: Configuration for tools behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
@@ -1788,6 +1882,7 @@ class Toolset(pulumi.CustomResource):
         __props__ = _ToolsetState.__new__(_ToolsetState)
 
         __props__.__dict__["app"] = app
+        __props__.__dict__["connector_toolset"] = connector_toolset
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
@@ -1799,6 +1894,7 @@ class Toolset(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["open_api_toolset"] = open_api_toolset
         __props__.__dict__["project"] = project
+        __props__.__dict__["timeout"] = timeout
         __props__.__dict__["tool_fake_config"] = tool_fake_config
         __props__.__dict__["toolset_id"] = toolset_id
         __props__.__dict__["update_time"] = update_time
@@ -1811,6 +1907,15 @@ class Toolset(pulumi.CustomResource):
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "app")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorToolset")
+    def connector_toolset(self) -> pulumi.Output[Optional['outputs.ToolsetConnectorToolset']]:
+        """
+        A toolset that generates tools from an Integration Connectors Connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_toolset")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -1915,6 +2020,16 @@ class Toolset(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The timeout for the toolset execution. If not set, the default timeout is
+        30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+        toolsets.
+        """
+        return pulumi.get(self, "timeout")
 
     @_builtins.property
     @pulumi.getter(name="toolFakeConfig")

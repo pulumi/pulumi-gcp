@@ -48705,6 +48705,1014 @@ func (o ToolWidgetToolTextResponseConfigPtrOutput) Type() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type ToolsetConnectorToolset struct {
+	// Configures how authentication is handled in Integration Connectors.
+	// Structure is documented below.
+	AuthConfig *ToolsetConnectorToolsetAuthConfig `pulumi:"authConfig"`
+	// The full resource name of the referenced Integration Connectors
+	// Connection.
+	// Format:
+	// `projects/{project}/locations/{location}/connections/{connection}`
+	Connection string `pulumi:"connection"`
+	// The list of connector actions/entity operations to generate tools for.
+	// Structure is documented below.
+	ConnectorActions []ToolsetConnectorToolsetConnectorAction `pulumi:"connectorActions"`
+}
+
+// ToolsetConnectorToolsetInput is an input type that accepts ToolsetConnectorToolsetArgs and ToolsetConnectorToolsetOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetInput` via:
+//
+//	ToolsetConnectorToolsetArgs{...}
+type ToolsetConnectorToolsetInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetOutput() ToolsetConnectorToolsetOutput
+	ToToolsetConnectorToolsetOutputWithContext(context.Context) ToolsetConnectorToolsetOutput
+}
+
+type ToolsetConnectorToolsetArgs struct {
+	// Configures how authentication is handled in Integration Connectors.
+	// Structure is documented below.
+	AuthConfig ToolsetConnectorToolsetAuthConfigPtrInput `pulumi:"authConfig"`
+	// The full resource name of the referenced Integration Connectors
+	// Connection.
+	// Format:
+	// `projects/{project}/locations/{location}/connections/{connection}`
+	Connection pulumi.StringInput `pulumi:"connection"`
+	// The list of connector actions/entity operations to generate tools for.
+	// Structure is documented below.
+	ConnectorActions ToolsetConnectorToolsetConnectorActionArrayInput `pulumi:"connectorActions"`
+}
+
+func (ToolsetConnectorToolsetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolset)(nil)).Elem()
+}
+
+func (i ToolsetConnectorToolsetArgs) ToToolsetConnectorToolsetOutput() ToolsetConnectorToolsetOutput {
+	return i.ToToolsetConnectorToolsetOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetArgs) ToToolsetConnectorToolsetOutputWithContext(ctx context.Context) ToolsetConnectorToolsetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetOutput)
+}
+
+func (i ToolsetConnectorToolsetArgs) ToToolsetConnectorToolsetPtrOutput() ToolsetConnectorToolsetPtrOutput {
+	return i.ToToolsetConnectorToolsetPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetArgs) ToToolsetConnectorToolsetPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetOutput).ToToolsetConnectorToolsetPtrOutputWithContext(ctx)
+}
+
+// ToolsetConnectorToolsetPtrInput is an input type that accepts ToolsetConnectorToolsetArgs, ToolsetConnectorToolsetPtr and ToolsetConnectorToolsetPtrOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetPtrInput` via:
+//
+//	        ToolsetConnectorToolsetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetConnectorToolsetPtrInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetPtrOutput() ToolsetConnectorToolsetPtrOutput
+	ToToolsetConnectorToolsetPtrOutputWithContext(context.Context) ToolsetConnectorToolsetPtrOutput
+}
+
+type toolsetConnectorToolsetPtrType ToolsetConnectorToolsetArgs
+
+func ToolsetConnectorToolsetPtr(v *ToolsetConnectorToolsetArgs) ToolsetConnectorToolsetPtrInput {
+	return (*toolsetConnectorToolsetPtrType)(v)
+}
+
+func (*toolsetConnectorToolsetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolset)(nil)).Elem()
+}
+
+func (i *toolsetConnectorToolsetPtrType) ToToolsetConnectorToolsetPtrOutput() ToolsetConnectorToolsetPtrOutput {
+	return i.ToToolsetConnectorToolsetPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetConnectorToolsetPtrType) ToToolsetConnectorToolsetPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetPtrOutput)
+}
+
+type ToolsetConnectorToolsetOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolset)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetOutput) ToToolsetConnectorToolsetOutput() ToolsetConnectorToolsetOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetOutput) ToToolsetConnectorToolsetOutputWithContext(ctx context.Context) ToolsetConnectorToolsetOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetOutput) ToToolsetConnectorToolsetPtrOutput() ToolsetConnectorToolsetPtrOutput {
+	return o.ToToolsetConnectorToolsetPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetConnectorToolsetOutput) ToToolsetConnectorToolsetPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetConnectorToolset) *ToolsetConnectorToolset {
+		return &v
+	}).(ToolsetConnectorToolsetPtrOutput)
+}
+
+// Configures how authentication is handled in Integration Connectors.
+// Structure is documented below.
+func (o ToolsetConnectorToolsetOutput) AuthConfig() ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolset) *ToolsetConnectorToolsetAuthConfig { return v.AuthConfig }).(ToolsetConnectorToolsetAuthConfigPtrOutput)
+}
+
+// The full resource name of the referenced Integration Connectors
+// Connection.
+// Format:
+// `projects/{project}/locations/{location}/connections/{connection}`
+func (o ToolsetConnectorToolsetOutput) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolset) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+// The list of connector actions/entity operations to generate tools for.
+// Structure is documented below.
+func (o ToolsetConnectorToolsetOutput) ConnectorActions() ToolsetConnectorToolsetConnectorActionArrayOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolset) []ToolsetConnectorToolsetConnectorAction { return v.ConnectorActions }).(ToolsetConnectorToolsetConnectorActionArrayOutput)
+}
+
+type ToolsetConnectorToolsetPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolset)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetPtrOutput) ToToolsetConnectorToolsetPtrOutput() ToolsetConnectorToolsetPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetPtrOutput) ToToolsetConnectorToolsetPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetPtrOutput) Elem() ToolsetConnectorToolsetOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolset) ToolsetConnectorToolset {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetConnectorToolset
+		return ret
+	}).(ToolsetConnectorToolsetOutput)
+}
+
+// Configures how authentication is handled in Integration Connectors.
+// Structure is documented below.
+func (o ToolsetConnectorToolsetPtrOutput) AuthConfig() ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolset) *ToolsetConnectorToolsetAuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthConfig
+	}).(ToolsetConnectorToolsetAuthConfigPtrOutput)
+}
+
+// The full resource name of the referenced Integration Connectors
+// Connection.
+// Format:
+// `projects/{project}/locations/{location}/connections/{connection}`
+func (o ToolsetConnectorToolsetPtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of connector actions/entity operations to generate tools for.
+// Structure is documented below.
+func (o ToolsetConnectorToolsetPtrOutput) ConnectorActions() ToolsetConnectorToolsetConnectorActionArrayOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolset) []ToolsetConnectorToolsetConnectorAction {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorActions
+	}).(ToolsetConnectorToolsetConnectorActionArrayOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfig struct {
+	// Oauth 2.0 Authorization Code authentication configuration.
+	// Structure is documented below.
+	Oauth2AuthCodeConfig *ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig `pulumi:"oauth2AuthCodeConfig"`
+	// JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+	// Structure is documented below.
+	//
+	// <a name="nestedConnectorToolsetAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+	Oauth2JwtBearerConfig *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig `pulumi:"oauth2JwtBearerConfig"`
+}
+
+// ToolsetConnectorToolsetAuthConfigInput is an input type that accepts ToolsetConnectorToolsetAuthConfigArgs and ToolsetConnectorToolsetAuthConfigOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetAuthConfigInput` via:
+//
+//	ToolsetConnectorToolsetAuthConfigArgs{...}
+type ToolsetConnectorToolsetAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetAuthConfigOutput() ToolsetConnectorToolsetAuthConfigOutput
+	ToToolsetConnectorToolsetAuthConfigOutputWithContext(context.Context) ToolsetConnectorToolsetAuthConfigOutput
+}
+
+type ToolsetConnectorToolsetAuthConfigArgs struct {
+	// Oauth 2.0 Authorization Code authentication configuration.
+	// Structure is documented below.
+	Oauth2AuthCodeConfig ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrInput `pulumi:"oauth2AuthCodeConfig"`
+	// JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+	// Structure is documented below.
+	//
+	// <a name="nestedConnectorToolsetAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+	Oauth2JwtBearerConfig ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrInput `pulumi:"oauth2JwtBearerConfig"`
+}
+
+func (ToolsetConnectorToolsetAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetAuthConfig)(nil)).Elem()
+}
+
+func (i ToolsetConnectorToolsetAuthConfigArgs) ToToolsetConnectorToolsetAuthConfigOutput() ToolsetConnectorToolsetAuthConfigOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetAuthConfigArgs) ToToolsetConnectorToolsetAuthConfigOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOutput)
+}
+
+func (i ToolsetConnectorToolsetAuthConfigArgs) ToToolsetConnectorToolsetAuthConfigPtrOutput() ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetAuthConfigArgs) ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOutput).ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetConnectorToolsetAuthConfigPtrInput is an input type that accepts ToolsetConnectorToolsetAuthConfigArgs, ToolsetConnectorToolsetAuthConfigPtr and ToolsetConnectorToolsetAuthConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetAuthConfigPtrInput` via:
+//
+//	        ToolsetConnectorToolsetAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetConnectorToolsetAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetAuthConfigPtrOutput() ToolsetConnectorToolsetAuthConfigPtrOutput
+	ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(context.Context) ToolsetConnectorToolsetAuthConfigPtrOutput
+}
+
+type toolsetConnectorToolsetAuthConfigPtrType ToolsetConnectorToolsetAuthConfigArgs
+
+func ToolsetConnectorToolsetAuthConfigPtr(v *ToolsetConnectorToolsetAuthConfigArgs) ToolsetConnectorToolsetAuthConfigPtrInput {
+	return (*toolsetConnectorToolsetAuthConfigPtrType)(v)
+}
+
+func (*toolsetConnectorToolsetAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetAuthConfig)(nil)).Elem()
+}
+
+func (i *toolsetConnectorToolsetAuthConfigPtrType) ToToolsetConnectorToolsetAuthConfigPtrOutput() ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetConnectorToolsetAuthConfigPtrType) ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigPtrOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetAuthConfig)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOutput) ToToolsetConnectorToolsetAuthConfigOutput() ToolsetConnectorToolsetAuthConfigOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOutput) ToToolsetConnectorToolsetAuthConfigOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOutput) ToToolsetConnectorToolsetAuthConfigPtrOutput() ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return o.ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOutput) ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetConnectorToolsetAuthConfig) *ToolsetConnectorToolsetAuthConfig {
+		return &v
+	}).(ToolsetConnectorToolsetAuthConfigPtrOutput)
+}
+
+// Oauth 2.0 Authorization Code authentication configuration.
+// Structure is documented below.
+func (o ToolsetConnectorToolsetAuthConfigOutput) Oauth2AuthCodeConfig() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetAuthConfig) *ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig {
+		return v.Oauth2AuthCodeConfig
+	}).(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+// JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+// Structure is documented below.
+//
+// <a name="nestedConnectorToolsetAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+func (o ToolsetConnectorToolsetAuthConfigOutput) Oauth2JwtBearerConfig() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetAuthConfig) *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig {
+		return v.Oauth2JwtBearerConfig
+	}).(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetAuthConfig)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetAuthConfigPtrOutput) ToToolsetConnectorToolsetAuthConfigPtrOutput() ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigPtrOutput) ToToolsetConnectorToolsetAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigPtrOutput) Elem() ToolsetConnectorToolsetAuthConfigOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfig) ToolsetConnectorToolsetAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetConnectorToolsetAuthConfig
+		return ret
+	}).(ToolsetConnectorToolsetAuthConfigOutput)
+}
+
+// Oauth 2.0 Authorization Code authentication configuration.
+// Structure is documented below.
+func (o ToolsetConnectorToolsetAuthConfigPtrOutput) Oauth2AuthCodeConfig() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfig) *ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2AuthCodeConfig
+	}).(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+// JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+// Structure is documented below.
+//
+// <a name="nestedConnectorToolsetAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+func (o ToolsetConnectorToolsetAuthConfigPtrOutput) Oauth2JwtBearerConfig() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfig) *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2JwtBearerConfig
+	}).(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig struct {
+	// Oauth token parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	OauthToken string `pulumi:"oauthToken"`
+}
+
+// ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigInput is an input type that accepts ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs and ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigInput` via:
+//
+//	ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs{...}
+type ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput
+	ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutputWithContext(context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs struct {
+	// Oauth token parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	OauthToken pulumi.StringInput `pulumi:"oauthToken"`
+}
+
+func (ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput)
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput).ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrInput is an input type that accepts ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs, ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtr and ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrInput` via:
+//
+//	        ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput
+	ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput
+}
+
+type toolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrType ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs
+
+func ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtr(v *ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrInput {
+	return (*toolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrType)(v)
+}
+
+func (*toolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (i *toolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrType) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrType) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig) *ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig {
+		return &v
+	}).(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+// Oauth token parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput) OauthToken() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig) string { return v.OauthToken }).(pulumi.StringOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput) ToToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput) Elem() ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig) ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig
+		return ret
+	}).(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput)
+}
+
+// Oauth token parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput) OauthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthToken
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig struct {
+	// Client parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	ClientKey string `pulumi:"clientKey"`
+	// Issuer parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	Issuer string `pulumi:"issuer"`
+	// Subject parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	Subject string `pulumi:"subject"`
+}
+
+// ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigInput is an input type that accepts ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs and ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigInput` via:
+//
+//	ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs{...}
+type ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput
+	ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutputWithContext(context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs struct {
+	// Client parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	// Issuer parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// Subject parameter name to pass through.
+	// Must be in the format '$context.variables.<name_of_variable>'.
+	Subject pulumi.StringInput `pulumi:"subject"`
+}
+
+func (ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput)
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput).ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrInput is an input type that accepts ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs, ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtr and ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrInput` via:
+//
+//	        ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput
+	ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput
+}
+
+type toolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrType ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs
+
+func ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtr(v *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrInput {
+	return (*toolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrType)(v)
+}
+
+func (*toolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (i *toolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrType) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return i.ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrType) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig {
+		return &v
+	}).(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+// Client parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) string { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+// Issuer parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// Subject parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+type ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput) ToToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput) Elem() ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig
+		return ret
+	}).(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput)
+}
+
+// Client parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Issuer parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Issuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subject parameter name to pass through.
+// Must be in the format '$context.variables.<name_of_variable>'.
+func (o ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subject
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetConnectorToolsetConnectorAction struct {
+	// ID of a Connection action for the tool to use.
+	ConnectionActionId *string `pulumi:"connectionActionId"`
+	// Entity operation configuration for the tool to use.
+	// Structure is documented below.
+	EntityOperation *ToolsetConnectorToolsetConnectorActionEntityOperation `pulumi:"entityOperation"`
+	// Entity fields to use as inputs for the operation.
+	InputFields []string `pulumi:"inputFields"`
+	// Entity fields to return from the operation.
+	OutputFields []string `pulumi:"outputFields"`
+}
+
+// ToolsetConnectorToolsetConnectorActionInput is an input type that accepts ToolsetConnectorToolsetConnectorActionArgs and ToolsetConnectorToolsetConnectorActionOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetConnectorActionInput` via:
+//
+//	ToolsetConnectorToolsetConnectorActionArgs{...}
+type ToolsetConnectorToolsetConnectorActionInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetConnectorActionOutput() ToolsetConnectorToolsetConnectorActionOutput
+	ToToolsetConnectorToolsetConnectorActionOutputWithContext(context.Context) ToolsetConnectorToolsetConnectorActionOutput
+}
+
+type ToolsetConnectorToolsetConnectorActionArgs struct {
+	// ID of a Connection action for the tool to use.
+	ConnectionActionId pulumi.StringPtrInput `pulumi:"connectionActionId"`
+	// Entity operation configuration for the tool to use.
+	// Structure is documented below.
+	EntityOperation ToolsetConnectorToolsetConnectorActionEntityOperationPtrInput `pulumi:"entityOperation"`
+	// Entity fields to use as inputs for the operation.
+	InputFields pulumi.StringArrayInput `pulumi:"inputFields"`
+	// Entity fields to return from the operation.
+	OutputFields pulumi.StringArrayInput `pulumi:"outputFields"`
+}
+
+func (ToolsetConnectorToolsetConnectorActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetConnectorAction)(nil)).Elem()
+}
+
+func (i ToolsetConnectorToolsetConnectorActionArgs) ToToolsetConnectorToolsetConnectorActionOutput() ToolsetConnectorToolsetConnectorActionOutput {
+	return i.ToToolsetConnectorToolsetConnectorActionOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetConnectorActionArgs) ToToolsetConnectorToolsetConnectorActionOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetConnectorActionOutput)
+}
+
+// ToolsetConnectorToolsetConnectorActionArrayInput is an input type that accepts ToolsetConnectorToolsetConnectorActionArray and ToolsetConnectorToolsetConnectorActionArrayOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetConnectorActionArrayInput` via:
+//
+//	ToolsetConnectorToolsetConnectorActionArray{ ToolsetConnectorToolsetConnectorActionArgs{...} }
+type ToolsetConnectorToolsetConnectorActionArrayInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetConnectorActionArrayOutput() ToolsetConnectorToolsetConnectorActionArrayOutput
+	ToToolsetConnectorToolsetConnectorActionArrayOutputWithContext(context.Context) ToolsetConnectorToolsetConnectorActionArrayOutput
+}
+
+type ToolsetConnectorToolsetConnectorActionArray []ToolsetConnectorToolsetConnectorActionInput
+
+func (ToolsetConnectorToolsetConnectorActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolsetConnectorToolsetConnectorAction)(nil)).Elem()
+}
+
+func (i ToolsetConnectorToolsetConnectorActionArray) ToToolsetConnectorToolsetConnectorActionArrayOutput() ToolsetConnectorToolsetConnectorActionArrayOutput {
+	return i.ToToolsetConnectorToolsetConnectorActionArrayOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetConnectorActionArray) ToToolsetConnectorToolsetConnectorActionArrayOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetConnectorActionArrayOutput)
+}
+
+type ToolsetConnectorToolsetConnectorActionOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetConnectorActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetConnectorAction)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetConnectorActionOutput) ToToolsetConnectorToolsetConnectorActionOutput() ToolsetConnectorToolsetConnectorActionOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetConnectorActionOutput) ToToolsetConnectorToolsetConnectorActionOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionOutput {
+	return o
+}
+
+// ID of a Connection action for the tool to use.
+func (o ToolsetConnectorToolsetConnectorActionOutput) ConnectionActionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetConnectorAction) *string { return v.ConnectionActionId }).(pulumi.StringPtrOutput)
+}
+
+// Entity operation configuration for the tool to use.
+// Structure is documented below.
+func (o ToolsetConnectorToolsetConnectorActionOutput) EntityOperation() ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetConnectorAction) *ToolsetConnectorToolsetConnectorActionEntityOperation {
+		return v.EntityOperation
+	}).(ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput)
+}
+
+// Entity fields to use as inputs for the operation.
+func (o ToolsetConnectorToolsetConnectorActionOutput) InputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetConnectorAction) []string { return v.InputFields }).(pulumi.StringArrayOutput)
+}
+
+// Entity fields to return from the operation.
+func (o ToolsetConnectorToolsetConnectorActionOutput) OutputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetConnectorAction) []string { return v.OutputFields }).(pulumi.StringArrayOutput)
+}
+
+type ToolsetConnectorToolsetConnectorActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetConnectorActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolsetConnectorToolsetConnectorAction)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetConnectorActionArrayOutput) ToToolsetConnectorToolsetConnectorActionArrayOutput() ToolsetConnectorToolsetConnectorActionArrayOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetConnectorActionArrayOutput) ToToolsetConnectorToolsetConnectorActionArrayOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionArrayOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetConnectorActionArrayOutput) Index(i pulumi.IntInput) ToolsetConnectorToolsetConnectorActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolsetConnectorToolsetConnectorAction {
+		return vs[0].([]ToolsetConnectorToolsetConnectorAction)[vs[1].(int)]
+	}).(ToolsetConnectorToolsetConnectorActionOutput)
+}
+
+type ToolsetConnectorToolsetConnectorActionEntityOperation struct {
+	// ID of the entity.
+	EntityId string `pulumi:"entityId"`
+	// Operation to perform on the entity.
+	// Possible values:
+	// LIST
+	// GET
+	// CREATE
+	// UPDATE
+	// DELETE
+	Operation string `pulumi:"operation"`
+}
+
+// ToolsetConnectorToolsetConnectorActionEntityOperationInput is an input type that accepts ToolsetConnectorToolsetConnectorActionEntityOperationArgs and ToolsetConnectorToolsetConnectorActionEntityOperationOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetConnectorActionEntityOperationInput` via:
+//
+//	ToolsetConnectorToolsetConnectorActionEntityOperationArgs{...}
+type ToolsetConnectorToolsetConnectorActionEntityOperationInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetConnectorActionEntityOperationOutput() ToolsetConnectorToolsetConnectorActionEntityOperationOutput
+	ToToolsetConnectorToolsetConnectorActionEntityOperationOutputWithContext(context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationOutput
+}
+
+type ToolsetConnectorToolsetConnectorActionEntityOperationArgs struct {
+	// ID of the entity.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// Operation to perform on the entity.
+	// Possible values:
+	// LIST
+	// GET
+	// CREATE
+	// UPDATE
+	// DELETE
+	Operation pulumi.StringInput `pulumi:"operation"`
+}
+
+func (ToolsetConnectorToolsetConnectorActionEntityOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetConnectorActionEntityOperation)(nil)).Elem()
+}
+
+func (i ToolsetConnectorToolsetConnectorActionEntityOperationArgs) ToToolsetConnectorToolsetConnectorActionEntityOperationOutput() ToolsetConnectorToolsetConnectorActionEntityOperationOutput {
+	return i.ToToolsetConnectorToolsetConnectorActionEntityOperationOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetConnectorActionEntityOperationArgs) ToToolsetConnectorToolsetConnectorActionEntityOperationOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetConnectorActionEntityOperationOutput)
+}
+
+func (i ToolsetConnectorToolsetConnectorActionEntityOperationArgs) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput() ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return i.ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetConnectorToolsetConnectorActionEntityOperationArgs) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetConnectorActionEntityOperationOutput).ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(ctx)
+}
+
+// ToolsetConnectorToolsetConnectorActionEntityOperationPtrInput is an input type that accepts ToolsetConnectorToolsetConnectorActionEntityOperationArgs, ToolsetConnectorToolsetConnectorActionEntityOperationPtr and ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput values.
+// You can construct a concrete instance of `ToolsetConnectorToolsetConnectorActionEntityOperationPtrInput` via:
+//
+//	        ToolsetConnectorToolsetConnectorActionEntityOperationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetConnectorToolsetConnectorActionEntityOperationPtrInput interface {
+	pulumi.Input
+
+	ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput() ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput
+	ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput
+}
+
+type toolsetConnectorToolsetConnectorActionEntityOperationPtrType ToolsetConnectorToolsetConnectorActionEntityOperationArgs
+
+func ToolsetConnectorToolsetConnectorActionEntityOperationPtr(v *ToolsetConnectorToolsetConnectorActionEntityOperationArgs) ToolsetConnectorToolsetConnectorActionEntityOperationPtrInput {
+	return (*toolsetConnectorToolsetConnectorActionEntityOperationPtrType)(v)
+}
+
+func (*toolsetConnectorToolsetConnectorActionEntityOperationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetConnectorActionEntityOperation)(nil)).Elem()
+}
+
+func (i *toolsetConnectorToolsetConnectorActionEntityOperationPtrType) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput() ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return i.ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetConnectorToolsetConnectorActionEntityOperationPtrType) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput)
+}
+
+type ToolsetConnectorToolsetConnectorActionEntityOperationOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetConnectorActionEntityOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetConnectorToolsetConnectorActionEntityOperation)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationOutput) ToToolsetConnectorToolsetConnectorActionEntityOperationOutput() ToolsetConnectorToolsetConnectorActionEntityOperationOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationOutput) ToToolsetConnectorToolsetConnectorActionEntityOperationOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationOutput) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput() ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return o.ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationOutput) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetConnectorToolsetConnectorActionEntityOperation) *ToolsetConnectorToolsetConnectorActionEntityOperation {
+		return &v
+	}).(ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput)
+}
+
+// ID of the entity.
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetConnectorActionEntityOperation) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// Operation to perform on the entity.
+// Possible values:
+// LIST
+// GET
+// CREATE
+// UPDATE
+// DELETE
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetConnectorToolsetConnectorActionEntityOperation) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+type ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetConnectorToolsetConnectorActionEntityOperation)(nil)).Elem()
+}
+
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput() ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput) ToToolsetConnectorToolsetConnectorActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput {
+	return o
+}
+
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput) Elem() ToolsetConnectorToolsetConnectorActionEntityOperationOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetConnectorActionEntityOperation) ToolsetConnectorToolsetConnectorActionEntityOperation {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetConnectorToolsetConnectorActionEntityOperation
+		return ret
+	}).(ToolsetConnectorToolsetConnectorActionEntityOperationOutput)
+}
+
+// ID of the entity.
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetConnectorActionEntityOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operation to perform on the entity.
+// Possible values:
+// LIST
+// GET
+// CREATE
+// UPDATE
+// DELETE
+func (o ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetConnectorToolsetConnectorActionEntityOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
 type ToolsetMcpToolset struct {
 	// Authentication information required to access tools and execute a tool
 	// against the MCP server. For API key auth, the API key can only be sent in
@@ -53269,6 +54277,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolParametersPtrInput)(nil)).Elem(), ToolWidgetToolParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolTextResponseConfigInput)(nil)).Elem(), ToolWidgetToolTextResponseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolWidgetToolTextResponseConfigPtrInput)(nil)).Elem(), ToolWidgetToolTextResponseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetInput)(nil)).Elem(), ToolsetConnectorToolsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetPtrInput)(nil)).Elem(), ToolsetConnectorToolsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigInput)(nil)).Elem(), ToolsetConnectorToolsetAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigPtrInput)(nil)).Elem(), ToolsetConnectorToolsetAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigInput)(nil)).Elem(), ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrInput)(nil)).Elem(), ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigInput)(nil)).Elem(), ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrInput)(nil)).Elem(), ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetConnectorActionInput)(nil)).Elem(), ToolsetConnectorToolsetConnectorActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetConnectorActionArrayInput)(nil)).Elem(), ToolsetConnectorToolsetConnectorActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetConnectorActionEntityOperationInput)(nil)).Elem(), ToolsetConnectorToolsetConnectorActionEntityOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetConnectorToolsetConnectorActionEntityOperationPtrInput)(nil)).Elem(), ToolsetConnectorToolsetConnectorActionEntityOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetInput)(nil)).Elem(), ToolsetMcpToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetPtrInput)(nil)).Elem(), ToolsetMcpToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationArgs{})
@@ -53888,6 +54908,18 @@ func init() {
 	pulumi.RegisterOutputType(ToolWidgetToolParametersPtrOutput{})
 	pulumi.RegisterOutputType(ToolWidgetToolTextResponseConfigOutput{})
 	pulumi.RegisterOutputType(ToolWidgetToolTextResponseConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetConnectorActionOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetConnectorActionArrayOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetConnectorActionEntityOperationOutput{})
+	pulumi.RegisterOutputType(ToolsetConnectorToolsetConnectorActionEntityOperationPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationOutput{})

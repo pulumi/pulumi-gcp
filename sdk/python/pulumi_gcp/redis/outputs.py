@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ClusterAclPolicyRule',
     'ClusterAutomatedBackupConfig',
     'ClusterAutomatedBackupConfigFixedFrequencySchedule',
     'ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime',
@@ -54,6 +55,7 @@ __all__ = [
     'InstanceNode',
     'InstancePersistenceConfig',
     'InstanceServerCaCert',
+    'GetClusterAclPolicyRuleResult',
     'GetClusterAutomatedBackupConfigResult',
     'GetClusterAutomatedBackupConfigFixedFrequencyScheduleResult',
     'GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult',
@@ -90,6 +92,41 @@ __all__ = [
     'GetInstancePersistenceConfigResult',
     'GetInstanceServerCaCertResult',
 ]
+
+@pulumi.output_type
+class ClusterAclPolicyRule(dict):
+    def __init__(__self__, *,
+                 rule: _builtins.str,
+                 username: _builtins.str):
+        """
+        :param _builtins.str rule: The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+               The format of the rule is defined by Redis OSS:
+               https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+        :param _builtins.str username: Specifies the IAM user or service account to be added to the ACL policy.
+               This username will be directly set on the Redis OSS.
+        """
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+        The format of the rule is defined by Redis OSS:
+        https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Specifies the IAM user or service account to be added to the ACL policy.
+        This username will be directly set on the Redis OSS.
+        """
+        return pulumi.get(self, "username")
+
 
 @pulumi.output_type
 class ClusterAutomatedBackupConfig(dict):
@@ -2240,6 +2277,41 @@ class InstanceServerCaCert(dict):
         Sha1 Fingerprint of the certificate.
         """
         return pulumi.get(self, "sha1_fingerprint")
+
+
+@pulumi.output_type
+class GetClusterAclPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 rule: _builtins.str,
+                 username: _builtins.str):
+        """
+        :param _builtins.str rule: The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+               The format of the rule is defined by Redis OSS:
+               https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+        :param _builtins.str username: Specifies the IAM user or service account to be added to the ACL policy.
+               This username will be directly set on the Redis OSS.
+        """
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+        The format of the rule is defined by Redis OSS:
+        https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Specifies the IAM user or service account to be added to the ACL policy.
+        This username will be directly set on the Redis OSS.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type

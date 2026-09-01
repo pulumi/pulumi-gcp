@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "appengine-neg",
     ///         NetworkEndpointType = "SERVERLESS",
     ///         Region = "us-central1",
-    ///         AppEngine = null,
+    ///         AppEngine = new() { },
     ///     });
     /// 
     /// });

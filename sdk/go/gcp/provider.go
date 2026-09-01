@@ -218,6 +218,7 @@ type Provider struct {
 	TranscoderCustomEndpoint               pulumi.StringPtrOutput `pulumi:"transcoderCustomEndpoint"`
 	UniverseDomain                         pulumi.StringPtrOutput `pulumi:"universeDomain"`
 	VectorSearchCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vectorSearchCustomEndpoint"`
+	VertexAiAadCustomEndpoint              pulumi.StringPtrOutput `pulumi:"vertexAiAadCustomEndpoint"`
 	VertexAiCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
@@ -477,6 +478,7 @@ type providerArgs struct {
 	UniverseDomain                         *string                      `pulumi:"universeDomain"`
 	UserProjectOverride                    *bool                        `pulumi:"userProjectOverride"`
 	VectorSearchCustomEndpoint             *string                      `pulumi:"vectorSearchCustomEndpoint"`
+	VertexAiAadCustomEndpoint              *string                      `pulumi:"vertexAiAadCustomEndpoint"`
 	VertexAiCustomEndpoint                 *string                      `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             *string                      `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                *string                      `pulumi:"vpcAccessCustomEndpoint"`
@@ -699,6 +701,7 @@ type ProviderArgs struct {
 	UniverseDomain                         pulumi.StringPtrInput
 	UserProjectOverride                    pulumi.BoolPtrInput
 	VectorSearchCustomEndpoint             pulumi.StringPtrInput
+	VertexAiAadCustomEndpoint              pulumi.StringPtrInput
 	VertexAiCustomEndpoint                 pulumi.StringPtrInput
 	VmwareengineCustomEndpoint             pulumi.StringPtrInput
 	VpcAccessCustomEndpoint                pulumi.StringPtrInput
@@ -1567,6 +1570,10 @@ func (o ProviderOutput) UniverseDomain() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) VectorSearchCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VectorSearchCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) VertexAiAadCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VertexAiAadCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) VertexAiCustomEndpoint() pulumi.StringPtrOutput {

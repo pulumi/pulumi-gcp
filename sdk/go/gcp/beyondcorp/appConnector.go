@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `beyondcorp.SecurityGateway` and `beyondcorp.SecurityGatewayApplication` instead.
+//
 // A BeyondCorp AppConnector resource represents an application facing component deployed proximal to
 // and with direct access to the application instances. It is used to establish connectivity between the
 // remote enterprise environment and GCP. It initiates connections to the applications and can proxy the

@@ -439,6 +439,8 @@ userProjectOverride: Optional[bool]
 
 vectorSearchCustomEndpoint: Optional[str]
 
+vertexAiAadCustomEndpoint: Optional[str]
+
 vertexAiCustomEndpoint: Optional[str]
 
 vmwareengineCustomEndpoint: Optional[str]

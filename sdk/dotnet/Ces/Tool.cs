@@ -221,7 +221,7 @@ namespace Pulumi.Gcp.Ces
     ///         {
     ///             basic.DataStoreId,
     ///         },
-    ///         SearchEngineConfig = null,
+    ///         SearchEngineConfig = new() { },
     ///     });
     /// 
     ///     var my_app = new Gcp.Ces.App("my-app", new()
@@ -451,7 +451,7 @@ namespace Pulumi.Gcp.Ces
     ///         App = my_app.AppId,
     ///         DisplayName = "Target Agent",
     ///         Instruction = "Target agent instruction",
-    ///         LlmAgent = null,
+    ///         LlmAgent = new() { },
     ///     });
     /// 
     ///     var cesToolAgentBasic = new Gcp.Ces.Tool("ces_tool_agent_basic", new()

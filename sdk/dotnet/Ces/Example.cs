@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Ces
     ///             Model = "gemini-3.0-flash-001",
     ///             Temperature = 0.5,
     ///         },
-    ///         LlmAgent = null,
+    ///         LlmAgent = new() { },
     ///     });
     /// 
     ///     var cesChildAgent = new Gcp.Ces.Agent("ces_child_agent", new()
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.Ces
     ///             Model = "gemini-3.0-flash-001",
     ///             Temperature = 0.5,
     ///         },
-    ///         LlmAgent = null,
+    ///         LlmAgent = new() { },
     ///     });
     /// 
     ///     var my_example = new Gcp.Ces.Example("my-example", new()

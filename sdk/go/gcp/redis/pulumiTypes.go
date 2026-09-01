@@ -13,6 +13,121 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ClusterAclPolicyRule struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Redis OSS:
+	// https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+	Rule string `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Redis OSS.
+	Username string `pulumi:"username"`
+}
+
+// ClusterAclPolicyRuleInput is an input type that accepts ClusterAclPolicyRuleArgs and ClusterAclPolicyRuleOutput values.
+// You can construct a concrete instance of `ClusterAclPolicyRuleInput` via:
+//
+//	ClusterAclPolicyRuleArgs{...}
+type ClusterAclPolicyRuleInput interface {
+	pulumi.Input
+
+	ToClusterAclPolicyRuleOutput() ClusterAclPolicyRuleOutput
+	ToClusterAclPolicyRuleOutputWithContext(context.Context) ClusterAclPolicyRuleOutput
+}
+
+type ClusterAclPolicyRuleArgs struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Redis OSS:
+	// https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Redis OSS.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ClusterAclPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (i ClusterAclPolicyRuleArgs) ToClusterAclPolicyRuleOutput() ClusterAclPolicyRuleOutput {
+	return i.ToClusterAclPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterAclPolicyRuleArgs) ToClusterAclPolicyRuleOutputWithContext(ctx context.Context) ClusterAclPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAclPolicyRuleOutput)
+}
+
+// ClusterAclPolicyRuleArrayInput is an input type that accepts ClusterAclPolicyRuleArray and ClusterAclPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `ClusterAclPolicyRuleArrayInput` via:
+//
+//	ClusterAclPolicyRuleArray{ ClusterAclPolicyRuleArgs{...} }
+type ClusterAclPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToClusterAclPolicyRuleArrayOutput() ClusterAclPolicyRuleArrayOutput
+	ToClusterAclPolicyRuleArrayOutputWithContext(context.Context) ClusterAclPolicyRuleArrayOutput
+}
+
+type ClusterAclPolicyRuleArray []ClusterAclPolicyRuleInput
+
+func (ClusterAclPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (i ClusterAclPolicyRuleArray) ToClusterAclPolicyRuleArrayOutput() ClusterAclPolicyRuleArrayOutput {
+	return i.ToClusterAclPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAclPolicyRuleArray) ToClusterAclPolicyRuleArrayOutputWithContext(ctx context.Context) ClusterAclPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAclPolicyRuleArrayOutput)
+}
+
+type ClusterAclPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (ClusterAclPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (o ClusterAclPolicyRuleOutput) ToClusterAclPolicyRuleOutput() ClusterAclPolicyRuleOutput {
+	return o
+}
+
+func (o ClusterAclPolicyRuleOutput) ToClusterAclPolicyRuleOutputWithContext(ctx context.Context) ClusterAclPolicyRuleOutput {
+	return o
+}
+
+// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+// The format of the rule is defined by Redis OSS:
+// https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+func (o ClusterAclPolicyRuleOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAclPolicyRule) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// Specifies the IAM user or service account to be added to the ACL policy.
+// This username will be directly set on the Redis OSS.
+func (o ClusterAclPolicyRuleOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAclPolicyRule) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ClusterAclPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAclPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (o ClusterAclPolicyRuleArrayOutput) ToClusterAclPolicyRuleArrayOutput() ClusterAclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o ClusterAclPolicyRuleArrayOutput) ToClusterAclPolicyRuleArrayOutputWithContext(ctx context.Context) ClusterAclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o ClusterAclPolicyRuleArrayOutput) Index(i pulumi.IntInput) ClusterAclPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAclPolicyRule {
+		return vs[0].([]ClusterAclPolicyRule)[vs[1].(int)]
+	}).(ClusterAclPolicyRuleOutput)
+}
+
 type ClusterAutomatedBackupConfig struct {
 	// Trigger automated backups at a fixed frequency.
 	// Structure is documented below.
@@ -5663,6 +5778,121 @@ func (o InstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) InstanceServer
 	}).(InstanceServerCaCertOutput)
 }
 
+type GetClusterAclPolicyRule struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Redis OSS:
+	// https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+	Rule string `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Redis OSS.
+	Username string `pulumi:"username"`
+}
+
+// GetClusterAclPolicyRuleInput is an input type that accepts GetClusterAclPolicyRuleArgs and GetClusterAclPolicyRuleOutput values.
+// You can construct a concrete instance of `GetClusterAclPolicyRuleInput` via:
+//
+//	GetClusterAclPolicyRuleArgs{...}
+type GetClusterAclPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetClusterAclPolicyRuleOutput() GetClusterAclPolicyRuleOutput
+	ToGetClusterAclPolicyRuleOutputWithContext(context.Context) GetClusterAclPolicyRuleOutput
+}
+
+type GetClusterAclPolicyRuleArgs struct {
+	// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+	// The format of the rule is defined by Redis OSS:
+	// https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// Specifies the IAM user or service account to be added to the ACL policy.
+	// This username will be directly set on the Redis OSS.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetClusterAclPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (i GetClusterAclPolicyRuleArgs) ToGetClusterAclPolicyRuleOutput() GetClusterAclPolicyRuleOutput {
+	return i.ToGetClusterAclPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetClusterAclPolicyRuleArgs) ToGetClusterAclPolicyRuleOutputWithContext(ctx context.Context) GetClusterAclPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAclPolicyRuleOutput)
+}
+
+// GetClusterAclPolicyRuleArrayInput is an input type that accepts GetClusterAclPolicyRuleArray and GetClusterAclPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetClusterAclPolicyRuleArrayInput` via:
+//
+//	GetClusterAclPolicyRuleArray{ GetClusterAclPolicyRuleArgs{...} }
+type GetClusterAclPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAclPolicyRuleArrayOutput() GetClusterAclPolicyRuleArrayOutput
+	ToGetClusterAclPolicyRuleArrayOutputWithContext(context.Context) GetClusterAclPolicyRuleArrayOutput
+}
+
+type GetClusterAclPolicyRuleArray []GetClusterAclPolicyRuleInput
+
+func (GetClusterAclPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (i GetClusterAclPolicyRuleArray) ToGetClusterAclPolicyRuleArrayOutput() GetClusterAclPolicyRuleArrayOutput {
+	return i.ToGetClusterAclPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAclPolicyRuleArray) ToGetClusterAclPolicyRuleArrayOutputWithContext(ctx context.Context) GetClusterAclPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAclPolicyRuleArrayOutput)
+}
+
+type GetClusterAclPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAclPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (o GetClusterAclPolicyRuleOutput) ToGetClusterAclPolicyRuleOutput() GetClusterAclPolicyRuleOutput {
+	return o
+}
+
+func (o GetClusterAclPolicyRuleOutput) ToGetClusterAclPolicyRuleOutputWithContext(ctx context.Context) GetClusterAclPolicyRuleOutput {
+	return o
+}
+
+// The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+// The format of the rule is defined by Redis OSS:
+// https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+func (o GetClusterAclPolicyRuleOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAclPolicyRule) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// Specifies the IAM user or service account to be added to the ACL policy.
+// This username will be directly set on the Redis OSS.
+func (o GetClusterAclPolicyRuleOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAclPolicyRule) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetClusterAclPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAclPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAclPolicyRule)(nil)).Elem()
+}
+
+func (o GetClusterAclPolicyRuleArrayOutput) ToGetClusterAclPolicyRuleArrayOutput() GetClusterAclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetClusterAclPolicyRuleArrayOutput) ToGetClusterAclPolicyRuleArrayOutputWithContext(ctx context.Context) GetClusterAclPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetClusterAclPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetClusterAclPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAclPolicyRule {
+		return vs[0].([]GetClusterAclPolicyRule)[vs[1].(int)]
+	}).(GetClusterAclPolicyRuleOutput)
+}
+
 type GetClusterAutomatedBackupConfig struct {
 	// Trigger automated backups at a fixed frequency.
 	FixedFrequencySchedules []GetClusterAutomatedBackupConfigFixedFrequencySchedule `pulumi:"fixedFrequencySchedules"`
@@ -9837,6 +10067,8 @@ func (o GetInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAclPolicyRuleInput)(nil)).Elem(), ClusterAclPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAclPolicyRuleArrayInput)(nil)).Elem(), ClusterAclPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigInput)(nil)).Elem(), ClusterAutomatedBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigPtrInput)(nil)).Elem(), ClusterAutomatedBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupConfigFixedFrequencyScheduleInput)(nil)).Elem(), ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs{})
@@ -9911,6 +10143,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigPtrInput)(nil)).Elem(), InstancePersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertInput)(nil)).Elem(), InstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertArrayInput)(nil)).Elem(), InstanceServerCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAclPolicyRuleInput)(nil)).Elem(), GetClusterAclPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAclPolicyRuleArrayInput)(nil)).Elem(), GetClusterAclPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupConfigInput)(nil)).Elem(), GetClusterAutomatedBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupConfigArrayInput)(nil)).Elem(), GetClusterAutomatedBackupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutomatedBackupConfigFixedFrequencyScheduleInput)(nil)).Elem(), GetClusterAutomatedBackupConfigFixedFrequencyScheduleArgs{})
@@ -9981,6 +10215,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertInput)(nil)).Elem(), GetInstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertArrayInput)(nil)).Elem(), GetInstanceServerCaCertArray{})
+	pulumi.RegisterOutputType(ClusterAclPolicyRuleOutput{})
+	pulumi.RegisterOutputType(ClusterAclPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupConfigFixedFrequencyScheduleOutput{})
@@ -10055,6 +10291,8 @@ func init() {
 	pulumi.RegisterOutputType(InstancePersistenceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(InstanceServerCaCertArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAclPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetClusterAclPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAutomatedBackupConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAutomatedBackupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAutomatedBackupConfigFixedFrequencyScheduleOutput{})

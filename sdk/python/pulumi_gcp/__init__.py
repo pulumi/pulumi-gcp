@@ -8862,6 +8862,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "memorystore/aclPolicy",
+  "fqn": "pulumi_gcp.memorystore",
+  "classes": {
+   "gcp:memorystore/aclPolicy:AclPolicy": "AclPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "memorystore/instance",
   "fqn": "pulumi_gcp.memorystore",
   "classes": {
@@ -10406,6 +10414,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "redis/clusterAclPolicy",
+  "fqn": "pulumi_gcp.redis",
+  "classes": {
+   "gcp:redis/clusterAclPolicy:ClusterAclPolicy": "ClusterAclPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "redis/clusterUserCreatedConnections",
   "fqn": "pulumi_gcp.redis",
   "classes": {
@@ -11682,6 +11698,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vectorsearch",
   "classes": {
    "gcp:vectorsearch/index:Index": "Index"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiAgentAnomalyDetectionScope",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope": "AiAgentAnomalyDetectionScope"
   }
  },
  {

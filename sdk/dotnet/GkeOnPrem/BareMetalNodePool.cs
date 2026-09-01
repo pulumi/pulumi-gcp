@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         DisplayName = "test-name",
     ///         BareMetalCluster = default_full.Name,
     ///         Location = "us-west1",
-    ///         Annotations = null,
+    ///         Annotations = new() { },
     ///         NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalNodePoolNodePoolConfigArgs
     ///         {
     ///             OperatingSystem = "LINUX",

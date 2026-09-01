@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Ces
     ///         AgentId = "agent-id",
     ///         DisplayName = "Example Agent",
     ///         Instruction = "You are a helpful assistant.",
-    ///         LlmAgent = null,
+    ///         LlmAgent = new() { },
     ///     });
     /// 
     ///     var association = new Gcp.Ces.AppRootAgentAssociation("association", new()

@@ -51,6 +51,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Backend Service Basic
@@ -1426,7 +1429,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="iap", refs={BackendServiceIap.class}, tree="[0]")
-    private Output<BackendServiceIap> iap;
+    private Output</* @Nullable */ BackendServiceIap> iap;
 
     /**
      * @return Settings for enabling Cloud Identity Aware Proxy.
@@ -1434,8 +1437,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<BackendServiceIap> iap() {
-        return this.iap;
+    public Output<Optional<BackendServiceIap>> iap() {
+        return Codegen.optional(this.iap);
     }
     /**
      * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).

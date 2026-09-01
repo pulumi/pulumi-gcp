@@ -324,7 +324,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "BigQuery Destination",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -467,7 +467,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "BigQuery Destination",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var stream5 = new Gcp.Datastream.Stream("stream5", new()
@@ -668,7 +668,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "BigQuery Destination",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -716,7 +716,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     });
     /// 
     /// });
@@ -809,7 +809,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "BigQuery Destination",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -857,7 +857,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     });
     /// 
     /// });
@@ -950,7 +950,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "BigQuery Destination",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "&lt;%= ctx[:vars]['destination_connection_profile_id'] %&gt;",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -998,7 +998,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     });
     /// 
     /// });
@@ -1027,7 +1027,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "dest-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
@@ -1122,7 +1122,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillAll = null,
+    ///         BackfillAll = new() { },
     ///     });
     /// 
     ///     var db = new Gcp.Sql.Database("db", new()
@@ -1236,7 +1236,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -1264,7 +1264,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -1416,7 +1416,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -1444,7 +1444,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     });
     /// 
     /// });
@@ -1543,7 +1543,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -1571,7 +1571,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 AppendOnly = null,
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     });
     /// 
     /// });
@@ -1661,7 +1661,7 @@ namespace Pulumi.Gcp.Datastream
     ///         ConnectionId = "blmt-connection",
     ///         FriendlyName = "Datastream BLMT Test Connection",
     ///         Description = "Connection for Datastream BLMT test",
-    ///         CloudResource = null,
+    ///         CloudResource = new() { },
     ///     });
     /// 
     ///     var blmtConnectionBucketAdmin = new Gcp.Storage.BucketIAMMember("blmt_connection_bucket_admin", new()
@@ -1689,7 +1689,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "blmt-destination-profile",
-    ///         BigqueryProfile = null,
+    ///         BigqueryProfile = new() { },
     ///     });
     /// 
     ///     var @default = new Gcp.Datastream.Stream("default", new()
@@ -1731,7 +1731,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 AppendOnly = null,
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     });
     /// 
     /// });
@@ -1782,7 +1782,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///         RuleSets = new[]
     ///         {
     ///             new Gcp.Datastream.Inputs.StreamRuleSetArgs
@@ -1946,7 +1946,7 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
-    ///         BackfillNone = null,
+    ///         BackfillNone = new() { },
     ///     });
     /// 
     /// });

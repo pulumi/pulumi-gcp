@@ -532,6 +532,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+     * 
+     */
+    @Import(name="replicationLagMaxSeconds")
+    private @Nullable Output<Integer> replicationLagMaxSeconds;
+
+    /**
+     * @return The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+     * 
+     */
+    public Optional<Output<Integer>> replicationLagMaxSeconds() {
+        return Optional.ofNullable(this.replicationLagMaxSeconds);
+    }
+
+    /**
      * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
      * 
      */
@@ -656,6 +671,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.performanceCaptureConfig = $.performanceCaptureConfig;
         this.pricingPlan = $.pricingPlan;
         this.readPoolAutoScaleConfig = $.readPoolAutoScaleConfig;
+        this.replicationLagMaxSeconds = $.replicationLagMaxSeconds;
         this.retainBackupsOnDelete = $.retainBackupsOnDelete;
         this.sqlServerAuditConfig = $.sqlServerAuditConfig;
         this.tier = $.tier;
@@ -1360,6 +1376,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder readPoolAutoScaleConfig(DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs readPoolAutoScaleConfig) {
             return readPoolAutoScaleConfig(Output.of(readPoolAutoScaleConfig));
+        }
+
+        /**
+         * @param replicationLagMaxSeconds The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationLagMaxSeconds(@Nullable Output<Integer> replicationLagMaxSeconds) {
+            $.replicationLagMaxSeconds = replicationLagMaxSeconds;
+            return this;
+        }
+
+        /**
+         * @param replicationLagMaxSeconds The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationLagMaxSeconds(Integer replicationLagMaxSeconds) {
+            return replicationLagMaxSeconds(Output.of(replicationLagMaxSeconds));
         }
 
         /**

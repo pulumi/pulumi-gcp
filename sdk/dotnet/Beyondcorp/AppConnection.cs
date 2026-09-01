@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Beyondcorp
 {
     /// <summary>
+    /// &gt; **Warning:** `gcp.beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+    /// 
     /// A BeyondCorp AppConnection resource represents a BeyondCorp protected AppConnection to a remote application.
     /// It creates all the necessary GCP components needed for creating a BeyondCorp protected AppConnection.
     /// Multiple connectors can be authorised for a single AppConnection.

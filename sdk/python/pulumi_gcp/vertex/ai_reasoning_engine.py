@@ -956,6 +956,58 @@ class AiReasoningEngine(pulumi.CustomResource):
                                     "managed_topic_enum": "USER_PREFERENCES",
                                 },
                             }],
+                            "generate_memories_examples": [{
+                                "conversation_source": {
+                                    "events": [{
+                                        "content": {
+                                            "role": "user",
+                                            "parts": [
+                                                {
+                                                    "text": "I like pepperoni pizza",
+                                                },
+                                                {
+                                                    "function_call": {
+                                                        "id": "fn-call-1",
+                                                        "name": "order_pizza",
+                                                        "args": json.dumps({
+                                                            "type": "pepperoni",
+                                                        }),
+                                                    },
+                                                },
+                                                {
+                                                    "function_response": {
+                                                        "id": "fn-resp-1",
+                                                        "name": "order_pizza",
+                                                        "response": json.dumps({
+                                                            "status": "ordered",
+                                                        }),
+                                                    },
+                                                },
+                                                {
+                                                    "executable_code": {
+                                                        "id": "exec-code-1",
+                                                        "language": "PYTHON",
+                                                        "code": "print('pizza')",
+                                                    },
+                                                },
+                                                {
+                                                    "code_execution_result": {
+                                                        "id": "exec-result-1",
+                                                        "outcome": "OUTCOME_OK",
+                                                        "output": "pizza",
+                                                    },
+                                                },
+                                            ],
+                                        },
+                                    }],
+                                },
+                                "generated_memories": [{
+                                    "fact": "User likes pepperoni pizza.",
+                                    "topics": [{
+                                        "managed_memory_topic": "USER_PREFERENCES",
+                                    }],
+                                }],
+                            }],
                         },
                         {
                             "scope_keys": [
@@ -1544,6 +1596,58 @@ class AiReasoningEngine(pulumi.CustomResource):
                                 "managed_memory_topic": {
                                     "managed_topic_enum": "USER_PREFERENCES",
                                 },
+                            }],
+                            "generate_memories_examples": [{
+                                "conversation_source": {
+                                    "events": [{
+                                        "content": {
+                                            "role": "user",
+                                            "parts": [
+                                                {
+                                                    "text": "I like pepperoni pizza",
+                                                },
+                                                {
+                                                    "function_call": {
+                                                        "id": "fn-call-1",
+                                                        "name": "order_pizza",
+                                                        "args": json.dumps({
+                                                            "type": "pepperoni",
+                                                        }),
+                                                    },
+                                                },
+                                                {
+                                                    "function_response": {
+                                                        "id": "fn-resp-1",
+                                                        "name": "order_pizza",
+                                                        "response": json.dumps({
+                                                            "status": "ordered",
+                                                        }),
+                                                    },
+                                                },
+                                                {
+                                                    "executable_code": {
+                                                        "id": "exec-code-1",
+                                                        "language": "PYTHON",
+                                                        "code": "print('pizza')",
+                                                    },
+                                                },
+                                                {
+                                                    "code_execution_result": {
+                                                        "id": "exec-result-1",
+                                                        "outcome": "OUTCOME_OK",
+                                                        "output": "pizza",
+                                                    },
+                                                },
+                                            ],
+                                        },
+                                    }],
+                                },
+                                "generated_memories": [{
+                                    "fact": "User likes pepperoni pizza.",
+                                    "topics": [{
+                                        "managed_memory_topic": "USER_PREFERENCES",
+                                    }],
+                                }],
                             }],
                         },
                         {

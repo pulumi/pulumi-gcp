@@ -679,6 +679,9 @@ func GetUserProjectOverride(ctx *pulumi.Context) bool {
 func GetVectorSearchCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vectorSearchCustomEndpoint")
 }
+func GetVertexAiAadCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:vertexAiAadCustomEndpoint")
+}
 func GetVertexAiCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vertexAiCustomEndpoint")
 }

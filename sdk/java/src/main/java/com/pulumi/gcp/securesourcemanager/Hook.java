@@ -103,7 +103,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
     }
     /**
      * The events that trigger hook on.
-     * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+     * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
      * 
      */
     @Export(name="events", refs={List.class,String.class}, tree="[0,1]")
@@ -111,7 +111,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The events that trigger hook on.
-     * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+     * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
      * 
      */
     public Output<List<String>> events() {

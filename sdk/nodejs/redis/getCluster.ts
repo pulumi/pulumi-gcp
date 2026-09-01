@@ -53,6 +53,7 @@ export interface GetClusterArgs {
  * A collection of values returned by getCluster.
  */
 export interface GetClusterResult {
+    readonly aclPolicy: string;
     readonly authorizationMode: string;
     readonly automatedBackupConfigs: outputs.redis.GetClusterAutomatedBackupConfig[];
     readonly availableMaintenanceVersions: string[];
@@ -69,6 +70,7 @@ export interface GetClusterResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly isAclPolicyInSync: boolean;
     readonly kmsKey: string;
     readonly labels: {[key: string]: string};
     readonly maintenancePolicies: outputs.redis.GetClusterMaintenancePolicy[];

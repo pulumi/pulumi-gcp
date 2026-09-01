@@ -145,6 +145,8 @@ def get_app_connector(name: Optional[_builtins.str] = None,
                       region: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppConnectorResult:
     """
+    > **Warning:** `beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `beyondcorp.SecurityGateway` and `beyondcorp.SecurityGatewayApplication` instead.
+
     Get information about a Google BeyondCorp App Connector.
 
     ## Example Usage
@@ -189,6 +191,8 @@ def get_app_connector_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppConnectorResult]:
     """
+    > **Warning:** `beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `beyondcorp.SecurityGateway` and `beyondcorp.SecurityGatewayApplication` instead.
+
     Get information about a Google BeyondCorp App Connector.
 
     ## Example Usage

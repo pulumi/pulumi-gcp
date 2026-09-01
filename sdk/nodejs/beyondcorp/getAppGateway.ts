@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+ *
  * Get information about a Google BeyondCorp App Gateway.
  *
  * ## Example Usage
@@ -74,6 +76,8 @@ export interface GetAppGatewayResult {
     readonly uri: string;
 }
 /**
+ * > **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+ *
  * Get information about a Google BeyondCorp App Gateway.
  *
  * ## Example Usage

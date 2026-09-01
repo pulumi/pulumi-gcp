@@ -29,8 +29,8 @@ namespace Pulumi.Gcp.ModelArmor
     ///     {
     ///         Location = "us-central1",
     ///         TemplateId = "modelarmor1",
-    ///         FilterConfig = null,
-    ///         TemplateMetadata = null,
+    ///         FilterConfig = new() { },
+    ///         TemplateMetadata = new() { },
     ///     });
     /// 
     /// });

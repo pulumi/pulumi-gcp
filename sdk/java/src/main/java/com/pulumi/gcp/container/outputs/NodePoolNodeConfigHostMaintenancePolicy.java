@@ -5,8 +5,11 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigHostMaintenancePolicy {
@@ -15,6 +18,11 @@ public final class NodePoolNodeConfigHostMaintenancePolicy {
      * 
      */
     private String maintenanceInterval;
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy opportunisticMaintenanceStrategy;
 
     private NodePoolNodeConfigHostMaintenancePolicy() {}
     /**
@@ -23,6 +31,13 @@ public final class NodePoolNodeConfigHostMaintenancePolicy {
      */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
+    }
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * 
+     */
+    public Optional<NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy> opportunisticMaintenanceStrategy() {
+        return Optional.ofNullable(this.opportunisticMaintenanceStrategy);
     }
 
     public static Builder builder() {
@@ -35,10 +50,12 @@ public final class NodePoolNodeConfigHostMaintenancePolicy {
     @CustomType.Builder
     public static final class Builder {
         private String maintenanceInterval;
+        private @Nullable NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy opportunisticMaintenanceStrategy;
         public Builder() {}
         public Builder(NodePoolNodeConfigHostMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maintenanceInterval = defaults.maintenanceInterval;
+    	      this.opportunisticMaintenanceStrategy = defaults.opportunisticMaintenanceStrategy;
         }
 
         @CustomType.Setter
@@ -49,9 +66,16 @@ public final class NodePoolNodeConfigHostMaintenancePolicy {
             this.maintenanceInterval = maintenanceInterval;
             return this;
         }
+        @CustomType.Setter
+        public Builder opportunisticMaintenanceStrategy(@Nullable NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy opportunisticMaintenanceStrategy) {
+
+            this.opportunisticMaintenanceStrategy = opportunisticMaintenanceStrategy;
+            return this;
+        }
         public NodePoolNodeConfigHostMaintenancePolicy build() {
             final var _resultValue = new NodePoolNodeConfigHostMaintenancePolicy();
             _resultValue.maintenanceInterval = maintenanceInterval;
+            _resultValue.opportunisticMaintenanceStrategy = opportunisticMaintenanceStrategy;
             return _resultValue;
         }
     }

@@ -6478,7 +6478,17 @@ type BackendServiceIap struct {
 	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 	Enabled bool `pulumi:"enabled"`
 	// OAuth2 Client ID for IAP
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// OAuth2 Client ID for IAP
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+	Oauth2ClientIdWo *string `pulumi:"oauth2ClientIdWo"`
+	// Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientIdWoVersion *string `pulumi:"oauth2ClientIdWoVersion"`
 	// OAuth2 Client Secret for IAP
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
@@ -6486,6 +6496,15 @@ type BackendServiceIap struct {
 	// OAuth2 Client Secret SHA-256 for IAP
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// OAuth2 Client Secret for IAP
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+	Oauth2ClientSecretWo *string `pulumi:"oauth2ClientSecretWo"`
+	// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientSecretWoVersion *string `pulumi:"oauth2ClientSecretWoVersion"`
 }
 
 // BackendServiceIapInput is an input type that accepts BackendServiceIapArgs and BackendServiceIapOutput values.
@@ -6503,7 +6522,17 @@ type BackendServiceIapArgs struct {
 	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// OAuth2 Client ID for IAP
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientId pulumi.StringPtrInput `pulumi:"oauth2ClientId"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// OAuth2 Client ID for IAP
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+	Oauth2ClientIdWo pulumi.StringPtrInput `pulumi:"oauth2ClientIdWo"`
+	// Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientIdWoVersion pulumi.StringPtrInput `pulumi:"oauth2ClientIdWoVersion"`
 	// OAuth2 Client Secret for IAP
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecret pulumi.StringPtrInput `pulumi:"oauth2ClientSecret"`
@@ -6511,6 +6540,15 @@ type BackendServiceIapArgs struct {
 	// OAuth2 Client Secret SHA-256 for IAP
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// OAuth2 Client Secret for IAP
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+	Oauth2ClientSecretWo pulumi.StringPtrInput `pulumi:"oauth2ClientSecretWo"`
+	// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientSecretWoVersion pulumi.StringPtrInput `pulumi:"oauth2ClientSecretWoVersion"`
 }
 
 func (BackendServiceIapArgs) ElementType() reflect.Type {
@@ -6596,8 +6634,24 @@ func (o BackendServiceIapOutput) Enabled() pulumi.BoolOutput {
 }
 
 // OAuth2 Client ID for IAP
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientId }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// OAuth2 Client ID for IAP
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+func (o BackendServiceIapOutput) Oauth2ClientIdWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientIdWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o BackendServiceIapOutput) Oauth2ClientIdWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientIdWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // OAuth2 Client Secret for IAP
@@ -6611,6 +6665,21 @@ func (o BackendServiceIapOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// OAuth2 Client Secret for IAP
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+func (o BackendServiceIapOutput) Oauth2ClientSecretWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientSecretWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o BackendServiceIapOutput) Oauth2ClientSecretWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientSecretWoVersion }).(pulumi.StringPtrOutput)
 }
 
 type BackendServiceIapPtrOutput struct{ *pulumi.OutputState }
@@ -6648,12 +6717,38 @@ func (o BackendServiceIapPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // OAuth2 Client ID for IAP
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIap) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Oauth2ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// OAuth2 Client ID for IAP
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+func (o BackendServiceIapPtrOutput) Oauth2ClientIdWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceIap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientIdWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o BackendServiceIapPtrOutput) Oauth2ClientIdWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceIap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientIdWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6677,6 +6772,31 @@ func (o BackendServiceIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrO
 			return nil
 		}
 		return v.Oauth2ClientSecretSha256
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// OAuth2 Client Secret for IAP
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+func (o BackendServiceIapPtrOutput) Oauth2ClientSecretWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceIap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientSecretWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o BackendServiceIapPtrOutput) Oauth2ClientSecretWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceIap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientSecretWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 

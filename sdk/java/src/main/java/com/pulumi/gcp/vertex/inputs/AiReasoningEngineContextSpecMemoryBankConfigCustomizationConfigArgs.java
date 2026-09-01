@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -37,6 +38,21 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     }
 
     /**
+     * Indicates whether natural language memory generation should be disabled.
+     * 
+     */
+    @Import(name="disableNaturalLanguageMemories")
+    private @Nullable Output<Boolean> disableNaturalLanguageMemories;
+
+    /**
+     * @return Indicates whether natural language memory generation should be disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> disableNaturalLanguageMemories() {
+        return Optional.ofNullable(this.disableNaturalLanguageMemories);
+    }
+
+    /**
      * Optional. Generate memories in the third person if set to true.
      * 
      */
@@ -49,6 +65,23 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
      */
     public Optional<Output<Boolean>> enableThirdPersonMemories() {
         return Optional.ofNullable(this.enableThirdPersonMemories);
+    }
+
+    /**
+     * Provides examples of how to generate memories for a particular scope.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="generateMemoriesExamples")
+    private @Nullable Output<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs>> generateMemoriesExamples;
+
+    /**
+     * @return Provides examples of how to generate memories for a particular scope.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs>>> generateMemoriesExamples() {
+        return Optional.ofNullable(this.generateMemoriesExamples);
     }
 
     /**
@@ -87,7 +120,9 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
 
     private AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs $) {
         this.consolidationConfig = $.consolidationConfig;
+        this.disableNaturalLanguageMemories = $.disableNaturalLanguageMemories;
         this.enableThirdPersonMemories = $.enableThirdPersonMemories;
+        this.generateMemoriesExamples = $.generateMemoriesExamples;
         this.memoryTopics = $.memoryTopics;
         this.scopeKeys = $.scopeKeys;
     }
@@ -134,6 +169,27 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         }
 
         /**
+         * @param disableNaturalLanguageMemories Indicates whether natural language memory generation should be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableNaturalLanguageMemories(@Nullable Output<Boolean> disableNaturalLanguageMemories) {
+            $.disableNaturalLanguageMemories = disableNaturalLanguageMemories;
+            return this;
+        }
+
+        /**
+         * @param disableNaturalLanguageMemories Indicates whether natural language memory generation should be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableNaturalLanguageMemories(Boolean disableNaturalLanguageMemories) {
+            return disableNaturalLanguageMemories(Output.of(disableNaturalLanguageMemories));
+        }
+
+        /**
          * @param enableThirdPersonMemories Optional. Generate memories in the third person if set to true.
          * 
          * @return builder
@@ -152,6 +208,40 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
          */
         public Builder enableThirdPersonMemories(Boolean enableThirdPersonMemories) {
             return enableThirdPersonMemories(Output.of(enableThirdPersonMemories));
+        }
+
+        /**
+         * @param generateMemoriesExamples Provides examples of how to generate memories for a particular scope.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generateMemoriesExamples(@Nullable Output<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs>> generateMemoriesExamples) {
+            $.generateMemoriesExamples = generateMemoriesExamples;
+            return this;
+        }
+
+        /**
+         * @param generateMemoriesExamples Provides examples of how to generate memories for a particular scope.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generateMemoriesExamples(List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs> generateMemoriesExamples) {
+            return generateMemoriesExamples(Output.of(generateMemoriesExamples));
+        }
+
+        /**
+         * @param generateMemoriesExamples Provides examples of how to generate memories for a particular scope.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generateMemoriesExamples(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs... generateMemoriesExamples) {
+            return generateMemoriesExamples(List.of(generateMemoriesExamples));
         }
 
         /**

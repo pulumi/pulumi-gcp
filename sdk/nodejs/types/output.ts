@@ -12130,6 +12130,18 @@ export namespace biglake {
          * The fully qualified Java class name of the output format.
          */
         outputFormat?: string;
+        /**
+         * Serializer and deserializer information.
+         * Structure is documented below.
+         */
+        serdeInfo?: outputs.biglake.TableHiveOptionsStorageDescriptorSerdeInfo;
+    }
+
+    export interface TableHiveOptionsStorageDescriptorSerdeInfo {
+        /**
+         * The fully qualified Java class name of the serialization library.
+         */
+        serializationLib?: string;
     }
 
 }
@@ -25668,6 +25680,104 @@ export namespace ces {
          * Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
          */
         type?: string;
+    }
+
+    export interface ToolsetConnectorToolset {
+        /**
+         * Configures how authentication is handled in Integration Connectors.
+         * Structure is documented below.
+         */
+        authConfig?: outputs.ces.ToolsetConnectorToolsetAuthConfig;
+        /**
+         * The full resource name of the referenced Integration Connectors
+         * Connection.
+         * Format:
+         * `projects/{project}/locations/{location}/connections/{connection}`
+         */
+        connection: string;
+        /**
+         * The list of connector actions/entity operations to generate tools for.
+         * Structure is documented below.
+         */
+        connectorActions: outputs.ces.ToolsetConnectorToolsetConnectorAction[];
+    }
+
+    export interface ToolsetConnectorToolsetAuthConfig {
+        /**
+         * Oauth 2.0 Authorization Code authentication configuration.
+         * Structure is documented below.
+         */
+        oauth2AuthCodeConfig?: outputs.ces.ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig;
+        /**
+         * JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+         * Structure is documented below.
+         *
+         * <a name="nestedConnectorToolsetAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+         */
+        oauth2JwtBearerConfig?: outputs.ces.ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig;
+    }
+
+    export interface ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig {
+        /**
+         * Oauth token parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        oauthToken: string;
+    }
+
+    export interface ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig {
+        /**
+         * Client parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        clientKey: string;
+        /**
+         * Issuer parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        issuer: string;
+        /**
+         * Subject parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        subject: string;
+    }
+
+    export interface ToolsetConnectorToolsetConnectorAction {
+        /**
+         * ID of a Connection action for the tool to use.
+         */
+        connectionActionId?: string;
+        /**
+         * Entity operation configuration for the tool to use.
+         * Structure is documented below.
+         */
+        entityOperation?: outputs.ces.ToolsetConnectorToolsetConnectorActionEntityOperation;
+        /**
+         * Entity fields to use as inputs for the operation.
+         */
+        inputFields?: string[];
+        /**
+         * Entity fields to return from the operation.
+         */
+        outputFields?: string[];
+    }
+
+    export interface ToolsetConnectorToolsetConnectorActionEntityOperation {
+        /**
+         * ID of the entity.
+         */
+        entityId: string;
+        /**
+         * Operation to perform on the entity.
+         * Possible values:
+         * LIST
+         * GET
+         * CREATE
+         * UPDATE
+         * DELETE
+         */
+        operation: string;
     }
 
     export interface ToolsetMcpToolset {
@@ -47193,8 +47303,22 @@ export namespace compute {
         enabled: boolean;
         /**
          * OAuth2 Client ID for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientId?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client ID for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+         */
+        oauth2ClientIdWo?: string;
+        /**
+         * Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientIdWoVersion?: string;
         /**
          * OAuth2 Client Secret for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -47206,6 +47330,19 @@ export namespace compute {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientSecretSha256: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client Secret for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+         */
+        oauth2ClientSecretWo?: string;
+        /**
+         * Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientSecretWoVersion?: string;
     }
 
     export interface BackendServiceLocalityLbPolicy {
@@ -49422,6 +49559,14 @@ export namespace compute {
          */
         oauth2ClientId: string;
         /**
+         * OAuth2 Client ID for IAP
+         */
+        oauth2ClientIdWo: string;
+        /**
+         * Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientIdWoVersion: string;
+        /**
          * OAuth2 Client Secret for IAP
          */
         oauth2ClientSecret: string;
@@ -49429,6 +49574,14 @@ export namespace compute {
          * OAuth2 Client Secret SHA-256 for IAP
          */
         oauth2ClientSecretSha256: string;
+        /**
+         * OAuth2 Client Secret for IAP
+         */
+        oauth2ClientSecretWo: string;
+        /**
+         * Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientSecretWoVersion: string;
     }
 
     export interface GetBackendServiceLocalityLbPolicy {
@@ -78712,7 +78865,7 @@ export namespace container {
          */
         gvnic?: outputs.container.ClusterNodeConfigGvnic;
         /**
-         * The maintenance policy for the hosts on which the GKE VMs run on.
+         * The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          */
         hostMaintenancePolicy?: outputs.container.ClusterNodeConfigHostMaintenancePolicy;
         /**
@@ -79166,9 +79319,28 @@ export namespace container {
 
     export interface ClusterNodeConfigHostMaintenancePolicy {
         /**
-         * .
+         * Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          */
         maintenanceInterval: string;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+         */
+        opportunisticMaintenanceStrategy?: outputs.container.ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy;
+    }
+
+    export interface ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: string;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: number;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+         */
+        nodeIdleTimeWindow: string;
     }
 
     export interface ClusterNodeConfigKubeletConfig {
@@ -80272,7 +80444,7 @@ export namespace container {
          */
         gvnic?: outputs.container.ClusterNodePoolNodeConfigGvnic;
         /**
-         * The maintenance policy for the hosts on which the GKE VMs run on.
+         * The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          */
         hostMaintenancePolicy?: outputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicy;
         /**
@@ -80726,9 +80898,28 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigHostMaintenancePolicy {
         /**
-         * .
+         * Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          */
         maintenanceInterval: string;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+         */
+        opportunisticMaintenanceStrategy?: outputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy;
+    }
+
+    export interface ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: string;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: number;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+         */
+        nodeIdleTimeWindow: string;
     }
 
     export interface ClusterNodePoolNodeConfigKubeletConfig {
@@ -83073,6 +83264,25 @@ export namespace container {
          * .
          */
         maintenanceInterval: string;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer.
+         */
+        opportunisticMaintenanceStrategies: outputs.container.GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy[];
+    }
+
+    export interface GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: string;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: number;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+         */
+        nodeIdleTimeWindow: string;
     }
 
     export interface GetClusterNodeConfigKubeletConfig {
@@ -84474,6 +84684,25 @@ export namespace container {
          * .
          */
         maintenanceInterval: string;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer.
+         */
+        opportunisticMaintenanceStrategies: outputs.container.GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy[];
+    }
+
+    export interface GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: string;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: number;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+         */
+        nodeIdleTimeWindow: string;
     }
 
     export interface GetClusterNodePoolNodeConfigKubeletConfig {
@@ -85969,6 +86198,25 @@ export namespace container {
          * .
          */
         maintenanceInterval: string;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer.
+         */
+        opportunisticMaintenanceStrategy?: outputs.container.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy;
+    }
+
+    export interface NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: string;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: number;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+         */
+        nodeIdleTimeWindow: string;
     }
 
     export interface NodePoolNodeConfigKubeletConfig {
@@ -109073,7 +109321,7 @@ export namespace discoveryengine {
     export interface SearchEngineSearchEngineConfig {
         /**
          * The required subscription tier of this engine.
-         * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+         * If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
          * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
          */
         requiredSubscriptionTier: string;
@@ -125455,6 +125703,34 @@ export namespace memcache {
 }
 
 export namespace memorystore {
+    export interface AclPolicyRule {
+        /**
+         * The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+         * The format of the rule is defined by Valkey OSS:
+         * https://valkey.io/topics/acl/
+         */
+        rule: string;
+        /**
+         * Specifies the IAM user or service account to be added to the ACL policy.
+         * This username will be directly set on the Valkey OSS.
+         */
+        username: string;
+    }
+
+    export interface GetAclPolicyRule {
+        /**
+         * The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+         * The format of the rule is defined by Valkey OSS:
+         * https://valkey.io/topics/acl/
+         */
+        rule: string;
+        /**
+         * Specifies the IAM user or service account to be added to the ACL policy.
+         * This username will be directly set on the Valkey OSS.
+         */
+        username: string;
+    }
+
     export interface GetInstanceAutomatedBackupConfig {
         /**
          * Trigger automated backups at a fixed frequency.
@@ -151791,6 +152067,20 @@ export namespace recaptcha {
 }
 
 export namespace redis {
+    export interface ClusterAclPolicyRule {
+        /**
+         * The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+         * The format of the rule is defined by Redis OSS:
+         * https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+         */
+        rule: string;
+        /**
+         * Specifies the IAM user or service account to be added to the ACL policy.
+         * This username will be directly set on the Redis OSS.
+         */
+        username: string;
+    }
+
     export interface ClusterAutomatedBackupConfig {
         /**
          * Trigger automated backups at a fixed frequency.
@@ -152259,6 +152549,20 @@ export namespace redis {
          * Immutable. The zone for single zone Memorystore Redis cluster.
          */
         zone?: string;
+    }
+
+    export interface GetClusterAclPolicyRule {
+        /**
+         * The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+         * The format of the rule is defined by Redis OSS:
+         * https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+         */
+        rule: string;
+        /**
+         * Specifies the IAM user or service account to be added to the ACL policy.
+         * This username will be directly set on the Redis OSS.
+         */
+        username: string;
     }
 
     export interface GetClusterAutomatedBackupConfig {
@@ -156442,6 +156746,10 @@ export namespace sql {
          */
         readPoolAutoScaleConfig: outputs.sql.DatabaseInstanceSettingsReadPoolAutoScaleConfig;
         /**
+         * The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+         */
+        replicationLagMaxSeconds: number;
+        /**
          * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
          */
         retainBackupsOnDelete?: boolean;
@@ -157289,6 +157597,10 @@ export namespace sql {
          * Configuration of Read Pool Auto Scale.
          */
         readPoolAutoScaleConfigs: outputs.sql.GetDatabaseInstanceSettingReadPoolAutoScaleConfig[];
+        /**
+         * The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+         */
+        replicationLagMaxSeconds: number;
         /**
          * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
          */
@@ -158230,6 +158542,10 @@ export namespace sql {
          * Configuration of Read Pool Auto Scale.
          */
         readPoolAutoScaleConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig[];
+        /**
+         * The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+         */
+        replicationLagMaxSeconds: number;
         /**
          * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
          */
@@ -166522,9 +166838,18 @@ export namespace vertex {
          */
         consolidationConfig?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig;
         /**
+         * Indicates whether natural language memory generation should be disabled.
+         */
+        disableNaturalLanguageMemories?: boolean;
+        /**
          * Optional. Generate memories in the third person if set to true.
          */
         enableThirdPersonMemories?: boolean;
+        /**
+         * Provides examples of how to generate memories for a particular scope.
+         * Structure is documented below.
+         */
+        generateMemoriesExamples?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample[];
         /**
          * Optional. List of topics that the memory should be associated with.
          * Structure is documented below.
@@ -166541,6 +166866,209 @@ export namespace vertex {
          * Number of revisions to consider per candidate count.
          */
         revisionsPerCandidateCount?: number;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample {
+        /**
+         * A conversation source for the example.
+         * Structure is documented below.
+         */
+        conversationSource?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource;
+        /**
+         * Represents the memories that are expected to be generated from the input conversation.
+         * Structure is documented below.
+         */
+        generatedMemories?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory[];
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource {
+        /**
+         * Represents the input conversation events for the example.
+         * Structure is documented below.
+         */
+        events?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent[];
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent {
+        /**
+         * Represents the content of the event.
+         * Structure is documented below.
+         */
+        content: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent {
+        /**
+         * A list of Part objects that make up a single message.
+         * Structure is documented below.
+         */
+        parts: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart[];
+        /**
+         * The producer of the content. Must be either 'user' or 'model'. If not set, the service will default to 'user'.
+         */
+        role?: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart {
+        /**
+         * Result of executing the ExecutableCode.
+         * Structure is documented below.
+         */
+        codeExecutionResult?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult;
+        /**
+         * Code generated by the model that is intended to be executed.
+         * Structure is documented below.
+         */
+        executableCode?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode;
+        /**
+         * URI based data.
+         * Structure is documented below.
+         */
+        fileData?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData;
+        /**
+         * A predicted function call returned from the model.
+         * Structure is documented below.
+         */
+        functionCall?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall;
+        /**
+         * The result of a function call.
+         * Structure is documented below.
+         */
+        functionResponse?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse;
+        /**
+         * The inline data content of the part.
+         * Structure is documented below.
+         */
+        inlineData?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData;
+        /**
+         * The text content of the part.
+         */
+        text?: string;
+        /**
+         * Indicates whether the part represents the model's thought process or reasoning.
+         */
+        thought?: boolean;
+        /**
+         * Video metadata.
+         * Structure is documented below.
+         */
+        videoMetadata?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult {
+        /**
+         * The identifier of the ExecutableCode part this result is for.
+         */
+        id?: string;
+        /**
+         * Outcome of the code execution. Possible values: ["OUTCOME_UNSPECIFIED", "OUTCOME_OK", "OUTCOME_FAILED", "OUTCOME_DEADLINE_EXCEEDED"]
+         */
+        outcome: string;
+        /**
+         * Contains stdout when code execution is successful, stderr or other description otherwise.
+         */
+        output?: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode {
+        /**
+         * The code to be executed.
+         */
+        code: string;
+        /**
+         * Unique identifier of the ExecutableCode part.
+         */
+        id?: string;
+        /**
+         * Supported programming languages for the generated code. Possible values: ["LANGUAGE_UNSPECIFIED", "PYTHON", "BASH"]
+         */
+        language: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData {
+        /**
+         * The URI of the file in Google Cloud Storage.
+         */
+        fileUri: string;
+        /**
+         * The IANA standard MIME type of the source data.
+         */
+        mimeType: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall {
+        /**
+         * The function parameters and values in JSON object format.
+         */
+        args?: string;
+        /**
+         * The unique id of the function call.
+         */
+        id?: string;
+        /**
+         * The name of the function to call.
+         */
+        name?: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse {
+        /**
+         * The id of the function call this response is for.
+         */
+        id?: string;
+        /**
+         * The name of the function to call.
+         */
+        name: string;
+        /**
+         * The function response in JSON object format.
+         */
+        response?: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData {
+        /**
+         * Raw bytes, which should be base64-encoded.
+         */
+        data: string;
+        /**
+         * The IANA standard MIME type of the source data.
+         */
+        mimeType: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata {
+        /**
+         * The end offset of the video.
+         */
+        endOffset?: string;
+        /**
+         * The start offset of the video.
+         */
+        startOffset?: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory {
+        /**
+         * Represents the fact to generate a memory from.
+         */
+        fact: string;
+        /**
+         * Represents the list of topics that the memory should be associated with.
+         * Structure is documented below.
+         */
+        topics?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic[];
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic {
+        /**
+         * Represents the custom memory topic label.
+         */
+        customMemoryTopicLabel?: string;
+        /**
+         * Represents the managed memory topic. Possible values: ["USER_PERSONAL_INFO", "USER_PREFERENCES", "KEY_CONVERSATION_DETAILS", "EXPLICIT_INSTRUCTIONS"]
+         */
+        managedMemoryTopic?: string;
     }
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic {

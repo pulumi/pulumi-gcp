@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Spanner
     ///                 Text = "0 12 * * *",
     ///             },
     ///         },
-    ///         FullBackupSpec = null,
+    ///         FullBackupSpec = new() { },
     ///         EncryptionConfig = new Gcp.Spanner.Inputs.BackupScheduleEncryptionConfigArgs
     ///         {
     ///             EncryptionType = "USE_DATABASE_ENCRYPTION",
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Spanner
     ///                 Text = "0 12 * * *",
     ///             },
     ///         },
-    ///         IncrementalBackupSpec = null,
+    ///         IncrementalBackupSpec = new() { },
     ///         EncryptionConfig = new Gcp.Spanner.Inputs.BackupScheduleEncryptionConfigArgs
     ///         {
     ///             EncryptionType = "GOOGLE_DEFAULT_ENCRYPTION",

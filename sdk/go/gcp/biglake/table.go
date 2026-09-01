@@ -102,6 +102,9 @@ import (
 //						}).(pulumi.StringOutput),
 //						InputFormat:  pulumi.String("org.apache.hadoop.mapred.SequenceFileInputFormat"),
 //						OutputFormat: pulumi.String("org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat"),
+//						SerdeInfo: &biglake.TableHiveOptionsStorageDescriptorSerdeInfoArgs{
+//							SerializationLib: pulumi.String("org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe"),
+//						},
 //					},
 //					Parameters: pulumi.StringMap{
 //						"spark.sql.create.version":          pulumi.String("3.1.3"),

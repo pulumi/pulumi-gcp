@@ -96,6 +96,10 @@ namespace Pulumi.Gcp.BigLake
     ///                 }),
     ///                 InputFormat = "org.apache.hadoop.mapred.SequenceFileInputFormat",
     ///                 OutputFormat = "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+    ///                 SerdeInfo = new Gcp.BigLake.Inputs.TableHiveOptionsStorageDescriptorSerdeInfoArgs
+    ///                 {
+    ///                     SerializationLib = "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+    ///                 },
     ///             },
     ///             Parameters = 
     ///             {

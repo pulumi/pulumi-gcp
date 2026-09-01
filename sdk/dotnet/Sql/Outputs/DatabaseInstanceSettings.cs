@@ -150,6 +150,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly Outputs.DatabaseInstanceSettingsReadPoolAutoScaleConfig? ReadPoolAutoScaleConfig;
         /// <summary>
+        /// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+        /// </summary>
+        public readonly int? ReplicationLagMaxSeconds;
+        /// <summary>
         /// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
         /// </summary>
         public readonly bool? RetainBackupsOnDelete;
@@ -244,6 +248,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             Outputs.DatabaseInstanceSettingsReadPoolAutoScaleConfig? readPoolAutoScaleConfig,
 
+            int? replicationLagMaxSeconds,
+
             bool? retainBackupsOnDelete,
 
             Outputs.DatabaseInstanceSettingsSqlServerAuditConfig? sqlServerAuditConfig,
@@ -290,6 +296,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PerformanceCaptureConfig = performanceCaptureConfig;
             PricingPlan = pricingPlan;
             ReadPoolAutoScaleConfig = readPoolAutoScaleConfig;
+            ReplicationLagMaxSeconds = replicationLagMaxSeconds;
             RetainBackupsOnDelete = retainBackupsOnDelete;
             SqlServerAuditConfig = sqlServerAuditConfig;
             Tier = tier;

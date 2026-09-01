@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Dns
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         MasterAuthorizedNetworksConfig = null,
+    ///         MasterAuthorizedNetworksConfig = new() { },
     ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
     ///         {
     ///             ClusterSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),

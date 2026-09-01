@@ -622,6 +622,9 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The name of the ACL policy to attach to the instance.
+	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+	AclPolicy pulumi.StringPtrOutput `pulumi:"aclPolicy"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH.
@@ -684,6 +687,8 @@ type Instance struct {
 	// * Must not end with a hyphen
 	// * Must be unique within a location
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// Whether the ACL policy is in sync with the cluster.
+	IsAclPolicyInSync pulumi.BoolOutput `pulumi:"isAclPolicyInSync"`
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Optional. Labels to represent user-provided metadata.
@@ -830,6 +835,9 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The name of the ACL policy to attach to the instance.
+	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH.
@@ -892,6 +900,8 @@ type instanceState struct {
 	// * Must not end with a hyphen
 	// * Must be unique within a location
 	InstanceId *string `pulumi:"instanceId"`
+	// Whether the ACL policy is in sync with the cluster.
+	IsAclPolicyInSync *bool `pulumi:"isAclPolicyInSync"`
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey *string `pulumi:"kmsKey"`
 	// Optional. Labels to represent user-provided metadata.
@@ -995,6 +1005,9 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// The name of the ACL policy to attach to the instance.
+	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+	AclPolicy pulumi.StringPtrInput
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH.
@@ -1057,6 +1070,8 @@ type InstanceState struct {
 	// * Must not end with a hyphen
 	// * Must be unique within a location
 	InstanceId pulumi.StringPtrInput
+	// Whether the ACL policy is in sync with the cluster.
+	IsAclPolicyInSync pulumi.BoolPtrInput
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey pulumi.StringPtrInput
 	// Optional. Labels to represent user-provided metadata.
@@ -1164,6 +1179,9 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The name of the ACL policy to attach to the instance.
+	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+	AclPolicy *string `pulumi:"aclPolicy"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH.
@@ -1272,6 +1290,9 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The name of the ACL policy to attach to the instance.
+	// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+	AclPolicy pulumi.StringPtrInput
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH.
@@ -1465,6 +1486,12 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The name of the ACL policy to attach to the instance.
+// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+func (o InstanceOutput) AclPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AclPolicy }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Immutable. Authorization mode of the instance. Possible values:
 // AUTH_DISABLED
 // IAM_AUTH.
@@ -1581,6 +1608,11 @@ func (o InstanceOutput) GcsSource() InstanceGcsSourcePtrOutput {
 // * Must be unique within a location
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Whether the ACL policy is in sync with the cluster.
+func (o InstanceOutput) IsAclPolicyInSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.IsAclPolicyInSync }).(pulumi.BoolOutput)
 }
 
 // The KMS key used to encrypt the at-rest data of the cluster

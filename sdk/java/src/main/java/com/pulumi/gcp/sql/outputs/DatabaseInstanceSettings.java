@@ -196,6 +196,11 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable DatabaseInstanceSettingsReadPoolAutoScaleConfig readPoolAutoScaleConfig;
     /**
+     * @return The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+     * 
+     */
+    private @Nullable Integer replicationLagMaxSeconds;
+    /**
      * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
      * 
      */
@@ -457,6 +462,13 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.readPoolAutoScaleConfig);
     }
     /**
+     * @return The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+     * 
+     */
+    public Optional<Integer> replicationLagMaxSeconds() {
+        return Optional.ofNullable(this.replicationLagMaxSeconds);
+    }
+    /**
      * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
      * 
      */
@@ -541,6 +553,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable DatabaseInstanceSettingsPerformanceCaptureConfig performanceCaptureConfig;
         private @Nullable String pricingPlan;
         private @Nullable DatabaseInstanceSettingsReadPoolAutoScaleConfig readPoolAutoScaleConfig;
+        private @Nullable Integer replicationLagMaxSeconds;
         private @Nullable Boolean retainBackupsOnDelete;
         private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
         private String tier;
@@ -584,6 +597,7 @@ public final class DatabaseInstanceSettings {
     	      this.performanceCaptureConfig = defaults.performanceCaptureConfig;
     	      this.pricingPlan = defaults.pricingPlan;
     	      this.readPoolAutoScaleConfig = defaults.readPoolAutoScaleConfig;
+    	      this.replicationLagMaxSeconds = defaults.replicationLagMaxSeconds;
     	      this.retainBackupsOnDelete = defaults.retainBackupsOnDelete;
     	      this.sqlServerAuditConfig = defaults.sqlServerAuditConfig;
     	      this.tier = defaults.tier;
@@ -803,6 +817,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder replicationLagMaxSeconds(@Nullable Integer replicationLagMaxSeconds) {
+
+            this.replicationLagMaxSeconds = replicationLagMaxSeconds;
+            return this;
+        }
+        @CustomType.Setter
         public Builder retainBackupsOnDelete(@Nullable Boolean retainBackupsOnDelete) {
 
             this.retainBackupsOnDelete = retainBackupsOnDelete;
@@ -876,6 +896,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.performanceCaptureConfig = performanceCaptureConfig;
             _resultValue.pricingPlan = pricingPlan;
             _resultValue.readPoolAutoScaleConfig = readPoolAutoScaleConfig;
+            _resultValue.replicationLagMaxSeconds = replicationLagMaxSeconds;
             _resultValue.retainBackupsOnDelete = retainBackupsOnDelete;
             _resultValue.sqlServerAuditConfig = sqlServerAuditConfig;
             _resultValue.tier = tier;

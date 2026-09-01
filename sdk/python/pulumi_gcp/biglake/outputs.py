@@ -56,6 +56,7 @@ __all__ = [
     'IcebergTableSortOrderField',
     'TableHiveOptions',
     'TableHiveOptionsStorageDescriptor',
+    'TableHiveOptionsStorageDescriptorSerdeInfo',
 ]
 
 @pulumi.output_type
@@ -2006,6 +2007,8 @@ class TableHiveOptionsStorageDescriptor(dict):
             suggest = "location_uri"
         elif key == "outputFormat":
             suggest = "output_format"
+        elif key == "serdeInfo":
+            suggest = "serde_info"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TableHiveOptionsStorageDescriptor. Access the value via the '{suggest}' property getter instead.")
@@ -2021,11 +2024,14 @@ class TableHiveOptionsStorageDescriptor(dict):
     def __init__(__self__, *,
                  input_format: Optional[_builtins.str] = None,
                  location_uri: Optional[_builtins.str] = None,
-                 output_format: Optional[_builtins.str] = None):
+                 output_format: Optional[_builtins.str] = None,
+                 serde_info: Optional['outputs.TableHiveOptionsStorageDescriptorSerdeInfo'] = None):
         """
         :param _builtins.str input_format: The fully qualified Java class name of the input format.
         :param _builtins.str location_uri: Cloud Storage folder URI where the table data is stored, starting with "gs://".
         :param _builtins.str output_format: The fully qualified Java class name of the output format.
+        :param 'TableHiveOptionsStorageDescriptorSerdeInfoArgs' serde_info: Serializer and deserializer information.
+               Structure is documented below.
         """
         if input_format is not None:
             pulumi.set(__self__, "input_format", input_format)
@@ -2033,6 +2039,8 @@ class TableHiveOptionsStorageDescriptor(dict):
             pulumi.set(__self__, "location_uri", location_uri)
         if output_format is not None:
             pulumi.set(__self__, "output_format", output_format)
+        if serde_info is not None:
+            pulumi.set(__self__, "serde_info", serde_info)
 
     @_builtins.property
     @pulumi.getter(name="inputFormat")
@@ -2057,5 +2065,50 @@ class TableHiveOptionsStorageDescriptor(dict):
         The fully qualified Java class name of the output format.
         """
         return pulumi.get(self, "output_format")
+
+    @_builtins.property
+    @pulumi.getter(name="serdeInfo")
+    def serde_info(self) -> Optional['outputs.TableHiveOptionsStorageDescriptorSerdeInfo']:
+        """
+        Serializer and deserializer information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "serde_info")
+
+
+@pulumi.output_type
+class TableHiveOptionsStorageDescriptorSerdeInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serializationLib":
+            suggest = "serialization_lib"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableHiveOptionsStorageDescriptorSerdeInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableHiveOptionsStorageDescriptorSerdeInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableHiveOptionsStorageDescriptorSerdeInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 serialization_lib: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str serialization_lib: The fully qualified Java class name of the serialization library.
+        """
+        if serialization_lib is not None:
+            pulumi.set(__self__, "serialization_lib", serialization_lib)
+
+    @_builtins.property
+    @pulumi.getter(name="serializationLib")
+    def serialization_lib(self) -> Optional[_builtins.str]:
+        """
+        The fully qualified Java class name of the serialization library.
+        """
+        return pulumi.get(self, "serialization_lib")
 
 

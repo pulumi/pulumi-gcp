@@ -221,7 +221,7 @@ namespace Pulumi.Gcp.Ces
     ///             },
     ///         },
     ///         GlobalInstruction = "You are a virtual assistant for an e-commerce platform. Be friendly and helpful.",
-    ///         Guardrails = new[] {},
+    ///         Guardrails = new() {},
     ///         DefaultChannelProfile = new Gcp.Ces.Inputs.AppDefaultChannelProfileArgs
     ///         {
     ///             ChannelType = "WEB_UI",
@@ -431,7 +431,7 @@ namespace Pulumi.Gcp.Ces
     ///             },
     ///         },
     ///         GlobalInstruction = "You are a virtual assistant for an e-commerce platform. Be friendly and helpful.",
-    ///         Guardrails = new[] {},
+    ///         Guardrails = new() {},
     ///         DefaultChannelProfile = new Gcp.Ces.Inputs.AppDefaultChannelProfileArgs
     ///         {
     ///             ChannelType = "WEB_UI",

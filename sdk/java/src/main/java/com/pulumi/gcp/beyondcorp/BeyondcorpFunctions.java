@@ -31,6 +31,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class BeyondcorpFunctions {
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
@@ -71,6 +73,8 @@ public final class BeyondcorpFunctions {
         return getAppConnection(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
@@ -111,6 +115,8 @@ public final class BeyondcorpFunctions {
         return getAppConnectionPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
@@ -151,6 +157,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppConnection:getAppConnection", TypeShape.of(GetAppConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
@@ -191,6 +199,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppConnection:getAppConnection", TypeShape.of(GetAppConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
@@ -231,6 +241,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getAppConnection:getAppConnection", TypeShape.of(GetAppConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
@@ -271,6 +283,8 @@ public final class BeyondcorpFunctions {
         return getAppConnector(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
@@ -311,6 +325,8 @@ public final class BeyondcorpFunctions {
         return getAppConnectorPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
@@ -351,6 +367,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppConnector:getAppConnector", TypeShape.of(GetAppConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
@@ -391,6 +409,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppConnector:getAppConnector", TypeShape.of(GetAppConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
@@ -431,6 +451,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getAppConnector:getAppConnector", TypeShape.of(GetAppConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+     * 
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
@@ -471,6 +493,8 @@ public final class BeyondcorpFunctions {
         return getAppGateway(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+     * 
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
@@ -511,6 +535,8 @@ public final class BeyondcorpFunctions {
         return getAppGatewayPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+     * 
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
@@ -551,6 +577,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppGateway:getAppGateway", TypeShape.of(GetAppGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+     * 
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
@@ -591,6 +619,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppGateway:getAppGateway", TypeShape.of(GetAppGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.AppGateway` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` instead.
+     * 
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage

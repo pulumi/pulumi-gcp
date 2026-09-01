@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         {
     ///             basic.DataStoreId,
     ///         },
-    ///         SearchEngineConfig = null,
+    ///         SearchEngineConfig = new() { },
     ///     });
     /// 
     ///     var basicAssistant = new Gcp.DiscoveryEngine.Assistant("basic", new()

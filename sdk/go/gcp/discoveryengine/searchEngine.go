@@ -116,6 +116,7 @@ import (
 //				Features: pulumi.StringMap{
 //					"agent-sharing-without-admin-approval": pulumi.String("FEATURE_STATE_ON"),
 //					"disable-agent-sharing":                pulumi.String("FEATURE_STATE_OFF"),
+//					"enable-end-user-sharing-with-groups":  pulumi.String("FEATURE_STATE_OFF"),
 //				},
 //				KnowledgeGraphConfig: &discoveryengine.SearchEngineKnowledgeGraphConfigArgs{},
 //			})

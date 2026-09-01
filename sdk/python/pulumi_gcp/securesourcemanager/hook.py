@@ -47,7 +47,7 @@ class HookArgs:
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
-               Each value may be one of: `PUSH`, `PULL_REQUEST`.
+               Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['HookPushOptionArgs'] push_option: The trigger option for push events.
@@ -155,7 +155,7 @@ class HookArgs:
     def events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The events that trigger hook on.
-        Each value may be one of: `PUSH`, `PULL_REQUEST`.
+        Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         """
         return pulumi.get(self, "events")
 
@@ -233,7 +233,7 @@ class _HookState:
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
-               Each value may be one of: `PUSH`, `PULL_REQUEST`.
+               Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         :param pulumi.Input[_builtins.str] hook_id: The ID for the Hook.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] name: A unique identifier for a Hook. The name should be of the format:
@@ -325,7 +325,7 @@ class _HookState:
     def events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The events that trigger hook on.
-        Each value may be one of: `PUSH`, `PULL_REQUEST`.
+        Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         """
         return pulumi.get(self, "events")
 
@@ -514,7 +514,7 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
-               Each value may be one of: `PUSH`, `PULL_REQUEST`.
+               Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         :param pulumi.Input[_builtins.str] hook_id: The ID for the Hook.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -659,7 +659,7 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
-               Each value may be one of: `PUSH`, `PULL_REQUEST`.
+               Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         :param pulumi.Input[_builtins.str] hook_id: The ID for the Hook.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] name: A unique identifier for a Hook. The name should be of the format:
@@ -730,7 +730,7 @@ class Hook(pulumi.CustomResource):
     def events(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The events that trigger hook on.
-        Each value may be one of: `PUSH`, `PULL_REQUEST`.
+        Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         """
         return pulumi.get(self, "events")
 

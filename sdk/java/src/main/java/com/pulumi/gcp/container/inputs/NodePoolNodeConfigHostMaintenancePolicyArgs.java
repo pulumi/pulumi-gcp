@@ -6,8 +6,11 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,26 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
         return this.maintenanceInterval;
     }
 
+    /**
+     * Strategy that will trigger maintenance on behalf of the customer.
+     * 
+     */
+    @Import(name="opportunisticMaintenanceStrategy")
+    private @Nullable Output<NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs> opportunisticMaintenanceStrategy;
+
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs>> opportunisticMaintenanceStrategy() {
+        return Optional.ofNullable(this.opportunisticMaintenanceStrategy);
+    }
+
     private NodePoolNodeConfigHostMaintenancePolicyArgs() {}
 
     private NodePoolNodeConfigHostMaintenancePolicyArgs(NodePoolNodeConfigHostMaintenancePolicyArgs $) {
         this.maintenanceInterval = $.maintenanceInterval;
+        this.opportunisticMaintenanceStrategy = $.opportunisticMaintenanceStrategy;
     }
 
     public static Builder builder() {
@@ -72,6 +91,27 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
          */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
+        }
+
+        /**
+         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opportunisticMaintenanceStrategy(@Nullable Output<NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs> opportunisticMaintenanceStrategy) {
+            $.opportunisticMaintenanceStrategy = opportunisticMaintenanceStrategy;
+            return this;
+        }
+
+        /**
+         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opportunisticMaintenanceStrategy(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs opportunisticMaintenanceStrategy) {
+            return opportunisticMaintenanceStrategy(Output.of(opportunisticMaintenanceStrategy));
         }
 
         public NodePoolNodeConfigHostMaintenancePolicyArgs build() {

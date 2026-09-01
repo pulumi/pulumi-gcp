@@ -22,6 +22,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Oauth2ClientId;
         /// <summary>
+        /// OAuth2 Client ID for IAP
+        /// </summary>
+        public readonly string Oauth2ClientIdWo;
+        /// <summary>
+        /// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string Oauth2ClientIdWoVersion;
+        /// <summary>
         /// OAuth2 Client Secret for IAP
         /// </summary>
         public readonly string Oauth2ClientSecret;
@@ -29,6 +37,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// OAuth2 Client Secret SHA-256 for IAP
         /// </summary>
         public readonly string Oauth2ClientSecretSha256;
+        /// <summary>
+        /// OAuth2 Client Secret for IAP
+        /// </summary>
+        public readonly string Oauth2ClientSecretWo;
+        /// <summary>
+        /// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string Oauth2ClientSecretWoVersion;
 
         [OutputConstructor]
         private GetBackendServiceIapResult(
@@ -36,14 +52,26 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string oauth2ClientId,
 
+            string oauth2ClientIdWo,
+
+            string oauth2ClientIdWoVersion,
+
             string oauth2ClientSecret,
 
-            string oauth2ClientSecretSha256)
+            string oauth2ClientSecretSha256,
+
+            string oauth2ClientSecretWo,
+
+            string oauth2ClientSecretWoVersion)
         {
             Enabled = enabled;
             Oauth2ClientId = oauth2ClientId;
+            Oauth2ClientIdWo = oauth2ClientIdWo;
+            Oauth2ClientIdWoVersion = oauth2ClientIdWoVersion;
             Oauth2ClientSecret = oauth2ClientSecret;
             Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            Oauth2ClientSecretWo = oauth2ClientSecretWo;
+            Oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.biglake.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.biglake.inputs.TableHiveOptionsStorageDescriptorSerdeInfoArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,12 +61,30 @@ public final class TableHiveOptionsStorageDescriptorArgs extends com.pulumi.reso
         return Optional.ofNullable(this.outputFormat);
     }
 
+    /**
+     * Serializer and deserializer information.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serdeInfo")
+    private @Nullable Output<TableHiveOptionsStorageDescriptorSerdeInfoArgs> serdeInfo;
+
+    /**
+     * @return Serializer and deserializer information.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TableHiveOptionsStorageDescriptorSerdeInfoArgs>> serdeInfo() {
+        return Optional.ofNullable(this.serdeInfo);
+    }
+
     private TableHiveOptionsStorageDescriptorArgs() {}
 
     private TableHiveOptionsStorageDescriptorArgs(TableHiveOptionsStorageDescriptorArgs $) {
         this.inputFormat = $.inputFormat;
         this.locationUri = $.locationUri;
         this.outputFormat = $.outputFormat;
+        this.serdeInfo = $.serdeInfo;
     }
 
     public static Builder builder() {
@@ -147,6 +166,29 @@ public final class TableHiveOptionsStorageDescriptorArgs extends com.pulumi.reso
          */
         public Builder outputFormat(String outputFormat) {
             return outputFormat(Output.of(outputFormat));
+        }
+
+        /**
+         * @param serdeInfo Serializer and deserializer information.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serdeInfo(@Nullable Output<TableHiveOptionsStorageDescriptorSerdeInfoArgs> serdeInfo) {
+            $.serdeInfo = serdeInfo;
+            return this;
+        }
+
+        /**
+         * @param serdeInfo Serializer and deserializer information.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serdeInfo(TableHiveOptionsStorageDescriptorSerdeInfoArgs serdeInfo) {
+            return serdeInfo(Output.of(serdeInfo));
         }
 
         public TableHiveOptionsStorageDescriptorArgs build() {

@@ -2033,6 +2033,9 @@ class BackendService(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Backend Service Basic
@@ -2720,6 +2723,9 @@ class BackendService(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -3825,7 +3831,7 @@ class BackendService(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def iap(self) -> pulumi.Output['outputs.BackendServiceIap']:
+    def iap(self) -> pulumi.Output[Optional['outputs.BackendServiceIap']]:
         """
         Settings for enabling Cloud Identity Aware Proxy.
         If OAuth client is not set, the Google-managed OAuth client is used.

@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Firestore
     ///         Database = database.Name,
     ///         Collection = "chatrooms",
     ///         FieldId = "timestamp",
-    ///         TtlConfig = null,
+    ///         TtlConfig = new() { },
     ///     });
     /// 
     /// });
@@ -167,8 +167,8 @@ namespace Pulumi.Gcp.Firestore
     ///         Database = database.Name,
     ///         Collection = "chatrooms",
     ///         FieldId = "timestamp",
-    ///         TtlConfig = null,
-    ///         IndexConfig = null,
+    ///         TtlConfig = new() { },
+    ///         IndexConfig = new() { },
     ///     });
     /// 
     /// });
@@ -203,7 +203,7 @@ namespace Pulumi.Gcp.Firestore
     ///         {
     ///             ExpirationOffset = "2592000s",
     ///         },
-    ///         IndexConfig = null,
+    ///         IndexConfig = new() { },
     ///     });
     /// 
     /// });

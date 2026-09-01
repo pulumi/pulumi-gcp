@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     {
     ///         Location = "us-west1",
     ///         Name = "target",
-    ///         DeployParameters = null,
+    ///         DeployParameters = new() { },
     ///         Description = "multi-target description",
     ///         ExecutionConfigs = new[]
     ///         {
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     {
     ///         Location = "us-west1",
     ///         Name = "target",
-    ///         DeployParameters = null,
+    ///         DeployParameters = new() { },
     ///         Description = "basic description",
     ///         ExecutionConfigs = new[]
     ///         {

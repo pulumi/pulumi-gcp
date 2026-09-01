@@ -985,6 +985,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "pricing_plan"
         elif key == "readPoolAutoScaleConfig":
             suggest = "read_pool_auto_scale_config"
+        elif key == "replicationLagMaxSeconds":
+            suggest = "replication_lag_max_seconds"
         elif key == "retainBackupsOnDelete":
             suggest = "retain_backups_on_delete"
         elif key == "sqlServerAuditConfig":
@@ -1041,6 +1043,7 @@ class DatabaseInstanceSettings(dict):
                  performance_capture_config: Optional['outputs.DatabaseInstanceSettingsPerformanceCaptureConfig'] = None,
                  pricing_plan: Optional[_builtins.str] = None,
                  read_pool_auto_scale_config: Optional['outputs.DatabaseInstanceSettingsReadPoolAutoScaleConfig'] = None,
+                 replication_lag_max_seconds: Optional[_builtins.int] = None,
                  retain_backups_on_delete: Optional[_builtins.bool] = None,
                  sql_server_audit_config: Optional['outputs.DatabaseInstanceSettingsSqlServerAuditConfig'] = None,
                  time_zone: Optional[_builtins.str] = None,
@@ -1100,6 +1103,7 @@ class DatabaseInstanceSettings(dict):
         :param 'DatabaseInstanceSettingsPerformanceCaptureConfigArgs' performance_capture_config: Configuration of Performance Capture.
         :param _builtins.str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param 'DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs' read_pool_auto_scale_config: Configuration of Read Pool Auto Scale.
+        :param _builtins.int replication_lag_max_seconds: The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
         :param _builtins.bool retain_backups_on_delete: When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
         :param _builtins.str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param Mapping[str, _builtins.str] user_labels: A set of key/value user label pairs to assign to the instance.
@@ -1175,6 +1179,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if read_pool_auto_scale_config is not None:
             pulumi.set(__self__, "read_pool_auto_scale_config", read_pool_auto_scale_config)
+        if replication_lag_max_seconds is not None:
+            pulumi.set(__self__, "replication_lag_max_seconds", replication_lag_max_seconds)
         if retain_backups_on_delete is not None:
             pulumi.set(__self__, "retain_backups_on_delete", retain_backups_on_delete)
         if sql_server_audit_config is not None:
@@ -1467,6 +1473,14 @@ class DatabaseInstanceSettings(dict):
         Configuration of Read Pool Auto Scale.
         """
         return pulumi.get(self, "read_pool_auto_scale_config")
+
+    @_builtins.property
+    @pulumi.getter(name="replicationLagMaxSeconds")
+    def replication_lag_max_seconds(self) -> Optional[_builtins.int]:
+        """
+        The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+        """
+        return pulumi.get(self, "replication_lag_max_seconds")
 
     @_builtins.property
     @pulumi.getter(name="retainBackupsOnDelete")
@@ -4192,6 +4206,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  performance_capture_configs: Sequence['outputs.GetDatabaseInstanceSettingPerformanceCaptureConfigResult'],
                  pricing_plan: _builtins.str,
                  read_pool_auto_scale_configs: Sequence['outputs.GetDatabaseInstanceSettingReadPoolAutoScaleConfigResult'],
+                 replication_lag_max_seconds: _builtins.int,
                  retain_backups_on_delete: _builtins.bool,
                  sql_server_audit_configs: Sequence['outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult'],
                  tier: _builtins.str,
@@ -4234,6 +4249,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param Sequence['GetDatabaseInstanceSettingPerformanceCaptureConfigArgs'] performance_capture_configs: Configuration of Performance Capture.
         :param _builtins.str pricing_plan: Pricing plan for this instance, can only be PER_USE.
         :param Sequence['GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs'] read_pool_auto_scale_configs: Configuration of Read Pool Auto Scale.
+        :param _builtins.int replication_lag_max_seconds: The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
         :param _builtins.bool retain_backups_on_delete: When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
         :param _builtins.str tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
         :param _builtins.str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
@@ -4274,6 +4290,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "performance_capture_configs", performance_capture_configs)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
         pulumi.set(__self__, "read_pool_auto_scale_configs", read_pool_auto_scale_configs)
+        pulumi.set(__self__, "replication_lag_max_seconds", replication_lag_max_seconds)
         pulumi.set(__self__, "retain_backups_on_delete", retain_backups_on_delete)
         pulumi.set(__self__, "sql_server_audit_configs", sql_server_audit_configs)
         pulumi.set(__self__, "tier", tier)
@@ -4537,6 +4554,14 @@ class GetDatabaseInstanceSettingResult(dict):
         Configuration of Read Pool Auto Scale.
         """
         return pulumi.get(self, "read_pool_auto_scale_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="replicationLagMaxSeconds")
+    def replication_lag_max_seconds(self) -> _builtins.int:
+        """
+        The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+        """
+        return pulumi.get(self, "replication_lag_max_seconds")
 
     @_builtins.property
     @pulumi.getter(name="retainBackupsOnDelete")
@@ -6821,6 +6846,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  performance_capture_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult'],
                  pricing_plan: _builtins.str,
                  read_pool_auto_scale_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigResult'],
+                 replication_lag_max_seconds: _builtins.int,
                  retain_backups_on_delete: _builtins.bool,
                  sql_server_audit_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult'],
                  tier: _builtins.str,
@@ -6863,6 +6889,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs'] performance_capture_configs: Configuration of Performance Capture.
         :param _builtins.str pricing_plan: Pricing plan for this instance, can only be PER_USE.
         :param Sequence['GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs'] read_pool_auto_scale_configs: Configuration of Read Pool Auto Scale.
+        :param _builtins.int replication_lag_max_seconds: The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
         :param _builtins.bool retain_backups_on_delete: When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
         :param _builtins.str tier: To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
         :param _builtins.str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
@@ -6903,6 +6930,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "performance_capture_configs", performance_capture_configs)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
         pulumi.set(__self__, "read_pool_auto_scale_configs", read_pool_auto_scale_configs)
+        pulumi.set(__self__, "replication_lag_max_seconds", replication_lag_max_seconds)
         pulumi.set(__self__, "retain_backups_on_delete", retain_backups_on_delete)
         pulumi.set(__self__, "sql_server_audit_configs", sql_server_audit_configs)
         pulumi.set(__self__, "tier", tier)
@@ -7166,6 +7194,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         Configuration of Read Pool Auto Scale.
         """
         return pulumi.get(self, "read_pool_auto_scale_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="replicationLagMaxSeconds")
+    def replication_lag_max_seconds(self) -> _builtins.int:
+        """
+        The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+        """
+        return pulumi.get(self, "replication_lag_max_seconds")
 
     @_builtins.property
     @pulumi.getter(name="retainBackupsOnDelete")

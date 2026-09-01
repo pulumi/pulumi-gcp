@@ -143,7 +143,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
     /**
-     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * @return The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
@@ -476,7 +476,7 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.gvnic);
     }
     /**
-     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * @return The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfigHostMaintenancePolicy> hostMaintenancePolicy() {

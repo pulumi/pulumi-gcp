@@ -227,6 +227,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly transcoderCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly universeDomain: pulumi.Output<string | undefined>;
     declare public readonly vectorSearchCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly vertexAiAadCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vertexAiCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vmwareengineCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vpcAccessCustomEndpoint: pulumi.Output<string | undefined>;
@@ -457,6 +458,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["universeDomain"] = args?.universeDomain;
             resourceInputs["userProjectOverride"] = pulumi.output(args?.userProjectOverride).apply(JSON.stringify);
             resourceInputs["vectorSearchCustomEndpoint"] = args?.vectorSearchCustomEndpoint;
+            resourceInputs["vertexAiAadCustomEndpoint"] = args?.vertexAiAadCustomEndpoint;
             resourceInputs["vertexAiCustomEndpoint"] = args?.vertexAiCustomEndpoint;
             resourceInputs["vmwareengineCustomEndpoint"] = args?.vmwareengineCustomEndpoint;
             resourceInputs["vpcAccessCustomEndpoint"] = args?.vpcAccessCustomEndpoint;
@@ -696,6 +698,7 @@ export interface ProviderArgs {
     universeDomain?: pulumi.Input<string | undefined>;
     userProjectOverride?: pulumi.Input<boolean | undefined>;
     vectorSearchCustomEndpoint?: pulumi.Input<string | undefined>;
+    vertexAiAadCustomEndpoint?: pulumi.Input<string | undefined>;
     vertexAiCustomEndpoint?: pulumi.Input<string | undefined>;
     vmwareengineCustomEndpoint?: pulumi.Input<string | undefined>;
     vpcAccessCustomEndpoint?: pulumi.Input<string | undefined>;
