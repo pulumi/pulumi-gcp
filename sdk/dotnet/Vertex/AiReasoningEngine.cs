@@ -385,7 +385,7 @@ namespace Pulumi.Gcp.Vertex
     ///             { "parameters", 
     ///             {
     ///                 { "type", "object" },
-    ///                 { "required", new[] {} },
+    ///                 { "required", new object?[] {} },
     ///                 { "properties", null },
     ///             } },
     ///         },
@@ -641,6 +641,88 @@ namespace Pulumi.Gcp.Vertex
     ///                                 ManagedMemoryTopic = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs
     ///                                 {
     ///                                     ManagedTopicEnum = "USER_PREFERENCES",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         GenerateMemoriesExamples = new[]
+    ///                         {
+    ///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs
+    ///                             {
+    ///                                 ConversationSource = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs
+    ///                                 {
+    ///                                     Events = new[]
+    ///                                     {
+    ///                                         new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs
+    ///                                         {
+    ///                                             Content = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs
+    ///                                             {
+    ///                                                 Role = "user",
+    ///                                                 Parts = new[]
+    ///                                                 {
+    ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+    ///                                                     {
+    ///                                                         Text = "I like pepperoni pizza",
+    ///                                                     },
+    ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+    ///                                                     {
+    ///                                                         FunctionCall = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs
+    ///                                                         {
+    ///                                                             Id = "fn-call-1",
+    ///                                                             Name = "order_pizza",
+    ///                                                             Args = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["type"] = "pepperoni",
+    ///                                                             }),
+    ///                                                         },
+    ///                                                     },
+    ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+    ///                                                     {
+    ///                                                         FunctionResponse = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs
+    ///                                                         {
+    ///                                                             Id = "fn-resp-1",
+    ///                                                             Name = "order_pizza",
+    ///                                                             Response = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["status"] = "ordered",
+    ///                                                             }),
+    ///                                                         },
+    ///                                                     },
+    ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+    ///                                                     {
+    ///                                                         ExecutableCode = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs
+    ///                                                         {
+    ///                                                             Id = "exec-code-1",
+    ///                                                             Language = "PYTHON",
+    ///                                                             Code = "print('pizza')",
+    ///                                                         },
+    ///                                                     },
+    ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+    ///                                                     {
+    ///                                                         CodeExecutionResult = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs
+    ///                                                         {
+    ///                                                             Id = "exec-result-1",
+    ///                                                             Outcome = "OUTCOME_OK",
+    ///                                                             Output = "pizza",
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                                 GeneratedMemories = new[]
+    ///                                 {
+    ///                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs
+    ///                                     {
+    ///                                         Fact = "User likes pepperoni pizza.",
+    ///                                         Topics = new[]
+    ///                                         {
+    ///                                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs
+    ///                                             {
+    ///                                                 ManagedMemoryTopic = "USER_PREFERENCES",
+    ///                                             },
+    ///                                         },
+    ///                                     },
     ///                                 },
     ///                             },
     ///                         },

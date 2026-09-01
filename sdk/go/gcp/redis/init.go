@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:redis/cluster:Cluster":
 		r = &Cluster{}
+	case "gcp:redis/clusterAclPolicy:ClusterAclPolicy":
+		r = &ClusterAclPolicy{}
 	case "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections":
 		r = &ClusterUserCreatedConnections{}
 	case "gcp:redis/instance:Instance":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"redis/cluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"redis/clusterAclPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

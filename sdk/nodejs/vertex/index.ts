@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AiAgentAnomalyDetectionScopeArgs, AiAgentAnomalyDetectionScopeState } from "./aiAgentAnomalyDetectionScope";
+export type AiAgentAnomalyDetectionScope = import("./aiAgentAnomalyDetectionScope").AiAgentAnomalyDetectionScope;
+export const AiAgentAnomalyDetectionScope: typeof import("./aiAgentAnomalyDetectionScope").AiAgentAnomalyDetectionScope = null as any;
+utilities.lazyLoad(exports, ["AiAgentAnomalyDetectionScope"], () => require("./aiAgentAnomalyDetectionScope"));
+
 export { AiCacheConfigArgs, AiCacheConfigState } from "./aiCacheConfig";
 export type AiCacheConfig = import("./aiCacheConfig").AiCacheConfig;
 export const AiCacheConfig: typeof import("./aiCacheConfig").AiCacheConfig = null as any;
@@ -290,6 +295,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope":
+                return new AiAgentAnomalyDetectionScope(name, <any>undefined, { urn })
             case "gcp:vertex/aiCacheConfig:AiCacheConfig":
                 return new AiCacheConfig(name, <any>undefined, { urn })
             case "gcp:vertex/aiDataset:AiDataset":
@@ -389,6 +396,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiAgentAnomalyDetectionScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiCacheConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDeploymentResourcePool", _module)

@@ -9,12 +9,220 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.memorystore.inputs.GetAclPolicyArgs;
+import com.pulumi.gcp.memorystore.inputs.GetAclPolicyPlainArgs;
 import com.pulumi.gcp.memorystore.inputs.GetInstanceArgs;
 import com.pulumi.gcp.memorystore.inputs.GetInstancePlainArgs;
+import com.pulumi.gcp.memorystore.outputs.GetAclPolicyResult;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class MemorystoreFunctions {
+    /**
+     * Get information about a Google Cloud Memorystore ACL policy. For more information see the [official documentation](https://cloud.google.com/memorystore/docs/valkey) or the [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.memorystore.MemorystoreFunctions;
+     * import com.pulumi.gcp.memorystore.inputs.GetAclPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = MemorystoreFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .aclPolicyId("my-acl-policy")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAclPolicyResult> getAclPolicy(GetAclPolicyArgs args) {
+        return getAclPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Memorystore ACL policy. For more information see the [official documentation](https://cloud.google.com/memorystore/docs/valkey) or the [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.memorystore.MemorystoreFunctions;
+     * import com.pulumi.gcp.memorystore.inputs.GetAclPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = MemorystoreFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .aclPolicyId("my-acl-policy")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAclPolicyResult> getAclPolicyPlain(GetAclPolicyPlainArgs args) {
+        return getAclPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Memorystore ACL policy. For more information see the [official documentation](https://cloud.google.com/memorystore/docs/valkey) or the [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.memorystore.MemorystoreFunctions;
+     * import com.pulumi.gcp.memorystore.inputs.GetAclPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = MemorystoreFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .aclPolicyId("my-acl-policy")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAclPolicyResult> getAclPolicy(GetAclPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:memorystore/getAclPolicy:getAclPolicy", TypeShape.of(GetAclPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Memorystore ACL policy. For more information see the [official documentation](https://cloud.google.com/memorystore/docs/valkey) or the [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.memorystore.MemorystoreFunctions;
+     * import com.pulumi.gcp.memorystore.inputs.GetAclPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = MemorystoreFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .aclPolicyId("my-acl-policy")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAclPolicyResult> getAclPolicy(GetAclPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:memorystore/getAclPolicy:getAclPolicy", TypeShape.of(GetAclPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Memorystore ACL policy. For more information see the [official documentation](https://cloud.google.com/memorystore/docs/valkey) or the [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.memorystore.MemorystoreFunctions;
+     * import com.pulumi.gcp.memorystore.inputs.GetAclPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = MemorystoreFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .aclPolicyId("my-acl-policy")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAclPolicyResult> getAclPolicyPlain(GetAclPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:memorystore/getAclPolicy:getAclPolicy", TypeShape.of(GetAclPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to get information about the available instance. For more details refer the [API docs](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances).
      * 

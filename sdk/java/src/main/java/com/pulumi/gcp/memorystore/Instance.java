@@ -665,6 +665,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:memorystore/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
+     * The name of the ACL policy to attach to the instance.
+     * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+     * 
+     */
+    @Export(name="aclPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> aclPolicy;
+
+    /**
+     * @return The name of the ACL policy to attach to the instance.
+     * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+     * 
+     */
+    public Output<Optional<String>> aclPolicy() {
+        return Codegen.optional(this.aclPolicy);
+    }
+    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH.
@@ -967,6 +983,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+    /**
+     * Whether the ACL policy is in sync with the cluster.
+     * 
+     */
+    @Export(name="isAclPolicyInSync", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isAclPolicyInSync;
+
+    /**
+     * @return Whether the ACL policy is in sync with the cluster.
+     * 
+     */
+    public Output<Boolean> isAclPolicyInSync() {
+        return this.isAclPolicyInSync;
     }
     /**
      * The KMS key used to encrypt the at-rest data of the cluster

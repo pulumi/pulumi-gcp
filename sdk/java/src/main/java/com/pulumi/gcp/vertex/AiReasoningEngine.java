@@ -688,6 +688,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs;
@@ -742,6 +753,59 @@ import javax.annotation.Nullable;
  *                             .memoryTopics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs.builder()
  *                                 .managedMemoryTopic(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs.builder()
  *                                     .managedTopicEnum("USER_PREFERENCES")
+ *                                     .build())
+ *                                 .build())
+ *                             .generateMemoriesExamples(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs.builder()
+ *                                 .conversationSource(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs.builder()
+ *                                     .events(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs.builder()
+ *                                         .content(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs.builder()
+ *                                             .role("user")
+ *                                             .parts(                                            
+ *                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+ *                                                     .text("I like pepperoni pizza")
+ *                                                     .build(),
+ *                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+ *                                                     .functionCall(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs.builder()
+ *                                                         .id("fn-call-1")
+ *                                                         .name("order_pizza")
+ *                                                         .args(serializeJson(
+ *                                                             jsonObject(
+ *                                                                 jsonProperty("type", "pepperoni")
+ *                                                             )))
+ *                                                         .build())
+ *                                                     .build(),
+ *                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+ *                                                     .functionResponse(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs.builder()
+ *                                                         .id("fn-resp-1")
+ *                                                         .name("order_pizza")
+ *                                                         .response(serializeJson(
+ *                                                             jsonObject(
+ *                                                                 jsonProperty("status", "ordered")
+ *                                                             )))
+ *                                                         .build())
+ *                                                     .build(),
+ *                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+ *                                                     .executableCode(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs.builder()
+ *                                                         .id("exec-code-1")
+ *                                                         .language("PYTHON")
+ *                                                         .code("print('pizza')")
+ *                                                         .build())
+ *                                                     .build(),
+ *                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+ *                                                     .codeExecutionResult(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs.builder()
+ *                                                         .id("exec-result-1")
+ *                                                         .outcome("OUTCOME_OK")
+ *                                                         .output("pizza")
+ *                                                         .build())
+ *                                                     .build())
+ *                                             .build())
+ *                                         .build())
+ *                                     .build())
+ *                                 .generatedMemories(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs.builder()
+ *                                     .fact("User likes pepperoni pizza.")
+ *                                     .topics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs.builder()
+ *                                         .managedMemoryTopic("USER_PREFERENCES")
+ *                                         .build())
  *                                     .build())
  *                                 .build())
  *                             .build(),

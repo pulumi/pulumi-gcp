@@ -183,7 +183,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         Location = "us-west1",
     ///         VmwareCluster = default_full.Name,
     ///         OnPremVersion = "1.33.0-gke.35",
-    ///         Annotations = null,
+    ///         Annotations = new() { },
     ///         Config = new Gcp.GkeOnPrem.Inputs.VMwareNodePoolConfigArgs
     ///         {
     ///             Cpus = 4,

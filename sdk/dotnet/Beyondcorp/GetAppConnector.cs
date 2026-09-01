@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.Beyondcorp
     public static class GetAppConnector
     {
         /// <summary>
+        /// &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+        /// 
         /// Get information about a Google BeyondCorp App Connector.
         /// 
         /// ## Example Usage
@@ -36,6 +38,8 @@ namespace Pulumi.Gcp.Beyondcorp
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppConnectorResult>("gcp:beyondcorp/getAppConnector:getAppConnector", args ?? new GetAppConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+        /// 
         /// Get information about a Google BeyondCorp App Connector.
         /// 
         /// ## Example Usage
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.Beyondcorp
             => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorResult>("gcp:beyondcorp/getAppConnector:getAppConnector", args ?? new GetAppConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** `gcp.beyondcorp.AppConnector` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `gcp.beyondcorp.SecurityGateway` and `gcp.beyondcorp.SecurityGatewayApplication` instead.
+        /// 
         /// Get information about a Google BeyondCorp App Connector.
         /// 
         /// ## Example Usage

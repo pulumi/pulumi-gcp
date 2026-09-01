@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         Location = "US",
     ///         FriendlyName = "👋",
     ///         Description = "a riveting description",
-    ///         CloudResource = null,
+    ///         CloudResource = new() { },
     ///     });
     /// 
     /// });

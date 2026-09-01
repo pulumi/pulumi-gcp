@@ -35,6 +35,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
+     * Optional. The name of the ACL policy to attach to the cluster.
+     * 
+     */
+    @Import(name="aclPolicy")
+    private @Nullable Output<String> aclPolicy;
+
+    /**
+     * @return Optional. The name of the ACL policy to attach to the cluster.
+     * 
+     */
+    public Optional<Output<String>> aclPolicy() {
+        return Optional.ofNullable(this.aclPolicy);
+    }
+
+    /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -248,6 +263,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterGcsSourceArgs>> gcsSource() {
         return Optional.ofNullable(this.gcsSource);
+    }
+
+    /**
+     * Optional. Whether the ACL policy is in sync with the cluster.
+     * 
+     */
+    @Import(name="isAclPolicyInSync")
+    private @Nullable Output<Boolean> isAclPolicyInSync;
+
+    /**
+     * @return Optional. Whether the ACL policy is in sync with the cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> isAclPolicyInSync() {
+        return Optional.ofNullable(this.isAclPolicyInSync);
     }
 
     /**
@@ -731,6 +761,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
+        this.aclPolicy = $.aclPolicy;
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.availableMaintenanceVersions = $.availableMaintenanceVersions;
@@ -743,6 +774,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.effectiveLabels = $.effectiveLabels;
         this.effectiveMaintenanceVersion = $.effectiveMaintenanceVersion;
         this.gcsSource = $.gcsSource;
+        this.isAclPolicyInSync = $.isAclPolicyInSync;
         this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -789,6 +821,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPolicy Optional. The name of the ACL policy to attach to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPolicy(@Nullable Output<String> aclPolicy) {
+            $.aclPolicy = aclPolicy;
+            return this;
+        }
+
+        /**
+         * @param aclPolicy Optional. The name of the ACL policy to attach to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPolicy(String aclPolicy) {
+            return aclPolicy(Output.of(aclPolicy));
         }
 
         /**
@@ -1100,6 +1153,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gcsSource(ClusterGcsSourceArgs gcsSource) {
             return gcsSource(Output.of(gcsSource));
+        }
+
+        /**
+         * @param isAclPolicyInSync Optional. Whether the ACL policy is in sync with the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAclPolicyInSync(@Nullable Output<Boolean> isAclPolicyInSync) {
+            $.isAclPolicyInSync = isAclPolicyInSync;
+            return this;
+        }
+
+        /**
+         * @param isAclPolicyInSync Optional. Whether the ACL policy is in sync with the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAclPolicyInSync(Boolean isAclPolicyInSync) {
+            return isAclPolicyInSync(Output.of(isAclPolicyInSync));
         }
 
         /**

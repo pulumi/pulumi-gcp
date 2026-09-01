@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         },
     ///         IndustryVertical = "GENERIC",
     ///         AppType = "APP_TYPE_INTRANET",
-    ///         SearchEngineConfig = null,
+    ///         SearchEngineConfig = new() { },
     ///     });
     /// 
     ///     var basicWidgetConfig = new Gcp.DiscoveryEngine.WidgetConfig("basic", new()

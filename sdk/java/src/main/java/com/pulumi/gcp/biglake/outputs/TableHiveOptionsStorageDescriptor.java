@@ -4,6 +4,7 @@
 package com.pulumi.gcp.biglake.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.biglake.outputs.TableHiveOptionsStorageDescriptorSerdeInfo;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,6 +27,12 @@ public final class TableHiveOptionsStorageDescriptor {
      * 
      */
     private @Nullable String outputFormat;
+    /**
+     * @return Serializer and deserializer information.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TableHiveOptionsStorageDescriptorSerdeInfo serdeInfo;
 
     private TableHiveOptionsStorageDescriptor() {}
     /**
@@ -49,6 +56,14 @@ public final class TableHiveOptionsStorageDescriptor {
     public Optional<String> outputFormat() {
         return Optional.ofNullable(this.outputFormat);
     }
+    /**
+     * @return Serializer and deserializer information.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TableHiveOptionsStorageDescriptorSerdeInfo> serdeInfo() {
+        return Optional.ofNullable(this.serdeInfo);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,12 +77,14 @@ public final class TableHiveOptionsStorageDescriptor {
         private @Nullable String inputFormat;
         private @Nullable String locationUri;
         private @Nullable String outputFormat;
+        private @Nullable TableHiveOptionsStorageDescriptorSerdeInfo serdeInfo;
         public Builder() {}
         public Builder(TableHiveOptionsStorageDescriptor defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.inputFormat = defaults.inputFormat;
     	      this.locationUri = defaults.locationUri;
     	      this.outputFormat = defaults.outputFormat;
+    	      this.serdeInfo = defaults.serdeInfo;
         }
 
         @CustomType.Setter
@@ -88,11 +105,18 @@ public final class TableHiveOptionsStorageDescriptor {
             this.outputFormat = outputFormat;
             return this;
         }
+        @CustomType.Setter
+        public Builder serdeInfo(@Nullable TableHiveOptionsStorageDescriptorSerdeInfo serdeInfo) {
+
+            this.serdeInfo = serdeInfo;
+            return this;
+        }
         public TableHiveOptionsStorageDescriptor build() {
             final var _resultValue = new TableHiveOptionsStorageDescriptor();
             _resultValue.inputFormat = inputFormat;
             _resultValue.locationUri = locationUri;
             _resultValue.outputFormat = outputFormat;
+            _resultValue.serdeInfo = serdeInfo;
             return _resultValue;
         }
     }

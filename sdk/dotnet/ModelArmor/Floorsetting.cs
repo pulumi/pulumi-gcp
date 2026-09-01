@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.ModelArmor
     ///     {
     ///         Parent = "projects/my-project-name",
     ///         Location = "global",
-    ///         FilterConfig = null,
+    ///         FilterConfig = new() { },
     ///     });
     /// 
     /// });
@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.ModelArmor
     ///     {
     ///         Location = "global",
     ///         Parent = "projects/my-project-name",
-    ///         FilterConfig = null,
+    ///         FilterConfig = new() { },
     ///         EnableFloorSettingEnforcement = false,
     ///         AiPlatformFloorSetting = new Gcp.ModelArmor.Inputs.FloorsettingAiPlatformFloorSettingArgs
     ///         {

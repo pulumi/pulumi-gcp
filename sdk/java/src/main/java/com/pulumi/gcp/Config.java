@@ -652,6 +652,9 @@ public final class Config {
     public Optional<String> vectorSearchCustomEndpoint() {
         return Codegen.stringProp("vectorSearchCustomEndpoint").config(config).get();
     }
+    public Optional<String> vertexAiAadCustomEndpoint() {
+        return Codegen.stringProp("vertexAiAadCustomEndpoint").config(config).get();
+    }
     public Optional<String> vertexAiCustomEndpoint() {
         return Codegen.stringProp("vertexAiCustomEndpoint").config(config).get();
     }

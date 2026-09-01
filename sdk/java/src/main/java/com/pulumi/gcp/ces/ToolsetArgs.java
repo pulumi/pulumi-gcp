@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.ces.inputs.ToolsetConnectorToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetToolFakeConfigArgs;
@@ -32,6 +33,23 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> app() {
         return this.app;
+    }
+
+    /**
+     * A toolset that generates tools from an Integration Connectors Connection.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="connectorToolset")
+    private @Nullable Output<ToolsetConnectorToolsetArgs> connectorToolset;
+
+    /**
+     * @return A toolset that generates tools from an Integration Connectors Connection.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolsetConnectorToolsetArgs>> connectorToolset() {
+        return Optional.ofNullable(this.connectorToolset);
     }
 
     /**
@@ -179,6 +197,25 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The timeout for the toolset execution. If not set, the default timeout is
+     * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+     * toolsets.
+     * 
+     */
+    @Import(name="timeout")
+    private @Nullable Output<String> timeout;
+
+    /**
+     * @return The timeout for the toolset execution. If not set, the default timeout is
+     * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+     * toolsets.
+     * 
+     */
+    public Optional<Output<String>> timeout() {
+        return Optional.ofNullable(this.timeout);
+    }
+
+    /**
      * Configuration for tools behavior in fake mode.
      * Structure is documented below.
      * 
@@ -218,6 +255,7 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
 
     private ToolsetArgs(ToolsetArgs $) {
         this.app = $.app;
+        this.connectorToolset = $.connectorToolset;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -226,6 +264,7 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
         this.mcpToolset = $.mcpToolset;
         this.openApiToolset = $.openApiToolset;
         this.project = $.project;
+        this.timeout = $.timeout;
         this.toolFakeConfig = $.toolFakeConfig;
         this.toolsetId = $.toolsetId;
     }
@@ -267,6 +306,29 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder app(String app) {
             return app(Output.of(app));
+        }
+
+        /**
+         * @param connectorToolset A toolset that generates tools from an Integration Connectors Connection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorToolset(@Nullable Output<ToolsetConnectorToolsetArgs> connectorToolset) {
+            $.connectorToolset = connectorToolset;
+            return this;
+        }
+
+        /**
+         * @param connectorToolset A toolset that generates tools from an Integration Connectors Connection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorToolset(ToolsetConnectorToolsetArgs connectorToolset) {
+            return connectorToolset(Output.of(connectorToolset));
         }
 
         /**
@@ -459,6 +521,31 @@ public final class ToolsetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param timeout The timeout for the toolset execution. If not set, the default timeout is
+         * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+         * toolsets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeout(@Nullable Output<String> timeout) {
+            $.timeout = timeout;
+            return this;
+        }
+
+        /**
+         * @param timeout The timeout for the toolset execution. If not set, the default timeout is
+         * 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
+         * toolsets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeout(String timeout) {
+            return timeout(Output.of(timeout));
         }
 
         /**

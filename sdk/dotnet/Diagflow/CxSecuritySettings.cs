@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Diagflow
     ///     {
     ///         DisplayName = "dialogflowcx-security-settings",
     ///         Location = "global",
-    ///         PurgeDataTypes = new[] {},
+    ///         PurgeDataTypes = new() {},
     ///         RetentionWindowDays = 7,
     ///     });
     /// 

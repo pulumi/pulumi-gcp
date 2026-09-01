@@ -212,8 +212,8 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///         Location = "us-central1",
     ///         InsightsConfigId = "tf-test-ic-apphub-_85072",
     ///         Project = project.ProjectId,
-    ///         Annotations = null,
-    ///         Labels = null,
+    ///         Annotations = new() { },
+    ///         Labels = new() { },
     ///         AppHubApplication = Std.Format.Invoke(new()
     ///         {
     ///             Input = "//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
@@ -430,8 +430,8 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///         Location = "us-central1",
     ///         InsightsConfigId = "tf-test-ic-projects-_24469",
     ///         Project = project.ProjectId,
-    ///         Annotations = null,
-    ///         Labels = null,
+    ///         Annotations = new() { },
+    ///         Labels = new() { },
     ///         TargetProjects = new Gcp.DeveloperConnect.Inputs.InsightsConfigTargetProjectsArgs
     ///         {
     ///             ProjectIds = new[]

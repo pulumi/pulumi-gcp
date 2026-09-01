@@ -27,6 +27,9 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Backend Service Basic
@@ -976,7 +979,7 @@ type BackendService struct {
 	// Settings for enabling Cloud Identity Aware Proxy.
 	// If OAuth client is not set, the Google-managed OAuth client is used.
 	// Structure is documented below.
-	Iap BackendServiceIapOutput `pulumi:"iap"`
+	Iap BackendServiceIapPtrOutput `pulumi:"iap"`
 	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
 	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
 	IpAddressSelectionPolicy pulumi.StringPtrOutput `pulumi:"ipAddressSelectionPolicy"`
@@ -2366,8 +2369,8 @@ func (o BackendServiceOutput) HealthChecks() pulumi.StringPtrOutput {
 // Settings for enabling Cloud Identity Aware Proxy.
 // If OAuth client is not set, the Google-managed OAuth client is used.
 // Structure is documented below.
-func (o BackendServiceOutput) Iap() BackendServiceIapOutput {
-	return o.ApplyT(func(v *BackendService) BackendServiceIapOutput { return v.Iap }).(BackendServiceIapOutput)
+func (o BackendServiceOutput) Iap() BackendServiceIapPtrOutput {
+	return o.ApplyT(func(v *BackendService) BackendServiceIapPtrOutput { return v.Iap }).(BackendServiceIapPtrOutput)
 }
 
 // Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).

@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// .
         /// </summary>
         public readonly string MaintenanceInterval;
+        /// <summary>
+        /// Strategy that will trigger maintenance on behalf of the customer.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyResult> OpportunisticMaintenanceStrategies;
 
         [OutputConstructor]
-        private GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(string maintenanceInterval)
+        private GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(
+            string maintenanceInterval,
+
+            ImmutableArray<Outputs.GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyResult> opportunisticMaintenanceStrategies)
         {
             MaintenanceInterval = maintenanceInterval;
+            OpportunisticMaintenanceStrategies = opportunisticMaintenanceStrategies;
         }
     }
 }

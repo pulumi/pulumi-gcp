@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Vertex
     ///             { "foo", "bar" },
     ///         },
     ///         Region = "us-central1",
-    ///         Optimized = null,
+    ///         Optimized = new() { },
     ///         DedicatedServingEndpoint = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs
     ///         {
     ///             PrivateServiceConnectConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs

@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Firestore
     ///         Project = "my-project-name",
     ///         Database = database.Name,
     ///         Retention = "8467200s",
-    ///         DailyRecurrence = null,
+    ///         DailyRecurrence = new() { },
     ///     });
     /// 
     /// });

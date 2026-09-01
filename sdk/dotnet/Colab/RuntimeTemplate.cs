@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Colab
     ///         {
     ///             EnableInternetAccess = true,
     ///         },
-    ///         SoftwareConfig = null,
+    ///         SoftwareConfig = new() { },
     ///     });
     /// 
     /// });

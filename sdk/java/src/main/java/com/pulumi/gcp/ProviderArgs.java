@@ -1491,6 +1491,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vectorSearchCustomEndpoint);
     }
 
+    @Import(name="vertexAiAadCustomEndpoint")
+    private @Nullable Output<String> vertexAiAadCustomEndpoint;
+
+    public Optional<Output<String>> vertexAiAadCustomEndpoint() {
+        return Optional.ofNullable(this.vertexAiAadCustomEndpoint);
+    }
+
     @Import(name="vertexAiCustomEndpoint")
     private @Nullable Output<String> vertexAiCustomEndpoint;
 
@@ -1760,6 +1767,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.universeDomain = $.universeDomain;
         this.userProjectOverride = $.userProjectOverride;
         this.vectorSearchCustomEndpoint = $.vectorSearchCustomEndpoint;
+        this.vertexAiAadCustomEndpoint = $.vertexAiAadCustomEndpoint;
         this.vertexAiCustomEndpoint = $.vertexAiCustomEndpoint;
         this.vmwareengineCustomEndpoint = $.vmwareengineCustomEndpoint;
         this.vpcAccessCustomEndpoint = $.vpcAccessCustomEndpoint;
@@ -3684,6 +3692,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder vectorSearchCustomEndpoint(String vectorSearchCustomEndpoint) {
             return vectorSearchCustomEndpoint(Output.of(vectorSearchCustomEndpoint));
+        }
+
+        public Builder vertexAiAadCustomEndpoint(@Nullable Output<String> vertexAiAadCustomEndpoint) {
+            $.vertexAiAadCustomEndpoint = vertexAiAadCustomEndpoint;
+            return this;
+        }
+
+        public Builder vertexAiAadCustomEndpoint(String vertexAiAadCustomEndpoint) {
+            return vertexAiAadCustomEndpoint(Output.of(vertexAiAadCustomEndpoint));
         }
 
         public Builder vertexAiCustomEndpoint(@Nullable Output<String> vertexAiCustomEndpoint) {

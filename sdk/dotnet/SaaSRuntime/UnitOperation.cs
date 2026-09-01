@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///         UnitOperationId = "deprovision-unit-operation",
     ///         Unit = exampleUnit.Id,
     ///         WaitForCompletion = true,
-    ///         Deprovision = null,
+    ///         Deprovision = new() { },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

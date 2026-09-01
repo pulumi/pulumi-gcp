@@ -1223,6 +1223,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> vectorSearchCustomEndpoint() {
         return Codegen.optional(this.vectorSearchCustomEndpoint);
     }
+    @Export(name="vertexAiAadCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vertexAiAadCustomEndpoint;
+
+    public Output<Optional<String>> vertexAiAadCustomEndpoint() {
+        return Codegen.optional(this.vertexAiAadCustomEndpoint);
+    }
     @Export(name="vertexAiCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vertexAiCustomEndpoint;
 

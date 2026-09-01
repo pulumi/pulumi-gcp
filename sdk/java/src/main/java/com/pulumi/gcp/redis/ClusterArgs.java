@@ -29,6 +29,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
+     * Optional. The name of the ACL policy to attach to the cluster.
+     * 
+     */
+    @Import(name="aclPolicy")
+    private @Nullable Output<String> aclPolicy;
+
+    /**
+     * @return Optional. The name of the ACL policy to attach to the cluster.
+     * 
+     */
+    public Optional<Output<String>> aclPolicy() {
+        return Optional.ofNullable(this.aclPolicy);
+    }
+
+    /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -461,6 +476,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private ClusterArgs() {}
 
     private ClusterArgs(ClusterArgs $) {
+        this.aclPolicy = $.aclPolicy;
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.crossClusterReplicationConfig = $.crossClusterReplicationConfig;
@@ -503,6 +519,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterArgs defaults) {
             $ = new ClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPolicy Optional. The name of the ACL policy to attach to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPolicy(@Nullable Output<String> aclPolicy) {
+            $.aclPolicy = aclPolicy;
+            return this;
+        }
+
+        /**
+         * @param aclPolicy Optional. The name of the ACL policy to attach to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPolicy(String aclPolicy) {
+            return aclPolicy(Output.of(aclPolicy));
         }
 
         /**

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `beyondcorp.SecurityGateway` and `beyondcorp.SecurityGatewayApplication` instead.
+//
 // Get information about a Google BeyondCorp App Connection.
 //
 // ## Example Usage

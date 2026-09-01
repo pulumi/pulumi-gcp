@@ -1516,6 +1516,13 @@ namespace Pulumi.Gcp
             set => _vectorSearchCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _vertexAiAadCustomEndpoint = new __Value<string?>(() => __config.Get("vertexAiAadCustomEndpoint"));
+        public static string? VertexAiAadCustomEndpoint
+        {
+            get => _vertexAiAadCustomEndpoint.Get();
+            set => _vertexAiAadCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _vertexAiCustomEndpoint = new __Value<string?>(() => __config.Get("vertexAiCustomEndpoint"));
         public static string? VertexAiCustomEndpoint
         {

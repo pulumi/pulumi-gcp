@@ -95,6 +95,8 @@ __all__ = [
     'TableHiveOptionsArgsDict',
     'TableHiveOptionsStorageDescriptorArgs',
     'TableHiveOptionsStorageDescriptorArgsDict',
+    'TableHiveOptionsStorageDescriptorSerdeInfoArgs',
+    'TableHiveOptionsStorageDescriptorSerdeInfoArgsDict',
 ]
 
 class DatabaseHiveOptionsArgsDict(TypedDict):
@@ -2664,17 +2666,25 @@ class TableHiveOptionsStorageDescriptorArgsDict(TypedDict):
     """
     The fully qualified Java class name of the output format.
     """
+    serde_info: NotRequired[pulumi.Input[Optional['TableHiveOptionsStorageDescriptorSerdeInfoArgsDict']]]
+    """
+    Serializer and deserializer information.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TableHiveOptionsStorageDescriptorArgs:
     def __init__(__self__, *,
                  input_format: pulumi.Input[Optional[_builtins.str]] = None,
                  location_uri: pulumi.Input[Optional[_builtins.str]] = None,
-                 output_format: pulumi.Input[Optional[_builtins.str]] = None):
+                 output_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 serde_info: pulumi.Input[Optional['TableHiveOptionsStorageDescriptorSerdeInfoArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] input_format: The fully qualified Java class name of the input format.
         :param pulumi.Input[_builtins.str] location_uri: Cloud Storage folder URI where the table data is stored, starting with "gs://".
         :param pulumi.Input[_builtins.str] output_format: The fully qualified Java class name of the output format.
+        :param pulumi.Input['TableHiveOptionsStorageDescriptorSerdeInfoArgs'] serde_info: Serializer and deserializer information.
+               Structure is documented below.
         """
         if input_format is not None:
             pulumi.set(__self__, "input_format", input_format)
@@ -2682,6 +2692,8 @@ class TableHiveOptionsStorageDescriptorArgs:
             pulumi.set(__self__, "location_uri", location_uri)
         if output_format is not None:
             pulumi.set(__self__, "output_format", output_format)
+        if serde_info is not None:
+            pulumi.set(__self__, "serde_info", serde_info)
 
     @_builtins.property
     @pulumi.getter(name="inputFormat")
@@ -2718,5 +2730,47 @@ class TableHiveOptionsStorageDescriptorArgs:
     @output_format.setter
     def output_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serdeInfo")
+    def serde_info(self) -> pulumi.Input[Optional['TableHiveOptionsStorageDescriptorSerdeInfoArgs']]:
+        """
+        Serializer and deserializer information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "serde_info")
+
+    @serde_info.setter
+    def serde_info(self, value: pulumi.Input[Optional['TableHiveOptionsStorageDescriptorSerdeInfoArgs']]):
+        pulumi.set(self, "serde_info", value)
+
+
+class TableHiveOptionsStorageDescriptorSerdeInfoArgsDict(TypedDict):
+    serialization_lib: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The fully qualified Java class name of the serialization library.
+    """
+
+@pulumi.input_type
+class TableHiveOptionsStorageDescriptorSerdeInfoArgs:
+    def __init__(__self__, *,
+                 serialization_lib: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] serialization_lib: The fully qualified Java class name of the serialization library.
+        """
+        if serialization_lib is not None:
+            pulumi.set(__self__, "serialization_lib", serialization_lib)
+
+    @_builtins.property
+    @pulumi.getter(name="serializationLib")
+    def serialization_lib(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The fully qualified Java class name of the serialization library.
+        """
+        return pulumi.get(self, "serialization_lib")
+
+    @serialization_lib.setter
+    def serialization_lib(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serialization_lib", value)
 
 

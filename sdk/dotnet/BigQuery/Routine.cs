@@ -210,7 +210,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     {
     ///         ConnectionId = "connection_id",
     ///         Location = "US",
-    ///         Spark = null,
+    ///         Spark = new() { },
     ///     });
     /// 
     ///     var pyspark = new Gcp.BigQuery.Routine("pyspark", new()
@@ -267,7 +267,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     {
     ///         ConnectionId = "connection_id",
     ///         Location = "US",
-    ///         Spark = null,
+    ///         Spark = new() { },
     ///     });
     /// 
     ///     var pysparkMainfile = new Gcp.BigQuery.Routine("pyspark_mainfile", new()
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     {
     ///         ConnectionId = "connection_id",
     ///         Location = "US",
-    ///         Spark = null,
+    ///         Spark = new() { },
     ///     });
     /// 
     ///     var sparkJar = new Gcp.BigQuery.Routine("spark_jar", new()
@@ -403,7 +403,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     {
     ///         ConnectionId = "connection_id",
     ///         Location = "US",
-    ///         CloudResource = null,
+    ///         CloudResource = new() { },
     ///     });
     /// 
     ///     var remoteFunction = new Gcp.BigQuery.Routine("remote_function", new()

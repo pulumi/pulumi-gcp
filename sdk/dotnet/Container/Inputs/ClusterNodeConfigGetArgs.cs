@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodeConfigGvnicGetArgs>? Gvnic { get; set; }
 
         /// <summary>
-        /// The maintenance policy for the hosts on which the GKE VMs run on.
+        /// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         /// </summary>
         [Input("hostMaintenancePolicy")]
         public Input<Inputs.ClusterNodeConfigHostMaintenancePolicyGetArgs>? HostMaintenancePolicy { get; set; }

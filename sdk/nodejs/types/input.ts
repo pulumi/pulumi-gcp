@@ -9866,6 +9866,18 @@ export namespace biglake {
          * The fully qualified Java class name of the output format.
          */
         outputFormat?: pulumi.Input<string | undefined>;
+        /**
+         * Serializer and deserializer information.
+         * Structure is documented below.
+         */
+        serdeInfo?: pulumi.Input<inputs.biglake.TableHiveOptionsStorageDescriptorSerdeInfo | undefined>;
+    }
+
+    export interface TableHiveOptionsStorageDescriptorSerdeInfo {
+        /**
+         * The fully qualified Java class name of the serialization library.
+         */
+        serializationLib?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -22150,6 +22162,104 @@ export namespace ces {
          * Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
          */
         type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolsetConnectorToolset {
+        /**
+         * Configures how authentication is handled in Integration Connectors.
+         * Structure is documented below.
+         */
+        authConfig?: pulumi.Input<inputs.ces.ToolsetConnectorToolsetAuthConfig | undefined>;
+        /**
+         * The full resource name of the referenced Integration Connectors
+         * Connection.
+         * Format:
+         * `projects/{project}/locations/{location}/connections/{connection}`
+         */
+        connection: pulumi.Input<string>;
+        /**
+         * The list of connector actions/entity operations to generate tools for.
+         * Structure is documented below.
+         */
+        connectorActions: pulumi.Input<pulumi.Input<inputs.ces.ToolsetConnectorToolsetConnectorAction>[]>;
+    }
+
+    export interface ToolsetConnectorToolsetAuthConfig {
+        /**
+         * Oauth 2.0 Authorization Code authentication configuration.
+         * Structure is documented below.
+         */
+        oauth2AuthCodeConfig?: pulumi.Input<inputs.ces.ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig | undefined>;
+        /**
+         * JWT Profile Oauth 2.0 Authorization Grant authentication configuration.
+         * Structure is documented below.
+         *
+         * <a name="nestedConnectorToolsetAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+         */
+        oauth2JwtBearerConfig?: pulumi.Input<inputs.ces.ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig | undefined>;
+    }
+
+    export interface ToolsetConnectorToolsetAuthConfigOauth2AuthCodeConfig {
+        /**
+         * Oauth token parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        oauthToken: pulumi.Input<string>;
+    }
+
+    export interface ToolsetConnectorToolsetAuthConfigOauth2JwtBearerConfig {
+        /**
+         * Client parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        clientKey: pulumi.Input<string>;
+        /**
+         * Issuer parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        issuer: pulumi.Input<string>;
+        /**
+         * Subject parameter name to pass through.
+         * Must be in the format '$context.variables.<name_of_variable>'.
+         */
+        subject: pulumi.Input<string>;
+    }
+
+    export interface ToolsetConnectorToolsetConnectorAction {
+        /**
+         * ID of a Connection action for the tool to use.
+         */
+        connectionActionId?: pulumi.Input<string | undefined>;
+        /**
+         * Entity operation configuration for the tool to use.
+         * Structure is documented below.
+         */
+        entityOperation?: pulumi.Input<inputs.ces.ToolsetConnectorToolsetConnectorActionEntityOperation | undefined>;
+        /**
+         * Entity fields to use as inputs for the operation.
+         */
+        inputFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entity fields to return from the operation.
+         */
+        outputFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface ToolsetConnectorToolsetConnectorActionEntityOperation {
+        /**
+         * ID of the entity.
+         */
+        entityId: pulumi.Input<string>;
+        /**
+         * Operation to perform on the entity.
+         * Possible values:
+         * LIST
+         * GET
+         * CREATE
+         * UPDATE
+         * DELETE
+         */
+        operation: pulumi.Input<string>;
     }
 
     export interface ToolsetMcpToolset {
@@ -38310,8 +38420,22 @@ export namespace compute {
         enabled: pulumi.Input<boolean>;
         /**
          * OAuth2 Client ID for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientId?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client ID for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `oauth2ClientId` or `oauth2ClientIdWo` can only be set.
+         */
+        oauth2ClientIdWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `oauth2ClientIdWo` write-only. Increment this value when an update to `oauth2ClientIdWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientIdWoVersion?: pulumi.Input<string | undefined>;
         /**
          * OAuth2 Client Secret for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -38323,6 +38447,19 @@ export namespace compute {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientSecretSha256?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * OAuth2 Client Secret for IAP
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `oauth2ClientSecret` or `oauth2ClientSecretWo` can only be set.
+         */
+        oauth2ClientSecretWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientSecretWoVersion?: pulumi.Input<string | undefined>;
     }
 
     export interface BackendServiceLocalityLbPolicy {
@@ -61143,7 +61280,7 @@ export namespace container {
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodeConfigGvnic | undefined>;
         /**
-         * The maintenance policy for the hosts on which the GKE VMs run on.
+         * The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          */
         hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodeConfigHostMaintenancePolicy | undefined>;
         /**
@@ -61597,9 +61734,28 @@ export namespace container {
 
     export interface ClusterNodeConfigHostMaintenancePolicy {
         /**
-         * .
+         * Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          */
         maintenanceInterval: pulumi.Input<string>;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+         */
+        opportunisticMaintenanceStrategy?: pulumi.Input<inputs.container.ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy | undefined>;
+    }
+
+    export interface ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: pulumi.Input<string>;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: pulumi.Input<number>;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+         */
+        nodeIdleTimeWindow: pulumi.Input<string>;
     }
 
     export interface ClusterNodeConfigKubeletConfig {
@@ -62703,7 +62859,7 @@ export namespace container {
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGvnic | undefined>;
         /**
-         * The maintenance policy for the hosts on which the GKE VMs run on.
+         * The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          */
         hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicy | undefined>;
         /**
@@ -63157,9 +63313,28 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigHostMaintenancePolicy {
         /**
-         * .
+         * Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          */
         maintenanceInterval: pulumi.Input<string>;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+         */
+        opportunisticMaintenanceStrategy?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy | undefined>;
+    }
+
+    export interface ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: pulumi.Input<string>;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: pulumi.Input<number>;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+         */
+        nodeIdleTimeWindow: pulumi.Input<string>;
     }
 
     export interface ClusterNodePoolNodeConfigKubeletConfig {
@@ -64742,6 +64917,25 @@ export namespace container {
          * .
          */
         maintenanceInterval: pulumi.Input<string>;
+        /**
+         * Strategy that will trigger maintenance on behalf of the customer.
+         */
+        opportunisticMaintenanceStrategy?: pulumi.Input<inputs.container.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy | undefined>;
+    }
+
+    export interface NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+        /**
+         * The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+         */
+        maintenanceAvailabilityWindow: pulumi.Input<string>;
+        /**
+         * The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+         */
+        minNodesPerPool: pulumi.Input<number>;
+        /**
+         * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+         */
+        nodeIdleTimeWindow: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigKubeletConfig {
@@ -87242,7 +87436,7 @@ export namespace discoveryengine {
     export interface SearchEngineSearchEngineConfig {
         /**
          * The required subscription tier of this engine.
-         * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+         * If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
          * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
          */
         requiredSubscriptionTier?: pulumi.Input<string | undefined>;
@@ -101831,6 +102025,20 @@ export namespace memcache {
 }
 
 export namespace memorystore {
+    export interface AclPolicyRule {
+        /**
+         * The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+         * The format of the rule is defined by Valkey OSS:
+         * https://valkey.io/topics/acl/
+         */
+        rule: pulumi.Input<string>;
+        /**
+         * Specifies the IAM user or service account to be added to the ACL policy.
+         * This username will be directly set on the Valkey OSS.
+         */
+        username: pulumi.Input<string>;
+    }
+
     export interface InstanceAutomatedBackupConfig {
         /**
          * Trigger automated backups at a fixed frequency.
@@ -123223,6 +123431,20 @@ export namespace recaptcha {
 }
 
 export namespace redis {
+    export interface ClusterAclPolicyRule {
+        /**
+         * The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+         * The format of the rule is defined by Redis OSS:
+         * https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+         */
+        rule: pulumi.Input<string>;
+        /**
+         * Specifies the IAM user or service account to be added to the ACL policy.
+         * This username will be directly set on the Redis OSS.
+         */
+        username: pulumi.Input<string>;
+    }
+
     export interface ClusterAutomatedBackupConfig {
         /**
          * Trigger automated backups at a fixed frequency.
@@ -126715,6 +126937,10 @@ export namespace sql {
          * Configuration of Read Pool Auto Scale.
          */
         readPoolAutoScaleConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsReadPoolAutoScaleConfig | undefined>;
+        /**
+         * The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+         */
+        replicationLagMaxSeconds?: pulumi.Input<number | undefined>;
         /**
          * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
          */
@@ -132286,9 +132512,18 @@ export namespace vertex {
          */
         consolidationConfig?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig | undefined>;
         /**
+         * Indicates whether natural language memory generation should be disabled.
+         */
+        disableNaturalLanguageMemories?: pulumi.Input<boolean | undefined>;
+        /**
          * Optional. Generate memories in the third person if set to true.
          */
         enableThirdPersonMemories?: pulumi.Input<boolean | undefined>;
+        /**
+         * Provides examples of how to generate memories for a particular scope.
+         * Structure is documented below.
+         */
+        generateMemoriesExamples?: pulumi.Input<pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample>[] | undefined>;
         /**
          * Optional. List of topics that the memory should be associated with.
          * Structure is documented below.
@@ -132305,6 +132540,209 @@ export namespace vertex {
          * Number of revisions to consider per candidate count.
          */
         revisionsPerCandidateCount?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample {
+        /**
+         * A conversation source for the example.
+         * Structure is documented below.
+         */
+        conversationSource?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource | undefined>;
+        /**
+         * Represents the memories that are expected to be generated from the input conversation.
+         * Structure is documented below.
+         */
+        generatedMemories?: pulumi.Input<pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory>[] | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource {
+        /**
+         * Represents the input conversation events for the example.
+         * Structure is documented below.
+         */
+        events?: pulumi.Input<pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent>[] | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent {
+        /**
+         * Represents the content of the event.
+         * Structure is documented below.
+         */
+        content: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent {
+        /**
+         * A list of Part objects that make up a single message.
+         * Structure is documented below.
+         */
+        parts: pulumi.Input<pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart>[]>;
+        /**
+         * The producer of the content. Must be either 'user' or 'model'. If not set, the service will default to 'user'.
+         */
+        role?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart {
+        /**
+         * Result of executing the ExecutableCode.
+         * Structure is documented below.
+         */
+        codeExecutionResult?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult | undefined>;
+        /**
+         * Code generated by the model that is intended to be executed.
+         * Structure is documented below.
+         */
+        executableCode?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode | undefined>;
+        /**
+         * URI based data.
+         * Structure is documented below.
+         */
+        fileData?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData | undefined>;
+        /**
+         * A predicted function call returned from the model.
+         * Structure is documented below.
+         */
+        functionCall?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall | undefined>;
+        /**
+         * The result of a function call.
+         * Structure is documented below.
+         */
+        functionResponse?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse | undefined>;
+        /**
+         * The inline data content of the part.
+         * Structure is documented below.
+         */
+        inlineData?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData | undefined>;
+        /**
+         * The text content of the part.
+         */
+        text?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates whether the part represents the model's thought process or reasoning.
+         */
+        thought?: pulumi.Input<boolean | undefined>;
+        /**
+         * Video metadata.
+         * Structure is documented below.
+         */
+        videoMetadata?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult {
+        /**
+         * The identifier of the ExecutableCode part this result is for.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * Outcome of the code execution. Possible values: ["OUTCOME_UNSPECIFIED", "OUTCOME_OK", "OUTCOME_FAILED", "OUTCOME_DEADLINE_EXCEEDED"]
+         */
+        outcome: pulumi.Input<string>;
+        /**
+         * Contains stdout when code execution is successful, stderr or other description otherwise.
+         */
+        output?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode {
+        /**
+         * The code to be executed.
+         */
+        code: pulumi.Input<string>;
+        /**
+         * Unique identifier of the ExecutableCode part.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * Supported programming languages for the generated code. Possible values: ["LANGUAGE_UNSPECIFIED", "PYTHON", "BASH"]
+         */
+        language: pulumi.Input<string>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData {
+        /**
+         * The URI of the file in Google Cloud Storage.
+         */
+        fileUri: pulumi.Input<string>;
+        /**
+         * The IANA standard MIME type of the source data.
+         */
+        mimeType: pulumi.Input<string>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall {
+        /**
+         * The function parameters and values in JSON object format.
+         */
+        args?: pulumi.Input<string | undefined>;
+        /**
+         * The unique id of the function call.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the function to call.
+         */
+        name?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse {
+        /**
+         * The id of the function call this response is for.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the function to call.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The function response in JSON object format.
+         */
+        response?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData {
+        /**
+         * Raw bytes, which should be base64-encoded.
+         */
+        data: pulumi.Input<string>;
+        /**
+         * The IANA standard MIME type of the source data.
+         */
+        mimeType: pulumi.Input<string>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata {
+        /**
+         * The end offset of the video.
+         */
+        endOffset?: pulumi.Input<string | undefined>;
+        /**
+         * The start offset of the video.
+         */
+        startOffset?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory {
+        /**
+         * Represents the fact to generate a memory from.
+         */
+        fact: pulumi.Input<string>;
+        /**
+         * Represents the list of topics that the memory should be associated with.
+         * Structure is documented below.
+         */
+        topics?: pulumi.Input<pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic>[] | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic {
+        /**
+         * Represents the custom memory topic label.
+         */
+        customMemoryTopicLabel?: pulumi.Input<string | undefined>;
+        /**
+         * Represents the managed memory topic. Possible values: ["USER_PERSONAL_INFO", "USER_PREFERENCES", "KEY_CONVERSATION_DETAILS", "EXPLICIT_INSTRUCTIONS"]
+         */
+        managedMemoryTopic?: pulumi.Input<string | undefined>;
     }
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic {

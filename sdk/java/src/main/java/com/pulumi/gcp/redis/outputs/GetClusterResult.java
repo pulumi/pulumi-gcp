@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterResult {
+    private String aclPolicy;
     private String authorizationMode;
     private List<GetClusterAutomatedBackupConfig> automatedBackupConfigs;
     private List<String> availableMaintenanceVersions;
@@ -48,6 +49,7 @@ public final class GetClusterResult {
      * 
      */
     private String id;
+    private Boolean isAclPolicyInSync;
     private String kmsKey;
     private Map<String,String> labels;
     private List<GetClusterMaintenancePolicy> maintenancePolicies;
@@ -78,6 +80,9 @@ public final class GetClusterResult {
     private List<GetClusterZoneDistributionConfig> zoneDistributionConfigs;
 
     private GetClusterResult() {}
+    public String aclPolicy() {
+        return this.aclPolicy;
+    }
     public String authorizationMode() {
         return this.authorizationMode;
     }
@@ -120,6 +125,9 @@ public final class GetClusterResult {
      */
     public String id() {
         return this.id;
+    }
+    public Boolean isAclPolicyInSync() {
+        return this.isAclPolicyInSync;
     }
     public String kmsKey() {
         return this.kmsKey;
@@ -215,6 +223,7 @@ public final class GetClusterResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String aclPolicy;
         private String authorizationMode;
         private List<GetClusterAutomatedBackupConfig> automatedBackupConfigs;
         private List<String> availableMaintenanceVersions;
@@ -228,6 +237,7 @@ public final class GetClusterResult {
         private String effectiveMaintenanceVersion;
         private List<GetClusterGcsSource> gcsSources;
         private String id;
+        private Boolean isAclPolicyInSync;
         private String kmsKey;
         private Map<String,String> labels;
         private List<GetClusterMaintenancePolicy> maintenancePolicies;
@@ -259,6 +269,7 @@ public final class GetClusterResult {
         public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aclPolicy = defaults.aclPolicy;
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
     	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
@@ -272,6 +283,7 @@ public final class GetClusterResult {
     	      this.effectiveMaintenanceVersion = defaults.effectiveMaintenanceVersion;
     	      this.gcsSources = defaults.gcsSources;
     	      this.id = defaults.id;
+    	      this.isAclPolicyInSync = defaults.isAclPolicyInSync;
     	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
@@ -302,6 +314,14 @@ public final class GetClusterResult {
     	      this.zoneDistributionConfigs = defaults.zoneDistributionConfigs;
         }
 
+        @CustomType.Setter
+        public Builder aclPolicy(String aclPolicy) {
+            if (aclPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "aclPolicy");
+            }
+            this.aclPolicy = aclPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder authorizationMode(String authorizationMode) {
             if (authorizationMode == null) {
@@ -419,6 +439,14 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isAclPolicyInSync(Boolean isAclPolicyInSync) {
+            if (isAclPolicyInSync == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "isAclPolicyInSync");
+            }
+            this.isAclPolicyInSync = isAclPolicyInSync;
             return this;
         }
         @CustomType.Setter
@@ -673,6 +701,7 @@ public final class GetClusterResult {
         }
         public GetClusterResult build() {
             final var _resultValue = new GetClusterResult();
+            _resultValue.aclPolicy = aclPolicy;
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.automatedBackupConfigs = automatedBackupConfigs;
             _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
@@ -686,6 +715,7 @@ public final class GetClusterResult {
             _resultValue.effectiveMaintenanceVersion = effectiveMaintenanceVersion;
             _resultValue.gcsSources = gcsSources;
             _resultValue.id = id;
+            _resultValue.isAclPolicyInSync = isAclPolicyInSync;
             _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.maintenancePolicies = maintenancePolicies;

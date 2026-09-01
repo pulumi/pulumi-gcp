@@ -446,6 +446,11 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The name of the ACL policy to attach to the instance.
+     * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+     */
+    declare public readonly aclPolicy: pulumi.Output<string | undefined>;
+    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH.
@@ -543,6 +548,10 @@ export class Instance extends pulumi.CustomResource {
      * * Must be unique within a location
      */
     declare public readonly instanceId: pulumi.Output<string>;
+    /**
+     * Whether the ACL policy is in sync with the cluster.
+     */
+    declare public /*out*/ readonly isAclPolicyInSync: pulumi.Output<boolean>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster
      */
@@ -711,6 +720,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["aclPolicy"] = state?.aclPolicy;
             resourceInputs["authorizationMode"] = state?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = state?.automatedBackupConfig;
             resourceInputs["availableMaintenanceVersions"] = state?.availableMaintenanceVersions;
@@ -729,6 +739,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["engineVersion"] = state?.engineVersion;
             resourceInputs["gcsSource"] = state?.gcsSource;
             resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["isAclPolicyInSync"] = state?.isAclPolicyInSync;
             resourceInputs["kmsKey"] = state?.kmsKey;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
@@ -767,6 +778,7 @@ export class Instance extends pulumi.CustomResource {
             if (args?.shardCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shardCount'");
             }
+            resourceInputs["aclPolicy"] = args?.aclPolicy;
             resourceInputs["authorizationMode"] = args?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
             resourceInputs["crossInstanceReplicationConfig"] = args?.crossInstanceReplicationConfig;
@@ -801,6 +813,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["effectiveMaintenanceVersion"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
+            resourceInputs["isAclPolicyInSync"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["managedServerCas"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -824,6 +837,11 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * The name of the ACL policy to attach to the instance.
+     * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+     */
+    aclPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
@@ -922,6 +940,10 @@ export interface InstanceState {
      * * Must be unique within a location
      */
     instanceId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the ACL policy is in sync with the cluster.
+     */
+    isAclPolicyInSync?: pulumi.Input<boolean | undefined>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster
      */
@@ -1082,6 +1104,11 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The name of the ACL policy to attach to the instance.
+     * Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+     */
+    aclPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED

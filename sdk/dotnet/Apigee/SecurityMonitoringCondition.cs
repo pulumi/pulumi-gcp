@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Apigee
     ///         OrgId = apigeeOrg.Id,
     ///         Profile = "google-default",
     ///         Scope = "my-environment",
-    ///         IncludeAllResources = null,
+    ///         IncludeAllResources = new() { },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

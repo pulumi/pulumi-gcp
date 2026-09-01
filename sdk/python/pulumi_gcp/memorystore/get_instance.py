@@ -27,7 +27,10 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_policy=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, acl_policy=None, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_policy=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, is_acl_policy_in_sync=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+        if acl_policy and not isinstance(acl_policy, str):
+            raise TypeError("Expected argument 'acl_policy' to be a str")
+        pulumi.set(__self__, "acl_policy", acl_policy)
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -85,6 +88,9 @@ class GetInstanceResult:
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
+        if is_acl_policy_in_sync and not isinstance(is_acl_policy_in_sync, bool):
+            raise TypeError("Expected argument 'is_acl_policy_in_sync' to be a bool")
+        pulumi.set(__self__, "is_acl_policy_in_sync", is_acl_policy_in_sync)
         if kms_key and not isinstance(kms_key, str):
             raise TypeError("Expected argument 'kms_key' to be a str")
         pulumi.set(__self__, "kms_key", kms_key)
@@ -166,6 +172,11 @@ class GetInstanceResult:
         if zone_distribution_configs and not isinstance(zone_distribution_configs, list):
             raise TypeError("Expected argument 'zone_distribution_configs' to be a list")
         pulumi.set(__self__, "zone_distribution_configs", zone_distribution_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPolicy")
+    def acl_policy(self) -> _builtins.str:
+        return pulumi.get(self, "acl_policy")
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -264,6 +275,11 @@ class GetInstanceResult:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isAclPolicyInSync")
+    def is_acl_policy_in_sync(self) -> _builtins.bool:
+        return pulumi.get(self, "is_acl_policy_in_sync")
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -407,6 +423,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            acl_policy=self.acl_policy,
             authorization_mode=self.authorization_mode,
             automated_backup_configs=self.automated_backup_configs,
             available_maintenance_versions=self.available_maintenance_versions,
@@ -426,6 +443,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             gcs_sources=self.gcs_sources,
             id=self.id,
             instance_id=self.instance_id,
+            is_acl_policy_in_sync=self.is_acl_policy_in_sync,
             kms_key=self.kms_key,
             labels=self.labels,
             location=self.location,
@@ -487,6 +505,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:memorystore/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        acl_policy=pulumi.get(__ret__, 'acl_policy'),
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__ret__, 'automated_backup_configs'),
         available_maintenance_versions=pulumi.get(__ret__, 'available_maintenance_versions'),
@@ -506,6 +525,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         gcs_sources=pulumi.get(__ret__, 'gcs_sources'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
+        is_acl_policy_in_sync=pulumi.get(__ret__, 'is_acl_policy_in_sync'),
         kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
@@ -564,6 +584,7 @@ def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:memorystore/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
+        acl_policy=pulumi.get(__response__, 'acl_policy'),
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__response__, 'automated_backup_configs'),
         available_maintenance_versions=pulumi.get(__response__, 'available_maintenance_versions'),
@@ -583,6 +604,7 @@ def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
         gcs_sources=pulumi.get(__response__, 'gcs_sources'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
+        is_acl_policy_in_sync=pulumi.get(__response__, 'is_acl_policy_in_sync'),
         kms_key=pulumi.get(__response__, 'kms_key'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),

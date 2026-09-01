@@ -81,7 +81,7 @@ export class Hook extends pulumi.CustomResource {
     declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The events that trigger hook on.
-     * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+     * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
      */
     declare public readonly events: pulumi.Output<string[]>;
     /**
@@ -216,7 +216,7 @@ export interface HookState {
     disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The events that trigger hook on.
-     * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+     * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
      */
     events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -285,7 +285,7 @@ export interface HookArgs {
     disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The events that trigger hook on.
-     * Each value may be one of: `PUSH`, `PULL_REQUEST`.
+     * Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
      */
     events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

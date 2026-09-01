@@ -30,6 +30,13 @@ namespace Pulumi.Gcp.BigLake.Inputs
         [Input("outputFormat")]
         public Input<string>? OutputFormat { get; set; }
 
+        /// <summary>
+        /// Serializer and deserializer information.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serdeInfo")]
+        public Input<Inputs.TableHiveOptionsStorageDescriptorSerdeInfoGetArgs>? SerdeInfo { get; set; }
+
         public TableHiveOptionsStorageDescriptorGetArgs()
         {
         }

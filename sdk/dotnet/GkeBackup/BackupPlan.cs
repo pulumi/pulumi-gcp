@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///         Name = "autopilot-cluster",
     ///         Location = "us-central1",
     ///         EnableAutopilot = true,
-    ///         IpAllocationPolicy = null,
+    ///         IpAllocationPolicy = new() { },
     ///         ReleaseChannel = new Gcp.Container.Inputs.ClusterReleaseChannelArgs
     ///         {
     ///             Channel = "RAPID",

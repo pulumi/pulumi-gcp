@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         StaticIpConnectivity = null,
+    ///         StaticIpConnectivity = new() { },
     ///         Source = sourceCp.Name,
     ///         Destination = destinationCp.Name,
     ///         Type = "CONTINUOUS",
@@ -429,7 +429,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         StaticIpConnectivity = null,
+    ///         StaticIpConnectivity = new() { },
     ///         Source = sourceCp.Name,
     ///         Destination = destinationCp.Name,
     ///         Type = "CONTINUOUS",
@@ -631,7 +631,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         StaticIpConnectivity = null,
+    ///         StaticIpConnectivity = new() { },
     ///         Source = sourceCp.Name,
     ///         Destination = destinationCp.Name,
     ///         Type = "CONTINUOUS",

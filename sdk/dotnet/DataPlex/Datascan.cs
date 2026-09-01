@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 OnDemand = null,
     ///             },
     ///         },
-    ///         DataProfileSpec = null,
+    ///         DataProfileSpec = new() { },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 },
     ///             },
     ///         },
-    ///         DataProfileSpec = null,
+    ///         DataProfileSpec = new() { },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -458,7 +458,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 OnDemand = null,
     ///             },
     ///         },
-    ///         DataDiscoverySpec = null,
+    ///         DataDiscoverySpec = new() { },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -487,7 +487,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Location = "us-central1",
     ///         FriendlyName = "tf-test-connection-_50610",
     ///         Description = "a bigquery connection for tf test",
-    ///         CloudResource = null,
+    ///         CloudResource = new() { },
     ///     });
     /// 
     ///     var fullDiscovery = new Gcp.DataPlex.Datascan("full_discovery", new()
@@ -606,7 +606,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 },
     ///             },
     ///         },
-    ///         DataDiscoverySpec = null,
+    ///         DataDiscoverySpec = new() { },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -810,7 +810,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 },
     ///             },
     ///         },
-    ///         DataDocumentationSpec = null,
+    ///         DataDocumentationSpec = new() { },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -879,7 +879,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         {
     ///             UserCredential = null,
     ///         },
-    ///         DataProfileSpec = null,
+    ///         DataProfileSpec = new() { },
     ///         Project = "my-project-name",
     ///     }, new CustomResourceOptions
     ///     {
@@ -1010,7 +1010,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 Email = sa.Email,
     ///             },
     ///         },
-    ///         DataProfileSpec = null,
+    ///         DataProfileSpec = new() { },
     ///         Project = "my-project-name",
     ///     }, new CustomResourceOptions
     ///     {

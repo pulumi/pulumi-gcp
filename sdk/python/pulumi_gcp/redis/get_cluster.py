@@ -27,7 +27,10 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_policy=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, labels=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, pulumi_labels=None, redis_configs=None, region=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
+    def __init__(__self__, acl_policy=None, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_policy=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, gcs_sources=None, id=None, is_acl_policy_in_sync=None, kms_key=None, labels=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, pulumi_labels=None, redis_configs=None, region=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
+        if acl_policy and not isinstance(acl_policy, str):
+            raise TypeError("Expected argument 'acl_policy' to be a str")
+        pulumi.set(__self__, "acl_policy", acl_policy)
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -67,6 +70,9 @@ class GetClusterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_acl_policy_in_sync and not isinstance(is_acl_policy_in_sync, bool):
+            raise TypeError("Expected argument 'is_acl_policy_in_sync' to be a bool")
+        pulumi.set(__self__, "is_acl_policy_in_sync", is_acl_policy_in_sync)
         if kms_key and not isinstance(kms_key, str):
             raise TypeError("Expected argument 'kms_key' to be a str")
         pulumi.set(__self__, "kms_key", kms_key)
@@ -153,6 +159,11 @@ class GetClusterResult:
         pulumi.set(__self__, "zone_distribution_configs", zone_distribution_configs)
 
     @_builtins.property
+    @pulumi.getter(name="aclPolicy")
+    def acl_policy(self) -> _builtins.str:
+        return pulumi.get(self, "acl_policy")
+
+    @_builtins.property
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> _builtins.str:
         return pulumi.get(self, "authorization_mode")
@@ -219,6 +230,11 @@ class GetClusterResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isAclPolicyInSync")
+    def is_acl_policy_in_sync(self) -> _builtins.bool:
+        return pulumi.get(self, "is_acl_policy_in_sync")
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -367,6 +383,7 @@ class AwaitableGetClusterResult(GetClusterResult):
         if False:
             yield self
         return GetClusterResult(
+            acl_policy=self.acl_policy,
             authorization_mode=self.authorization_mode,
             automated_backup_configs=self.automated_backup_configs,
             available_maintenance_versions=self.available_maintenance_versions,
@@ -380,6 +397,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             effective_maintenance_version=self.effective_maintenance_version,
             gcs_sources=self.gcs_sources,
             id=self.id,
+            is_acl_policy_in_sync=self.is_acl_policy_in_sync,
             kms_key=self.kms_key,
             labels=self.labels,
             maintenance_policies=self.maintenance_policies,
@@ -441,6 +459,7 @@ def get_cluster(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:redis/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
+        acl_policy=pulumi.get(__ret__, 'acl_policy'),
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__ret__, 'automated_backup_configs'),
         available_maintenance_versions=pulumi.get(__ret__, 'available_maintenance_versions'),
@@ -454,6 +473,7 @@ def get_cluster(name: Optional[_builtins.str] = None,
         effective_maintenance_version=pulumi.get(__ret__, 'effective_maintenance_version'),
         gcs_sources=pulumi.get(__ret__, 'gcs_sources'),
         id=pulumi.get(__ret__, 'id'),
+        is_acl_policy_in_sync=pulumi.get(__ret__, 'is_acl_policy_in_sync'),
         kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
@@ -512,6 +532,7 @@ def get_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:redis/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
     return __ret__.apply(lambda __response__: GetClusterResult(
+        acl_policy=pulumi.get(__response__, 'acl_policy'),
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__response__, 'automated_backup_configs'),
         available_maintenance_versions=pulumi.get(__response__, 'available_maintenance_versions'),
@@ -525,6 +546,7 @@ def get_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         effective_maintenance_version=pulumi.get(__response__, 'effective_maintenance_version'),
         gcs_sources=pulumi.get(__response__, 'gcs_sources'),
         id=pulumi.get(__response__, 'id'),
+        is_acl_policy_in_sync=pulumi.get(__response__, 'is_acl_policy_in_sync'),
         kms_key=pulumi.get(__response__, 'kms_key'),
         labels=pulumi.get(__response__, 'labels'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),

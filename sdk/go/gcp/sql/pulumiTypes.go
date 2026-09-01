@@ -1736,6 +1736,8 @@ type DatabaseInstanceSettings struct {
 	PricingPlan *string `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
 	ReadPoolAutoScaleConfig *DatabaseInstanceSettingsReadPoolAutoScaleConfig `pulumi:"readPoolAutoScaleConfig"`
+	// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+	ReplicationLagMaxSeconds *int `pulumi:"replicationLagMaxSeconds"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete *bool                                         `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfig  *DatabaseInstanceSettingsSqlServerAuditConfig `pulumi:"sqlServerAuditConfig"`
@@ -1848,6 +1850,8 @@ type DatabaseInstanceSettingsArgs struct {
 	PricingPlan pulumi.StringPtrInput `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
 	ReadPoolAutoScaleConfig DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput `pulumi:"readPoolAutoScaleConfig"`
+	// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+	ReplicationLagMaxSeconds pulumi.IntPtrInput `pulumi:"replicationLagMaxSeconds"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete pulumi.BoolPtrInput                                  `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfig  DatabaseInstanceSettingsSqlServerAuditConfigPtrInput `pulumi:"sqlServerAuditConfig"`
@@ -2147,6 +2151,11 @@ func (o DatabaseInstanceSettingsOutput) ReadPoolAutoScaleConfig() DatabaseInstan
 	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsReadPoolAutoScaleConfig {
 		return v.ReadPoolAutoScaleConfig
 	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput)
+}
+
+// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+func (o DatabaseInstanceSettingsOutput) ReplicationLagMaxSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.ReplicationLagMaxSeconds }).(pulumi.IntPtrOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
@@ -2561,6 +2570,16 @@ func (o DatabaseInstanceSettingsPtrOutput) ReadPoolAutoScaleConfig() DatabaseIns
 		}
 		return v.ReadPoolAutoScaleConfig
 	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput)
+}
+
+// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between `300` (five minutes) and `31536000` (one year).
+func (o DatabaseInstanceSettingsPtrOutput) ReplicationLagMaxSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationLagMaxSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
@@ -8631,6 +8650,8 @@ type GetDatabaseInstanceSetting struct {
 	PricingPlan string `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
 	ReadPoolAutoScaleConfigs []GetDatabaseInstanceSettingReadPoolAutoScaleConfig `pulumi:"readPoolAutoScaleConfigs"`
+	// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+	ReplicationLagMaxSeconds int `pulumi:"replicationLagMaxSeconds"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete bool                                             `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs []GetDatabaseInstanceSettingSqlServerAuditConfig `pulumi:"sqlServerAuditConfigs"`
@@ -8725,6 +8746,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
 	ReadPoolAutoScaleConfigs GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayInput `pulumi:"readPoolAutoScaleConfigs"`
+	// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+	ReplicationLagMaxSeconds pulumi.IntInput `pulumi:"replicationLagMaxSeconds"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete pulumi.BoolInput                                         `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput `pulumi:"sqlServerAuditConfigs"`
@@ -8986,6 +9009,11 @@ func (o GetDatabaseInstanceSettingOutput) ReadPoolAutoScaleConfigs() GetDatabase
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
 		return v.ReadPoolAutoScaleConfigs
 	}).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput)
+}
+
+// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+func (o GetDatabaseInstanceSettingOutput) ReplicationLagMaxSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.ReplicationLagMaxSeconds }).(pulumi.IntOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
@@ -13612,6 +13640,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	PricingPlan string `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
 	ReadPoolAutoScaleConfigs []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig `pulumi:"readPoolAutoScaleConfigs"`
+	// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+	ReplicationLagMaxSeconds int `pulumi:"replicationLagMaxSeconds"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete bool                                                      `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs []GetDatabaseInstancesInstanceSettingSqlServerAuditConfig `pulumi:"sqlServerAuditConfigs"`
@@ -13706,6 +13736,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
 	// Configuration of Read Pool Auto Scale.
 	ReadPoolAutoScaleConfigs GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayInput `pulumi:"readPoolAutoScaleConfigs"`
+	// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+	ReplicationLagMaxSeconds pulumi.IntInput `pulumi:"replicationLagMaxSeconds"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete pulumi.BoolInput                                                  `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput `pulumi:"sqlServerAuditConfigs"`
@@ -13971,6 +14003,11 @@ func (o GetDatabaseInstancesInstanceSettingOutput) ReadPoolAutoScaleConfigs() Ge
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig {
 		return v.ReadPoolAutoScaleConfigs
 	}).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput)
+}
+
+// The acceptable replication lag, in seconds, after which a read replica recreates itself. The lag must persist for at least five minutes before recreation is triggered. This is a replica level field, and must be between 300 seconds (five minutes) and 31536000 seconds (one year).
+func (o GetDatabaseInstancesInstanceSettingOutput) ReplicationLagMaxSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.ReplicationLagMaxSeconds }).(pulumi.IntOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.

@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Beyondcorp
     ///                 Region = "us-central1",
     ///             },
     ///         },
-    ///         Logging = null,
+    ///         Logging = new() { },
     ///     });
     /// 
     /// });

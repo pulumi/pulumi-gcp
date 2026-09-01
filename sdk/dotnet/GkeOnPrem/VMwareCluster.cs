@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         Description = "test cluster",
     ///         OnPremVersion = "1.13.1-gke.35",
-    ///         Annotations = null,
+    ///         Annotations = new() { },
     ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
     ///         {
     ///             ServiceAddressCidrBlocks = new[]
@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         Description = "test cluster",
     ///         OnPremVersion = "1.13.1-gke.35",
-    ///         Annotations = null,
+    ///         Annotations = new() { },
     ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
     ///         {
     ///             ServiceAddressCidrBlocks = new[]
@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         Description = "test cluster",
     ///         OnPremVersion = "1.13.1-gke.35",
-    ///         Annotations = null,
+    ///         Annotations = new() { },
     ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
     ///         {
     ///             ServiceAddressCidrBlocks = new[]

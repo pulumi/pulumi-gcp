@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Recaptcha
     ///             IntegrationType = "SCORE",
     ///             AllowAllDomains = true,
     ///         },
-    ///         Labels = null,
+    ///         Labels = new() { },
     ///     });
     /// 
     /// });

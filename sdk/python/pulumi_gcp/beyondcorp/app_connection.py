@@ -459,6 +459,8 @@ class AppConnection(pulumi.CustomResource):
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** `beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `beyondcorp.SecurityGateway` and `beyondcorp.SecurityGatewayApplication` instead.
+
         A BeyondCorp AppConnection resource represents a BeyondCorp protected AppConnection to a remote application.
         It creates all the necessary GCP components needed for creating a BeyondCorp protected AppConnection.
         Multiple connectors can be authorised for a single AppConnection.
@@ -521,6 +523,8 @@ class AppConnection(pulumi.CustomResource):
                  args: AppConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `beyondcorp.AppConnection` is deprecated. App Connector is being deprecated and creation of new App Connectors is no longer permitted. Use `beyondcorp.SecurityGateway` and `beyondcorp.SecurityGatewayApplication` instead.
+
         A BeyondCorp AppConnection resource represents a BeyondCorp protected AppConnection to a remote application.
         It creates all the necessary GCP components needed for creating a BeyondCorp protected AppConnection.
         Multiple connectors can be authorised for a single AppConnection.

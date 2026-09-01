@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Apigee
     ///                 "Public Cloud AWS",
     ///             },
     ///         },
-    ///         Allow = null,
+    ///         Allow = new() { },
     ///         ExpireTime = "2025-12-31T23:59:59Z",
     ///     }, new CustomResourceOptions
     ///     {

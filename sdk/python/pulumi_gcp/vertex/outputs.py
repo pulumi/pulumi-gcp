@@ -140,6 +140,20 @@ __all__ = [
     'AiReasoningEngineContextSpecMemoryBankConfig',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic',
@@ -7705,8 +7719,12 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig(dict):
         suggest = None
         if key == "consolidationConfig":
             suggest = "consolidation_config"
+        elif key == "disableNaturalLanguageMemories":
+            suggest = "disable_natural_language_memories"
         elif key == "enableThirdPersonMemories":
             suggest = "enable_third_person_memories"
+        elif key == "generateMemoriesExamples":
+            suggest = "generate_memories_examples"
         elif key == "memoryTopics":
             suggest = "memory_topics"
         elif key == "scopeKeys":
@@ -7725,21 +7743,30 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig(dict):
 
     def __init__(__self__, *,
                  consolidation_config: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig'] = None,
+                 disable_natural_language_memories: Optional[_builtins.bool] = None,
                  enable_third_person_memories: Optional[_builtins.bool] = None,
+                 generate_memories_examples: Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample']] = None,
                  memory_topics: Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic']] = None,
                  scope_keys: Optional[Sequence[_builtins.str]] = None):
         """
         :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs' consolidation_config: Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
                Structure is documented below.
+        :param _builtins.bool disable_natural_language_memories: Indicates whether natural language memory generation should be disabled.
         :param _builtins.bool enable_third_person_memories: Optional. Generate memories in the third person if set to true.
+        :param Sequence['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleArgs'] generate_memories_examples: Provides examples of how to generate memories for a particular scope.
+               Structure is documented below.
         :param Sequence['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs'] memory_topics: Optional. List of topics that the memory should be associated with.
                Structure is documented below.
         :param Sequence[_builtins.str] scope_keys: Optional. List of scope keys that this customization config applies to.
         """
         if consolidation_config is not None:
             pulumi.set(__self__, "consolidation_config", consolidation_config)
+        if disable_natural_language_memories is not None:
+            pulumi.set(__self__, "disable_natural_language_memories", disable_natural_language_memories)
         if enable_third_person_memories is not None:
             pulumi.set(__self__, "enable_third_person_memories", enable_third_person_memories)
+        if generate_memories_examples is not None:
+            pulumi.set(__self__, "generate_memories_examples", generate_memories_examples)
         if memory_topics is not None:
             pulumi.set(__self__, "memory_topics", memory_topics)
         if scope_keys is not None:
@@ -7755,12 +7782,29 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig(dict):
         return pulumi.get(self, "consolidation_config")
 
     @_builtins.property
+    @pulumi.getter(name="disableNaturalLanguageMemories")
+    def disable_natural_language_memories(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether natural language memory generation should be disabled.
+        """
+        return pulumi.get(self, "disable_natural_language_memories")
+
+    @_builtins.property
     @pulumi.getter(name="enableThirdPersonMemories")
     def enable_third_person_memories(self) -> Optional[_builtins.bool]:
         """
         Optional. Generate memories in the third person if set to true.
         """
         return pulumi.get(self, "enable_third_person_memories")
+
+    @_builtins.property
+    @pulumi.getter(name="generateMemoriesExamples")
+    def generate_memories_examples(self) -> Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample']]:
+        """
+        Provides examples of how to generate memories for a particular scope.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generate_memories_examples")
 
     @_builtins.property
     @pulumi.getter(name="memoryTopics")
@@ -7814,6 +7858,685 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidati
         Number of revisions to consider per candidate count.
         """
         return pulumi.get(self, "revisions_per_candidate_count")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationSource":
+            suggest = "conversation_source"
+        elif key == "generatedMemories":
+            suggest = "generated_memories"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExample.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conversation_source: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource'] = None,
+                 generated_memories: Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory']] = None):
+        """
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceArgs' conversation_source: A conversation source for the example.
+               Structure is documented below.
+        :param Sequence['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs'] generated_memories: Represents the memories that are expected to be generated from the input conversation.
+               Structure is documented below.
+        """
+        if conversation_source is not None:
+            pulumi.set(__self__, "conversation_source", conversation_source)
+        if generated_memories is not None:
+            pulumi.set(__self__, "generated_memories", generated_memories)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationSource")
+    def conversation_source(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource']:
+        """
+        A conversation source for the example.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_source")
+
+    @_builtins.property
+    @pulumi.getter(name="generatedMemories")
+    def generated_memories(self) -> Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory']]:
+        """
+        Represents the memories that are expected to be generated from the input conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generated_memories")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSource(dict):
+    def __init__(__self__, *,
+                 events: Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent']] = None):
+        """
+        :param Sequence['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventArgs'] events: Represents the input conversation events for the example.
+               Structure is documented below.
+        """
+        if events is not None:
+            pulumi.set(__self__, "events", events)
+
+    @_builtins.property
+    @pulumi.getter
+    def events(self) -> Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent']]:
+        """
+        Represents the input conversation events for the example.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "events")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEvent(dict):
+    def __init__(__self__, *,
+                 content: 'outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent'):
+        """
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs' content: Represents the content of the event.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "content", content)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> 'outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent':
+        """
+        Represents the content of the event.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "content")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent(dict):
+    def __init__(__self__, *,
+                 parts: Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart'],
+                 role: Optional[_builtins.str] = None):
+        """
+        :param Sequence['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs'] parts: A list of Part objects that make up a single message.
+               Structure is documented below.
+        :param _builtins.str role: The producer of the content. Must be either 'user' or 'model'. If not set, the service will default to 'user'.
+        """
+        pulumi.set(__self__, "parts", parts)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def parts(self) -> Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart']:
+        """
+        A list of Part objects that make up a single message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parts")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[_builtins.str]:
+        """
+        The producer of the content. Must be either 'user' or 'model'. If not set, the service will default to 'user'.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "codeExecutionResult":
+            suggest = "code_execution_result"
+        elif key == "executableCode":
+            suggest = "executable_code"
+        elif key == "fileData":
+            suggest = "file_data"
+        elif key == "functionCall":
+            suggest = "function_call"
+        elif key == "functionResponse":
+            suggest = "function_response"
+        elif key == "inlineData":
+            suggest = "inline_data"
+        elif key == "videoMetadata":
+            suggest = "video_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code_execution_result: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult'] = None,
+                 executable_code: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode'] = None,
+                 file_data: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData'] = None,
+                 function_call: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall'] = None,
+                 function_response: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse'] = None,
+                 inline_data: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData'] = None,
+                 text: Optional[_builtins.str] = None,
+                 thought: Optional[_builtins.bool] = None,
+                 video_metadata: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata'] = None):
+        """
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs' code_execution_result: Result of executing the ExecutableCode.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs' executable_code: Code generated by the model that is intended to be executed.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileDataArgs' file_data: URI based data.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs' function_call: A predicted function call returned from the model.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs' function_response: The result of a function call.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs' inline_data: The inline data content of the part.
+               Structure is documented below.
+        :param _builtins.str text: The text content of the part.
+        :param _builtins.bool thought: Indicates whether the part represents the model's thought process or reasoning.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgs' video_metadata: Video metadata.
+               Structure is documented below.
+        """
+        if code_execution_result is not None:
+            pulumi.set(__self__, "code_execution_result", code_execution_result)
+        if executable_code is not None:
+            pulumi.set(__self__, "executable_code", executable_code)
+        if file_data is not None:
+            pulumi.set(__self__, "file_data", file_data)
+        if function_call is not None:
+            pulumi.set(__self__, "function_call", function_call)
+        if function_response is not None:
+            pulumi.set(__self__, "function_response", function_response)
+        if inline_data is not None:
+            pulumi.set(__self__, "inline_data", inline_data)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if thought is not None:
+            pulumi.set(__self__, "thought", thought)
+        if video_metadata is not None:
+            pulumi.set(__self__, "video_metadata", video_metadata)
+
+    @_builtins.property
+    @pulumi.getter(name="codeExecutionResult")
+    def code_execution_result(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult']:
+        """
+        Result of executing the ExecutableCode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "code_execution_result")
+
+    @_builtins.property
+    @pulumi.getter(name="executableCode")
+    def executable_code(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode']:
+        """
+        Code generated by the model that is intended to be executed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "executable_code")
+
+    @_builtins.property
+    @pulumi.getter(name="fileData")
+    def file_data(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData']:
+        """
+        URI based data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_data")
+
+    @_builtins.property
+    @pulumi.getter(name="functionCall")
+    def function_call(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall']:
+        """
+        A predicted function call returned from the model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "function_call")
+
+    @_builtins.property
+    @pulumi.getter(name="functionResponse")
+    def function_response(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse']:
+        """
+        The result of a function call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "function_response")
+
+    @_builtins.property
+    @pulumi.getter(name="inlineData")
+    def inline_data(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData']:
+        """
+        The inline data content of the part.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inline_data")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        The text content of the part.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def thought(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the part represents the model's thought process or reasoning.
+        """
+        return pulumi.get(self, "thought")
+
+    @_builtins.property
+    @pulumi.getter(name="videoMetadata")
+    def video_metadata(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata']:
+        """
+        Video metadata.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "video_metadata")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult(dict):
+    def __init__(__self__, *,
+                 outcome: _builtins.str,
+                 id: Optional[_builtins.str] = None,
+                 output: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str outcome: Outcome of the code execution. Possible values: ["OUTCOME_UNSPECIFIED", "OUTCOME_OK", "OUTCOME_FAILED", "OUTCOME_DEADLINE_EXCEEDED"]
+        :param _builtins.str id: The identifier of the ExecutableCode part this result is for.
+        :param _builtins.str output: Contains stdout when code execution is successful, stderr or other description otherwise.
+        """
+        pulumi.set(__self__, "outcome", outcome)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if output is not None:
+            pulumi.set(__self__, "output", output)
+
+    @_builtins.property
+    @pulumi.getter
+    def outcome(self) -> _builtins.str:
+        """
+        Outcome of the code execution. Possible values: ["OUTCOME_UNSPECIFIED", "OUTCOME_OK", "OUTCOME_FAILED", "OUTCOME_DEADLINE_EXCEEDED"]
+        """
+        return pulumi.get(self, "outcome")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The identifier of the ExecutableCode part this result is for.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def output(self) -> Optional[_builtins.str]:
+        """
+        Contains stdout when code execution is successful, stderr or other description otherwise.
+        """
+        return pulumi.get(self, "output")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode(dict):
+    def __init__(__self__, *,
+                 code: _builtins.str,
+                 language: _builtins.str,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str code: The code to be executed.
+        :param _builtins.str language: Supported programming languages for the generated code. Possible values: ["LANGUAGE_UNSPECIFIED", "PYTHON", "BASH"]
+        :param _builtins.str id: Unique identifier of the ExecutableCode part.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "language", language)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.str:
+        """
+        The code to be executed.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def language(self) -> _builtins.str:
+        """
+        Supported programming languages for the generated code. Possible values: ["LANGUAGE_UNSPECIFIED", "PYTHON", "BASH"]
+        """
+        return pulumi.get(self, "language")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the ExecutableCode part.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileUri":
+            suggest = "file_uri"
+        elif key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_uri: _builtins.str,
+                 mime_type: _builtins.str):
+        """
+        :param _builtins.str file_uri: The URI of the file in Google Cloud Storage.
+        :param _builtins.str mime_type: The IANA standard MIME type of the source data.
+        """
+        pulumi.set(__self__, "file_uri", file_uri)
+        pulumi.set(__self__, "mime_type", mime_type)
+
+    @_builtins.property
+    @pulumi.getter(name="fileUri")
+    def file_uri(self) -> _builtins.str:
+        """
+        The URI of the file in Google Cloud Storage.
+        """
+        return pulumi.get(self, "file_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> _builtins.str:
+        """
+        The IANA standard MIME type of the source data.
+        """
+        return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall(dict):
+    def __init__(__self__, *,
+                 args: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str args: The function parameters and values in JSON object format.
+        :param _builtins.str id: The unique id of the function call.
+        :param _builtins.str name: The name of the function to call.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[_builtins.str]:
+        """
+        The function parameters and values in JSON object format.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The unique id of the function call.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the function to call.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 id: Optional[_builtins.str] = None,
+                 response: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the function to call.
+        :param _builtins.str id: The id of the function call this response is for.
+        :param _builtins.str response: The function response in JSON object format.
+        """
+        pulumi.set(__self__, "name", name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if response is not None:
+            pulumi.set(__self__, "response", response)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the function to call.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The id of the function call this response is for.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Optional[_builtins.str]:
+        """
+        The function response in JSON object format.
+        """
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data: _builtins.str,
+                 mime_type: _builtins.str):
+        """
+        :param _builtins.str data: Raw bytes, which should be base64-encoded.
+        :param _builtins.str mime_type: The IANA standard MIME type of the source data.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "mime_type", mime_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> _builtins.str:
+        """
+        Raw bytes, which should be base64-encoded.
+        """
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> _builtins.str:
+        """
+        The IANA standard MIME type of the source data.
+        """
+        return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endOffset":
+            suggest = "end_offset"
+        elif key == "startOffset":
+            suggest = "start_offset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_offset: Optional[_builtins.str] = None,
+                 start_offset: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end_offset: The end offset of the video.
+        :param _builtins.str start_offset: The start offset of the video.
+        """
+        if end_offset is not None:
+            pulumi.set(__self__, "end_offset", end_offset)
+        if start_offset is not None:
+            pulumi.set(__self__, "start_offset", start_offset)
+
+    @_builtins.property
+    @pulumi.getter(name="endOffset")
+    def end_offset(self) -> Optional[_builtins.str]:
+        """
+        The end offset of the video.
+        """
+        return pulumi.get(self, "end_offset")
+
+    @_builtins.property
+    @pulumi.getter(name="startOffset")
+    def start_offset(self) -> Optional[_builtins.str]:
+        """
+        The start offset of the video.
+        """
+        return pulumi.get(self, "start_offset")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory(dict):
+    def __init__(__self__, *,
+                 fact: _builtins.str,
+                 topics: Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic']] = None):
+        """
+        :param _builtins.str fact: Represents the fact to generate a memory from.
+        :param Sequence['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs'] topics: Represents the list of topics that the memory should be associated with.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "fact", fact)
+        if topics is not None:
+            pulumi.set(__self__, "topics", topics)
+
+    @_builtins.property
+    @pulumi.getter
+    def fact(self) -> _builtins.str:
+        """
+        Represents the fact to generate a memory from.
+        """
+        return pulumi.get(self, "fact")
+
+    @_builtins.property
+    @pulumi.getter
+    def topics(self) -> Optional[Sequence['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic']]:
+        """
+        Represents the list of topics that the memory should be associated with.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "topics")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customMemoryTopicLabel":
+            suggest = "custom_memory_topic_label"
+        elif key == "managedMemoryTopic":
+            suggest = "managed_memory_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_memory_topic_label: Optional[_builtins.str] = None,
+                 managed_memory_topic: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str custom_memory_topic_label: Represents the custom memory topic label.
+        :param _builtins.str managed_memory_topic: Represents the managed memory topic. Possible values: ["USER_PERSONAL_INFO", "USER_PREFERENCES", "KEY_CONVERSATION_DETAILS", "EXPLICIT_INSTRUCTIONS"]
+        """
+        if custom_memory_topic_label is not None:
+            pulumi.set(__self__, "custom_memory_topic_label", custom_memory_topic_label)
+        if managed_memory_topic is not None:
+            pulumi.set(__self__, "managed_memory_topic", managed_memory_topic)
+
+    @_builtins.property
+    @pulumi.getter(name="customMemoryTopicLabel")
+    def custom_memory_topic_label(self) -> Optional[_builtins.str]:
+        """
+        Represents the custom memory topic label.
+        """
+        return pulumi.get(self, "custom_memory_topic_label")
+
+    @_builtins.property
+    @pulumi.getter(name="managedMemoryTopic")
+    def managed_memory_topic(self) -> Optional[_builtins.str]:
+        """
+        Represents the managed memory topic. Possible values: ["USER_PERSONAL_INFO", "USER_PREFERENCES", "KEY_CONVERSATION_DETAILS", "EXPLICIT_INSTRUCTIONS"]
+        """
+        return pulumi.get(self, "managed_memory_topic")
 
 
 @pulumi.output_type

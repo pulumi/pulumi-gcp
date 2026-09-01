@@ -52,6 +52,7 @@ export interface GetInstanceArgs {
  * A collection of values returned by getInstance.
  */
 export interface GetInstanceResult {
+    readonly aclPolicy: string;
     readonly authorizationMode: string;
     readonly automatedBackupConfigs: outputs.memorystore.GetInstanceAutomatedBackupConfig[];
     readonly availableMaintenanceVersions: string[];
@@ -74,6 +75,7 @@ export interface GetInstanceResult {
      */
     readonly id: string;
     readonly instanceId: string;
+    readonly isAclPolicyInSync: boolean;
     readonly kmsKey: string;
     readonly labels: {[key: string]: string};
     readonly location?: string;

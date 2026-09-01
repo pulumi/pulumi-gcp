@@ -22,6 +22,16 @@ public final class GetBackendServiceIap {
      */
     private String oauth2ClientId;
     /**
+     * @return OAuth2 Client ID for IAP
+     * 
+     */
+    private String oauth2ClientIdWo;
+    /**
+     * @return Triggers update of &#39;oauth2_client_id_wo&#39; write-only. Increment this value when an update to &#39;oauth2_client_id_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private String oauth2ClientIdWoVersion;
+    /**
      * @return OAuth2 Client Secret for IAP
      * 
      */
@@ -31,6 +41,16 @@ public final class GetBackendServiceIap {
      * 
      */
     private String oauth2ClientSecretSha256;
+    /**
+     * @return OAuth2 Client Secret for IAP
+     * 
+     */
+    private String oauth2ClientSecretWo;
+    /**
+     * @return Triggers update of &#39;oauth2_client_secret_wo&#39; write-only. Increment this value when an update to &#39;oauth2_client_secret_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private String oauth2ClientSecretWoVersion;
 
     private GetBackendServiceIap() {}
     /**
@@ -48,6 +68,20 @@ public final class GetBackendServiceIap {
         return this.oauth2ClientId;
     }
     /**
+     * @return OAuth2 Client ID for IAP
+     * 
+     */
+    public String oauth2ClientIdWo() {
+        return this.oauth2ClientIdWo;
+    }
+    /**
+     * @return Triggers update of &#39;oauth2_client_id_wo&#39; write-only. Increment this value when an update to &#39;oauth2_client_id_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public String oauth2ClientIdWoVersion() {
+        return this.oauth2ClientIdWoVersion;
+    }
+    /**
      * @return OAuth2 Client Secret for IAP
      * 
      */
@@ -61,6 +95,20 @@ public final class GetBackendServiceIap {
     public String oauth2ClientSecretSha256() {
         return this.oauth2ClientSecretSha256;
     }
+    /**
+     * @return OAuth2 Client Secret for IAP
+     * 
+     */
+    public String oauth2ClientSecretWo() {
+        return this.oauth2ClientSecretWo;
+    }
+    /**
+     * @return Triggers update of &#39;oauth2_client_secret_wo&#39; write-only. Increment this value when an update to &#39;oauth2_client_secret_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public String oauth2ClientSecretWoVersion() {
+        return this.oauth2ClientSecretWoVersion;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -73,15 +121,23 @@ public final class GetBackendServiceIap {
     public static final class Builder {
         private Boolean enabled;
         private String oauth2ClientId;
+        private String oauth2ClientIdWo;
+        private String oauth2ClientIdWoVersion;
         private String oauth2ClientSecret;
         private String oauth2ClientSecretSha256;
+        private String oauth2ClientSecretWo;
+        private String oauth2ClientSecretWoVersion;
         public Builder() {}
         public Builder(GetBackendServiceIap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.oauth2ClientId = defaults.oauth2ClientId;
+    	      this.oauth2ClientIdWo = defaults.oauth2ClientIdWo;
+    	      this.oauth2ClientIdWoVersion = defaults.oauth2ClientIdWoVersion;
     	      this.oauth2ClientSecret = defaults.oauth2ClientSecret;
     	      this.oauth2ClientSecretSha256 = defaults.oauth2ClientSecretSha256;
+    	      this.oauth2ClientSecretWo = defaults.oauth2ClientSecretWo;
+    	      this.oauth2ClientSecretWoVersion = defaults.oauth2ClientSecretWoVersion;
         }
 
         @CustomType.Setter
@@ -101,6 +157,22 @@ public final class GetBackendServiceIap {
             return this;
         }
         @CustomType.Setter
+        public Builder oauth2ClientIdWo(String oauth2ClientIdWo) {
+            if (oauth2ClientIdWo == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceIap", "oauth2ClientIdWo");
+            }
+            this.oauth2ClientIdWo = oauth2ClientIdWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2ClientIdWoVersion(String oauth2ClientIdWoVersion) {
+            if (oauth2ClientIdWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceIap", "oauth2ClientIdWoVersion");
+            }
+            this.oauth2ClientIdWoVersion = oauth2ClientIdWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder oauth2ClientSecret(String oauth2ClientSecret) {
             if (oauth2ClientSecret == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceIap", "oauth2ClientSecret");
@@ -116,12 +188,32 @@ public final class GetBackendServiceIap {
             this.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
             return this;
         }
+        @CustomType.Setter
+        public Builder oauth2ClientSecretWo(String oauth2ClientSecretWo) {
+            if (oauth2ClientSecretWo == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceIap", "oauth2ClientSecretWo");
+            }
+            this.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2ClientSecretWoVersion(String oauth2ClientSecretWoVersion) {
+            if (oauth2ClientSecretWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceIap", "oauth2ClientSecretWoVersion");
+            }
+            this.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
+            return this;
+        }
         public GetBackendServiceIap build() {
             final var _resultValue = new GetBackendServiceIap();
             _resultValue.enabled = enabled;
             _resultValue.oauth2ClientId = oauth2ClientId;
+            _resultValue.oauth2ClientIdWo = oauth2ClientIdWo;
+            _resultValue.oauth2ClientIdWoVersion = oauth2ClientIdWoVersion;
             _resultValue.oauth2ClientSecret = oauth2ClientSecret;
             _resultValue.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            _resultValue.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            _resultValue.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
             return _resultValue;
         }
     }

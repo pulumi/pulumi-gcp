@@ -24,6 +24,7 @@ class InstanceArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  shard_count: pulumi.Input[_builtins.int],
+                 acl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']] = None,
                  cross_instance_replication_config: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']] = None,
@@ -61,6 +62,8 @@ class InstanceArgs:
                * Must be unique within a location
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
+        :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
+               Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH.
@@ -130,6 +133,8 @@ class InstanceArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "shard_count", shard_count)
+        if acl_policy is not None:
+            pulumi.set(__self__, "acl_policy", acl_policy)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
@@ -224,6 +229,19 @@ class InstanceArgs:
     @shard_count.setter
     def shard_count(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "shard_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPolicy")
+    def acl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the ACL policy to attach to the instance.
+        Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+        """
+        return pulumi.get(self, "acl_policy")
+
+    @acl_policy.setter
+    def acl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "acl_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -559,6 +577,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 acl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']] = None,
                  available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -577,6 +596,7 @@ class _InstanceState:
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_source: pulumi.Input[Optional['InstanceGcsSourceArgs']] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_acl_policy_in_sync: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -607,6 +627,8 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
 
+        :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
+               Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH.
@@ -647,6 +669,7 @@ class _InstanceState:
                * Must contain only lowercase letters, digits, and hyphens
                * Must not end with a hyphen
                * Must be unique within a location
+        :param pulumi.Input[_builtins.bool] is_acl_policy_in_sync: Whether the ACL policy is in sync with the cluster.
         :param pulumi.Input[_builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -719,6 +742,8 @@ class _InstanceState:
         :param pulumi.Input['InstanceZoneDistributionConfigArgs'] zone_distribution_config: Zone distribution configuration for allocation of instance resources.
                Structure is documented below.
         """
+        if acl_policy is not None:
+            pulumi.set(__self__, "acl_policy", acl_policy)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
@@ -761,6 +786,8 @@ class _InstanceState:
             pulumi.set(__self__, "gcs_source", gcs_source)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if is_acl_policy_in_sync is not None:
+            pulumi.set(__self__, "is_acl_policy_in_sync", is_acl_policy_in_sync)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
@@ -818,6 +845,19 @@ class _InstanceState:
             pulumi.set(__self__, "update_time", update_time)
         if zone_distribution_config is not None:
             pulumi.set(__self__, "zone_distribution_config", zone_distribution_config)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPolicy")
+    def acl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the ACL policy to attach to the instance.
+        Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+        """
+        return pulumi.get(self, "acl_policy")
+
+    @acl_policy.setter
+    def acl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "acl_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -1058,6 +1098,18 @@ class _InstanceState:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAclPolicyInSync")
+    def is_acl_policy_in_sync(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the ACL policy is in sync with the cluster.
+        """
+        return pulumi.get(self, "is_acl_policy_in_sync")
+
+    @is_acl_policy_in_sync.setter
+    def is_acl_policy_in_sync(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_acl_policy_in_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -1435,6 +1487,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
@@ -1844,6 +1897,8 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
+               Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH.
@@ -2320,6 +2375,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
@@ -2356,6 +2412,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["acl_policy"] = acl_policy
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
@@ -2396,6 +2453,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["effective_maintenance_version"] = None
             __props__.__dict__["endpoints"] = None
+            __props__.__dict__["is_acl_policy_in_sync"] = None
             __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["managed_server_cas"] = None
             __props__.__dict__["name"] = None
@@ -2419,6 +2477,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_policy: pulumi.Input[Optional[_builtins.str]] = None,
             authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
             automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
             available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2437,6 +2496,7 @@ class Instance(pulumi.CustomResource):
             engine_version: pulumi.Input[Optional[_builtins.str]] = None,
             gcs_source: pulumi.Input[Optional[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_acl_policy_in_sync: pulumi.Input[Optional[_builtins.bool]] = None,
             kms_key: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2471,6 +2531,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] acl_policy: The name of the ACL policy to attach to the instance.
+               Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH.
@@ -2511,6 +2573,7 @@ class Instance(pulumi.CustomResource):
                * Must contain only lowercase letters, digits, and hyphens
                * Must not end with a hyphen
                * Must be unique within a location
+        :param pulumi.Input[_builtins.bool] is_acl_policy_in_sync: Whether the ACL policy is in sync with the cluster.
         :param pulumi.Input[_builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -2587,6 +2650,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["acl_policy"] = acl_policy
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["automated_backup_config"] = automated_backup_config
         __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
@@ -2605,6 +2669,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["gcs_source"] = gcs_source
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["is_acl_policy_in_sync"] = is_acl_policy_in_sync
         __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -2633,6 +2698,15 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["zone_distribution_config"] = zone_distribution_config
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPolicy")
+    def acl_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the ACL policy to attach to the instance.
+        Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+        """
+        return pulumi.get(self, "acl_policy")
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -2801,6 +2875,14 @@ class Instance(pulumi.CustomResource):
         * Must be unique within a location
         """
         return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isAclPolicyInSync")
+    def is_acl_policy_in_sync(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the ACL policy is in sync with the cluster.
+        """
+        return pulumi.get(self, "is_acl_policy_in_sync")
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")

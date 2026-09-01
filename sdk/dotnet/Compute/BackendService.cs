@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_id_wo`, `iap.oauth2_client_secret_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Backend Service Basic
@@ -951,7 +954,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("iap")]
-        public Output<Outputs.BackendServiceIap> Iap { get; private set; } = null!;
+        public Output<Outputs.BackendServiceIap?> Iap { get; private set; } = null!;
 
         /// <summary>
         /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).

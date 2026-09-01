@@ -618,6 +618,9 @@ namespace Pulumi.Gcp
         [Output("vectorSearchCustomEndpoint")]
         public Output<string?> VectorSearchCustomEndpoint { get; private set; } = null!;
 
+        [Output("vertexAiAadCustomEndpoint")]
+        public Output<string?> VertexAiAadCustomEndpoint { get; private set; } = null!;
+
         [Output("vertexAiCustomEndpoint")]
         public Output<string?> VertexAiCustomEndpoint { get; private set; } = null!;
 
@@ -1333,6 +1336,9 @@ namespace Pulumi.Gcp
 
         [Input("vectorSearchCustomEndpoint")]
         public Input<string>? VectorSearchCustomEndpoint { get; set; }
+
+        [Input("vertexAiAadCustomEndpoint")]
+        public Input<string>? VertexAiAadCustomEndpoint { get; set; }
 
         [Input("vertexAiCustomEndpoint")]
         public Input<string>? VertexAiCustomEndpoint { get; set; }

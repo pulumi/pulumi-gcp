@@ -4225,7 +4225,14 @@
                         "elem": {
                             "fields": {
                                 "storage_descriptor": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "serde_info": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -7278,6 +7285,42 @@
                 "current": "gcp:ces/toolset:Toolset",
                 "majorVersion": 9,
                 "fields": {
+                    "connector_toolset": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "auth_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "oauth2_auth_code_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "oauth2_jwt_bearer_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "connector_actions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entity_operation": {
+                                                "maxItemsOne": true
+                                            },
+                                            "input_fields": {
+                                                "maxItemsOne": false
+                                            },
+                                            "output_fields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "mcp_toolset": {
                         "maxItemsOne": true,
                         "elem": {
@@ -20446,7 +20489,14 @@
                                     "maxItemsOne": true
                                 },
                                 "host_maintenance_policy": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "opportunistic_maintenance_strategy": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "kubelet_config": {
                                     "maxItemsOne": true,
@@ -20756,7 +20806,14 @@
                                                 "maxItemsOne": true
                                             },
                                             "host_maintenance_policy": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "opportunistic_maintenance_strategy": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "kubelet_config": {
                                                 "maxItemsOne": true,
@@ -21340,7 +21397,14 @@
                                     "maxItemsOne": true
                                 },
                                 "host_maintenance_policy": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "opportunistic_maintenance_strategy": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "kubelet_config": {
                                     "maxItemsOne": true,
@@ -36060,6 +36124,15 @@
                     }
                 }
             },
+            "google_memorystore_acl_policy": {
+                "current": "gcp:memorystore/aclPolicy:AclPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_memorystore_instance": {
                 "current": "gcp:memorystore/instance:Instance",
                 "majorVersion": 9,
@@ -43587,6 +43660,15 @@
                     }
                 }
             },
+            "google_redis_cluster_acl_policy": {
+                "current": "gcp:redis/clusterAclPolicy:ClusterAclPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_redis_cluster_user_created_connections": {
                 "current": "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections",
                 "majorVersion": 9,
@@ -46605,6 +46687,18 @@
                     }
                 }
             },
+            "google_vertex_ai_agent_anomaly_detection_scope": {
+                "current": "gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope",
+                "majorVersion": 9,
+                "fields": {
+                    "log_buckets": {
+                        "maxItemsOne": false
+                    },
+                    "observability_buckets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_vertex_ai_cache_config": {
                 "current": "gcp:vertex/aiCacheConfig:AiCacheConfig",
                 "majorVersion": 9
@@ -47443,6 +47537,72 @@
                                                     "fields": {
                                                         "consolidation_config": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "generate_memories_examples": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "conversation_source": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "events": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "content": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "parts": {
+                                                                                                            "maxItemsOne": false,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "code_execution_result": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "executable_code": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "file_data": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "function_call": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "function_response": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "inline_data": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "video_metadata": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "generated_memories": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "topics": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "memory_topics": {
                                                             "maxItemsOne": false,
@@ -54238,7 +54398,14 @@
                                     "maxItemsOne": false
                                 },
                                 "host_maintenance_policy": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "opportunistic_maintenance_strategy": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "kubelet_config": {
                                     "maxItemsOne": false,
@@ -54548,7 +54715,14 @@
                                                 "maxItemsOne": false
                                             },
                                             "host_maintenance_policy": {
-                                                "maxItemsOne": false
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "opportunistic_maintenance_strategy": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "kubelet_config": {
                                                 "maxItemsOne": false,
@@ -56422,6 +56596,15 @@
                     }
                 }
             },
+            "google_memorystore_acl_policy": {
+                "current": "gcp:memorystore/getAclPolicy:getAclPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_memorystore_instance": {
                 "current": "gcp:memorystore/getInstance:getInstance",
                 "majorVersion": 9,
@@ -58006,6 +58189,15 @@
                         }
                     },
                     "zone_distribution_config": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_redis_cluster_acl_policy": {
+                "current": "gcp:redis/getClusterAclPolicy:getClusterAclPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "rules": {
                         "maxItemsOne": false
                     }
                 }
@@ -62886,6 +63078,7 @@
             "gcp:managedkafka/connector:Connector": 0,
             "gcp:managedkafka/topic:Topic": 0,
             "gcp:memcache/instance:Instance": 0,
+            "gcp:memorystore/aclPolicy:AclPolicy": 0,
             "gcp:memorystore/instance:Instance": 0,
             "gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints": 0,
             "gcp:migrationcenter/assetsExportJob:AssetsExportJob": 0,
@@ -63079,6 +63272,7 @@
             "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": 0,
             "gcp:recaptcha/enterpriseKey:EnterpriseKey": 0,
             "gcp:redis/cluster:Cluster": 0,
+            "gcp:redis/clusterAclPolicy:ClusterAclPolicy": 0,
             "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections": 0,
             "gcp:redis/instance:Instance": 0,
             "gcp:resourcemanager/capability:Capability": 0,
@@ -63239,6 +63433,7 @@
             "gcp:vectorsearch/collection:Collection": 0,
             "gcp:vectorsearch/dataObject:DataObject": 0,
             "gcp:vectorsearch/index:Index": 0,
+            "gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope": 0,
             "gcp:vertex/aiCacheConfig:AiCacheConfig": 0,
             "gcp:vertex/aiDataset:AiDataset": 0,
             "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool": 0,
@@ -63649,6 +63844,7 @@
             "gcp:logging/getSink:getSink": 0,
             "gcp:lustre/getInstance:getInstance": 0,
             "gcp:memcache/getInstance:getInstance": 0,
+            "gcp:memorystore/getAclPolicy:getAclPolicy": 0,
             "gcp:memorystore/getInstance:getInstance": 0,
             "gcp:monitoring/getAppEngineService:getAppEngineService": 0,
             "gcp:monitoring/getClusterIstioService:getClusterIstioService": 0,
@@ -63717,6 +63913,7 @@
             "gcp:pubsub/getTopic:getTopic": 0,
             "gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy": 0,
             "gcp:redis/getCluster:getCluster": 0,
+            "gcp:redis/getClusterAclPolicy:getClusterAclPolicy": 0,
             "gcp:redis/getInstance:getInstance": 0,
             "gcp:runtimeconfig/getConfig:getConfig": 0,
             "gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy": 0,
@@ -63888,7 +64085,24 @@
             "gcp:dns/recordSet:RecordSet": 1,
             "gcp:folder/iAMMember:IAMMember": 1,
             "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": 1,
+            "gcp:migrationcenter/assetsExportJob:AssetsExportJob": 1,
+            "gcp:migrationcenter/discoveryClient:DiscoveryClient": 1,
+            "gcp:migrationcenter/group:Group": 1,
+            "gcp:migrationcenter/importJob:ImportJob": 1,
+            "gcp:migrationcenter/preferenceSet:PreferenceSet": 1,
+            "gcp:migrationcenter/reportConfig:ReportConfig": 1,
+            "gcp:migrationcenter/source:Source": 1,
             "gcp:monitoring/alertPolicy:AlertPolicy": 1,
+            "gcp:networkservices/authzExtension:AuthzExtension": 1,
+            "gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation": 1,
+            "gcp:networkservices/multicastDomain:MulticastDomain": 1,
+            "gcp:networkservices/multicastDomainActivation:MulticastDomainActivation": 1,
+            "gcp:networkservices/multicastDomainGroup:MulticastDomainGroup": 1,
+            "gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation": 1,
+            "gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation": 1,
+            "gcp:networkservices/multicastGroupRange:MulticastGroupRange": 1,
+            "gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation": 1,
+            "gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation": 1,
             "gcp:organizations/project:Project": 1,
             "gcp:projects/iAMCustomRole:IAMCustomRole": 1,
             "gcp:projects/iAMMember:IAMMember": 1,

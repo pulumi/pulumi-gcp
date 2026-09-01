@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Ces
     ///             Model = "gemini-3.0-flash-001",
     ///             Temperature = 0.5,
     ///         },
-    ///         LlmAgent = null,
+    ///         LlmAgent = new() { },
     ///     });
     /// 
     ///     var cesGuardrailForAgent = new Gcp.Ces.Guardrail("ces_guardrail_for_agent", new()
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.Ces
     ///                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
     ///             }),
     ///         },
-    ///         LlmAgent = null,
+    ///         LlmAgent = new() { },
     ///     });
     /// 
     /// });

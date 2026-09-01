@@ -870,6 +870,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('vectorSearchCustomEndpoint')
 
     @_builtins.property
+    def vertex_ai_aad_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('vertexAiAadCustomEndpoint')
+
+    @_builtins.property
     def vertex_ai_custom_endpoint(self) -> Optional[str]:
         return __config__.get('vertexAiCustomEndpoint')
 

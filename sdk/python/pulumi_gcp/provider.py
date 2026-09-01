@@ -230,6 +230,7 @@ class ProviderArgs:
                  universe_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  user_project_override: pulumi.Input[Optional[_builtins.bool]] = None,
                  vector_search_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vertex_ai_aad_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vertex_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vmwareengine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_access_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,6 +666,8 @@ class ProviderArgs:
             pulumi.set(__self__, "user_project_override", user_project_override)
         if vector_search_custom_endpoint is not None:
             pulumi.set(__self__, "vector_search_custom_endpoint", vector_search_custom_endpoint)
+        if vertex_ai_aad_custom_endpoint is not None:
+            pulumi.set(__self__, "vertex_ai_aad_custom_endpoint", vertex_ai_aad_custom_endpoint)
         if vertex_ai_custom_endpoint is not None:
             pulumi.set(__self__, "vertex_ai_custom_endpoint", vertex_ai_custom_endpoint)
         if vmwareengine_custom_endpoint is not None:
@@ -2575,6 +2578,15 @@ class ProviderArgs:
         pulumi.set(self, "vector_search_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="vertexAiAadCustomEndpoint")
+    def vertex_ai_aad_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "vertex_ai_aad_custom_endpoint")
+
+    @vertex_ai_aad_custom_endpoint.setter
+    def vertex_ai_aad_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vertex_ai_aad_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="vertexAiCustomEndpoint")
     def vertex_ai_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vertex_ai_custom_endpoint")
@@ -2863,6 +2875,7 @@ class Provider(pulumi.ProviderResource):
                  universe_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  user_project_override: pulumi.Input[Optional[_builtins.bool]] = None,
                  vector_search_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vertex_ai_aad_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vertex_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vmwareengine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_access_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3120,6 +3133,7 @@ class Provider(pulumi.ProviderResource):
                  universe_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  user_project_override: pulumi.Input[Optional[_builtins.bool]] = None,
                  vector_search_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vertex_ai_aad_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vertex_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vmwareengine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_access_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3351,6 +3365,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["universe_domain"] = universe_domain
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__.__dict__["vector_search_custom_endpoint"] = vector_search_custom_endpoint
+            __props__.__dict__["vertex_ai_aad_custom_endpoint"] = vertex_ai_aad_custom_endpoint
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
             __props__.__dict__["vmwareengine_custom_endpoint"] = vmwareengine_custom_endpoint
             __props__.__dict__["vpc_access_custom_endpoint"] = vpc_access_custom_endpoint
@@ -4368,6 +4383,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="vectorSearchCustomEndpoint")
     def vector_search_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "vector_search_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="vertexAiAadCustomEndpoint")
+    def vertex_ai_aad_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "vertex_ai_aad_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="vertexAiCustomEndpoint")

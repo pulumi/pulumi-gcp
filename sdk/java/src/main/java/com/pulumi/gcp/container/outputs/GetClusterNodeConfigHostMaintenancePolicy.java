@@ -5,7 +5,9 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +17,11 @@ public final class GetClusterNodeConfigHostMaintenancePolicy {
      * 
      */
     private String maintenanceInterval;
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * 
+     */
+    private List<GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy> opportunisticMaintenanceStrategies;
 
     private GetClusterNodeConfigHostMaintenancePolicy() {}
     /**
@@ -23,6 +30,13 @@ public final class GetClusterNodeConfigHostMaintenancePolicy {
      */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
+    }
+    /**
+     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * 
+     */
+    public List<GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy> opportunisticMaintenanceStrategies() {
+        return this.opportunisticMaintenanceStrategies;
     }
 
     public static Builder builder() {
@@ -35,10 +49,12 @@ public final class GetClusterNodeConfigHostMaintenancePolicy {
     @CustomType.Builder
     public static final class Builder {
         private String maintenanceInterval;
+        private List<GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy> opportunisticMaintenanceStrategies;
         public Builder() {}
         public Builder(GetClusterNodeConfigHostMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maintenanceInterval = defaults.maintenanceInterval;
+    	      this.opportunisticMaintenanceStrategies = defaults.opportunisticMaintenanceStrategies;
         }
 
         @CustomType.Setter
@@ -49,9 +65,21 @@ public final class GetClusterNodeConfigHostMaintenancePolicy {
             this.maintenanceInterval = maintenanceInterval;
             return this;
         }
+        @CustomType.Setter
+        public Builder opportunisticMaintenanceStrategies(List<GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy> opportunisticMaintenanceStrategies) {
+            if (opportunisticMaintenanceStrategies == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigHostMaintenancePolicy", "opportunisticMaintenanceStrategies");
+            }
+            this.opportunisticMaintenanceStrategies = opportunisticMaintenanceStrategies;
+            return this;
+        }
+        public Builder opportunisticMaintenanceStrategies(GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy... opportunisticMaintenanceStrategies) {
+            return opportunisticMaintenanceStrategies(List.of(opportunisticMaintenanceStrategies));
+        }
         public GetClusterNodeConfigHostMaintenancePolicy build() {
             final var _resultValue = new GetClusterNodeConfigHostMaintenancePolicy();
             _resultValue.maintenanceInterval = maintenanceInterval;
+            _resultValue.opportunisticMaintenanceStrategies = opportunisticMaintenanceStrategies;
             return _resultValue;
         }
     }

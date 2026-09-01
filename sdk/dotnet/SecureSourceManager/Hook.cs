@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The events that trigger hook on.
-        /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+        /// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         /// </summary>
         [Output("events")]
         public Output<ImmutableArray<string>> Events { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The events that trigger hook on.
-        /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+        /// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         /// </summary>
         public InputList<string> Events
         {
@@ -307,7 +307,7 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The events that trigger hook on.
-        /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
+        /// Each value may be one of: `PUSH`, `PULL_REQUEST`, `PULL_REQUEST_COMMENT`.
         /// </summary>
         public InputList<string> Events
         {

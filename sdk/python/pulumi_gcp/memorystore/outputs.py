@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AclPolicyRule',
     'InstanceAutomatedBackupConfig',
     'InstanceAutomatedBackupConfigFixedFrequencySchedule',
     'InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime',
@@ -51,6 +52,7 @@ __all__ = [
     'InstanceStateInfo',
     'InstanceStateInfoUpdateInfo',
     'InstanceZoneDistributionConfig',
+    'GetAclPolicyRuleResult',
     'GetInstanceAutomatedBackupConfigResult',
     'GetInstanceAutomatedBackupConfigFixedFrequencyScheduleResult',
     'GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult',
@@ -84,6 +86,41 @@ __all__ = [
     'GetInstanceStateInfoUpdateInfoResult',
     'GetInstanceZoneDistributionConfigResult',
 ]
+
+@pulumi.output_type
+class AclPolicyRule(dict):
+    def __init__(__self__, *,
+                 rule: _builtins.str,
+                 username: _builtins.str):
+        """
+        :param _builtins.str rule: The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+               The format of the rule is defined by Valkey OSS:
+               https://valkey.io/topics/acl/
+        :param _builtins.str username: Specifies the IAM user or service account to be added to the ACL policy.
+               This username will be directly set on the Valkey OSS.
+        """
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+        The format of the rule is defined by Valkey OSS:
+        https://valkey.io/topics/acl/
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Specifies the IAM user or service account to be added to the ACL policy.
+        This username will be directly set on the Valkey OSS.
+        """
+        return pulumi.get(self, "username")
+
 
 @pulumi.output_type
 class InstanceAutomatedBackupConfig(dict):
@@ -2119,6 +2156,41 @@ class InstanceZoneDistributionConfig(dict):
         Ignored for MULTI_ZONE mode.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetAclPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 rule: _builtins.str,
+                 username: _builtins.str):
+        """
+        :param _builtins.str rule: The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+               The format of the rule is defined by Valkey OSS:
+               https://valkey.io/topics/acl/
+        :param _builtins.str username: Specifies the IAM user or service account to be added to the ACL policy.
+               This username will be directly set on the Valkey OSS.
+        """
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        The rule to be applied to the username. Ex: "on >password123 ~* +@all"
+        The format of the rule is defined by Valkey OSS:
+        https://valkey.io/topics/acl/
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Specifies the IAM user or service account to be added to the ACL policy.
+        This username will be directly set on the Valkey OSS.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type

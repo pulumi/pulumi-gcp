@@ -1705,6 +1705,14 @@ Object.defineProperty(exports, "vectorSearchCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const vertexAiAadCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "vertexAiAadCustomEndpoint", {
+    get() {
+        return __config.get("vertexAiAadCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const vertexAiCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "vertexAiCustomEndpoint", {
     get() {

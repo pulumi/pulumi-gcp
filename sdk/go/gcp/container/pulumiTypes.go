@@ -24564,7 +24564,7 @@ type ClusterNodeConfig struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic *ClusterNodeConfigGvnic `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on.
+	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy *ClusterNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -24728,7 +24728,7 @@ type ClusterNodeConfigArgs struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic ClusterNodeConfigGvnicPtrInput `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on.
+	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy ClusterNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -25010,7 +25010,7 @@ func (o ClusterNodeConfigOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGvnic { return v.Gvnic }).(ClusterNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on.
+// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodeConfigOutput) HostMaintenancePolicy() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigHostMaintenancePolicy { return v.HostMaintenancePolicy }).(ClusterNodeConfigHostMaintenancePolicyPtrOutput)
 }
@@ -25416,7 +25416,7 @@ func (o ClusterNodeConfigPtrOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	}).(ClusterNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on.
+// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) HostMaintenancePolicy() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigHostMaintenancePolicy {
 		if v == nil {
@@ -29007,8 +29007,10 @@ func (o ClusterNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterNodeConfigHostMaintenancePolicy struct {
-	// .
+	// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+	OpportunisticMaintenanceStrategy *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
 // ClusterNodeConfigHostMaintenancePolicyInput is an input type that accepts ClusterNodeConfigHostMaintenancePolicyArgs and ClusterNodeConfigHostMaintenancePolicyOutput values.
@@ -29023,8 +29025,10 @@ type ClusterNodeConfigHostMaintenancePolicyInput interface {
 }
 
 type ClusterNodeConfigHostMaintenancePolicyArgs struct {
-	// .
+	// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+	OpportunisticMaintenanceStrategy ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
 func (ClusterNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
@@ -29104,9 +29108,16 @@ func (o ClusterNodeConfigHostMaintenancePolicyOutput) ToClusterNodeConfigHostMai
 	}).(ClusterNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
-// .
+// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 func (o ClusterNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+func (o ClusterNodeConfigHostMaintenancePolicyOutput) OpportunisticMaintenanceStrategy() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigHostMaintenancePolicy) *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		return v.OpportunisticMaintenanceStrategy
+	}).(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
 }
 
 type ClusterNodeConfigHostMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
@@ -29133,13 +29144,204 @@ func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) Elem() ClusterNodeConfi
 	}).(ClusterNodeConfigHostMaintenancePolicyOutput)
 }
 
-// .
+// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicy) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.MaintenanceInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) OpportunisticMaintenanceStrategy() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicy) *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticMaintenanceStrategy
+	}).(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+type ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy struct {
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+	MaintenanceAvailabilityWindow string `pulumi:"maintenanceAvailabilityWindow"`
+	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+	MinNodesPerPool int `pulumi:"minNodesPerPool"`
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+	NodeIdleTimeWindow string `pulumi:"nodeIdleTimeWindow"`
+}
+
+// ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput is an input type that accepts ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs and ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput` via:
+//
+//	ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{...}
+type ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput
+	ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput
+}
+
+type ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs struct {
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+	MaintenanceAvailabilityWindow pulumi.StringInput `pulumi:"maintenanceAvailabilityWindow"`
+	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+	MinNodesPerPool pulumi.IntInput `pulumi:"minNodesPerPool"`
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+	NodeIdleTimeWindow pulumi.StringInput `pulumi:"nodeIdleTimeWindow"`
+}
+
+func (ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return i.ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput)
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return i.ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput).ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput is an input type that accepts ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs, ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtr and ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput` via:
+//
+//	        ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput
+	ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput
+}
+
+type clusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs
+
+func ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtr(v *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput {
+	return (*clusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType)(v)
+}
+
+func (*clusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return i.ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+type ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		return &v
+	}).(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) MaintenanceAvailabilityWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
+		return v.MaintenanceAvailabilityWindow
+	}).(pulumi.StringOutput)
+}
+
+// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) MinNodesPerPool() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) int {
+		return v.MinNodesPerPool
+	}).(pulumi.IntOutput)
+}
+
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) NodeIdleTimeWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
+		return v.NodeIdleTimeWindow
+	}).(pulumi.StringOutput)
+}
+
+type ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ToClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) Elem() ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy
+		return ret
+	}).(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput)
+}
+
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) MaintenanceAvailabilityWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceAvailabilityWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) MinNodesPerPool() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodesPerPool
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+func (o ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) NodeIdleTimeWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeIdleTimeWindow
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39193,7 +39395,7 @@ type ClusterNodePoolNodeConfig struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic *ClusterNodePoolNodeConfigGvnic `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on.
+	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy *ClusterNodePoolNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -39357,7 +39559,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic ClusterNodePoolNodeConfigGvnicPtrInput `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on.
+	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -39649,7 +39851,7 @@ func (o ClusterNodePoolNodeConfigOutput) Gvnic() ClusterNodePoolNodeConfigGvnicP
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic { return v.Gvnic }).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on.
+// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) HostMaintenancePolicy() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigHostMaintenancePolicy {
 		return v.HostMaintenancePolicy
@@ -40073,7 +40275,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Gvnic() ClusterNodePoolNodeConfigGvn
 	}).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on.
+// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) HostMaintenancePolicy() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigHostMaintenancePolicy {
 		if v == nil {
@@ -43666,8 +43868,10 @@ func (o ClusterNodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput 
 }
 
 type ClusterNodePoolNodeConfigHostMaintenancePolicy struct {
-	// .
+	// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+	OpportunisticMaintenanceStrategy *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
 // ClusterNodePoolNodeConfigHostMaintenancePolicyInput is an input type that accepts ClusterNodePoolNodeConfigHostMaintenancePolicyArgs and ClusterNodePoolNodeConfigHostMaintenancePolicyOutput values.
@@ -43682,8 +43886,10 @@ type ClusterNodePoolNodeConfigHostMaintenancePolicyInput interface {
 }
 
 type ClusterNodePoolNodeConfigHostMaintenancePolicyArgs struct {
-	// .
+	// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+	OpportunisticMaintenanceStrategy ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
 func (ClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
@@ -43763,9 +43969,16 @@ func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToClusterNodePoolN
 	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
-// .
+// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) OpportunisticMaintenanceStrategy() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigHostMaintenancePolicy) *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		return v.OpportunisticMaintenanceStrategy
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
@@ -43792,13 +44005,204 @@ func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) Elem() ClusterN
 	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyOutput)
 }
 
-// .
+// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicy) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.MaintenanceInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) OpportunisticMaintenanceStrategy() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicy) *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticMaintenanceStrategy
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy struct {
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+	MaintenanceAvailabilityWindow string `pulumi:"maintenanceAvailabilityWindow"`
+	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+	MinNodesPerPool int `pulumi:"minNodesPerPool"`
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+	NodeIdleTimeWindow string `pulumi:"nodeIdleTimeWindow"`
+}
+
+// ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput is an input type that accepts ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs and ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput` via:
+//
+//	ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{...}
+type ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs struct {
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+	MaintenanceAvailabilityWindow pulumi.StringInput `pulumi:"maintenanceAvailabilityWindow"`
+	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+	MinNodesPerPool pulumi.IntInput `pulumi:"minNodesPerPool"`
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+	NodeIdleTimeWindow pulumi.StringInput `pulumi:"nodeIdleTimeWindow"`
+}
+
+func (ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return i.ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput)
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return i.ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput).ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput is an input type that accepts ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs, ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtr and ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput
+}
+
+type clusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs
+
+func ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtr(v *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput {
+	return (*clusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return i.ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		return &v
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) MaintenanceAvailabilityWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
+		return v.MaintenanceAvailabilityWindow
+	}).(pulumi.StringOutput)
+}
+
+// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) MinNodesPerPool() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) int {
+		return v.MinNodesPerPool
+	}).(pulumi.IntOutput)
+}
+
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) NodeIdleTimeWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
+		return v.NodeIdleTimeWindow
+	}).(pulumi.StringOutput)
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) Elem() ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy
+		return ret
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput)
+}
+
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) MaintenanceAvailabilityWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceAvailabilityWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) MinNodesPerPool() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodesPerPool
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) NodeIdleTimeWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeIdleTimeWindow
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -60162,6 +60566,8 @@ func (o NodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type NodePoolNodeConfigHostMaintenancePolicy struct {
 	// .
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// Strategy that will trigger maintenance on behalf of the customer.
+	OpportunisticMaintenanceStrategy *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
 // NodePoolNodeConfigHostMaintenancePolicyInput is an input type that accepts NodePoolNodeConfigHostMaintenancePolicyArgs and NodePoolNodeConfigHostMaintenancePolicyOutput values.
@@ -60178,6 +60584,8 @@ type NodePoolNodeConfigHostMaintenancePolicyInput interface {
 type NodePoolNodeConfigHostMaintenancePolicyArgs struct {
 	// .
 	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// Strategy that will trigger maintenance on behalf of the customer.
+	OpportunisticMaintenanceStrategy NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
 func (NodePoolNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
@@ -60262,6 +60670,13 @@ func (o NodePoolNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pul
 	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
+// Strategy that will trigger maintenance on behalf of the customer.
+func (o NodePoolNodeConfigHostMaintenancePolicyOutput) OpportunisticMaintenanceStrategy() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicy) *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		return v.OpportunisticMaintenanceStrategy
+	}).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
 type NodePoolNodeConfigHostMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigHostMaintenancePolicyPtrOutput) ElementType() reflect.Type {
@@ -60293,6 +60708,197 @@ func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() 
 			return nil
 		}
 		return &v.MaintenanceInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Strategy that will trigger maintenance on behalf of the customer.
+func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) OpportunisticMaintenanceStrategy() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicy) *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticMaintenanceStrategy
+	}).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy struct {
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+	MaintenanceAvailabilityWindow string `pulumi:"maintenanceAvailabilityWindow"`
+	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+	MinNodesPerPool int `pulumi:"minNodesPerPool"`
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+	NodeIdleTimeWindow string `pulumi:"nodeIdleTimeWindow"`
+}
+
+// NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput is an input type that accepts NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs and NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput` via:
+//
+//	NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{...}
+type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput
+	ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput
+}
+
+type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs struct {
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+	MaintenanceAvailabilityWindow pulumi.StringInput `pulumi:"maintenanceAvailabilityWindow"`
+	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+	MinNodesPerPool pulumi.IntInput `pulumi:"minNodesPerPool"`
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+	NodeIdleTimeWindow pulumi.StringInput `pulumi:"nodeIdleTimeWindow"`
+}
+
+func (NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return i.ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput)
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return i.ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput).ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput is an input type that accepts NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs, NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtr and NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput` via:
+//
+//	        NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput
+	ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput
+}
+
+type nodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs
+
+func NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtr(v *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput {
+	return (*nodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType)(v)
+}
+
+func (*nodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return i.ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrType) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		return &v
+	}).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
+}
+
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) MaintenanceAvailabilityWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
+		return v.MaintenanceAvailabilityWindow
+	}).(pulumi.StringOutput)
+}
+
+// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) MinNodesPerPool() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) int {
+		return v.MinNodesPerPool
+	}).(pulumi.IntOutput)
+}
+
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) NodeIdleTimeWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
+		return v.NodeIdleTimeWindow
+	}).(pulumi.StringOutput)
+}
+
+type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) ToNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) Elem() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy
+		return ret
+	}).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput)
+}
+
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) MaintenanceAvailabilityWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceAvailabilityWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) MinNodesPerPool() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodesPerPool
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) NodeIdleTimeWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeIdleTimeWindow
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -78012,306 +78618,6 @@ func (o GetClusterNodeConfigEffectiveTaintArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetClusterNodeConfigEffectiveTaintOutput)
 }
 
-type GetClusterNodeConfigEphemeralStorageConfig struct {
-	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-	LocalSsdCount int `pulumi:"localSsdCount"`
-}
-
-// GetClusterNodeConfigEphemeralStorageConfigInput is an input type that accepts GetClusterNodeConfigEphemeralStorageConfigArgs and GetClusterNodeConfigEphemeralStorageConfigOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigEphemeralStorageConfigInput` via:
-//
-//	GetClusterNodeConfigEphemeralStorageConfigArgs{...}
-type GetClusterNodeConfigEphemeralStorageConfigInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigEphemeralStorageConfigOutput() GetClusterNodeConfigEphemeralStorageConfigOutput
-	ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(context.Context) GetClusterNodeConfigEphemeralStorageConfigOutput
-}
-
-type GetClusterNodeConfigEphemeralStorageConfigArgs struct {
-	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
-}
-
-func (GetClusterNodeConfigEphemeralStorageConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigEphemeralStorageConfigArgs) ToGetClusterNodeConfigEphemeralStorageConfigOutput() GetClusterNodeConfigEphemeralStorageConfigOutput {
-	return i.ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigEphemeralStorageConfigArgs) ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEphemeralStorageConfigOutput)
-}
-
-// GetClusterNodeConfigEphemeralStorageConfigArrayInput is an input type that accepts GetClusterNodeConfigEphemeralStorageConfigArray and GetClusterNodeConfigEphemeralStorageConfigArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigEphemeralStorageConfigArrayInput` via:
-//
-//	GetClusterNodeConfigEphemeralStorageConfigArray{ GetClusterNodeConfigEphemeralStorageConfigArgs{...} }
-type GetClusterNodeConfigEphemeralStorageConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodeConfigEphemeralStorageConfigArrayOutput
-	ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigEphemeralStorageConfigArrayOutput
-}
-
-type GetClusterNodeConfigEphemeralStorageConfigArray []GetClusterNodeConfigEphemeralStorageConfigInput
-
-func (GetClusterNodeConfigEphemeralStorageConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigEphemeralStorageConfigArray) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
-	return i.ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigEphemeralStorageConfigArray) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEphemeralStorageConfigArrayOutput)
-}
-
-type GetClusterNodeConfigEphemeralStorageConfigOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigEphemeralStorageConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigEphemeralStorageConfigOutput) ToGetClusterNodeConfigEphemeralStorageConfigOutput() GetClusterNodeConfigEphemeralStorageConfigOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEphemeralStorageConfigOutput) ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigOutput {
-	return o
-}
-
-// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-func (o GetClusterNodeConfigEphemeralStorageConfigOutput) LocalSsdCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigEphemeralStorageConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
-}
-
-type GetClusterNodeConfigEphemeralStorageConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigEphemeralStorageConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigEphemeralStorageConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigEphemeralStorageConfig {
-		return vs[0].([]GetClusterNodeConfigEphemeralStorageConfig)[vs[1].(int)]
-	}).(GetClusterNodeConfigEphemeralStorageConfigOutput)
-}
-
-type GetClusterNodeConfigEphemeralStorageLocalSsdConfig struct {
-	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
-	DataCacheCount int `pulumi:"dataCacheCount"`
-	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-	LocalSsdCount int `pulumi:"localSsdCount"`
-}
-
-// GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput is an input type that accepts GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs and GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput` via:
-//
-//	GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{...}
-type GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput() GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput
-	ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutputWithContext(context.Context) GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput
-}
-
-type GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs struct {
-	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
-	DataCacheCount pulumi.IntInput `pulumi:"dataCacheCount"`
-	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
-}
-
-func (GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput() GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput {
-	return i.ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput)
-}
-
-// GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput is an input type that accepts GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray and GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput` via:
-//
-//	GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray{ GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{...} }
-type GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput() GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput
-	ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput
-}
-
-type GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray []GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput
-
-func (GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigEphemeralStorageLocalSsdConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput() GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput {
-	return i.ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput)
-}
-
-type GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput() GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput {
-	return o
-}
-
-// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
-func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) DataCacheCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigEphemeralStorageLocalSsdConfig) int { return v.DataCacheCount }).(pulumi.IntOutput)
-}
-
-// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) LocalSsdCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigEphemeralStorageLocalSsdConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
-}
-
-type GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigEphemeralStorageLocalSsdConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput() GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigEphemeralStorageLocalSsdConfig {
-		return vs[0].([]GetClusterNodeConfigEphemeralStorageLocalSsdConfig)[vs[1].(int)]
-	}).(GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput)
-}
-
-type GetClusterNodeConfigFastSocket struct {
-	// Whether or not NCCL Fast Socket is enabled
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetClusterNodeConfigFastSocketInput is an input type that accepts GetClusterNodeConfigFastSocketArgs and GetClusterNodeConfigFastSocketOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigFastSocketInput` via:
-//
-//	GetClusterNodeConfigFastSocketArgs{...}
-type GetClusterNodeConfigFastSocketInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigFastSocketOutput() GetClusterNodeConfigFastSocketOutput
-	ToGetClusterNodeConfigFastSocketOutputWithContext(context.Context) GetClusterNodeConfigFastSocketOutput
-}
-
-type GetClusterNodeConfigFastSocketArgs struct {
-	// Whether or not NCCL Fast Socket is enabled
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetClusterNodeConfigFastSocketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigFastSocket)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigFastSocketArgs) ToGetClusterNodeConfigFastSocketOutput() GetClusterNodeConfigFastSocketOutput {
-	return i.ToGetClusterNodeConfigFastSocketOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigFastSocketArgs) ToGetClusterNodeConfigFastSocketOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigFastSocketOutput)
-}
-
-// GetClusterNodeConfigFastSocketArrayInput is an input type that accepts GetClusterNodeConfigFastSocketArray and GetClusterNodeConfigFastSocketArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigFastSocketArrayInput` via:
-//
-//	GetClusterNodeConfigFastSocketArray{ GetClusterNodeConfigFastSocketArgs{...} }
-type GetClusterNodeConfigFastSocketArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigFastSocketArrayOutput() GetClusterNodeConfigFastSocketArrayOutput
-	ToGetClusterNodeConfigFastSocketArrayOutputWithContext(context.Context) GetClusterNodeConfigFastSocketArrayOutput
-}
-
-type GetClusterNodeConfigFastSocketArray []GetClusterNodeConfigFastSocketInput
-
-func (GetClusterNodeConfigFastSocketArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigFastSocket)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigFastSocketArray) ToGetClusterNodeConfigFastSocketArrayOutput() GetClusterNodeConfigFastSocketArrayOutput {
-	return i.ToGetClusterNodeConfigFastSocketArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigFastSocketArray) ToGetClusterNodeConfigFastSocketArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigFastSocketArrayOutput)
-}
-
-type GetClusterNodeConfigFastSocketOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigFastSocketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigFastSocket)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigFastSocketOutput) ToGetClusterNodeConfigFastSocketOutput() GetClusterNodeConfigFastSocketOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigFastSocketOutput) ToGetClusterNodeConfigFastSocketOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketOutput {
-	return o
-}
-
-// Whether or not NCCL Fast Socket is enabled
-func (o GetClusterNodeConfigFastSocketOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigFastSocket) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetClusterNodeConfigFastSocketArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigFastSocketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigFastSocket)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigFastSocketArrayOutput) ToGetClusterNodeConfigFastSocketArrayOutput() GetClusterNodeConfigFastSocketArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigFastSocketArrayOutput) ToGetClusterNodeConfigFastSocketArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigFastSocketArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigFastSocketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigFastSocket {
-		return vs[0].([]GetClusterNodeConfigFastSocket)[vs[1].(int)]
-	}).(GetClusterNodeConfigFastSocketOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationPtrInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
@@ -78665,6 +78971,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), ClusterNodeConfigHostMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyPtrInput)(nil)).Elem(), ClusterNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput)(nil)).Elem(), ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput)(nil)).Elem(), ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigCrashLoopBackOffInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigCrashLoopBackOffArgs{})
@@ -78835,6 +79143,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), ClusterNodePoolNodeConfigHostMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput)(nil)).Elem(), ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs{})
@@ -79027,6 +79337,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), NodePoolNodeConfigHostMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyPtrInput)(nil)).Elem(), NodePoolNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInput)(nil)).Elem(), NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput)(nil)).Elem(), NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigCrashLoopBackOffInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigCrashLoopBackOffArgs{})
@@ -79299,12 +79611,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigWritableCgroupArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigWritableCgroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigFastSocketInput)(nil)).Elem(), GetClusterNodeConfigFastSocketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigFastSocketArrayInput)(nil)).Elem(), GetClusterNodeConfigFastSocketArray{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterBinaryAuthorizationOutput{})
@@ -79657,6 +79963,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigHostMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigHostMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigCrashLoopBackOffOutput{})
@@ -79827,6 +80135,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigHostMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffOutput{})
@@ -80019,6 +80329,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigHostMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigHostMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigCrashLoopBackOffOutput{})
@@ -80291,10 +80603,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigFastSocketOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigFastSocketArrayOutput{})
 }
