@@ -1,3 +1,0 @@
-name: dev
-runtime: go
-description: A minimal Google Cloud Pulumi YAML program
