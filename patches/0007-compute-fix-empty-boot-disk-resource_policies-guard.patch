@@ -5,7 +5,7 @@ Subject: [PATCH] compute: fix empty boot disk resource_policies guard
 
 
 diff --git a/google-beta/services/compute/resource_compute_instance.go b/google-beta/services/compute/resource_compute_instance.go
-index 35a1349911..558e2880a3 100644
+index 35a134991..558e2880a 100644
 --- a/google-beta/services/compute/resource_compute_instance.go
 +++ b/google-beta/services/compute/resource_compute_instance.go
 @@ -24,6 +24,7 @@ import (
@@ -26,7 +26,7 @@ index 35a1349911..558e2880a3 100644
  	}
  
 diff --git a/google-beta/services/compute/resource_compute_instance_internal_test.go b/google-beta/services/compute/resource_compute_instance_internal_test.go
-index 41a22e9fd9..87568027ef 100644
+index 41a22e9fd..87568027e 100644
 --- a/google-beta/services/compute/resource_compute_instance_internal_test.go
 +++ b/google-beta/services/compute/resource_compute_instance_internal_test.go
 @@ -17,9 +17,18 @@
