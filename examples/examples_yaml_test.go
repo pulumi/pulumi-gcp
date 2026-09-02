@@ -23,7 +23,6 @@ func TestHttpHealthCheck(t *testing.T) {
 }
 
 func TestPulumiLabelsSecretYAML(t *testing.T) {
-	t.Skip("Skipping due to secrets bug in YAML")
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),
 		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
