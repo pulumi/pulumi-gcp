@@ -154,7 +154,7 @@ index 41a22e9fd..87568027e 100644
 +
 +	return &transport_tpg.Config{
 +		Client:          server.Client(),
-+		ComputeBasePath: server.URL + "/",
++		CustomEndpoints: map[string]string{"compute_custom_endpoint": server.URL + "/"},
 +		Context:         context.Background(),
 +		Project:         "test-project",
 +		UserAgent:       "test-agent",
