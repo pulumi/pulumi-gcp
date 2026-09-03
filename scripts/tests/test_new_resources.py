@@ -23,7 +23,7 @@ from unittest import mock
 
 from new_resources import __main__ as main
 
-from .cassette import Cassette
+from .cassette import REPO_PLACEHOLDER, Cassette
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TESTDATA = os.path.join(HERE, "testdata")
@@ -71,6 +71,53 @@ class GoldenTest(unittest.TestCase):
                             want = fh.read()
                         got = invoke([*args, *extra], run, repo)
                         self.assertEqual(want, got, f"{scenario}/{name} is stale")
+
+
+class ResolveRefTest(unittest.TestCase):
+    def test_tag_lookup_survives_a_sha_the_clone_does_not_have(self):
+        """A ref resolved over the API need not exist in the local clone.
+
+        Every local git call has to tolerate that, or resolving a ref the
+        checkout has not fetched dies in `git tag --points-at`.
+        """
+        sha = "a" * 40
+        upstream = f"{REPO_PLACEHOLDER}/upstream"
+        cassette = Cassette(
+            "<synthetic>",
+            [
+                {
+                    "argv": ["git", "-C", upstream, "rev-parse", "--verify", "v9.99.0^{commit}"],
+                    "error": "unknown revision",
+                },
+                {
+                    "argv": [
+                        "gh",
+                        "api",
+                        f"repos/{main.TPG_REPO}/commits/v9.99.0",
+                        "--jq",
+                        "{sha}",
+                    ],
+                    "stdout": json.dumps({"sha": sha}),
+                },
+                {
+                    "argv": ["git", "-C", upstream, "tag", "--points-at", sha],
+                    "error": "malformed object name",
+                },
+                {
+                    "argv": [
+                        "gh",
+                        "api",
+                        f"repos/{main.TPG_REPO}/git/ref/tags/v9.99.0",
+                        "--jq",
+                        "{ref}",
+                    ],
+                    "stdout": json.dumps({"ref": "refs/tags/v9.99.0"}),
+                },
+            ],
+        )
+        with fake_repo() as repo:
+            with mock.patch.object(main, "run", cassette.player(repo)):
+                self.assertEqual((sha, "v9.99.0"), main.resolve_ref(repo, "v9.99.0"))
 
 
 class SnakeCaseTest(unittest.TestCase):

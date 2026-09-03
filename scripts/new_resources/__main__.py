@@ -93,7 +93,12 @@ def resolve_ref(repo, ref):
     if sha is None:
         sha = gh_json(f"repos/{TPG_REPO}/commits/{ref}", "{sha}")["sha"]
 
-    tags = run("git", "-C", upstream, "tag", "--points-at", sha).split() if upstream else []
+    tags = []
+    if upstream:
+        try:
+            tags = run("git", "-C", upstream, "tag", "--points-at", sha).split()
+        except RuntimeError:
+            pass  # `sha` came from GitHub and isn't fetched locally.
     if not tags and ref:
         # Cheap case: the ref the caller gave us is itself a tag.
         try:
