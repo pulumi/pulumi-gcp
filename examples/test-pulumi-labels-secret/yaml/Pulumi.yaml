@@ -20,3 +20,5 @@ resources:
         hello: goodbye
         new: defaultlabel
 
+outputs:
+  pulumiLabels: ${my-bucket.pulumiLabels}
