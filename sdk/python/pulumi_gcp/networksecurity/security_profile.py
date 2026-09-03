@@ -563,17 +563,17 @@ class SecurityProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
-                 custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
+                 custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict', 'outputs.SecurityProfileCustomInterceptProfile']]] = None,
+                 custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict', 'outputs.SecurityProfileCustomMirroringProfile']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']]] = None,
+                 threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict']]] = None,
+                 url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None,
                  __props__=None):
         """
         A security profile defines the behavior associated to a profile type.
@@ -762,10 +762,10 @@ class SecurityProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
+        :param pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict', 'outputs.SecurityProfileCustomInterceptProfile']] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
                intercept traffic to third-party firewall appliances.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
+        :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict', 'outputs.SecurityProfileCustomMirroringProfile']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
                mirror traffic to third-party collectors.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -784,11 +784,11 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
                Format: `organizations/{organization_id}` or `projects/{project_id}`.
-        :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
+        :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type of security profile.
                Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
-        :param pulumi.Input[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict']] url_filtering_profile: The url filtering configuration for the security profile.
+        :param pulumi.Input[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']] url_filtering_profile: The url filtering configuration for the security profile.
                Structure is documented below.
         """
         ...
@@ -997,17 +997,17 @@ class SecurityProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
-                 custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
+                 custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict', 'outputs.SecurityProfileCustomInterceptProfile']]] = None,
+                 custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict', 'outputs.SecurityProfileCustomMirroringProfile']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']]] = None,
+                 threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict']]] = None,
+                 url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1049,8 +1049,8 @@ class SecurityProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
-            custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
+            custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict', 'outputs.SecurityProfileCustomInterceptProfile']]] = None,
+            custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict', 'outputs.SecurityProfileCustomMirroringProfile']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1061,10 +1061,10 @@ class SecurityProfile(pulumi.CustomResource):
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']]] = None,
+            threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict']]] = None) -> 'SecurityProfile':
+            url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None) -> 'SecurityProfile':
         """
         Get an existing SecurityProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1073,10 +1073,10 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Time the security profile was created in UTC.
-        :param pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
+        :param pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict', 'outputs.SecurityProfileCustomInterceptProfile']] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
                intercept traffic to third-party firewall appliances.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
+        :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict', 'outputs.SecurityProfileCustomMirroringProfile']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
                mirror traffic to third-party collectors.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1102,12 +1102,12 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
+        :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type of security profile.
                Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile was updated in UTC.
-        :param pulumi.Input[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict']] url_filtering_profile: The url filtering configuration for the security profile.
+        :param pulumi.Input[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']] url_filtering_profile: The url filtering configuration for the security profile.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

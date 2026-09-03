@@ -359,7 +359,7 @@ class FindingsRefinement(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 outcome_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict']]]]] = None,
+                 outcome_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict', 'outputs.FindingsRefinementOutcomeFilter']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -434,7 +434,7 @@ class FindingsRefinement(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Display name of the findings refinement.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict']]]] outcome_filters: The outcome filters for the findings refinement. These allow you to specify
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict', 'outputs.FindingsRefinementOutcomeFilter']]]] outcome_filters: The outcome filters for the findings refinement. These allow you to specify
                filters that are applied to the outcome variables in the detection.
                All filters must be true for a detection to match the findings refinement.
                Structure is documented below.
@@ -538,7 +538,7 @@ class FindingsRefinement(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 outcome_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict']]]]] = None,
+                 outcome_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict', 'outputs.FindingsRefinementOutcomeFilter']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -580,7 +580,7 @@ class FindingsRefinement(pulumi.CustomResource):
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            outcome_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict']]]]] = None,
+            outcome_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict', 'outputs.FindingsRefinementOutcomeFilter']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             query: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -599,7 +599,7 @@ class FindingsRefinement(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Full resource name for the findings refinement.
                Format:
                projects/{project}/locations/{location}/instances/{instance}/findingsRefinements/{findings_refinement}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict']]]] outcome_filters: The outcome filters for the findings refinement. These allow you to specify
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FindingsRefinementOutcomeFilterArgs', 'FindingsRefinementOutcomeFilterArgsDict', 'outputs.FindingsRefinementOutcomeFilter']]]] outcome_filters: The outcome filters for the findings refinement. These allow you to specify
                filters that are applied to the outcome variables in the detection.
                All filters must be true for a detection to match the findings refinement.
                Structure is documented below.

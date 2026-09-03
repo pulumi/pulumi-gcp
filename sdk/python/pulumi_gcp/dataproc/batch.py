@@ -662,15 +662,15 @@ class Batch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']]] = None,
+                 environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict', 'outputs.BatchEnvironmentConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pyspark_batch: pulumi.Input[Optional[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict']]] = None,
-                 runtime_config: pulumi.Input[Optional[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict']]] = None,
-                 spark_batch: pulumi.Input[Optional[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict']]] = None,
-                 spark_r_batch: pulumi.Input[Optional[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict']]] = None,
-                 spark_sql_batch: pulumi.Input[Optional[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict']]] = None,
+                 pyspark_batch: pulumi.Input[Optional[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict', 'outputs.BatchPysparkBatch']]] = None,
+                 runtime_config: pulumi.Input[Optional[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict', 'outputs.BatchRuntimeConfig']]] = None,
+                 spark_batch: pulumi.Input[Optional[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict', 'outputs.BatchSparkBatch']]] = None,
+                 spark_r_batch: pulumi.Input[Optional[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict', 'outputs.BatchSparkRBatch']]] = None,
+                 spark_sql_batch: pulumi.Input[Optional[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict', 'outputs.BatchSparkSqlBatch']]] = None,
                  __props__=None):
         """
         Dataproc Serverless Batches lets you run Spark workloads without requiring you to
@@ -965,7 +965,7 @@ class Batch(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']] environment_config: Environment configuration for the batch execution.
+        :param pulumi.Input[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict', 'outputs.BatchEnvironmentConfig']] environment_config: Environment configuration for the batch execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this batch.
                
@@ -974,15 +974,15 @@ class Batch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location in which the batch will be created in.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict']] pyspark_batch: PySpark batch config.
+        :param pulumi.Input[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict', 'outputs.BatchPysparkBatch']] pyspark_batch: PySpark batch config.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the batch execution.
+        :param pulumi.Input[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict', 'outputs.BatchRuntimeConfig']] runtime_config: Runtime configuration for the batch execution.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict']] spark_batch: Spark batch config.
+        :param pulumi.Input[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict', 'outputs.BatchSparkBatch']] spark_batch: Spark batch config.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict']] spark_r_batch: SparkR batch config.
+        :param pulumi.Input[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict', 'outputs.BatchSparkRBatch']] spark_r_batch: SparkR batch config.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict']] spark_sql_batch: Spark SQL batch config.
+        :param pulumi.Input[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict', 'outputs.BatchSparkSqlBatch']] spark_sql_batch: Spark SQL batch config.
                Structure is documented below.
         """
         ...
@@ -1291,15 +1291,15 @@ class Batch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']]] = None,
+                 environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict', 'outputs.BatchEnvironmentConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pyspark_batch: pulumi.Input[Optional[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict']]] = None,
-                 runtime_config: pulumi.Input[Optional[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict']]] = None,
-                 spark_batch: pulumi.Input[Optional[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict']]] = None,
-                 spark_r_batch: pulumi.Input[Optional[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict']]] = None,
-                 spark_sql_batch: pulumi.Input[Optional[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict']]] = None,
+                 pyspark_batch: pulumi.Input[Optional[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict', 'outputs.BatchPysparkBatch']]] = None,
+                 runtime_config: pulumi.Input[Optional[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict', 'outputs.BatchRuntimeConfig']]] = None,
+                 spark_batch: pulumi.Input[Optional[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict', 'outputs.BatchSparkBatch']]] = None,
+                 spark_r_batch: pulumi.Input[Optional[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict', 'outputs.BatchSparkRBatch']]] = None,
+                 spark_sql_batch: pulumi.Input[Optional[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict', 'outputs.BatchSparkSqlBatch']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1349,21 +1349,21 @@ class Batch(pulumi.CustomResource):
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']]] = None,
+            environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict', 'outputs.BatchEnvironmentConfig']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             operation: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            pyspark_batch: pulumi.Input[Optional[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict']]] = None,
-            runtime_config: pulumi.Input[Optional[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict']]] = None,
-            runtime_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchRuntimeInfoArgs', 'BatchRuntimeInfoArgsDict']]]]] = None,
-            spark_batch: pulumi.Input[Optional[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict']]] = None,
-            spark_r_batch: pulumi.Input[Optional[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict']]] = None,
-            spark_sql_batch: pulumi.Input[Optional[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict']]] = None,
+            pyspark_batch: pulumi.Input[Optional[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict', 'outputs.BatchPysparkBatch']]] = None,
+            runtime_config: pulumi.Input[Optional[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict', 'outputs.BatchRuntimeConfig']]] = None,
+            runtime_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchRuntimeInfoArgs', 'BatchRuntimeInfoArgsDict', 'outputs.BatchRuntimeInfo']]]]] = None,
+            spark_batch: pulumi.Input[Optional[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict', 'outputs.BatchSparkBatch']]] = None,
+            spark_r_batch: pulumi.Input[Optional[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict', 'outputs.BatchSparkRBatch']]] = None,
+            spark_sql_batch: pulumi.Input[Optional[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict', 'outputs.BatchSparkSqlBatch']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            state_histories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchStateHistoryArgs', 'BatchStateHistoryArgsDict']]]]] = None,
+            state_histories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchStateHistoryArgs', 'BatchStateHistoryArgsDict', 'outputs.BatchStateHistory']]]]] = None,
             state_message: pulumi.Input[Optional[_builtins.str]] = None,
             state_time: pulumi.Input[Optional[_builtins.str]] = None,
             uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'Batch':
@@ -1385,7 +1385,7 @@ class Batch(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']] environment_config: Environment configuration for the batch execution.
+        :param pulumi.Input[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict', 'outputs.BatchEnvironmentConfig']] environment_config: Environment configuration for the batch execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this batch.
                
@@ -1398,21 +1398,21 @@ class Batch(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict']] pyspark_batch: PySpark batch config.
+        :param pulumi.Input[Union['BatchPysparkBatchArgs', 'BatchPysparkBatchArgsDict', 'outputs.BatchPysparkBatch']] pyspark_batch: PySpark batch config.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the batch execution.
+        :param pulumi.Input[Union['BatchRuntimeConfigArgs', 'BatchRuntimeConfigArgsDict', 'outputs.BatchRuntimeConfig']] runtime_config: Runtime configuration for the batch execution.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchRuntimeInfoArgs', 'BatchRuntimeInfoArgsDict']]]] runtime_infos: Runtime information about batch execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchRuntimeInfoArgs', 'BatchRuntimeInfoArgsDict', 'outputs.BatchRuntimeInfo']]]] runtime_infos: Runtime information about batch execution.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict']] spark_batch: Spark batch config.
+        :param pulumi.Input[Union['BatchSparkBatchArgs', 'BatchSparkBatchArgsDict', 'outputs.BatchSparkBatch']] spark_batch: Spark batch config.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict']] spark_r_batch: SparkR batch config.
+        :param pulumi.Input[Union['BatchSparkRBatchArgs', 'BatchSparkRBatchArgsDict', 'outputs.BatchSparkRBatch']] spark_r_batch: SparkR batch config.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict']] spark_sql_batch: Spark SQL batch config.
+        :param pulumi.Input[Union['BatchSparkSqlBatchArgs', 'BatchSparkSqlBatchArgsDict', 'outputs.BatchSparkSqlBatch']] spark_sql_batch: Spark SQL batch config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: (Output)
                The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchStateHistoryArgs', 'BatchStateHistoryArgsDict']]]] state_histories: Historical state information for the batch.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BatchStateHistoryArgs', 'BatchStateHistoryArgsDict', 'outputs.BatchStateHistory']]]] state_histories: Historical state information for the batch.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state_message: (Output)
                Details about the state at this point in history.

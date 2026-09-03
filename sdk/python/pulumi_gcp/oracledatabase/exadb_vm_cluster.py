@@ -608,7 +608,7 @@ class ExadbVmCluster(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict', 'outputs.ExadbVmClusterProperties']]] = None,
                  __props__=None):
         """
         Description
@@ -764,7 +764,7 @@ class ExadbVmCluster(pulumi.CustomResource):
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict']] properties: The properties of an ExadbVmCluster.
+        :param pulumi.Input[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict', 'outputs.ExadbVmClusterProperties']] properties: The properties of an ExadbVmCluster.
                Structure is documented below.
         """
         ...
@@ -920,7 +920,7 @@ class ExadbVmCluster(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict', 'outputs.ExadbVmClusterProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -981,14 +981,14 @@ class ExadbVmCluster(pulumi.CustomResource):
             entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
             exadb_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
-            identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExadbVmClusterIdentityConnectorArgs', 'ExadbVmClusterIdentityConnectorArgsDict']]]]] = None,
+            identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExadbVmClusterIdentityConnectorArgs', 'ExadbVmClusterIdentityConnectorArgsDict', 'outputs.ExadbVmClusterIdentityConnector']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             odb_network: pulumi.Input[Optional[_builtins.str]] = None,
             odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict', 'outputs.ExadbVmClusterProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ExadbVmCluster':
         """
         Get an existing ExadbVmCluster resource's state with the given name, id, and optional extra
@@ -1021,7 +1021,7 @@ class ExadbVmCluster(pulumi.CustomResource):
                Example: us-east4-b-r2.
                During creation, the system will pick the zone assigned to the
                ExascaleDbStorageVault.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExadbVmClusterIdentityConnectorArgs', 'ExadbVmClusterIdentityConnectorArgsDict']]]] identity_connectors: The identity connector details which will allow OCI to securely access
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExadbVmClusterIdentityConnectorArgs', 'ExadbVmClusterIdentityConnectorArgsDict', 'outputs.ExadbVmClusterIdentityConnector']]]] identity_connectors: The identity connector details which will allow OCI to securely access
                the resources in the customer project.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels or tags associated with the ExadbVmCluster.
@@ -1039,7 +1039,7 @@ class ExadbVmCluster(pulumi.CustomResource):
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict']] properties: The properties of an ExadbVmCluster.
+        :param pulumi.Input[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict', 'outputs.ExadbVmClusterProperties']] properties: The properties of an ExadbVmCluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

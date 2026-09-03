@@ -894,7 +894,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            public_delegated_sub_prefixs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs', 'PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict']]]]] = None,
+            public_delegated_sub_prefixs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs', 'PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict', 'outputs.PublicDelegatedPrefixPublicDelegatedSubPrefix']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'PublicDelegatedPrefix':
         """
@@ -940,7 +940,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs', 'PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict']]]] public_delegated_sub_prefixs: List of sub public delegated fixes for BYO IP functionality.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs', 'PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict', 'outputs.PublicDelegatedPrefixPublicDelegatedSubPrefix']]]] public_delegated_sub_prefixs: List of sub public delegated fixes for BYO IP functionality.
                Each item in this array represents a sub prefix that can be
                used to create addresses or further allocations.
                Structure is documented below.

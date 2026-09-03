@@ -379,7 +379,7 @@ class ResizeRequest(pulumi.CustomResource):
                  instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
+                 requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict', 'outputs.ResizeRequestRequestedRunDuration']]] = None,
                  resize_by: pulumi.Input[Optional[_builtins.int]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -492,7 +492,7 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        :param pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict', 'outputs.ResizeRequestRequestedRunDuration']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[_builtins.str] zone: The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
@@ -619,7 +619,7 @@ class ResizeRequest(pulumi.CustomResource):
                  instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
+                 requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict', 'outputs.ResizeRequestRequestedRunDuration']]] = None,
                  resize_by: pulumi.Input[Optional[_builtins.int]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -662,10 +662,10 @@ class ResizeRequest(pulumi.CustomResource):
             instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
+            requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict', 'outputs.ResizeRequestRequestedRunDuration']]] = None,
             resize_by: pulumi.Input[Optional[_builtins.int]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict', 'outputs.ResizeRequestStatus']]]]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResizeRequest':
         """
         Get an existing ResizeRequest resource's state with the given name, id, and optional extra
@@ -686,11 +686,11 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        :param pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict', 'outputs.ResizeRequestRequestedRunDuration']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[_builtins.str] state: Current state of the request.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict']]]] statuses: Status of the request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict', 'outputs.ResizeRequestStatus']]]] statuses: Status of the request.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] zone: The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """

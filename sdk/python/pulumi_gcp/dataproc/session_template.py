@@ -481,14 +481,14 @@ class SessionTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']]] = None,
-                 jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']]] = None,
+                 environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict', 'outputs.SessionTemplateEnvironmentConfig']]] = None,
+                 jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict', 'outputs.SessionTemplateJupyterSession']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 runtime_config: pulumi.Input[Optional[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict']]] = None,
-                 spark_connect_session: pulumi.Input[Optional[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict']]] = None,
+                 runtime_config: pulumi.Input[Optional[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict', 'outputs.SessionTemplateRuntimeConfig']]] = None,
+                 spark_connect_session: pulumi.Input[Optional[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict', 'outputs.SessionTemplateSparkConnectSession']]] = None,
                  __props__=None):
         """
         A Dataproc Serverless session template defines the configuration settings for
@@ -683,9 +683,9 @@ class SessionTemplate(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']] environment_config: Environment configuration for the session execution.
+        :param pulumi.Input[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict', 'outputs.SessionTemplateEnvironmentConfig']] environment_config: Environment configuration for the session execution.
                Structure is documented below.
-        :param pulumi.Input[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']] jupyter_session: Jupyter configuration for an interactive session.
+        :param pulumi.Input[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict', 'outputs.SessionTemplateJupyterSession']] jupyter_session: Jupyter configuration for an interactive session.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this session template.
                
@@ -696,9 +696,9 @@ class SessionTemplate(pulumi.CustomResource):
                projects/{project}/locations/{location}/sessionTemplates/{template_id}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the session template.
+        :param pulumi.Input[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict', 'outputs.SessionTemplateRuntimeConfig']] runtime_config: Runtime configuration for the session template.
                Structure is documented below.
-        :param pulumi.Input[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict']] spark_connect_session: Spark connect configuration for an interactive session.
+        :param pulumi.Input[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict', 'outputs.SessionTemplateSparkConnectSession']] spark_connect_session: Spark connect configuration for an interactive session.
         """
         ...
     @overload
@@ -907,14 +907,14 @@ class SessionTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']]] = None,
-                 jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']]] = None,
+                 environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict', 'outputs.SessionTemplateEnvironmentConfig']]] = None,
+                 jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict', 'outputs.SessionTemplateJupyterSession']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 runtime_config: pulumi.Input[Optional[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict']]] = None,
-                 spark_connect_session: pulumi.Input[Optional[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict']]] = None,
+                 runtime_config: pulumi.Input[Optional[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict', 'outputs.SessionTemplateRuntimeConfig']]] = None,
+                 spark_connect_session: pulumi.Input[Optional[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict', 'outputs.SessionTemplateSparkConnectSession']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -955,15 +955,15 @@ class SessionTemplate(pulumi.CustomResource):
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']]] = None,
-            jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']]] = None,
+            environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict', 'outputs.SessionTemplateEnvironmentConfig']]] = None,
+            jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict', 'outputs.SessionTemplateJupyterSession']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            runtime_config: pulumi.Input[Optional[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict']]] = None,
-            spark_connect_session: pulumi.Input[Optional[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict']]] = None,
+            runtime_config: pulumi.Input[Optional[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict', 'outputs.SessionTemplateRuntimeConfig']]] = None,
+            spark_connect_session: pulumi.Input[Optional[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict', 'outputs.SessionTemplateSparkConnectSession']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'SessionTemplate':
         """
@@ -982,9 +982,9 @@ class SessionTemplate(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']] environment_config: Environment configuration for the session execution.
+        :param pulumi.Input[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict', 'outputs.SessionTemplateEnvironmentConfig']] environment_config: Environment configuration for the session execution.
                Structure is documented below.
-        :param pulumi.Input[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']] jupyter_session: Jupyter configuration for an interactive session.
+        :param pulumi.Input[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict', 'outputs.SessionTemplateJupyterSession']] jupyter_session: Jupyter configuration for an interactive session.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this session template.
                
@@ -997,9 +997,9 @@ class SessionTemplate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the session template.
+        :param pulumi.Input[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict', 'outputs.SessionTemplateRuntimeConfig']] runtime_config: Runtime configuration for the session template.
                Structure is documented below.
-        :param pulumi.Input[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict']] spark_connect_session: Spark connect configuration for an interactive session.
+        :param pulumi.Input[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict', 'outputs.SessionTemplateSparkConnectSession']] spark_connect_session: Spark connect configuration for an interactive session.
         :param pulumi.Input[_builtins.str] update_time: The time when the session template was updated.
         :param pulumi.Input[_builtins.str] uuid: A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
         """

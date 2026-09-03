@@ -476,7 +476,7 @@ class RegionNetworkPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyAssociationArgs', 'RegionNetworkPolicyAssociationArgsDict']]]]] = None,
+            associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyAssociationArgs', 'RegionNetworkPolicyAssociationArgsDict', 'outputs.RegionNetworkPolicyAssociation']]]]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -494,7 +494,7 @@ class RegionNetworkPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkPolicyAssociationArgs', 'RegionNetworkPolicyAssociationArgsDict']]]] associations: [Output Only] A list of associations that belong to this network policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkPolicyAssociationArgs', 'RegionNetworkPolicyAssociationArgsDict', 'outputs.RegionNetworkPolicyAssociation']]]] associations: [Output Only] A list of associations that belong to this network policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

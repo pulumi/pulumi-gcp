@@ -1007,21 +1007,21 @@ class WorkerPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict', 'outputs.WorkerPoolBinaryAuthorization']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
+                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict', 'outputs.WorkerPoolInstanceSplit']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
-                 template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
+                 scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict', 'outputs.WorkerPoolScaling']]] = None,
+                 template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict', 'outputs.WorkerPoolTemplate']]] = None,
                  __props__=None):
         """
         WorkerPool acts as a top-level container that manages a set of configurations and revision templates which implement a pull-based workload. WorkerPool exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
@@ -1497,7 +1497,7 @@ class WorkerPool(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict', 'outputs.WorkerPoolBinaryAuthorization']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
@@ -1519,7 +1519,7 @@ class WorkerPool(pulumi.CustomResource):
                or `terraform destroy` that would delete the WorkerPool will fail.
                When the field is set to false, deleting the WorkerPool is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the WorkerPool. This field currently has a 512-character limit.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]] instance_splits: Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict', 'outputs.WorkerPoolInstanceSplit']]]] instance_splits: Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -1535,9 +1535,9 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the WorkerPool.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']] scaling: Scaling settings that apply to the worker pool.
+        :param pulumi.Input[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict', 'outputs.WorkerPoolScaling']] scaling: Scaling settings that apply to the worker pool.
                Structure is documented below.
-        :param pulumi.Input[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']] template: The template used to create revisions for this WorkerPool.
+        :param pulumi.Input[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict', 'outputs.WorkerPoolTemplate']] template: The template used to create revisions for this WorkerPool.
                Structure is documented below.
         """
         ...
@@ -2028,21 +2028,21 @@ class WorkerPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict', 'outputs.WorkerPoolBinaryAuthorization']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
+                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict', 'outputs.WorkerPoolInstanceSplit']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
-                 template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
+                 scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict', 'outputs.WorkerPoolScaling']]] = None,
+                 template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict', 'outputs.WorkerPoolTemplate']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2104,10 +2104,10 @@ class WorkerPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict', 'outputs.WorkerPoolBinaryAuthorization']]] = None,
             client: pulumi.Input[Optional[_builtins.str]] = None,
             client_version: pulumi.Input[Optional[_builtins.str]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict', 'outputs.WorkerPoolCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2120,8 +2120,8 @@ class WorkerPool(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             generation: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_split_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitStatusArgs', 'WorkerPoolInstanceSplitStatusArgsDict']]]]] = None,
-            instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
+            instance_split_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitStatusArgs', 'WorkerPoolInstanceSplitStatusArgsDict', 'outputs.WorkerPoolInstanceSplitStatus']]]]] = None,
+            instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict', 'outputs.WorkerPoolInstanceSplit']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
             latest_created_revision: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2133,9 +2133,9 @@ class WorkerPool(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
-            scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
-            template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
-            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolTerminalConditionArgs', 'WorkerPoolTerminalConditionArgsDict']]]]] = None,
+            scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict', 'outputs.WorkerPoolScaling']]] = None,
+            template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict', 'outputs.WorkerPoolTemplate']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolTerminalConditionArgs', 'WorkerPoolTerminalConditionArgsDict', 'outputs.WorkerPoolTerminalCondition']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerPool':
         """
@@ -2151,11 +2151,11 @@ class WorkerPool(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict', 'outputs.WorkerPoolBinaryAuthorization']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the WorkerPool does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict', 'outputs.WorkerPoolCondition']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the WorkerPool does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] creator: Email address of the authenticated creator.
@@ -2183,9 +2183,9 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[_builtins.str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitStatusArgs', 'WorkerPoolInstanceSplitStatusArgsDict']]]] instance_split_statuses: Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitStatusArgs', 'WorkerPoolInstanceSplitStatusArgsDict', 'outputs.WorkerPoolInstanceSplitStatus']]]] instance_split_statuses: Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]] instance_splits: Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict', 'outputs.WorkerPoolInstanceSplit']]]] instance_splits: Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -2211,11 +2211,11 @@ class WorkerPool(pulumi.CustomResource):
                When a new WorkerPool is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created WorkerPools. Additional information on the failure can be found in terminalCondition and conditions.
-        :param pulumi.Input[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']] scaling: Scaling settings that apply to the worker pool.
+        :param pulumi.Input[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict', 'outputs.WorkerPoolScaling']] scaling: Scaling settings that apply to the worker pool.
                Structure is documented below.
-        :param pulumi.Input[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']] template: The template used to create revisions for this WorkerPool.
+        :param pulumi.Input[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict', 'outputs.WorkerPoolTemplate']] template: The template used to create revisions for this WorkerPool.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolTerminalConditionArgs', 'WorkerPoolTerminalConditionArgsDict']]]] terminal_conditions: The Condition of this WorkerPool, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolTerminalConditionArgs', 'WorkerPoolTerminalConditionArgsDict', 'outputs.WorkerPoolTerminalCondition']]]] terminal_conditions: The Condition of this WorkerPool, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[_builtins.str] update_time: The last-modified time.

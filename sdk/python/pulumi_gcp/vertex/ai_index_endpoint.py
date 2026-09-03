@@ -530,10 +530,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict', 'outputs.AiIndexEndpointEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiIndexEndpointPrivateServiceConnectConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -639,7 +639,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        :param pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict', 'outputs.AiIndexEndpointEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -648,7 +648,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiIndexEndpointPrivateServiceConnectConfig']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -770,10 +770,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict', 'outputs.AiIndexEndpointEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiIndexEndpointPrivateServiceConnectConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -822,12 +822,12 @@ class AiIndexEndpoint(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict', 'outputs.AiIndexEndpointEncryptionSpec']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
-            private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+            private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiIndexEndpointPrivateServiceConnectConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             public_endpoint_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
             public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -851,7 +851,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        :param pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict', 'outputs.AiIndexEndpointEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
@@ -862,7 +862,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
                [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiIndexEndpointPrivateServiceConnectConfig']] private_service_connect_config: Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

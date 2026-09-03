@@ -522,15 +522,15 @@ class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
-                 advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict', 'outputs.SecurityPolicyAdaptiveProtectionConfig']]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.SecurityPolicyAdvancedOptionsConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
+                 recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict', 'outputs.SecurityPolicyRecaptchaOptionsConfig']]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict', 'outputs.SecurityPolicyRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -728,8 +728,8 @@ class SecurityPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict', 'outputs.SecurityPolicyAdaptiveProtectionConfig']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.SecurityPolicyAdvancedOptionsConfig']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -746,8 +746,8 @@ class SecurityPolicy(pulumi.CustomResource):
                ***
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default
+        :param pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict', 'outputs.SecurityPolicyRecaptchaOptionsConfig']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict', 'outputs.SecurityPolicyRule']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
@@ -973,15 +973,15 @@ class SecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
-                 advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict', 'outputs.SecurityPolicyAdaptiveProtectionConfig']]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.SecurityPolicyAdvancedOptionsConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
+                 recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict', 'outputs.SecurityPolicyRecaptchaOptionsConfig']]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict', 'outputs.SecurityPolicyRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1019,8 +1019,8 @@ class SecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
-            advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+            adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict', 'outputs.SecurityPolicyAdaptiveProtectionConfig']]] = None,
+            advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.SecurityPolicyAdvancedOptionsConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1030,8 +1030,8 @@ class SecurityPolicy(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
+            recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict', 'outputs.SecurityPolicyRecaptchaOptionsConfig']]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict', 'outputs.SecurityPolicyRule']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityPolicy':
         """
@@ -1041,8 +1041,8 @@ class SecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict', 'outputs.SecurityPolicyAdaptiveProtectionConfig']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.SecurityPolicyAdvancedOptionsConfig']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1063,8 +1063,8 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default
+        :param pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict', 'outputs.SecurityPolicyRecaptchaOptionsConfig']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict', 'outputs.SecurityPolicyRule']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.

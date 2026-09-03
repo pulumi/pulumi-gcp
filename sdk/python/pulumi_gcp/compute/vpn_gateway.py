@@ -369,7 +369,7 @@ class VPNGateway(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict', 'outputs.VPNGatewayParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -529,7 +529,7 @@ class VPNGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict', 'outputs.VPNGatewayParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -699,7 +699,7 @@ class VPNGateway(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict', 'outputs.VPNGatewayParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -739,7 +739,7 @@ class VPNGateway(pulumi.CustomResource):
             gateway_id: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict', 'outputs.VPNGatewayParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'VPNGateway':
@@ -767,7 +767,7 @@ class VPNGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
-        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict', 'outputs.VPNGatewayParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

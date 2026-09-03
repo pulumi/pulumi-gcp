@@ -600,17 +600,17 @@ class Toolset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']]] = None,
+                 connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict', 'outputs.ToolsetConnectorToolset']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
-                 open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
+                 mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict', 'outputs.ToolsetMcpToolset']]] = None,
+                 open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict', 'outputs.ToolsetOpenApiToolset']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict', 'outputs.ToolsetToolFakeConfig']]] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1161,7 +1161,7 @@ class Toolset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
+        :param pulumi.Input[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict', 'outputs.ToolsetConnectorToolset']] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1175,10 +1175,10 @@ class Toolset(pulumi.CustomResource):
                SYNCHRONOUS
                ASYNCHRONOUS
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
+        :param pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict', 'outputs.ToolsetMcpToolset']] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
                server.
                Structure is documented below.
-        :param pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']] open_api_toolset: A toolset that contains a list of tools that are defined by an OpenAPI
+        :param pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict', 'outputs.ToolsetOpenApiToolset']] open_api_toolset: A toolset that contains a list of tools that are defined by an OpenAPI
                schema.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1186,7 +1186,7 @@ class Toolset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] timeout: The timeout for the toolset execution. If not set, the default timeout is
                30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
                toolsets.
-        :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']] tool_fake_config: Configuration for tools behavior in fake mode.
+        :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict', 'outputs.ToolsetToolFakeConfig']] tool_fake_config: Configuration for tools behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
                the toolset's resource name. If not provided, a unique ID will be
@@ -1759,17 +1759,17 @@ class Toolset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']]] = None,
+                 connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict', 'outputs.ToolsetConnectorToolset']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
-                 open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
+                 mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict', 'outputs.ToolsetMcpToolset']]] = None,
+                 open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict', 'outputs.ToolsetOpenApiToolset']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict', 'outputs.ToolsetToolFakeConfig']]] = None,
                  toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1814,7 +1814,7 @@ class Toolset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app: pulumi.Input[Optional[_builtins.str]] = None,
-            connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']]] = None,
+            connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict', 'outputs.ToolsetConnectorToolset']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1822,12 +1822,12 @@ class Toolset(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             execution_type: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']]] = None,
+            mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict', 'outputs.ToolsetMcpToolset']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']]] = None,
+            open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict', 'outputs.ToolsetOpenApiToolset']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             timeout: pulumi.Input[Optional[_builtins.str]] = None,
-            tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']]] = None,
+            tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict', 'outputs.ToolsetToolFakeConfig']]] = None,
             toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Toolset':
         """
@@ -1838,7 +1838,7 @@ class Toolset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict']] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
+        :param pulumi.Input[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict', 'outputs.ToolsetConnectorToolset']] connector_toolset: A toolset that generates tools from an Integration Connectors Connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the toolset was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1856,13 +1856,13 @@ class Toolset(pulumi.CustomResource):
                SYNCHRONOUS
                ASYNCHRONOUS
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict']] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
+        :param pulumi.Input[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict', 'outputs.ToolsetMcpToolset']] mcp_toolset: A toolset that contains a list of tools that are offered by the MCP
                server.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of the toolset.
                Format:
                `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-        :param pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict']] open_api_toolset: A toolset that contains a list of tools that are defined by an OpenAPI
+        :param pulumi.Input[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict', 'outputs.ToolsetOpenApiToolset']] open_api_toolset: A toolset that contains a list of tools that are defined by an OpenAPI
                schema.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1870,7 +1870,7 @@ class Toolset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] timeout: The timeout for the toolset execution. If not set, the default timeout is
                30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS`
                toolsets.
-        :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict']] tool_fake_config: Configuration for tools behavior in fake mode.
+        :param pulumi.Input[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict', 'outputs.ToolsetToolFakeConfig']] tool_fake_config: Configuration for tools behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] toolset_id: The ID to use for the toolset, which will become the final component of
                the toolset's resource name. If not provided, a unique ID will be

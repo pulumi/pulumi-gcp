@@ -312,7 +312,7 @@ class Datastore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_config: pulumi.Input[Optional[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict']]] = None,
+                 datastore_config: pulumi.Input[Optional[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict', 'outputs.DatastoreDatastoreConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -421,7 +421,7 @@ class Datastore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict']] datastore_config: Configuration of the datastore target.
+        :param pulumi.Input[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict', 'outputs.DatastoreDatastoreConfig']] datastore_config: Configuration of the datastore target.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -557,7 +557,7 @@ class Datastore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_config: pulumi.Input[Optional[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict']]] = None,
+                 datastore_config: pulumi.Input[Optional[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict', 'outputs.DatastoreDatastoreConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -600,7 +600,7 @@ class Datastore(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            datastore_config: pulumi.Input[Optional[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict']]] = None,
+            datastore_config: pulumi.Input[Optional[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict', 'outputs.DatastoreDatastoreConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             last_update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -617,7 +617,7 @@ class Datastore(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time at which the datastore was created in milliseconds since the epoch.
-        :param pulumi.Input[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict']] datastore_config: Configuration of the datastore target.
+        :param pulumi.Input[Union['DatastoreDatastoreConfigArgs', 'DatastoreDatastoreConfigArgsDict', 'outputs.DatastoreDatastoreConfig']] datastore_config: Configuration of the datastore target.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -778,7 +778,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             resource: pulumi.Input[Optional[_builtins.str]] = None,
             resource_type: pulumi.Input[Optional[_builtins.str]] = None,
-            rules_config_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict']]]]] = None,
+            rules_config_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict', 'outputs.BackupPlanAssociationRulesConfigInfo']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupPlanAssociation':
         """
         Get an existing BackupPlanAssociation resource's state with the given name, id, and optional extra
@@ -809,7 +809,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict']]]] rules_config_infos: Message for rules config info
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict', 'outputs.BackupPlanAssociationRulesConfigInfo']]]] rules_config_infos: Message for rules config info
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the instance was updated.
         """

@@ -779,11 +779,11 @@ class Secret(pulumi.CustomResource):
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 replication: pulumi.Input[Optional[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
-                 rotation: pulumi.Input[Optional[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
+                 replication: pulumi.Input[Optional[Union['SecretReplicationArgs', 'SecretReplicationArgsDict', 'outputs.SecretReplication']]] = None,
+                 rotation: pulumi.Input[Optional[Union['SecretRotationArgs', 'SecretRotationArgsDict', 'outputs.SecretRotation']]] = None,
                  secret_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict', 'outputs.SecretTopic']]]]] = None,
                  ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  version_aliases: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version_destroy_ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -939,16 +939,16 @@ class Secret(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+        :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict', 'outputs.SecretReplication']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict', 'outputs.SecretRotation']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict', 'outputs.SecretTopic']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ttl: The TTL for the Secret.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -1104,11 +1104,11 @@ class Secret(pulumi.CustomResource):
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 replication: pulumi.Input[Optional[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
-                 rotation: pulumi.Input[Optional[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
+                 replication: pulumi.Input[Optional[Union['SecretReplicationArgs', 'SecretReplicationArgsDict', 'outputs.SecretReplication']]] = None,
+                 rotation: pulumi.Input[Optional[Union['SecretRotationArgs', 'SecretRotationArgsDict', 'outputs.SecretRotation']]] = None,
                  secret_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict', 'outputs.SecretTopic']]]]] = None,
                  ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  version_aliases: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version_destroy_ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1165,11 +1165,11 @@ class Secret(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            replication: pulumi.Input[Optional[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
-            rotation: pulumi.Input[Optional[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
+            replication: pulumi.Input[Optional[Union['SecretReplicationArgs', 'SecretReplicationArgsDict', 'outputs.SecretReplication']]] = None,
+            rotation: pulumi.Input[Optional[Union['SecretRotationArgs', 'SecretRotationArgsDict', 'outputs.SecretRotation']]] = None,
             secret_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            topics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
+            topics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict', 'outputs.SecretTopic']]]]] = None,
             ttl: pulumi.Input[Optional[_builtins.str]] = None,
             version_aliases: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             version_destroy_ttl: pulumi.Input[Optional[_builtins.str]] = None) -> 'Secret':
@@ -1225,16 +1225,16 @@ class Secret(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+        :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict', 'outputs.SecretReplication']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict', 'outputs.SecretRotation']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict', 'outputs.SecretTopic']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ttl: The TTL for the Secret.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".

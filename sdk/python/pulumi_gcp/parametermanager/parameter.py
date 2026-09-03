@@ -660,7 +660,7 @@ class Parameter(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
-            policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterPolicyMemberArgs', 'ParameterPolicyMemberArgsDict']]]]] = None,
+            policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterPolicyMemberArgs', 'ParameterPolicyMemberArgsDict', 'outputs.ParameterPolicyMember']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Parameter':
@@ -698,7 +698,7 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name of the Parameter. Format:
                `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
         :param pulumi.Input[_builtins.str] parameter_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterPolicyMemberArgs', 'ParameterPolicyMemberArgsDict']]]] policy_members: Policy member strings of a Google Cloud resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterPolicyMemberArgs', 'ParameterPolicyMemberArgsDict', 'outputs.ParameterPolicyMember']]]] policy_members: Policy member strings of a Google Cloud resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

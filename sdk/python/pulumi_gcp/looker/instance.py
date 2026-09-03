@@ -1089,29 +1089,29 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
+                 admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict', 'outputs.InstanceAdminSettings']]] = None,
                  consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
-                 controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+                 controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict', 'outputs.InstanceControlledEgressConfig']]] = None,
                  controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict', 'outputs.InstanceCustomDomain']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict', 'outputs.InstanceDenyMaintenancePeriod']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict', 'outputs.InstanceEncryptionConfig']]] = None,
                  fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict', 'outputs.InstanceMaintenanceWindow']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
-                 periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
+                 oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict', 'outputs.InstanceOauthConfig']]] = None,
+                 periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict', 'outputs.InstancePeriodicExportConfig']]] = None,
                  platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+                 psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict', 'outputs.InstancePscConfig']]] = None,
                  psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
+                 user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict', 'outputs.InstanceUserMetadata']]] = None,
                  __props__=None):
         """
         A Google Cloud Looker instance.
@@ -1352,15 +1352,15 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']] admin_settings: Looker instance Admin settings.
+        :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict', 'outputs.InstanceAdminSettings']] admin_settings: Looker instance Admin settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
-        :param pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']] controlled_egress_config: Controlled egress configuration.
+        :param pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict', 'outputs.InstanceControlledEgressConfig']] controlled_egress_config: Controlled egress configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] controlled_egress_enabled: Whether controlled egress is enabled on the Looker instance.
-        :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
+        :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict', 'outputs.InstanceCustomDomain']] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
@@ -1374,23 +1374,23 @@ class Instance(pulumi.CustomResource):
                When set to "DELETE", the command will behave as if set to "DEFAULT".
                
                Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
-        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
+        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict', 'outputs.InstanceDenyMaintenancePeriod']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
+        :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict', 'outputs.InstanceEncryptionConfig']] encryption_config: Looker instance encryption settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input[_builtins.bool] gemini_enabled: Gemini enablement for Looker (Google Cloud Core).
-        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance.
+        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict', 'outputs.InstanceMaintenanceWindow']] maintenance_window: Maintenance window for an instance.
                Maintenance of your instance takes place once a month, and will require
                your instance to be restarted during updates, which will temporarily
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
+        :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict', 'outputs.InstanceOauthConfig']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
-        :param pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']] periodic_export_config: Configuration for periodic export.
+        :param pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict', 'outputs.InstancePeriodicExportConfig']] periodic_export_config: Configuration for periodic export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -1409,14 +1409,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+        :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict', 'outputs.InstancePscConfig']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[_builtins.bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[_builtins.str] region: The name of the Looker region of the instance.
         :param pulumi.Input[_builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
                private service access connection. User may or may not specify this in a request.
-        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance.
+        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict', 'outputs.InstanceUserMetadata']] user_metadata: Metadata about users for a Looker instance.
                These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
                There are ten Standard and two Developer users included in the cost of the product.
                You can allocate additional Standard, Viewer, and Developer users for this instance.
@@ -1683,29 +1683,29 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
+                 admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict', 'outputs.InstanceAdminSettings']]] = None,
                  consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
-                 controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+                 controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict', 'outputs.InstanceControlledEgressConfig']]] = None,
                  controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict', 'outputs.InstanceCustomDomain']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict', 'outputs.InstanceDenyMaintenancePeriod']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict', 'outputs.InstanceEncryptionConfig']]] = None,
                  fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict', 'outputs.InstanceMaintenanceWindow']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
-                 periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
+                 oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict', 'outputs.InstanceOauthConfig']]] = None,
+                 periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict', 'outputs.InstancePeriodicExportConfig']]] = None,
                  platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+                 psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict', 'outputs.InstancePscConfig']]] = None,
                  psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
+                 user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict', 'outputs.InstanceUserMetadata']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1757,36 +1757,36 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
+            admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict', 'outputs.InstanceAdminSettings']]] = None,
             consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
-            controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+            controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict', 'outputs.InstanceControlledEgressConfig']]] = None,
             controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+            custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict', 'outputs.InstanceCustomDomain']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
+            deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict', 'outputs.InstanceDenyMaintenancePeriod']]] = None,
             egress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
-            encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+            encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict', 'outputs.InstanceEncryptionConfig']]] = None,
             fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             ingress_private_ip: pulumi.Input[Optional[_builtins.str]] = None,
             ingress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
             looker_uri: pulumi.Input[Optional[_builtins.str]] = None,
             looker_version: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict', 'outputs.InstanceMaintenanceWindow']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
-            periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
+            oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict', 'outputs.InstanceOauthConfig']]] = None,
+            periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict', 'outputs.InstancePeriodicExportConfig']]] = None,
             platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
             private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+            psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict', 'outputs.InstancePscConfig']]] = None,
             psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None) -> 'Instance':
+            user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict', 'outputs.InstanceUserMetadata']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1794,17 +1794,17 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']] admin_settings: Looker instance Admin settings.
+        :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict', 'outputs.InstanceAdminSettings']] admin_settings: Looker instance Admin settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
-        :param pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']] controlled_egress_config: Controlled egress configuration.
+        :param pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict', 'outputs.InstanceControlledEgressConfig']] controlled_egress_config: Controlled egress configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] controlled_egress_enabled: Whether controlled egress is enabled on the Looker instance.
         :param pulumi.Input[_builtins.str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
-        :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
+        :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict', 'outputs.InstanceCustomDomain']] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
@@ -1818,12 +1818,12 @@ class Instance(pulumi.CustomResource):
                When set to "DELETE", the command will behave as if set to "DEFAULT".
                
                Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
-        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
+        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict', 'outputs.InstanceDenyMaintenancePeriod']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] egress_public_ip: Public Egress IP (IPv4).
-        :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
+        :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict', 'outputs.InstanceEncryptionConfig']] encryption_config: Looker instance encryption settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input[_builtins.bool] gemini_enabled: Gemini enablement for Looker (Google Cloud Core).
@@ -1831,15 +1831,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ingress_public_ip: Public Ingress IP (IPv4).
         :param pulumi.Input[_builtins.str] looker_uri: Looker instance URI which can be used to access the Looker Instance UI.
         :param pulumi.Input[_builtins.str] looker_version: The Looker version that the instance is using.
-        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance.
+        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict', 'outputs.InstanceMaintenanceWindow']] maintenance_window: Maintenance window for an instance.
                Maintenance of your instance takes place once a month, and will require
                your instance to be restarted during updates, which will temporarily
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
+        :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict', 'outputs.InstanceOauthConfig']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
-        :param pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']] periodic_export_config: Configuration for periodic export.
+        :param pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict', 'outputs.InstancePeriodicExportConfig']] periodic_export_config: Configuration for periodic export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -1858,7 +1858,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+        :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict', 'outputs.InstancePscConfig']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[_builtins.bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
@@ -1867,7 +1867,7 @@ class Instance(pulumi.CustomResource):
                private service access connection. User may or may not specify this in a request.
         :param pulumi.Input[_builtins.str] update_time: The time the instance was updated in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
-        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance.
+        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict', 'outputs.InstanceUserMetadata']] user_metadata: Metadata about users for a Looker instance.
                These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
                There are ten Standard and two Developer users included in the cost of the product.
                You can allocate additional Standard, Viewer, and Developer users for this instance.

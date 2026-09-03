@@ -565,15 +565,15 @@ class SecurityAction(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']]] = None,
+                 allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict', 'outputs.SecurityActionAllow']]] = None,
                  api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']]] = None,
+                 condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict', 'outputs.SecurityActionConditionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']]] = None,
+                 deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict', 'outputs.SecurityActionDeny']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 flag: pulumi.Input[Optional[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict']]] = None,
+                 flag: pulumi.Input[Optional[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict', 'outputs.SecurityActionFlag']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_action_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -667,13 +667,13 @@ class SecurityAction(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']] allow: Allow a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict', 'outputs.SecurityActionAllow']] allow: Allow a request through if it matches this SecurityAction.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_proxies: If unset, this would apply to all proxies in the environment.
                If set, this action is enforced only if at least one proxy in the repeated
                list is deployed at the time of enforcement. If set, several restrictions are enforced on SecurityActions.
                There can be at most 100 enabled actions with proxies set in an env.
                Several other restrictions apply on conditions and are detailed later.
-        :param pulumi.Input[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']] condition_config: A valid SecurityAction must contain at least one condition.
+        :param pulumi.Input[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict', 'outputs.SecurityActionConditionConfig']] condition_config: A valid SecurityAction must contain at least one condition.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -681,7 +681,7 @@ class SecurityAction(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']] deny: Deny a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict', 'outputs.SecurityActionDeny']] deny: Deny a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional user provided description of the SecurityAction.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment that this security action applies to.
@@ -689,7 +689,7 @@ class SecurityAction(pulumi.CustomResource):
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9
                fractional digits. Offsets other than "Z" are also accepted.
                Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-        :param pulumi.Input[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict']] flag: Flag a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict', 'outputs.SecurityActionFlag']] flag: Flag a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The organization that this security action applies to.
         :param pulumi.Input[_builtins.str] security_action_id: The ID to use for the SecurityAction, which will become the final component of the action's resource name.
@@ -806,15 +806,15 @@ class SecurityAction(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']]] = None,
+                 allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict', 'outputs.SecurityActionAllow']]] = None,
                  api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']]] = None,
+                 condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict', 'outputs.SecurityActionConditionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']]] = None,
+                 deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict', 'outputs.SecurityActionDeny']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 flag: pulumi.Input[Optional[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict']]] = None,
+                 flag: pulumi.Input[Optional[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict', 'outputs.SecurityActionFlag']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_action_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -863,16 +863,16 @@ class SecurityAction(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']]] = None,
+            allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict', 'outputs.SecurityActionAllow']]] = None,
             api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']]] = None,
+            condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict', 'outputs.SecurityActionConditionConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']]] = None,
+            deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict', 'outputs.SecurityActionDeny']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             env_id: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-            flag: pulumi.Input[Optional[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict']]] = None,
+            flag: pulumi.Input[Optional[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict', 'outputs.SecurityActionFlag']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_action_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -885,13 +885,13 @@ class SecurityAction(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']] allow: Allow a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict', 'outputs.SecurityActionAllow']] allow: Allow a request through if it matches this SecurityAction.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_proxies: If unset, this would apply to all proxies in the environment.
                If set, this action is enforced only if at least one proxy in the repeated
                list is deployed at the time of enforcement. If set, several restrictions are enforced on SecurityActions.
                There can be at most 100 enabled actions with proxies set in an env.
                Several other restrictions apply on conditions and are detailed later.
-        :param pulumi.Input[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']] condition_config: A valid SecurityAction must contain at least one condition.
+        :param pulumi.Input[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict', 'outputs.SecurityActionConditionConfig']] condition_config: A valid SecurityAction must contain at least one condition.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The create time for this SecurityAction.
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
@@ -902,7 +902,7 @@ class SecurityAction(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']] deny: Deny a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict', 'outputs.SecurityActionDeny']] deny: Deny a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional user provided description of the SecurityAction.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment that this security action applies to.
@@ -910,7 +910,7 @@ class SecurityAction(pulumi.CustomResource):
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9
                fractional digits. Offsets other than "Z" are also accepted.
                Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-        :param pulumi.Input[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict']] flag: Flag a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['SecurityActionFlagArgs', 'SecurityActionFlagArgsDict', 'outputs.SecurityActionFlag']] flag: Flag a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The organization that this security action applies to.
         :param pulumi.Input[_builtins.str] security_action_id: The ID to use for the SecurityAction, which will become the final component of the action's resource name.

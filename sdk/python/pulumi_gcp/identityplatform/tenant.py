@@ -318,7 +318,7 @@ class Tenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_password_signup: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client: pulumi.Input[Optional[Union['TenantClientArgs', 'TenantClientArgsDict']]] = None,
+                 client: pulumi.Input[Optional[Union['TenantClientArgs', 'TenantClientArgsDict', 'outputs.TenantClient']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -368,7 +368,7 @@ class Tenant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_password_signup: Whether to allow email/password user authentication.
-        :param pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict']] client: Options related to how clients making requests on behalf of a tenant should be configured.
+        :param pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict', 'outputs.TenantClient']] client: Options related to how clients making requests on behalf of a tenant should be configured.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -446,7 +446,7 @@ class Tenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_password_signup: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client: pulumi.Input[Optional[Union['TenantClientArgs', 'TenantClientArgsDict']]] = None,
+                 client: pulumi.Input[Optional[Union['TenantClientArgs', 'TenantClientArgsDict', 'outputs.TenantClient']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -482,7 +482,7 @@ class Tenant(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_password_signup: pulumi.Input[Optional[_builtins.bool]] = None,
-            client: pulumi.Input[Optional[Union['TenantClientArgs', 'TenantClientArgsDict']]] = None,
+            client: pulumi.Input[Optional[Union['TenantClientArgs', 'TenantClientArgsDict', 'outputs.TenantClient']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disable_auth: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -497,7 +497,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_password_signup: Whether to allow email/password user authentication.
-        :param pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict']] client: Options related to how clients making requests on behalf of a tenant should be configured.
+        :param pulumi.Input[Union['TenantClientArgs', 'TenantClientArgsDict', 'outputs.TenantClient']] client: Options related to how clients making requests on behalf of a tenant should be configured.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

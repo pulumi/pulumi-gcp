@@ -933,26 +933,26 @@ class NodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
+                 autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]]] = None,
-                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
+                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict', 'outputs.NodePoolMaintenancePolicy']]]]] = None,
+                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']]] = None,
-                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']]] = None,
+                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 node_drain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]]] = None,
+                 node_drain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict', 'outputs.NodePoolNodeDrainConfig']]]]] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 placement_policy: pulumi.Input[Optional[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']]] = None,
+                 placement_policy: pulumi.Input[Optional[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict', 'outputs.NodePoolPlacementPolicy']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 queued_provisioning: pulumi.Input[Optional[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']]] = None,
-                 upgrade_settings: pulumi.Input[Optional[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']]] = None,
+                 queued_provisioning: pulumi.Input[Optional[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict', 'outputs.NodePoolQueuedProvisioning']]] = None,
+                 upgrade_settings: pulumi.Input[Optional[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict', 'outputs.NodePoolUpgradeSettings']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1039,7 +1039,7 @@ class NodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']] autoscaling: Configuration required by cluster autoscaler to adjust
+        :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
@@ -1063,8 +1063,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
                ***
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
-        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']] management: Node management configuration, wherein auto-repair and
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict', 'outputs.NodePoolMaintenancePolicy']]]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
+        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in this node pool.
                Note that this does not work on node pools which are "route-based" - that is, node
@@ -1075,13 +1075,13 @@ class NodePool(pulumi.CustomResource):
                auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']] network_config: The network configuration of the pool. Such as
+        :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
-        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict', 'outputs.NodePoolNodeDrainConfig']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -1090,13 +1090,13 @@ class NodePool(pulumi.CustomResource):
                > Note: `node_locations` will not revert to the cluster's default set of zones
                upon being unset. You must manually reconcile the list of zones with your
                cluster.
-        :param pulumi.Input[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']] placement_policy: Specifies a custom placement policy for the
+        :param pulumi.Input[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict', 'outputs.NodePoolPlacementPolicy']] placement_policy: Specifies a custom placement policy for the
                nodes.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
+        :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict', 'outputs.NodePoolQueuedProvisioning']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-        :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
+        :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict', 'outputs.NodePoolUpgradeSettings']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -1208,26 +1208,26 @@ class NodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
+                 autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]]] = None,
-                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
+                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict', 'outputs.NodePoolMaintenancePolicy']]]]] = None,
+                 management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']]] = None,
-                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']]] = None,
+                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 node_drain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]]] = None,
+                 node_drain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict', 'outputs.NodePoolNodeDrainConfig']]]]] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 placement_policy: pulumi.Input[Optional[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']]] = None,
+                 placement_policy: pulumi.Input[Optional[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict', 'outputs.NodePoolPlacementPolicy']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 queued_provisioning: pulumi.Input[Optional[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']]] = None,
-                 upgrade_settings: pulumi.Input[Optional[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']]] = None,
+                 queued_provisioning: pulumi.Input[Optional[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict', 'outputs.NodePoolQueuedProvisioning']]] = None,
+                 upgrade_settings: pulumi.Input[Optional[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict', 'outputs.NodePoolUpgradeSettings']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1274,29 +1274,29 @@ class NodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
+            autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
             initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
             instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]]] = None,
+            maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict', 'outputs.NodePoolMaintenancePolicy']]]]] = None,
             managed_instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
+            management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']]] = None,
             max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-            network_config: pulumi.Input[Optional[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']]] = None,
-            node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+            network_config: pulumi.Input[Optional[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']]] = None,
+            node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
-            node_drain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]]] = None,
+            node_drain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict', 'outputs.NodePoolNodeDrainConfig']]]]] = None,
             node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             operation: pulumi.Input[Optional[_builtins.str]] = None,
-            placement_policy: pulumi.Input[Optional[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']]] = None,
+            placement_policy: pulumi.Input[Optional[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict', 'outputs.NodePoolPlacementPolicy']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            queued_provisioning: pulumi.Input[Optional[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']]] = None,
-            upgrade_settings: pulumi.Input[Optional[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']]] = None,
+            queued_provisioning: pulumi.Input[Optional[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict', 'outputs.NodePoolQueuedProvisioning']]] = None,
+            upgrade_settings: pulumi.Input[Optional[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict', 'outputs.NodePoolUpgradeSettings']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'NodePool':
         """
         Get an existing NodePool resource's state with the given name, id, and optional extra
@@ -1305,7 +1305,7 @@ class NodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']] autoscaling: Configuration required by cluster autoscaler to adjust
+        :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
@@ -1330,9 +1330,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
                ***
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict', 'outputs.NodePoolMaintenancePolicy']]]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
-        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']] management: Node management configuration, wherein auto-repair and
+        :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict', 'outputs.NodePoolManagement']] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in this node pool.
                Note that this does not work on node pools which are "route-based" - that is, node
@@ -1343,13 +1343,13 @@ class NodePool(pulumi.CustomResource):
                auto-generate a unique name.
         :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']] network_config: The network configuration of the pool. Such as
+        :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
-        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']] node_config: Parameters used in creating the node pool. Structure is documented below. See container.Cluster for exact schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict', 'outputs.NodePoolNodeDrainConfig']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -1358,13 +1358,13 @@ class NodePool(pulumi.CustomResource):
                > Note: `node_locations` will not revert to the cluster's default set of zones
                upon being unset. You must manually reconcile the list of zones with your
                cluster.
-        :param pulumi.Input[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']] placement_policy: Specifies a custom placement policy for the
+        :param pulumi.Input[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict', 'outputs.NodePoolPlacementPolicy']] placement_policy: Specifies a custom placement policy for the
                nodes.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
+        :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict', 'outputs.NodePoolQueuedProvisioning']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-        :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
+        :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict', 'outputs.NodePoolUpgradeSettings']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should

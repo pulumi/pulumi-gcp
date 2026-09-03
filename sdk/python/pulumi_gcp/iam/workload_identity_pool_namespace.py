@@ -568,7 +568,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            owner_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolNamespaceOwnerServiceArgs', 'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict']]]]] = None,
+            owner_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolNamespaceOwnerServiceArgs', 'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict', 'outputs.WorkloadIdentityPoolNamespaceOwnerService']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -592,7 +592,7 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
                they expire.
         :param pulumi.Input[_builtins.str] name: The resource name of the namespace as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolNamespaceOwnerServiceArgs', 'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict']]]] owner_services: Defines the owner that is allowed to mutate this resource. If present, this resource can only
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolNamespaceOwnerServiceArgs', 'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict', 'outputs.WorkloadIdentityPoolNamespaceOwnerService']]]] owner_services: Defines the owner that is allowed to mutate this resource. If present, this resource can only
                be mutated by the owner.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

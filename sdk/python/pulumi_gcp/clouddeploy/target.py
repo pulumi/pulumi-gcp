@@ -734,21 +734,21 @@ class Target(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
-                 associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
-                 custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
+                 anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict', 'outputs.TargetAnthosCluster']]] = None,
+                 associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict', 'outputs.TargetAssociatedEntity']]]]] = None,
+                 custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict', 'outputs.TargetCustomTarget']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]]] = None,
-                 gke: pulumi.Input[Optional[Union['TargetGkeArgs', 'TargetGkeArgsDict']]] = None,
+                 execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict', 'outputs.TargetExecutionConfig']]]]] = None,
+                 gke: pulumi.Input[Optional[Union['TargetGkeArgs', 'TargetGkeArgsDict', 'outputs.TargetGke']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_target: pulumi.Input[Optional[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict']]] = None,
+                 multi_target: pulumi.Input[Optional[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict', 'outputs.TargetMultiTarget']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  require_approval: pulumi.Input[Optional[_builtins.bool]] = None,
-                 run: pulumi.Input[Optional[Union['TargetRunArgs', 'TargetRunArgsDict']]] = None,
+                 run: pulumi.Input[Optional[Union['TargetRunArgs', 'TargetRunArgsDict', 'outputs.TargetRun']]] = None,
                  __props__=None):
         """
         The Cloud Deploy `Target` resource
@@ -872,9 +872,9 @@ class Target(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']] anthos_cluster: Information specifying an Anthos Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-        :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']] custom_target: Optional. Information specifying a Custom Target.
+        :param pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict', 'outputs.TargetAnthosCluster']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict', 'outputs.TargetAssociatedEntity']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict', 'outputs.TargetCustomTarget']] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -883,20 +883,20 @@ class Target(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Target`. Max length is 255 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-        :param pulumi.Input[Union['TargetGkeArgs', 'TargetGkeArgsDict']] gke: Information specifying a GKE Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict', 'outputs.TargetExecutionConfig']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+        :param pulumi.Input[Union['TargetGkeArgs', 'TargetGkeArgsDict', 'outputs.TargetGke']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict']] multi_target: Information specifying a multiTarget.
+        :param pulumi.Input[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict', 'outputs.TargetMultiTarget']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[_builtins.str] name: Name of the `Target`. Format is `a-z?`.
                
                ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input[Union['TargetRunArgs', 'TargetRunArgsDict']] run: Information specifying a Cloud Run deployment target.
+        :param pulumi.Input[Union['TargetRunArgs', 'TargetRunArgsDict', 'outputs.TargetRun']] run: Information specifying a Cloud Run deployment target.
         """
         ...
     @overload
@@ -1036,21 +1036,21 @@ class Target(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
-                 associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
-                 custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
+                 anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict', 'outputs.TargetAnthosCluster']]] = None,
+                 associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict', 'outputs.TargetAssociatedEntity']]]]] = None,
+                 custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict', 'outputs.TargetCustomTarget']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]]] = None,
-                 gke: pulumi.Input[Optional[Union['TargetGkeArgs', 'TargetGkeArgsDict']]] = None,
+                 execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict', 'outputs.TargetExecutionConfig']]]]] = None,
+                 gke: pulumi.Input[Optional[Union['TargetGkeArgs', 'TargetGkeArgsDict', 'outputs.TargetGke']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_target: pulumi.Input[Optional[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict']]] = None,
+                 multi_target: pulumi.Input[Optional[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict', 'outputs.TargetMultiTarget']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  require_approval: pulumi.Input[Optional[_builtins.bool]] = None,
-                 run: pulumi.Input[Optional[Union['TargetRunArgs', 'TargetRunArgsDict']]] = None,
+                 run: pulumi.Input[Optional[Union['TargetRunArgs', 'TargetRunArgsDict', 'outputs.TargetRun']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1099,26 +1099,26 @@ class Target(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
-            associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
+            anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict', 'outputs.TargetAnthosCluster']]] = None,
+            associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict', 'outputs.TargetAssociatedEntity']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
+            custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict', 'outputs.TargetCustomTarget']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]]] = None,
-            gke: pulumi.Input[Optional[Union['TargetGkeArgs', 'TargetGkeArgsDict']]] = None,
+            execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict', 'outputs.TargetExecutionConfig']]]]] = None,
+            gke: pulumi.Input[Optional[Union['TargetGkeArgs', 'TargetGkeArgsDict', 'outputs.TargetGke']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            multi_target: pulumi.Input[Optional[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict']]] = None,
+            multi_target: pulumi.Input[Optional[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict', 'outputs.TargetMultiTarget']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             require_approval: pulumi.Input[Optional[_builtins.bool]] = None,
-            run: pulumi.Input[Optional[Union['TargetRunArgs', 'TargetRunArgsDict']]] = None,
+            run: pulumi.Input[Optional[Union['TargetRunArgs', 'TargetRunArgsDict', 'outputs.TargetRun']]] = None,
             target_id: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Target':
@@ -1133,10 +1133,10 @@ class Target(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']] anthos_cluster: Information specifying an Anthos Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        :param pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict', 'outputs.TargetAnthosCluster']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict', 'outputs.TargetAssociatedEntity']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the `Target` was created.
-        :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']] custom_target: Optional. Information specifying a Custom Target.
+        :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict', 'outputs.TargetCustomTarget']] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1148,21 +1148,21 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-        :param pulumi.Input[Union['TargetGkeArgs', 'TargetGkeArgsDict']] gke: Information specifying a GKE Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict', 'outputs.TargetExecutionConfig']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+        :param pulumi.Input[Union['TargetGkeArgs', 'TargetGkeArgsDict', 'outputs.TargetGke']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict']] multi_target: Information specifying a multiTarget.
+        :param pulumi.Input[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict', 'outputs.TargetMultiTarget']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[_builtins.str] name: Name of the `Target`. Format is `a-z?`.
                
                ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input[Union['TargetRunArgs', 'TargetRunArgsDict']] run: Information specifying a Cloud Run deployment target.
+        :param pulumi.Input[Union['TargetRunArgs', 'TargetRunArgsDict', 'outputs.TargetRun']] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[_builtins.str] target_id: Output only. Resource id of the `Target`.
         :param pulumi.Input[_builtins.str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[_builtins.str] update_time: Output only. Most recent time at which the `Target` was updated.

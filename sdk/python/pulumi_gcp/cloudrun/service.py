@@ -422,11 +422,11 @@ class Service(pulumi.CustomResource):
                  autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict', 'outputs.ServiceMetadata']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None,
                  __props__=None):
         """
         A Cloud Run service has a unique endpoint and autoscales containers.
@@ -803,7 +803,7 @@ class Service(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']] metadata: Metadata associated with this Service, including name, namespace, labels,
+        :param pulumi.Input[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict', 'outputs.ServiceMetadata']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name must be unique within a Google Cloud project and region.
@@ -812,7 +812,7 @@ class Service(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: template holds the latest specification for the Revision to
+        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']] template: template holds the latest specification for the Revision to
                be stamped out. The template references the container image, and may also
                include labels and annotations that should be attached to the Revision.
                To correlate a Revision, and/or to force a Revision to be created when the
@@ -822,7 +822,7 @@ class Service(pulumi.CustomResource):
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """
@@ -1211,11 +1211,11 @@ class Service(pulumi.CustomResource):
                  autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict', 'outputs.ServiceMetadata']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1249,12 +1249,12 @@ class Service(pulumi.CustomResource):
             autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']]] = None,
+            metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict', 'outputs.ServiceMetadata']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceStatusArgs', 'ServiceStatusArgsDict']]]]] = None,
-            template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-            traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None) -> 'Service':
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceStatusArgs', 'ServiceStatusArgsDict', 'outputs.ServiceStatus']]]]] = None,
+            template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
+            traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1274,7 +1274,7 @@ class Service(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']] metadata: Metadata associated with this Service, including name, namespace, labels,
+        :param pulumi.Input[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict', 'outputs.ServiceMetadata']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name must be unique within a Google Cloud project and region.
@@ -1283,9 +1283,9 @@ class Service(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceStatusArgs', 'ServiceStatusArgsDict']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceStatusArgs', 'ServiceStatusArgsDict', 'outputs.ServiceStatus']]]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: template holds the latest specification for the Revision to
+        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']] template: template holds the latest specification for the Revision to
                be stamped out. The template references the container image, and may also
                include labels and annotations that should be attached to the Revision.
                To correlate a Revision, and/or to force a Revision to be created when the
@@ -1295,7 +1295,7 @@ class Service(pulumi.CustomResource):
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """

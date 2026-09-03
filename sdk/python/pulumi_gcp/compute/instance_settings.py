@@ -216,7 +216,7 @@ class InstanceSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict', 'outputs.InstanceSettingsMetadata']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -271,7 +271,7 @@ class InstanceSettings(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict', 'outputs.InstanceSettingsMetadata']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -342,7 +342,7 @@ class InstanceSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict', 'outputs.InstanceSettingsMetadata']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -373,7 +373,7 @@ class InstanceSettings(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
-            metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
+            metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict', 'outputs.InstanceSettingsMetadata']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceSettings':
         """
@@ -391,7 +391,7 @@ class InstanceSettings(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
-        :param pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
+        :param pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict', 'outputs.InstanceSettingsMetadata']] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

@@ -612,12 +612,12 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
-                 azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
-                 cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
-                 cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
-                 cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
-                 configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict', 'outputs.ConnectionAws']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict', 'outputs.ConnectionAzure']]] = None,
+                 cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict', 'outputs.ConnectionCloudResource']]] = None,
+                 cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict', 'outputs.ConnectionCloudSpanner']]] = None,
+                 cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict', 'outputs.ConnectionCloudSql']]] = None,
+                 configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict', 'outputs.ConnectionConfiguration']]] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -625,7 +625,7 @@ class Connection(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
+                 spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']]] = None,
                  __props__=None):
         """
         A connection allows BigQuery connections to external data sources..
@@ -944,17 +944,17 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict', 'outputs.ConnectionAws']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict', 'outputs.ConnectionAzure']] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict', 'outputs.ConnectionCloudResource']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict', 'outputs.ConnectionCloudSpanner']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict', 'outputs.ConnectionCloudSql']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']] configuration: Connector configuration. This is a generic configuration that is used to connect to
+        :param pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict', 'outputs.ConnectionConfiguration']] configuration: Connector configuration. This is a generic configuration that is used to connect to
                external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
                Connector framework.
                Structure is documented below.
@@ -978,7 +978,7 @@ class Connection(pulumi.CustomResource):
                Azure allowed regions are azure-eastus2
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
+        :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
         ...
@@ -1317,12 +1317,12 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
-                 azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
-                 cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
-                 cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
-                 cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
-                 configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict', 'outputs.ConnectionAws']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict', 'outputs.ConnectionAzure']]] = None,
+                 cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict', 'outputs.ConnectionCloudResource']]] = None,
+                 cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict', 'outputs.ConnectionCloudSpanner']]] = None,
+                 cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict', 'outputs.ConnectionCloudSql']]] = None,
+                 configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict', 'outputs.ConnectionConfiguration']]] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1330,7 +1330,7 @@ class Connection(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
+                 spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1366,12 +1366,12 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
-            azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
-            cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
-            cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
-            cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
-            configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
+            aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict', 'outputs.ConnectionAws']]] = None,
+            azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict', 'outputs.ConnectionAzure']]] = None,
+            cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict', 'outputs.ConnectionCloudResource']]] = None,
+            cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict', 'outputs.ConnectionCloudSpanner']]] = None,
+            cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict', 'outputs.ConnectionCloudSql']]] = None,
+            configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict', 'outputs.ConnectionConfiguration']]] = None,
             connection_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1381,7 +1381,7 @@ class Connection(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None) -> 'Connection':
+            spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1389,17 +1389,17 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict', 'outputs.ConnectionAws']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict', 'outputs.ConnectionAzure']] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict', 'outputs.ConnectionCloudResource']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict', 'outputs.ConnectionCloudSpanner']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict', 'outputs.ConnectionCloudSql']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']] configuration: Connector configuration. This is a generic configuration that is used to connect to
+        :param pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict', 'outputs.ConnectionConfiguration']] configuration: Connector configuration. This is a generic configuration that is used to connect to
                external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
                Connector framework.
                Structure is documented below.
@@ -1426,7 +1426,7 @@ class Connection(pulumi.CustomResource):
                "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
+        :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict', 'outputs.ConnectionSpark']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

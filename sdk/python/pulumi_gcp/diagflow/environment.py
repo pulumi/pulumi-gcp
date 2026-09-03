@@ -373,10 +373,10 @@ class Environment(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  environmentid: pulumi.Input[Optional[_builtins.str]] = None,
-                 fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
+                 fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict', 'outputs.EnvironmentFulfillment']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None,
+                 text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict', 'outputs.EnvironmentTextToSpeechSettings']]] = None,
                  __props__=None):
         """
         Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
@@ -459,12 +459,12 @@ class Environment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The developer-provided description for this environment.
         :param pulumi.Input[_builtins.str] environmentid: (Required)
-        :param pulumi.Input[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']] fulfillment: desc
+        :param pulumi.Input[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict', 'outputs.EnvironmentFulfillment']] fulfillment: desc
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: (Optional)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']] text_to_speech_settings: Text to speech settings for this environment.
+        :param pulumi.Input[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict', 'outputs.EnvironmentTextToSpeechSettings']] text_to_speech_settings: Text to speech settings for this environment.
                Structure is documented below.
         """
         ...
@@ -560,10 +560,10 @@ class Environment(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  environmentid: pulumi.Input[Optional[_builtins.str]] = None,
-                 fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
+                 fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict', 'outputs.EnvironmentFulfillment']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None,
+                 text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict', 'outputs.EnvironmentTextToSpeechSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -599,12 +599,12 @@ class Environment(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             environmentid: pulumi.Input[Optional[_builtins.str]] = None,
-            fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
+            fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict', 'outputs.EnvironmentFulfillment']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None) -> 'Environment':
+            text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict', 'outputs.EnvironmentTextToSpeechSettings']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -623,14 +623,14 @@ class Environment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The developer-provided description for this environment.
         :param pulumi.Input[_builtins.str] environmentid: (Required)
-        :param pulumi.Input[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']] fulfillment: desc
+        :param pulumi.Input[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict', 'outputs.EnvironmentFulfillment']] fulfillment: desc
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: (Optional)
         :param pulumi.Input[_builtins.str] name: The unique identifier of this agent environment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: The state of this environment.
-        :param pulumi.Input[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']] text_to_speech_settings: Text to speech settings for this environment.
+        :param pulumi.Input[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict', 'outputs.EnvironmentTextToSpeechSettings']] text_to_speech_settings: Text to speech settings for this environment.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

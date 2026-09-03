@@ -579,12 +579,12 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleMatch']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag']]]]] = None,
                  tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -699,7 +699,7 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
                When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
                If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
@@ -710,7 +710,7 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
                Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'mirror' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.
@@ -840,12 +840,12 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleMatch']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag']]]]] = None,
                  tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -900,13 +900,13 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
-            match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleMatch']]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
             security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
-            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
+            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag']]]]] = None,
             tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None) -> 'NetworkFirewallPolicyPacketMirroringRule':
         """
         Get an existing NetworkFirewallPolicyPacketMirroringRule resource's state with the given name, id, and optional extra
@@ -931,7 +931,7 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
                If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] kind: Type of the resource. Always `compute#packetMirroringRule` for firewall policy packet mirroring rules
-        :param pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
@@ -943,7 +943,7 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
                Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'mirror' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict', 'outputs.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.

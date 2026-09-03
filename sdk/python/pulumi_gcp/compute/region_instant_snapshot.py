@@ -559,7 +559,7 @@ class RegionInstantSnapshot(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict', 'outputs.RegionInstantSnapshotParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
@@ -640,7 +640,7 @@ class RegionInstantSnapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict', 'outputs.RegionInstantSnapshotParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -729,7 +729,7 @@ class RegionInstantSnapshot(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict', 'outputs.RegionInstantSnapshotParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
@@ -785,11 +785,11 @@ class RegionInstantSnapshot(pulumi.CustomResource):
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict', 'outputs.RegionInstantSnapshotParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstantSnapshotResourceStatusArgs', 'RegionInstantSnapshotResourceStatusArgsDict']]]]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstantSnapshotResourceStatusArgs', 'RegionInstantSnapshotResourceStatusArgsDict', 'outputs.RegionInstantSnapshotResourceStatus']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             source_disk: pulumi.Input[Optional[_builtins.str]] = None,
             source_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -826,14 +826,14 @@ class RegionInstantSnapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RegionInstantSnapshotParamsArgs', 'RegionInstantSnapshotParamsArgsDict', 'outputs.RegionInstantSnapshotParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the disk is located.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstantSnapshotResourceStatusArgs', 'RegionInstantSnapshotResourceStatusArgsDict']]]] resource_statuses: Resource status for the instant snapshot.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstantSnapshotResourceStatusArgs', 'RegionInstantSnapshotResourceStatusArgsDict', 'outputs.RegionInstantSnapshotResourceStatus']]]] resource_statuses: Resource status for the instant snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] source_disk: The source disk used to create this instant snapshot. You can provide this as a partial or full URL to the resource.

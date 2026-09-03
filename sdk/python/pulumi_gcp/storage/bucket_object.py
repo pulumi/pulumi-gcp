@@ -898,8 +898,8 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
                  content_language: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
-                 customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+                 contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict', 'outputs.BucketObjectContexts']]] = None,
+                 customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict', 'outputs.BucketObjectCustomerEncryption']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -907,7 +907,7 @@ class BucketObject(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
+                 retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict', 'outputs.BucketObjectRetention']]] = None,
                  source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_class: pulumi.Input[Optional[_builtins.str]] = None,
@@ -990,8 +990,8 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[_builtins.str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[_builtins.str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-        :param pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
-        :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        :param pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict', 'outputs.BucketObjectContexts']] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict', 'outputs.BucketObjectCustomerEncryption']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1009,7 +1009,7 @@ class BucketObject(pulumi.CustomResource):
                
                One of the following is required:
         :param pulumi.Input[_builtins.str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
-        :param pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        :param pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict', 'outputs.BucketObjectRetention']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
@@ -1115,8 +1115,8 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
                  content_language: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
-                 customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+                 contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict', 'outputs.BucketObjectContexts']]] = None,
+                 customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict', 'outputs.BucketObjectCustomerEncryption']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1124,7 +1124,7 @@ class BucketObject(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
+                 retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict', 'outputs.BucketObjectRetention']]] = None,
                  source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_class: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1187,9 +1187,9 @@ class BucketObject(pulumi.CustomResource):
             content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
             content_language: pulumi.Input[Optional[_builtins.str]] = None,
             content_type: pulumi.Input[Optional[_builtins.str]] = None,
-            contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
+            contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict', 'outputs.BucketObjectContexts']]] = None,
             crc32c: pulumi.Input[Optional[_builtins.str]] = None,
-            customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+            customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict', 'outputs.BucketObjectCustomerEncryption']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
             event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1202,7 +1202,7 @@ class BucketObject(pulumi.CustomResource):
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             output_name: pulumi.Input[Optional[_builtins.str]] = None,
-            retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
+            retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict', 'outputs.BucketObjectRetention']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
             source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1223,9 +1223,9 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[_builtins.str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[_builtins.str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-        :param pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        :param pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict', 'outputs.BucketObjectContexts']] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         :param pulumi.Input[_builtins.str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
-        :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict', 'outputs.BucketObjectCustomerEncryption']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1249,7 +1249,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[_builtins.str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
                `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
-        :param pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        :param pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict', 'outputs.BucketObjectRetention']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.

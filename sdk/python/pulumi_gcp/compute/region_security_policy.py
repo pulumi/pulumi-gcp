@@ -504,16 +504,16 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-                 ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.RegionSecurityPolicyAdvancedOptionsConfig']]] = None,
+                 ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict', 'outputs.RegionSecurityPolicyDdosProtectionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict', 'outputs.RegionSecurityPolicyRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
+                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict', 'outputs.RegionSecurityPolicyUserDefinedField']]]]] = None,
                  __props__=None):
         """
         Represents a Region Cloud Armor Security Policy resource.
@@ -633,9 +633,9 @@ class RegionSecurityPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: Advanced Options Config of this security policy.
+        :param pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.RegionSecurityPolicyAdvancedOptionsConfig']] advanced_options_config: Advanced Options Config of this security policy.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
+        :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict', 'outputs.RegionSecurityPolicyDdosProtectionConfig']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -650,7 +650,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The Region in which the created Region Security Policy should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict', 'outputs.RegionSecurityPolicyRule']]]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy.
                - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
@@ -658,7 +658,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                  This field can be set only at resource creation time.
                  Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict', 'outputs.RegionSecurityPolicyUserDefinedField']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
                Structure is documented below.
@@ -800,16 +800,16 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-                 ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.RegionSecurityPolicyAdvancedOptionsConfig']]] = None,
+                 ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict', 'outputs.RegionSecurityPolicyDdosProtectionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict', 'outputs.RegionSecurityPolicyRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
+                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict', 'outputs.RegionSecurityPolicyUserDefinedField']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -843,8 +843,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-            ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
+            advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.RegionSecurityPolicyAdvancedOptionsConfig']]] = None,
+            ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict', 'outputs.RegionSecurityPolicyDdosProtectionConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -852,11 +852,11 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict', 'outputs.RegionSecurityPolicyRule']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             self_link_with_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None) -> 'RegionSecurityPolicy':
+            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict', 'outputs.RegionSecurityPolicyUserDefinedField']]]]] = None) -> 'RegionSecurityPolicy':
         """
         Get an existing RegionSecurityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -864,9 +864,9 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: Advanced Options Config of this security policy.
+        :param pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.RegionSecurityPolicyAdvancedOptionsConfig']] advanced_options_config: Advanced Options Config of this security policy.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
+        :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict', 'outputs.RegionSecurityPolicyDdosProtectionConfig']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -884,7 +884,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The Region in which the created Region Security Policy should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict', 'outputs.RegionSecurityPolicyRule']]]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[_builtins.str] self_link_with_policy_id: Server-defined URL for this resource with the resource id.
@@ -894,7 +894,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                  This field can be set only at resource creation time.
                  Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict', 'outputs.RegionSecurityPolicyUserDefinedField']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
                Structure is documented below.

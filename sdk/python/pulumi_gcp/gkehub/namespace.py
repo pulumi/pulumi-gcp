@@ -664,7 +664,7 @@ class Namespace(pulumi.CustomResource):
             scope: pulumi.Input[Optional[_builtins.str]] = None,
             scope_id: pulumi.Input[Optional[_builtins.str]] = None,
             scope_namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceStateArgs', 'NamespaceStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NamespaceStateArgs', 'NamespaceStateArgsDict', 'outputs.NamespaceState']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Namespace':
         """
@@ -700,7 +700,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[_builtins.str] scope_id: Id of the scope
         :param pulumi.Input[_builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceStateArgs', 'NamespaceStateArgsDict']]]] states: State of the namespace resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceStateArgs', 'NamespaceStateArgsDict', 'outputs.NamespaceState']]]] states: State of the namespace resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[_builtins.str] update_time: Time the Namespace was updated in UTC.

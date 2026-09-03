@@ -314,7 +314,7 @@ class AiMetadataStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict', 'outputs.AiMetadataStoreEncryptionSpec']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -373,7 +373,7 @@ class AiMetadataStore(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the MetadataStore.
-        :param pulumi.Input[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict', 'outputs.AiMetadataStoreEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -448,7 +448,7 @@ class AiMetadataStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict', 'outputs.AiMetadataStoreEncryptionSpec']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -483,11 +483,11 @@ class AiMetadataStore(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict', 'outputs.AiMetadataStoreEncryptionSpec']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiMetadataStoreStateArgs', 'AiMetadataStoreStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiMetadataStoreStateArgs', 'AiMetadataStoreStateArgsDict', 'outputs.AiMetadataStoreState']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiMetadataStore':
         """
         Get an existing AiMetadataStore resource's state with the given name, id, and optional extra
@@ -504,13 +504,13 @@ class AiMetadataStore(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the MetadataStore.
-        :param pulumi.Input[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict', 'outputs.AiMetadataStoreEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the Metadata Store. eg us-central1
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiMetadataStoreStateArgs', 'AiMetadataStoreStateArgsDict']]]] states: State information of the MetadataStore.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiMetadataStoreStateArgs', 'AiMetadataStoreStateArgsDict', 'outputs.AiMetadataStoreState']]]] states: State information of the MetadataStore.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """

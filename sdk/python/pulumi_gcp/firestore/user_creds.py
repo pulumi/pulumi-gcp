@@ -531,7 +531,7 @@ class UserCreds(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserCredsResourceIdentityArgs', 'UserCredsResourceIdentityArgsDict']]]]] = None,
+            resource_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserCredsResourceIdentityArgs', 'UserCredsResourceIdentityArgsDict', 'outputs.UserCredsResourceIdentity']]]]] = None,
             secure_password: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserCreds':
@@ -557,7 +557,7 @@ class UserCreds(pulumi.CustomResource):
                be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserCredsResourceIdentityArgs', 'UserCredsResourceIdentityArgsDict']]]] resource_identities: Describes the Resource Identity principal.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserCredsResourceIdentityArgs', 'UserCredsResourceIdentityArgsDict', 'outputs.UserCredsResourceIdentity']]]] resource_identities: Describes the Resource Identity principal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secure_password: The plaintext server-generated password for the user creds.
                **Note**: This property is sensitive and will not be displayed in the plan.

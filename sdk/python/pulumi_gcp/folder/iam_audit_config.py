@@ -151,7 +151,7 @@ class IamAuditConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]]] = None,
+                 audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict', 'outputs.IamAuditConfigAuditLogConfig']]]]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -380,7 +380,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict', 'outputs.IamAuditConfigAuditLogConfig']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
@@ -628,7 +628,7 @@ class IamAuditConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]]] = None,
+                 audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict', 'outputs.IamAuditConfigAuditLogConfig']]]]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -660,7 +660,7 @@ class IamAuditConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]]] = None,
+            audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict', 'outputs.IamAuditConfigAuditLogConfig']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             folder: pulumi.Input[Optional[_builtins.str]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None) -> 'IamAuditConfig':
@@ -671,7 +671,7 @@ class IamAuditConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict', 'outputs.IamAuditConfigAuditLogConfig']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.

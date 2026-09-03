@@ -412,8 +412,8 @@ class GCPolicy(pulumi.CustomResource):
                  gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
-                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
+                 max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']]] = None,
+                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
@@ -562,8 +562,8 @@ class GCPolicy(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']] max_age: GC policy that applies to all cells older than the given age.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
+        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']] max_age: GC policy that applies to all cells older than the given age.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
         :param pulumi.Input[_builtins.str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] table: The name of the table.
@@ -719,8 +719,8 @@ class GCPolicy(pulumi.CustomResource):
                  gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
-                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
+                 max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']]] = None,
+                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  table: pulumi.Input[Optional[_builtins.str]] = None,
@@ -764,8 +764,8 @@ class GCPolicy(pulumi.CustomResource):
             gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-            max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
-            max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
+            max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']]] = None,
+            max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]]] = None,
             mode: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             table: pulumi.Input[Optional[_builtins.str]] = None) -> 'GCPolicy':
@@ -793,8 +793,8 @@ class GCPolicy(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']] max_age: GC policy that applies to all cells older than the given age.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
+        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']] max_age: GC policy that applies to all cells older than the given age.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
         :param pulumi.Input[_builtins.str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] table: The name of the table.

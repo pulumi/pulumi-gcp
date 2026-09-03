@@ -1814,7 +1814,7 @@ class ForwardingRule(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  recreate_closed_psc: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_directory_registrations: pulumi.Input[Optional[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
+                 service_directory_registrations: pulumi.Input[Optional[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict', 'outputs.ForwardingRuleServiceDirectoryRegistrations']]] = None,
                  service_label: pulumi.Input[Optional[_builtins.str]] = None,
                  source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2685,7 +2685,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
-        :param pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict', 'outputs.ForwardingRuleServiceDirectoryRegistrations']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -3439,7 +3439,7 @@ class ForwardingRule(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  recreate_closed_psc: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_directory_registrations: pulumi.Input[Optional[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
+                 service_directory_registrations: pulumi.Input[Optional[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict', 'outputs.ForwardingRuleServiceDirectoryRegistrations']]] = None,
                  service_label: pulumi.Input[Optional[_builtins.str]] = None,
                  source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3533,7 +3533,7 @@ class ForwardingRule(pulumi.CustomResource):
             recreate_closed_psc: pulumi.Input[Optional[_builtins.bool]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            service_directory_registrations: pulumi.Input[Optional[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
+            service_directory_registrations: pulumi.Input[Optional[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict', 'outputs.ForwardingRuleServiceDirectoryRegistrations']]] = None,
             service_label: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -3737,7 +3737,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict', 'outputs.ForwardingRuleServiceDirectoryRegistrations']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_label: An optional prefix to the service name for this Forwarding Rule.

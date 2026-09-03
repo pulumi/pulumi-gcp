@@ -572,15 +572,15 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 compute_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict']]]]] = None,
+                 compute_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict', 'outputs.ClusterComputeResource']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict']]]]] = None,
-                 orchestrator: pulumi.Input[Optional[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict']]] = None,
+                 network_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict', 'outputs.ClusterNetworkResource']]]]] = None,
+                 orchestrator: pulumi.Input[Optional[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict', 'outputs.ClusterOrchestrator']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict']]]]] = None,
+                 storage_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict', 'outputs.ClusterStorageResource']]]]] = None,
                  __props__=None):
         """
         A collection of virtual machines and connected resources forming a high-performance computing cluster capable of running large-scale, tightly coupled workloads. A cluster combines a set a compute resources that perform computations, storage resources that contain inputs and store outputs, an orchestrator that is responsible for assigning jobs to compute resources, and network resources that connect everything together.
@@ -669,7 +669,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must start with a lowercase letter,
                use only lowercase letters and numbers, and be at most 10 characters long.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict']]]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict', 'outputs.ClusterComputeResource']]]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
                compute resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
                alphanumeric, and at most 63 characters).
@@ -687,19 +687,19 @@ class Cluster(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict']]]] network_resources: Network resources available to the cluster. Must contain at most one value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict', 'outputs.ClusterNetworkResource']]]] network_resources: Network resources available to the cluster. Must contain at most one value.
                Keys specify the ID of the network resource by which it can be referenced
                elsewhere, and must conform to
                [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
                alphanumeric, and at most 63 characters).
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict']] orchestrator: The component responsible for scheduling and running workloads on the
+        :param pulumi.Input[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict', 'outputs.ClusterOrchestrator']] orchestrator: The component responsible for scheduling and running workloads on the
                cluster as well as providing the user interface for interacting with the
                cluster at runtime.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict']]]] storage_resources: Storage resources available to the cluster. Keys specify the ID of the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict', 'outputs.ClusterStorageResource']]]] storage_resources: Storage resources available to the cluster. Keys specify the ID of the
                storage resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
                alphanumeric, and at most 63 characters).
@@ -810,15 +810,15 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 compute_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict']]]]] = None,
+                 compute_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict', 'outputs.ClusterComputeResource']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict']]]]] = None,
-                 orchestrator: pulumi.Input[Optional[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict']]] = None,
+                 network_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict', 'outputs.ClusterNetworkResource']]]]] = None,
+                 orchestrator: pulumi.Input[Optional[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict', 'outputs.ClusterOrchestrator']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict']]]]] = None,
+                 storage_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict', 'outputs.ClusterStorageResource']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -863,7 +863,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            compute_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict']]]]] = None,
+            compute_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict', 'outputs.ClusterComputeResource']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -871,12 +871,12 @@ class Cluster(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict']]]]] = None,
-            orchestrator: pulumi.Input[Optional[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict']]] = None,
+            network_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict', 'outputs.ClusterNetworkResource']]]]] = None,
+            orchestrator: pulumi.Input[Optional[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict', 'outputs.ClusterOrchestrator']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
-            storage_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict']]]]] = None,
+            storage_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict', 'outputs.ClusterStorageResource']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -887,7 +887,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must start with a lowercase letter,
                use only lowercase letters and numbers, and be at most 10 characters long.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict']]]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict', 'outputs.ClusterComputeResource']]]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
                compute resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
                alphanumeric, and at most 63 characters).
@@ -909,13 +909,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. [Relative resource name](https://google.aip.dev/122) of the cluster, in the
                format `projects/{project}/locations/{location}/clusters/{cluster}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict']]]] network_resources: Network resources available to the cluster. Must contain at most one value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNetworkResourceArgs', 'ClusterNetworkResourceArgsDict', 'outputs.ClusterNetworkResource']]]] network_resources: Network resources available to the cluster. Must contain at most one value.
                Keys specify the ID of the network resource by which it can be referenced
                elsewhere, and must conform to
                [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
                alphanumeric, and at most 63 characters).
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict']] orchestrator: The component responsible for scheduling and running workloads on the
+        :param pulumi.Input[Union['ClusterOrchestratorArgs', 'ClusterOrchestratorArgsDict', 'outputs.ClusterOrchestrator']] orchestrator: The component responsible for scheduling and running workloads on the
                cluster as well as providing the user interface for interacting with the
                cluster at runtime.
                Structure is documented below.
@@ -926,7 +926,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] reconciling: Indicates whether changes to the cluster are currently in flight. If this
                is `true`, then the current state might not match the cluster's intended
                state.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict']]]] storage_resources: Storage resources available to the cluster. Keys specify the ID of the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterStorageResourceArgs', 'ClusterStorageResourceArgsDict', 'outputs.ClusterStorageResource']]]] storage_resources: Storage resources available to the cluster. Keys specify the ID of the
                storage resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
                alphanumeric, and at most 63 characters).

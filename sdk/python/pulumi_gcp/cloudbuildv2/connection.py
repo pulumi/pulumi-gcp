@@ -544,13 +544,13 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
-                 bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+                 bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict', 'outputs.ConnectionBitbucketCloudConfig']]] = None,
+                 bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict', 'outputs.ConnectionBitbucketDataCenterConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
-                 github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
-                 gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+                 github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict', 'outputs.ConnectionGithubConfig']]] = None,
+                 github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict', 'outputs.ConnectionGithubEnterpriseConfig']]] = None,
+                 gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict', 'outputs.ConnectionGitlabConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -688,9 +688,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']] bitbucket_cloud_config: Configuration for connections to Bitbucket Cloud.
+        :param pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict', 'outputs.ConnectionBitbucketCloudConfig']] bitbucket_cloud_config: Configuration for connections to Bitbucket Cloud.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
+        :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict', 'outputs.ConnectionBitbucketDataCenterConfig']] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -699,11 +699,11 @@ class Connection(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
+        :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict', 'outputs.ConnectionGithubConfig']] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict', 'outputs.ConnectionGithubEnterpriseConfig']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict', 'outputs.ConnectionGitlabConfig']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Immutable. The resource name of the connection.
@@ -860,13 +860,13 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
-                 bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+                 bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict', 'outputs.ConnectionBitbucketCloudConfig']]] = None,
+                 bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict', 'outputs.ConnectionBitbucketDataCenterConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
-                 github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
-                 gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+                 github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict', 'outputs.ConnectionGithubConfig']]] = None,
+                 github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict', 'outputs.ConnectionGithubEnterpriseConfig']]] = None,
+                 gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict', 'outputs.ConnectionGitlabConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -909,17 +909,17 @@ class Connection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
-            bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+            bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict', 'outputs.ConnectionBitbucketCloudConfig']]] = None,
+            bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict', 'outputs.ConnectionBitbucketDataCenterConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
-            github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
-            gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
-            installation_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]]] = None,
+            github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict', 'outputs.ConnectionGithubConfig']]] = None,
+            github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict', 'outputs.ConnectionGithubEnterpriseConfig']]] = None,
+            gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict', 'outputs.ConnectionGitlabConfig']]] = None,
+            installation_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict', 'outputs.ConnectionInstallationState']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -935,9 +935,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']] bitbucket_cloud_config: Configuration for connections to Bitbucket Cloud.
+        :param pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict', 'outputs.ConnectionBitbucketCloudConfig']] bitbucket_cloud_config: Configuration for connections to Bitbucket Cloud.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
+        :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict', 'outputs.ConnectionBitbucketDataCenterConfig']] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -949,13 +949,13 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
+        :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict', 'outputs.ConnectionGithubConfig']] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict', 'outputs.ConnectionGithubEnterpriseConfig']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict', 'outputs.ConnectionGitlabConfig']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Output only. Installation state of the Connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict', 'outputs.ConnectionInstallationState']]]] installation_states: Output only. Installation state of the Connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Immutable. The resource name of the connection.

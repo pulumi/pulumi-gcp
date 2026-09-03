@@ -446,7 +446,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
+                 preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict', 'outputs.PerInstanceConfigPreservedState']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -569,7 +569,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[_builtins.str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict', 'outputs.PerInstanceConfigPreservedState']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -701,7 +701,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
+                 preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict', 'outputs.PerInstanceConfigPreservedState']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -742,7 +742,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
             most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
+            preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict', 'outputs.PerInstanceConfigPreservedState']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -774,7 +774,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[_builtins.str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict', 'outputs.PerInstanceConfigPreservedState']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

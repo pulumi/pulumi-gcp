@@ -432,10 +432,10 @@ class CxWebhook(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
-                 generic_web_service: pulumi.Input[Optional[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']]] = None,
+                 generic_web_service: pulumi.Input[Optional[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict', 'outputs.CxWebhookGenericWebService']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_directory: pulumi.Input[Optional[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict']]] = None,
+                 service_directory: pulumi.Input[Optional[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict', 'outputs.CxWebhookServiceDirectory']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -750,12 +750,12 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Deprecated. Determines whether this agent should log conversation queries.
-        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service.
+        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict', 'outputs.CxWebhookGenericWebService']] generic_web_service: Represents configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[_builtins.str] security_settings: Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict']] service_directory: Configuration for a Service Directory service.
+        :param pulumi.Input[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict', 'outputs.CxWebhookServiceDirectory']] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.
         """
@@ -1085,10 +1085,10 @@ class CxWebhook(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
-                 generic_web_service: pulumi.Input[Optional[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']]] = None,
+                 generic_web_service: pulumi.Input[Optional[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict', 'outputs.CxWebhookGenericWebService']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_directory: pulumi.Input[Optional[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict']]] = None,
+                 service_directory: pulumi.Input[Optional[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict', 'outputs.CxWebhookServiceDirectory']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1128,11 +1128,11 @@ class CxWebhook(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
-            generic_web_service: pulumi.Input[Optional[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']]] = None,
+            generic_web_service: pulumi.Input[Optional[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict', 'outputs.CxWebhookGenericWebService']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             security_settings: pulumi.Input[Optional[_builtins.str]] = None,
-            service_directory: pulumi.Input[Optional[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict']]] = None,
+            service_directory: pulumi.Input[Optional[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict', 'outputs.CxWebhookServiceDirectory']]] = None,
             start_flow: pulumi.Input[Optional[_builtins.str]] = None,
             timeout: pulumi.Input[Optional[_builtins.str]] = None) -> 'CxWebhook':
         """
@@ -1152,14 +1152,14 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Deprecated. Determines whether this agent should log conversation queries.
-        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service.
+        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict', 'outputs.CxWebhookGenericWebService']] generic_web_service: Represents configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the webhook.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         :param pulumi.Input[_builtins.str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[_builtins.str] security_settings: Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict']] service_directory: Configuration for a Service Directory service.
+        :param pulumi.Input[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict', 'outputs.CxWebhookServiceDirectory']] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] start_flow: Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.

@@ -1019,17 +1019,17 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]]] = None,
+                 accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict', 'outputs.DatasetAccess']]]]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_collation: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']]] = None,
+                 default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']]] = None,
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
-                 external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
+                 external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict', 'outputs.DatasetExternalCatalogDatasetOptions']]] = None,
+                 external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict', 'outputs.DatasetExternalDatasetReference']]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_case_insensitive: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1260,7 +1260,7 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict', 'outputs.DatasetAccess']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -1274,7 +1274,7 @@ class Dataset(pulumi.CustomResource):
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
@@ -1312,10 +1312,10 @@ class Dataset(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-friendly description of the dataset
-        :param pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        :param pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict', 'outputs.DatasetExternalCatalogDatasetOptions']] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
                metadata of open source database, schema or namespace represented by the current dataset.
                Structure is documented below.
-        :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict', 'outputs.DatasetExternalDatasetReference']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[_builtins.bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
@@ -1587,17 +1587,17 @@ class Dataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]]] = None,
+                 accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict', 'outputs.DatasetAccess']]]]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_collation: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']]] = None,
+                 default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']]] = None,
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
-                 external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
+                 external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict', 'outputs.DatasetExternalCatalogDatasetOptions']]] = None,
+                 external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict', 'outputs.DatasetExternalDatasetReference']]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_case_insensitive: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1654,11 +1654,11 @@ class Dataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]]] = None,
+            accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict', 'outputs.DatasetAccess']]]]] = None,
             creation_time: pulumi.Input[Optional[_builtins.int]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
             default_collation: pulumi.Input[Optional[_builtins.str]] = None,
-            default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']]] = None,
+            default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']]] = None,
             default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
             default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
             delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1666,8 +1666,8 @@ class Dataset(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
-            external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
+            external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict', 'outputs.DatasetExternalCatalogDatasetOptions']]] = None,
+            external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict', 'outputs.DatasetExternalDatasetReference']]] = None,
             friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_case_insensitive: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1686,7 +1686,7 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessArgs', 'DatasetAccessArgsDict', 'outputs.DatasetAccess']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] creation_time: The time when this dataset was created, in milliseconds since the
                epoch.
@@ -1702,7 +1702,7 @@ class Dataset(pulumi.CustomResource):
                The following values are supported:
                - 'und:ci': undetermined locale, case insensitive.
                - '': empty string. Default to case-sensitive behavior.
-        :param pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
+        :param pulumi.Input[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
@@ -1742,10 +1742,10 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A hash of the resource.
-        :param pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        :param pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict', 'outputs.DatasetExternalCatalogDatasetOptions']] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
                metadata of open source database, schema or namespace represented by the current dataset.
                Structure is documented below.
-        :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict', 'outputs.DatasetExternalDatasetReference']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[_builtins.bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.

@@ -1030,14 +1030,14 @@ class VPNTunnel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+                 cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict', 'outputs.VPNTunnelCipherSuite']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ike_version: pulumi.Input[Optional[_builtins.int]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict', 'outputs.VPNTunnelParams']]] = None,
                  peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
                  peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1199,7 +1199,7 @@ class VPNTunnel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+        :param pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict', 'outputs.VPNTunnelCipherSuite']] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1225,7 +1225,7 @@ class VPNTunnel(pulumi.CustomResource):
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict', 'outputs.VPNTunnelParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
@@ -1425,14 +1425,14 @@ class VPNTunnel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+                 cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict', 'outputs.VPNTunnelCipherSuite']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ike_version: pulumi.Input[Optional[_builtins.int]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict', 'outputs.VPNTunnelParams']]] = None,
                  peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
                  peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1498,7 +1498,7 @@ class VPNTunnel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+            cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict', 'outputs.VPNTunnelCipherSuite']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1509,7 +1509,7 @@ class VPNTunnel(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict', 'outputs.VPNTunnelParams']]] = None,
             peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
             peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
             peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1535,7 +1535,7 @@ class VPNTunnel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
+        :param pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict', 'outputs.VPNTunnelCipherSuite']] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1566,7 +1566,7 @@ class VPNTunnel(pulumi.CustomResource):
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict', 'outputs.VPNTunnelParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.

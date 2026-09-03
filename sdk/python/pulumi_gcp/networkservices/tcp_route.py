@@ -438,7 +438,7 @@ class TcpRoute(pulumi.CustomResource):
                  meshes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict', 'outputs.TcpRouteRule']]]]] = None,
                  __props__=None):
         """
         TcpRoute is the resource defining how TCP traffic should be routed by a Mesh/Gateway resource.
@@ -643,7 +643,7 @@ class TcpRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the TcpRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict', 'outputs.TcpRouteRule']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         """
@@ -858,7 +858,7 @@ class TcpRoute(pulumi.CustomResource):
                  meshes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict', 'outputs.TcpRouteRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -905,7 +905,7 @@ class TcpRoute(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict', 'outputs.TcpRouteRule']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'TcpRoute':
         """
@@ -937,7 +937,7 @@ class TcpRoute(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict', 'outputs.TcpRouteRule']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.

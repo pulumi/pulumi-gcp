@@ -339,9 +339,9 @@ class GroupMembership(pulumi.CustomResource):
                  create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
-                 member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
-                 preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
-                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]]] = None,
+                 member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict', 'outputs.GroupMembershipMemberKey']]] = None,
+                 preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict', 'outputs.GroupMembershipPreferredMemberKey']]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict', 'outputs.GroupMembershipRole']]]]] = None,
                  __props__=None):
         """
         A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
@@ -446,12 +446,12 @@ class GroupMembership(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: (Optional, Beta)
+        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict', 'outputs.GroupMembershipMemberKey']] member_key: (Optional, Beta)
                EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict', 'outputs.GroupMembershipPreferredMemberKey']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict', 'outputs.GroupMembershipRole']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         """
@@ -572,9 +572,9 @@ class GroupMembership(pulumi.CustomResource):
                  create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
-                 member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
-                 preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
-                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]]] = None,
+                 member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict', 'outputs.GroupMembershipMemberKey']]] = None,
+                 preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict', 'outputs.GroupMembershipPreferredMemberKey']]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict', 'outputs.GroupMembershipRole']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,10 +612,10 @@ class GroupMembership(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             group: pulumi.Input[Optional[_builtins.str]] = None,
-            member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
+            member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict', 'outputs.GroupMembershipMemberKey']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
-            roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]]] = None,
+            preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict', 'outputs.GroupMembershipPreferredMemberKey']]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict', 'outputs.GroupMembershipRole']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupMembership':
         """
@@ -634,13 +634,13 @@ class GroupMembership(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: (Optional, Beta)
+        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict', 'outputs.GroupMembershipMemberKey']] member_key: (Optional, Beta)
                EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
-        :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']] preferred_member_key: EntityKey of the member.
+        :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict', 'outputs.GroupMembershipPreferredMemberKey']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupMembershipRoleArgs', 'GroupMembershipRoleArgsDict', 'outputs.GroupMembershipRole']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type of the membership.

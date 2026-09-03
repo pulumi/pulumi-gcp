@@ -788,11 +788,11 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                  dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
-                 exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
-                 identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
-                 include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
-                 include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
+                 exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageBuckets']]] = None,
+                 exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageLocations']]] = None,
+                 identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict', 'outputs.InsightsDatasetConfigIdentity']]] = None,
+                 include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageBuckets']]] = None,
+                 include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageLocations']]] = None,
                  include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
                  link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -800,8 +800,8 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                  organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
-                 source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
+                 source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict', 'outputs.InsightsDatasetConfigSourceFolders']]] = None,
+                 source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict', 'outputs.InsightsDatasetConfigSourceProjects']]] = None,
                  __props__=None):
         """
         Represents a Storage Insights DatasetConfig.
@@ -909,15 +909,15 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
-        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageBuckets']] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']] exclude_cloud_storage_locations: Defines the options for excluding cloud storage locations for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageLocations']] exclude_cloud_storage_locations: Defines the options for excluding cloud storage locations for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']] identity: Identity used by DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict', 'outputs.InsightsDatasetConfigIdentity']] identity: Identity used by DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']] include_cloud_storage_buckets: Defines the options for including cloud storage buckets for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageBuckets']] include_cloud_storage_buckets: Defines the options for including cloud storage buckets for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageLocations']] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] include_newly_created_buckets: If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
         :param pulumi.Input[_builtins.bool] link_dataset: A boolean terraform only flag to link/unlink dataset.
@@ -932,9 +932,9 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] retention_period_days: Number of days of history that must be retained.
-        :param pulumi.Input[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']] source_folders: Defines the options for providing source folders for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict', 'outputs.InsightsDatasetConfigSourceFolders']] source_folders: Defines the options for providing source folders for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']] source_projects: Defines the options for providing source projects for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict', 'outputs.InsightsDatasetConfigSourceProjects']] source_projects: Defines the options for providing source projects for the DatasetConfig.
                Structure is documented below.
         """
         ...
@@ -1057,11 +1057,11 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                  dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
-                 exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
-                 identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
-                 include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
-                 include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
+                 exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageBuckets']]] = None,
+                 exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageLocations']]] = None,
+                 identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict', 'outputs.InsightsDatasetConfigIdentity']]] = None,
+                 include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageBuckets']]] = None,
+                 include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageLocations']]] = None,
                  include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
                  link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1069,8 +1069,8 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                  organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
-                 source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
+                 source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict', 'outputs.InsightsDatasetConfigSourceFolders']]] = None,
+                 source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict', 'outputs.InsightsDatasetConfigSourceProjects']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1128,22 +1128,22 @@ class InsightsDatasetConfig(pulumi.CustomResource):
             dataset_config_state: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
-            exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
-            identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
-            include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
-            include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
+            exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageBuckets']]] = None,
+            exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageLocations']]] = None,
+            identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict', 'outputs.InsightsDatasetConfigIdentity']]] = None,
+            include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageBuckets']]] = None,
+            include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageLocations']]] = None,
             include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
             link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
-            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict']]]]] = None,
+            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict', 'outputs.InsightsDatasetConfigLink']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_number: pulumi.Input[Optional[_builtins.str]] = None,
             organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
-            source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
-            source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
+            source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict', 'outputs.InsightsDatasetConfigSourceFolders']]] = None,
+            source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict', 'outputs.InsightsDatasetConfigSourceProjects']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'InsightsDatasetConfig':
         """
@@ -1164,15 +1164,15 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
-        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageBuckets']] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']] exclude_cloud_storage_locations: Defines the options for excluding cloud storage locations for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigExcludeCloudStorageLocations']] exclude_cloud_storage_locations: Defines the options for excluding cloud storage locations for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']] identity: Identity used by DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict', 'outputs.InsightsDatasetConfigIdentity']] identity: Identity used by DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']] include_cloud_storage_buckets: Defines the options for including cloud storage buckets for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageBuckets']] include_cloud_storage_buckets: Defines the options for including cloud storage buckets for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict', 'outputs.InsightsDatasetConfigIncludeCloudStorageLocations']] include_cloud_storage_locations: Defines the options for including cloud storage locations for the DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] include_newly_created_buckets: If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
         :param pulumi.Input[_builtins.bool] link_dataset: A boolean terraform only flag to link/unlink dataset.
@@ -1180,7 +1180,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                Setting this field to true while creation will automatically link the created dataset as an additional functionality.
                > **Note** A dataset config resource can only be destroyed once it is unlinked,
                so users must set this field to false to unlink the dataset and destroy the dataset config resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict']]]] links: Details of the linked DatasetConfig.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict', 'outputs.InsightsDatasetConfigLink']]]] links: Details of the linked DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the DatasetConfig.
         :param pulumi.Input[_builtins.str] name: The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
@@ -1190,9 +1190,9 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] retention_period_days: Number of days of history that must be retained.
-        :param pulumi.Input[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']] source_folders: Defines the options for providing source folders for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict', 'outputs.InsightsDatasetConfigSourceFolders']] source_folders: Defines the options for providing source folders for the DatasetConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']] source_projects: Defines the options for providing source projects for the DatasetConfig.
+        :param pulumi.Input[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict', 'outputs.InsightsDatasetConfigSourceProjects']] source_projects: Defines the options for providing source projects for the DatasetConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: System generated unique identifier for the resource.
         :param pulumi.Input[_builtins.str] update_time: The UTC time at which the DatasetConfig was updated. This is auto-populated.

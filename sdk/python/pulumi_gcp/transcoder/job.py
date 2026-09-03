@@ -391,7 +391,7 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['JobConfigArgs', 'JobConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['JobConfigArgs', 'JobConfigArgsDict', 'outputs.JobConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1172,7 +1172,7 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']] config: The configuration for this template.
+        :param pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict', 'outputs.JobConfig']] config: The configuration for this template.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1983,7 +1983,7 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['JobConfigArgs', 'JobConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['JobConfigArgs', 'JobConfigArgsDict', 'outputs.JobConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2025,7 +2025,7 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['JobConfigArgs', 'JobConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['JobConfigArgs', 'JobConfigArgsDict', 'outputs.JobConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2045,7 +2045,7 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']] config: The configuration for this template.
+        :param pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict', 'outputs.JobConfig']] config: The configuration for this template.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the job was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

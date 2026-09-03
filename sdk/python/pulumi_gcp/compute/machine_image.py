@@ -380,9 +380,9 @@ class MachineImage(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
-                 machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
+                 machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict', 'outputs.MachineImageMachineImageEncryptionKey']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict', 'outputs.MachineImageParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_instance: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -519,13 +519,13 @@ class MachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
+        :param pulumi.Input[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict', 'outputs.MachineImageMachineImageEncryptionKey']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
                After you encrypt a machine image with a customer-supplied key, you must
                provide the same key if you use the machine image later (e.g. to create a
                instance from the image)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict', 'outputs.MachineImageParams']] params: Additional params passed with the request, but not persisted as part of resource payload.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -677,9 +677,9 @@ class MachineImage(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
-                 machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
+                 machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict', 'outputs.MachineImageMachineImageEncryptionKey']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict', 'outputs.MachineImageParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_instance: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -716,9 +716,9 @@ class MachineImage(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
-            machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
+            machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict', 'outputs.MachineImageMachineImageEncryptionKey']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict', 'outputs.MachineImageParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             source_instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -739,13 +739,13 @@ class MachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
+        :param pulumi.Input[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict', 'outputs.MachineImageMachineImageEncryptionKey']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key.
                After you encrypt a machine image with a customer-supplied key, you must
                provide the same key if you use the machine image later (e.g. to create a
                instance from the image)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict', 'outputs.MachineImageParams']] params: Additional params passed with the request, but not persisted as part of resource payload.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

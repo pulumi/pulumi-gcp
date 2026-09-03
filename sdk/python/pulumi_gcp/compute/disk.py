@@ -1776,22 +1776,22 @@ class Disk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  architecture: pulumi.Input[Optional[_builtins.str]] = None,
-                 async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
+                 async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict', 'outputs.DiskAsyncPrimaryDisk']]] = None,
                  create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
+                 disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict', 'outputs.DiskDiskEncryptionKey']]] = None,
                  enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
-                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict', 'outputs.DiskGuestOsFeature']]]]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  multi_writer: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['DiskParamsArgs', 'DiskParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['DiskParamsArgs', 'DiskParamsArgsDict', 'outputs.DiskParams']]] = None,
                  physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1800,9 +1800,9 @@ class Disk(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_image_encryption_key: pulumi.Input[Optional[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict', 'outputs.DiskSourceImageEncryptionKey']]] = None,
                  source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict', 'outputs.DiskSourceSnapshotEncryptionKey']]] = None,
                  source_storage_object: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1925,7 +1925,7 @@ class Disk(pulumi.CustomResource):
                * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
                  The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the disk. Values include `X86_64`, `ARM64`.
-        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
+        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict', 'outputs.DiskAsyncPrimaryDisk']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
                If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
@@ -1939,7 +1939,7 @@ class Disk(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict', 'outputs.DiskDiskEncryptionKey']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -1953,7 +1953,7 @@ class Disk(pulumi.CustomResource):
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
                Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict', 'outputs.DiskGuestOsFeature']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] image: The image from which to initialize this disk. This can be
@@ -1983,7 +1983,7 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict', 'outputs.DiskParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
@@ -2031,7 +2031,7 @@ class Disk(pulumi.CustomResource):
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
-        :param pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict', 'outputs.DiskSourceImageEncryptionKey']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
@@ -2039,7 +2039,7 @@ class Disk(pulumi.CustomResource):
                * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
                * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
                * `zones/zone/instantSnapshots/instantSnapshot`
-        :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict', 'outputs.DiskSourceSnapshotEncryptionKey']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -2189,22 +2189,22 @@ class Disk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  architecture: pulumi.Input[Optional[_builtins.str]] = None,
-                 async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
+                 async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict', 'outputs.DiskAsyncPrimaryDisk']]] = None,
                  create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
+                 disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict', 'outputs.DiskDiskEncryptionKey']]] = None,
                  enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None,
                  erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
-                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict', 'outputs.DiskGuestOsFeature']]]]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  multi_writer: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['DiskParamsArgs', 'DiskParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['DiskParamsArgs', 'DiskParamsArgsDict', 'outputs.DiskParams']]] = None,
                  physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2213,9 +2213,9 @@ class Disk(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_image_encryption_key: pulumi.Input[Optional[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict', 'outputs.DiskSourceImageEncryptionKey']]] = None,
                  source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict', 'outputs.DiskSourceSnapshotEncryptionKey']]] = None,
                  source_storage_object: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2289,18 +2289,18 @@ class Disk(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: pulumi.Input[Optional[_builtins.str]] = None,
             architecture: pulumi.Input[Optional[_builtins.str]] = None,
-            async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
+            async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict', 'outputs.DiskAsyncPrimaryDisk']]] = None,
             create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
+            disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict', 'outputs.DiskDiskEncryptionKey']]] = None,
             disk_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None,
             erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
-            guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
+            guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict', 'outputs.DiskGuestOsFeature']]]]] = None,
             image: pulumi.Input[Optional[_builtins.str]] = None,
             interface: pulumi.Input[Optional[_builtins.str]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2310,7 +2310,7 @@ class Disk(pulumi.CustomResource):
             licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             multi_writer: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['DiskParamsArgs', 'DiskParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['DiskParamsArgs', 'DiskParamsArgsDict', 'outputs.DiskParams']]] = None,
             physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2322,11 +2322,11 @@ class Disk(pulumi.CustomResource):
             snapshot: pulumi.Input[Optional[_builtins.str]] = None,
             source_disk: pulumi.Input[Optional[_builtins.str]] = None,
             source_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
-            source_image_encryption_key: pulumi.Input[Optional[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
+            source_image_encryption_key: pulumi.Input[Optional[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict', 'outputs.DiskSourceImageEncryptionKey']]] = None,
             source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
             source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
             source_instant_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
-            source_snapshot_encryption_key: pulumi.Input[Optional[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+            source_snapshot_encryption_key: pulumi.Input[Optional[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict', 'outputs.DiskSourceSnapshotEncryptionKey']]] = None,
             source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
             source_storage_object: pulumi.Input[Optional[_builtins.str]] = None,
             storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2347,7 +2347,7 @@ class Disk(pulumi.CustomResource):
                * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
                  The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the disk. Values include `X86_64`, `ARM64`.
-        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
+        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict', 'outputs.DiskAsyncPrimaryDisk']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_snapshot_before_destroy: If set to true, a snapshot of the disk will be created before it is destroyed.
                If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
@@ -2362,7 +2362,7 @@ class Disk(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict', 'outputs.DiskDiskEncryptionKey']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -2378,7 +2378,7 @@ class Disk(pulumi.CustomResource):
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
                Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict', 'outputs.DiskGuestOsFeature']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] image: The image from which to initialize this disk. This can be
@@ -2412,7 +2412,7 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict', 'outputs.DiskParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
@@ -2466,7 +2466,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_disk_id: The ID value of the disk used to create this image. This value may
                be used to determine whether the image was taken from the current
                or a previous instance of a given disk name.
-        :param pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict', 'outputs.DiskSourceImageEncryptionKey']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_image_id: The ID value of the image used to create this disk. This value
@@ -2484,7 +2484,7 @@ class Disk(pulumi.CustomResource):
                For example, if you created the persistent disk from an instant snapshot that was later
                deleted and recreated under the same name, the source instant snapshot ID would identify
                the exact version of the instant snapshot that was used.
-        :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict', 'outputs.DiskSourceSnapshotEncryptionKey']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.

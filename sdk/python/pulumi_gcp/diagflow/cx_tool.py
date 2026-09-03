@@ -390,13 +390,13 @@ class CxTool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
-                 data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+                 connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict', 'outputs.CxToolConnectorSpec']]] = None,
+                 data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict', 'outputs.CxToolDataStoreSpec']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
-                 open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
+                 function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict', 'outputs.CxToolFunctionSpec']]] = None,
+                 open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict', 'outputs.CxToolOpenApiSpec']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -671,11 +671,11 @@ class CxTool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: (Optional, Beta)
+        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict', 'outputs.CxToolConnectorSpec']] connector_spec: (Optional, Beta)
                Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
-        :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
+        :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict', 'outputs.CxToolDataStoreSpec']] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -686,10 +686,10 @@ class CxTool(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
-        :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']] function_spec: Client side executed function specification.
+        :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict', 'outputs.CxToolFunctionSpec']] function_spec: Client side executed function specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
-        :param pulumi.Input[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']] open_api_spec: OpenAPI specification of the Tool.
+        :param pulumi.Input[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict', 'outputs.CxToolOpenApiSpec']] open_api_spec: OpenAPI specification of the Tool.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a Tool for.
@@ -986,13 +986,13 @@ class CxTool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
-                 data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+                 connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict', 'outputs.CxToolConnectorSpec']]] = None,
+                 data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict', 'outputs.CxToolDataStoreSpec']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
-                 open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
+                 function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict', 'outputs.CxToolFunctionSpec']]] = None,
+                 open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict', 'outputs.CxToolOpenApiSpec']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1027,14 +1027,14 @@ class CxTool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
-            data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+            connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict', 'outputs.CxToolConnectorSpec']]] = None,
+            data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict', 'outputs.CxToolDataStoreSpec']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
+            function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict', 'outputs.CxToolFunctionSpec']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
+            open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict', 'outputs.CxToolOpenApiSpec']]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             tool_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'CxTool':
         """
@@ -1044,11 +1044,11 @@ class CxTool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: (Optional, Beta)
+        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict', 'outputs.CxToolConnectorSpec']] connector_spec: (Optional, Beta)
                Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
-        :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
+        :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict', 'outputs.CxToolDataStoreSpec']] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1059,12 +1059,12 @@ class CxTool(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
-        :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']] function_spec: Client side executed function specification.
+        :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict', 'outputs.CxToolFunctionSpec']] function_spec: Client side executed function specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the Tool.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
-        :param pulumi.Input[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']] open_api_spec: OpenAPI specification of the Tool.
+        :param pulumi.Input[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict', 'outputs.CxToolOpenApiSpec']] open_api_spec: OpenAPI specification of the Tool.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a Tool for.

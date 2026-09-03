@@ -755,17 +755,17 @@ class Workload(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_sovereign_controls: pulumi.Input[Optional[_builtins.bool]] = None,
-                 kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']]] = None,
+                 kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict', 'outputs.WorkloadKmsSettings']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
                  partner: pulumi.Input[Optional[_builtins.str]] = None,
-                 partner_permissions: pulumi.Input[Optional[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']]] = None,
+                 partner_permissions: pulumi.Input[Optional[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict', 'outputs.WorkloadPartnerPermissions']]] = None,
                  partner_services_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_resources_parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]]] = None,
+                 resource_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict', 'outputs.WorkloadResourceSetting']]]]] = None,
                  violation_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 workload_options: pulumi.Input[Optional[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']]] = None,
+                 workload_options: pulumi.Input[Optional[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict', 'outputs.WorkloadWorkloadOptions']]] = None,
                  __props__=None):
         """
         The AssuredWorkloads Workload resource
@@ -906,7 +906,7 @@ class Workload(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[_builtins.bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
-        :param pulumi.Input[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']] kms_settings: **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+        :param pulumi.Input[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict', 'outputs.WorkloadKmsSettings']] kms_settings: **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels applied to the workload.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -916,12 +916,12 @@ class Workload(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
-        :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
+        :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict', 'outputs.WorkloadPartnerPermissions']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[_builtins.str] partner_services_billing_account: Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
         :param pulumi.Input[_builtins.str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict', 'outputs.WorkloadResourceSetting']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[_builtins.bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
-        :param pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        :param pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict', 'outputs.WorkloadWorkloadOptions']] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
         """
         ...
     @overload
@@ -1076,17 +1076,17 @@ class Workload(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_sovereign_controls: pulumi.Input[Optional[_builtins.bool]] = None,
-                 kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']]] = None,
+                 kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict', 'outputs.WorkloadKmsSettings']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
                  partner: pulumi.Input[Optional[_builtins.str]] = None,
-                 partner_permissions: pulumi.Input[Optional[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']]] = None,
+                 partner_permissions: pulumi.Input[Optional[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict', 'outputs.WorkloadPartnerPermissions']]] = None,
                  partner_services_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_resources_parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]]] = None,
+                 resource_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict', 'outputs.WorkloadResourceSetting']]]]] = None,
                  violation_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 workload_options: pulumi.Input[Optional[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']]] = None,
+                 workload_options: pulumi.Input[Optional[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict', 'outputs.WorkloadWorkloadOptions']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1144,30 +1144,30 @@ class Workload(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_account: pulumi.Input[Optional[_builtins.str]] = None,
             compliance_regime: pulumi.Input[Optional[_builtins.str]] = None,
-            compliance_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadComplianceStatusArgs', 'WorkloadComplianceStatusArgsDict']]]]] = None,
+            compliance_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadComplianceStatusArgs', 'WorkloadComplianceStatusArgsDict', 'outputs.WorkloadComplianceStatus']]]]] = None,
             compliant_but_disallowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ekm_provisioning_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict']]]]] = None,
+            ekm_provisioning_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict', 'outputs.WorkloadEkmProvisioningResponse']]]]] = None,
             enable_sovereign_controls: pulumi.Input[Optional[_builtins.bool]] = None,
             kaj_enrollment_state: pulumi.Input[Optional[_builtins.str]] = None,
-            kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']]] = None,
+            kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict', 'outputs.WorkloadKmsSettings']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization: pulumi.Input[Optional[_builtins.str]] = None,
             partner: pulumi.Input[Optional[_builtins.str]] = None,
-            partner_permissions: pulumi.Input[Optional[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']]] = None,
+            partner_permissions: pulumi.Input[Optional[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict', 'outputs.WorkloadPartnerPermissions']]] = None,
             partner_services_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
             provisioned_resources_parent: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict']]]]] = None,
-            saa_enrollment_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict']]]]] = None,
+            resource_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict', 'outputs.WorkloadResourceSetting']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict', 'outputs.WorkloadResource']]]]] = None,
+            saa_enrollment_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict', 'outputs.WorkloadSaaEnrollmentResponse']]]]] = None,
             violation_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            workload_options: pulumi.Input[Optional[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']]] = None) -> 'Workload':
+            workload_options: pulumi.Input[Optional[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict', 'outputs.WorkloadWorkloadOptions']]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1177,7 +1177,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_account: Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input[_builtins.str] compliance_regime: Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT, IRS_1075
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadComplianceStatusArgs', 'WorkloadComplianceStatusArgsDict']]]] compliance_statuses: Output only. Count of active Violations in the Workload.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadComplianceStatusArgs', 'WorkloadComplianceStatusArgsDict', 'outputs.WorkloadComplianceStatus']]]] compliance_statuses: Output only. Count of active Violations in the Workload.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compliant_but_disallowed_services: Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         :param pulumi.Input[_builtins.str] create_time: Output only. Immutable. The Workload creation timestamp.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -1188,10 +1188,10 @@ class Workload(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict']]]] ekm_provisioning_responses: Optional. Represents the Ekm Provisioning State of the given workload.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict', 'outputs.WorkloadEkmProvisioningResponse']]]] ekm_provisioning_responses: Optional. Represents the Ekm Provisioning State of the given workload.
         :param pulumi.Input[_builtins.bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[_builtins.str] kaj_enrollment_state: Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
-        :param pulumi.Input[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']] kms_settings: **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+        :param pulumi.Input[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict', 'outputs.WorkloadKmsSettings']] kms_settings: **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels applied to the workload.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1202,15 +1202,15 @@ class Workload(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
-        :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
+        :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict', 'outputs.WorkloadPartnerPermissions']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[_builtins.str] partner_services_billing_account: Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
         :param pulumi.Input[_builtins.str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict']]]] saa_enrollment_responses: Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict', 'outputs.WorkloadResourceSetting']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict', 'outputs.WorkloadResource']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict', 'outputs.WorkloadSaaEnrollmentResponse']]]] saa_enrollment_responses: Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
         :param pulumi.Input[_builtins.bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
-        :param pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        :param pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict', 'outputs.WorkloadWorkloadOptions']] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

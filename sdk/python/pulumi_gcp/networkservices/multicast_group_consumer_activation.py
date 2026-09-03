@@ -548,7 +548,7 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict', 'outputs.MulticastGroupConsumerActivationLogConfig']]] = None,
                  multicast_consumer_association: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_consumer_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range_activation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -645,7 +645,7 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']] log_config: The logging configuration.
+        :param pulumi.Input[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict', 'outputs.MulticastGroupConsumerActivationLogConfig']] log_config: The logging configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] multicast_consumer_association: The resource name of the multicast consumer association that is in the
                same zone as this multicast group consumer activation.
@@ -765,7 +765,7 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict', 'outputs.MulticastGroupConsumerActivationLogConfig']]] = None,
                  multicast_consumer_association: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_consumer_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range_activation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -821,14 +821,14 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
+            log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict', 'outputs.MulticastGroupConsumerActivationLogConfig']]] = None,
             multicast_consumer_association: pulumi.Input[Optional[_builtins.str]] = None,
             multicast_group_consumer_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
             multicast_group_range_activation: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastGroupConsumerActivationStateArgs', 'MulticastGroupConsumerActivationStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastGroupConsumerActivationStateArgs', 'MulticastGroupConsumerActivationStateArgsDict', 'outputs.MulticastGroupConsumerActivationState']]]]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastGroupConsumerActivation':
         """
@@ -852,7 +852,7 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']] log_config: The logging configuration.
+        :param pulumi.Input[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict', 'outputs.MulticastGroupConsumerActivationLogConfig']] log_config: The logging configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] multicast_consumer_association: The resource name of the multicast consumer association that is in the
                same zone as this multicast group consumer activation.
@@ -873,7 +873,7 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupConsumerActivationStateArgs', 'MulticastGroupConsumerActivationStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupConsumerActivationStateArgs', 'MulticastGroupConsumerActivationStateArgsDict', 'outputs.MulticastGroupConsumerActivationState']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
                CREATING

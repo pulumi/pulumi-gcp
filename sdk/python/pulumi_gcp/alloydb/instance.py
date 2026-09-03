@@ -1012,9 +1012,9 @@ class Instance(pulumi.CustomResource):
                  activation_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  availability_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 client_connection_config: pulumi.Input[Optional[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
+                 client_connection_config: pulumi.Input[Optional[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict', 'outputs.InstanceClientConnectionConfig']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 connection_pool_config: pulumi.Input[Optional[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']]] = None,
+                 connection_pool_config: pulumi.Input[Optional[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict', 'outputs.InstanceConnectionPoolConfig']]] = None,
                  database_flags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1022,12 +1022,12 @@ class Instance(pulumi.CustomResource):
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_config: pulumi.Input[Optional[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict']]] = None,
-                 network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
-                 observability_config: pulumi.Input[Optional[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']]] = None,
-                 psc_instance_config: pulumi.Input[Optional[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']]] = None,
-                 query_insights_config: pulumi.Input[Optional[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict']]] = None,
-                 read_pool_config: pulumi.Input[Optional[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict']]] = None,
+                 machine_config: pulumi.Input[Optional[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict', 'outputs.InstanceMachineConfig']]] = None,
+                 network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict', 'outputs.InstanceNetworkConfig']]] = None,
+                 observability_config: pulumi.Input[Optional[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict', 'outputs.InstanceObservabilityConfig']]] = None,
+                 psc_instance_config: pulumi.Input[Optional[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict', 'outputs.InstancePscInstanceConfig']]] = None,
+                 query_insights_config: pulumi.Input[Optional[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict', 'outputs.InstanceQueryInsightsConfig']]] = None,
+                 read_pool_config: pulumi.Input[Optional[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict', 'outputs.InstanceReadPoolConfig']]] = None,
                  __props__=None):
         """
         A managed alloydb cluster instance.
@@ -1178,11 +1178,11 @@ class Instance(pulumi.CustomResource):
                can have regional availability (nodes are present in 2 or more zones in a region).
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
-        :param pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']] client_connection_config: Client connection specific configurations.
+        :param pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict', 'outputs.InstanceClientConnectionConfig']] client_connection_config: Client connection specific configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
-        :param pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']] connection_pool_config: Configuration for Managed Connection Pool.
+        :param pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict', 'outputs.InstanceConnectionPoolConfig']] connection_pool_config: Configuration for Managed Connection Pool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1205,18 +1205,18 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict']] machine_config: Configurations for the machines that host the underlying database engine.
+        :param pulumi.Input[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict', 'outputs.InstanceMachineConfig']] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Instance level network configuration.
+        :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict', 'outputs.InstanceNetworkConfig']] network_config: Instance level network configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']] observability_config: (Optional, Beta)
+        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict', 'outputs.InstanceObservabilityConfig']] observability_config: (Optional, Beta)
                Configuration for enhanced query insights.
                Structure is documented below.
-        :param pulumi.Input[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
+        :param pulumi.Input[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict', 'outputs.InstancePscInstanceConfig']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict']] query_insights_config: Configuration for query insights.
+        :param pulumi.Input[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict', 'outputs.InstanceQueryInsightsConfig']] query_insights_config: Configuration for query insights.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
+        :param pulumi.Input[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict', 'outputs.InstanceReadPoolConfig']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         """
         ...
@@ -1371,9 +1371,9 @@ class Instance(pulumi.CustomResource):
                  activation_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  availability_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 client_connection_config: pulumi.Input[Optional[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
+                 client_connection_config: pulumi.Input[Optional[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict', 'outputs.InstanceClientConnectionConfig']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 connection_pool_config: pulumi.Input[Optional[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']]] = None,
+                 connection_pool_config: pulumi.Input[Optional[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict', 'outputs.InstanceConnectionPoolConfig']]] = None,
                  database_flags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1381,12 +1381,12 @@ class Instance(pulumi.CustomResource):
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_config: pulumi.Input[Optional[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict']]] = None,
-                 network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
-                 observability_config: pulumi.Input[Optional[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']]] = None,
-                 psc_instance_config: pulumi.Input[Optional[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']]] = None,
-                 query_insights_config: pulumi.Input[Optional[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict']]] = None,
-                 read_pool_config: pulumi.Input[Optional[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict']]] = None,
+                 machine_config: pulumi.Input[Optional[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict', 'outputs.InstanceMachineConfig']]] = None,
+                 network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict', 'outputs.InstanceNetworkConfig']]] = None,
+                 observability_config: pulumi.Input[Optional[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict', 'outputs.InstanceObservabilityConfig']]] = None,
+                 psc_instance_config: pulumi.Input[Optional[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict', 'outputs.InstancePscInstanceConfig']]] = None,
+                 query_insights_config: pulumi.Input[Optional[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict', 'outputs.InstanceQueryInsightsConfig']]] = None,
+                 read_pool_config: pulumi.Input[Optional[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict', 'outputs.InstanceReadPoolConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1448,9 +1448,9 @@ class Instance(pulumi.CustomResource):
             activation_policy: pulumi.Input[Optional[_builtins.str]] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             availability_type: pulumi.Input[Optional[_builtins.str]] = None,
-            client_connection_config: pulumi.Input[Optional[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
+            client_connection_config: pulumi.Input[Optional[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict', 'outputs.InstanceClientConnectionConfig']]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
-            connection_pool_config: pulumi.Input[Optional[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']]] = None,
+            connection_pool_config: pulumi.Input[Optional[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict', 'outputs.InstanceConnectionPoolConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             database_flags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1462,16 +1462,16 @@ class Instance(pulumi.CustomResource):
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            machine_config: pulumi.Input[Optional[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict']]] = None,
+            machine_config: pulumi.Input[Optional[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict', 'outputs.InstanceMachineConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
-            observability_config: pulumi.Input[Optional[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']]] = None,
+            network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict', 'outputs.InstanceNetworkConfig']]] = None,
+            observability_config: pulumi.Input[Optional[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict', 'outputs.InstanceObservabilityConfig']]] = None,
             outbound_public_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            psc_instance_config: pulumi.Input[Optional[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']]] = None,
+            psc_instance_config: pulumi.Input[Optional[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict', 'outputs.InstancePscInstanceConfig']]] = None,
             public_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            query_insights_config: pulumi.Input[Optional[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict']]] = None,
-            read_pool_config: pulumi.Input[Optional[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict']]] = None,
+            query_insights_config: pulumi.Input[Optional[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict', 'outputs.InstanceQueryInsightsConfig']]] = None,
+            read_pool_config: pulumi.Input[Optional[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict', 'outputs.InstanceReadPoolConfig']]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1502,11 +1502,11 @@ class Instance(pulumi.CustomResource):
                can have regional availability (nodes are present in 2 or more zones in a region).
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
-        :param pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']] client_connection_config: Client connection specific configurations.
+        :param pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict', 'outputs.InstanceClientConnectionConfig']] client_connection_config: Client connection specific configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
-        :param pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']] connection_pool_config: Configuration for Managed Connection Pool.
+        :param pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict', 'outputs.InstanceConnectionPoolConfig']] connection_pool_config: Configuration for Managed Connection Pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
@@ -1533,27 +1533,27 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict']] machine_config: Configurations for the machines that host the underlying database engine.
+        :param pulumi.Input[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict', 'outputs.InstanceMachineConfig']] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the instance resource.
-        :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Instance level network configuration.
+        :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict', 'outputs.InstanceNetworkConfig']] network_config: Instance level network configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']] observability_config: (Optional, Beta)
+        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict', 'outputs.InstanceObservabilityConfig']] observability_config: (Optional, Beta)
                Configuration for enhanced query insights.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_public_ip_addresses: The outbound public IP addresses for the instance. This is available ONLY when
                networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
                for outbound connections.
-        :param pulumi.Input[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
+        :param pulumi.Input[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict', 'outputs.InstancePscInstanceConfig']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] public_ip_address: The public IP addresses for the Instance. This is available ONLY when
                networkConfig.enablePublicIp is set to true. This is the connection
                endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict']] query_insights_config: Configuration for query insights.
+        :param pulumi.Input[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict', 'outputs.InstanceQueryInsightsConfig']] query_insights_config: Configuration for query insights.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
+        :param pulumi.Input[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict', 'outputs.InstanceReadPoolConfig']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[_builtins.str] state: The current state of the alloydb instance.

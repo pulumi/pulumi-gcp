@@ -402,7 +402,7 @@ class SipTrunk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SipTrunkConnectionArgs', 'SipTrunkConnectionArgsDict']]]]] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SipTrunkConnectionArgs', 'SipTrunkConnectionArgsDict', 'outputs.SipTrunkConnection']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             expected_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -416,7 +416,7 @@ class SipTrunk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SipTrunkConnectionArgs', 'SipTrunkConnectionArgsDict']]]] connections: Output only. The connections of the SIP trunk.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SipTrunkConnectionArgs', 'SipTrunkConnectionArgsDict', 'outputs.SipTrunkConnection']]]] connections: Output only. The connections of the SIP trunk.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

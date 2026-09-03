@@ -648,11 +648,11 @@ class UnitKind(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  default_release: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]]] = None,
-                 input_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict']]]]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]]] = None,
+                 input_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict', 'outputs.UnitKindInputVariableMapping']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 output_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict']]]]] = None,
+                 output_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict', 'outputs.UnitKindOutputVariableMapping']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  saas: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_kind_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -734,10 +734,10 @@ class UnitKind(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]] dependencies: List of other unit kinds that this release will depend on. Dependencies
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]] dependencies: List of other unit kinds that this release will depend on. Dependencies
                will be automatically provisioned if not found. Maximum 10.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict']]]] input_variable_mappings: List of inputVariables for this release that will either be retrieved from
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict', 'outputs.UnitKindInputVariableMapping']]]] input_variable_mappings: List of inputVariables for this release that will either be retrieved from
                a dependency’s outputVariables, or will be passed on to a dependency’s
                inputVariables. Maximum 100.
                Structure is documented below.
@@ -746,7 +746,7 @@ class UnitKind(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict']]]] output_variable_mappings: List of outputVariables for this unit kind will be passed to this unit's
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict', 'outputs.UnitKindOutputVariableMapping']]]] output_variable_mappings: List of outputVariables for this unit kind will be passed to this unit's
                outputVariables. Maximum 100.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -839,11 +839,11 @@ class UnitKind(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  default_release: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]]] = None,
-                 input_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict']]]]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]]] = None,
+                 input_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict', 'outputs.UnitKindInputVariableMapping']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 output_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict']]]]] = None,
+                 output_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict', 'outputs.UnitKindOutputVariableMapping']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  saas: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_kind_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -897,15 +897,15 @@ class UnitKind(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             default_release: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            input_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict']]]]] = None,
+            input_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict', 'outputs.UnitKindInputVariableMapping']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            output_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict']]]]] = None,
+            output_variable_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict', 'outputs.UnitKindOutputVariableMapping']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             saas: pulumi.Input[Optional[_builtins.str]] = None,
@@ -936,7 +936,7 @@ class UnitKind(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]] dependencies: List of other unit kinds that this release will depend on. Dependencies
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict', 'outputs.UnitKindDependency']]]] dependencies: List of other unit kinds that this release will depend on. Dependencies
                will be automatically provisioned if not found. Maximum 10.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -944,7 +944,7 @@ class UnitKind(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
                and server agree on the ordering of a resource being written.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict']]]] input_variable_mappings: List of inputVariables for this release that will either be retrieved from
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict', 'outputs.UnitKindInputVariableMapping']]]] input_variable_mappings: List of inputVariables for this release that will either be retrieved from
                a dependency’s outputVariables, or will be passed on to a dependency’s
                inputVariables. Maximum 100.
                Structure is documented below.
@@ -956,7 +956,7 @@ class UnitKind(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name (full URI of the resource) following the standard naming
                scheme:
                "projects/{project}/locations/{location}/unitKinds/{unitKind}"
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict']]]] output_variable_mappings: List of outputVariables for this unit kind will be passed to this unit's
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindOutputVariableMappingArgs', 'UnitKindOutputVariableMappingArgsDict', 'outputs.UnitKindOutputVariableMapping']]]] output_variable_mappings: List of outputVariables for this unit kind will be passed to this unit's
                outputVariables. Maximum 100.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

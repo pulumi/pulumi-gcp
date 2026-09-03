@@ -425,7 +425,7 @@ class InstancePartition(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_config: pulumi.Input[Optional[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']]] = None,
+                 autoscaling_config: pulumi.Input[Optional[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict', 'outputs.InstancePartitionAutoscalingConfig']]] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,7 +514,7 @@ class InstancePartition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+        :param pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict', 'outputs.InstancePartitionAutoscalingConfig']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
                Exactly one of either node_count, processing_units, or autoscaling_config must be
                present. When autoscaling is enabled, node_count and processing_units are treated as
                OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
@@ -641,7 +641,7 @@ class InstancePartition(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_config: pulumi.Input[Optional[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']]] = None,
+                 autoscaling_config: pulumi.Input[Optional[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict', 'outputs.InstancePartitionAutoscalingConfig']]] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -685,7 +685,7 @@ class InstancePartition(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_config: pulumi.Input[Optional[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']]] = None,
+            autoscaling_config: pulumi.Input[Optional[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict', 'outputs.InstancePartitionAutoscalingConfig']]] = None,
             config: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -702,7 +702,7 @@ class InstancePartition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+        :param pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict', 'outputs.InstancePartitionAutoscalingConfig']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
                Exactly one of either node_count, processing_units, or autoscaling_config must be
                present. When autoscaling is enabled, node_count and processing_units are treated as
                OUTPUT_ONLY fields and reflect the current compute capacity allocated to the

@@ -758,15 +758,15 @@ class ApiProduct(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  approval_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict', 'outputs.ApiProductAttribute']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
-                 grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
+                 graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict', 'outputs.ApiProductGraphqlOperationGroup']]] = None,
+                 grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict', 'outputs.ApiProductGrpcOperationGroup']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
+                 operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict', 'outputs.ApiProductOperationGroup']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  quota: pulumi.Input[Optional[_builtins.str]] = None,
@@ -909,7 +909,7 @@ class ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] approval_type: Flag that specifies how API keys are approved to access the APIs defined by the API product.
                Valid values are `auto` or `manual`.
                Possible values are: `auto`, `manual`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]] attributes: Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict', 'outputs.ApiProductAttribute']]]] attributes: Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
                Use this property to specify the access level of the API product as either public, private, or internal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -922,12 +922,12 @@ class ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
                By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment.
-        :param pulumi.Input[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']] graphql_operation_group: Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+        :param pulumi.Input[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict', 'outputs.ApiProductGraphqlOperationGroup']] graphql_operation_group: Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
                Structure is documented below.
-        :param pulumi.Input[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']] grpc_operation_group: Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        :param pulumi.Input[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict', 'outputs.ApiProductGrpcOperationGroup']] grpc_operation_group: Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Internal name of the API product.
-        :param pulumi.Input[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the quota setting).
+        :param pulumi.Input[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict', 'outputs.ApiProductOperationGroup']] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the quota setting).
                Note: The apiResources setting cannot be specified for both the API product and operation group; otherwise the call will fail.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API product,
@@ -1092,15 +1092,15 @@ class ApiProduct(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  approval_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict', 'outputs.ApiProductAttribute']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
-                 grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
+                 graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict', 'outputs.ApiProductGraphqlOperationGroup']]] = None,
+                 grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict', 'outputs.ApiProductGrpcOperationGroup']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
+                 operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict', 'outputs.ApiProductOperationGroup']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  quota: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1155,17 +1155,17 @@ class ApiProduct(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             approval_type: pulumi.Input[Optional[_builtins.str]] = None,
-            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict', 'outputs.ApiProductAttribute']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
-            grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
+            graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict', 'outputs.ApiProductGraphqlOperationGroup']]] = None,
+            grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict', 'outputs.ApiProductGrpcOperationGroup']]] = None,
             last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
+            operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict', 'outputs.ApiProductOperationGroup']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             quota: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1186,7 +1186,7 @@ class ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] approval_type: Flag that specifies how API keys are approved to access the APIs defined by the API product.
                Valid values are `auto` or `manual`.
                Possible values are: `auto`, `manual`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]] attributes: Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict', 'outputs.ApiProductAttribute']]]] attributes: Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
                Use this property to specify the access level of the API product as either public, private, or internal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] created_at: Response only. Creation time of this environment as milliseconds since epoch.
@@ -1200,13 +1200,13 @@ class ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
                By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment.
-        :param pulumi.Input[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']] graphql_operation_group: Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+        :param pulumi.Input[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict', 'outputs.ApiProductGraphqlOperationGroup']] graphql_operation_group: Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
                Structure is documented below.
-        :param pulumi.Input[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']] grpc_operation_group: Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        :param pulumi.Input[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict', 'outputs.ApiProductGrpcOperationGroup']] grpc_operation_group: Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_modified_at: Response only. Modified time of this environment as milliseconds since epoch.
         :param pulumi.Input[_builtins.str] name: Internal name of the API product.
-        :param pulumi.Input[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the quota setting).
+        :param pulumi.Input[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict', 'outputs.ApiProductOperationGroup']] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the quota setting).
                Note: The apiResources setting cannot be specified for both the API product and operation group; otherwise the call will fail.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API product,

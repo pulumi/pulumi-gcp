@@ -480,7 +480,7 @@ class Curation(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint: pulumi.Input[Optional[Union['CurationEndpointArgs', 'CurationEndpointArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['CurationEndpointArgs', 'CurationEndpointArgsDict', 'outputs.CurationEndpoint']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -544,7 +544,7 @@ class Curation(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the curation.
         :param pulumi.Input[_builtins.str] display_name: The display name of the curation.
-        :param pulumi.Input[Union['CurationEndpointArgs', 'CurationEndpointArgsDict']] endpoint: The endpoint to be triggered for curation.
+        :param pulumi.Input[Union['CurationEndpointArgs', 'CurationEndpointArgsDict', 'outputs.CurationEndpoint']] endpoint: The endpoint to be triggered for curation.
                The endpoint will be invoked with a request payload containing
                ApiMetadata.
                Response should contain curated data in the form of
@@ -621,7 +621,7 @@ class Curation(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint: pulumi.Input[Optional[Union['CurationEndpointArgs', 'CurationEndpointArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['CurationEndpointArgs', 'CurationEndpointArgsDict', 'outputs.CurationEndpoint']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -670,13 +670,13 @@ class Curation(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint: pulumi.Input[Optional[Union['CurationEndpointArgs', 'CurationEndpointArgsDict']]] = None,
+            endpoint: pulumi.Input[Optional[Union['CurationEndpointArgs', 'CurationEndpointArgsDict', 'outputs.CurationEndpoint']]] = None,
             last_execution_error_code: pulumi.Input[Optional[_builtins.str]] = None,
             last_execution_error_message: pulumi.Input[Optional[_builtins.str]] = None,
             last_execution_state: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            plugin_instance_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CurationPluginInstanceActionArgs', 'CurationPluginInstanceActionArgsDict']]]]] = None,
+            plugin_instance_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CurationPluginInstanceActionArgs', 'CurationPluginInstanceActionArgsDict', 'outputs.CurationPluginInstanceAction']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Curation':
         """
@@ -703,7 +703,7 @@ class Curation(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the curation.
         :param pulumi.Input[_builtins.str] display_name: The display name of the curation.
-        :param pulumi.Input[Union['CurationEndpointArgs', 'CurationEndpointArgsDict']] endpoint: The endpoint to be triggered for curation.
+        :param pulumi.Input[Union['CurationEndpointArgs', 'CurationEndpointArgsDict', 'outputs.CurationEndpoint']] endpoint: The endpoint to be triggered for curation.
                The endpoint will be invoked with a request payload containing
                ApiMetadata.
                Response should contain curated data in the form of
@@ -726,7 +726,7 @@ class Curation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the curation.
                Format:
                `projects/{project}/locations/{location}/curations/{curation}`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CurationPluginInstanceActionArgs', 'CurationPluginInstanceActionArgsDict']]]] plugin_instance_actions: The plugin instances and associated actions that are using the curation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CurationPluginInstanceActionArgs', 'CurationPluginInstanceActionArgsDict', 'outputs.CurationPluginInstanceAction']]]] plugin_instance_actions: The plugin instances and associated actions that are using the curation.
                Note: A particular curation could be used by multiple plugin instances or
                multiple actions in a plugin instance.
                Structure is documented below.

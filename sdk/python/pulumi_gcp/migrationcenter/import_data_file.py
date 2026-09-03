@@ -576,7 +576,7 @@ class ImportDataFile(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            upload_file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImportDataFileUploadFileInfoArgs', 'ImportDataFileUploadFileInfoArgsDict']]]]] = None) -> 'ImportDataFile':
+            upload_file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImportDataFileUploadFileInfoArgs', 'ImportDataFileUploadFileInfoArgsDict', 'outputs.ImportDataFileUploadFileInfo']]]]] = None) -> 'ImportDataFile':
         """
         Get an existing ImportDataFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -609,7 +609,7 @@ class ImportDataFile(pulumi.CustomResource):
                Possible values:
                CREATING
                ACTIVE
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImportDataFileUploadFileInfoArgs', 'ImportDataFileUploadFileInfoArgsDict']]]] upload_file_infos: A resource that contains a URI to which a data file can be uploaded.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImportDataFileUploadFileInfoArgs', 'ImportDataFileUploadFileInfoArgsDict', 'outputs.ImportDataFileUploadFileInfo']]]] upload_file_infos: A resource that contains a URI to which a data file can be uploaded.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

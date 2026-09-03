@@ -571,7 +571,7 @@ class MulticastDomain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_network: pulumi.Input[Optional[_builtins.str]] = None,
-                 connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']]] = None,
+                 connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict', 'outputs.MulticastDomainConnectionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -579,7 +579,7 @@ class MulticastDomain(pulumi.CustomResource):
                  multicast_domain_group: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 ull_multicast_domain: pulumi.Input[Optional[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']]] = None,
+                 ull_multicast_domain: pulumi.Input[Optional[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict', 'outputs.MulticastDomainUllMulticastDomain']]] = None,
                  __props__=None):
         """
         Create a multicast domain in the current project.
@@ -639,7 +639,7 @@ class MulticastDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] admin_network: The resource name of the multicast admin VPC network.
                Use the following format:
                `projects/{project}/locations/global/networks/{network}`.
-        :param pulumi.Input[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']] connection_config: VPC connectivity information.
+        :param pulumi.Input[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict', 'outputs.MulticastDomainConnectionConfig']] connection_config: VPC connectivity information.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -661,7 +661,7 @@ class MulticastDomain(pulumi.CustomResource):
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
+        :param pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict', 'outputs.MulticastDomainUllMulticastDomain']] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
                Structure is documented below.
         """
         ...
@@ -739,7 +739,7 @@ class MulticastDomain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_network: pulumi.Input[Optional[_builtins.str]] = None,
-                 connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']]] = None,
+                 connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict', 'outputs.MulticastDomainConnectionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -747,7 +747,7 @@ class MulticastDomain(pulumi.CustomResource):
                  multicast_domain_group: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 ull_multicast_domain: pulumi.Input[Optional[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']]] = None,
+                 ull_multicast_domain: pulumi.Input[Optional[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict', 'outputs.MulticastDomainUllMulticastDomain']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -795,7 +795,7 @@ class MulticastDomain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_network: pulumi.Input[Optional[_builtins.str]] = None,
-            connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']]] = None,
+            connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict', 'outputs.MulticastDomainConnectionConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -807,8 +807,8 @@ class MulticastDomain(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastDomainStateArgs', 'MulticastDomainStateArgsDict']]]]] = None,
-            ull_multicast_domain: pulumi.Input[Optional[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastDomainStateArgs', 'MulticastDomainStateArgsDict', 'outputs.MulticastDomainState']]]]] = None,
+            ull_multicast_domain: pulumi.Input[Optional[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict', 'outputs.MulticastDomainUllMulticastDomain']]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastDomain':
         """
@@ -821,7 +821,7 @@ class MulticastDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] admin_network: The resource name of the multicast admin VPC network.
                Use the following format:
                `projects/{project}/locations/global/networks/{network}`.
-        :param pulumi.Input[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']] connection_config: VPC connectivity information.
+        :param pulumi.Input[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict', 'outputs.MulticastDomainConnectionConfig']] connection_config: VPC connectivity information.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -850,7 +850,7 @@ class MulticastDomain(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainStateArgs', 'MulticastDomainStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainStateArgs', 'MulticastDomainStateArgsDict', 'outputs.MulticastDomainState']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
                CREATING
@@ -860,7 +860,7 @@ class MulticastDomain(pulumi.CustomResource):
                UPDATING
                UPDATE_FAILED
                INACTIVE
-        :param pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
+        :param pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict', 'outputs.MulticastDomainUllMulticastDomain']] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is
                unique across all multicast domain resources. If a domain is deleted and

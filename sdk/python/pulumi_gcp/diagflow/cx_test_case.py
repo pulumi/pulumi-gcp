@@ -358,8 +358,8 @@ class CxTestCase(pulumi.CustomResource):
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 test_case_conversation_turns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict']]]]] = None,
-                 test_config: pulumi.Input[Optional[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict']]] = None,
+                 test_case_conversation_turns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict', 'outputs.CxTestCaseTestCaseConversationTurn']]]]] = None,
+                 test_config: pulumi.Input[Optional[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict', 'outputs.CxTestCaseTestConfig']]] = None,
                  __props__=None):
         """
         You can use the built-in test feature to uncover bugs and prevent regressions. A test execution verifies that agent responses have not changed for end-user inputs defined in the test case.
@@ -530,9 +530,9 @@ class CxTestCase(pulumi.CustomResource):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
                Each tag should start with "#" and has a limit of 30 characters
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict', 'outputs.CxTestCaseTestCaseConversationTurn']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
                Structure is documented below.
-        :param pulumi.Input[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict']] test_config: Config for the test case.
+        :param pulumi.Input[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict', 'outputs.CxTestCaseTestConfig']] test_config: Config for the test case.
                Structure is documented below.
         """
         ...
@@ -716,8 +716,8 @@ class CxTestCase(pulumi.CustomResource):
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 test_case_conversation_turns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict']]]]] = None,
-                 test_config: pulumi.Input[Optional[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict']]] = None,
+                 test_case_conversation_turns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict', 'outputs.CxTestCaseTestCaseConversationTurn']]]]] = None,
+                 test_config: pulumi.Input[Optional[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict', 'outputs.CxTestCaseTestConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -752,13 +752,13 @@ class CxTestCase(pulumi.CustomResource):
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            last_test_results: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseLastTestResultArgs', 'CxTestCaseLastTestResultArgsDict']]]]] = None,
+            last_test_results: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseLastTestResultArgs', 'CxTestCaseLastTestResultArgsDict', 'outputs.CxTestCaseLastTestResult']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notes: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            test_case_conversation_turns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict']]]]] = None,
-            test_config: pulumi.Input[Optional[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict']]] = None) -> 'CxTestCase':
+            test_case_conversation_turns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict', 'outputs.CxTestCaseTestCaseConversationTurn']]]]] = None,
+            test_config: pulumi.Input[Optional[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict', 'outputs.CxTestCaseTestConfig']]] = None) -> 'CxTestCase':
         """
         Get an existing CxTestCase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -774,7 +774,7 @@ class CxTestCase(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxTestCaseLastTestResultArgs', 'CxTestCaseLastTestResultArgsDict']]]] last_test_results: The latest test result.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxTestCaseLastTestResultArgs', 'CxTestCaseLastTestResultArgsDict', 'outputs.CxTestCaseLastTestResult']]]] last_test_results: The latest test result.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the page.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
@@ -783,9 +783,9 @@ class CxTestCase(pulumi.CustomResource):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
                Each tag should start with "#" and has a limit of 30 characters
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxTestCaseTestCaseConversationTurnArgs', 'CxTestCaseTestCaseConversationTurnArgsDict', 'outputs.CxTestCaseTestCaseConversationTurn']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
                Structure is documented below.
-        :param pulumi.Input[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict']] test_config: Config for the test case.
+        :param pulumi.Input[Union['CxTestCaseTestConfigArgs', 'CxTestCaseTestConfigArgsDict', 'outputs.CxTestCaseTestConfig']] test_config: Config for the test case.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

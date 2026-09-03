@@ -404,7 +404,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  membership_id: pulumi.Input[Optional[_builtins.str]] = None,
                  membership_rbac_role_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 role: pulumi.Input[Optional[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']]] = None,
+                 role: pulumi.Input[Optional[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict', 'outputs.MembershipRbacRoleBindingRole']]] = None,
                  user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -484,7 +484,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']] role: Role to bind to the principal.
+        :param pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict', 'outputs.MembershipRbacRoleBindingRole']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] user: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
@@ -581,7 +581,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  membership_id: pulumi.Input[Optional[_builtins.str]] = None,
                  membership_rbac_role_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 role: pulumi.Input[Optional[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']]] = None,
+                 role: pulumi.Input[Optional[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict', 'outputs.MembershipRbacRoleBindingRole']]] = None,
                  user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -633,8 +633,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             membership_rbac_role_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            role: pulumi.Input[Optional[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembershipRbacRoleBindingStateArgs', 'MembershipRbacRoleBindingStateArgsDict']]]]] = None,
+            role: pulumi.Input[Optional[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict', 'outputs.MembershipRbacRoleBindingRole']]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembershipRbacRoleBindingStateArgs', 'MembershipRbacRoleBindingStateArgsDict', 'outputs.MembershipRbacRoleBindingState']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             user: pulumi.Input[Optional[_builtins.str]] = None) -> 'MembershipRbacRoleBinding':
@@ -659,9 +659,9 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']] role: Role to bind to the principal.
+        :param pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict', 'outputs.MembershipRbacRoleBindingRole']] role: Role to bind to the principal.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipRbacRoleBindingStateArgs', 'MembershipRbacRoleBindingStateArgsDict']]]] states: State of the RBAC Role Binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipRbacRoleBindingStateArgs', 'MembershipRbacRoleBindingStateArgsDict', 'outputs.MembershipRbacRoleBindingState']]]] states: State of the RBAC Role Binding resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[_builtins.str] update_time: Time the RBAC Role Binding was updated in UTC.

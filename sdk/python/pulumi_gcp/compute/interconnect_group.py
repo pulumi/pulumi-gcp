@@ -363,8 +363,8 @@ class InterconnectGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
-                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict', 'outputs.InterconnectGroupIntent']]] = None,
+                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict', 'outputs.InterconnectGroupInterconnect']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -419,10 +419,10 @@ class InterconnectGroup(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
+        :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict', 'outputs.InterconnectGroupIntent']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict', 'outputs.InterconnectGroupInterconnect']]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
                Note that there are add-members and remove-members methods in gcloud.
@@ -501,8 +501,8 @@ class InterconnectGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
-                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict', 'outputs.InterconnectGroupIntent']]] = None,
+                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict', 'outputs.InterconnectGroupInterconnect']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -535,14 +535,14 @@ class InterconnectGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict']]]]] = None,
+            configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict', 'outputs.InterconnectGroupConfigured']]]]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
-            interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
+            intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict', 'outputs.InterconnectGroupIntent']]] = None,
+            interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict', 'outputs.InterconnectGroupInterconnect']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            physical_structures: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict']]]]] = None,
+            physical_structures: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict', 'outputs.InterconnectGroupPhysicalStructure']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'InterconnectGroup':
         """
         Get an existing InterconnectGroup resource's state with the given name, id, and optional extra
@@ -551,7 +551,7 @@ class InterconnectGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict']]]] configureds: The status of the group as configured. This has the same
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict', 'outputs.InterconnectGroupConfigured']]]] configureds: The status of the group as configured. This has the same
                structure as the operational field reported by the OperationalStatus
                method, but does not take into account the operational status of each
                resource.
@@ -564,10 +564,10 @@ class InterconnectGroup(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
+        :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict', 'outputs.InterconnectGroupIntent']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict', 'outputs.InterconnectGroupInterconnect']]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
                Note that there are add-members and remove-members methods in gcloud.
@@ -578,7 +578,7 @@ class InterconnectGroup(pulumi.CustomResource):
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict']]]] physical_structures: An analysis of the physical layout of Interconnects in this
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict', 'outputs.InterconnectGroupPhysicalStructure']]]] physical_structures: An analysis of the physical layout of Interconnects in this
                group. Every Interconnect in the group is shown once in this structure.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

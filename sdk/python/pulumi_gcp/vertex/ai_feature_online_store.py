@@ -560,15 +560,15 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
-                 dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict', 'outputs.AiFeatureOnlineStoreBigtable']]] = None,
+                 dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict', 'outputs.AiFeatureOnlineStoreDedicatedServingEndpoint']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
+                 embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict', 'outputs.AiFeatureOnlineStoreEmbeddingManagement']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict', 'outputs.AiFeatureOnlineStoreEncryptionSpec']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
+                 optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -671,9 +671,9 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict', 'outputs.AiFeatureOnlineStoreBigtable']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict', 'outputs.AiFeatureOnlineStoreDedicatedServingEndpoint']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -681,19 +681,19 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: (Optional, Beta, Deprecated)
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict', 'outputs.AiFeatureOnlineStoreEmbeddingManagement']] embedding_management: (Optional, Beta, Deprecated)
                The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
-        :param pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict', 'outputs.AiFeatureOnlineStoreEncryptionSpec']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your feature online stores.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of feature online store. eg us-central1
@@ -816,15 +816,15 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
-                 dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict', 'outputs.AiFeatureOnlineStoreBigtable']]] = None,
+                 dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict', 'outputs.AiFeatureOnlineStoreDedicatedServingEndpoint']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
+                 embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict', 'outputs.AiFeatureOnlineStoreEmbeddingManagement']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict', 'outputs.AiFeatureOnlineStoreEncryptionSpec']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
+                 optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -865,18 +865,18 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
+            bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict', 'outputs.AiFeatureOnlineStoreBigtable']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+            dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict', 'outputs.AiFeatureOnlineStoreDedicatedServingEndpoint']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
+            embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict', 'outputs.AiFeatureOnlineStoreEmbeddingManagement']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict', 'outputs.AiFeatureOnlineStoreEncryptionSpec']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
+            optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -889,10 +889,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict', 'outputs.AiFeatureOnlineStoreBigtable']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict', 'outputs.AiFeatureOnlineStoreDedicatedServingEndpoint']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -901,12 +901,12 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: (Optional, Beta, Deprecated)
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict', 'outputs.AiFeatureOnlineStoreEmbeddingManagement']] embedding_management: (Optional, Beta, Deprecated)
                The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
-        :param pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict', 'outputs.AiFeatureOnlineStoreEncryptionSpec']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
@@ -914,7 +914,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource

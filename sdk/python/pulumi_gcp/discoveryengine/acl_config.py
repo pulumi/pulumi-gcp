@@ -167,7 +167,7 @@ class AclConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
+                 idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict', 'outputs.AclConfigIdpConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -215,7 +215,7 @@ class AclConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']] idp_config: Identity provider config.
+        :param pulumi.Input[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict', 'outputs.AclConfigIdpConfig']] idp_config: Identity provider config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -285,7 +285,7 @@ class AclConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
+                 idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict', 'outputs.AclConfigIdpConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -313,7 +313,7 @@ class AclConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
+            idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict', 'outputs.AclConfigIdpConfig']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclConfig':
@@ -324,7 +324,7 @@ class AclConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']] idp_config: Identity provider config.
+        :param pulumi.Input[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict', 'outputs.AclConfigIdpConfig']] idp_config: Identity provider config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".

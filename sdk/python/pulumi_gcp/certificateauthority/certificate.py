@@ -630,7 +630,7 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
                  certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['CertificateConfigArgs', 'CertificateConfigArgsDict', 'outputs.CertificateConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1214,7 +1214,7 @@ class Certificate(pulumi.CustomResource):
                the caller must have the necessary permission to use this template. If this is
                omitted, no template will be used. This template must be in the same location
                as the Certificate.
-        :param pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict', 'outputs.CertificateConfig']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1823,7 +1823,7 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
                  certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['CertificateConfigArgs', 'CertificateConfigArgsDict', 'outputs.CertificateConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1878,9 +1878,9 @@ class Certificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
-            certificate_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateCertificateDescriptionArgs', 'CertificateCertificateDescriptionArgsDict']]]]] = None,
+            certificate_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateCertificateDescriptionArgs', 'CertificateCertificateDescriptionArgsDict', 'outputs.CertificateCertificateDescription']]]]] = None,
             certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['CertificateConfigArgs', 'CertificateConfigArgsDict', 'outputs.CertificateConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1895,7 +1895,7 @@ class Certificate(pulumi.CustomResource):
             pool: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            revocation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict']]]]] = None,
+            revocation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict', 'outputs.CertificateRevocationDetail']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
@@ -1908,14 +1908,14 @@ class Certificate(pulumi.CustomResource):
                a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
                argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
                should be set to `my-ca`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateCertificateDescriptionArgs', 'CertificateCertificateDescriptionArgsDict']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateCertificateDescriptionArgs', 'CertificateCertificateDescriptionArgsDict', 'outputs.CertificateCertificateDescription']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
                in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
                the caller must have the necessary permission to use this template. If this is
                omitted, no template will be used. This template must be in the same location
                as the Certificate.
-        :param pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict', 'outputs.CertificateConfig']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
@@ -1945,7 +1945,7 @@ class Certificate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict', 'outputs.CertificateRevocationDetail']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time at which this CertificateAuthority was updated.

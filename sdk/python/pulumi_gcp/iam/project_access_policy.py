@@ -445,7 +445,7 @@ class ProjectAccessPolicy(pulumi.CustomResource):
                  access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 details: pulumi.Input[Optional[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict', 'outputs.ProjectAccessPolicyDetails']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -540,7 +540,7 @@ class ProjectAccessPolicy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict']] details: Access policy details.
+        :param pulumi.Input[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict', 'outputs.ProjectAccessPolicyDetails']] details: Access policy details.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the access policy. Must be less than
                or equal to 63 characters.
@@ -643,7 +643,7 @@ class ProjectAccessPolicy(pulumi.CustomResource):
                  access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 details: pulumi.Input[Optional[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict', 'outputs.ProjectAccessPolicyDetails']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -687,7 +687,7 @@ class ProjectAccessPolicy(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            details: pulumi.Input[Optional[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict']]] = None,
+            details: pulumi.Input[Optional[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict', 'outputs.ProjectAccessPolicyDetails']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -721,7 +721,7 @@ class ProjectAccessPolicy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict']] details: Access policy details.
+        :param pulumi.Input[Union['ProjectAccessPolicyDetailsArgs', 'ProjectAccessPolicyDetailsArgsDict', 'outputs.ProjectAccessPolicyDetails']] details: Access policy details.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the access policy. Must be less than
                or equal to 63 characters.

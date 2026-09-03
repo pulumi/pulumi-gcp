@@ -603,14 +603,14 @@ class CryptoKey(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  import_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
+                 key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict', 'outputs.CryptoKeyKeyAccessJustificationsPolicy']]] = None,
                  key_ring: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose: pulumi.Input[Optional[_builtins.str]] = None,
                  rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
-                 version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
+                 version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict', 'outputs.CryptoKeyVersionTemplate']]] = None,
                  __props__=None):
         """
         A `CryptoKey` represents a logical key that can be used for cryptographic operations.
@@ -690,7 +690,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
-        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: (Optional, Beta)
+        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict', 'outputs.CryptoKeyKeyAccessJustificationsPolicy']] key_access_justifications_policy: (Optional, Beta)
                The policy used for Key Access Justifications Policy Enforcement. If this
                field is present and this key is enrolled in Key Access Justifications
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -719,7 +719,7 @@ class CryptoKey(pulumi.CustomResource):
                You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
                or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
                This field is only applicable during initial CryptoKey creation.
-        :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict', 'outputs.CryptoKeyVersionTemplate']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         ...
@@ -812,14 +812,14 @@ class CryptoKey(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  import_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
+                 key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict', 'outputs.CryptoKeyKeyAccessJustificationsPolicy']]] = None,
                  key_ring: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose: pulumi.Input[Optional[_builtins.str]] = None,
                  rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
-                 version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
+                 version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict', 'outputs.CryptoKeyVersionTemplate']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -863,16 +863,16 @@ class CryptoKey(pulumi.CustomResource):
             destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             import_only: pulumi.Input[Optional[_builtins.bool]] = None,
-            key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
+            key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict', 'outputs.CryptoKeyKeyAccessJustificationsPolicy']]] = None,
             key_ring: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            primaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict']]]]] = None,
+            primaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict', 'outputs.CryptoKeyPrimary']]]]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             purpose: pulumi.Input[Optional[_builtins.str]] = None,
             rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
             skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
-            version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None) -> 'CryptoKey':
+            version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict', 'outputs.CryptoKeyVersionTemplate']]] = None) -> 'CryptoKey':
         """
         Get an existing CryptoKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -892,7 +892,7 @@ class CryptoKey(pulumi.CustomResource):
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
-        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: (Optional, Beta)
+        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict', 'outputs.CryptoKeyKeyAccessJustificationsPolicy']] key_access_justifications_policy: (Optional, Beta)
                The policy used for Key Access Justifications Policy Enforcement. If this
                field is present and this key is enrolled in Key Access Justifications
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -909,7 +909,7 @@ class CryptoKey(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name for the CryptoKey.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict']]]] primaries: A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict', 'outputs.CryptoKeyPrimary']]]] primaries: A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
                Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -926,7 +926,7 @@ class CryptoKey(pulumi.CustomResource):
                You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
                or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
                This field is only applicable during initial CryptoKey creation.
-        :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict', 'outputs.CryptoKeyVersionTemplate']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

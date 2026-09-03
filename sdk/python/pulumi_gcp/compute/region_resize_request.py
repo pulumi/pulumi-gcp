@@ -380,7 +380,7 @@ class RegionResizeRequest(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 requested_run_duration: pulumi.Input[Optional[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict']]] = None,
+                 requested_run_duration: pulumi.Input[Optional[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict', 'outputs.RegionResizeRequestRequestedRunDuration']]] = None,
                  resize_by: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -513,7 +513,7 @@ class RegionResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The reference of the compute region scoping this request. If it is not provided, the provider region is used.
-        :param pulumi.Input[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
+        :param pulumi.Input[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict', 'outputs.RegionResizeRequestRequestedRunDuration']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         """
@@ -660,7 +660,7 @@ class RegionResizeRequest(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 requested_run_duration: pulumi.Input[Optional[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict']]] = None,
+                 requested_run_duration: pulumi.Input[Optional[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict', 'outputs.RegionResizeRequestRequestedRunDuration']]] = None,
                  resize_by: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -703,10 +703,10 @@ class RegionResizeRequest(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            requested_run_duration: pulumi.Input[Optional[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict']]] = None,
+            requested_run_duration: pulumi.Input[Optional[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict', 'outputs.RegionResizeRequestRequestedRunDuration']]] = None,
             resize_by: pulumi.Input[Optional[_builtins.int]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionResizeRequestStatusArgs', 'RegionResizeRequestStatusArgsDict']]]]] = None) -> 'RegionResizeRequest':
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionResizeRequestStatusArgs', 'RegionResizeRequestStatusArgsDict', 'outputs.RegionResizeRequestStatus']]]]] = None) -> 'RegionResizeRequest':
         """
         Get an existing RegionResizeRequest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -727,11 +727,11 @@ class RegionResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The reference of the compute region scoping this request. If it is not provided, the provider region is used.
-        :param pulumi.Input[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
+        :param pulumi.Input[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict', 'outputs.RegionResizeRequestRequestedRunDuration']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[_builtins.str] state: Current state of the request.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionResizeRequestStatusArgs', 'RegionResizeRequestStatusArgsDict']]]] statuses: Status of the request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionResizeRequestStatusArgs', 'RegionResizeRequestStatusArgsDict', 'outputs.RegionResizeRequestStatus']]]] statuses: Status of the request.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

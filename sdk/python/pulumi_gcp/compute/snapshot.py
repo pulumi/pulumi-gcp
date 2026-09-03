@@ -826,12 +826,12 @@ class Snapshot(pulumi.CustomResource):
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict', 'outputs.SnapshotParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+                 snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict', 'outputs.SnapshotSnapshotEncryptionKey']]] = None,
                  snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict', 'outputs.SnapshotSourceDiskEncryptionKey']]] = None,
                  source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1001,11 +1001,11 @@ class Snapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict', 'outputs.SnapshotParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+        :param pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict', 'outputs.SnapshotSnapshotEncryptionKey']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
                After you encrypt a snapshot using a customer-supplied key, you must
                provide the same key if you use the snapshot later. For example, you
                must provide the encryption key when you create a disk from the
@@ -1019,7 +1019,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
                Possible values are: `ARCHIVE`, `STANDARD`.
         :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this snapshot.
-        :param pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict', 'outputs.SnapshotSourceDiskEncryptionKey']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -1192,12 +1192,12 @@ class Snapshot(pulumi.CustomResource):
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict', 'outputs.SnapshotParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+                 snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict', 'outputs.SnapshotSnapshotEncryptionKey']]] = None,
                  snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict', 'outputs.SnapshotSourceDiskEncryptionKey']]] = None,
                  source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1257,15 +1257,15 @@ class Snapshot(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict', 'outputs.SnapshotParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+            snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict', 'outputs.SnapshotSnapshotEncryptionKey']]] = None,
             snapshot_id: pulumi.Input[Optional[_builtins.int]] = None,
             snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
             source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-            source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+            source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict', 'outputs.SnapshotSourceDiskEncryptionKey']]] = None,
             source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
             storage_bytes: pulumi.Input[Optional[_builtins.int]] = None,
             storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1311,14 +1311,14 @@ class Snapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['SnapshotParamsArgs', 'SnapshotParamsArgsDict', 'outputs.SnapshotParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+        :param pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict', 'outputs.SnapshotSnapshotEncryptionKey']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
                After you encrypt a snapshot using a customer-supplied key, you must
                provide the same key if you use the snapshot later. For example, you
                must provide the encryption key when you create a disk from the
@@ -1333,7 +1333,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
                Possible values are: `ARCHIVE`, `STANDARD`.
         :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this snapshot.
-        :param pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict', 'outputs.SnapshotSourceDiskEncryptionKey']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.

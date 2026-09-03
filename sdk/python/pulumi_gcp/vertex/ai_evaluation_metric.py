@@ -525,7 +525,7 @@ class AiEvaluationMetric(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict', 'outputs.AiEvaluationMetricEncryptionSpec']]] = None,
                  evaluation_metric_id: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -626,7 +626,7 @@ class AiEvaluationMetric(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the EvaluationMetric.
         :param pulumi.Input[_builtins.str] display_name: The user-friendly display name for the EvaluationMetric.
-        :param pulumi.Input[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for this EvaluationMetric. If set,
+        :param pulumi.Input[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict', 'outputs.AiEvaluationMetricEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for this EvaluationMetric. If set,
                this EvaluationMetric will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] evaluation_metric_id: The ID to use for the EvaluationMetric, which will become the final
@@ -755,7 +755,7 @@ class AiEvaluationMetric(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict', 'outputs.AiEvaluationMetricEncryptionSpec']]] = None,
                  evaluation_metric_id: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -807,7 +807,7 @@ class AiEvaluationMetric(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict', 'outputs.AiEvaluationMetricEncryptionSpec']]] = None,
             evaluation_metric_id: pulumi.Input[Optional[_builtins.str]] = None,
             gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -835,7 +835,7 @@ class AiEvaluationMetric(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description of the EvaluationMetric.
         :param pulumi.Input[_builtins.str] display_name: The user-friendly display name for the EvaluationMetric.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for this EvaluationMetric. If set,
+        :param pulumi.Input[Union['AiEvaluationMetricEncryptionSpecArgs', 'AiEvaluationMetricEncryptionSpecArgsDict', 'outputs.AiEvaluationMetricEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for this EvaluationMetric. If set,
                this EvaluationMetric will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] evaluation_metric_id: The ID to use for the EvaluationMetric, which will become the final

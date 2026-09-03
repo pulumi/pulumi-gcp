@@ -964,7 +964,7 @@ class Rule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_run_frequencies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             author: pulumi.Input[Optional[_builtins.str]] = None,
-            compilation_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleCompilationDiagnosticArgs', 'RuleCompilationDiagnosticArgsDict']]]]] = None,
+            compilation_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleCompilationDiagnosticArgs', 'RuleCompilationDiagnosticArgsDict', 'outputs.RuleCompilationDiagnostic']]]]] = None,
             compilation_state: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -982,7 +982,7 @@ class Rule(pulumi.CustomResource):
             revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             rule_id: pulumi.Input[Optional[_builtins.str]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            severities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleSeverityArgs', 'RuleSeverityArgsDict']]]]] = None,
+            severities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleSeverityArgs', 'RuleSeverityArgsDict', 'outputs.RuleSeverity']]]]] = None,
             text: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Rule':
         """
@@ -996,7 +996,7 @@ class Rule(pulumi.CustomResource):
                Populated in BASIC view and FULL view.
         :param pulumi.Input[_builtins.str] author: Output only. The author of the rule. Extracted from the meta section of text.
                Populated in BASIC view and FULL view.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleCompilationDiagnosticArgs', 'RuleCompilationDiagnosticArgsDict']]]] compilation_diagnostics: Output only. A list of a rule's corresponding compilation diagnostic messages
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleCompilationDiagnosticArgs', 'RuleCompilationDiagnosticArgsDict', 'outputs.RuleCompilationDiagnostic']]]] compilation_diagnostics: Output only. A list of a rule's corresponding compilation diagnostic messages
                such as compilation errors and compilation warnings.
                Populated in FULL view.
                Structure is documented below.
@@ -1058,7 +1058,7 @@ class Rule(pulumi.CustomResource):
                both the user's and the rule's scopes.
                The scope should be in the format:
                "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleSeverityArgs', 'RuleSeverityArgsDict']]]] severities: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleSeverityArgs', 'RuleSeverityArgsDict', 'outputs.RuleSeverity']]]] severities: (Output)
                Output only. The severity of a rule's compilation diagnostic.
                Possible values:
                SEVERITY_UNSPECIFIED

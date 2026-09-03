@@ -772,7 +772,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict', 'outputs.CloudVmClusterProperties']]] = None,
                  __props__=None):
         """
         A CloudVmCluster resource.
@@ -1046,7 +1046,7 @@ class CloudVmCluster(pulumi.CustomResource):
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']] properties: Various properties and settings associated with Exadata VM cluster.
+        :param pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict', 'outputs.CloudVmClusterProperties']] properties: Various properties and settings associated with Exadata VM cluster.
                Structure is documented below.
         """
         ...
@@ -1316,7 +1316,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict', 'outputs.CloudVmClusterProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1378,7 +1378,7 @@ class CloudVmCluster(pulumi.CustomResource):
             exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
             exascale_db_storage_vault: pulumi.Input[Optional[_builtins.str]] = None,
             gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
-            identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict']]]]] = None,
+            identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict', 'outputs.CloudVmClusterIdentityConnector']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1386,7 +1386,7 @@ class CloudVmCluster(pulumi.CustomResource):
             odb_network: pulumi.Input[Optional[_builtins.str]] = None,
             odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict', 'outputs.CloudVmClusterProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CloudVmCluster':
         """
         Get an existing CloudVmCluster resource's state with the given name, id, and optional extra
@@ -1422,7 +1422,7 @@ class CloudVmCluster(pulumi.CustomResource):
                projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
                of Exadata infrastructure.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict']]]] identity_connectors: The identity connector details which will allow OCI to securely access
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict', 'outputs.CloudVmClusterIdentityConnector']]]] identity_connectors: The identity connector details which will allow OCI to securely access
                the resources in the customer project.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the VM Cluster.
@@ -1443,7 +1443,7 @@ class CloudVmCluster(pulumi.CustomResource):
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']] properties: Various properties and settings associated with Exadata VM cluster.
+        :param pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict', 'outputs.CloudVmClusterProperties']] properties: Various properties and settings associated with Exadata VM cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

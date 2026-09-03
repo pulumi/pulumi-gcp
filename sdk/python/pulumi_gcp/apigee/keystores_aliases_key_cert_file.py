@@ -334,7 +334,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  keystore: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict', 'outputs.KeystoresAliasesKeyCertFileTimeouts']]] = None,
                  __props__=None):
         """
         An alias from a key/certificate pair.
@@ -424,7 +424,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  keystore: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict', 'outputs.KeystoresAliasesKeyCertFileTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -468,13 +468,13 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: pulumi.Input[Optional[_builtins.str]] = None,
             cert: pulumi.Input[Optional[_builtins.str]] = None,
-            certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]]]] = None,
+            certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict', 'outputs.KeystoresAliasesKeyCertFileCertsInfo']]]]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             keystore: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict', 'outputs.KeystoresAliasesKeyCertFileTimeouts']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeystoresAliasesKeyCertFile':
         """
         Get an existing KeystoresAliasesKeyCertFile resource's state with the given name, id, and optional extra
@@ -487,7 +487,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cert: Cert content
                
                ***
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict', 'outputs.KeystoresAliasesKeyCertFileCertsInfo']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] key: Private Key content, omit if uploading to truststore

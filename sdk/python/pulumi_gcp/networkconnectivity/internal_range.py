@@ -689,14 +689,14 @@ class InternalRange(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+                 allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict', 'outputs.InternalRangeAllocationOptions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
+                 migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict', 'outputs.InternalRangeMigration']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -885,7 +885,7 @@ class InternalRange(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
+        :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict', 'outputs.InternalRangeAllocationOptions']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -904,7 +904,7 @@ class InternalRange(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']] migration: Specification for migration with source and target resource names.
+        :param pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict', 'outputs.InternalRangeMigration']] migration: Specification for migration with source and target resource names.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the policy based route.
         :param pulumi.Input[_builtins.str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -1121,14 +1121,14 @@ class InternalRange(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+                 allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict', 'outputs.InternalRangeAllocationOptions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
+                 migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict', 'outputs.InternalRangeMigration']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1183,7 +1183,7 @@ class InternalRange(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+            allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict', 'outputs.InternalRangeAllocationOptions']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1191,7 +1191,7 @@ class InternalRange(pulumi.CustomResource):
             immutable: pulumi.Input[Optional[_builtins.bool]] = None,
             ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
+            migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict', 'outputs.InternalRangeMigration']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
             overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1209,7 +1209,7 @@ class InternalRange(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
+        :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict', 'outputs.InternalRangeAllocationOptions']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1229,7 +1229,7 @@ class InternalRange(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']] migration: Specification for migration with source and target resource names.
+        :param pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict', 'outputs.InternalRangeMigration']] migration: Specification for migration with source and target resource names.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the policy based route.
         :param pulumi.Input[_builtins.str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.

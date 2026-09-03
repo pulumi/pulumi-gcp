@@ -330,13 +330,13 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict', 'outputs.EnvironmentConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
+                 storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict', 'outputs.EnvironmentStorageConfig']]] = None,
                  __props__=None):
         """
         An environment for running orchestration tasks.
@@ -707,7 +707,7 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict', 'outputs.EnvironmentConfig']] config: Configuration parameters for this environment.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
                When a 'terraform destroy' or 'terraform apply' would delete the instance,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -721,7 +721,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict', 'outputs.EnvironmentStorageConfig']] storage_config: Configuration options for storage used by Composer environment.
         """
         ...
     @overload
@@ -1111,13 +1111,13 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict', 'outputs.EnvironmentConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
+                 storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict', 'outputs.EnvironmentStorageConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1148,7 +1148,7 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict', 'outputs.EnvironmentConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1156,7 +1156,7 @@ class Environment(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None) -> 'Environment':
+            storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict', 'outputs.EnvironmentStorageConfig']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1164,7 +1164,7 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict', 'outputs.EnvironmentConfig']] config: Configuration parameters for this environment.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
                When a 'terraform destroy' or 'terraform apply' would delete the instance,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1180,7 +1180,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The location or Compute Engine region for the environment.
-        :param pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']] storage_config: Configuration options for storage used by Composer environment.
+        :param pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict', 'outputs.EnvironmentStorageConfig']] storage_config: Configuration options for storage used by Composer environment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

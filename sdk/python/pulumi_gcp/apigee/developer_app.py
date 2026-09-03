@@ -647,7 +647,7 @@ class DeveloperApp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict', 'outputs.DeveloperAppAttribute']]]]] = None,
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
@@ -795,7 +795,7 @@ class DeveloperApp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_products: List of API products associated with the developer app.
         :param pulumi.Input[_builtins.str] app_family: Developer app family.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict', 'outputs.DeveloperAppAttribute']]]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate
                authorization codes back to developer apps.
@@ -988,7 +988,7 @@ class DeveloperApp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict', 'outputs.DeveloperAppAttribute']]]]] = None,
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1047,12 +1047,12 @@ class DeveloperApp(pulumi.CustomResource):
             api_products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             app_family: pulumi.Input[Optional[_builtins.str]] = None,
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
-            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict', 'outputs.DeveloperAppAttribute']]]]] = None,
             callback_url: pulumi.Input[Optional[_builtins.str]] = None,
             consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
             consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict']]]]] = None,
+            credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict', 'outputs.DeveloperAppCredential']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             developer_email: pulumi.Input[Optional[_builtins.str]] = None,
             developer_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1073,7 +1073,7 @@ class DeveloperApp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_family: Developer app family.
         :param pulumi.Input[_builtins.str] app_id: ID of the developer app. This ID is not user specified but is
                automatically generated on app creation. appId is a UUID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict', 'outputs.DeveloperAppAttribute']]]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate
                authorization codes back to developer apps.
@@ -1092,7 +1092,7 @@ class DeveloperApp(pulumi.CustomResource):
                exposed in the `credentials` output.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] created_at: Time at which the developer was created in milliseconds since epoch.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict']]]] credentials: Output only. Set of credentials for the developer app consisting of
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict', 'outputs.DeveloperAppCredential']]]] credentials: Output only. Set of credentials for the developer app consisting of
                the consumer key/secret pairs associated with the API products.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

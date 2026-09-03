@@ -356,7 +356,7 @@ class Autoscaler(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: pulumi.Input[Optional[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict']]] = None,
+                 autoscaling_policy: pulumi.Input[Optional[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict', 'outputs.AutoscalerAutoscalingPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,7 +515,7 @@ class Autoscaler(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict', 'outputs.AutoscalerAutoscalingPolicy']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
@@ -708,7 +708,7 @@ class Autoscaler(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: pulumi.Input[Optional[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict']]] = None,
+                 autoscaling_policy: pulumi.Input[Optional[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict', 'outputs.AutoscalerAutoscalingPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -749,7 +749,7 @@ class Autoscaler(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_policy: pulumi.Input[Optional[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict']]] = None,
+            autoscaling_policy: pulumi.Input[Optional[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict', 'outputs.AutoscalerAutoscalingPolicy']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -765,7 +765,7 @@ class Autoscaler(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input[Union['AutoscalerAutoscalingPolicyArgs', 'AutoscalerAutoscalingPolicyArgsDict', 'outputs.AutoscalerAutoscalingPolicy']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based

@@ -310,7 +310,7 @@ class TagTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict', 'outputs.TagTemplateField']]]]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -401,7 +401,7 @@ class TagTemplate(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name for this template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict', 'outputs.TagTemplateField']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -508,7 +508,7 @@ class TagTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict', 'outputs.TagTemplateField']]]]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -546,7 +546,7 @@ class TagTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict', 'outputs.TagTemplateField']]]]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -566,7 +566,7 @@ class TagTemplate(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name for this template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict', 'outputs.TagTemplateField']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[_builtins.str] name: The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}

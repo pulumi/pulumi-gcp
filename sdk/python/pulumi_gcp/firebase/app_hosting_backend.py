@@ -706,7 +706,7 @@ class AppHostingBackend(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  backend_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 codebase: pulumi.Input[Optional[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict']]] = None,
+                 codebase: pulumi.Input[Optional[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict', 'outputs.AppHostingBackendCodebase']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
@@ -874,7 +874,7 @@ class AppHostingBackend(pulumi.CustomResource):
                associated with the backend.
         :param pulumi.Input[_builtins.str] backend_id: Id of the backend. Also used as the service ID for Cloud Run, and as part
                of the default domain name.
-        :param pulumi.Input[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict']] codebase: The connection to an external source repository to watch for event-driven
+        :param pulumi.Input[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict', 'outputs.AppHostingBackendCodebase']] codebase: The connection to an external source repository to watch for event-driven
                updates to the backend.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1071,7 +1071,7 @@ class AppHostingBackend(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  backend_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 codebase: pulumi.Input[Optional[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict']]] = None,
+                 codebase: pulumi.Input[Optional[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict', 'outputs.AppHostingBackendCodebase']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1137,7 +1137,7 @@ class AppHostingBackend(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
             backend_id: pulumi.Input[Optional[_builtins.str]] = None,
-            codebase: pulumi.Input[Optional[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict']]] = None,
+            codebase: pulumi.Input[Optional[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict', 'outputs.AppHostingBackendCodebase']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1148,7 +1148,7 @@ class AppHostingBackend(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            managed_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingBackendManagedResourceArgs', 'AppHostingBackendManagedResourceArgsDict']]]]] = None,
+            managed_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingBackendManagedResourceArgs', 'AppHostingBackendManagedResourceArgsDict', 'outputs.AppHostingBackendManagedResource']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1174,7 +1174,7 @@ class AppHostingBackend(pulumi.CustomResource):
                associated with the backend.
         :param pulumi.Input[_builtins.str] backend_id: Id of the backend. Also used as the service ID for Cloud Run, and as part
                of the default domain name.
-        :param pulumi.Input[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict']] codebase: The connection to an external source repository to watch for event-driven
+        :param pulumi.Input[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict', 'outputs.AppHostingBackendCodebase']] codebase: The connection to an external source repository to watch for event-driven
                updates to the backend.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time at which the backend was created.
@@ -1197,7 +1197,7 @@ class AppHostingBackend(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The canonical IDs of a Google Cloud location such as "us-east1".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingBackendManagedResourceArgs', 'AppHostingBackendManagedResourceArgsDict']]]] managed_resources: A list of the resources managed by this backend.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingBackendManagedResourceArgs', 'AppHostingBackendManagedResourceArgsDict', 'outputs.AppHostingBackendManagedResource']]]] managed_resources: A list of the resources managed by this backend.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the backend.
                Format:

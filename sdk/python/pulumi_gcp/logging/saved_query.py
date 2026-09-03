@@ -398,9 +398,9 @@ class SavedQuery(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
+                 logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict', 'outputs.SavedQueryLoggingQuery']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
+                 ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict', 'outputs.SavedQueryOpsAnalyticsQuery']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -528,10 +528,10 @@ class SavedQuery(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The user-visible display name of the saved query.
         :param pulumi.Input[_builtins.str] location: The location of the resource see
                [supported regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
-        :param pulumi.Input[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']] logging_query: The contents of the saved query.
+        :param pulumi.Input[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict', 'outputs.SavedQueryLoggingQuery']] logging_query: The contents of the saved query.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the saved query. For example: `my-saved-query`
-        :param pulumi.Input[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']] ops_analytics_query: The contents of the saved query.
+        :param pulumi.Input[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict', 'outputs.SavedQueryOpsAnalyticsQuery']] ops_analytics_query: The contents of the saved query.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource.
         :param pulumi.Input[_builtins.str] visibility: The visibility of the saved query.
@@ -674,9 +674,9 @@ class SavedQuery(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
+                 logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict', 'outputs.SavedQueryLoggingQuery']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
+                 ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict', 'outputs.SavedQueryOpsAnalyticsQuery']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -722,9 +722,9 @@ class SavedQuery(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
+            logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict', 'outputs.SavedQueryLoggingQuery']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
+            ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict', 'outputs.SavedQueryOpsAnalyticsQuery']]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             visibility: pulumi.Input[Optional[_builtins.str]] = None) -> 'SavedQuery':
@@ -746,10 +746,10 @@ class SavedQuery(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The user-visible display name of the saved query.
         :param pulumi.Input[_builtins.str] location: The location of the resource see
                [supported regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
-        :param pulumi.Input[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']] logging_query: The contents of the saved query.
+        :param pulumi.Input[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict', 'outputs.SavedQueryLoggingQuery']] logging_query: The contents of the saved query.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the saved query. For example: `my-saved-query`
-        :param pulumi.Input[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']] ops_analytics_query: The contents of the saved query.
+        :param pulumi.Input[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict', 'outputs.SavedQueryOpsAnalyticsQuery']] ops_analytics_query: The contents of the saved query.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource.
         :param pulumi.Input[_builtins.str] update_time: Output only. The last update timestamp of the saved query.

@@ -242,8 +242,8 @@ class Settings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
-                 application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+                 access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict', 'outputs.SettingsAccessSettings']]] = None,
+                 application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict', 'outputs.SettingsApplicationSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -372,9 +372,9 @@ class Settings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']] access_settings: Top level wrapper for all access related setting in IAP.
+        :param pulumi.Input[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict', 'outputs.SettingsAccessSettings']] access_settings: Top level wrapper for all access related setting in IAP.
                Structure is documented below.
-        :param pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']] application_settings: Top level wrapper for all application related settings in IAP.
+        :param pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict', 'outputs.SettingsApplicationSettings']] application_settings: Top level wrapper for all application related settings in IAP.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -539,8 +539,8 @@ class Settings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
-                 application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+                 access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict', 'outputs.SettingsAccessSettings']]] = None,
+                 application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict', 'outputs.SettingsApplicationSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -566,8 +566,8 @@ class Settings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
-            application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+            access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict', 'outputs.SettingsAccessSettings']]] = None,
+            application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict', 'outputs.SettingsApplicationSettings']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Settings':
         """
@@ -577,9 +577,9 @@ class Settings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']] access_settings: Top level wrapper for all access related setting in IAP.
+        :param pulumi.Input[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict', 'outputs.SettingsAccessSettings']] access_settings: Top level wrapper for all access related setting in IAP.
                Structure is documented below.
-        :param pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']] application_settings: Top level wrapper for all application related settings in IAP.
+        :param pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict', 'outputs.SettingsApplicationSettings']] application_settings: Top level wrapper for all application related settings in IAP.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

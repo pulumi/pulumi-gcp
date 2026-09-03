@@ -272,9 +272,9 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict']]]]] = None,
-                 parameter_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict']]]]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict', 'outputs.RemoteConfigRemoteConfigCondition']]]]] = None,
+                 parameter_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict', 'outputs.RemoteConfigRemoteConfigParameterGroup']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict', 'outputs.RemoteConfigRemoteConfigParameter']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -347,10 +347,10 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict']]]] conditions: A list of conditions in descending order by priority.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict', 'outputs.RemoteConfigRemoteConfigCondition']]]] conditions: A list of conditions in descending order by priority.
                The values of the condition names must be unique.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict']]]] parameter_groups: Map of parameter group names to their descriptions and grouped parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict', 'outputs.RemoteConfigRemoteConfigParameterGroup']]]] parameter_groups: Map of parameter group names to their descriptions and grouped parameters.
                A group's name is mutable but must be unique among groups in the config.
                The name is limited to 256 characters and intended to be human-readable.
                Any Unicode characters are allowed.
@@ -361,7 +361,7 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
                `description` "New mobile search view" and contain parameters for the new
                search's layout and font.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict']]]] parameters: Map of parameter keys to their optional default values and optional
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict', 'outputs.RemoteConfigRemoteConfigParameter']]]] parameters: Map of parameter keys to their optional default values and optional
                conditional values.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -456,9 +456,9 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict']]]]] = None,
-                 parameter_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict']]]]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict', 'outputs.RemoteConfigRemoteConfigCondition']]]]] = None,
+                 parameter_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict', 'outputs.RemoteConfigRemoteConfigParameterGroup']]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict', 'outputs.RemoteConfigRemoteConfigParameter']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -485,12 +485,12 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict', 'outputs.RemoteConfigRemoteConfigCondition']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameter_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict']]]]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict']]]]] = None,
+            parameter_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict', 'outputs.RemoteConfigRemoteConfigParameterGroup']]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict', 'outputs.RemoteConfigRemoteConfigParameter']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigVersionArgs', 'RemoteConfigRemoteConfigVersionArgsDict']]]]] = None) -> 'RemoteConfigRemoteConfig':
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigVersionArgs', 'RemoteConfigRemoteConfigVersionArgsDict', 'outputs.RemoteConfigRemoteConfigVersion']]]]] = None) -> 'RemoteConfigRemoteConfig':
         """
         Get an existing RemoteConfigRemoteConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -498,12 +498,12 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict']]]] conditions: A list of conditions in descending order by priority.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigConditionArgs', 'RemoteConfigRemoteConfigConditionArgsDict', 'outputs.RemoteConfigRemoteConfigCondition']]]] conditions: A list of conditions in descending order by priority.
                The values of the condition names must be unique.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: (Output)
                Display name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict']]]] parameter_groups: Map of parameter group names to their descriptions and grouped parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterGroupArgs', 'RemoteConfigRemoteConfigParameterGroupArgsDict', 'outputs.RemoteConfigRemoteConfigParameterGroup']]]] parameter_groups: Map of parameter group names to their descriptions and grouped parameters.
                A group's name is mutable but must be unique among groups in the config.
                The name is limited to 256 characters and intended to be human-readable.
                Any Unicode characters are allowed.
@@ -514,12 +514,12 @@ class RemoteConfigRemoteConfig(pulumi.CustomResource):
                `description` "New mobile search view" and contain parameters for the new
                search's layout and font.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict']]]] parameters: Map of parameter keys to their optional default values and optional
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigParameterArgs', 'RemoteConfigRemoteConfigParameterArgsDict', 'outputs.RemoteConfigRemoteConfigParameter']]]] parameters: Map of parameter keys to their optional default values and optional
                conditional values.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigVersionArgs', 'RemoteConfigRemoteConfigVersionArgsDict']]]] versions: Contains all metadata about a particular version of the Remote Config
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RemoteConfigRemoteConfigVersionArgs', 'RemoteConfigRemoteConfigVersionArgsDict', 'outputs.RemoteConfigRemoteConfigVersion']]]] versions: Contains all metadata about a particular version of the Remote Config
                template.
                All fields are set at the time the specified Remote Config template was
                written.

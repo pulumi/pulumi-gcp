@@ -436,10 +436,10 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict', 'outputs.ExternalVpnGatewayInterface']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict', 'outputs.ExternalVpnGatewayParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -564,7 +564,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict', 'outputs.ExternalVpnGatewayInterface']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the external VPN gateway resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -576,7 +576,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict', 'outputs.ExternalVpnGatewayParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -718,10 +718,10 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict', 'outputs.ExternalVpnGatewayInterface']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict', 'outputs.ExternalVpnGatewayParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -760,11 +760,11 @@ class ExternalVpnGateway(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict', 'outputs.ExternalVpnGatewayInterface']]]]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict', 'outputs.ExternalVpnGatewayParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -784,7 +784,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict', 'outputs.ExternalVpnGatewayInterface']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
@@ -798,7 +798,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict', 'outputs.ExternalVpnGatewayParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

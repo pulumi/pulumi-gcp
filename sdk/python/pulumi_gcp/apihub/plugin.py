@@ -599,13 +599,13 @@ class Plugin(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]]] = None,
-                 config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']]] = None,
+                 actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict', 'outputs.PluginActionsConfig']]]]] = None,
+                 config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict', 'outputs.PluginConfigTemplate']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']]] = None,
-                 hosting_service: pulumi.Input[Optional[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict']]] = None,
+                 documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict', 'outputs.PluginDocumentation']]] = None,
+                 hosting_service: pulumi.Input[Optional[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict', 'outputs.PluginHostingService']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  plugin_category: pulumi.Input[Optional[_builtins.str]] = None,
                  plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -714,9 +714,9 @@ class Plugin(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]] actions_configs: The configuration of actions supported by the plugin.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict', 'outputs.PluginActionsConfig']]]] actions_configs: The configuration of actions supported by the plugin.
                Structure is documented below.
-        :param pulumi.Input[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']] config_template: ConfigTemplate represents the configuration template for a plugin.
+        :param pulumi.Input[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict', 'outputs.PluginConfigTemplate']] config_template: ConfigTemplate represents the configuration template for a plugin.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -728,9 +728,9 @@ class Plugin(pulumi.CustomResource):
                points).
         :param pulumi.Input[_builtins.str] display_name: The display name of the plugin. Max length is 50 characters (Unicode code
                points).
-        :param pulumi.Input[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']] documentation: Documentation details.
+        :param pulumi.Input[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict', 'outputs.PluginDocumentation']] documentation: Documentation details.
                Structure is documented below.
-        :param pulumi.Input[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict']] hosting_service: The information related to the service implemented by the plugin
+        :param pulumi.Input[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict', 'outputs.PluginHostingService']] hosting_service: The information related to the service implemented by the plugin
                developer, used to invoke the plugin's functionality.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -874,13 +874,13 @@ class Plugin(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]]] = None,
-                 config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']]] = None,
+                 actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict', 'outputs.PluginActionsConfig']]]]] = None,
+                 config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict', 'outputs.PluginConfigTemplate']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']]] = None,
-                 hosting_service: pulumi.Input[Optional[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict']]] = None,
+                 documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict', 'outputs.PluginDocumentation']]] = None,
+                 hosting_service: pulumi.Input[Optional[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict', 'outputs.PluginHostingService']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  plugin_category: pulumi.Input[Optional[_builtins.str]] = None,
                  plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -926,14 +926,14 @@ class Plugin(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]]] = None,
-            config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']]] = None,
+            actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict', 'outputs.PluginActionsConfig']]]]] = None,
+            config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict', 'outputs.PluginConfigTemplate']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']]] = None,
-            hosting_service: pulumi.Input[Optional[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict']]] = None,
+            documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict', 'outputs.PluginDocumentation']]] = None,
+            hosting_service: pulumi.Input[Optional[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict', 'outputs.PluginHostingService']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ownership_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -949,9 +949,9 @@ class Plugin(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]] actions_configs: The configuration of actions supported by the plugin.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict', 'outputs.PluginActionsConfig']]]] actions_configs: The configuration of actions supported by the plugin.
                Structure is documented below.
-        :param pulumi.Input[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']] config_template: ConfigTemplate represents the configuration template for a plugin.
+        :param pulumi.Input[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict', 'outputs.PluginConfigTemplate']] config_template: ConfigTemplate represents the configuration template for a plugin.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp indicating when the plugin was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -964,9 +964,9 @@ class Plugin(pulumi.CustomResource):
                points).
         :param pulumi.Input[_builtins.str] display_name: The display name of the plugin. Max length is 50 characters (Unicode code
                points).
-        :param pulumi.Input[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']] documentation: Documentation details.
+        :param pulumi.Input[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict', 'outputs.PluginDocumentation']] documentation: Documentation details.
                Structure is documented below.
-        :param pulumi.Input[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict']] hosting_service: The information related to the service implemented by the plugin
+        :param pulumi.Input[Union['PluginHostingServiceArgs', 'PluginHostingServiceArgsDict', 'outputs.PluginHostingService']] hosting_service: The information related to the service implemented by the plugin
                developer, used to invoke the plugin's functionality.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.

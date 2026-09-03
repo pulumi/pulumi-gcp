@@ -636,7 +636,7 @@ class SearchEngine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
+                 common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict', 'outputs.SearchEngineCommonConfig']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -645,10 +645,10 @@ class SearchEngine(pulumi.CustomResource):
                  features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
+                 knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
+                 search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
                  __props__=None):
         """
         Vertex AI Search and Conversation can be used to create a search engine or a chat application by connecting it with a datastore
@@ -740,7 +740,7 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
                The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
-        :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict', 'outputs.SearchEngineCommonConfig']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -761,12 +761,12 @@ class SearchEngine(pulumi.CustomResource):
                protections.
                If this field is set and processed successfully, the Engine will be
                protected by the KMS key, as indicated in the cmek_config field.
-        :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']] knowledge_graph_config: Configurations for the Knowledge Graph.
+        :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']] search_engine_config: Configurations for a Search Engine.
+        :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         """
         ...
@@ -877,7 +877,7 @@ class SearchEngine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
+                 common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict', 'outputs.SearchEngineCommonConfig']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -886,10 +886,10 @@ class SearchEngine(pulumi.CustomResource):
                  features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
+                 knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
+                 search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -941,7 +941,7 @@ class SearchEngine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_type: pulumi.Input[Optional[_builtins.str]] = None,
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-            common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
+            common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict', 'outputs.SearchEngineCommonConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -951,11 +951,11 @@ class SearchEngine(pulumi.CustomResource):
             features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
-            knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
+            knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
+            search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SearchEngine':
         """
         Get an existing SearchEngine resource's state with the given name, id, and optional extra
@@ -967,7 +967,7 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
                The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
-        :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict', 'outputs.SearchEngineCommonConfig']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
@@ -989,7 +989,7 @@ class SearchEngine(pulumi.CustomResource):
                protections.
                If this field is set and processed successfully, the Engine will be
                protected by the KMS key, as indicated in the cmek_config field.
-        :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']] knowledge_graph_config: Configurations for the Knowledge Graph.
+        :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the search engine. Values are of the format
@@ -998,7 +998,7 @@ class SearchEngine(pulumi.CustomResource):
                characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']] search_engine_config: Configurations for a Search Engine.
+        :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp the Engine was last updated.
         """

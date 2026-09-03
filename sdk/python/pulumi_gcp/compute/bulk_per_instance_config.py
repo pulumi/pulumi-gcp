@@ -231,7 +231,7 @@ class BulkPerInstanceConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
-                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict']]]]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict', 'outputs.BulkPerInstanceConfigInstance']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -315,7 +315,7 @@ class BulkPerInstanceConfig(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict']]]] instances: The list of per-instance configs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict', 'outputs.BulkPerInstanceConfigInstance']]]] instances: The list of per-instance configs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -415,7 +415,7 @@ class BulkPerInstanceConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
-                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict']]]]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict', 'outputs.BulkPerInstanceConfigInstance']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -446,7 +446,7 @@ class BulkPerInstanceConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
-            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict']]]]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict', 'outputs.BulkPerInstanceConfigInstance']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'BulkPerInstanceConfig':
         """
@@ -463,7 +463,7 @@ class BulkPerInstanceConfig(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict']]]] instances: The list of per-instance configs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BulkPerInstanceConfigInstanceArgs', 'BulkPerInstanceConfigInstanceArgsDict', 'outputs.BulkPerInstanceConfigInstance']]]] instances: The list of per-instance configs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

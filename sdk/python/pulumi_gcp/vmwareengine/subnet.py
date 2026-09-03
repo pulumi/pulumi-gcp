@@ -506,7 +506,7 @@ class Subnet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            dhcp_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict']]]]] = None,
+            dhcp_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict', 'outputs.SubnetDhcpAddressRange']]]]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
             ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,7 +528,7 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict']]]] dhcp_address_ranges: DHCP address ranges.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict', 'outputs.SubnetDhcpAddressRange']]]] dhcp_address_ranges: DHCP address ranges.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] gateway_id: The canonical identifier of the logical router that this subnet is attached to.
         :param pulumi.Input[_builtins.str] gateway_ip: The IP address of the gateway of this subnet. Must fall within the IP prefix defined above.

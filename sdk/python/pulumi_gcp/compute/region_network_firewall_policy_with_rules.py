@@ -445,7 +445,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict', 'outputs.RegionNetworkFirewallPolicyWithRulesRule']]]]] = None,
                  __props__=None):
         """
         The Compute NetworkFirewallPolicy with rules resource
@@ -675,7 +675,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict']]]] rules: A list of firewall policy rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict', 'outputs.RegionNetworkFirewallPolicyWithRulesRule']]]] rules: A list of firewall policy rules.
                Structure is documented below.
         """
         ...
@@ -911,7 +911,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                  policy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict', 'outputs.RegionNetworkFirewallPolicyWithRulesRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -954,11 +954,11 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             policy_type: pulumi.Input[Optional[_builtins.str]] = None,
-            predefined_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs', 'RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict']]]]] = None,
+            predefined_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs', 'RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict', 'outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRule']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict', 'outputs.RegionNetworkFirewallPolicyWithRulesRule']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionNetworkFirewallPolicyWithRules':
         """
@@ -988,13 +988,13 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
                Different policy types may support some of the Firewall Rules features.
                Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs', 'RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict']]]] predefined_rules: A list of firewall policy pre-defined rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs', 'RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict', 'outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRule']]]] predefined_rules: A list of firewall policy pre-defined rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of this resource.
         :param pulumi.Input[_builtins.int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict']]]] rules: A list of firewall policy rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesRuleArgs', 'RegionNetworkFirewallPolicyWithRulesRuleArgsDict', 'outputs.RegionNetworkFirewallPolicyWithRulesRule']]]] rules: A list of firewall policy rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[_builtins.str] self_link_with_id: Server-defined URL for this resource with the resource id.

@@ -829,21 +829,21 @@ class Tool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_tool: pulumi.Input[Optional[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict']]] = None,
+                 agent_tool: pulumi.Input[Optional[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict', 'outputs.ToolAgentTool']]] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
-                 data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+                 client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict', 'outputs.ToolClientFunction']]] = None,
+                 data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict', 'outputs.ToolDataStoreTool']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 file_search_tool: pulumi.Input[Optional[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict']]] = None,
-                 google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
+                 file_search_tool: pulumi.Input[Optional[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict', 'outputs.ToolFileSearchTool']]] = None,
+                 google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict', 'outputs.ToolGoogleSearchTool']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
+                 python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict', 'outputs.ToolPythonFunction']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict', 'outputs.ToolToolFakeConfig']]] = None,
                  tool_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']]] = None,
+                 widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict', 'outputs.ToolWidgetTool']]] = None,
                  __props__=None):
         """
         Description
@@ -1249,15 +1249,15 @@ class Tool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict']] agent_tool: Represents a tool that allows the agent to call another agent.
+        :param pulumi.Input[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict', 'outputs.ToolAgentTool']] agent_tool: Represents a tool that allows the agent to call another agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']] client_function: Represents a client-side function that the agent can invoke. When the
+        :param pulumi.Input[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict', 'outputs.ToolClientFunction']] client_function: Represents a client-side function that the agent can invoke. When the
                tool is chosen by the agent, control is handed off to the client.
                The client is responsible for executing the function and returning the result
                as a ToolResponse to continue the interaction with the agent.
                Structure is documented below.
-        :param pulumi.Input[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']] data_store_tool: Tool to retrieve from Vertex AI Search datastore or engine for grounding.
+        :param pulumi.Input[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict', 'outputs.ToolDataStoreTool']] data_store_tool: Tool to retrieve from Vertex AI Search datastore or engine for grounding.
                Accepts either a datastore or an engine, but not both.
                See Vertex AI Search:
                https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
@@ -1271,26 +1271,26 @@ class Tool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] execution_type: Possible values:
                SYNCHRONOUS
                ASYNCHRONOUS
-        :param pulumi.Input[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict']] file_search_tool: The file search tool allows the agent to search across the files uploaded by the
+        :param pulumi.Input[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict', 'outputs.ToolFileSearchTool']] file_search_tool: The file search tool allows the agent to search across the files uploaded by the
                app/agent developer.
                Structure is documented below.
-        :param pulumi.Input[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']] google_search_tool: Represents a tool to perform Google web searches for grounding.
+        :param pulumi.Input[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict', 'outputs.ToolGoogleSearchTool']] google_search_tool: Represents a tool to perform Google web searches for grounding.
                See
                https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']] python_function: A Python function tool.
+        :param pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict', 'outputs.ToolPythonFunction']] python_function: A Python function tool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] timeout: The timeout for the tool execution. If not set, the default timeout is 30
                seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
-        :param pulumi.Input[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']] tool_fake_config: Configuration for tool behavior in fake mode.
+        :param pulumi.Input[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict', 'outputs.ToolToolFakeConfig']] tool_fake_config: Configuration for tool behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tool_id: The ID to use for the tool, which will become the final component of
                the tool's resource name. If not provided, a unique ID will be
                automatically assigned for the tool.
-        :param pulumi.Input[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']] widget_tool: Represents a widget tool that the agent can invoke.
+        :param pulumi.Input[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict', 'outputs.ToolWidgetTool']] widget_tool: Represents a widget tool that the agent can invoke.
                Structure is documented below.
         """
         ...
@@ -1716,21 +1716,21 @@ class Tool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_tool: pulumi.Input[Optional[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict']]] = None,
+                 agent_tool: pulumi.Input[Optional[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict', 'outputs.ToolAgentTool']]] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
-                 data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+                 client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict', 'outputs.ToolClientFunction']]] = None,
+                 data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict', 'outputs.ToolDataStoreTool']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 file_search_tool: pulumi.Input[Optional[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict']]] = None,
-                 google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
+                 file_search_tool: pulumi.Input[Optional[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict', 'outputs.ToolFileSearchTool']]] = None,
+                 google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict', 'outputs.ToolGoogleSearchTool']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
+                 python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict', 'outputs.ToolPythonFunction']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']]] = None,
+                 tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict', 'outputs.ToolToolFakeConfig']]] = None,
                  tool_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']]] = None,
+                 widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict', 'outputs.ToolWidgetTool']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1782,32 +1782,32 @@ class Tool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_tool: pulumi.Input[Optional[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict']]] = None,
+            agent_tool: pulumi.Input[Optional[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict', 'outputs.ToolAgentTool']]] = None,
             app: pulumi.Input[Optional[_builtins.str]] = None,
-            client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
-            connector_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolConnectorToolArgs', 'ToolConnectorToolArgsDict']]]]] = None,
+            client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict', 'outputs.ToolClientFunction']]] = None,
+            connector_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolConnectorToolArgs', 'ToolConnectorToolArgsDict', 'outputs.ToolConnectorTool']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+            data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict', 'outputs.ToolDataStoreTool']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             execution_type: pulumi.Input[Optional[_builtins.str]] = None,
-            file_search_tool: pulumi.Input[Optional[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict']]] = None,
+            file_search_tool: pulumi.Input[Optional[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict', 'outputs.ToolFileSearchTool']]] = None,
             generated_summary: pulumi.Input[Optional[_builtins.str]] = None,
-            google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
+            google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict', 'outputs.ToolGoogleSearchTool']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mcp_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolMcpToolArgs', 'ToolMcpToolArgsDict']]]]] = None,
+            mcp_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolMcpToolArgs', 'ToolMcpToolArgsDict', 'outputs.ToolMcpTool']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            open_api_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolOpenApiToolArgs', 'ToolOpenApiToolArgsDict']]]]] = None,
+            open_api_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolOpenApiToolArgs', 'ToolOpenApiToolArgsDict', 'outputs.ToolOpenApiTool']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
-            remote_agent_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolRemoteAgentToolArgs', 'ToolRemoteAgentToolArgsDict']]]]] = None,
-            system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict']]]]] = None,
+            python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict', 'outputs.ToolPythonFunction']]] = None,
+            remote_agent_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolRemoteAgentToolArgs', 'ToolRemoteAgentToolArgsDict', 'outputs.ToolRemoteAgentTool']]]]] = None,
+            system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict', 'outputs.ToolSystemTool']]]]] = None,
             timeout: pulumi.Input[Optional[_builtins.str]] = None,
-            tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']]] = None,
+            tool_fake_config: pulumi.Input[Optional[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict', 'outputs.ToolToolFakeConfig']]] = None,
             tool_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']]] = None) -> 'Tool':
+            widget_tool: pulumi.Input[Optional[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict', 'outputs.ToolWidgetTool']]] = None) -> 'Tool':
         """
         Get an existing Tool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1815,18 +1815,18 @@ class Tool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict']] agent_tool: Represents a tool that allows the agent to call another agent.
+        :param pulumi.Input[Union['ToolAgentToolArgs', 'ToolAgentToolArgsDict', 'outputs.ToolAgentTool']] agent_tool: Represents a tool that allows the agent to call another agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']] client_function: Represents a client-side function that the agent can invoke. When the
+        :param pulumi.Input[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict', 'outputs.ToolClientFunction']] client_function: Represents a client-side function that the agent can invoke. When the
                tool is chosen by the agent, control is handed off to the client.
                The client is responsible for executing the function and returning the result
                as a ToolResponse to continue the interaction with the agent.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolConnectorToolArgs', 'ToolConnectorToolArgsDict']]]] connector_tools: A ConnectorTool allows connections to different integrations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolConnectorToolArgs', 'ToolConnectorToolArgsDict', 'outputs.ToolConnectorTool']]]] connector_tools: A ConnectorTool allows connections to different integrations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the tool was created.
-        :param pulumi.Input[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']] data_store_tool: Tool to retrieve from Vertex AI Search datastore or engine for grounding.
+        :param pulumi.Input[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict', 'outputs.ToolDataStoreTool']] data_store_tool: Tool to retrieve from Vertex AI Search datastore or engine for grounding.
                Accepts either a datastore or an engine, but not both.
                See Vertex AI Search:
                https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
@@ -1846,39 +1846,39 @@ class Tool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] execution_type: Possible values:
                SYNCHRONOUS
                ASYNCHRONOUS
-        :param pulumi.Input[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict']] file_search_tool: The file search tool allows the agent to search across the files uploaded by the
+        :param pulumi.Input[Union['ToolFileSearchToolArgs', 'ToolFileSearchToolArgsDict', 'outputs.ToolFileSearchTool']] file_search_tool: The file search tool allows the agent to search across the files uploaded by the
                app/agent developer.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] generated_summary: If the tool is generated by the LLM assistant, this field contains a
                descriptive summary of the generation.
-        :param pulumi.Input[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']] google_search_tool: Represents a tool to perform Google web searches for grounding.
+        :param pulumi.Input[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict', 'outputs.ToolGoogleSearchTool']] google_search_tool: Represents a tool to perform Google web searches for grounding.
                See
                https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolMcpToolArgs', 'ToolMcpToolArgsDict']]]] mcp_tools: An MCP tool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolMcpToolArgs', 'ToolMcpToolArgsDict', 'outputs.ToolMcpTool']]]] mcp_tools: An MCP tool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: (Output)
                The name of the system tool.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolOpenApiToolArgs', 'ToolOpenApiToolArgsDict']]]] open_api_tools: A remote API tool defined by an OpenAPI schema.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolOpenApiToolArgs', 'ToolOpenApiToolArgsDict', 'outputs.ToolOpenApiTool']]]] open_api_tools: A remote API tool defined by an OpenAPI schema.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']] python_function: A Python function tool.
+        :param pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict', 'outputs.ToolPythonFunction']] python_function: A Python function tool.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolRemoteAgentToolArgs', 'ToolRemoteAgentToolArgsDict']]]] remote_agent_tools: Represents a tool that allows the agent to call another remote agent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolRemoteAgentToolArgs', 'ToolRemoteAgentToolArgsDict', 'outputs.ToolRemoteAgentTool']]]] remote_agent_tools: Represents a tool that allows the agent to call another remote agent.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict']]]] system_tools: The system tool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict', 'outputs.ToolSystemTool']]]] system_tools: The system tool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] timeout: The timeout for the tool execution. If not set, the default timeout is 30
                seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
-        :param pulumi.Input[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict']] tool_fake_config: Configuration for tool behavior in fake mode.
+        :param pulumi.Input[Union['ToolToolFakeConfigArgs', 'ToolToolFakeConfigArgsDict', 'outputs.ToolToolFakeConfig']] tool_fake_config: Configuration for tool behavior in fake mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tool_id: The ID to use for the tool, which will become the final component of
                the tool's resource name. If not provided, a unique ID will be
                automatically assigned for the tool.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the tool was last updated.
-        :param pulumi.Input[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict']] widget_tool: Represents a widget tool that the agent can invoke.
+        :param pulumi.Input[Union['ToolWidgetToolArgs', 'ToolWidgetToolArgsDict', 'outputs.ToolWidgetTool']] widget_tool: Represents a widget tool that the agent can invoke.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -984,21 +984,21 @@ class Image(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  family: pulumi.Input[Optional[_builtins.str]] = None,
-                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
-                 image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict', 'outputs.ImageGuestOsFeature']]]]] = None,
+                 image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict', 'outputs.ImageImageEncryptionKey']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict', 'outputs.ImageParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
-                 shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
+                 raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict', 'outputs.ImageRawDisk']]] = None,
+                 shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict', 'outputs.ImageShieldedInstanceInitialState']]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict', 'outputs.ImageSourceDiskEncryptionKey']]] = None,
                  source_image: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict', 'outputs.ImageSourceImageEncryptionKey']]] = None,
                  source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict', 'outputs.ImageSourceSnapshotEncryptionKey']]] = None,
                  storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -1133,10 +1133,10 @@ class Image(pulumi.CustomResource):
                image name. The image family always returns its latest image that is
                not deprecated. The name of the image family must comply with
                RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict', 'outputs.ImageGuestOsFeature']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
                Structure is documented below.
-        :param pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+        :param pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict', 'outputs.ImageImageEncryptionKey']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
                After you encrypt an image with a customer-supplied key, you must
                provide the same key if you use the image later (e.g. to create a
                disk from the image)
@@ -1152,18 +1152,18 @@ class Image(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-        :param pulumi.Input[Union['ImageParamsArgs', 'ImageParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Union['ImageParamsArgs', 'ImageParamsArgsDict', 'outputs.ImageParams']] params: Additional params passed with the request, but not persisted as part of resource payload.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict', 'outputs.ImageRawDisk']] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
-        :param pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
+        :param pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict', 'outputs.ImageShieldedInstanceInitialState']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
-        :param pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
+        :param pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict', 'outputs.ImageSourceDiskEncryptionKey']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
                the source disk is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
@@ -1172,7 +1172,7 @@ class Image(pulumi.CustomResource):
                * This property
                * The rawDisk.source URL
                * The sourceDisk URL
-        :param pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict', 'outputs.ImageSourceImageEncryptionKey']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_snapshot: URL of the source snapshot used to create this image.
@@ -1182,7 +1182,7 @@ class Image(pulumi.CustomResource):
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
-        :param pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
+        :param pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict', 'outputs.ImageSourceSnapshotEncryptionKey']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
                the source snapshot is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_locations: Cloud Storage bucket storage location of the image
@@ -1330,21 +1330,21 @@ class Image(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  family: pulumi.Input[Optional[_builtins.str]] = None,
-                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
-                 image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict', 'outputs.ImageGuestOsFeature']]]]] = None,
+                 image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict', 'outputs.ImageImageEncryptionKey']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict', 'outputs.ImageParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
-                 shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
+                 raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict', 'outputs.ImageRawDisk']]] = None,
+                 shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict', 'outputs.ImageShieldedInstanceInitialState']]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict', 'outputs.ImageSourceDiskEncryptionKey']]] = None,
                  source_image: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict', 'outputs.ImageSourceImageEncryptionKey']]] = None,
                  source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict', 'outputs.ImageSourceSnapshotEncryptionKey']]] = None,
                  storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1400,24 +1400,24 @@ class Image(pulumi.CustomResource):
             disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             family: pulumi.Input[Optional[_builtins.str]] = None,
-            guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
-            image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
+            guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict', 'outputs.ImageGuestOsFeature']]]]] = None,
+            image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict', 'outputs.ImageImageEncryptionKey']]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict', 'outputs.ImageParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
+            raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict', 'outputs.ImageRawDisk']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
+            shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict', 'outputs.ImageShieldedInstanceInitialState']]] = None,
             source_disk: pulumi.Input[Optional[_builtins.str]] = None,
-            source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
+            source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict', 'outputs.ImageSourceDiskEncryptionKey']]] = None,
             source_image: pulumi.Input[Optional[_builtins.str]] = None,
-            source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
+            source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict', 'outputs.ImageSourceImageEncryptionKey']]] = None,
             source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
-            source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
+            source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict', 'outputs.ImageSourceSnapshotEncryptionKey']]] = None,
             storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
@@ -1444,10 +1444,10 @@ class Image(pulumi.CustomResource):
                image name. The image family always returns its latest image that is
                not deprecated. The name of the image family must comply with
                RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict', 'outputs.ImageGuestOsFeature']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
                Structure is documented below.
-        :param pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+        :param pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict', 'outputs.ImageImageEncryptionKey']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
                After you encrypt an image with a customer-supplied key, you must
                provide the same key if you use the image later (e.g. to create a
                disk from the image)
@@ -1465,21 +1465,21 @@ class Image(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-        :param pulumi.Input[Union['ImageParamsArgs', 'ImageParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Union['ImageParamsArgs', 'ImageParamsArgsDict', 'outputs.ImageParams']] params: Additional params passed with the request, but not persisted as part of resource payload.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict', 'outputs.ImageRawDisk']] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
+        :param pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict', 'outputs.ImageShieldedInstanceInitialState']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
-        :param pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
+        :param pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict', 'outputs.ImageSourceDiskEncryptionKey']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
                the source disk is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
@@ -1488,7 +1488,7 @@ class Image(pulumi.CustomResource):
                * This property
                * The rawDisk.source URL
                * The sourceDisk URL
-        :param pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict', 'outputs.ImageSourceImageEncryptionKey']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_snapshot: URL of the source snapshot used to create this image.
@@ -1498,7 +1498,7 @@ class Image(pulumi.CustomResource):
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
-        :param pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
+        :param pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict', 'outputs.ImageSourceSnapshotEncryptionKey']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
                the source snapshot is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_locations: Cloud Storage bucket storage location of the image

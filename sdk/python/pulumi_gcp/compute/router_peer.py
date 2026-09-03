@@ -1281,10 +1281,10 @@ class RouterPeer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
+                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict', 'outputs.RouterPeerAdvertisedIpRange']]]]] = None,
                  advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
-                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+                 bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict', 'outputs.RouterPeerBfd']]] = None,
+                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict', 'outputs.RouterPeerCustomLearnedIpRange']]]]] = None,
                  custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1296,7 +1296,7 @@ class RouterPeer(pulumi.CustomResource):
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
-                 md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
+                 md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict', 'outputs.RouterPeerMd5AuthenticationKey']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
                  peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1651,7 +1651,7 @@ class RouterPeer(pulumi.CustomResource):
                and overrides the list defined for the router (in the "bgp" message).
                These groups are advertised in addition to any specified prefixes.
                Leave this field blank to advertise no custom groups.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict', 'outputs.RouterPeerAdvertisedIpRange']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -1660,9 +1660,9 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict', 'outputs.RouterPeerBfd']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict', 'outputs.RouterPeerCustomLearnedIpRange']]]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
                If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
                a /32 singular IP address range, and, for IPv6, /128.
                Structure is documented below.
@@ -1696,7 +1696,7 @@ class RouterPeer(pulumi.CustomResource):
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
-        :param pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+        :param pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict', 'outputs.RouterPeerMd5AuthenticationKey']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -2078,10 +2078,10 @@ class RouterPeer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
+                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict', 'outputs.RouterPeerAdvertisedIpRange']]]]] = None,
                  advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
-                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+                 bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict', 'outputs.RouterPeerBfd']]] = None,
+                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict', 'outputs.RouterPeerCustomLearnedIpRange']]]]] = None,
                  custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2093,7 +2093,7 @@ class RouterPeer(pulumi.CustomResource):
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
-                 md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
+                 md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict', 'outputs.RouterPeerMd5AuthenticationKey']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
                  peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2164,10 +2164,10 @@ class RouterPeer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
             advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
+            advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict', 'outputs.RouterPeerAdvertisedIpRange']]]]] = None,
             advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
-            bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
-            custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+            bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict', 'outputs.RouterPeerBfd']]] = None,
+            custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict', 'outputs.RouterPeerCustomLearnedIpRange']]]]] = None,
             custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2182,7 +2182,7 @@ class RouterPeer(pulumi.CustomResource):
             is_advertised_route_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
             is_custom_learned_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
             management_type: pulumi.Input[Optional[_builtins.str]] = None,
-            md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
+            md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict', 'outputs.RouterPeerMd5AuthenticationKey']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
             peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2215,7 +2215,7 @@ class RouterPeer(pulumi.CustomResource):
                and overrides the list defined for the router (in the "bgp" message).
                These groups are advertised in addition to any specified prefixes.
                Leave this field blank to advertise no custom groups.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict', 'outputs.RouterPeerAdvertisedIpRange']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -2224,9 +2224,9 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict', 'outputs.RouterPeerBfd']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict', 'outputs.RouterPeerCustomLearnedIpRange']]]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
                If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
                a /32 singular IP address range, and, for IPv6, /128.
                Structure is documented below.
@@ -2271,7 +2271,7 @@ class RouterPeer(pulumi.CustomResource):
                  creates, updates, and deletes this type of BGP peer when the
                  PARTNER InterconnectAttachment is created, updated,
                  or deleted.
-        :param pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
+        :param pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict', 'outputs.RouterPeerMd5AuthenticationKey']] md5_authentication_key: Configuration for MD5 authentication on the BGP session.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters

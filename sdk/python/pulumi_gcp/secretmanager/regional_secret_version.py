@@ -639,7 +639,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            customer_managed_encryptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretVersionCustomerManagedEncryptionArgs', 'RegionalSecretVersionCustomerManagedEncryptionArgsDict']]]]] = None,
+            customer_managed_encryptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretVersionCustomerManagedEncryptionArgs', 'RegionalSecretVersionCustomerManagedEncryptionArgsDict', 'outputs.RegionalSecretVersionCustomerManagedEncryption']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destroy_time: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -657,7 +657,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional secret version was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretVersionCustomerManagedEncryptionArgs', 'RegionalSecretVersionCustomerManagedEncryptionArgsDict']]]] customer_managed_encryptions: The customer-managed encryption configuration of the regional secret.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretVersionCustomerManagedEncryptionArgs', 'RegionalSecretVersionCustomerManagedEncryptionArgsDict', 'outputs.RegionalSecretVersionCustomerManagedEncryption']]]] customer_managed_encryptions: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be

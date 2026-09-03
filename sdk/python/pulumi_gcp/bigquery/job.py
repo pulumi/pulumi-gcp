@@ -489,15 +489,15 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
-                 extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
+                 copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict', 'outputs.JobCopy']]] = None,
+                 extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict', 'outputs.JobExtract']]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
+                 load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict', 'outputs.JobLoad']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
+                 query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict', 'outputs.JobQuery']]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -895,9 +895,9 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']] copy: Copies a table.
+        :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict', 'outputs.JobCopy']] copy: Copies a table.
                Structure is documented below.
-        :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']] extract: Configures an extract job.
+        :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict', 'outputs.JobExtract']] extract: Configures an extract job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[_builtins.str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
@@ -905,12 +905,12 @@ class Job(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']] load: Configures a load job.
+        :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict', 'outputs.JobLoad']] load: Configures a load job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
+        :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict', 'outputs.JobQuery']] query: Configures a query job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
                The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
@@ -1330,15 +1330,15 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
-                 extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
+                 copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict', 'outputs.JobCopy']]] = None,
+                 extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict', 'outputs.JobExtract']]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
+                 load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict', 'outputs.JobLoad']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
+                 query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict', 'outputs.JobQuery']]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1378,20 +1378,20 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
+            copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict', 'outputs.JobCopy']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
+            extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict', 'outputs.JobExtract']]] = None,
             job_id: pulumi.Input[Optional[_builtins.str]] = None,
             job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
             job_type: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
+            load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict', 'outputs.JobLoad']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
+            query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict', 'outputs.JobQuery']]] = None,
             reservation: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]]]] = None,
             user_email: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -1400,11 +1400,11 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']] copy: Copies a table.
+        :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict', 'outputs.JobCopy']] copy: Copies a table.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: (Output)
                All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']] extract: Configures an extract job.
+        :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict', 'outputs.JobExtract']] extract: Configures an extract job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[_builtins.str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
@@ -1414,19 +1414,19 @@ class Job(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']] load: Configures a load job.
+        :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict', 'outputs.JobLoad']] load: Configures a load job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
+        :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict', 'outputs.JobQuery']] query: Configures a query job.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
                The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
                The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] user_email: Email address of the user who ran the job.
         """

@@ -525,10 +525,10 @@ class Feed(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict', 'outputs.FeedDetails']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
+                 failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict', 'outputs.FeedFailureDetails']]] = None,
                  feed: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -669,12 +669,12 @@ class Feed(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']] details: Additional details of the feed, these details are dynamic and will be
+        :param pulumi.Input[Union['FeedDetailsArgs', 'FeedDetailsArgsDict', 'outputs.FeedDetails']] details: Additional details of the feed, these details are dynamic and will be
                different for each of the feeds.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Customer-provided feed name.
         :param pulumi.Input[_builtins.bool] enabled: Whether the feed is enabled.
-        :param pulumi.Input[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']] failure_details: FeedFailureDetails contains details about the errors thrown by chronicle for
+        :param pulumi.Input[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict', 'outputs.FeedFailureDetails']] failure_details: FeedFailureDetails contains details about the errors thrown by chronicle for
                the feeds. These are user visible details. These details help user identify
                the root cause and take appropriate action for the feed errors.
                NEXT TAG: 5
@@ -834,10 +834,10 @@ class Feed(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict', 'outputs.FeedDetails']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
+                 failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict', 'outputs.FeedFailureDetails']]] = None,
                  feed: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -886,10 +886,10 @@ class Feed(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
+            details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict', 'outputs.FeedDetails']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
+            failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict', 'outputs.FeedFailureDetails']]] = None,
             failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
             feed: pulumi.Input[Optional[_builtins.str]] = None,
             feed_service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -916,12 +916,12 @@ class Feed(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']] details: Additional details of the feed, these details are dynamic and will be
+        :param pulumi.Input[Union['FeedDetailsArgs', 'FeedDetailsArgsDict', 'outputs.FeedDetails']] details: Additional details of the feed, these details are dynamic and will be
                different for each of the feeds.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Customer-provided feed name.
         :param pulumi.Input[_builtins.bool] enabled: Whether the feed is enabled.
-        :param pulumi.Input[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']] failure_details: FeedFailureDetails contains details about the errors thrown by chronicle for
+        :param pulumi.Input[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict', 'outputs.FeedFailureDetails']] failure_details: FeedFailureDetails contains details about the errors thrown by chronicle for
                the feeds. These are user visible details. These details help user identify
                the root cause and take appropriate action for the feed errors.
                NEXT TAG: 5

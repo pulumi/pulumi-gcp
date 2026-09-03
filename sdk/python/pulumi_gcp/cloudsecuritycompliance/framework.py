@@ -486,7 +486,7 @@ class Framework(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict', 'outputs.FrameworkCloudControlDetail']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -703,7 +703,7 @@ class Framework(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]] cloud_control_details: The details of the cloud controls directly added without any grouping in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict', 'outputs.FrameworkCloudControlDetail']]]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -954,7 +954,7 @@ class Framework(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict', 'outputs.FrameworkCloudControlDetail']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1001,7 +1001,7 @@ class Framework(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+            cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict', 'outputs.FrameworkCloudControlDetail']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1023,7 +1023,7 @@ class Framework(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: The category of the framework.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]] cloud_control_details: The details of the cloud controls directly added without any grouping in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict', 'outputs.FrameworkCloudControlDetail']]]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

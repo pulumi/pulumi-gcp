@@ -551,16 +551,16 @@ class AiReasoningEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
+                 context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict', 'outputs.AiReasoningEngineEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
-                 traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict', 'outputs.AiReasoningEngineSpec']]] = None,
+                 traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict', 'outputs.AiReasoningEngineTrafficConfig']]] = None,
                  __props__=None):
         """
         ReasoningEngine provides a customizable runtime for models to determine which actions to take and in which order.
@@ -1165,7 +1165,7 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']] context_spec: (Optional, Beta)
+        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']] context_spec: (Optional, Beta)
                Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine.
@@ -1178,7 +1178,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is permitted.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
-        :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
+        :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict', 'outputs.AiReasoningEngineEncryptionSpec']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
                If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
                will be secured by this key.
                Structure is documented below.
@@ -1190,9 +1190,9 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
-        :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']] spec: Optional. Configurations of the ReasoningEngine.
+        :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict', 'outputs.AiReasoningEngineSpec']] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
-        :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']] traffic_config: (Optional, Beta)
+        :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict', 'outputs.AiReasoningEngineTrafficConfig']] traffic_config: (Optional, Beta)
                Optional. Traffic distribution configuration for the Reasoning Engine.
                > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
                Structure is documented below.
@@ -1819,16 +1819,16 @@ class AiReasoningEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
+                 context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict', 'outputs.AiReasoningEngineEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
-                 traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict', 'outputs.AiReasoningEngineSpec']]] = None,
+                 traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict', 'outputs.AiReasoningEngineTrafficConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1868,20 +1868,20 @@ class AiReasoningEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
+            context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict', 'outputs.AiReasoningEngineEncryptionSpec']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
-            traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict', 'outputs.AiReasoningEngineSpec']]] = None,
+            traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict', 'outputs.AiReasoningEngineTrafficConfig']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiReasoningEngine':
         """
@@ -1891,7 +1891,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']] context_spec: (Optional, Beta)
+        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']] context_spec: (Optional, Beta)
                Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
@@ -1907,7 +1907,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
+        :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict', 'outputs.AiReasoningEngineEncryptionSpec']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
                If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
                will be secured by this key.
                Structure is documented below.
@@ -1923,9 +1923,9 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
-        :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']] spec: Optional. Configurations of the ReasoningEngine.
+        :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict', 'outputs.AiReasoningEngineSpec']] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
-        :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']] traffic_config: (Optional, Beta)
+        :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict', 'outputs.AiReasoningEngineTrafficConfig']] traffic_config: (Optional, Beta)
                Optional. Traffic distribution configuration for the Reasoning Engine.
                > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
                Structure is documented below.

@@ -410,7 +410,7 @@ class Group(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
+                 group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict', 'outputs.GroupGroupKey']]] = None,
                  initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -474,7 +474,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Group.
-        :param pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']] group_key: EntityKey of the Group.
+        :param pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict', 'outputs.GroupGroupKey']] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] initial_group_config: The initial configuration options for creating a Group.
                See the
@@ -564,7 +564,7 @@ class Group(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
+                 group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict', 'outputs.GroupGroupKey']]] = None,
                  initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -604,12 +604,12 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_group_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]]] = None,
+            additional_group_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict', 'outputs.GroupAdditionalGroupKey']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
+            group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict', 'outputs.GroupGroupKey']]] = None,
             initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,7 +622,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]] additional_group_keys: Additional group keys associated with the Group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict', 'outputs.GroupAdditionalGroupKey']]]] additional_group_keys: Additional group keys associated with the Group
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Group was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -634,7 +634,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Group.
-        :param pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']] group_key: EntityKey of the Group.
+        :param pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict', 'outputs.GroupGroupKey']] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] initial_group_config: The initial configuration options for creating a Group.
                See the

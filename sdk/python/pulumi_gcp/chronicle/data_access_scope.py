@@ -532,10 +532,10 @@ class DataAccessScope(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_all: pulumi.Input[Optional[_builtins.bool]] = None,
-                 allowed_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict']]]]] = None,
+                 allowed_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict', 'outputs.DataAccessScopeAllowedDataAccessLabel']]]]] = None,
                  data_access_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 denied_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict']]]]] = None,
+                 denied_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict', 'outputs.DataAccessScopeDeniedDataAccessLabel']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -688,7 +688,7 @@ class DataAccessScope(pulumi.CustomResource):
                A customer with scope with denied labels A and B and allow_all will be able
                to see all data except data labeled with A and data labeled with B and data
                with labels A and B.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict']]]] allowed_data_access_labels: The allowed labels for the scope. There has to be at
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict', 'outputs.DataAccessScopeAllowedDataAccessLabel']]]] allowed_data_access_labels: The allowed labels for the scope. There has to be at
                least one label allowed for the scope to be valid.
                The logical operator for evaluation of the allowed labels is OR.
                Either allow_all or allowed_data_access_labels needs to be provided.
@@ -704,7 +704,7 @@ class DataAccessScope(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict']]]] denied_data_access_labels: Optional. The denied labels for the scope.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict', 'outputs.DataAccessScopeDeniedDataAccessLabel']]]] denied_data_access_labels: Optional. The denied labels for the scope.
                The logical operator for evaluation of the denied labels is AND.
                E.g.: A customer with scope with denied labels A and B won't be able
                to see data labeled with A and data labeled with B
@@ -875,10 +875,10 @@ class DataAccessScope(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_all: pulumi.Input[Optional[_builtins.bool]] = None,
-                 allowed_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict']]]]] = None,
+                 allowed_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict', 'outputs.DataAccessScopeAllowedDataAccessLabel']]]]] = None,
                  data_access_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 denied_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict']]]]] = None,
+                 denied_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict', 'outputs.DataAccessScopeDeniedDataAccessLabel']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -924,12 +924,12 @@ class DataAccessScope(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_all: pulumi.Input[Optional[_builtins.bool]] = None,
-            allowed_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict']]]]] = None,
+            allowed_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict', 'outputs.DataAccessScopeAllowedDataAccessLabel']]]]] = None,
             author: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_access_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            denied_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict']]]]] = None,
+            denied_data_access_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict', 'outputs.DataAccessScopeDeniedDataAccessLabel']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -953,7 +953,7 @@ class DataAccessScope(pulumi.CustomResource):
                A customer with scope with denied labels A and B and allow_all will be able
                to see all data except data labeled with A and data labeled with B and data
                with labels A and B.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict']]]] allowed_data_access_labels: The allowed labels for the scope. There has to be at
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeAllowedDataAccessLabelArgs', 'DataAccessScopeAllowedDataAccessLabelArgsDict', 'outputs.DataAccessScopeAllowedDataAccessLabel']]]] allowed_data_access_labels: The allowed labels for the scope. There has to be at
                least one label allowed for the scope to be valid.
                The logical operator for evaluation of the allowed labels is OR.
                Either allow_all or allowed_data_access_labels needs to be provided.
@@ -971,7 +971,7 @@ class DataAccessScope(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict']]]] denied_data_access_labels: Optional. The denied labels for the scope.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict', 'outputs.DataAccessScopeDeniedDataAccessLabel']]]] denied_data_access_labels: Optional. The denied labels for the scope.
                The logical operator for evaluation of the denied labels is AND.
                E.g.: A customer with scope with denied labels A and B won't be able
                to see data labeled with A and data labeled with B

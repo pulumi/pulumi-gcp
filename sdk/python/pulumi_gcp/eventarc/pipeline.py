@@ -736,16 +736,16 @@ class Pipeline(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]]] = None,
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict', 'outputs.PipelineDestination']]]]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict']]] = None,
+                 input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict', 'outputs.PipelineInputPayloadFormat']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict']]] = None,
-                 mediations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict']]]]] = None,
+                 logging_config: pulumi.Input[Optional[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict', 'outputs.PipelineLoggingConfig']]] = None,
+                 mediations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict', 'outputs.PipelineMediation']]]]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 retry_policy: pulumi.Input[Optional[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict']]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict', 'outputs.PipelineRetryPolicy']]] = None,
                  __props__=None):
         """
         The Eventarc Pipeline resource
@@ -1033,11 +1033,11 @@ class Pipeline(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]] destinations: List of destinations to which messages will be forwarded. Currently,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict', 'outputs.PipelineDestination']]]] destinations: List of destinations to which messages will be forwarded. Currently,
                exactly one destination is supported per Pipeline.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Display name of resource.
-        :param pulumi.Input[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict']] input_payload_format: Represents the format of message data.
+        :param pulumi.Input[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict', 'outputs.PipelineInputPayloadFormat']] input_payload_format: Represents the format of message data.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels attached to the Pipeline that can be used to group
                resources. An object containing a list of "key": value pairs. Example: {
@@ -1045,17 +1045,17 @@ class Pipeline(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
+        :param pulumi.Input[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict', 'outputs.PipelineLoggingConfig']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
                resources.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict']]]] mediations: List of mediation operations to be performed on the message. Currently,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict', 'outputs.PipelineMediation']]]] mediations: List of mediation operations to be performed on the message. Currently,
                only one Transformation operation is allowed in each Pipeline.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] pipeline_id: The user-provided ID to be assigned to the Pipeline. It should match the
                format `^a-z?$`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict']] retry_policy: The retry policy configuration for the Pipeline. The pipeline
+        :param pulumi.Input[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict', 'outputs.PipelineRetryPolicy']] retry_policy: The retry policy configuration for the Pipeline. The pipeline
                exponentially backs off in case the destination is non responsive or
                returns a retryable error code. The default semantics are as follows:
                The backoff starts with a 5 second delay and doubles the
@@ -1360,16 +1360,16 @@ class Pipeline(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]]] = None,
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict', 'outputs.PipelineDestination']]]]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict']]] = None,
+                 input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict', 'outputs.PipelineInputPayloadFormat']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict']]] = None,
-                 mediations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict']]]]] = None,
+                 logging_config: pulumi.Input[Optional[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict', 'outputs.PipelineLoggingConfig']]] = None,
+                 mediations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict', 'outputs.PipelineMediation']]]]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 retry_policy: pulumi.Input[Optional[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict']]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict', 'outputs.PipelineRetryPolicy']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1422,21 +1422,21 @@ class Pipeline(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict', 'outputs.PipelineDestination']]]]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict']]] = None,
+            input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict', 'outputs.PipelineInputPayloadFormat']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            logging_config: pulumi.Input[Optional[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict']]] = None,
-            mediations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict']]]]] = None,
+            logging_config: pulumi.Input[Optional[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict', 'outputs.PipelineLoggingConfig']]] = None,
+            mediations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict', 'outputs.PipelineMediation']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            retry_policy: pulumi.Input[Optional[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict']]] = None,
+            retry_policy: pulumi.Input[Optional[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict', 'outputs.PipelineRetryPolicy']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pipeline':
         """
@@ -1463,7 +1463,7 @@ class Pipeline(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]] destinations: List of destinations to which messages will be forwarded. Currently,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict', 'outputs.PipelineDestination']]]] destinations: List of destinations to which messages will be forwarded. Currently,
                exactly one destination is supported per Pipeline.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Display name of resource.
@@ -1472,7 +1472,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of
                other fields, and might be sent only on create requests to ensure that the
                client has an up-to-date value before proceeding.
-        :param pulumi.Input[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict']] input_payload_format: Represents the format of message data.
+        :param pulumi.Input[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict', 'outputs.PipelineInputPayloadFormat']] input_payload_format: Represents the format of message data.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels attached to the Pipeline that can be used to group
                resources. An object containing a list of "key": value pairs. Example: {
@@ -1480,10 +1480,10 @@ class Pipeline(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
+        :param pulumi.Input[Union['PipelineLoggingConfigArgs', 'PipelineLoggingConfigArgsDict', 'outputs.PipelineLoggingConfig']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
                resources.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict']]]] mediations: List of mediation operations to be performed on the message. Currently,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineMediationArgs', 'PipelineMediationArgsDict', 'outputs.PipelineMediation']]]] mediations: List of mediation operations to be performed on the message. Currently,
                only one Transformation operation is allowed in each Pipeline.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the Pipeline. Must be unique within the
@@ -1495,7 +1495,7 @@ class Pipeline(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict']] retry_policy: The retry policy configuration for the Pipeline. The pipeline
+        :param pulumi.Input[Union['PipelineRetryPolicyArgs', 'PipelineRetryPolicyArgsDict', 'outputs.PipelineRetryPolicy']] retry_policy: The retry policy configuration for the Pipeline. The pipeline
                exponentially backs off in case the destination is non responsive or
                returns a retryable error code. The default semantics are as follows:
                The backoff starts with a 5 second delay and doubles the

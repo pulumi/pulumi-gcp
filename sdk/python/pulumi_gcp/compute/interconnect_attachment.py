@@ -1455,11 +1455,11 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  interconnect: pulumi.Input[Optional[_builtins.str]] = None,
                  ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
+                 l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict', 'outputs.InterconnectAttachmentL2Forwarding']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict', 'outputs.InterconnectAttachmentParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1655,7 +1655,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
-        :param pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']] l2_forwarding: L2 Interconnect Attachment related configuration.
+        :param pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict', 'outputs.InterconnectAttachmentL2Forwarding']] l2_forwarding: L2 Interconnect Attachment related configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
                method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -1670,7 +1670,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict', 'outputs.InterconnectAttachmentParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1848,11 +1848,11 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  interconnect: pulumi.Input[Optional[_builtins.str]] = None,
                  ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
+                 l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict', 'outputs.InterconnectAttachmentL2Forwarding']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict', 'outputs.InterconnectAttachmentParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1942,15 +1942,15 @@ class InterconnectAttachment(pulumi.CustomResource):
             google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
             interconnect: pulumi.Input[Optional[_builtins.str]] = None,
             ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
+            l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict', 'outputs.InterconnectAttachmentL2Forwarding']]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             mtu: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             pairing_key: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict', 'outputs.InterconnectAttachmentParams']]] = None,
             partner_asn: pulumi.Input[Optional[_builtins.str]] = None,
-            private_interconnect_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict']]]]] = None,
+            private_interconnect_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict', 'outputs.InterconnectAttachmentPrivateInterconnectInfo']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2048,7 +2048,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
-        :param pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']] l2_forwarding: L2 Interconnect Attachment related configuration.
+        :param pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict', 'outputs.InterconnectAttachmentL2Forwarding']] l2_forwarding: L2 Interconnect Attachment related configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
                of the labels set used for optimistic locking. The fingerprint is initially generated by
@@ -2071,12 +2071,12 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
                identifier of an PARTNER attachment used to initiate provisioning with
                a selected partner. Of the form "XXXXX/region/domain"
-        :param pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict', 'outputs.InterconnectAttachmentParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional
                BGP ASN for the router that should be supplied by a layer 3 Partner if
                they configured BGP on behalf of the customer.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict', 'outputs.InterconnectAttachmentPrivateInterconnectInfo']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
                is populated if the interconnect that this is attached to is of type DEDICATED.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

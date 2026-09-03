@@ -561,7 +561,7 @@ class Backup(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ontap_source: pulumi.Input[Optional[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']]] = None,
+                 ontap_source: pulumi.Input[Optional[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict', 'outputs.BackupOntapSource']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_volume: pulumi.Input[Optional[_builtins.str]] = None,
@@ -657,7 +657,7 @@ class Backup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location of the backup.
         :param pulumi.Input[_builtins.str] name: The resource name of the backup. Needs to be unique per location.
-        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']] ontap_source: Details of the ONTAP source volume and snapshot.
+        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict', 'outputs.BackupOntapSource']] ontap_source: Details of the ONTAP source volume and snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -768,7 +768,7 @@ class Backup(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ontap_source: pulumi.Input[Optional[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']]] = None,
+                 ontap_source: pulumi.Input[Optional[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict', 'outputs.BackupOntapSource']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_volume: pulumi.Input[Optional[_builtins.str]] = None,
@@ -827,7 +827,7 @@ class Backup(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            ontap_source: pulumi.Input[Optional[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']]] = None,
+            ontap_source: pulumi.Input[Optional[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict', 'outputs.BackupOntapSource']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
@@ -862,7 +862,7 @@ class Backup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location of the backup.
         :param pulumi.Input[_builtins.str] name: The resource name of the backup. Needs to be unique per location.
-        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']] ontap_source: Details of the ONTAP source volume and snapshot.
+        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict', 'outputs.BackupOntapSource']] ontap_source: Details of the ONTAP source volume and snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

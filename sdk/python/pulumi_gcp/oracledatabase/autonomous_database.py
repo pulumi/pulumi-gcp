@@ -743,8 +743,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
-                 source_config: pulumi.Input[Optional[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict', 'outputs.AutonomousDatabaseProperties']]] = None,
+                 source_config: pulumi.Input[Optional[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict', 'outputs.AutonomousDatabaseSourceConfig']]] = None,
                  __props__=None):
         """
         An AutonomousDatabase resource.
@@ -955,9 +955,9 @@ class AutonomousDatabase(pulumi.CustomResource):
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
+        :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict', 'outputs.AutonomousDatabaseProperties']] properties: The properties of an Autonomous Database.
                Structure is documented below.
-        :param pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
+        :param pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict', 'outputs.AutonomousDatabaseSourceConfig']] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
                Structure is documented below.
         """
         ...
@@ -1167,8 +1167,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
-                 source_config: pulumi.Input[Optional[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict', 'outputs.AutonomousDatabaseProperties']]] = None,
+                 source_config: pulumi.Input[Optional[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict', 'outputs.AutonomousDatabaseSourceConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1235,9 +1235,9 @@ class AutonomousDatabase(pulumi.CustomResource):
             odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             peer_autonomous_databases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict', 'outputs.AutonomousDatabaseProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            source_config: pulumi.Input[Optional[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']]] = None) -> 'AutonomousDatabase':
+            source_config: pulumi.Input[Optional[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict', 'outputs.AutonomousDatabaseSourceConfig']]] = None) -> 'AutonomousDatabase':
         """
         Get an existing AutonomousDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1287,11 +1287,11 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_autonomous_databases: The peer Autonomous Database names of the given Autonomous Database.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
+        :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict', 'outputs.AutonomousDatabaseProperties']] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
+        :param pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict', 'outputs.AutonomousDatabaseSourceConfig']] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

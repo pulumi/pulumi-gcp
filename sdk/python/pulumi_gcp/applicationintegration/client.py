@@ -281,7 +281,7 @@ class Client(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
+                 cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict', 'outputs.ClientCloudKmsConfig']]] = None,
                  create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -352,7 +352,7 @@ class Client(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
+        :param pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict', 'outputs.ClientCloudKmsConfig']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -452,7 +452,7 @@ class Client(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
+                 cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict', 'outputs.ClientCloudKmsConfig']]] = None,
                  create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -485,7 +485,7 @@ class Client(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
+            cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict', 'outputs.ClientCloudKmsConfig']]] = None,
             create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -498,7 +498,7 @@ class Client(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
+        :param pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict', 'outputs.ClientCloudKmsConfig']] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

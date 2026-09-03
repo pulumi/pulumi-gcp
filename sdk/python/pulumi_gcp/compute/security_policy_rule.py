@@ -506,14 +506,14 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 header_action: pulumi.Input[Optional[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']]] = None,
-                 match: pulumi.Input[Optional[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
-                 preconfigured_waf_config: pulumi.Input[Optional[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 header_action: pulumi.Input[Optional[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict', 'outputs.SecurityPolicyRuleHeaderAction']]] = None,
+                 match: pulumi.Input[Optional[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict', 'outputs.SecurityPolicyRuleMatch']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.SecurityPolicyRulePreconfiguredWafConfig']]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_limit_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
-                 redirect_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+                 rate_limit_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.SecurityPolicyRuleRateLimitOptions']]] = None,
+                 redirect_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.SecurityPolicyRuleRedirectOptions']]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -770,12 +770,12 @@ class SecurityPolicyRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict', 'outputs.SecurityPolicyRuleHeaderAction']] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict', 'outputs.SecurityPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.SecurityPolicyRulePreconfiguredWafConfig']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
@@ -784,9 +784,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.SecurityPolicyRuleRateLimitOptions']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.SecurityPolicyRuleRedirectOptions']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] security_policy: The name of the security policy this rule belongs to.
         """
@@ -1053,14 +1053,14 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 header_action: pulumi.Input[Optional[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']]] = None,
-                 match: pulumi.Input[Optional[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
-                 preconfigured_waf_config: pulumi.Input[Optional[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 header_action: pulumi.Input[Optional[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict', 'outputs.SecurityPolicyRuleHeaderAction']]] = None,
+                 match: pulumi.Input[Optional[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict', 'outputs.SecurityPolicyRuleMatch']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.SecurityPolicyRulePreconfiguredWafConfig']]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_limit_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
-                 redirect_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+                 rate_limit_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.SecurityPolicyRuleRateLimitOptions']]] = None,
+                 redirect_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.SecurityPolicyRuleRedirectOptions']]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1102,14 +1102,14 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            header_action: pulumi.Input[Optional[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']]] = None,
-            match: pulumi.Input[Optional[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
-            preconfigured_waf_config: pulumi.Input[Optional[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+            header_action: pulumi.Input[Optional[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict', 'outputs.SecurityPolicyRuleHeaderAction']]] = None,
+            match: pulumi.Input[Optional[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict', 'outputs.SecurityPolicyRuleMatch']]] = None,
+            preconfigured_waf_config: pulumi.Input[Optional[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.SecurityPolicyRulePreconfiguredWafConfig']]] = None,
             preview: pulumi.Input[Optional[_builtins.bool]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rate_limit_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
-            redirect_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+            rate_limit_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.SecurityPolicyRuleRateLimitOptions']]] = None,
+            redirect_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.SecurityPolicyRuleRedirectOptions']]] = None,
             security_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityPolicyRule':
         """
         Get an existing SecurityPolicyRule resource's state with the given name, id, and optional extra
@@ -1131,12 +1131,12 @@ class SecurityPolicyRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict', 'outputs.SecurityPolicyRuleHeaderAction']] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict', 'outputs.SecurityPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.SecurityPolicyRulePreconfiguredWafConfig']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
@@ -1145,9 +1145,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.SecurityPolicyRuleRateLimitOptions']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
-        :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.SecurityPolicyRuleRedirectOptions']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] security_policy: The name of the security policy this rule belongs to.
         """

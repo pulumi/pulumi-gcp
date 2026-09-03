@@ -383,11 +383,11 @@ class Generator(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
+                 inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  published_model: pulumi.Input[Optional[_builtins.str]] = None,
-                 summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
+                 summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']]] = None,
                  trigger_event: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -450,13 +450,13 @@ class Generator(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
-        :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']] inference_parameter: Optional. Inference parameters for this generator.
+        :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']] inference_parameter: Optional. Inference parameters for this generator.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: desc
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] published_model: Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
-        :param pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']] summarization_context: Input of prebuilt Summarization feature.
+        :param pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']] summarization_context: Input of prebuilt Summarization feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] trigger_event: Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
                Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
@@ -535,11 +535,11 @@ class Generator(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
+                 inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  published_model: pulumi.Input[Optional[_builtins.str]] = None,
-                 summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
+                 summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']]] = None,
                  trigger_event: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -577,12 +577,12 @@ class Generator(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             generator_id: pulumi.Input[Optional[_builtins.str]] = None,
-            inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
+            inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             published_model: pulumi.Input[Optional[_builtins.str]] = None,
-            summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
+            summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']]] = None,
             trigger_event: pulumi.Input[Optional[_builtins.str]] = None) -> 'Generator':
         """
         Get an existing Generator resource's state with the given name, id, and optional extra
@@ -599,14 +599,14 @@ class Generator(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
-        :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']] inference_parameter: Optional. Inference parameters for this generator.
+        :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']] inference_parameter: Optional. Inference parameters for this generator.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: desc
         :param pulumi.Input[_builtins.str] name: The resource name of the generator.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] published_model: Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
-        :param pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']] summarization_context: Input of prebuilt Summarization feature.
+        :param pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']] summarization_context: Input of prebuilt Summarization feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] trigger_event: Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
                Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.

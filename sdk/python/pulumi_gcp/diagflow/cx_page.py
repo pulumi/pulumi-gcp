@@ -547,17 +547,17 @@ class CxPage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']]] = None,
+                 advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict', 'outputs.CxPageAdvancedSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
-                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
-                 form: pulumi.Input[Optional[Union['CxPageFormArgs', 'CxPageFormArgsDict']]] = None,
-                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']]] = None,
+                 entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict', 'outputs.CxPageEntryFulfillment']]] = None,
+                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict', 'outputs.CxPageEventHandler']]]]] = None,
+                 form: pulumi.Input[Optional[Union['CxPageFormArgs', 'CxPageFormArgsDict', 'outputs.CxPageForm']]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict', 'outputs.CxPageKnowledgeConnectorSettings']]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict']]]]] = None,
+                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict', 'outputs.CxPageTransitionRoute']]]]] = None,
                  __props__=None):
         """
         A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages.
@@ -1272,7 +1272,7 @@ class CxPage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict', 'outputs.CxPageAdvancedSettings']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1282,13 +1282,13 @@ class CxPage(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the page, unique within the agent.
-        :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']] entry_fulfillment: The fulfillment to call when the session is entering the page.
+        :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict', 'outputs.CxPageEntryFulfillment']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict', 'outputs.CxPageEventHandler']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
-        :param pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict']] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict', 'outputs.CxPageForm']] form: The form associated with the page, used for collecting parameters relevant to the page.
                Structure is documented below.
-        :param pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Knowledge connector configuration.
+        :param pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict', 'outputs.CxPageKnowledgeConnectorSettings']] knowledge_connector_settings: Knowledge connector configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -1308,7 +1308,7 @@ class CxPage(pulumi.CustomResource):
                If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
                If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict', 'outputs.CxPageTransitionRoute']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
                When we are in a certain page, the TransitionRoutes are evalauted in the following order:
                TransitionRoutes defined in the page with intent specified.
                TransitionRoutes defined in the transition route groups with intent specified.
@@ -2050,17 +2050,17 @@ class CxPage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']]] = None,
+                 advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict', 'outputs.CxPageAdvancedSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
-                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
-                 form: pulumi.Input[Optional[Union['CxPageFormArgs', 'CxPageFormArgsDict']]] = None,
-                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']]] = None,
+                 entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict', 'outputs.CxPageEntryFulfillment']]] = None,
+                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict', 'outputs.CxPageEventHandler']]]]] = None,
+                 form: pulumi.Input[Optional[Union['CxPageFormArgs', 'CxPageFormArgsDict', 'outputs.CxPageForm']]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict', 'outputs.CxPageKnowledgeConnectorSettings']]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict']]]]] = None,
+                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict', 'outputs.CxPageTransitionRoute']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2094,18 +2094,18 @@ class CxPage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']]] = None,
+            advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict', 'outputs.CxPageAdvancedSettings']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
-            event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
-            form: pulumi.Input[Optional[Union['CxPageFormArgs', 'CxPageFormArgsDict']]] = None,
-            knowledge_connector_settings: pulumi.Input[Optional[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']]] = None,
+            entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict', 'outputs.CxPageEntryFulfillment']]] = None,
+            event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict', 'outputs.CxPageEventHandler']]]]] = None,
+            form: pulumi.Input[Optional[Union['CxPageFormArgs', 'CxPageFormArgsDict', 'outputs.CxPageForm']]] = None,
+            knowledge_connector_settings: pulumi.Input[Optional[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict', 'outputs.CxPageKnowledgeConnectorSettings']]] = None,
             language_code: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict']]]]] = None) -> 'CxPage':
+            transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict', 'outputs.CxPageTransitionRoute']]]]] = None) -> 'CxPage':
         """
         Get an existing CxPage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2113,7 +2113,7 @@ class CxPage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict', 'outputs.CxPageAdvancedSettings']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -2123,13 +2123,13 @@ class CxPage(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the page, unique within the agent.
-        :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']] entry_fulfillment: The fulfillment to call when the session is entering the page.
+        :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict', 'outputs.CxPageEntryFulfillment']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict', 'outputs.CxPageEventHandler']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
-        :param pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict']] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict', 'outputs.CxPageForm']] form: The form associated with the page, used for collecting parameters relevant to the page.
                Structure is documented below.
-        :param pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Knowledge connector configuration.
+        :param pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict', 'outputs.CxPageKnowledgeConnectorSettings']] knowledge_connector_settings: Knowledge connector configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -2151,7 +2151,7 @@ class CxPage(pulumi.CustomResource):
                If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
                If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict', 'outputs.CxPageTransitionRoute']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
                When we are in a certain page, the TransitionRoutes are evalauted in the following order:
                TransitionRoutes defined in the page with intent specified.
                TransitionRoutes defined in the transition route groups with intent specified.

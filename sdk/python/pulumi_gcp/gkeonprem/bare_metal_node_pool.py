@@ -525,7 +525,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
+                 node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict', 'outputs.BareMetalNodePoolNodePoolConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -757,7 +757,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name for the Bare Metal Node Pool.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The bare metal node pool name.
-        :param pulumi.Input[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']] node_pool_config: Node pool configuration.
+        :param pulumi.Input[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict', 'outputs.BareMetalNodePoolNodePoolConfig']] node_pool_config: Node pool configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -995,7 +995,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
+                 node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict', 'outputs.BareMetalNodePoolNodePoolConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1049,11 +1049,11 @@ class BareMetalNodePool(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
+            node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict', 'outputs.BareMetalNodePoolNodePoolConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalNodePoolStatusArgs', 'BareMetalNodePoolStatusArgsDict']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalNodePoolStatusArgs', 'BareMetalNodePoolStatusArgsDict', 'outputs.BareMetalNodePoolStatus']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BareMetalNodePool':
         """
@@ -1092,14 +1092,14 @@ class BareMetalNodePool(pulumi.CustomResource):
                through optimistic concurrency control.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The bare metal node pool name.
-        :param pulumi.Input[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']] node_pool_config: Node pool configuration.
+        :param pulumi.Input[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict', 'outputs.BareMetalNodePoolNodePoolConfig']] node_pool_config: Node pool configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the Bare Metal User Cluster.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BareMetalNodePoolStatusArgs', 'BareMetalNodePoolStatusArgsDict']]]] statuses: Specifies detailed node pool status.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BareMetalNodePoolStatusArgs', 'BareMetalNodePoolStatusArgsDict', 'outputs.BareMetalNodePoolStatus']]]] statuses: Specifies detailed node pool status.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the Bare Metal Node Pool.
         :param pulumi.Input[_builtins.str] update_time: The time the cluster was last updated, in RFC3339 text format.

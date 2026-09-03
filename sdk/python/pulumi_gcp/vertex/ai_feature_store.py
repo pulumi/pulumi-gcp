@@ -461,11 +461,11 @@ class AiFeatureStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict', 'outputs.AiFeatureStoreEncryptionSpec']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
+                 online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict', 'outputs.AiFeatureStoreOnlineServingConfig']]] = None,
                  online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -573,7 +573,7 @@ class AiFeatureStore(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+        :param pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict', 'outputs.AiFeatureStoreEncryptionSpec']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs to assign to this Featurestore.
@@ -581,7 +581,7 @@ class AiFeatureStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']] online_serving_config: Config for online serving resources.
+        :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict', 'outputs.AiFeatureStoreOnlineServingConfig']] online_serving_config: Config for online serving resources.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] online_storage_ttl_days: (Optional, Beta)
                TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
@@ -706,11 +706,11 @@ class AiFeatureStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict', 'outputs.AiFeatureStoreEncryptionSpec']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
+                 online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict', 'outputs.AiFeatureStoreOnlineServingConfig']]] = None,
                  online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -752,12 +752,12 @@ class AiFeatureStore(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict', 'outputs.AiFeatureStoreEncryptionSpec']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
+            online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict', 'outputs.AiFeatureStoreOnlineServingConfig']]] = None,
             online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -778,7 +778,7 @@ class AiFeatureStore(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+        :param pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict', 'outputs.AiFeatureStoreEncryptionSpec']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -787,7 +787,7 @@ class AiFeatureStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']] online_serving_config: Config for online serving resources.
+        :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict', 'outputs.AiFeatureStoreOnlineServingConfig']] online_serving_config: Config for online serving resources.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] online_storage_ttl_days: (Optional, Beta)
                TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days

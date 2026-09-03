@@ -422,7 +422,7 @@ class AiTensorboard(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict', 'outputs.AiTensorboardEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -507,7 +507,7 @@ class AiTensorboard(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of this Tensorboard.
         :param pulumi.Input[_builtins.str] display_name: User provided name of this Tensorboard.
-        :param pulumi.Input[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
+        :param pulumi.Input[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict', 'outputs.AiTensorboardEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
                
@@ -611,7 +611,7 @@ class AiTensorboard(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict', 'outputs.AiTensorboardEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -658,7 +658,7 @@ class AiTensorboard(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict', 'outputs.AiTensorboardEncryptionSpec']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -684,7 +684,7 @@ class AiTensorboard(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of this Tensorboard.
         :param pulumi.Input[_builtins.str] display_name: User provided name of this Tensorboard.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
+        :param pulumi.Input[Union['AiTensorboardEncryptionSpecArgs', 'AiTensorboardEncryptionSpecArgsDict', 'outputs.AiTensorboardEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
                

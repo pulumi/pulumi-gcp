@@ -447,11 +447,11 @@ class AppConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
+                 application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict', 'outputs.AppConnectionApplicationEndpoint']]] = None,
                  connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
+                 gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict', 'outputs.AppConnectionGateway']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -492,7 +492,7 @@ class AppConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict', 'outputs.AppConnectionApplicationEndpoint']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -502,7 +502,7 @@ class AppConnection(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
-        :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict', 'outputs.AppConnectionGateway']] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
                
@@ -569,11 +569,11 @@ class AppConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
+                 application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict', 'outputs.AppConnectionApplicationEndpoint']]] = None,
                  connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
+                 gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict', 'outputs.AppConnectionGateway']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -614,12 +614,12 @@ class AppConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
+            application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict', 'outputs.AppConnectionApplicationEndpoint']]] = None,
             connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
+            gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict', 'outputs.AppConnectionGateway']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -633,7 +633,7 @@ class AppConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict', 'outputs.AppConnectionApplicationEndpoint']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -644,7 +644,7 @@ class AppConnection(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict', 'outputs.AppConnectionGateway']] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
                

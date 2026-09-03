@@ -792,14 +792,14 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleMatch']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
                  target_forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag']]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1059,7 +1059,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                Logs may be exported to BigQuery or Pub/Sub.
                Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
@@ -1079,7 +1079,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
                - projects/project/global/forwardingRules/forwardingRule
                - projects/project/regions/region/forwardingRules/forwardingRule
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.
@@ -1354,14 +1354,14 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleMatch']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
                  target_forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag']]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1424,7 +1424,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
             firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
-            match: pulumi.Input[Optional[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleMatch']]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1432,7 +1432,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
             security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
             target_forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
+            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag']]]]] = None,
             target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_type: pulumi.Input[Optional[_builtins.str]] = None,
             tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None) -> 'RegionNetworkFirewallPolicyRule':
@@ -1463,7 +1463,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionNetworkFirewallPolicyRuleMatchArgs', 'RegionNetworkFirewallPolicyRuleMatchArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
@@ -1484,7 +1484,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
                - projects/project/global/forwardingRules/forwardingRule
                - projects/project/regions/region/forwardingRules/forwardingRule
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.

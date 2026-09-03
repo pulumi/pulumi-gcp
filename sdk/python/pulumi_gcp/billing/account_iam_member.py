@@ -220,7 +220,7 @@ class AccountIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict', 'outputs.AccountIamMemberCondition']]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -453,7 +453,7 @@ class AccountIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict', 'outputs.AccountIamMemberCondition']]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -487,7 +487,7 @@ class AccountIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['AccountIamMemberConditionArgs', 'AccountIamMemberConditionArgsDict', 'outputs.AccountIamMemberCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             member: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamMember':

@@ -481,9 +481,9 @@ class Instance(pulumi.CustomResource):
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_config: pulumi.Input[Optional[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
+                 private_config: pulumi.Input[Optional[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict', 'outputs.InstancePrivateConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 workforce_identity_federation_config: pulumi.Input[Optional[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']]] = None,
+                 workforce_identity_federation_config: pulumi.Input[Optional[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict', 'outputs.InstanceWorkforceIdentityFederationConfig']]] = None,
                  __props__=None):
         """
         Instances are deployed to an available Google Cloud region and are accessible via their web interface.
@@ -983,11 +983,11 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the Instance.
-        :param pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']] private_config: Private settings for private instance.
+        :param pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict', 'outputs.InstancePrivateConfig']] private_config: Private settings for private instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
+        :param pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict', 'outputs.InstanceWorkforceIdentityFederationConfig']] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
                If unset, defaults to the Google OIDC IdP.
                Structure is documented below.
         """
@@ -1500,9 +1500,9 @@ class Instance(pulumi.CustomResource):
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_config: pulumi.Input[Optional[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
+                 private_config: pulumi.Input[Optional[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict', 'outputs.InstancePrivateConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 workforce_identity_federation_config: pulumi.Input[Optional[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']]] = None,
+                 workforce_identity_federation_config: pulumi.Input[Optional[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict', 'outputs.InstanceWorkforceIdentityFederationConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1547,19 +1547,19 @@ class Instance(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            host_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]]] = None,
+            host_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict', 'outputs.InstanceHostConfig']]]]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            private_config: pulumi.Input[Optional[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
+            private_config: pulumi.Input[Optional[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict', 'outputs.InstancePrivateConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_note: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            workforce_identity_federation_config: pulumi.Input[Optional[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']]] = None) -> 'Instance':
+            workforce_identity_federation_config: pulumi.Input[Optional[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict', 'outputs.InstanceWorkforceIdentityFederationConfig']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1575,7 +1575,7 @@ class Instance(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]] host_configs: A list of hostnames for this instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict', 'outputs.InstanceHostConfig']]]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance_id: The name for the Instance.
         :param pulumi.Input[_builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -1585,7 +1585,7 @@ class Instance(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the Instance.
         :param pulumi.Input[_builtins.str] name: The resource name for the Instance.
-        :param pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']] private_config: Private settings for private instance.
+        :param pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict', 'outputs.InstancePrivateConfig']] private_config: Private settings for private instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1594,7 +1594,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The current state of the Instance.
         :param pulumi.Input[_builtins.str] state_note: Provides information about the current instance state.
         :param pulumi.Input[_builtins.str] update_time: Time the Instance was updated in UTC.
-        :param pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
+        :param pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict', 'outputs.InstanceWorkforceIdentityFederationConfig']] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
                If unset, defaults to the Google OIDC IdP.
                Structure is documented below.
         """

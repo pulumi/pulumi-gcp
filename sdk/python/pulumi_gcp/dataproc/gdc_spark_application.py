@@ -859,12 +859,12 @@ class GdcSparkApplication(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
+                 pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationPysparkApplicationConfig']]] = None,
                  serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
+                 spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkApplicationConfig']]] = None,
                  spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
-                 spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
+                 spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkRApplicationConfig']]] = None,
+                 spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkSqlApplicationConfig']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1059,15 +1059,15 @@ class GdcSparkApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: application-specific properties.
-        :param pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']] pyspark_application_config: Represents the PySparkApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationPysparkApplicationConfig']] pyspark_application_config: Represents the PySparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this spark application belongs.
-        :param pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']] spark_application_config: Represents the SparkApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkApplicationConfig']] spark_application_config: Represents the SparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] spark_application_id: The id of the application
-        :param pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']] spark_r_application_config: Represents the SparkRApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkRApplicationConfig']] spark_r_application_config: Represents the SparkRApplicationConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']] spark_sql_application_config: Represents the SparkRApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkSqlApplicationConfig']] spark_sql_application_config: Represents the SparkRApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The Dataproc version of this application.
         """
@@ -1272,12 +1272,12 @@ class GdcSparkApplication(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
+                 pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationPysparkApplicationConfig']]] = None,
                  serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
+                 spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkApplicationConfig']]] = None,
                  spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
-                 spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
+                 spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkRApplicationConfig']]] = None,
+                 spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkSqlApplicationConfig']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1352,13 +1352,13 @@ class GdcSparkApplication(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
+            pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationPysparkApplicationConfig']]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
-            spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
+            spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkApplicationConfig']]] = None,
             spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
-            spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
-            spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
+            spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkRApplicationConfig']]] = None,
+            spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkSqlApplicationConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_message: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1399,16 +1399,16 @@ class GdcSparkApplication(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: application-specific properties.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']] pyspark_application_config: Represents the PySparkApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationPysparkApplicationConfig']] pyspark_application_config: Represents the PySparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this spark application belongs.
-        :param pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']] spark_application_config: Represents the SparkApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkApplicationConfig']] spark_application_config: Represents the SparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] spark_application_id: The id of the application
-        :param pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']] spark_r_application_config: Represents the SparkRApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkRApplicationConfig']] spark_r_application_config: Represents the SparkRApplicationConfig.
                Structure is documented below.
-        :param pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']] spark_sql_application_config: Represents the SparkRApplicationConfig.
+        :param pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkSqlApplicationConfig']] spark_sql_application_config: Represents the SparkRApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state.
                Possible values:

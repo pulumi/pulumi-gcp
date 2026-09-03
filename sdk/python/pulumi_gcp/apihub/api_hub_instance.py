@@ -407,7 +407,7 @@ class ApiHubInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_hub_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict', 'outputs.ApiHubInstanceConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -478,7 +478,7 @@ class ApiHubInstance(pulumi.CustomResource):
                system generated id will be used.
                This value should be 4-40 characters, and valid characters
                are `/a-z[0-9]-_/`.
-        :param pulumi.Input[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict']] config: Available configurations to provision an ApiHub Instance.
+        :param pulumi.Input[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict', 'outputs.ApiHubInstanceConfig']] config: Available configurations to provision an ApiHub Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the ApiHub instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata.
@@ -570,7 +570,7 @@ class ApiHubInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_hub_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict', 'outputs.ApiHubInstanceConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -614,7 +614,7 @@ class ApiHubInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_hub_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict', 'outputs.ApiHubInstanceConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -638,7 +638,7 @@ class ApiHubInstance(pulumi.CustomResource):
                system generated id will be used.
                This value should be 4-40 characters, and valid characters
                are `/a-z[0-9]-_/`.
-        :param pulumi.Input[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict']] config: Available configurations to provision an ApiHub Instance.
+        :param pulumi.Input[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict', 'outputs.ApiHubInstanceConfig']] config: Available configurations to provision an ApiHub Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation timestamp.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the ApiHub instance.

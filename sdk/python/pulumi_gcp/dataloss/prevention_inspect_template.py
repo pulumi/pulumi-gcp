@@ -337,7 +337,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 inspect_config: pulumi.Input[Optional[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict']]] = None,
+                 inspect_config: pulumi.Input[Optional[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict', 'outputs.PreventionInspectTemplateInspectConfig']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -645,7 +645,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the inspect template.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the inspect template.
-        :param pulumi.Input[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict']] inspect_config: The core content of the template.
+        :param pulumi.Input[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict', 'outputs.PreventionInspectTemplateInspectConfig']] inspect_config: The core content of the template.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the inspect template in any of the following formats:
                * `projects/{{project}}`
@@ -973,7 +973,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 inspect_config: pulumi.Input[Optional[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict']]] = None,
+                 inspect_config: pulumi.Input[Optional[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict', 'outputs.PreventionInspectTemplateInspectConfig']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1009,7 +1009,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            inspect_config: pulumi.Input[Optional[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict']]] = None,
+            inspect_config: pulumi.Input[Optional[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict', 'outputs.PreventionInspectTemplateInspectConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PreventionInspectTemplate':
@@ -1030,7 +1030,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the inspect template.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the inspect template.
-        :param pulumi.Input[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict']] inspect_config: The core content of the template.
+        :param pulumi.Input[Union['PreventionInspectTemplateInspectConfigArgs', 'PreventionInspectTemplateInspectConfigArgsDict', 'outputs.PreventionInspectTemplateInspectConfig']] inspect_config: The core content of the template.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the inspect template. Set by the server.
         :param pulumi.Input[_builtins.str] parent: The parent of the inspect template in any of the following formats:

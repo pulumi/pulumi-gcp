@@ -347,14 +347,14 @@ class FeatureMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
+                 configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict', 'outputs.FeatureMembershipConfigmanagement']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feature: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  membership: pulumi.Input[Optional[_builtins.str]] = None,
                  membership_location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mesh: pulumi.Input[Optional[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']]] = None,
-                 policycontroller: pulumi.Input[Optional[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']]] = None,
+                 mesh: pulumi.Input[Optional[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict', 'outputs.FeatureMembershipMesh']]] = None,
+                 policycontroller: pulumi.Input[Optional[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict', 'outputs.FeatureMembershipPolicycontroller']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -663,7 +663,7 @@ class FeatureMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict', 'outputs.FeatureMembershipConfigmanagement']] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -674,8 +674,8 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the feature
         :param pulumi.Input[_builtins.str] membership: The name of the membership
         :param pulumi.Input[_builtins.str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
-        :param pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']] mesh: Service mesh specific spec. Structure is documented below.
-        :param pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']] policycontroller: Policy Controller-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict', 'outputs.FeatureMembershipMesh']] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict', 'outputs.FeatureMembershipPolicycontroller']] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project of the feature
         """
         ...
@@ -1003,14 +1003,14 @@ class FeatureMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
+                 configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict', 'outputs.FeatureMembershipConfigmanagement']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feature: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  membership: pulumi.Input[Optional[_builtins.str]] = None,
                  membership_location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mesh: pulumi.Input[Optional[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']]] = None,
-                 policycontroller: pulumi.Input[Optional[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']]] = None,
+                 mesh: pulumi.Input[Optional[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict', 'outputs.FeatureMembershipMesh']]] = None,
+                 policycontroller: pulumi.Input[Optional[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict', 'outputs.FeatureMembershipPolicycontroller']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1046,14 +1046,14 @@ class FeatureMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
+            configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict', 'outputs.FeatureMembershipConfigmanagement']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             feature: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             membership: pulumi.Input[Optional[_builtins.str]] = None,
             membership_location: pulumi.Input[Optional[_builtins.str]] = None,
-            mesh: pulumi.Input[Optional[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']]] = None,
-            policycontroller: pulumi.Input[Optional[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']]] = None,
+            mesh: pulumi.Input[Optional[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict', 'outputs.FeatureMembershipMesh']]] = None,
+            policycontroller: pulumi.Input[Optional[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict', 'outputs.FeatureMembershipPolicycontroller']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'FeatureMembership':
         """
         Get an existing FeatureMembership resource's state with the given name, id, and optional extra
@@ -1062,7 +1062,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict', 'outputs.FeatureMembershipConfigmanagement']] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1073,8 +1073,8 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the feature
         :param pulumi.Input[_builtins.str] membership: The name of the membership
         :param pulumi.Input[_builtins.str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
-        :param pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']] mesh: Service mesh specific spec. Structure is documented below.
-        :param pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']] policycontroller: Policy Controller-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict', 'outputs.FeatureMembershipMesh']] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict', 'outputs.FeatureMembershipPolicycontroller']] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project of the feature
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

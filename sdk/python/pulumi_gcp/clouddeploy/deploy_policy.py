@@ -528,8 +528,8 @@ class DeployPolicy(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]]] = None,
-                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict', 'outputs.DeployPolicyRule']]]]] = None,
+                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict', 'outputs.DeployPolicySelector']]]]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -714,9 +714,9 @@ class DeployPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the `DeployPolicy`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]] rules: Rules to apply. At least one rule must be present.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict', 'outputs.DeployPolicyRule']]]] rules: Rules to apply. At least one rule must be present.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict']]]] selectors: Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict', 'outputs.DeployPolicySelector']]]] selectors: Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] suspended: When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
         """
@@ -911,8 +911,8 @@ class DeployPolicy(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]]] = None,
-                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict', 'outputs.DeployPolicyRule']]]]] = None,
+                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict', 'outputs.DeployPolicySelector']]]]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -970,8 +970,8 @@ class DeployPolicy(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]]] = None,
-            selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict', 'outputs.DeployPolicyRule']]]]] = None,
+            selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict', 'outputs.DeployPolicySelector']]]]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'DeployPolicy':
@@ -1005,9 +1005,9 @@ class DeployPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]] rules: Rules to apply. At least one rule must be present.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict', 'outputs.DeployPolicyRule']]]] rules: Rules to apply. At least one rule must be present.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict']]]] selectors: Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict', 'outputs.DeployPolicySelector']]]] selectors: Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] suspended: When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
         :param pulumi.Input[_builtins.str] uid: Output only. Unique identifier of the `DeployPolicy`.

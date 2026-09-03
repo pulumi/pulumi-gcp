@@ -665,13 +665,13 @@ class DataStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
+                 advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict', 'outputs.DataStoreAdvancedSiteSearchConfig']]] = None,
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
+                 document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict', 'outputs.DataStoreDocumentProcessingConfig']]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -797,7 +797,7 @@ class DataStore(pulumi.CustomResource):
                Document can't be accessed by calling DocumentService.GetDocument or
                DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
                industry vertical with non-`PUBLIC_WEBSITE` content config.
-        :param pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']] advanced_site_search_config: Configuration data for advance site search.
+        :param pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict', 'outputs.DataStoreAdvancedSiteSearchConfig']] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
                Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
@@ -813,7 +813,7 @@ class DataStore(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
-        :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
+        :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict', 'outputs.DataStoreDocumentProcessingConfig']] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -969,13 +969,13 @@ class DataStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
+                 advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict', 'outputs.DataStoreAdvancedSiteSearchConfig']]] = None,
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
+                 document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict', 'outputs.DataStoreDocumentProcessingConfig']]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1027,7 +1027,7 @@ class DataStore(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
+            advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict', 'outputs.DataStoreAdvancedSiteSearchConfig']]] = None,
             content_config: pulumi.Input[Optional[_builtins.str]] = None,
             create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1035,7 +1035,7 @@ class DataStore(pulumi.CustomResource):
             default_schema_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
+            document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict', 'outputs.DataStoreDocumentProcessingConfig']]] = None,
             industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1056,7 +1056,7 @@ class DataStore(pulumi.CustomResource):
                Document can't be accessed by calling DocumentService.GetDocument or
                DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
                industry vertical with non-`PUBLIC_WEBSITE` content config.
-        :param pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']] advanced_site_search_config: Configuration data for advance site search.
+        :param pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict', 'outputs.DataStoreAdvancedSiteSearchConfig']] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
                Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
@@ -1074,7 +1074,7 @@ class DataStore(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
-        :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
+        :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict', 'outputs.DataStoreDocumentProcessingConfig']] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.

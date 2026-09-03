@@ -286,8 +286,8 @@ class Fulfillment(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]]] = None,
-                 generic_web_service: pulumi.Input[Optional[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']]] = None,
+                 features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict', 'outputs.FulfillmentFeature']]]]] = None,
+                 generic_web_service: pulumi.Input[Optional[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict', 'outputs.FulfillmentGenericWebService']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -348,9 +348,9 @@ class Fulfillment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the fulfillment, unique within the agent.
         :param pulumi.Input[_builtins.bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict', 'outputs.FulfillmentFeature']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict', 'outputs.FulfillmentGenericWebService']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -427,8 +427,8 @@ class Fulfillment(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]]] = None,
-                 generic_web_service: pulumi.Input[Optional[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']]] = None,
+                 features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict', 'outputs.FulfillmentFeature']]]]] = None,
+                 generic_web_service: pulumi.Input[Optional[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict', 'outputs.FulfillmentGenericWebService']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -461,8 +461,8 @@ class Fulfillment(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]]] = None,
-            generic_web_service: pulumi.Input[Optional[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']]] = None,
+            features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict', 'outputs.FulfillmentFeature']]]]] = None,
+            generic_web_service: pulumi.Input[Optional[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict', 'outputs.FulfillmentGenericWebService']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'Fulfillment':
         """
@@ -480,9 +480,9 @@ class Fulfillment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the fulfillment, unique within the agent.
         :param pulumi.Input[_builtins.bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict', 'outputs.FulfillmentFeature']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict', 'outputs.FulfillmentGenericWebService']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the fulfillment.
                Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment

@@ -568,14 +568,14 @@ class Asset(pulumi.CustomResource):
                  dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
+                 discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict', 'outputs.AssetDiscoverySpec']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lake: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict', 'outputs.AssetResourceSpec']]] = None,
                  __props__=None):
         """
         The Dataplex Asset resource
@@ -654,7 +654,7 @@ class Asset(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
-        :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
+        :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict', 'outputs.AssetDiscoverySpec']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset.
                
@@ -664,7 +664,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the asset.
         :param pulumi.Input[_builtins.str] project: The project for the resource
-        :param pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
+        :param pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict', 'outputs.AssetResourceSpec']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
         """
         ...
     @overload
@@ -757,14 +757,14 @@ class Asset(pulumi.CustomResource):
                  dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
+                 discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict', 'outputs.AssetDiscoverySpec']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lake: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict', 'outputs.AssetResourceSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -820,8 +820,8 @@ class Asset(pulumi.CustomResource):
             dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
-            discovery_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]]] = None,
+            discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict', 'outputs.AssetDiscoverySpec']]] = None,
+            discovery_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict', 'outputs.AssetDiscoveryStatus']]]]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -830,9 +830,9 @@ class Asset(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
-            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict']]]]] = None,
-            security_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict']]]]] = None,
+            resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict', 'outputs.AssetResourceSpec']]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict', 'outputs.AssetResourceStatus']]]]] = None,
+            security_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict', 'outputs.AssetSecurityStatus']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Asset':
@@ -852,8 +852,8 @@ class Asset(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
-        :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
+        :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict', 'outputs.AssetDiscoverySpec']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict', 'outputs.AssetDiscoveryStatus']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset.
@@ -865,9 +865,9 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the asset.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict']]]] resource_statuses: Output only. Status of the resource referenced by this asset.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict']]]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
+        :param pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict', 'outputs.AssetResourceSpec']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict', 'outputs.AssetResourceStatus']]]] resource_statuses: Output only. Status of the resource referenced by this asset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict', 'outputs.AssetSecurityStatus']]]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
         :param pulumi.Input[_builtins.str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param pulumi.Input[_builtins.str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the asset was last updated.

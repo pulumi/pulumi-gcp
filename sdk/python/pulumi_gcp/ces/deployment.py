@@ -375,7 +375,7 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
                  app_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict']]] = None,
+                 channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -497,7 +497,7 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_version: The resource name of the app version to deploy.
                Format:
                projects/{project}/locations/{location}/apps/{app}/versions/{version}
-        :param pulumi.Input[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict']] channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
+        :param pulumi.Input[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']] channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
                channel, such as web UI or telephony.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -644,7 +644,7 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
                  app_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict']]] = None,
+                 channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -691,7 +691,7 @@ class Deployment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app: pulumi.Input[Optional[_builtins.str]] = None,
             app_version: pulumi.Input[Optional[_builtins.str]] = None,
-            channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict']]] = None,
+            channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -711,7 +711,7 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_version: The resource name of the app version to deploy.
                Format:
                projects/{project}/locations/{location}/apps/{app}/versions/{version}
-        :param pulumi.Input[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict']] channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
+        :param pulumi.Input[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']] channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
                channel, such as web UI or telephony.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when this deployment was created.

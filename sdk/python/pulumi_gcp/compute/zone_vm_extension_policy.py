@@ -394,8 +394,8 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict']]]]] = None,
-                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict']]]]] = None,
+                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.ZoneVmExtensionPolicyExtensionPolicy']]]]] = None,
+                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.ZoneVmExtensionPolicyInstanceSelector']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -449,9 +449,9 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict']]]] extension_policies: A map of extension names (for example, "ops-agent") to their corresponding policy configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.ZoneVmExtensionPolicyExtensionPolicy']]]] extension_policies: A map of extension names (for example, "ops-agent") to their corresponding policy configurations.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict']]]] instance_selectors: Selectors to target VMs for this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.ZoneVmExtensionPolicyInstanceSelector']]]] instance_selectors: Selectors to target VMs for this policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
         :param pulumi.Input[_builtins.int] priority: Priority of this policy.
@@ -521,8 +521,8 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict']]]]] = None,
-                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict']]]]] = None,
+                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.ZoneVmExtensionPolicyExtensionPolicy']]]]] = None,
+                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.ZoneVmExtensionPolicyInstanceSelector']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -565,8 +565,8 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict']]]]] = None,
-            instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict']]]]] = None,
+            extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.ZoneVmExtensionPolicyExtensionPolicy']]]]] = None,
+            instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.ZoneVmExtensionPolicyInstanceSelector']]]]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             managed_by_global: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -589,9 +589,9 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict']]]] extension_policies: A map of extension names (for example, "ops-agent") to their corresponding policy configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyExtensionPolicyArgs', 'ZoneVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.ZoneVmExtensionPolicyExtensionPolicy']]]] extension_policies: A map of extension names (for example, "ops-agent") to their corresponding policy configurations.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict']]]] instance_selectors: Selectors to target VMs for this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneVmExtensionPolicyInstanceSelectorArgs', 'ZoneVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.ZoneVmExtensionPolicyInstanceSelector']]]] instance_selectors: Selectors to target VMs for this policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kind: Type of the resource.
         :param pulumi.Input[_builtins.bool] managed_by_global: Indicates if this policy is managed by a global policy.

@@ -458,15 +458,15 @@ class PipelineJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']]] = None,
+                 backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict', 'outputs.PipelineJobBackfillPipelineJob']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mapping_pipeline_job: pulumi.Input[Optional[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict']]] = None,
+                 mapping_pipeline_job: pulumi.Input[Optional[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict', 'outputs.PipelineJobMappingPipelineJob']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 reconciliation_pipeline_job: pulumi.Input[Optional[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict']]] = None,
+                 reconciliation_pipeline_job: pulumi.Input[Optional[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict', 'outputs.PipelineJobReconciliationPipelineJob']]] = None,
                  __props__=None):
         """
         PipelineJobs are Long Running Operations on Healthcare API to Map or Reconcile
@@ -733,7 +733,7 @@ class PipelineJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']] backfill_pipeline_job: Specifies the backfill configuration.
+        :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict', 'outputs.PipelineJobBackfillPipelineJob']] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -757,10 +757,10 @@ class PipelineJob(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location where the Pipeline Job is to run
-        :param pulumi.Input[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict']] mapping_pipeline_job: Specifies mapping configuration.
+        :param pulumi.Input[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict', 'outputs.PipelineJobMappingPipelineJob']] mapping_pipeline_job: Specifies mapping configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the pipeline job. This field is user-assigned.
-        :param pulumi.Input[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict']] reconciliation_pipeline_job: Specifies reconciliation configuration.
+        :param pulumi.Input[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict', 'outputs.PipelineJobReconciliationPipelineJob']] reconciliation_pipeline_job: Specifies reconciliation configuration.
                Structure is documented below.
         """
         ...
@@ -1047,15 +1047,15 @@ class PipelineJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']]] = None,
+                 backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict', 'outputs.PipelineJobBackfillPipelineJob']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mapping_pipeline_job: pulumi.Input[Optional[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict']]] = None,
+                 mapping_pipeline_job: pulumi.Input[Optional[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict', 'outputs.PipelineJobMappingPipelineJob']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 reconciliation_pipeline_job: pulumi.Input[Optional[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict']]] = None,
+                 reconciliation_pipeline_job: pulumi.Input[Optional[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict', 'outputs.PipelineJobReconciliationPipelineJob']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1093,17 +1093,17 @@ class PipelineJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']]] = None,
+            backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict', 'outputs.PipelineJobBackfillPipelineJob']]] = None,
             dataset: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mapping_pipeline_job: pulumi.Input[Optional[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict']]] = None,
+            mapping_pipeline_job: pulumi.Input[Optional[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict', 'outputs.PipelineJobMappingPipelineJob']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciliation_pipeline_job: pulumi.Input[Optional[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict']]] = None,
+            reconciliation_pipeline_job: pulumi.Input[Optional[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict', 'outputs.PipelineJobReconciliationPipelineJob']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'PipelineJob':
         """
         Get an existing PipelineJob resource's state with the given name, id, and optional extra
@@ -1112,7 +1112,7 @@ class PipelineJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']] backfill_pipeline_job: Specifies the backfill configuration.
+        :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict', 'outputs.PipelineJobBackfillPipelineJob']] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1137,12 +1137,12 @@ class PipelineJob(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location where the Pipeline Job is to run
-        :param pulumi.Input[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict']] mapping_pipeline_job: Specifies mapping configuration.
+        :param pulumi.Input[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict', 'outputs.PipelineJobMappingPipelineJob']] mapping_pipeline_job: Specifies mapping configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the pipeline job. This field is user-assigned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict']] reconciliation_pipeline_job: Specifies reconciliation configuration.
+        :param pulumi.Input[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict', 'outputs.PipelineJobReconciliationPipelineJob']] reconciliation_pipeline_job: Specifies reconciliation configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
         """

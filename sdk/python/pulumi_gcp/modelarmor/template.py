@@ -394,12 +394,12 @@ class Template(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter_config: pulumi.Input[Optional[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict']]] = None,
+                 filter_config: pulumi.Input[Optional[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict', 'outputs.TemplateFilterConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 template_metadata: pulumi.Input[Optional[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict']]] = None,
+                 template_metadata: pulumi.Input[Optional[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict', 'outputs.TemplateTemplateMetadata']]] = None,
                  __props__=None):
         """
         A `Template` is a resource of Model Armor that lets you configure how Model Armor screens prompts and responses.
@@ -569,7 +569,7 @@ class Template(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict']] filter_config: Filters configuration.
+        :param pulumi.Input[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict', 'outputs.TemplateFilterConfig']] filter_config: Filters configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -580,7 +580,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] template_id: Id of the requesting object
                If auto-generating Id server-side, remove this field and
                template_id from the method_signature of Create RPC
-        :param pulumi.Input[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict']] template_metadata: Message describing TemplateMetadata
+        :param pulumi.Input[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict', 'outputs.TemplateTemplateMetadata']] template_metadata: Message describing TemplateMetadata
                Structure is documented below.
         """
         ...
@@ -765,12 +765,12 @@ class Template(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter_config: pulumi.Input[Optional[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict']]] = None,
+                 filter_config: pulumi.Input[Optional[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict', 'outputs.TemplateFilterConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 template_metadata: pulumi.Input[Optional[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict']]] = None,
+                 template_metadata: pulumi.Input[Optional[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict', 'outputs.TemplateTemplateMetadata']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -813,14 +813,14 @@ class Template(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            filter_config: pulumi.Input[Optional[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict']]] = None,
+            filter_config: pulumi.Input[Optional[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict', 'outputs.TemplateFilterConfig']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
-            template_metadata: pulumi.Input[Optional[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict']]] = None,
+            template_metadata: pulumi.Input[Optional[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict', 'outputs.TemplateTemplateMetadata']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Template':
         """
         Get an existing Template resource's state with the given name, id, and optional extra
@@ -837,7 +837,7 @@ class Template(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict']] filter_config: Filters configuration.
+        :param pulumi.Input[Union['TemplateFilterConfigArgs', 'TemplateFilterConfigArgsDict', 'outputs.TemplateFilterConfig']] filter_config: Filters configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -851,7 +851,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] template_id: Id of the requesting object
                If auto-generating Id server-side, remove this field and
                template_id from the method_signature of Create RPC
-        :param pulumi.Input[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict']] template_metadata: Message describing TemplateMetadata
+        :param pulumi.Input[Union['TemplateTemplateMetadataArgs', 'TemplateTemplateMetadataArgsDict', 'outputs.TemplateTemplateMetadata']] template_metadata: Message describing TemplateMetadata
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp
         """

@@ -533,17 +533,17 @@ class NodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
+                 autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict', 'outputs.NodeGroupAutoscalingPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_size: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_window: pulumi.Input[Optional[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict', 'outputs.NodeGroupMaintenanceWindow']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_template: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 share_settings: pulumi.Input[Optional[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']]] = None,
+                 share_settings: pulumi.Input[Optional[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict', 'outputs.NodeGroupShareSettings']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -684,7 +684,7 @@ class NodeGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
+        :param pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict', 'outputs.NodeGroupAutoscalingPolicy']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
@@ -702,13 +702,13 @@ class NodeGroup(pulumi.CustomResource):
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
                  Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[_builtins.str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
-        :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']] maintenance_window: contains properties for the timeframe of maintenance
+        :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict', 'outputs.NodeGroupMaintenanceWindow']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']] share_settings: Share settings for the node group.
+        :param pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict', 'outputs.NodeGroupShareSettings']] share_settings: Share settings for the node group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] zone: Zone where this node group is located
         """
@@ -869,17 +869,17 @@ class NodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
+                 autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict', 'outputs.NodeGroupAutoscalingPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_size: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_window: pulumi.Input[Optional[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict', 'outputs.NodeGroupMaintenanceWindow']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_template: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 share_settings: pulumi.Input[Optional[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']]] = None,
+                 share_settings: pulumi.Input[Optional[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict', 'outputs.NodeGroupShareSettings']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -917,19 +917,19 @@ class NodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
+            autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict', 'outputs.NodeGroupAutoscalingPolicy']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             initial_size: pulumi.Input[Optional[_builtins.int]] = None,
             maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_window: pulumi.Input[Optional[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict', 'outputs.NodeGroupMaintenanceWindow']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_template: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            share_settings: pulumi.Input[Optional[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']]] = None,
+            share_settings: pulumi.Input[Optional[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict', 'outputs.NodeGroupShareSettings']]] = None,
             size: pulumi.Input[Optional[_builtins.int]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'NodeGroup':
         """
@@ -939,7 +939,7 @@ class NodeGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
+        :param pulumi.Input[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict', 'outputs.NodeGroupAutoscalingPolicy']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
@@ -958,14 +958,14 @@ class NodeGroup(pulumi.CustomResource):
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
                  Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[_builtins.str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
-        :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']] maintenance_window: contains properties for the timeframe of maintenance
+        :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict', 'outputs.NodeGroupMaintenanceWindow']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']] share_settings: Share settings for the node group.
+        :param pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict', 'outputs.NodeGroupShareSettings']] share_settings: Share settings for the node group.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] size: The total number of nodes in the node group.
         :param pulumi.Input[_builtins.str] zone: Zone where this node group is located

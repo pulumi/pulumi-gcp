@@ -354,7 +354,7 @@ class CodeToolsSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_tools_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 enabled_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict']]]]] = None,
+                 enabled_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict', 'outputs.CodeToolsSettingEnabledTool']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -414,7 +414,7 @@ class CodeToolsSetting(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict']]]] enabled_tools: Represents the full set of enabled tools.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict', 'outputs.CodeToolsSettingEnabledTool']]]] enabled_tools: Represents the full set of enabled tools.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -492,7 +492,7 @@ class CodeToolsSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_tools_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 enabled_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict']]]]] = None,
+                 enabled_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict', 'outputs.CodeToolsSettingEnabledTool']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -536,7 +536,7 @@ class CodeToolsSetting(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enabled_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict']]]]] = None,
+            enabled_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict', 'outputs.CodeToolsSettingEnabledTool']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -559,7 +559,7 @@ class CodeToolsSetting(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict']]]] enabled_tools: Represents the full set of enabled tools.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict', 'outputs.CodeToolsSettingEnabledTool']]]] enabled_tools: Represents the full set of enabled tools.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

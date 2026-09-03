@@ -463,7 +463,7 @@ class AutoLabelingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict', 'outputs.AutoLabelingRuleCondition']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -509,7 +509,7 @@ class AutoLabelingRule(pulumi.CustomResource):
                a server-generated ID will be used.
                This value should be 4-64 characters and must match the regular
                expression `^[A-Za-z0-9]{4,64}$`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]] conditions: Conditions to apply for auto-labeling the label_key.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict', 'outputs.AutoLabelingRuleCondition']]]] conditions: Conditions to apply for auto-labeling the label_key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -578,7 +578,7 @@ class AutoLabelingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict', 'outputs.AutoLabelingRuleCondition']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,7 +622,7 @@ class AutoLabelingRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict', 'outputs.AutoLabelingRuleCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -646,7 +646,7 @@ class AutoLabelingRule(pulumi.CustomResource):
                a server-generated ID will be used.
                This value should be 4-64 characters and must match the regular
                expression `^[A-Za-z0-9]{4,64}$`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]] conditions: Conditions to apply for auto-labeling the label_key.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict', 'outputs.AutoLabelingRuleCondition']]]] conditions: Conditions to apply for auto-labeling the label_key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which this rule was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

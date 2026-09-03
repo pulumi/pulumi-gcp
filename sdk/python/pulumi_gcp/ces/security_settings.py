@@ -211,7 +211,7 @@ class SecuritySettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_control_policy: pulumi.Input[Optional[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict']]] = None,
+                 endpoint_control_policy: pulumi.Input[Optional[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict', 'outputs.SecuritySettingsEndpointControlPolicy']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -265,7 +265,7 @@ class SecuritySettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict']] endpoint_control_policy: Optional. Endpoint control related settings.
+        :param pulumi.Input[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict', 'outputs.SecuritySettingsEndpointControlPolicy']] endpoint_control_policy: Optional. Endpoint control related settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the security settings.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -340,7 +340,7 @@ class SecuritySettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_control_policy: pulumi.Input[Optional[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict']]] = None,
+                 endpoint_control_policy: pulumi.Input[Optional[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict', 'outputs.SecuritySettingsEndpointControlPolicy']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -372,7 +372,7 @@ class SecuritySettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint_control_policy: pulumi.Input[Optional[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict']]] = None,
+            endpoint_control_policy: pulumi.Input[Optional[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict', 'outputs.SecuritySettingsEndpointControlPolicy']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -386,7 +386,7 @@ class SecuritySettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. Timestamp when the security settings were created.
-        :param pulumi.Input[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict']] endpoint_control_policy: Optional. Endpoint control related settings.
+        :param pulumi.Input[Union['SecuritySettingsEndpointControlPolicyArgs', 'SecuritySettingsEndpointControlPolicyArgsDict', 'outputs.SecuritySettingsEndpointControlPolicy']] endpoint_control_policy: Optional. Endpoint control related settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Output only. Etag of the resource.
         :param pulumi.Input[_builtins.str] location: The location of the security settings.

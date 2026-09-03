@@ -274,7 +274,7 @@ class Repository(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
+                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict', 'outputs.RepositoryPubsubConfig']]]]] = None,
                  __props__=None):
         """
         A repository (or repo) is a Git repository storing versioned source content.
@@ -342,7 +342,7 @@ class Repository(pulumi.CustomResource):
                The repo name may contain slashes. eg, `name/with/slash`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict', 'outputs.RepositoryPubsubConfig']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
                Keyed by the topic names.
                Structure is documented below.
         """
@@ -424,7 +424,7 @@ class Repository(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
+                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict', 'outputs.RepositoryPubsubConfig']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -455,7 +455,7 @@ class Repository(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
+            pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict', 'outputs.RepositoryPubsubConfig']]]]] = None,
             size: pulumi.Input[Optional[_builtins.int]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Repository':
         """
@@ -476,7 +476,7 @@ class Repository(pulumi.CustomResource):
                The repo name may contain slashes. eg, `name/with/slash`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict', 'outputs.RepositoryPubsubConfig']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
                Keyed by the topic names.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] size: The disk usage of the repo, in bytes.

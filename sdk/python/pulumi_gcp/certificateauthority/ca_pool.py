@@ -435,13 +435,13 @@ class CaPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
-                 issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict', 'outputs.CaPoolEncryptionSpec']]] = None,
+                 issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict', 'outputs.CaPoolIssuancePolicy']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 publishing_options: pulumi.Input[Optional[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict']]] = None,
+                 publishing_options: pulumi.Input[Optional[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict', 'outputs.CaPoolPublishingOptions']]] = None,
                  tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -644,11 +644,11 @@ class CaPool(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict', 'outputs.CaPoolEncryptionSpec']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
                to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
                customer data will remain unencrypted.
                Structure is documented below.
-        :param pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
+        :param pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict', 'outputs.CaPoolIssuancePolicy']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -661,7 +661,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name for this CaPool.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+        :param pulumi.Input[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict', 'outputs.CaPoolPublishingOptions']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
@@ -880,13 +880,13 @@ class CaPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
-                 issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict', 'outputs.CaPoolEncryptionSpec']]] = None,
+                 issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict', 'outputs.CaPoolIssuancePolicy']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 publishing_options: pulumi.Input[Optional[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict']]] = None,
+                 publishing_options: pulumi.Input[Optional[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict', 'outputs.CaPoolPublishingOptions']]] = None,
                  tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -926,13 +926,13 @@ class CaPool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
-            issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict', 'outputs.CaPoolEncryptionSpec']]] = None,
+            issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict', 'outputs.CaPoolIssuancePolicy']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            publishing_options: pulumi.Input[Optional[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict']]] = None,
+            publishing_options: pulumi.Input[Optional[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict', 'outputs.CaPoolPublishingOptions']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tier: pulumi.Input[Optional[_builtins.str]] = None) -> 'CaPool':
         """
@@ -949,11 +949,11 @@ class CaPool(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict', 'outputs.CaPoolEncryptionSpec']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
                to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
                customer data will remain unencrypted.
                Structure is documented below.
-        :param pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
+        :param pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict', 'outputs.CaPoolIssuancePolicy']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -966,7 +966,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name for this CaPool.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+        :param pulumi.Input[Union['CaPoolPublishingOptionsArgs', 'CaPoolPublishingOptionsArgsDict', 'outputs.CaPoolPublishingOptions']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

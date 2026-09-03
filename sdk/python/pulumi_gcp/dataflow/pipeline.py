@@ -522,11 +522,11 @@ class Pipeline(pulumi.CustomResource):
                  pipeline_sources: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule_info: pulumi.Input[Optional[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']]] = None,
+                 schedule_info: pulumi.Input[Optional[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict', 'outputs.PipelineScheduleInfo']]] = None,
                  scheduler_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 workload: pulumi.Input[Optional[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']]] = None,
+                 workload: pulumi.Input[Optional[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict', 'outputs.PipelineWorkload']]] = None,
                  __props__=None):
         """
         The main pipeline entity and all the necessary metadata for launching and managing linked jobs.
@@ -629,7 +629,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: A reference to the region
-        :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
+        :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict', 'outputs.PipelineScheduleInfo']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
@@ -639,7 +639,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
-        :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']] workload: Workload information for creating new jobs.
+        :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict', 'outputs.PipelineWorkload']] workload: Workload information for creating new jobs.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
                Structure is documented below.
         """
@@ -753,11 +753,11 @@ class Pipeline(pulumi.CustomResource):
                  pipeline_sources: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule_info: pulumi.Input[Optional[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']]] = None,
+                 schedule_info: pulumi.Input[Optional[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict', 'outputs.PipelineScheduleInfo']]] = None,
                  scheduler_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 workload: pulumi.Input[Optional[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']]] = None,
+                 workload: pulumi.Input[Optional[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict', 'outputs.PipelineWorkload']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -804,11 +804,11 @@ class Pipeline(pulumi.CustomResource):
             pipeline_sources: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule_info: pulumi.Input[Optional[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']]] = None,
+            schedule_info: pulumi.Input[Optional[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict', 'outputs.PipelineScheduleInfo']]] = None,
             scheduler_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            workload: pulumi.Input[Optional[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']]] = None) -> 'Pipeline':
+            workload: pulumi.Input[Optional[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict', 'outputs.PipelineWorkload']]] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -837,7 +837,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: A reference to the region
-        :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
+        :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict', 'outputs.PipelineScheduleInfo']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
@@ -847,7 +847,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
-        :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']] workload: Workload information for creating new jobs.
+        :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict', 'outputs.PipelineWorkload']] workload: Workload information for creating new jobs.
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
                Structure is documented below.
         """

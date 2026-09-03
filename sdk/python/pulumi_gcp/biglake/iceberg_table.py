@@ -400,11 +400,11 @@ class IcebergTable(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
-                 partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict']]] = None,
+                 partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict', 'outputs.IcebergTablePartitionSpec']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']]] = None,
-                 sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict', 'outputs.IcebergTableSchema']]] = None,
+                 sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict', 'outputs.IcebergTableSortOrder']]] = None,
                  __props__=None):
         """
         IcebergTables are the primary objects in an IcebergCatalog.
@@ -567,14 +567,14 @@ class IcebergTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input[_builtins.str] namespace: The parent namespace of the table.
-        :param pulumi.Input[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict']] partition_spec: The partition spec of the table.
+        :param pulumi.Input[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict', 'outputs.IcebergTablePartitionSpec']] partition_spec: The partition spec of the table.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: User-defined properties for the table.
-        :param pulumi.Input[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']] schema: The schema of the table.
+        :param pulumi.Input[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict', 'outputs.IcebergTableSchema']] schema: The schema of the table.
                Structure is documented below.
-        :param pulumi.Input[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']] sort_order: The sort order of the table.
+        :param pulumi.Input[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict', 'outputs.IcebergTableSortOrder']] sort_order: The sort order of the table.
                Structure is documented below.
         """
         ...
@@ -752,11 +752,11 @@ class IcebergTable(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
-                 partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict']]] = None,
+                 partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict', 'outputs.IcebergTablePartitionSpec']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']]] = None,
-                 sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict', 'outputs.IcebergTableSchema']]] = None,
+                 sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict', 'outputs.IcebergTableSortOrder']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -797,11 +797,11 @@ class IcebergTable(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
-            partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict']]] = None,
+            partition_spec: pulumi.Input[Optional[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict', 'outputs.IcebergTablePartitionSpec']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']]] = None,
-            sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']]] = None) -> 'IcebergTable':
+            schema: pulumi.Input[Optional[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict', 'outputs.IcebergTableSchema']]] = None,
+            sort_order: pulumi.Input[Optional[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict', 'outputs.IcebergTableSortOrder']]] = None) -> 'IcebergTable':
         """
         Get an existing IcebergTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -819,14 +819,14 @@ class IcebergTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input[_builtins.str] namespace: The parent namespace of the table.
-        :param pulumi.Input[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict']] partition_spec: The partition spec of the table.
+        :param pulumi.Input[Union['IcebergTablePartitionSpecArgs', 'IcebergTablePartitionSpecArgsDict', 'outputs.IcebergTablePartitionSpec']] partition_spec: The partition spec of the table.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: User-defined properties for the table.
-        :param pulumi.Input[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict']] schema: The schema of the table.
+        :param pulumi.Input[Union['IcebergTableSchemaArgs', 'IcebergTableSchemaArgsDict', 'outputs.IcebergTableSchema']] schema: The schema of the table.
                Structure is documented below.
-        :param pulumi.Input[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict']] sort_order: The sort order of the table.
+        :param pulumi.Input[Union['IcebergTableSortOrderArgs', 'IcebergTableSortOrderArgsDict', 'outputs.IcebergTableSortOrder']] sort_order: The sort order of the table.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

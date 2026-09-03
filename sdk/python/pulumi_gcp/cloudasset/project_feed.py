@@ -439,11 +439,11 @@ class ProjectFeed(pulumi.CustomResource):
                  asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_project: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict', 'outputs.ProjectFeedCondition']]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 feed_output_config: pulumi.Input[Optional[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict']]] = None,
+                 feed_output_config: pulumi.Input[Optional[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict', 'outputs.ProjectFeedFeedOutputConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -525,7 +525,7 @@ class ProjectFeed(pulumi.CustomResource):
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing. If not specified, the resource's
                project will be used.
-        :param pulumi.Input[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict']] condition: A condition which determines whether an asset update should be published. If specified, an asset
+        :param pulumi.Input[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict', 'outputs.ProjectFeedCondition']] condition: A condition which determines whether an asset update should be published. If specified, an asset
                will be returned only when the expression evaluates to true. When set, expression field
                must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
                expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
@@ -540,7 +540,7 @@ class ProjectFeed(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict']] feed_output_config: Output configuration for asset feed destination.
+        :param pulumi.Input[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict', 'outputs.ProjectFeedFeedOutputConfig']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -633,11 +633,11 @@ class ProjectFeed(pulumi.CustomResource):
                  asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_project: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict', 'outputs.ProjectFeedCondition']]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 feed_output_config: pulumi.Input[Optional[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict']]] = None,
+                 feed_output_config: pulumi.Input[Optional[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict', 'outputs.ProjectFeedFeedOutputConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -675,11 +675,11 @@ class ProjectFeed(pulumi.CustomResource):
             asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             billing_project: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict', 'outputs.ProjectFeedCondition']]] = None,
             content_type: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             feed_id: pulumi.Input[Optional[_builtins.str]] = None,
-            feed_output_config: pulumi.Input[Optional[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict']]] = None,
+            feed_output_config: pulumi.Input[Optional[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict', 'outputs.ProjectFeedFeedOutputConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectFeed':
         """
@@ -702,7 +702,7 @@ class ProjectFeed(pulumi.CustomResource):
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing. If not specified, the resource's
                project will be used.
-        :param pulumi.Input[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict']] condition: A condition which determines whether an asset update should be published. If specified, an asset
+        :param pulumi.Input[Union['ProjectFeedConditionArgs', 'ProjectFeedConditionArgsDict', 'outputs.ProjectFeedCondition']] condition: A condition which determines whether an asset update should be published. If specified, an asset
                will be returned only when the expression evaluates to true. When set, expression field
                must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
                expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
@@ -717,7 +717,7 @@ class ProjectFeed(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict']] feed_output_config: Output configuration for asset feed destination.
+        :param pulumi.Input[Union['ProjectFeedFeedOutputConfigArgs', 'ProjectFeedFeedOutputConfigArgsDict', 'outputs.ProjectFeedFeedOutputConfig']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

@@ -239,7 +239,7 @@ class TagValueIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict', 'outputs.TagValueIamMemberCondition']]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_value: pulumi.Input[Optional[_builtins.str]] = None,
@@ -498,7 +498,7 @@ class TagValueIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict', 'outputs.TagValueIamMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -790,7 +790,7 @@ class TagValueIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict', 'outputs.TagValueIamMemberCondition']]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_value: pulumi.Input[Optional[_builtins.str]] = None,
@@ -824,7 +824,7 @@ class TagValueIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict', 'outputs.TagValueIamMemberCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             member: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
@@ -836,7 +836,7 @@ class TagValueIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['TagValueIamMemberConditionArgs', 'TagValueIamMemberConditionArgsDict', 'outputs.TagValueIamMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.

@@ -231,7 +231,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict', 'outputs.CryptoKeyIAMMemberCondition']]] = None,
                  crypto_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
@@ -343,7 +343,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict', 'outputs.CryptoKeyIAMMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -486,7 +486,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict', 'outputs.CryptoKeyIAMMemberCondition']]] = None,
                  crypto_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
@@ -520,7 +520,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict', 'outputs.CryptoKeyIAMMemberCondition']]] = None,
             crypto_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -532,7 +532,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['CryptoKeyIAMMemberConditionArgs', 'CryptoKeyIAMMemberConditionArgsDict', 'outputs.CryptoKeyIAMMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

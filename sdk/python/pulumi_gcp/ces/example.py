@@ -463,7 +463,7 @@ class Example(pulumi.CustomResource):
                  entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  example_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict', 'outputs.ExampleMessage']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -688,7 +688,7 @@ class Example(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] example_id: The ID to use for the example, which will become the final component of
                the example's resource name. In Terraform, this field is required.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]] messages: The collection of messages that make up the conversation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict', 'outputs.ExampleMessage']]]] messages: The collection of messages that make up the conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -926,7 +926,7 @@ class Example(pulumi.CustomResource):
                  entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  example_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict', 'outputs.ExampleMessage']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -979,7 +979,7 @@ class Example(pulumi.CustomResource):
             example_id: pulumi.Input[Optional[_builtins.str]] = None,
             invalid: pulumi.Input[Optional[_builtins.bool]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict', 'outputs.ExampleMessage']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Example':
@@ -1011,7 +1011,7 @@ class Example(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] invalid: The example may become invalid if referencing resources are deleted.
                Invalid examples will not be used as few-shot examples.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]] messages: The collection of messages that make up the conversation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict', 'outputs.ExampleMessage']]]] messages: The collection of messages that make up the conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of the example.
                Format:

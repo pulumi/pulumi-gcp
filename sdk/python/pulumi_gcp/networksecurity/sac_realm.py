@@ -382,7 +382,7 @@ class SacRealm(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
+                 symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict', 'outputs.SacRealmSymantecOptions']]] = None,
                  __props__=None):
         """
         Secure Access Connect Realm resource
@@ -462,7 +462,7 @@ class SacRealm(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_service: SSE service provider associated with the realm.
                Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
-        :param pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']] symantec_options: Configuration required for Symantec realms.
+        :param pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict', 'outputs.SacRealmSymantecOptions']] symantec_options: Configuration required for Symantec realms.
                Structure is documented below.
         """
         ...
@@ -552,7 +552,7 @@ class SacRealm(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
+                 symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict', 'outputs.SacRealmSymantecOptions']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -593,12 +593,12 @@ class SacRealm(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            pairing_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SacRealmPairingKeyArgs', 'SacRealmPairingKeyArgsDict']]]]] = None,
+            pairing_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SacRealmPairingKeyArgs', 'SacRealmPairingKeyArgsDict', 'outputs.SacRealmPairingKey']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             security_service: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
+            symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict', 'outputs.SacRealmSymantecOptions']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SacRealm':
         """
         Get an existing SacRealm resource's state with the given name, id, and optional extra
@@ -620,7 +620,7 @@ class SacRealm(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SacRealmPairingKeyArgs', 'SacRealmPairingKeyArgsDict']]]] pairing_keys: Key to be shared with SSE service provider during pairing.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SacRealmPairingKeyArgs', 'SacRealmPairingKeyArgsDict', 'outputs.SacRealmPairingKey']]]] pairing_keys: Key to be shared with SSE service provider during pairing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -629,7 +629,7 @@ class SacRealm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_service: SSE service provider associated with the realm.
                Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
         :param pulumi.Input[_builtins.str] state: State of the realm.
-        :param pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']] symantec_options: Configuration required for Symantec realms.
+        :param pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict', 'outputs.SacRealmSymantecOptions']] symantec_options: Configuration required for Symantec realms.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the realm was last updated.
         """

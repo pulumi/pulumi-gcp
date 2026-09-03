@@ -270,8 +270,8 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ingress_from: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']]] = None,
-                 ingress_to: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']]] = None,
+                 ingress_from: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressFrom']]] = None,
+                 ingress_to: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressTo']]] = None,
                  perimeter: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -307,10 +307,10 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressFrom']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressTo']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
@@ -362,8 +362,8 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ingress_from: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']]] = None,
-                 ingress_to: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']]] = None,
+                 ingress_from: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressFrom']]] = None,
+                 ingress_to: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressTo']]] = None,
                  perimeter: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -397,8 +397,8 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
             access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            ingress_from: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']]] = None,
-            ingress_to: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']]] = None,
+            ingress_from: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressFrom']]] = None,
+            ingress_to: pulumi.Input[Optional[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressTo']]] = None,
             perimeter: pulumi.Input[Optional[_builtins.str]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServicePerimeterIngressPolicy':
         """
@@ -416,10 +416,10 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
-        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressFromArgs', 'ServicePerimeterIngressPolicyIngressFromArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressFrom']] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
-        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
+        :param pulumi.Input[Union['ServicePerimeterIngressPolicyIngressToArgs', 'ServicePerimeterIngressPolicyIngressToArgsDict', 'outputs.ServicePerimeterIngressPolicyIngressTo']] ingress_to: Defines the conditions on the `ApiOperation` and request destination that cause
                this `IngressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] perimeter: The name of the Service Perimeter to add this resource to.

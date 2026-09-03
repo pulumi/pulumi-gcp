@@ -629,17 +629,17 @@ class AwsCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
+                 authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict', 'outputs.AwsClusterAuthorization']]] = None,
                  aws_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
-                 control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict', 'outputs.AwsClusterBinaryAuthorization']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict', 'outputs.AwsClusterControlPlane']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
+                 fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict', 'outputs.AwsClusterFleet']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict', 'outputs.AwsClusterLoggingConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
+                 networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict', 'outputs.AwsClusterNetworking']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -896,10 +896,10 @@ class AwsCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict', 'outputs.AwsClusterAuthorization']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary Authorization feature.
-        :param pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict', 'outputs.AwsClusterBinaryAuthorization']] binary_authorization: Configuration options for the Binary Authorization feature.
+        :param pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict', 'outputs.AwsClusterControlPlane']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -907,11 +907,11 @@ class AwsCluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']] fleet: Fleet configuration.
+        :param pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict', 'outputs.AwsClusterFleet']] fleet: Fleet configuration.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']] logging_config: Logging configuration.
+        :param pulumi.Input[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict', 'outputs.AwsClusterLoggingConfig']] logging_config: Logging configuration.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
-        :param pulumi.Input[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict', 'outputs.AwsClusterNetworking']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         """
         ...
@@ -1184,17 +1184,17 @@ class AwsCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
+                 authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict', 'outputs.AwsClusterAuthorization']]] = None,
                  aws_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
-                 control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict', 'outputs.AwsClusterBinaryAuthorization']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict', 'outputs.AwsClusterControlPlane']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
+                 fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict', 'outputs.AwsClusterFleet']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict', 'outputs.AwsClusterLoggingConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
+                 networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict', 'outputs.AwsClusterNetworking']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1250,27 +1250,27 @@ class AwsCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
+            authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict', 'outputs.AwsClusterAuthorization']]] = None,
             aws_region: pulumi.Input[Optional[_builtins.str]] = None,
-            binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
-            control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict', 'outputs.AwsClusterBinaryAuthorization']]] = None,
+            control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict', 'outputs.AwsClusterControlPlane']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
+            fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict', 'outputs.AwsClusterFleet']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
+            logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict', 'outputs.AwsClusterLoggingConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
+            networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict', 'outputs.AwsClusterNetworking']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            workload_identity_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsClusterWorkloadIdentityConfigArgs', 'AwsClusterWorkloadIdentityConfigArgsDict']]]]] = None) -> 'AwsCluster':
+            workload_identity_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsClusterWorkloadIdentityConfigArgs', 'AwsClusterWorkloadIdentityConfigArgsDict', 'outputs.AwsClusterWorkloadIdentityConfig']]]]] = None) -> 'AwsCluster':
         """
         Get an existing AwsCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1282,10 +1282,10 @@ class AwsCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict', 'outputs.AwsClusterAuthorization']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary Authorization feature.
-        :param pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict', 'outputs.AwsClusterBinaryAuthorization']] binary_authorization: Configuration options for the Binary Authorization feature.
+        :param pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict', 'outputs.AwsClusterControlPlane']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1297,17 +1297,17 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']] fleet: Fleet configuration.
+        :param pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict', 'outputs.AwsClusterFleet']] fleet: Fleet configuration.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']] logging_config: Logging configuration.
+        :param pulumi.Input[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict', 'outputs.AwsClusterLoggingConfig']] logging_config: Logging configuration.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
-        :param pulumi.Input[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict', 'outputs.AwsClusterNetworking']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[_builtins.str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsClusterWorkloadIdentityConfigArgs', 'AwsClusterWorkloadIdentityConfigArgsDict']]]] workload_identity_configs: Output only. Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsClusterWorkloadIdentityConfigArgs', 'AwsClusterWorkloadIdentityConfigArgsDict', 'outputs.AwsClusterWorkloadIdentityConfig']]]] workload_identity_configs: Output only. Workload Identity settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

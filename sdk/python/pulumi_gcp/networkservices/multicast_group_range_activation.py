@@ -580,7 +580,7 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict', 'outputs.MulticastGroupRangeActivationLogConfig']]] = None,
                  multicast_domain_activation: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -670,7 +670,7 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict']] log_config: The logging configuration.
+        :param pulumi.Input[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict', 'outputs.MulticastGroupRangeActivationLogConfig']] log_config: The logging configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of a multicast domain activation that is in the
                same zone as this multicast group.
@@ -782,7 +782,7 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict', 'outputs.MulticastGroupRangeActivationLogConfig']]] = None,
                  multicast_domain_activation: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -841,7 +841,7 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
             ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            log_config: pulumi.Input[Optional[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict']]] = None,
+            log_config: pulumi.Input[Optional[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict', 'outputs.MulticastGroupRangeActivationLogConfig']]] = None,
             multicast_domain_activation: pulumi.Input[Optional[_builtins.str]] = None,
             multicast_group_consumer_activations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             multicast_group_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -849,7 +849,7 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastGroupRangeActivationStateArgs', 'MulticastGroupRangeActivationStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastGroupRangeActivationStateArgs', 'MulticastGroupRangeActivationStateArgsDict', 'outputs.MulticastGroupRangeActivationState']]]]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastGroupRangeActivation':
         """
@@ -874,7 +874,7 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict']] log_config: The logging configuration.
+        :param pulumi.Input[Union['MulticastGroupRangeActivationLogConfigArgs', 'MulticastGroupRangeActivationLogConfigArgsDict', 'outputs.MulticastGroupRangeActivationLogConfig']] log_config: The logging configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of a multicast domain activation that is in the
                same zone as this multicast group.
@@ -897,7 +897,7 @@ class MulticastGroupRangeActivation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupRangeActivationStateArgs', 'MulticastGroupRangeActivationStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupRangeActivationStateArgs', 'MulticastGroupRangeActivationStateArgsDict', 'outputs.MulticastGroupRangeActivationState']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
                CREATING

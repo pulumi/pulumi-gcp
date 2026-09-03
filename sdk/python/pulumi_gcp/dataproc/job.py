@@ -687,19 +687,19 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict']]] = None,
-                 hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict']]] = None,
+                 hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']]] = None,
+                 hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pig_config: pulumi.Input[Optional[Union['JobPigConfigArgs', 'JobPigConfigArgsDict']]] = None,
-                 placement: pulumi.Input[Optional[Union['JobPlacementArgs', 'JobPlacementArgsDict']]] = None,
-                 presto_config: pulumi.Input[Optional[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict']]] = None,
+                 pig_config: pulumi.Input[Optional[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']]] = None,
+                 placement: pulumi.Input[Optional[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']]] = None,
+                 presto_config: pulumi.Input[Optional[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pyspark_config: pulumi.Input[Optional[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict']]] = None,
-                 reference: pulumi.Input[Optional[Union['JobReferenceArgs', 'JobReferenceArgsDict']]] = None,
+                 pyspark_config: pulumi.Input[Optional[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']]] = None,
+                 reference: pulumi.Input[Optional[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduling: pulumi.Input[Optional[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
-                 spark_config: pulumi.Input[Optional[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']]] = None,
-                 sparksql_config: pulumi.Input[Optional[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']]] = None,
+                 spark_config: pulumi.Input[Optional[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']]] = None,
+                 sparksql_config: pulumi.Input[Optional[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']]] = None,
                  wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -770,23 +770,23 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
-        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict']] hadoop_config: The config of Hadoop job
-        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict']] hive_config: The config of hive job
+        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']] hadoop_config: The config of Hadoop job
+        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) to add to the job.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict']] pig_config: The config of pag job.
-        :param pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict']] placement: The config of job placement.
-        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict']] presto_config: The config of presto job
+        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']] pig_config: The config of pag job.
+        :param pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']] placement: The config of job placement.
+        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']] presto_config: The config of presto job
         :param pulumi.Input[_builtins.str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict']] pyspark_config: The config of pySpark job.
-        :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']] reference: The reference of the job
+        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']] pyspark_config: The config of pySpark job.
+        :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']] reference: The reference of the job
         :param pulumi.Input[_builtins.str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
-        :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']] scheduling: Optional. Job scheduling configuration.
-        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']] spark_config: The config of the Spark job.
-        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']] scheduling: Optional. Job scheduling configuration.
+        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']] spark_config: The config of the Spark job.
+        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']] sparksql_config: The config of SparkSql job
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         ...
@@ -869,19 +869,19 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict']]] = None,
-                 hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict']]] = None,
+                 hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']]] = None,
+                 hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pig_config: pulumi.Input[Optional[Union['JobPigConfigArgs', 'JobPigConfigArgsDict']]] = None,
-                 placement: pulumi.Input[Optional[Union['JobPlacementArgs', 'JobPlacementArgsDict']]] = None,
-                 presto_config: pulumi.Input[Optional[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict']]] = None,
+                 pig_config: pulumi.Input[Optional[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']]] = None,
+                 placement: pulumi.Input[Optional[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']]] = None,
+                 presto_config: pulumi.Input[Optional[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pyspark_config: pulumi.Input[Optional[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict']]] = None,
-                 reference: pulumi.Input[Optional[Union['JobReferenceArgs', 'JobReferenceArgsDict']]] = None,
+                 pyspark_config: pulumi.Input[Optional[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']]] = None,
+                 reference: pulumi.Input[Optional[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduling: pulumi.Input[Optional[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
-                 spark_config: pulumi.Input[Optional[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']]] = None,
-                 sparksql_config: pulumi.Input[Optional[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']]] = None,
+                 spark_config: pulumi.Input[Optional[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']]] = None,
+                 sparksql_config: pulumi.Input[Optional[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']]] = None,
                  wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -932,21 +932,21 @@ class Job(pulumi.CustomResource):
             driver_output_resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-            hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict']]] = None,
-            hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict']]] = None,
+            hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']]] = None,
+            hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            pig_config: pulumi.Input[Optional[Union['JobPigConfigArgs', 'JobPigConfigArgsDict']]] = None,
-            placement: pulumi.Input[Optional[Union['JobPlacementArgs', 'JobPlacementArgsDict']]] = None,
-            presto_config: pulumi.Input[Optional[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict']]] = None,
+            pig_config: pulumi.Input[Optional[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']]] = None,
+            placement: pulumi.Input[Optional[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']]] = None,
+            presto_config: pulumi.Input[Optional[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            pyspark_config: pulumi.Input[Optional[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict']]] = None,
-            reference: pulumi.Input[Optional[Union['JobReferenceArgs', 'JobReferenceArgsDict']]] = None,
+            pyspark_config: pulumi.Input[Optional[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']]] = None,
+            reference: pulumi.Input[Optional[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            scheduling: pulumi.Input[Optional[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
-            spark_config: pulumi.Input[Optional[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']]] = None,
-            sparksql_config: pulumi.Input[Optional[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]]] = None,
+            scheduling: pulumi.Input[Optional[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']]] = None,
+            spark_config: pulumi.Input[Optional[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']]] = None,
+            sparksql_config: pulumi.Input[Optional[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]]]] = None,
             wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -971,25 +971,25 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
-        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict']] hadoop_config: The config of Hadoop job
-        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict']] hive_config: The config of hive job
+        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']] hadoop_config: The config of Hadoop job
+        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) to add to the job.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict']] pig_config: The config of pag job.
-        :param pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict']] placement: The config of job placement.
-        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict']] presto_config: The config of presto job
+        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']] pig_config: The config of pag job.
+        :param pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']] placement: The config of job placement.
+        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']] presto_config: The config of presto job
         :param pulumi.Input[_builtins.str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict']] pyspark_config: The config of pySpark job.
-        :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']] reference: The reference of the job
+        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']] pyspark_config: The config of pySpark job.
+        :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']] reference: The reference of the job
         :param pulumi.Input[_builtins.str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
-        :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']] scheduling: Optional. Job scheduling configuration.
-        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict']] spark_config: The config of the Spark job.
-        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict']] sparksql_config: The config of SparkSql job
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]] statuses: The status of the job.
+        :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']] scheduling: Optional. Job scheduling configuration.
+        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']] spark_config: The config of the Spark job.
+        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]]] statuses: The status of the job.
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

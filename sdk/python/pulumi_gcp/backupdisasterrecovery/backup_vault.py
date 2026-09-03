@@ -956,7 +956,7 @@ class BackupVault(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict', 'outputs.BackupVaultEncryptionConfig']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1067,7 +1067,7 @@ class BackupVault(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
-        :param pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the backup vault.
+        :param pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict', 'outputs.BackupVaultEncryptionConfig']] encryption_config: Encryption configuration for the backup vault.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_delete: (Optional, Deprecated)
                If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -1200,7 +1200,7 @@ class BackupVault(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict', 'outputs.BackupVaultEncryptionConfig']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1281,7 +1281,7 @@ class BackupVault(pulumi.CustomResource):
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_time: pulumi.Input[Optional[_builtins.str]] = None,
-            encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
+            encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict', 'outputs.BackupVaultEncryptionConfig']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             force_update: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1330,7 +1330,7 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
-        :param pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the backup vault.
+        :param pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict', 'outputs.BackupVaultEncryptionConfig']] encryption_config: Encryption configuration for the backup vault.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
         :param pulumi.Input[_builtins.bool] force_delete: (Optional, Deprecated)

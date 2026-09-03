@@ -291,7 +291,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
+                 external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict', 'outputs.CryptoKeyVersionExternalProtectionLevelOptions']]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -346,7 +346,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict', 'outputs.CryptoKeyVersionExternalProtectionLevelOptions']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
                otherwise the value of this field is always retrieved automatically.
@@ -417,7 +417,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
+                 external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict', 'outputs.CryptoKeyVersionExternalProtectionLevelOptions']]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -450,10 +450,10 @@ class CryptoKeyVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: pulumi.Input[Optional[_builtins.str]] = None,
-            attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict']]]]] = None,
+            attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict', 'outputs.CryptoKeyVersionAttestation']]]]] = None,
             crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
+            external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict', 'outputs.CryptoKeyVersionExternalProtectionLevelOptions']]] = None,
             generate_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             protection_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -466,7 +466,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict', 'outputs.CryptoKeyVersionAttestation']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only provided for key versions with protectionLevel HSM.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
@@ -477,7 +477,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict', 'outputs.CryptoKeyVersionExternalProtectionLevelOptions']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] generate_time: The time this CryptoKeyVersion key material was generated
         :param pulumi.Input[_builtins.str] name: The resource name for this CryptoKeyVersion.

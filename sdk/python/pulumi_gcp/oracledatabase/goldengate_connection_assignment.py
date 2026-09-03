@@ -424,7 +424,7 @@ class GoldengateConnectionAssignment(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict', 'outputs.GoldengateConnectionAssignmentProperties']]] = None,
                  __props__=None):
         """
         This resource helps to assign a GoldengateConnection to a GoldengateDeployment used for actual data replication and transformations.
@@ -486,7 +486,7 @@ class GoldengateConnectionAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict']] properties: The properties of a GoldengateConnectionAssignment.
+        :param pulumi.Input[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict', 'outputs.GoldengateConnectionAssignmentProperties']] properties: The properties of a GoldengateConnectionAssignment.
                Structure is documented below.
         """
         ...
@@ -560,7 +560,7 @@ class GoldengateConnectionAssignment(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict', 'outputs.GoldengateConnectionAssignmentProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,7 +612,7 @@ class GoldengateConnectionAssignment(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict', 'outputs.GoldengateConnectionAssignmentProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'GoldengateConnectionAssignment':
         """
         Get an existing GoldengateConnectionAssignment resource's state with the given name, id, and optional extra
@@ -642,7 +642,7 @@ class GoldengateConnectionAssignment(pulumi.CustomResource):
                projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict']] properties: The properties of a GoldengateConnectionAssignment.
+        :param pulumi.Input[Union['GoldengateConnectionAssignmentPropertiesArgs', 'GoldengateConnectionAssignmentPropertiesArgsDict', 'outputs.GoldengateConnectionAssignmentProperties']] properties: The properties of a GoldengateConnectionAssignment.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

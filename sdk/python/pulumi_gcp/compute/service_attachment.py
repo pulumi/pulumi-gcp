@@ -787,7 +787,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
-                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict', 'outputs.ServiceAttachmentConsumerAcceptList']]]]] = None,
                  consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -802,7 +802,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
+                 tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict', 'outputs.ServiceAttachmentTunnelingConfig']]] = None,
                  __props__=None):
         """
         Represents a ServiceAttachment resource.
@@ -1215,7 +1215,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict', 'outputs.ServiceAttachmentConsumerAcceptList']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
@@ -1260,7 +1260,7 @@ class ServiceAttachment(pulumi.CustomResource):
                Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
                [If true, show NAT IPs of all connected endpoints.]
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
-        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: (Optional, Beta)
+        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict', 'outputs.ServiceAttachmentTunnelingConfig']] tunneling_config: (Optional, Beta)
                Tunneling configuration for this service attachment.
                Structure is documented below.
         """
@@ -1693,7 +1693,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
-                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict', 'outputs.ServiceAttachmentConsumerAcceptList']]]]] = None,
                  consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1708,7 +1708,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
+                 tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict', 'outputs.ServiceAttachmentTunnelingConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1757,9 +1757,9 @@ class ServiceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connected_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict']]]]] = None,
+            connected_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict', 'outputs.ServiceAttachmentConnectedEndpoint']]]]] = None,
             connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
-            consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
+            consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict', 'outputs.ServiceAttachmentConsumerAcceptList']]]]] = None,
             consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1770,14 +1770,14 @@ class ServiceAttachment(pulumi.CustomResource):
             nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
-            psc_service_attachment_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict']]]]] = None,
+            psc_service_attachment_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict', 'outputs.ServiceAttachmentPscServiceAttachmentId']]]]] = None,
             reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
             show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
             target_service: pulumi.Input[Optional[_builtins.str]] = None,
-            tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None) -> 'ServiceAttachment':
+            tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict', 'outputs.ServiceAttachmentTunnelingConfig']]] = None) -> 'ServiceAttachment':
         """
         Get an existing ServiceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1785,12 +1785,12 @@ class ServiceAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict', 'outputs.ServiceAttachmentConnectedEndpoint']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict', 'outputs.ServiceAttachmentConsumerAcceptList']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
@@ -1825,7 +1825,7 @@ class ServiceAttachment(pulumi.CustomResource):
                If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
                If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
                If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict']]]] psc_service_attachment_ids: An 128-bit global unique ID of the PSC service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict', 'outputs.ServiceAttachmentPscServiceAttachmentId']]]] psc_service_attachment_ids: An 128-bit global unique ID of the PSC service attachment.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -1840,7 +1840,7 @@ class ServiceAttachment(pulumi.CustomResource):
                Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
                [If true, show NAT IPs of all connected endpoints.]
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
-        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: (Optional, Beta)
+        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict', 'outputs.ServiceAttachmentTunnelingConfig']] tunneling_config: (Optional, Beta)
                Tunneling configuration for this service attachment.
                Structure is documented below.
         """

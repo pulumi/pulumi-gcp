@@ -385,8 +385,8 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
-                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
+                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict', 'outputs.EdgeCacheKeysetPublicKey']]]]] = None,
+                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict', 'outputs.EdgeCacheKeysetValidationSharedKey']]]]] = None,
                  __props__=None):
         """
         EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
@@ -479,14 +479,14 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict', 'outputs.EdgeCacheKeysetPublicKey']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
                You may specify no more than one Google-managed public key.
                If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
                Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
                Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict', 'outputs.EdgeCacheKeysetValidationSharedKey']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
                You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
@@ -592,8 +592,8 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
-                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
+                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict', 'outputs.EdgeCacheKeysetPublicKey']]]]] = None,
+                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict', 'outputs.EdgeCacheKeysetValidationSharedKey']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -630,9 +630,9 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
+            public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict', 'outputs.EdgeCacheKeysetPublicKey']]]]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None) -> 'EdgeCacheKeyset':
+            validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict', 'outputs.EdgeCacheKeysetValidationSharedKey']]]]] = None) -> 'EdgeCacheKeyset':
         """
         Get an existing EdgeCacheKeyset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -656,7 +656,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict', 'outputs.EdgeCacheKeysetPublicKey']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
                You may specify no more than one Google-managed public key.
                If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
@@ -665,7 +665,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict', 'outputs.EdgeCacheKeysetValidationSharedKey']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
                You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
                You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.

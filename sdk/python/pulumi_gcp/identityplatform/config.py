@@ -448,15 +448,15 @@ class Config(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
-                 blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
-                 client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
-                 mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
-                 monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
-                 multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
+                 blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict', 'outputs.ConfigBlockingFunctions']]] = None,
+                 client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict', 'outputs.ConfigClient']]] = None,
+                 mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict', 'outputs.ConfigMfa']]] = None,
+                 monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict', 'outputs.ConfigMonitoring']]] = None,
+                 multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict', 'outputs.ConfigMultiTenant']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
-                 sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
-                 sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None,
+                 quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict', 'outputs.ConfigQuota']]] = None,
+                 sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict', 'outputs.ConfigSignIn']]] = None,
+                 sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict', 'outputs.ConfigSmsRegionConfig']]] = None,
                  __props__=None):
         """
         Identity Platform configuration for a Cloud project. Identity Platform is an
@@ -566,23 +566,23 @@ class Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[_builtins.bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
-        :param pulumi.Input[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']] blocking_functions: Configuration related to blocking functions.
+        :param pulumi.Input[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict', 'outputs.ConfigBlockingFunctions']] blocking_functions: Configuration related to blocking functions.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigClientArgs', 'ConfigClientArgsDict']] client: Options related to how clients making requests on behalf of a project should be configured.
+        :param pulumi.Input[Union['ConfigClientArgs', 'ConfigClientArgsDict', 'outputs.ConfigClient']] client: Options related to how clients making requests on behalf of a project should be configured.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']] mfa: Options related to how clients making requests on behalf of a project should be configured.
+        :param pulumi.Input[Union['ConfigMfaArgs', 'ConfigMfaArgsDict', 'outputs.ConfigMfa']] mfa: Options related to how clients making requests on behalf of a project should be configured.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']] monitoring: Configuration related to monitoring project activity.
+        :param pulumi.Input[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict', 'outputs.ConfigMonitoring']] monitoring: Configuration related to monitoring project activity.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']] multi_tenant: Configuration related to multi-tenant functionality.
+        :param pulumi.Input[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict', 'outputs.ConfigMultiTenant']] multi_tenant: Configuration related to multi-tenant functionality.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']] quota: Configuration related to quotas.
+        :param pulumi.Input[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict', 'outputs.ConfigQuota']] quota: Configuration related to quotas.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input[Union['ConfigSignInArgs', 'ConfigSignInArgsDict', 'outputs.ConfigSignIn']] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param pulumi.Input[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict', 'outputs.ConfigSmsRegionConfig']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
                Structure is documented below.
         """
         ...
@@ -712,15 +712,15 @@ class Config(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
-                 blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
-                 client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
-                 mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
-                 monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
-                 multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
+                 blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict', 'outputs.ConfigBlockingFunctions']]] = None,
+                 client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict', 'outputs.ConfigClient']]] = None,
+                 mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict', 'outputs.ConfigMfa']]] = None,
+                 monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict', 'outputs.ConfigMonitoring']]] = None,
+                 multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict', 'outputs.ConfigMultiTenant']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
-                 sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
-                 sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None,
+                 quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict', 'outputs.ConfigQuota']]] = None,
+                 sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict', 'outputs.ConfigSignIn']]] = None,
+                 sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict', 'outputs.ConfigSmsRegionConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -754,16 +754,16 @@ class Config(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
-            blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
-            client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
-            mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
-            monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
-            multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
+            blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict', 'outputs.ConfigBlockingFunctions']]] = None,
+            client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict', 'outputs.ConfigClient']]] = None,
+            mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict', 'outputs.ConfigMfa']]] = None,
+            monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict', 'outputs.ConfigMonitoring']]] = None,
+            multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict', 'outputs.ConfigMultiTenant']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
-            sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
-            sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None) -> 'Config':
+            quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict', 'outputs.ConfigQuota']]] = None,
+            sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict', 'outputs.ConfigSignIn']]] = None,
+            sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict', 'outputs.ConfigSmsRegionConfig']]] = None) -> 'Config':
         """
         Get an existing Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -773,24 +773,24 @@ class Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[_builtins.bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
-        :param pulumi.Input[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']] blocking_functions: Configuration related to blocking functions.
+        :param pulumi.Input[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict', 'outputs.ConfigBlockingFunctions']] blocking_functions: Configuration related to blocking functions.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigClientArgs', 'ConfigClientArgsDict']] client: Options related to how clients making requests on behalf of a project should be configured.
+        :param pulumi.Input[Union['ConfigClientArgs', 'ConfigClientArgsDict', 'outputs.ConfigClient']] client: Options related to how clients making requests on behalf of a project should be configured.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']] mfa: Options related to how clients making requests on behalf of a project should be configured.
+        :param pulumi.Input[Union['ConfigMfaArgs', 'ConfigMfaArgsDict', 'outputs.ConfigMfa']] mfa: Options related to how clients making requests on behalf of a project should be configured.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']] monitoring: Configuration related to monitoring project activity.
+        :param pulumi.Input[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict', 'outputs.ConfigMonitoring']] monitoring: Configuration related to monitoring project activity.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']] multi_tenant: Configuration related to multi-tenant functionality.
+        :param pulumi.Input[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict', 'outputs.ConfigMultiTenant']] multi_tenant: Configuration related to multi-tenant functionality.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Config resource
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']] quota: Configuration related to quotas.
+        :param pulumi.Input[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict', 'outputs.ConfigQuota']] quota: Configuration related to quotas.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']] sign_in: Configuration related to local sign in methods.
+        :param pulumi.Input[Union['ConfigSignInArgs', 'ConfigSignInArgsDict', 'outputs.ConfigSignIn']] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
-        :param pulumi.Input[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param pulumi.Input[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict', 'outputs.ConfigSmsRegionConfig']] sms_region_config: Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

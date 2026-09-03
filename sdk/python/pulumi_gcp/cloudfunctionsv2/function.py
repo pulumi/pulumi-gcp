@@ -523,16 +523,16 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict', 'outputs.FunctionBuildConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
+                 service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict', 'outputs.FunctionServiceConfig']]] = None,
                  __props__=None):
         """
         A Cloud Function that contains user computation executed in response to an event.
@@ -1347,7 +1347,7 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict', 'outputs.FunctionBuildConfig']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1357,7 +1357,7 @@ class Function(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of a function.
-        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -1371,7 +1371,7 @@ class Function(pulumi.CustomResource):
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']] service_config: Describes the Service being deployed.
+        :param pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict', 'outputs.FunctionServiceConfig']] service_config: Describes the Service being deployed.
                Structure is documented below.
         """
         ...
@@ -2206,16 +2206,16 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict', 'outputs.FunctionBuildConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
+                 service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict', 'outputs.FunctionServiceConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2255,19 +2255,19 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+            build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict', 'outputs.FunctionBuildConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
-            event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+            event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
             kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
+            service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict', 'outputs.FunctionServiceConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Function':
@@ -2278,7 +2278,7 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict', 'outputs.FunctionBuildConfig']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -2290,7 +2290,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: User-provided description of a function.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] environment: The environment the function is hosted on.
-        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -2306,7 +2306,7 @@ class Function(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']] service_config: Describes the Service being deployed.
+        :param pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict', 'outputs.FunctionServiceConfig']] service_config: Describes the Service being deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Describes the current state of the function.
         :param pulumi.Input[_builtins.str] update_time: The last update timestamp of a Cloud Function.

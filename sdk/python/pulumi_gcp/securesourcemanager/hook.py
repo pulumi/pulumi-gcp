@@ -470,7 +470,7 @@ class Hook(pulumi.CustomResource):
                  hook_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
+                 push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
                  target_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -519,7 +519,7 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']] push_option: The trigger option for push events.
+        :param pulumi.Input[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']] push_option: The trigger option for push events.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
         :param pulumi.Input[_builtins.str] sensitive_query_string: The sensitive query string to be appended to the target URI.
@@ -581,7 +581,7 @@ class Hook(pulumi.CustomResource):
                  hook_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
+                 push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
                  target_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -636,7 +636,7 @@ class Hook(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
+            push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']]] = None,
             repository_id: pulumi.Input[Optional[_builtins.str]] = None,
             sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
             target_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -666,7 +666,7 @@ class Hook(pulumi.CustomResource):
                `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']] push_option: The trigger option for push events.
+        :param pulumi.Input[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']] push_option: The trigger option for push events.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
         :param pulumi.Input[_builtins.str] sensitive_query_string: The sensitive query string to be appended to the target URI.

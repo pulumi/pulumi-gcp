@@ -596,14 +596,14 @@ class AzureNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling: pulumi.Input[Optional[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']]] = None,
+                 autoscaling: pulumi.Input[Optional[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict', 'outputs.AzureNodePoolAutoscaling']]] = None,
                  azure_availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict', 'outputs.AzureNodePoolConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management: pulumi.Input[Optional[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']]] = None,
-                 max_pods_constraint: pulumi.Input[Optional[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']]] = None,
+                 management: pulumi.Input[Optional[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict', 'outputs.AzureNodePoolManagement']]] = None,
+                 max_pods_constraint: pulumi.Input[Optional[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict', 'outputs.AzureNodePoolMaxPodsConstraint']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -720,10 +720,10 @@ class AzureNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict', 'outputs.AzureNodePoolAutoscaling']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[_builtins.str] cluster: The azureCluster for the resource
-        :param pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']] config: The node configuration of the node pool.
+        :param pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict', 'outputs.AzureNodePoolConfig']] config: The node configuration of the node pool.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -731,8 +731,8 @@ class AzureNodePool(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
-        :param pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict', 'outputs.AzureNodePoolManagement']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict', 'outputs.AzureNodePoolMaxPodsConstraint']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
@@ -865,14 +865,14 @@ class AzureNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling: pulumi.Input[Optional[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']]] = None,
+                 autoscaling: pulumi.Input[Optional[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict', 'outputs.AzureNodePoolAutoscaling']]] = None,
                  azure_availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict', 'outputs.AzureNodePoolConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management: pulumi.Input[Optional[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']]] = None,
-                 max_pods_constraint: pulumi.Input[Optional[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']]] = None,
+                 management: pulumi.Input[Optional[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict', 'outputs.AzureNodePoolManagement']]] = None,
+                 max_pods_constraint: pulumi.Input[Optional[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict', 'outputs.AzureNodePoolMaxPodsConstraint']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -931,17 +931,17 @@ class AzureNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            autoscaling: pulumi.Input[Optional[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']]] = None,
+            autoscaling: pulumi.Input[Optional[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict', 'outputs.AzureNodePoolAutoscaling']]] = None,
             azure_availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict', 'outputs.AzureNodePoolConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            management: pulumi.Input[Optional[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']]] = None,
-            max_pods_constraint: pulumi.Input[Optional[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']]] = None,
+            management: pulumi.Input[Optional[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict', 'outputs.AzureNodePoolManagement']]] = None,
+            max_pods_constraint: pulumi.Input[Optional[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict', 'outputs.AzureNodePoolMaxPodsConstraint']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -961,10 +961,10 @@ class AzureNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict', 'outputs.AzureNodePoolAutoscaling']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[_builtins.str] cluster: The azureCluster for the resource
-        :param pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']] config: The node configuration of the node pool.
+        :param pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict', 'outputs.AzureNodePoolConfig']] config: The node configuration of the node pool.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -975,8 +975,8 @@ class AzureNodePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
-        :param pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict', 'outputs.AzureNodePoolManagement']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AzureNodePoolMaxPodsConstraintArgs', 'AzureNodePoolMaxPodsConstraintArgsDict', 'outputs.AzureNodePoolMaxPodsConstraint']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.bool] reconciling: Output only. If set, there are currently pending changes to the node pool.

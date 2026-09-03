@@ -980,26 +980,26 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addon_node: pulumi.Input[Optional[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']]] = None,
+                 addon_node: pulumi.Input[Optional[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict', 'outputs.VmwareAdminClusterAddonNode']]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 anti_affinity_groups: pulumi.Input[Optional[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']]] = None,
-                 authorization: pulumi.Input[Optional[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict']]] = None,
-                 auto_repair_config: pulumi.Input[Optional[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict']]] = None,
+                 anti_affinity_groups: pulumi.Input[Optional[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict', 'outputs.VmwareAdminClusterAntiAffinityGroups']]] = None,
+                 authorization: pulumi.Input[Optional[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict', 'outputs.VmwareAdminClusterAuthorization']]] = None,
+                 auto_repair_config: pulumi.Input[Optional[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict', 'outputs.VmwareAdminClusterAutoRepairConfig']]] = None,
                  bootstrap_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
-                 control_plane_node: pulumi.Input[Optional[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']]] = None,
+                 control_plane_node: pulumi.Input[Optional[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict', 'outputs.VmwareAdminClusterControlPlaneNode']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  image_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 load_balancer: pulumi.Input[Optional[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict', 'outputs.VmwareAdminClusterLoadBalancer']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict', 'outputs.VmwareAdminClusterNetworkConfig']]] = None,
                  on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 platform_config: pulumi.Input[Optional[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']]] = None,
-                 private_registry_config: pulumi.Input[Optional[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']]] = None,
+                 platform_config: pulumi.Input[Optional[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict', 'outputs.VmwareAdminClusterPlatformConfig']]] = None,
+                 private_registry_config: pulumi.Input[Optional[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict', 'outputs.VmwareAdminClusterPrivateRegistryConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']]] = None,
-                 vcenter: pulumi.Input[Optional[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict', 'outputs.VmwareAdminClusterProxy']]] = None,
+                 vcenter: pulumi.Input[Optional[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict', 'outputs.VmwareAdminClusterVcenter']]] = None,
                  __props__=None):
         """
         A Google VMware Admin Cluster.
@@ -1234,7 +1234,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']] addon_node: The VMware admin cluster addon node configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict', 'outputs.VmwareAdminClusterAddonNode']] addon_node: The VMware admin cluster addon node configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
                This field has the same restrictions as Kubernetes annotations.
@@ -1247,35 +1247,35 @@ class VmwareAdminCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict', 'outputs.VmwareAdminClusterAntiAffinityGroups']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict']] authorization: The VMware admin cluster authorization configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict', 'outputs.VmwareAdminClusterAuthorization']] authorization: The VMware admin cluster authorization configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict', 'outputs.VmwareAdminClusterAutoRepairConfig']] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] bootstrap_cluster_membership: The bootstrap cluster this VMware admin cluster belongs to.
-        :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']] control_plane_node: The VMware admin cluster control plane node configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict', 'outputs.VmwareAdminClusterControlPlaneNode']] control_plane_node: The VMware admin cluster control plane node configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware admin cluster.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
         :param pulumi.Input[_builtins.str] image_type: The OS image type for the VMware admin cluster.
-        :param pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
+        :param pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict', 'outputs.VmwareAdminClusterLoadBalancer']] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The VMware admin cluster resource name.
-        :param pulumi.Input[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict']] network_config: The VMware admin cluster network configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict', 'outputs.VmwareAdminClusterNetworkConfig']] network_config: The VMware admin cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] on_prem_version: The Anthos clusters on the VMware version for the admin cluster.
-        :param pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']] platform_config: The VMware platform configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict', 'outputs.VmwareAdminClusterPlatformConfig']] platform_config: The VMware platform configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']] private_registry_config: Configuration for private registry.
+        :param pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict', 'outputs.VmwareAdminClusterPrivateRegistryConfig']] private_registry_config: Configuration for private registry.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']] proxy: Configuration for proxy.
+        :param pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict', 'outputs.VmwareAdminClusterProxy']] proxy: Configuration for proxy.
                Structure is documented below.
-        :param pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']] vcenter: Specifies vCenter config for the admin cluster.
+        :param pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict', 'outputs.VmwareAdminClusterVcenter']] vcenter: Specifies vCenter config for the admin cluster.
                Structure is documented below.
         """
         ...
@@ -1530,26 +1530,26 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addon_node: pulumi.Input[Optional[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']]] = None,
+                 addon_node: pulumi.Input[Optional[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict', 'outputs.VmwareAdminClusterAddonNode']]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 anti_affinity_groups: pulumi.Input[Optional[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']]] = None,
-                 authorization: pulumi.Input[Optional[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict']]] = None,
-                 auto_repair_config: pulumi.Input[Optional[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict']]] = None,
+                 anti_affinity_groups: pulumi.Input[Optional[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict', 'outputs.VmwareAdminClusterAntiAffinityGroups']]] = None,
+                 authorization: pulumi.Input[Optional[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict', 'outputs.VmwareAdminClusterAuthorization']]] = None,
+                 auto_repair_config: pulumi.Input[Optional[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict', 'outputs.VmwareAdminClusterAutoRepairConfig']]] = None,
                  bootstrap_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
-                 control_plane_node: pulumi.Input[Optional[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']]] = None,
+                 control_plane_node: pulumi.Input[Optional[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict', 'outputs.VmwareAdminClusterControlPlaneNode']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  image_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 load_balancer: pulumi.Input[Optional[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict', 'outputs.VmwareAdminClusterLoadBalancer']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict', 'outputs.VmwareAdminClusterNetworkConfig']]] = None,
                  on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 platform_config: pulumi.Input[Optional[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']]] = None,
-                 private_registry_config: pulumi.Input[Optional[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']]] = None,
+                 platform_config: pulumi.Input[Optional[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict', 'outputs.VmwareAdminClusterPlatformConfig']]] = None,
+                 private_registry_config: pulumi.Input[Optional[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict', 'outputs.VmwareAdminClusterPrivateRegistryConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']]] = None,
-                 vcenter: pulumi.Input[Optional[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict', 'outputs.VmwareAdminClusterProxy']]] = None,
+                 vcenter: pulumi.Input[Optional[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict', 'outputs.VmwareAdminClusterVcenter']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1604,37 +1604,37 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addon_node: pulumi.Input[Optional[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']]] = None,
+            addon_node: pulumi.Input[Optional[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict', 'outputs.VmwareAdminClusterAddonNode']]] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            anti_affinity_groups: pulumi.Input[Optional[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']]] = None,
-            authorization: pulumi.Input[Optional[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict']]] = None,
-            auto_repair_config: pulumi.Input[Optional[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict']]] = None,
+            anti_affinity_groups: pulumi.Input[Optional[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict', 'outputs.VmwareAdminClusterAntiAffinityGroups']]] = None,
+            authorization: pulumi.Input[Optional[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict', 'outputs.VmwareAdminClusterAuthorization']]] = None,
+            auto_repair_config: pulumi.Input[Optional[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict', 'outputs.VmwareAdminClusterAutoRepairConfig']]] = None,
             bootstrap_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
-            control_plane_node: pulumi.Input[Optional[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']]] = None,
+            control_plane_node: pulumi.Input[Optional[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict', 'outputs.VmwareAdminClusterControlPlaneNode']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            fleets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmwareAdminClusterFleetArgs', 'VmwareAdminClusterFleetArgsDict']]]]] = None,
+            fleets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmwareAdminClusterFleetArgs', 'VmwareAdminClusterFleetArgsDict', 'outputs.VmwareAdminClusterFleet']]]]] = None,
             image_type: pulumi.Input[Optional[_builtins.str]] = None,
-            load_balancer: pulumi.Input[Optional[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']]] = None,
+            load_balancer: pulumi.Input[Optional[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict', 'outputs.VmwareAdminClusterLoadBalancer']]] = None,
             local_name: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_config: pulumi.Input[Optional[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict']]] = None,
+            network_config: pulumi.Input[Optional[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict', 'outputs.VmwareAdminClusterNetworkConfig']]] = None,
             on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
-            platform_config: pulumi.Input[Optional[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']]] = None,
-            private_registry_config: pulumi.Input[Optional[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']]] = None,
+            platform_config: pulumi.Input[Optional[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict', 'outputs.VmwareAdminClusterPlatformConfig']]] = None,
+            private_registry_config: pulumi.Input[Optional[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict', 'outputs.VmwareAdminClusterPrivateRegistryConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            proxy: pulumi.Input[Optional[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']]] = None,
+            proxy: pulumi.Input[Optional[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict', 'outputs.VmwareAdminClusterProxy']]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmwareAdminClusterStatusArgs', 'VmwareAdminClusterStatusArgsDict']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmwareAdminClusterStatusArgs', 'VmwareAdminClusterStatusArgsDict', 'outputs.VmwareAdminClusterStatus']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            vcenter: pulumi.Input[Optional[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']]] = None) -> 'VmwareAdminCluster':
+            vcenter: pulumi.Input[Optional[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict', 'outputs.VmwareAdminClusterVcenter']]] = None) -> 'VmwareAdminCluster':
         """
         Get an existing VmwareAdminCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1642,7 +1642,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']] addon_node: The VMware admin cluster addon node configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict', 'outputs.VmwareAdminClusterAddonNode']] addon_node: The VMware admin cluster addon node configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
                This field has the same restrictions as Kubernetes annotations.
@@ -1655,15 +1655,15 @@ class VmwareAdminCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict', 'outputs.VmwareAdminClusterAntiAffinityGroups']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict']] authorization: The VMware admin cluster authorization configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict', 'outputs.VmwareAdminClusterAuthorization']] authorization: The VMware admin cluster authorization configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict', 'outputs.VmwareAdminClusterAutoRepairConfig']] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] bootstrap_cluster_membership: The bootstrap cluster this VMware admin cluster belongs to.
-        :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']] control_plane_node: The VMware admin cluster control plane node configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict', 'outputs.VmwareAdminClusterControlPlaneNode']] control_plane_node: The VMware admin cluster control plane node configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware admin cluster.
@@ -1675,10 +1675,10 @@ class VmwareAdminCluster(pulumi.CustomResource):
                client has an up-to-date value before proceeding.
                Allows clients to perform consistent read-modify-writes
                through optimistic concurrency control.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmwareAdminClusterFleetArgs', 'VmwareAdminClusterFleetArgsDict']]]] fleets: Fleet configuration for the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmwareAdminClusterFleetArgs', 'VmwareAdminClusterFleetArgsDict', 'outputs.VmwareAdminClusterFleet']]]] fleets: Fleet configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] image_type: The OS image type for the VMware admin cluster.
-        :param pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
+        :param pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict', 'outputs.VmwareAdminClusterLoadBalancer']] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] local_name: The object name of the VMwareAdminCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
@@ -1692,25 +1692,25 @@ class VmwareAdminCluster(pulumi.CustomResource):
                cluster controller logs.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The VMware admin cluster resource name.
-        :param pulumi.Input[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict']] network_config: The VMware admin cluster network configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict', 'outputs.VmwareAdminClusterNetworkConfig']] network_config: The VMware admin cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] on_prem_version: The Anthos clusters on the VMware version for the admin cluster.
-        :param pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']] platform_config: The VMware platform configuration.
+        :param pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict', 'outputs.VmwareAdminClusterPlatformConfig']] platform_config: The VMware platform configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']] private_registry_config: Configuration for private registry.
+        :param pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict', 'outputs.VmwareAdminClusterPrivateRegistryConfig']] private_registry_config: Configuration for private registry.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']] proxy: Configuration for proxy.
+        :param pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict', 'outputs.VmwareAdminClusterProxy']] proxy: Configuration for proxy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the VMware admin cluster.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmwareAdminClusterStatusArgs', 'VmwareAdminClusterStatusArgsDict']]]] statuses: ResourceStatus representing detailed cluster state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmwareAdminClusterStatusArgs', 'VmwareAdminClusterStatusArgsDict', 'outputs.VmwareAdminClusterStatus']]]] statuses: ResourceStatus representing detailed cluster state.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the VMware Admin Cluster.
         :param pulumi.Input[_builtins.str] update_time: The time the cluster was last updated, in RFC3339 text format.
-        :param pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']] vcenter: Specifies vCenter config for the admin cluster.
+        :param pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict', 'outputs.VmwareAdminClusterVcenter']] vcenter: Specifies vCenter config for the admin cluster.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

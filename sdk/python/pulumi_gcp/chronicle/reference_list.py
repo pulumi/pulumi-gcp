@@ -441,12 +441,12 @@ class ReferenceList(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict']]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict', 'outputs.ReferenceListEntry']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reference_list_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]]] = None,
+                 scope_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict', 'outputs.ReferenceListScopeInfo']]]]] = None,
                  syntax_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -510,7 +510,7 @@ class ReferenceList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Required. A user-provided description of the reference list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict']]]] entries: Required. The entries of the reference list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict', 'outputs.ReferenceListEntry']]]] entries: Required. The entries of the reference list.
                When listed, they are returned in the order that was specified at creation
                or update. The combined size of the values of the reference list may not
                exceed 6MB.
@@ -526,7 +526,7 @@ class ReferenceList(pulumi.CustomResource):
                - Contains only letters, numbers and underscore.
                - Has length < 256.
                - Must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]] scope_infos: ScopeInfo specifies the scope info of the reference list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict', 'outputs.ReferenceListScopeInfo']]]] scope_infos: ScopeInfo specifies the scope info of the reference list.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] syntax_type: Possible values:
                REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
@@ -613,12 +613,12 @@ class ReferenceList(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict']]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict', 'outputs.ReferenceListEntry']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reference_list_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]]] = None,
+                 scope_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict', 'outputs.ReferenceListScopeInfo']]]]] = None,
                  syntax_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -666,7 +666,7 @@ class ReferenceList(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict']]]]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict', 'outputs.ReferenceListEntry']]]]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -675,7 +675,7 @@ class ReferenceList(pulumi.CustomResource):
             revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
             rule_associations_count: pulumi.Input[Optional[_builtins.int]] = None,
             rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            scope_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]]] = None,
+            scope_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict', 'outputs.ReferenceListScopeInfo']]]]] = None,
             syntax_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReferenceList':
         """
         Get an existing ReferenceList resource's state with the given name, id, and optional extra
@@ -686,7 +686,7 @@ class ReferenceList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Required. A user-provided description of the reference list.
         :param pulumi.Input[_builtins.str] display_name: Output only. The unique display name of the reference list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict']]]] entries: Required. The entries of the reference list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListEntryArgs', 'ReferenceListEntryArgsDict', 'outputs.ReferenceListEntry']]]] entries: Required. The entries of the reference list.
                When listed, they are returned in the order that was specified at creation
                or update. The combined size of the values of the reference list may not
                exceed 6MB.
@@ -710,7 +710,7 @@ class ReferenceList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rules: Output only. The resource names for the associated self-authored Rules that use this
                reference list.
                This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]] scope_infos: ScopeInfo specifies the scope info of the reference list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict', 'outputs.ReferenceListScopeInfo']]]] scope_infos: ScopeInfo specifies the scope info of the reference list.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] syntax_type: Possible values:
                REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING

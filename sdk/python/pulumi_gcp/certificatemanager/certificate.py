@@ -492,11 +492,11 @@ class Certificate(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 managed: pulumi.Input[Optional[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']]] = None,
+                 managed: pulumi.Input[Optional[Union['CertificateManagedArgs', 'CertificateManagedArgsDict', 'outputs.CertificateManaged']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 self_managed: pulumi.Input[Optional[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']]] = None,
+                 self_managed: pulumi.Input[Optional[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict', 'outputs.CertificateSelfManaged']]] = None,
                  __props__=None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
@@ -825,7 +825,7 @@ class Certificate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict', 'outputs.CertificateManaged']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -843,7 +843,7 @@ class Certificate(pulumi.CustomResource):
                See https://cloud.google.com/compute/docs/regions-zones.
                CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
                See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
-        :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict', 'outputs.CertificateSelfManaged']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                The certificate data can be updated in place; changes to `pem_certificate`
@@ -1190,11 +1190,11 @@ class Certificate(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 managed: pulumi.Input[Optional[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']]] = None,
+                 managed: pulumi.Input[Optional[Union['CertificateManagedArgs', 'CertificateManagedArgsDict', 'outputs.CertificateManaged']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 self_managed: pulumi.Input[Optional[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']]] = None,
+                 self_managed: pulumi.Input[Optional[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict', 'outputs.CertificateSelfManaged']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1233,13 +1233,13 @@ class Certificate(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            managed: pulumi.Input[Optional[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']]] = None,
+            managed: pulumi.Input[Optional[Union['CertificateManagedArgs', 'CertificateManagedArgsDict', 'outputs.CertificateManaged']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             san_dnsnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            self_managed: pulumi.Input[Optional[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']]] = None) -> 'Certificate':
+            self_managed: pulumi.Input[Optional[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict', 'outputs.CertificateSelfManaged']]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1259,7 +1259,7 @@ class Certificate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The Certificate Manager location. If not specified, "global" is used.
-        :param pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict']] managed: Configuration and state of a Managed Certificate.
+        :param pulumi.Input[Union['CertificateManagedArgs', 'CertificateManagedArgsDict', 'outputs.CertificateManaged']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
                Structure is documented below.
@@ -1280,7 +1280,7 @@ class Certificate(pulumi.CustomResource):
                See https://cloud.google.com/compute/docs/regions-zones.
                CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
                See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
-        :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
+        :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict', 'outputs.CertificateSelfManaged']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                The certificate data can be updated in place; changes to `pem_certificate`

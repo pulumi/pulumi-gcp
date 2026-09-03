@@ -579,8 +579,8 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  folder_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
-                 orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
+                 orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestratedResource']]] = None,
+                 orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestrationScope']]] = None,
                  policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -711,9 +711,9 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']] orchestrated_resource: Represents a resource that is being orchestrated by the policy orchestrator.
+        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestratedResource']] orchestrated_resource: Represents a resource that is being orchestrated by the policy orchestrator.
                Structure is documented below.
-        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
+        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestrationScope']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
                orchestration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_orchestrator_id: The logical identifier of the policy orchestrator, with the following
@@ -866,8 +866,8 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  folder_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
-                 orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
+                 orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestratedResource']]] = None,
+                 orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestrationScope']]] = None,
                  policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -925,9 +925,9 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
             folder_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
-            orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
-            orchestration_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationStateArgs', 'V2PolicyOrchestratorForFolderOrchestrationStateArgsDict']]]]] = None,
+            orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestratedResource']]] = None,
+            orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestrationScope']]] = None,
+            orchestration_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationStateArgs', 'V2PolicyOrchestratorForFolderOrchestrationStateArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestrationState']]]]] = None,
             policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -965,12 +965,12 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
                * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
-        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']] orchestrated_resource: Represents a resource that is being orchestrated by the policy orchestrator.
+        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestratedResource']] orchestrated_resource: Represents a resource that is being orchestrated by the policy orchestrator.
                Structure is documented below.
-        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
+        :param pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestrationScope']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
                orchestration.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationStateArgs', 'V2PolicyOrchestratorForFolderOrchestrationStateArgsDict']]]] orchestration_states: Describes the state of the orchestration process.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationStateArgs', 'V2PolicyOrchestratorForFolderOrchestrationStateArgsDict', 'outputs.V2PolicyOrchestratorForFolderOrchestrationState']]]] orchestration_states: Describes the state of the orchestration process.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_orchestrator_id: The logical identifier of the policy orchestrator, with the following
                restrictions:

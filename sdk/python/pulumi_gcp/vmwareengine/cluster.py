@@ -379,11 +379,11 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
-                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+                 autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict', 'outputs.ClusterAutoscalingSettings']]] = None,
+                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict', 'outputs.ClusterDatastoreMountConfig']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
+                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict', 'outputs.ClusterNodeTypeConfig']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -715,9 +715,9 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+        :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict', 'outputs.ClusterAutoscalingSettings']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]] datastore_mount_configs: Optional. Configuration to mount a datastore.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict', 'outputs.ClusterDatastoreMountConfig']]]] datastore_mount_configs: Optional. Configuration to mount a datastore.
                Mount can be done along with cluster create or during cluster update
                Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
                for unmount remove 'datastore_mount_config' config from the update of cluster resource
@@ -729,7 +729,7 @@ class Cluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict', 'outputs.ClusterNodeTypeConfig']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The resource name of the private cloud to create a new cluster in.
@@ -1084,11 +1084,11 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
-                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+                 autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict', 'outputs.ClusterAutoscalingSettings']]] = None,
+                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict', 'outputs.ClusterDatastoreMountConfig']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
+                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict', 'outputs.ClusterNodeTypeConfig']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1122,13 +1122,13 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
+            autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict', 'outputs.ClusterAutoscalingSettings']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+            datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict', 'outputs.ClusterDatastoreMountConfig']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             management: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
+            node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict', 'outputs.ClusterNodeTypeConfig']]]]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1140,12 +1140,12 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+        :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict', 'outputs.ClusterAutoscalingSettings']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]] datastore_mount_configs: Optional. Configuration to mount a datastore.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict', 'outputs.ClusterDatastoreMountConfig']]]] datastore_mount_configs: Optional. Configuration to mount a datastore.
                Mount can be done along with cluster create or during cluster update
                Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
                for unmount remove 'datastore_mount_config' config from the update of cluster resource
@@ -1159,7 +1159,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict', 'outputs.ClusterNodeTypeConfig']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The resource name of the private cloud to create a new cluster in.

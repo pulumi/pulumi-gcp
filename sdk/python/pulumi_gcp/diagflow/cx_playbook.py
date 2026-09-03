@@ -437,8 +437,8 @@ class CxPlaybook(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.str]] = None,
-                 instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
-                 llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
+                 instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict', 'outputs.CxPlaybookInstruction']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict', 'outputs.CxPlaybookLlmModelSettings']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
                  referenced_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -614,9 +614,9 @@ class CxPlaybook(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
         :param pulumi.Input[_builtins.str] goal: High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
-        :param pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']] instruction: Instruction to accomplish target goal.
+        :param pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict', 'outputs.CxPlaybookInstruction']] instruction: Instruction to accomplish target goal.
                Structure is documented below.
-        :param pulumi.Input[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']] llm_model_settings: Llm model settings for the playbook.
+        :param pulumi.Input[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict', 'outputs.CxPlaybookLlmModelSettings']] llm_model_settings: Llm model settings for the playbook.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a Playbook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -809,8 +809,8 @@ class CxPlaybook(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.str]] = None,
-                 instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
-                 llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
+                 instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict', 'outputs.CxPlaybookInstruction']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict', 'outputs.CxPlaybookLlmModelSettings']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
                  referenced_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -855,8 +855,8 @@ class CxPlaybook(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             goal: pulumi.Input[Optional[_builtins.str]] = None,
-            instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
-            llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
+            instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict', 'outputs.CxPlaybookInstruction']]] = None,
+            llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict', 'outputs.CxPlaybookLlmModelSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -882,9 +882,9 @@ class CxPlaybook(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
         :param pulumi.Input[_builtins.str] goal: High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
-        :param pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']] instruction: Instruction to accomplish target goal.
+        :param pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict', 'outputs.CxPlaybookInstruction']] instruction: Instruction to accomplish target goal.
                Structure is documented below.
-        :param pulumi.Input[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']] llm_model_settings: Llm model settings for the playbook.
+        :param pulumi.Input[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict', 'outputs.CxPlaybookLlmModelSettings']] llm_model_settings: Llm model settings for the playbook.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the Playbook.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/playbooks/<Playbook ID>.

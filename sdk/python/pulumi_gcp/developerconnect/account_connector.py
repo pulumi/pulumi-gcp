@@ -550,14 +550,14 @@ class AccountConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
+                 custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict', 'outputs.AccountConnectorCustomOauthConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
-                 proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
+                 provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict', 'outputs.AccountConnectorProviderOauthConfig']]] = None,
+                 proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict', 'outputs.AccountConnectorProxyConfig']]] = None,
                  __props__=None):
         """
         Description
@@ -724,7 +724,7 @@ class AccountConnector(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Allows users to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']] custom_oauth_config: Message for a customized OAuth config.
+        :param pulumi.Input[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict', 'outputs.AccountConnectorCustomOauthConfig']] custom_oauth_config: Message for a customized OAuth config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -741,9 +741,9 @@ class AccountConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']] provider_oauth_config: ProviderOAuthConfig is the OAuth config for a provider.
+        :param pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict', 'outputs.AccountConnectorProviderOauthConfig']] provider_oauth_config: ProviderOAuthConfig is the OAuth config for a provider.
                Structure is documented below.
-        :param pulumi.Input[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']] proxy_config: The proxy configuration.
+        :param pulumi.Input[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict', 'outputs.AccountConnectorProxyConfig']] proxy_config: The proxy configuration.
                Structure is documented below.
         """
         ...
@@ -925,14 +925,14 @@ class AccountConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
+                 custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict', 'outputs.AccountConnectorCustomOauthConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
-                 proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
+                 provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict', 'outputs.AccountConnectorProviderOauthConfig']]] = None,
+                 proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict', 'outputs.AccountConnectorProxyConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -978,7 +978,7 @@ class AccountConnector(pulumi.CustomResource):
             account_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
+            custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict', 'outputs.AccountConnectorCustomOauthConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -988,8 +988,8 @@ class AccountConnector(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             oauth_start_uri: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
-            proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
+            provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict', 'outputs.AccountConnectorProviderOauthConfig']]] = None,
+            proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict', 'outputs.AccountConnectorProxyConfig']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountConnector':
         """
@@ -1007,7 +1007,7 @@ class AccountConnector(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the accountConnector was created.
-        :param pulumi.Input[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']] custom_oauth_config: Message for a customized OAuth config.
+        :param pulumi.Input[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict', 'outputs.AccountConnectorCustomOauthConfig']] custom_oauth_config: Message for a customized OAuth config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1029,9 +1029,9 @@ class AccountConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth_start_uri: Start OAuth flow by clicking on this URL.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']] provider_oauth_config: ProviderOAuthConfig is the OAuth config for a provider.
+        :param pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict', 'outputs.AccountConnectorProviderOauthConfig']] provider_oauth_config: ProviderOAuthConfig is the OAuth config for a provider.
                Structure is documented below.
-        :param pulumi.Input[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']] proxy_config: The proxy configuration.
+        :param pulumi.Input[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict', 'outputs.AccountConnectorProxyConfig']] proxy_config: The proxy configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

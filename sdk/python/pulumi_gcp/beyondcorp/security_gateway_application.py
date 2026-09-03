@@ -439,11 +439,11 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
+                 endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict', 'outputs.SecurityGatewayApplicationEndpointMatcher']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 upstreams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]]] = None,
+                 upstreams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict', 'outputs.SecurityGatewayApplicationUpstream']]]]] = None,
                  __props__=None):
         """
         Specifies application endpoint(s) to protect behind a Security Gateway.
@@ -612,7 +612,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
                Cannot exceed 64 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict', 'outputs.SecurityGatewayApplicationEndpointMatcher']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
                A combination of hostname and ports as endpoint matcher is used to match
                the application.
                Match conditions for OR logic.
@@ -629,7 +629,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema: Type of the external application.
                Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict', 'outputs.SecurityGatewayApplicationUpstream']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
                Structure is documented below.
         """
         ...
@@ -809,11 +809,11 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
+                 endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict', 'outputs.SecurityGatewayApplicationEndpointMatcher']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 upstreams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]]] = None,
+                 upstreams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict', 'outputs.SecurityGatewayApplicationUpstream']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -852,13 +852,13 @@ class SecurityGatewayApplication(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
+            endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict', 'outputs.SecurityGatewayApplicationEndpointMatcher']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             schema: pulumi.Input[Optional[_builtins.str]] = None,
             security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            upstreams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]]] = None) -> 'SecurityGatewayApplication':
+            upstreams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict', 'outputs.SecurityGatewayApplicationUpstream']]]]] = None) -> 'SecurityGatewayApplication':
         """
         Get an existing SecurityGatewayApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -879,7 +879,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
                Cannot exceed 64 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict', 'outputs.SecurityGatewayApplicationEndpointMatcher']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
                A combination of hostname and ports as endpoint matcher is used to match
                the application.
                Match conditions for OR logic.
@@ -898,7 +898,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
         :param pulumi.Input[_builtins.str] update_time: Output only. Timestamp when the resource was last modified.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict', 'outputs.SecurityGatewayApplicationUpstream']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -284,10 +284,10 @@ class DomainMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict', 'outputs.DomainMappingMetadata']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict', 'outputs.DomainMappingSpec']]] = None,
                  __props__=None):
         """
         Resource to hold the state and status of a user's domain mapping.
@@ -356,12 +356,12 @@ class DomainMapping(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict']] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict', 'outputs.DomainMappingMetadata']] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']] spec: The spec for this DomainMapping.
+        :param pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict', 'outputs.DomainMappingSpec']] spec: The spec for this DomainMapping.
                Structure is documented below.
         """
         ...
@@ -445,10 +445,10 @@ class DomainMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict', 'outputs.DomainMappingMetadata']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict', 'outputs.DomainMappingSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -481,11 +481,11 @@ class DomainMapping(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            metadata: pulumi.Input[Optional[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict']]] = None,
+            metadata: pulumi.Input[Optional[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict', 'outputs.DomainMappingMetadata']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainMappingStatusArgs', 'DomainMappingStatusArgsDict']]]]] = None) -> 'DomainMapping':
+            spec: pulumi.Input[Optional[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict', 'outputs.DomainMappingSpec']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainMappingStatusArgs', 'DomainMappingStatusArgsDict', 'outputs.DomainMappingStatus']]]]] = None) -> 'DomainMapping':
         """
         Get an existing DomainMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -500,14 +500,14 @@ class DomainMapping(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict']] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict', 'outputs.DomainMappingMetadata']] metadata: Metadata associated with this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']] spec: The spec for this DomainMapping.
+        :param pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict', 'outputs.DomainMappingSpec']] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainMappingStatusArgs', 'DomainMappingStatusArgsDict']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainMappingStatusArgs', 'DomainMappingStatusArgsDict', 'outputs.DomainMappingStatus']]]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

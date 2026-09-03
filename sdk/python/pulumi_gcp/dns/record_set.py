@@ -347,7 +347,7 @@ class RecordSet(pulumi.CustomResource):
                  managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
+                 routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict', 'outputs.RecordSetRoutingPolicy']]] = None,
                  rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,7 +622,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The DNS name this record set will apply to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']] routing_policy: The configuration for steering traffic based on query.
+        :param pulumi.Input[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict', 'outputs.RecordSetRoutingPolicy']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rrdatas: The string data for the records in this record set
@@ -914,7 +914,7 @@ class RecordSet(pulumi.CustomResource):
                  managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
+                 routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict', 'outputs.RecordSetRoutingPolicy']]] = None,
                  rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -955,7 +955,7 @@ class RecordSet(pulumi.CustomResource):
             managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
+            routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict', 'outputs.RecordSetRoutingPolicy']]] = None,
             rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ttl: pulumi.Input[Optional[_builtins.int]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RecordSet':
@@ -977,7 +977,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The DNS name this record set will apply to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']] routing_policy: The configuration for steering traffic based on query.
+        :param pulumi.Input[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict', 'outputs.RecordSetRoutingPolicy']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rrdatas: The string data for the records in this record set

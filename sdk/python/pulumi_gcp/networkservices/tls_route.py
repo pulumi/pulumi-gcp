@@ -428,7 +428,7 @@ class TlsRoute(pulumi.CustomResource):
                  meshes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict', 'outputs.TlsRouteRule']]]]] = None,
                  target_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -696,7 +696,7 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the TlsRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict', 'outputs.TlsRouteRule']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_proxies: TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
                Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
@@ -976,7 +976,7 @@ class TlsRoute(pulumi.CustomResource):
                  meshes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict', 'outputs.TlsRouteRule']]]]] = None,
                  target_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1019,7 +1019,7 @@ class TlsRoute(pulumi.CustomResource):
             meshes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict', 'outputs.TlsRouteRule']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             target_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'TlsRoute':
@@ -1047,7 +1047,7 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the TlsRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict', 'outputs.TlsRouteRule']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_proxies: TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.

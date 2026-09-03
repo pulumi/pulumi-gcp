@@ -489,7 +489,7 @@ class SacAttachment(pulumi.CustomResource):
                  ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  sac_realm: pulumi.Input[Optional[_builtins.str]] = None,
-                 symantec_options: pulumi.Input[Optional[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict']]] = None,
+                 symantec_options: pulumi.Input[Optional[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict', 'outputs.SacAttachmentSymantecOptions']]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -558,7 +558,7 @@ class SacAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] sac_realm: SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
-        :param pulumi.Input[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict']] symantec_options: Configuration required for Symantec attachments.
+        :param pulumi.Input[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict', 'outputs.SacAttachmentSymantecOptions']] symantec_options: Configuration required for Symantec attachments.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
         """
@@ -638,7 +638,7 @@ class SacAttachment(pulumi.CustomResource):
                  ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  sac_realm: pulumi.Input[Optional[_builtins.str]] = None,
-                 symantec_options: pulumi.Input[Optional[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict']]] = None,
+                 symantec_options: pulumi.Input[Optional[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict', 'outputs.SacAttachmentSymantecOptions']]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -694,7 +694,7 @@ class SacAttachment(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             sac_realm: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            symantec_options: pulumi.Input[Optional[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict']]] = None,
+            symantec_options: pulumi.Input[Optional[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict', 'outputs.SacAttachmentSymantecOptions']]] = None,
             time_zone: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SacAttachment':
         """
@@ -726,7 +726,7 @@ class SacAttachment(pulumi.CustomResource):
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] sac_realm: SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
         :param pulumi.Input[_builtins.str] state: State of the attachment.
-        :param pulumi.Input[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict']] symantec_options: Configuration required for Symantec attachments.
+        :param pulumi.Input[Union['SacAttachmentSymantecOptionsArgs', 'SacAttachmentSymantecOptionsArgsDict', 'outputs.SacAttachmentSymantecOptions']] symantec_options: Configuration required for Symantec attachments.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the realm was last updated.

@@ -514,16 +514,16 @@ class Environment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']]] = None,
+                 client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict', 'outputs.EnvironmentClientIpResolutionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict', 'outputs.EnvironmentNodeConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict', 'outputs.EnvironmentProperties']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -593,7 +593,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
-        :param pulumi.Input[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+        :param pulumi.Input[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict', 'outputs.EnvironmentClientIpResolutionConfig']] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -613,11 +613,11 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Display name of the environment.
         :param pulumi.Input[_builtins.str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[_builtins.str] name: The resource ID of the environment.
-        :param pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict', 'outputs.EnvironmentNodeConfig']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']] properties: Key-value pairs that may be used for customizing the environment.
+        :param pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict', 'outputs.EnvironmentProperties']] properties: Key-value pairs that may be used for customizing the environment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
@@ -709,16 +709,16 @@ class Environment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']]] = None,
+                 client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict', 'outputs.EnvironmentClientIpResolutionConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict', 'outputs.EnvironmentNodeConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict', 'outputs.EnvironmentProperties']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -754,16 +754,16 @@ class Environment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
-            client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']]] = None,
+            client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict', 'outputs.EnvironmentClientIpResolutionConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             forward_proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            node_config: pulumi.Input[Optional[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
+            node_config: pulumi.Input[Optional[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict', 'outputs.EnvironmentNodeConfig']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict', 'outputs.EnvironmentProperties']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
@@ -775,7 +775,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
-        :param pulumi.Input[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
+        :param pulumi.Input[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict', 'outputs.EnvironmentClientIpResolutionConfig']] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -795,11 +795,11 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Display name of the environment.
         :param pulumi.Input[_builtins.str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
         :param pulumi.Input[_builtins.str] name: The resource ID of the environment.
-        :param pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
+        :param pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict', 'outputs.EnvironmentNodeConfig']] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']] properties: Key-value pairs that may be used for customizing the environment.
+        :param pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict', 'outputs.EnvironmentProperties']] properties: Key-value pairs that may be used for customizing the environment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation

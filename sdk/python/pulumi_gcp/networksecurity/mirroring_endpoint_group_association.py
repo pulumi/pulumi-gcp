@@ -741,8 +741,8 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationArgs', 'MirroringEndpointGroupAssociationLocationArgsDict']]]]] = None,
-            locations_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationsDetailArgs', 'MirroringEndpointGroupAssociationLocationsDetailArgsDict']]]]] = None,
+            locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationArgs', 'MirroringEndpointGroupAssociationLocationArgsDict', 'outputs.MirroringEndpointGroupAssociationLocation']]]]] = None,
+            locations_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationsDetailArgs', 'MirroringEndpointGroupAssociationLocationsDetailArgsDict', 'outputs.MirroringEndpointGroupAssociationLocationsDetail']]]]] = None,
             mirroring_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
             mirroring_endpoint_group_association_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -772,10 +772,10 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The cloud location of the association, currently restricted to `global`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationArgs', 'MirroringEndpointGroupAssociationLocationArgsDict']]]] locations: The list of locations where the association is configured. This information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationArgs', 'MirroringEndpointGroupAssociationLocationArgsDict', 'outputs.MirroringEndpointGroupAssociationLocation']]]] locations: The list of locations where the association is configured. This information
                is retrieved from the linked endpoint group.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationsDetailArgs', 'MirroringEndpointGroupAssociationLocationsDetailArgsDict']]]] locations_details: (Deprecated)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationsDetailArgs', 'MirroringEndpointGroupAssociationLocationsDetailArgsDict', 'outputs.MirroringEndpointGroupAssociationLocationsDetail']]]] locations_details: (Deprecated)
                The list of locations where the association is present. This information
                is retrieved from the linked endpoint group, and not configured as part
                of the association itself.

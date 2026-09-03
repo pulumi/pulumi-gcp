@@ -1777,40 +1777,40 @@ class RegionBackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 backends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]]] = None,
-                 cdn_policy: pulumi.Input[Optional[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']]] = None,
-                 circuit_breakers: pulumi.Input[Optional[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']]] = None,
+                 backends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict', 'outputs.RegionBackendServiceBackend']]]]] = None,
+                 cdn_policy: pulumi.Input[Optional[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict', 'outputs.RegionBackendServiceCdnPolicy']]] = None,
+                 circuit_breakers: pulumi.Input[Optional[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict', 'outputs.RegionBackendServiceCircuitBreakers']]] = None,
                  connection_draining_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
-                 consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
-                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
+                 connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict', 'outputs.RegionBackendServiceConnectionTrackingPolicy']]] = None,
+                 consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict', 'outputs.RegionBackendServiceConsistentHash']]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict', 'outputs.RegionBackendServiceCustomMetric']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
+                 dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict', 'outputs.RegionBackendServiceDynamicForwarding']]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
-                 failover_policy: pulumi.Input[Optional[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
-                 ha_policy: pulumi.Input[Optional[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict']]] = None,
+                 failover_policy: pulumi.Input[Optional[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict', 'outputs.RegionBackendServiceFailoverPolicy']]] = None,
+                 ha_policy: pulumi.Input[Optional[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict', 'outputs.RegionBackendServiceHaPolicy']]] = None,
                  health_checks: pulumi.Input[Optional[_builtins.str]] = None,
-                 iap: pulumi.Input[Optional[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']]] = None,
+                 iap: pulumi.Input[Optional[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict', 'outputs.RegionBackendServiceIap']]] = None,
                  ip_address_selection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
                  locality_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict', 'outputs.RegionBackendServiceLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_pass_through_lb_traffic_policy: pulumi.Input[Optional[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
-                 outlier_detection: pulumi.Input[Optional[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
-                 params: pulumi.Input[Optional[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']]] = None,
+                 network_pass_through_lb_traffic_policy: pulumi.Input[Optional[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict', 'outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']]] = None,
+                 outlier_detection: pulumi.Input[Optional[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict', 'outputs.RegionBackendServiceOutlierDetection']]] = None,
+                 params: pulumi.Input[Optional[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict', 'outputs.RegionBackendServiceParams']]] = None,
                  port_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
-                 strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
-                 subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
+                 strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']]] = None,
+                 subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']]] = None,
                  timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 tls_settings: pulumi.Input[Optional[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']]] = None,
+                 tls_settings: pulumi.Input[Optional[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict', 'outputs.RegionBackendServiceTlsSettings']]] = None,
                  __props__=None):
         """
         A Region Backend Service defines a regionally-scoped group of virtual
@@ -2389,28 +2389,28 @@ class RegionBackendService(pulumi.CustomResource):
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]] backends: The set of backends that serve this RegionBackendService.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict', 'outputs.RegionBackendServiceBackend']]]] backends: The set of backends that serve this RegionBackendService.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict', 'outputs.RegionBackendServiceCdnPolicy']] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict', 'outputs.RegionBackendServiceCircuitBreakers']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
                and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict', 'outputs.RegionBackendServiceConnectionTrackingPolicy']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict', 'outputs.RegionBackendServiceConsistentHash']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
                destination service. This field specifies parameters that control consistent
                hashing.
                This field only applies when all of the following are true -
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict', 'outputs.RegionBackendServiceCustomMetric']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -2419,14 +2419,14 @@ class RegionBackendService(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
+        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict', 'outputs.RegionBackendServiceDynamicForwarding']] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
-        :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
+        :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict', 'outputs.RegionBackendServiceFailoverPolicy']] failover_policy: Policy for failovers.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict']] ha_policy: Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+        :param pulumi.Input[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict', 'outputs.RegionBackendServiceHaPolicy']] ha_policy: Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
                The backends of this regional backend service must only specify zonal network endpoint groups
                (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
                be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
@@ -2440,7 +2440,7 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy.
+        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict', 'outputs.RegionBackendServiceIap']] iap: Settings for enabling Cloud Identity Aware Proxy.
                If OAuth client is not set, Google-managed OAuth client is used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -2503,7 +2503,7 @@ class RegionBackendService(pulumi.CustomResource):
                  by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                  field set to true.
                  Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
-        :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict', 'outputs.RegionBackendServiceLogConfig']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -2517,13 +2517,13 @@ class RegionBackendService(pulumi.CustomResource):
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict', 'outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict', 'outputs.RegionBackendServiceOutlierDetection']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict', 'outputs.RegionBackendServiceParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
@@ -2545,16 +2545,16 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
-        :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: (Optional, Beta)
+        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']] subsetting: (Optional, Beta)
                Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
                The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
-        :param pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        :param pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict', 'outputs.RegionBackendServiceTlsSettings']] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
                Structure is documented below.
         """
         ...
@@ -3149,40 +3149,40 @@ class RegionBackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 backends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]]] = None,
-                 cdn_policy: pulumi.Input[Optional[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']]] = None,
-                 circuit_breakers: pulumi.Input[Optional[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']]] = None,
+                 backends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict', 'outputs.RegionBackendServiceBackend']]]]] = None,
+                 cdn_policy: pulumi.Input[Optional[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict', 'outputs.RegionBackendServiceCdnPolicy']]] = None,
+                 circuit_breakers: pulumi.Input[Optional[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict', 'outputs.RegionBackendServiceCircuitBreakers']]] = None,
                  connection_draining_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
-                 consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
-                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
+                 connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict', 'outputs.RegionBackendServiceConnectionTrackingPolicy']]] = None,
+                 consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict', 'outputs.RegionBackendServiceConsistentHash']]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict', 'outputs.RegionBackendServiceCustomMetric']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
+                 dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict', 'outputs.RegionBackendServiceDynamicForwarding']]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
-                 failover_policy: pulumi.Input[Optional[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
-                 ha_policy: pulumi.Input[Optional[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict']]] = None,
+                 failover_policy: pulumi.Input[Optional[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict', 'outputs.RegionBackendServiceFailoverPolicy']]] = None,
+                 ha_policy: pulumi.Input[Optional[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict', 'outputs.RegionBackendServiceHaPolicy']]] = None,
                  health_checks: pulumi.Input[Optional[_builtins.str]] = None,
-                 iap: pulumi.Input[Optional[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']]] = None,
+                 iap: pulumi.Input[Optional[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict', 'outputs.RegionBackendServiceIap']]] = None,
                  ip_address_selection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
                  locality_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict', 'outputs.RegionBackendServiceLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_pass_through_lb_traffic_policy: pulumi.Input[Optional[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
-                 outlier_detection: pulumi.Input[Optional[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
-                 params: pulumi.Input[Optional[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']]] = None,
+                 network_pass_through_lb_traffic_policy: pulumi.Input[Optional[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict', 'outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']]] = None,
+                 outlier_detection: pulumi.Input[Optional[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict', 'outputs.RegionBackendServiceOutlierDetection']]] = None,
+                 params: pulumi.Input[Optional[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict', 'outputs.RegionBackendServiceParams']]] = None,
                  port_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
-                 strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
-                 subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
+                 strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']]] = None,
+                 subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']]] = None,
                  timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 tls_settings: pulumi.Input[Optional[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']]] = None,
+                 tls_settings: pulumi.Input[Optional[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict', 'outputs.RegionBackendServiceTlsSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -3242,33 +3242,33 @@ class RegionBackendService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             affinity_cookie_ttl_sec: pulumi.Input[Optional[_builtins.int]] = None,
-            backends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]]] = None,
-            cdn_policy: pulumi.Input[Optional[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']]] = None,
-            circuit_breakers: pulumi.Input[Optional[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']]] = None,
+            backends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict', 'outputs.RegionBackendServiceBackend']]]]] = None,
+            cdn_policy: pulumi.Input[Optional[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict', 'outputs.RegionBackendServiceCdnPolicy']]] = None,
+            circuit_breakers: pulumi.Input[Optional[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict', 'outputs.RegionBackendServiceCircuitBreakers']]] = None,
             connection_draining_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
-            connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
-            consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
+            connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict', 'outputs.RegionBackendServiceConnectionTrackingPolicy']]] = None,
+            consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict', 'outputs.RegionBackendServiceConsistentHash']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
+            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict', 'outputs.RegionBackendServiceCustomMetric']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
+            dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict', 'outputs.RegionBackendServiceDynamicForwarding']]] = None,
             enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
-            failover_policy: pulumi.Input[Optional[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']]] = None,
+            failover_policy: pulumi.Input[Optional[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict', 'outputs.RegionBackendServiceFailoverPolicy']]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             generated_id: pulumi.Input[Optional[_builtins.int]] = None,
-            ha_policy: pulumi.Input[Optional[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict']]] = None,
+            ha_policy: pulumi.Input[Optional[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict', 'outputs.RegionBackendServiceHaPolicy']]] = None,
             health_checks: pulumi.Input[Optional[_builtins.str]] = None,
-            iap: pulumi.Input[Optional[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']]] = None,
+            iap: pulumi.Input[Optional[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict', 'outputs.RegionBackendServiceIap']]] = None,
             ip_address_selection_policy: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
             locality_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            log_config: pulumi.Input[Optional[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']]] = None,
+            log_config: pulumi.Input[Optional[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict', 'outputs.RegionBackendServiceLogConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
-            network_pass_through_lb_traffic_policy: pulumi.Input[Optional[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
-            outlier_detection: pulumi.Input[Optional[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
-            params: pulumi.Input[Optional[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']]] = None,
+            network_pass_through_lb_traffic_policy: pulumi.Input[Optional[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict', 'outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']]] = None,
+            outlier_detection: pulumi.Input[Optional[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict', 'outputs.RegionBackendServiceOutlierDetection']]] = None,
+            params: pulumi.Input[Optional[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict', 'outputs.RegionBackendServiceParams']]] = None,
             port_name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3276,10 +3276,10 @@ class RegionBackendService(pulumi.CustomResource):
             security_policy: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
-            strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
-            subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
+            strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']]] = None,
+            subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']]] = None,
             timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
-            tls_settings: pulumi.Input[Optional[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']]] = None) -> 'RegionBackendService':
+            tls_settings: pulumi.Input[Optional[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict', 'outputs.RegionBackendServiceTlsSettings']]] = None) -> 'RegionBackendService':
         """
         Get an existing RegionBackendService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -3292,21 +3292,21 @@ class RegionBackendService(pulumi.CustomResource):
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict']]]] backends: The set of backends that serve this RegionBackendService.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceBackendArgs', 'RegionBackendServiceBackendArgsDict', 'outputs.RegionBackendServiceBackend']]]] backends: The set of backends that serve this RegionBackendService.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceCdnPolicyArgs', 'RegionBackendServiceCdnPolicyArgsDict', 'outputs.RegionBackendServiceCdnPolicy']] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input[Union['RegionBackendServiceCircuitBreakersArgs', 'RegionBackendServiceCircuitBreakersArgsDict', 'outputs.RegionBackendServiceCircuitBreakers']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
                and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict', 'outputs.RegionBackendServiceConnectionTrackingPolicy']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict', 'outputs.RegionBackendServiceConsistentHash']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -3314,7 +3314,7 @@ class RegionBackendService(pulumi.CustomResource):
                hashing.
                This field only applies when all of the following are true -
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict', 'outputs.RegionBackendServiceCustomMetric']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -3323,17 +3323,17 @@ class RegionBackendService(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
+        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict', 'outputs.RegionBackendServiceDynamicForwarding']] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
-        :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict']] failover_policy: Policy for failovers.
+        :param pulumi.Input[Union['RegionBackendServiceFailoverPolicyArgs', 'RegionBackendServiceFailoverPolicyArgsDict', 'outputs.RegionBackendServiceFailoverPolicy']] failover_policy: Policy for failovers.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
         :param pulumi.Input[_builtins.int] generated_id: The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict']] ha_policy: Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+        :param pulumi.Input[Union['RegionBackendServiceHaPolicyArgs', 'RegionBackendServiceHaPolicyArgsDict', 'outputs.RegionBackendServiceHaPolicy']] ha_policy: Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
                The backends of this regional backend service must only specify zonal network endpoint groups
                (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
                be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
@@ -3347,7 +3347,7 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
-        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy.
+        :param pulumi.Input[Union['RegionBackendServiceIapArgs', 'RegionBackendServiceIapArgsDict', 'outputs.RegionBackendServiceIap']] iap: Settings for enabling Cloud Identity Aware Proxy.
                If OAuth client is not set, Google-managed OAuth client is used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
@@ -3410,7 +3410,7 @@ class RegionBackendService(pulumi.CustomResource):
                  by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
                  field set to true.
                  Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
-        :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input[Union['RegionBackendServiceLogConfigArgs', 'RegionBackendServiceLogConfigArgsDict', 'outputs.RegionBackendServiceLogConfig']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -3424,13 +3424,13 @@ class RegionBackendService(pulumi.CustomResource):
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict', 'outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict', 'outputs.RegionBackendServiceOutlierDetection']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict', 'outputs.RegionBackendServiceParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
@@ -3453,16 +3453,16 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
-        :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: (Optional, Beta)
+        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']] subsetting: (Optional, Beta)
                Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
                The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
-        :param pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        :param pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict', 'outputs.RegionBackendServiceTlsSettings']] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

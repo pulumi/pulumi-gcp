@@ -1257,7 +1257,7 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_update_policy: pulumi.Input[Optional[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']]] = None,
+                 automatic_update_policy: pulumi.Input[Optional[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict', 'outputs.FunctionAutomaticUpdatePolicy']]] = None,
                  available_memory_mb: pulumi.Input[Optional[_builtins.int]] = None,
                  build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1268,7 +1268,7 @@ class Function(pulumi.CustomResource):
                  docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_point: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
                  https_trigger_security_level: pulumi.Input[Optional[_builtins.str]] = None,
                  https_trigger_url: pulumi.Input[Optional[_builtins.str]] = None,
                  ingress_settings: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1277,16 +1277,16 @@ class Function(pulumi.CustomResource):
                  max_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 on_deploy_update_policy: pulumi.Input[Optional[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']]] = None,
+                 on_deploy_update_policy: pulumi.Input[Optional[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict', 'outputs.FunctionOnDeployUpdatePolicy']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
-                 secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict']]]]] = None,
-                 secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict']]]]] = None,
+                 secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict', 'outputs.FunctionSecretEnvironmentVariable']]]]] = None,
+                 secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict', 'outputs.FunctionSecretVolume']]]]] = None,
                  service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  source_archive_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  source_archive_object: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_repository: pulumi.Input[Optional[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict']]] = None,
+                 source_repository: pulumi.Input[Optional[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict', 'outputs.FunctionSourceRepository']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  trigger_http: pulumi.Input[Optional[_builtins.bool]] = None,
                  vpc_connector: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1394,7 +1394,7 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        :param pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict', 'outputs.FunctionAutomaticUpdatePolicy']] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
@@ -1410,7 +1410,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         :param pulumi.Input[_builtins.str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A set of key/value environment variable pairs to assign to the function.
-        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[_builtins.str] https_trigger_security_level: The security level for the function. The following options are available:
                
                * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
@@ -1426,19 +1426,19 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.str] name: A user-defined name of the function. Function names must be unique globally.
-        :param pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        :param pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict', 'outputs.FunctionOnDeployUpdatePolicy']] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
                ***
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict', 'outputs.FunctionSecretEnvironmentVariable']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict', 'outputs.FunctionSecretVolume']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[_builtins.str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[_builtins.str] source_archive_object: The source archive object (file) in archive bucket.
-        :param pulumi.Input[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict']] source_repository: Represents parameters related to source repository where a function is hosted.
+        :param pulumi.Input[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict', 'outputs.FunctionSourceRepository']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[_builtins.int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[_builtins.bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
@@ -1566,7 +1566,7 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_update_policy: pulumi.Input[Optional[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']]] = None,
+                 automatic_update_policy: pulumi.Input[Optional[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict', 'outputs.FunctionAutomaticUpdatePolicy']]] = None,
                  available_memory_mb: pulumi.Input[Optional[_builtins.int]] = None,
                  build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1577,7 +1577,7 @@ class Function(pulumi.CustomResource):
                  docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_point: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
                  https_trigger_security_level: pulumi.Input[Optional[_builtins.str]] = None,
                  https_trigger_url: pulumi.Input[Optional[_builtins.str]] = None,
                  ingress_settings: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1586,16 +1586,16 @@ class Function(pulumi.CustomResource):
                  max_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 on_deploy_update_policy: pulumi.Input[Optional[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']]] = None,
+                 on_deploy_update_policy: pulumi.Input[Optional[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict', 'outputs.FunctionOnDeployUpdatePolicy']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
-                 secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict']]]]] = None,
-                 secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict']]]]] = None,
+                 secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict', 'outputs.FunctionSecretEnvironmentVariable']]]]] = None,
+                 secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict', 'outputs.FunctionSecretVolume']]]]] = None,
                  service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  source_archive_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  source_archive_object: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_repository: pulumi.Input[Optional[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict']]] = None,
+                 source_repository: pulumi.Input[Optional[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict', 'outputs.FunctionSourceRepository']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  trigger_http: pulumi.Input[Optional[_builtins.bool]] = None,
                  vpc_connector: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1661,7 +1661,7 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            automatic_update_policy: pulumi.Input[Optional[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']]] = None,
+            automatic_update_policy: pulumi.Input[Optional[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict', 'outputs.FunctionAutomaticUpdatePolicy']]] = None,
             available_memory_mb: pulumi.Input[Optional[_builtins.int]] = None,
             build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1673,7 +1673,7 @@ class Function(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             entry_point: pulumi.Input[Optional[_builtins.str]] = None,
             environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+            event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']]] = None,
             https_trigger_security_level: pulumi.Input[Optional[_builtins.str]] = None,
             https_trigger_url: pulumi.Input[Optional[_builtins.str]] = None,
             ingress_settings: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1682,17 +1682,17 @@ class Function(pulumi.CustomResource):
             max_instances: pulumi.Input[Optional[_builtins.int]] = None,
             min_instances: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            on_deploy_update_policy: pulumi.Input[Optional[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']]] = None,
+            on_deploy_update_policy: pulumi.Input[Optional[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict', 'outputs.FunctionOnDeployUpdatePolicy']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             runtime: pulumi.Input[Optional[_builtins.str]] = None,
-            secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict']]]]] = None,
-            secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict']]]]] = None,
+            secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict', 'outputs.FunctionSecretEnvironmentVariable']]]]] = None,
+            secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict', 'outputs.FunctionSecretVolume']]]]] = None,
             service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
             source_archive_bucket: pulumi.Input[Optional[_builtins.str]] = None,
             source_archive_object: pulumi.Input[Optional[_builtins.str]] = None,
-            source_repository: pulumi.Input[Optional[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict']]] = None,
+            source_repository: pulumi.Input[Optional[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict', 'outputs.FunctionSourceRepository']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             timeout: pulumi.Input[Optional[_builtins.int]] = None,
             trigger_http: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1706,7 +1706,7 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        :param pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict', 'outputs.FunctionAutomaticUpdatePolicy']] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
@@ -1723,7 +1723,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A set of key/value environment variable pairs to assign to the function.
-        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict', 'outputs.FunctionEventTrigger']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[_builtins.str] https_trigger_security_level: The security level for the function. The following options are available:
                
                * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
@@ -1739,7 +1739,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.str] name: A user-defined name of the function. Function names must be unique globally.
-        :param pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        :param pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict', 'outputs.FunctionOnDeployUpdatePolicy']] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: Region of function. If it is not provided, the provider region is used.
@@ -1747,12 +1747,12 @@ class Function(pulumi.CustomResource):
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
                ***
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict', 'outputs.FunctionSecretEnvironmentVariable']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict', 'outputs.FunctionSecretVolume']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[_builtins.str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[_builtins.str] source_archive_object: The source archive object (file) in archive bucket.
-        :param pulumi.Input[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict']] source_repository: Represents parameters related to source repository where a function is hosted.
+        :param pulumi.Input[Union['FunctionSourceRepositoryArgs', 'FunctionSourceRepositoryArgsDict', 'outputs.FunctionSourceRepository']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[_builtins.str] status: Describes the current stage of a deployment.
         :param pulumi.Input[_builtins.int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.

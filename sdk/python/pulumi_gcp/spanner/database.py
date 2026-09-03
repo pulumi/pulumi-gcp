@@ -531,7 +531,7 @@ class Database(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict', 'outputs.DatabaseEncryptionConfig']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -626,7 +626,7 @@ class Database(pulumi.CustomResource):
                whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
                (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
                "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
+        :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict', 'outputs.DatabaseEncryptionConfig']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] name: A unique identifier for the database, which cannot be changed after the
@@ -725,7 +725,7 @@ class Database(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict', 'outputs.DatabaseEncryptionConfig']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -769,7 +769,7 @@ class Database(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-            encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
+            encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict', 'outputs.DatabaseEncryptionConfig']]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -810,7 +810,7 @@ class Database(pulumi.CustomResource):
                whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
                (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
                "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
-        :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
+        :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict', 'outputs.DatabaseEncryptionConfig']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] name: A unique identifier for the database, which cannot be changed after the

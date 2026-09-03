@@ -246,10 +246,10 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
+                 dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict', 'outputs.PolicyDryRunSpec']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict', 'outputs.PolicySpec']]] = None,
                  __props__=None):
         """
         Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
@@ -431,11 +431,11 @@ class Policy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict', 'outputs.PolicyDryRunSpec']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource.
-        :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
+        :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict', 'outputs.PolicySpec']] spec: Basic information about the Organization Policy.
                Structure is documented below.
         """
         ...
@@ -632,10 +632,10 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
+                 dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict', 'outputs.PolicyDryRunSpec']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict', 'outputs.PolicySpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -664,11 +664,11 @@ class Policy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
+            dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict', 'outputs.PolicyDryRunSpec']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None) -> 'Policy':
+            spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict', 'outputs.PolicySpec']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -682,12 +682,12 @@ class Policy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict', 'outputs.PolicyDryRunSpec']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[_builtins.str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource.
-        :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
+        :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict', 'outputs.PolicySpec']] spec: Basic information about the Organization Policy.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

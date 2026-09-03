@@ -474,13 +474,13 @@ class BitbucketServerConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  config_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 connected_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict']]]]] = None,
+                 connected_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict', 'outputs.BitbucketServerConfigConnectedRepository']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  host_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  peered_network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 secrets: pulumi.Input[Optional[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict']]] = None,
+                 secrets: pulumi.Input[Optional[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict', 'outputs.BitbucketServerConfigSecrets']]] = None,
                  ssl_ca: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -607,7 +607,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[_builtins.str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict', 'outputs.BitbucketServerConfigConnectedRepository']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -624,7 +624,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict']] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict', 'outputs.BitbucketServerConfigSecrets']] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         :param pulumi.Input[_builtins.str] username: Username of the account Cloud Build will use on Bitbucket Server.
@@ -770,13 +770,13 @@ class BitbucketServerConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  config_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 connected_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict']]]]] = None,
+                 connected_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict', 'outputs.BitbucketServerConfigConnectedRepository']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  host_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  peered_network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 secrets: pulumi.Input[Optional[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict']]] = None,
+                 secrets: pulumi.Input[Optional[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict', 'outputs.BitbucketServerConfigSecrets']]] = None,
                  ssl_ca: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -825,14 +825,14 @@ class BitbucketServerConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_key: pulumi.Input[Optional[_builtins.str]] = None,
             config_id: pulumi.Input[Optional[_builtins.str]] = None,
-            connected_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict']]]]] = None,
+            connected_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict', 'outputs.BitbucketServerConfigConnectedRepository']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             host_uri: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             peered_network: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            secrets: pulumi.Input[Optional[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict']]] = None,
+            secrets: pulumi.Input[Optional[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict', 'outputs.BitbucketServerConfigSecrets']]] = None,
             ssl_ca: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None,
             webhook_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'BitbucketServerConfig':
@@ -846,7 +846,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[_builtins.str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BitbucketServerConfigConnectedRepositoryArgs', 'BitbucketServerConfigConnectedRepositoryArgsDict', 'outputs.BitbucketServerConfigConnectedRepository']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -864,7 +864,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict']] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input[Union['BitbucketServerConfigSecretsArgs', 'BitbucketServerConfigSecretsArgsDict', 'outputs.BitbucketServerConfigSecrets']] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         :param pulumi.Input[_builtins.str] username: Username of the account Cloud Build will use on Bitbucket Server.

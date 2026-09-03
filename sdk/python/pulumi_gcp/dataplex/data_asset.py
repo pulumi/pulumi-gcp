@@ -380,7 +380,7 @@ class DataAsset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
+                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict', 'outputs.DataAssetAccessGroupConfig']]]]] = None,
                  data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -519,7 +519,7 @@ class DataAsset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]] access_group_configs: Access groups configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict', 'outputs.DataAssetAccessGroupConfig']]]] access_group_configs: Access groups configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_asset_id: The ID of the data asset.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the parent data product.
@@ -686,7 +686,7 @@ class DataAsset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
+                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict', 'outputs.DataAssetAccessGroupConfig']]]]] = None,
                  data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -734,7 +734,7 @@ class DataAsset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
+            access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict', 'outputs.DataAssetAccessGroupConfig']]]]] = None,
             data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -752,7 +752,7 @@ class DataAsset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]] access_group_configs: Access groups configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict', 'outputs.DataAssetAccessGroupConfig']]]] access_group_configs: Access groups configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_asset_id: The ID of the data asset.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the parent data product.

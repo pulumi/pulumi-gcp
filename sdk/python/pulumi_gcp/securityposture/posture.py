@@ -393,7 +393,7 @@ class Posture(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 policy_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]]] = None,
+                 policy_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict', 'outputs.PosturePolicySet']]]]] = None,
                  posture_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -561,7 +561,7 @@ class Posture(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the posture.
         :param pulumi.Input[_builtins.str] location: Location of the resource, eg: global.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]] policy_sets: List of policy sets for the posture.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict', 'outputs.PosturePolicySet']]]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] posture_id: Id of the posture. It is an immutable field.
         :param pulumi.Input[_builtins.str] state: State of the posture. Update to state field should not be triggered along with
@@ -746,7 +746,7 @@ class Posture(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 policy_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]]] = None,
+                 policy_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict', 'outputs.PosturePolicySet']]]]] = None,
                  posture_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -798,7 +798,7 @@ class Posture(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            policy_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]]] = None,
+            policy_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict', 'outputs.PosturePolicySet']]]]] = None,
             posture_id: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             revision_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -823,7 +823,7 @@ class Posture(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Location of the resource, eg: global.
         :param pulumi.Input[_builtins.str] name: Name of the posture.
         :param pulumi.Input[_builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]] policy_sets: List of policy sets for the posture.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict', 'outputs.PosturePolicySet']]]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] posture_id: Id of the posture. It is an immutable field.
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the posture.

@@ -420,13 +420,13 @@ class Application(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']]] = None,
+                 attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict', 'outputs.ApplicationAttributes']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope: pulumi.Input[Optional[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict', 'outputs.ApplicationScope']]] = None,
                  __props__=None):
         """
         Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
@@ -515,7 +515,7 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Required. The Application identifier.
-        :param pulumi.Input[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict', 'outputs.ApplicationAttributes']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -528,7 +528,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict']] scope: Scope of an application.
+        :param pulumi.Input[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict', 'outputs.ApplicationScope']] scope: Scope of an application.
                Structure is documented below.
         """
         ...
@@ -637,13 +637,13 @@ class Application(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']]] = None,
+                 attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict', 'outputs.ApplicationAttributes']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope: pulumi.Input[Optional[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict', 'outputs.ApplicationScope']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -683,7 +683,7 @@ class Application(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
-            attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']]] = None,
+            attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict', 'outputs.ApplicationAttributes']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -691,7 +691,7 @@ class Application(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            scope: pulumi.Input[Optional[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict']]] = None,
+            scope: pulumi.Input[Optional[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict', 'outputs.ApplicationScope']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Application':
@@ -703,7 +703,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Required. The Application identifier.
-        :param pulumi.Input[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict', 'outputs.ApplicationAttributes']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -719,7 +719,7 @@ class Application(pulumi.CustomResource):
                "projects/{host-project-id}/locations/{location}/applications/{application-id}"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict']] scope: Scope of an application.
+        :param pulumi.Input[Union['ApplicationScopeArgs', 'ApplicationScopeArgsDict', 'outputs.ApplicationScope']] scope: Scope of an application.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. Application state.
                Possible values:

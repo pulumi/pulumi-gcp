@@ -643,7 +643,7 @@ class RolloutKind(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
+                 error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict', 'outputs.RolloutKindErrorBudget']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -719,7 +719,7 @@ class RolloutKind(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']] error_budget: The configuration for error budget. If the number of failed units exceeds
+        :param pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict', 'outputs.RolloutKindErrorBudget']] error_budget: The configuration for error budget. If the number of failed units exceeds
                max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
@@ -824,7 +824,7 @@ class RolloutKind(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
+                 error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict', 'outputs.RolloutKindErrorBudget']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -883,7 +883,7 @@ class RolloutKind(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
+            error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict', 'outputs.RolloutKindErrorBudget']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -918,7 +918,7 @@ class RolloutKind(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']] error_budget: The configuration for error budget. If the number of failed units exceeds
+        :param pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict', 'outputs.RolloutKindErrorBudget']] error_budget: The configuration for error budget. If the number of failed units exceeds
                max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.

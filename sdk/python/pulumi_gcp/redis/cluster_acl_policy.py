@@ -311,7 +311,7 @@ class ClusterAclPolicy(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict', 'outputs.ClusterAclPolicyRule']]]]] = None,
                  __props__=None):
         """
         A Google Cloud Redis Cluster ACL policy.
@@ -351,7 +351,7 @@ class ClusterAclPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict']]]] rules: The ACL rules within the ACL policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict', 'outputs.ClusterAclPolicyRule']]]] rules: The ACL rules within the ACL policy.
                Structure is documented below.
         """
         ...
@@ -399,7 +399,7 @@ class ClusterAclPolicy(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict', 'outputs.ClusterAclPolicyRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -439,7 +439,7 @@ class ClusterAclPolicy(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict', 'outputs.ClusterAclPolicyRule']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClusterAclPolicy':
         """
         Get an existing ClusterAclPolicy resource's state with the given name, id, and optional extra
@@ -466,7 +466,7 @@ class ClusterAclPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. Full resource path of the ACL policy.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict']]]] rules: The ACL rules within the ACL policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAclPolicyRuleArgs', 'ClusterAclPolicyRuleArgsDict', 'outputs.ClusterAclPolicyRule']]]] rules: The ACL rules within the ACL policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The state of the ACL policy.
                Possible values:

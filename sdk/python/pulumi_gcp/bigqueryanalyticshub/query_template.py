@@ -511,7 +511,7 @@ class QueryTemplate(pulumi.CustomResource):
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routine: pulumi.Input[Optional[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict']]] = None,
+                 routine: pulumi.Input[Optional[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict', 'outputs.QueryTemplateRoutine']]] = None,
                  submit: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -596,7 +596,7 @@ class QueryTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] query_template_id: Unique QueryTemplate ID.
-        :param pulumi.Input[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict']] routine: The routine associated with the QueryTemplate.
+        :param pulumi.Input[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict', 'outputs.QueryTemplateRoutine']] routine: The routine associated with the QueryTemplate.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] submit: If set to `true`, the QueryTemplate will be submitted for approval and cannot be updated afterwards. This is a one-time action.
         """
@@ -690,7 +690,7 @@ class QueryTemplate(pulumi.CustomResource):
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routine: pulumi.Input[Optional[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict']]] = None,
+                 routine: pulumi.Input[Optional[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict', 'outputs.QueryTemplateRoutine']]] = None,
                  submit: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -745,7 +745,7 @@ class QueryTemplate(pulumi.CustomResource):
             primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             query_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-            routine: pulumi.Input[Optional[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict']]] = None,
+            routine: pulumi.Input[Optional[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict', 'outputs.QueryTemplateRoutine']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             submit: pulumi.Input[Optional[_builtins.bool]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'QueryTemplate':
@@ -778,7 +778,7 @@ class QueryTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] query_template_id: Unique QueryTemplate ID.
-        :param pulumi.Input[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict']] routine: The routine associated with the QueryTemplate.
+        :param pulumi.Input[Union['QueryTemplateRoutineArgs', 'QueryTemplateRoutineArgsDict', 'outputs.QueryTemplateRoutine']] routine: The routine associated with the QueryTemplate.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The QueryTemplate lifecycle state.
         :param pulumi.Input[_builtins.bool] submit: If set to `true`, the QueryTemplate will be submitted for approval and cannot be updated afterwards. This is a one-time action.

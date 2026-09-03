@@ -600,8 +600,8 @@ class BackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
-                 backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
+                 backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict', 'outputs.BackupPlanBackupConfig']]] = None,
+                 backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict', 'outputs.BackupPlanBackupSchedule']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -610,7 +610,7 @@ class BackupPlan(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
+                 retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict', 'outputs.BackupPlanRetentionPolicy']]] = None,
                  __props__=None):
         """
         Represents a Backup Plan instance.
@@ -1029,9 +1029,9 @@ class BackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict', 'outputs.BackupPlanBackupConfig']] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict', 'outputs.BackupPlanBackupSchedule']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[_builtins.bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
@@ -1055,7 +1055,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict', 'outputs.BackupPlanRetentionPolicy']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         """
         ...
@@ -1494,8 +1494,8 @@ class BackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
-                 backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
+                 backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict', 'outputs.BackupPlanBackupConfig']]] = None,
+                 backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict', 'outputs.BackupPlanBackupSchedule']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1504,7 +1504,7 @@ class BackupPlan(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
+                 retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict', 'outputs.BackupPlanRetentionPolicy']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1549,8 +1549,8 @@ class BackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
-            backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
+            backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict', 'outputs.BackupPlanBackupConfig']]] = None,
+            backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict', 'outputs.BackupPlanBackupSchedule']]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
             deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1564,7 +1564,7 @@ class BackupPlan(pulumi.CustomResource):
             protected_namespace_count: pulumi.Input[Optional[_builtins.int]] = None,
             protected_pod_count: pulumi.Input[Optional[_builtins.int]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
+            retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict', 'outputs.BackupPlanRetentionPolicy']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_reason: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupPlan':
@@ -1575,9 +1575,9 @@ class BackupPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict', 'outputs.BackupPlanBackupConfig']] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
-        :param pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict', 'outputs.BackupPlanBackupSchedule']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[_builtins.bool] deactivated: This flag indicates whether this BackupPlan has been deactivated.
@@ -1612,7 +1612,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict', 'outputs.BackupPlanRetentionPolicy']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The State of the BackupPlan.
         :param pulumi.Input[_builtins.str] state_reason: Detailed description of why BackupPlan is in its current state.

@@ -275,7 +275,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                  document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project_number: pulumi.Input[Optional[_builtins.str]] = None,
-                 property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
+                 property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict', 'outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinition']]]]] = None,
                  __props__=None):
         """
         A document schema is used to define document structure.
@@ -344,7 +344,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict', 'outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinition']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         ...
@@ -428,7 +428,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                  document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project_number: pulumi.Input[Optional[_builtins.str]] = None,
-                 property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
+                 property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict', 'outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinition']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -469,7 +469,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_number: pulumi.Input[Optional[_builtins.str]] = None,
-            property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
+            property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict', 'outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinition']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
         """
         Get an existing DocumentAiWarehouseDocumentSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -488,7 +488,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the document schema.
         :param pulumi.Input[_builtins.str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict', 'outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinition']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

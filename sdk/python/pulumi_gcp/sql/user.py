@@ -559,7 +559,7 @@ class User(pulumi.CustomResource):
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
-                 password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
+                 password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict', 'outputs.UserPasswordPolicy']]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -906,7 +906,7 @@ class User(pulumi.CustomResource):
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
-                 password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
+                 password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict', 'outputs.UserPasswordPolicy']]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -954,11 +954,11 @@ class User(pulumi.CustomResource):
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
-            password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
+            password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict', 'outputs.UserPasswordPolicy']]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            sql_server_user_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict']]]]] = None,
+            sql_server_user_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict', 'outputs.UserSqlServerUserDetail']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra

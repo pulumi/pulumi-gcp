@@ -535,14 +535,14 @@ class Zone(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
+                 discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict', 'outputs.ZoneDiscoverySpec']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lake: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_spec: pulumi.Input[Optional[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict', 'outputs.ZoneResourceSpec']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -607,7 +607,7 @@ class Zone(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
-        :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
+        :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict', 'outputs.ZoneDiscoverySpec']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone.
                
@@ -617,7 +617,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the zone.
         :param pulumi.Input[_builtins.str] project: The project for the resource
-        :param pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
+        :param pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict', 'outputs.ZoneResourceSpec']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input[_builtins.str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
         """
         ...
@@ -696,14 +696,14 @@ class Zone(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
+                 discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict', 'outputs.ZoneDiscoverySpec']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lake: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_spec: pulumi.Input[Optional[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict', 'outputs.ZoneResourceSpec']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -754,11 +754,11 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            asset_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict']]]]] = None,
+            asset_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict', 'outputs.ZoneAssetStatus']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
+            discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict', 'outputs.ZoneDiscoverySpec']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -767,7 +767,7 @@ class Zone(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_spec: pulumi.Input[Optional[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']]] = None,
+            resource_spec: pulumi.Input[Optional[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict', 'outputs.ZoneResourceSpec']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -779,7 +779,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict']]]] asset_statuses: Output only. Aggregated status of the underlying assets of the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict', 'outputs.ZoneAssetStatus']]]] asset_statuses: Output only. Aggregated status of the underlying assets of the zone.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the zone was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -788,7 +788,7 @@ class Zone(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
-        :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
+        :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict', 'outputs.ZoneDiscoverySpec']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone.
@@ -800,7 +800,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the zone.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
+        :param pulumi.Input[Union['ZoneResourceSpecArgs', 'ZoneResourceSpecArgsDict', 'outputs.ZoneResourceSpec']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input[_builtins.str] state: Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param pulumi.Input[_builtins.str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
         :param pulumi.Input[_builtins.str] uid: Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.

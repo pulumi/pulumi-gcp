@@ -538,7 +538,7 @@ class BackendBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
+                 cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict', 'outputs.BackendBucketCdnPolicy']]] = None,
                  compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -547,7 +547,7 @@ class BackendBucket(pulumi.CustomResource):
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict', 'outputs.BackendBucketParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -663,7 +663,7 @@ class BackendBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: Cloud Storage bucket name.
-        :param pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
+        :param pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict', 'outputs.BackendBucketCdnPolicy']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
@@ -690,7 +690,7 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-        :param pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict', 'outputs.BackendBucketParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -827,7 +827,7 @@ class BackendBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
+                 cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict', 'outputs.BackendBucketCdnPolicy']]] = None,
                  compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -836,7 +836,7 @@ class BackendBucket(pulumi.CustomResource):
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict', 'outputs.BackendBucketParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -874,7 +874,7 @@ class BackendBucket(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-            cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
+            cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict', 'outputs.BackendBucketCdnPolicy']]] = None,
             compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -884,7 +884,7 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
             load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict', 'outputs.BackendBucketParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackendBucket':
         """
@@ -895,7 +895,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: Cloud Storage bucket name.
-        :param pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
+        :param pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict', 'outputs.BackendBucketCdnPolicy']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
@@ -923,7 +923,7 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-        :param pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict', 'outputs.BackendBucketParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

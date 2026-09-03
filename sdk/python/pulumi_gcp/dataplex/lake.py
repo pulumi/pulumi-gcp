@@ -486,7 +486,7 @@ class Lake(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metastore: pulumi.Input[Optional[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']]] = None,
+                 metastore: pulumi.Input[Optional[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict', 'outputs.LakeMetastore']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -543,7 +543,7 @@ class Lake(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
+        :param pulumi.Input[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict', 'outputs.LakeMetastore']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         :param pulumi.Input[_builtins.str] name: The name of the lake.
                
                ***
@@ -613,7 +613,7 @@ class Lake(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metastore: pulumi.Input[Optional[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']]] = None,
+                 metastore: pulumi.Input[Optional[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict', 'outputs.LakeMetastore']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -656,7 +656,7 @@ class Lake(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            asset_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAssetStatusArgs', 'LakeAssetStatusArgsDict']]]]] = None,
+            asset_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAssetStatusArgs', 'LakeAssetStatusArgsDict', 'outputs.LakeAssetStatus']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -664,8 +664,8 @@ class Lake(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            metastore: pulumi.Input[Optional[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']]] = None,
-            metastore_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeMetastoreStatusArgs', 'LakeMetastoreStatusArgsDict']]]]] = None,
+            metastore: pulumi.Input[Optional[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict', 'outputs.LakeMetastore']]] = None,
+            metastore_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeMetastoreStatusArgs', 'LakeMetastoreStatusArgsDict', 'outputs.LakeMetastoreStatus']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -680,7 +680,7 @@ class Lake(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAssetStatusArgs', 'LakeAssetStatusArgsDict']]]] asset_statuses: Output only. Aggregated status of the underlying assets of the lake.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAssetStatusArgs', 'LakeAssetStatusArgsDict', 'outputs.LakeAssetStatus']]]] asset_statuses: Output only. Aggregated status of the underlying assets of the lake.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the lake was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -696,8 +696,8 @@ class Lake(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeMetastoreStatusArgs', 'LakeMetastoreStatusArgsDict']]]] metastore_statuses: Output only. Metastore status of the lake.
+        :param pulumi.Input[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict', 'outputs.LakeMetastore']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeMetastoreStatusArgs', 'LakeMetastoreStatusArgsDict', 'outputs.LakeMetastoreStatus']]]] metastore_statuses: Output only. Metastore status of the lake.
         :param pulumi.Input[_builtins.str] name: The name of the lake.
                
                ***

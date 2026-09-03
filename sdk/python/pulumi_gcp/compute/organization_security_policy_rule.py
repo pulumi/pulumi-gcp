@@ -611,13 +611,13 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
-                 header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
-                 match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
+                 header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict', 'outputs.OrganizationSecurityPolicyRuleHeaderAction']]] = None,
+                 match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict', 'outputs.OrganizationSecurityPolicyRuleMatch']]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig']]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+                 redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.OrganizationSecurityPolicyRuleRedirectOptions']]] = None,
                  target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -846,19 +846,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
                This field may only be specified when the versionedExpr is set to FIREWALL.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict', 'outputs.OrganizationSecurityPolicyRuleHeaderAction']] header_action: Optional, additional actions that are performed on headers.
                Structure is documented below.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict', 'outputs.OrganizationSecurityPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.OrganizationSecurityPolicyRuleRedirectOptions']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
                Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: (Optional, Beta)
@@ -1098,13 +1098,13 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
-                 header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
-                 match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
+                 header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict', 'outputs.OrganizationSecurityPolicyRuleHeaderAction']]] = None,
+                 match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict', 'outputs.OrganizationSecurityPolicyRuleMatch']]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig']]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+                 redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.OrganizationSecurityPolicyRuleRedirectOptions']]] = None,
                  target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -1153,13 +1153,13 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             direction: pulumi.Input[Optional[_builtins.str]] = None,
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
-            header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
-            match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
+            header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict', 'outputs.OrganizationSecurityPolicyRuleHeaderAction']]] = None,
+            match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict', 'outputs.OrganizationSecurityPolicyRuleMatch']]] = None,
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+            preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig']]] = None,
             preview: pulumi.Input[Optional[_builtins.bool]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
-            redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+            redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.OrganizationSecurityPolicyRuleRedirectOptions']]] = None,
             target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OrganizationSecurityPolicyRule':
         """
@@ -1190,19 +1190,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
                This field may only be specified when the versionedExpr is set to FIREWALL.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict', 'outputs.OrganizationSecurityPolicyRuleHeaderAction']] header_action: Optional, additional actions that are performed on headers.
                Structure is documented below.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict', 'outputs.OrganizationSecurityPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.OrganizationSecurityPolicyRuleRedirectOptions']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
                Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: (Optional, Beta)

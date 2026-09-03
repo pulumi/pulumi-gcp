@@ -451,14 +451,14 @@ class Runtime(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
+                 access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict', 'outputs.RuntimeAccessConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
-                 virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None,
+                 software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict', 'outputs.RuntimeSoftwareConfig']]] = None,
+                 virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict', 'outputs.RuntimeVirtualMachine']]] = None,
                  __props__=None):
         """
         > **Warning:** `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
@@ -654,7 +654,7 @@ class Runtime(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict', 'outputs.RuntimeAccessConfig']] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -674,9 +674,9 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']] software_config: The config settings for software inside the runtime.
+        :param pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict', 'outputs.RuntimeSoftwareConfig']] software_config: The config settings for software inside the runtime.
                Structure is documented below.
-        :param pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
+        :param pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict', 'outputs.RuntimeVirtualMachine']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
         ...
@@ -892,14 +892,14 @@ class Runtime(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
+                 access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict', 'outputs.RuntimeAccessConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
-                 virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None,
+                 software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict', 'outputs.RuntimeSoftwareConfig']]] = None,
+                 virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict', 'outputs.RuntimeVirtualMachine']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -936,19 +936,19 @@ class Runtime(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
+            access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict', 'outputs.RuntimeAccessConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             health_state: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict']]]]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict', 'outputs.RuntimeMetric']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
+            software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict', 'outputs.RuntimeSoftwareConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None) -> 'Runtime':
+            virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict', 'outputs.RuntimeVirtualMachine']]] = None) -> 'Runtime':
         """
         Get an existing Runtime resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -956,7 +956,7 @@ class Runtime(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict', 'outputs.RuntimeAccessConfig']] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -977,7 +977,7 @@ class Runtime(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: A reference to the zone where the machine resides.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict', 'outputs.RuntimeMetric']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name specified for the Notebook runtime.
@@ -985,10 +985,10 @@ class Runtime(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']] software_config: The config settings for software inside the runtime.
+        :param pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict', 'outputs.RuntimeSoftwareConfig']] software_config: The config settings for software inside the runtime.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The state of this runtime.
-        :param pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
+        :param pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict', 'outputs.RuntimeVirtualMachine']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

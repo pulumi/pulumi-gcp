@@ -471,14 +471,14 @@ class PacketMirroring(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+                 collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict', 'outputs.PacketMirroringCollectorIlb']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
-                 mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict', 'outputs.PacketMirroringFilter']]] = None,
+                 mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict', 'outputs.PacketMirroringMirroredResources']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict', 'outputs.PacketMirroringNetwork']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -587,7 +587,7 @@ class PacketMirroring(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        :param pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict', 'outputs.PacketMirroringCollectorIlb']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
                set to true.
@@ -602,12 +602,12 @@ class PacketMirroring(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
                policy will not be enforced on the network. The default is TRUE.
                Possible values are: `TRUE`, `FALSE`.
-        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict', 'outputs.PacketMirroringFilter']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
                Structure is documented below.
-        :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
+        :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict', 'outputs.PacketMirroringMirroredResources']] mirrored_resources: A means of specifying which resources to mirror.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the packet mirroring rule
-        :param pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']] network: Specifies the mirrored VPC network. Only packets in this network
+        :param pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict', 'outputs.PacketMirroringNetwork']] network: Specifies the mirrored VPC network. Only packets in this network
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
@@ -742,14 +742,14 @@ class PacketMirroring(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+                 collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict', 'outputs.PacketMirroringCollectorIlb']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
-                 mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict', 'outputs.PacketMirroringFilter']]] = None,
+                 mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict', 'outputs.PacketMirroringMirroredResources']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict', 'outputs.PacketMirroringNetwork']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -789,14 +789,14 @@ class PacketMirroring(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+            collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict', 'outputs.PacketMirroringCollectorIlb']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enable: pulumi.Input[Optional[_builtins.str]] = None,
-            filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
-            mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
+            filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict', 'outputs.PacketMirroringFilter']]] = None,
+            mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict', 'outputs.PacketMirroringMirroredResources']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
+            network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict', 'outputs.PacketMirroringNetwork']]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'PacketMirroring':
@@ -807,7 +807,7 @@ class PacketMirroring(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        :param pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict', 'outputs.PacketMirroringCollectorIlb']] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
                set to true.
@@ -822,12 +822,12 @@ class PacketMirroring(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
                policy will not be enforced on the network. The default is TRUE.
                Possible values are: `TRUE`, `FALSE`.
-        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict', 'outputs.PacketMirroringFilter']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
                Structure is documented below.
-        :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
+        :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict', 'outputs.PacketMirroringMirroredResources']] mirrored_resources: A means of specifying which resources to mirror.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the packet mirroring rule
-        :param pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']] network: Specifies the mirrored VPC network. Only packets in this network
+        :param pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict', 'outputs.PacketMirroringNetwork']] network: Specifies the mirrored VPC network. Only packets in this network
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.

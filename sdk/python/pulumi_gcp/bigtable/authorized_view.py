@@ -305,7 +305,7 @@ class AuthorizedView(pulumi.CustomResource):
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
+                 subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict', 'outputs.AuthorizedViewSubsetView']]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -405,7 +405,7 @@ class AuthorizedView(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
+        :param pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict', 'outputs.AuthorizedViewSubsetView']] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
         """
         ...
@@ -515,7 +515,7 @@ class AuthorizedView(pulumi.CustomResource):
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
+                 subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict', 'outputs.AuthorizedViewSubsetView']]] = None,
                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -552,7 +552,7 @@ class AuthorizedView(pulumi.CustomResource):
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
+            subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict', 'outputs.AuthorizedViewSubsetView']]] = None,
             table_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthorizedView':
         """
         Get an existing AuthorizedView resource's state with the given name, id, and optional extra
@@ -575,7 +575,7 @@ class AuthorizedView(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
+        :param pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict', 'outputs.AuthorizedViewSubsetView']] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

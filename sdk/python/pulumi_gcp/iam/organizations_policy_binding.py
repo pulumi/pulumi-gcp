@@ -606,7 +606,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict', 'outputs.OrganizationsPolicyBindingCondition']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -614,7 +614,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict', 'outputs.OrganizationsPolicyBindingTarget']]] = None,
                  __props__=None):
         """
         A policy binding to an organization. This is a Terraform resource, and maps to a policy binding resource in GCP.
@@ -675,7 +675,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']] condition: Represents a textual expression in the Common Expression Language
+        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict', 'outputs.OrganizationsPolicyBindingCondition']] condition: Represents a textual expression in the Common Expression Language
                (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
                CEL are documented at https://github.com/google/cel-spec.
                Example (Comparison):
@@ -713,7 +713,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This
                field must be one of the following:  - Left empty (will be automatically set
                to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
-        :param pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        :param pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict', 'outputs.OrganizationsPolicyBindingTarget']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
                Structure is documented below.
         """
         ...
@@ -791,7 +791,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict', 'outputs.OrganizationsPolicyBindingCondition']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -799,7 +799,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict', 'outputs.OrganizationsPolicyBindingTarget']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -847,7 +847,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict', 'outputs.OrganizationsPolicyBindingCondition']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -860,7 +860,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
             policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
             policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
             policy_uid: pulumi.Input[Optional[_builtins.str]] = None,
-            target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
+            target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict', 'outputs.OrganizationsPolicyBindingTarget']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationsPolicyBinding':
         """
@@ -874,7 +874,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']] condition: Represents a textual expression in the Common Expression Language
+        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict', 'outputs.OrganizationsPolicyBindingCondition']] condition: Represents a textual expression in the Common Expression Language
                (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
                CEL are documented at https://github.com/google/cel-spec.
                Example (Comparison):
@@ -917,7 +917,7 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                field must be one of the following:  - Left empty (will be automatically set
                to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         :param pulumi.Input[_builtins.str] policy_uid: Output only. The globally unique ID of the policy to be bound.
-        :param pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        :param pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict', 'outputs.OrganizationsPolicyBindingTarget']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the policy binding was most recently updated.

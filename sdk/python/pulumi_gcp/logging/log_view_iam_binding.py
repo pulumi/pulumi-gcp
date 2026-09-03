@@ -343,7 +343,7 @@ class LogViewIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict', 'outputs.LogViewIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -641,7 +641,7 @@ class LogViewIamBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The bucket of the resource Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict', 'outputs.LogViewIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -974,7 +974,7 @@ class LogViewIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict', 'outputs.LogViewIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1016,7 +1016,7 @@ class LogViewIamBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict', 'outputs.LogViewIamBindingCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1031,7 +1031,7 @@ class LogViewIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The bucket of the resource Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['LogViewIamBindingConditionArgs', 'LogViewIamBindingConditionArgsDict', 'outputs.LogViewIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1. Used to find the parent resource to bind the IAM policy to. If not specified,

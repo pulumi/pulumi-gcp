@@ -495,7 +495,7 @@ class CertificateMap(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gclb_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateMapGclbTargetArgs', 'CertificateMapGclbTargetArgsDict']]]]] = None,
+            gclb_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateMapGclbTargetArgs', 'CertificateMapGclbTargetArgsDict', 'outputs.CertificateMapGclbTarget']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -519,7 +519,7 @@ class CertificateMap(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateMapGclbTargetArgs', 'CertificateMapGclbTargetArgsDict']]]] gclb_targets: A list of target proxies that use this Certificate Map
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateMapGclbTargetArgs', 'CertificateMapGclbTargetArgsDict', 'outputs.CertificateMapGclbTarget']]]] gclb_targets: A list of target proxies that use this Certificate Map
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with a Certificate Map resource.
                

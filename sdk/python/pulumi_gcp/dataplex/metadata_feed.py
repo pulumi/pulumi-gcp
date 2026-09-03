@@ -434,13 +434,13 @@ class MetadataFeed(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 filters: pulumi.Input[Optional[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict', 'outputs.MetadataFeedFilters']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata_feed_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope: pulumi.Input[Optional[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict', 'outputs.MetadataFeedScope']]] = None,
                  __props__=None):
         """
         A Dataplex Metadata Feed monitors Dataplex metadata entries in a specified scope and publishes notifications of changes to a Cloud Pub/Sub topic.
@@ -548,7 +548,7 @@ class MetadataFeed(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict']] filters: Filters defines the type of changes that you want to listen to. You can have multiple entry type filters and multiple aspect type filters. All of the entry type filters are OR'ed together. All of the aspect type filters are OR'ed together. All of the entry type filters and aspect type filters are AND'ed together.
+        :param pulumi.Input[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict', 'outputs.MetadataFeedFilters']] filters: Filters defines the type of changes that you want to listen to. You can have multiple entry type filters and multiple aspect type filters. All of the entry type filters are OR'ed together. All of the aspect type filters are OR'ed together. All of the entry type filters and aspect type filters are AND'ed together.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -558,7 +558,7 @@ class MetadataFeed(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] pubsub_topic: The pubsub topic that you want the metadata feed messages to publish to. Please grant Dataplex service account the permission to publish messages to the topic. The service account is: service-{PROJECT_NUMBER}@gcp-sa-dataplex.iam.gserviceaccount.com.
-        :param pulumi.Input[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict']] scope: Scope defines the scope of the metadata feed. Scopes are exclusive. Only one of the scopes can be specified.
+        :param pulumi.Input[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict', 'outputs.MetadataFeedScope']] scope: Scope defines the scope of the metadata feed. Scopes are exclusive. Only one of the scopes can be specified.
                Structure is documented below.
         """
         ...
@@ -681,13 +681,13 @@ class MetadataFeed(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 filters: pulumi.Input[Optional[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict', 'outputs.MetadataFeedFilters']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata_feed_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope: pulumi.Input[Optional[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict', 'outputs.MetadataFeedScope']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -732,7 +732,7 @@ class MetadataFeed(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            filters: pulumi.Input[Optional[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict']]] = None,
+            filters: pulumi.Input[Optional[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict', 'outputs.MetadataFeedFilters']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             metadata_feed_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -740,7 +740,7 @@ class MetadataFeed(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            scope: pulumi.Input[Optional[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict']]] = None,
+            scope: pulumi.Input[Optional[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict', 'outputs.MetadataFeedScope']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetadataFeed':
         """
@@ -758,7 +758,7 @@ class MetadataFeed(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict']] filters: Filters defines the type of changes that you want to listen to. You can have multiple entry type filters and multiple aspect type filters. All of the entry type filters are OR'ed together. All of the aspect type filters are OR'ed together. All of the entry type filters and aspect type filters are AND'ed together.
+        :param pulumi.Input[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict', 'outputs.MetadataFeedFilters']] filters: Filters defines the type of changes that you want to listen to. You can have multiple entry type filters and multiple aspect type filters. All of the entry type filters are OR'ed together. All of the aspect type filters are OR'ed together. All of the entry type filters and aspect type filters are AND'ed together.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -771,7 +771,7 @@ class MetadataFeed(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pubsub_topic: The pubsub topic that you want the metadata feed messages to publish to. Please grant Dataplex service account the permission to publish messages to the topic. The service account is: service-{PROJECT_NUMBER}@gcp-sa-dataplex.iam.gserviceaccount.com.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict']] scope: Scope defines the scope of the metadata feed. Scopes are exclusive. Only one of the scopes can be specified.
+        :param pulumi.Input[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict', 'outputs.MetadataFeedScope']] scope: Scope defines the scope of the metadata feed. Scopes are exclusive. Only one of the scopes can be specified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: A system-generated, globally unique ID for the metadata job. If the metadata job is deleted and then re-created with the same name, this ID is different.
         :param pulumi.Input[_builtins.str] update_time: The time when the feed was updated.

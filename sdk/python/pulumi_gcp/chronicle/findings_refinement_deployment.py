@@ -320,7 +320,7 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 detection_exclusion_application: pulumi.Input[Optional[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict']]] = None,
+                 detection_exclusion_application: pulumi.Input[Optional[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict', 'outputs.FindingsRefinementDeploymentDetectionExclusionApplication']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  findings_refinement: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -388,7 +388,7 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] archived: The archive state of the findings refinement deployment.
                Cannot be set to true unless enabled is set to false.
                If currently set to true, enabled cannot be updated to true.
-        :param pulumi.Input[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict']] detection_exclusion_application: Describes the detectors a detection exclusion is applied to.
+        :param pulumi.Input[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict', 'outputs.FindingsRefinementDeploymentDetectionExclusionApplication']] detection_exclusion_application: Describes the detectors a detection exclusion is applied to.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enabled: Whether the findings refinement is currently deployed continuously against
                incoming findings.
@@ -476,7 +476,7 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 detection_exclusion_application: pulumi.Input[Optional[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict']]] = None,
+                 detection_exclusion_application: pulumi.Input[Optional[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict', 'outputs.FindingsRefinementDeploymentDetectionExclusionApplication']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  findings_refinement: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -517,7 +517,7 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             archived: pulumi.Input[Optional[_builtins.bool]] = None,
-            detection_exclusion_application: pulumi.Input[Optional[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict']]] = None,
+            detection_exclusion_application: pulumi.Input[Optional[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict', 'outputs.FindingsRefinementDeploymentDetectionExclusionApplication']]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             findings_refinement: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -535,7 +535,7 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] archived: The archive state of the findings refinement deployment.
                Cannot be set to true unless enabled is set to false.
                If currently set to true, enabled cannot be updated to true.
-        :param pulumi.Input[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict']] detection_exclusion_application: Describes the detectors a detection exclusion is applied to.
+        :param pulumi.Input[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict', 'outputs.FindingsRefinementDeploymentDetectionExclusionApplication']] detection_exclusion_application: Describes the detectors a detection exclusion is applied to.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enabled: Whether the findings refinement is currently deployed continuously against
                incoming findings.

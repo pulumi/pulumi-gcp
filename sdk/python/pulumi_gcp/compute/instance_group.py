@@ -402,7 +402,7 @@ class InstanceGroup(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict', 'outputs.InstanceGroupNamedPort']]]]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -486,7 +486,7 @@ class InstanceGroup(pulumi.CustomResource):
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict', 'outputs.InstanceGroupNamedPort']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[_builtins.str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
@@ -586,7 +586,7 @@ class InstanceGroup(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict', 'outputs.InstanceGroupNamedPort']]]]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -623,7 +623,7 @@ class InstanceGroup(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]]] = None,
+            named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict', 'outputs.InstanceGroupNamedPort']]]]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
@@ -650,7 +650,7 @@ class InstanceGroup(pulumi.CustomResource):
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict', 'outputs.InstanceGroupNamedPort']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[_builtins.str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation

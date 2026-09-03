@@ -1144,20 +1144,20 @@ class RouterNat(pulumi.CustomResource):
                  endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict', 'outputs.RouterNatLogConfig']]] = None,
                  max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
+                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict', 'outputs.RouterNatNat64Subnetwork']]]]] = None,
                  nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
                  nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict', 'outputs.RouterNatRule']]]]] = None,
                  source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
                  source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
-                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
+                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict', 'outputs.RouterNatSubnetwork']]]]] = None,
                  tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1362,14 +1362,14 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] initial_nat_ips: Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
                Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
-        :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']] log_config: Configuration for logging on NAT
+        :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict', 'outputs.RouterNatLogConfig']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[_builtins.int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
         :param pulumi.Input[_builtins.int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         :param pulumi.Input[_builtins.str] name: Name of the NAT service. The name must be 1-63 characters long and
                comply with RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]] nat64_subnetworks: One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict', 'outputs.RouterNatNat64Subnetwork']]]] nat64_subnetworks: One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
                Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[_builtins.str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
@@ -1385,7 +1385,7 @@ class RouterNat(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router and NAT reside.
         :param pulumi.Input[_builtins.str] router: The name of the Cloud Router in which this NAT will be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]] rules: A list of rules associated with this NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict', 'outputs.RouterNatRule']]]] rules: A list of rules associated with this NAT.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -1404,7 +1404,7 @@ class RouterNat(pulumi.CustomResource):
                Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
                Other Router.Nat sections can still be present to enable NAT44 only.
                Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict', 'outputs.RouterNatSubnetwork']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[_builtins.int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
@@ -1619,20 +1619,20 @@ class RouterNat(pulumi.CustomResource):
                  endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict', 'outputs.RouterNatLogConfig']]] = None,
                  max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
+                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict', 'outputs.RouterNatNat64Subnetwork']]]]] = None,
                  nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
                  nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict', 'outputs.RouterNatRule']]]]] = None,
                  source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
                  source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
-                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
+                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict', 'outputs.RouterNatSubnetwork']]]]] = None,
                  tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1696,20 +1696,20 @@ class RouterNat(pulumi.CustomResource):
             endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
             initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
+            log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict', 'outputs.RouterNatLogConfig']]] = None,
             max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
             min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
+            nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict', 'outputs.RouterNatNat64Subnetwork']]]]] = None,
             nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
             nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             router: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict', 'outputs.RouterNatRule']]]]] = None,
             source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
             source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
-            subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
+            subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict', 'outputs.RouterNatSubnetwork']]]]] = None,
             tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
             tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
             tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1749,14 +1749,14 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] initial_nat_ips: Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
                Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
-        :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']] log_config: Configuration for logging on NAT
+        :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict', 'outputs.RouterNatLogConfig']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[_builtins.int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
         :param pulumi.Input[_builtins.int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         :param pulumi.Input[_builtins.str] name: Name of the NAT service. The name must be 1-63 characters long and
                comply with RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]] nat64_subnetworks: One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict', 'outputs.RouterNatNat64Subnetwork']]]] nat64_subnetworks: One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
                Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[_builtins.str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
@@ -1772,7 +1772,7 @@ class RouterNat(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router and NAT reside.
         :param pulumi.Input[_builtins.str] router: The name of the Cloud Router in which this NAT will be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]] rules: A list of rules associated with this NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict', 'outputs.RouterNatRule']]]] rules: A list of rules associated with this NAT.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -1791,7 +1791,7 @@ class RouterNat(pulumi.CustomResource):
                Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.
                Other Router.Nat sections can still be present to enable NAT44 only.
                Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict', 'outputs.RouterNatSubnetwork']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[_builtins.int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.

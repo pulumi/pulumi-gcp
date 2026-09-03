@@ -471,7 +471,7 @@ class Workload(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
+                 attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict', 'outputs.WorkloadAttributes']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovered_workload: pulumi.Input[Optional[_builtins.str]] = None,
@@ -505,7 +505,7 @@ class Workload(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict', 'outputs.WorkloadAttributes']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -565,7 +565,7 @@ class Workload(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
+                 attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict', 'outputs.WorkloadAttributes']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovered_workload: pulumi.Input[Optional[_builtins.str]] = None,
@@ -617,7 +617,7 @@ class Workload(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
-            attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
+            attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict', 'outputs.WorkloadAttributes']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -630,8 +630,8 @@ class Workload(pulumi.CustomResource):
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             workload_id: pulumi.Input[Optional[_builtins.str]] = None,
-            workload_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict']]]]] = None,
-            workload_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict']]]]] = None) -> 'Workload':
+            workload_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict', 'outputs.WorkloadWorkloadProperty']]]]] = None,
+            workload_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict', 'outputs.WorkloadWorkloadReference']]]]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -640,7 +640,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict', 'outputs.WorkloadAttributes']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -660,9 +660,9 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] uid: Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
         :param pulumi.Input[_builtins.str] update_time: Output only. Update time.
         :param pulumi.Input[_builtins.str] workload_id: The Workload identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict']]]] workload_properties: Properties of an underlying compute resource represented by the Workload.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict', 'outputs.WorkloadWorkloadProperty']]]] workload_properties: Properties of an underlying compute resource represented by the Workload.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict']]]] workload_references: Reference of an underlying compute resource represented by the Workload.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict', 'outputs.WorkloadWorkloadReference']]]] workload_references: Reference of an underlying compute resource represented by the Workload.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

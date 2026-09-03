@@ -407,8 +407,8 @@ class AssessmentRule(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
-                 schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
+                 sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict', 'outputs.AssessmentRuleSampleRule']]] = None,
+                 schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict', 'outputs.AssessmentRuleScheduleInfo']]] = None,
                  __props__=None):
         """
         The CCAI Insights project wide assessment rule. This assessment rule will be
@@ -460,9 +460,9 @@ class AssessmentRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Location of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']] sample_rule: Message for sampling conversations.
+        :param pulumi.Input[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict', 'outputs.AssessmentRuleSampleRule']] sample_rule: Message for sampling conversations.
                Structure is documented below.
-        :param pulumi.Input[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']] schedule_info: Message for schedule info.
+        :param pulumi.Input[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict', 'outputs.AssessmentRuleScheduleInfo']] schedule_info: Message for schedule info.
                Structure is documented below.
         """
         ...
@@ -523,8 +523,8 @@ class AssessmentRule(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
-                 schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
+                 sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict', 'outputs.AssessmentRuleSampleRule']]] = None,
+                 schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict', 'outputs.AssessmentRuleScheduleInfo']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -565,8 +565,8 @@ class AssessmentRule(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
-            schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
+            sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict', 'outputs.AssessmentRuleSampleRule']]] = None,
+            schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict', 'outputs.AssessmentRuleScheduleInfo']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AssessmentRule':
         """
         Get an existing AssessmentRule resource's state with the given name, id, and optional extra
@@ -596,9 +596,9 @@ class AssessmentRule(pulumi.CustomResource):
                projects/{project}/locations/{location}/assessmentRules/{assessment_rule}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']] sample_rule: Message for sampling conversations.
+        :param pulumi.Input[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict', 'outputs.AssessmentRuleSampleRule']] sample_rule: Message for sampling conversations.
                Structure is documented below.
-        :param pulumi.Input[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']] schedule_info: Message for schedule info.
+        :param pulumi.Input[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict', 'outputs.AssessmentRuleScheduleInfo']] schedule_info: Message for schedule info.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The most recent time at which this assessment rule was updated.
         """

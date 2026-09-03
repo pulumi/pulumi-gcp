@@ -365,11 +365,11 @@ class CxGenerator(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_model_settings: pulumi.Input[Optional[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict']]] = None,
-                 model_parameter: pulumi.Input[Optional[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict', 'outputs.CxGeneratorLlmModelSettings']]] = None,
+                 model_parameter: pulumi.Input[Optional[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict', 'outputs.CxGeneratorModelParameter']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 placeholders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict']]]]] = None,
-                 prompt_text: pulumi.Input[Optional[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict']]] = None,
+                 placeholders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict', 'outputs.CxGeneratorPlaceholder']]]]] = None,
+                 prompt_text: pulumi.Input[Optional[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict', 'outputs.CxGeneratorPromptText']]] = None,
                  __props__=None):
         """
         Generators contain prompt to be sent to the LLM model to generate text. The prompt can contain parameters which will be resolved before calling the model. It can optionally contain banned phrases to ensure the model responses are safe.
@@ -442,15 +442,15 @@ class CxGenerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] language_code: The language to create generators for the following fields:
                * Generator.prompt_text.text
                  If not specified, the agent's default language is used.
-        :param pulumi.Input[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict']] llm_model_settings: The LLM model settings.
+        :param pulumi.Input[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict', 'outputs.CxGeneratorLlmModelSettings']] llm_model_settings: The LLM model settings.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict']] model_parameter: Parameters passed to the LLM to configure its behavior.
+        :param pulumi.Input[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict', 'outputs.CxGeneratorModelParameter']] model_parameter: Parameters passed to the LLM to configure its behavior.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a Generator for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict']]]] placeholders: List of custom placeholders in the prompt text.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict', 'outputs.CxGeneratorPlaceholder']]]] placeholders: List of custom placeholders in the prompt text.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict']] prompt_text: Prompt for the LLM model.
+        :param pulumi.Input[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict', 'outputs.CxGeneratorPromptText']] prompt_text: Prompt for the LLM model.
                Structure is documented below.
         """
         ...
@@ -536,11 +536,11 @@ class CxGenerator(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_model_settings: pulumi.Input[Optional[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict']]] = None,
-                 model_parameter: pulumi.Input[Optional[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict', 'outputs.CxGeneratorLlmModelSettings']]] = None,
+                 model_parameter: pulumi.Input[Optional[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict', 'outputs.CxGeneratorModelParameter']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 placeholders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict']]]]] = None,
-                 prompt_text: pulumi.Input[Optional[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict']]] = None,
+                 placeholders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict', 'outputs.CxGeneratorPlaceholder']]]]] = None,
+                 prompt_text: pulumi.Input[Optional[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict', 'outputs.CxGeneratorPromptText']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -576,12 +576,12 @@ class CxGenerator(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             language_code: pulumi.Input[Optional[_builtins.str]] = None,
-            llm_model_settings: pulumi.Input[Optional[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict']]] = None,
-            model_parameter: pulumi.Input[Optional[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict']]] = None,
+            llm_model_settings: pulumi.Input[Optional[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict', 'outputs.CxGeneratorLlmModelSettings']]] = None,
+            model_parameter: pulumi.Input[Optional[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict', 'outputs.CxGeneratorModelParameter']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            placeholders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict']]]]] = None,
-            prompt_text: pulumi.Input[Optional[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict']]] = None) -> 'CxGenerator':
+            placeholders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict', 'outputs.CxGeneratorPlaceholder']]]]] = None,
+            prompt_text: pulumi.Input[Optional[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict', 'outputs.CxGeneratorPromptText']]] = None) -> 'CxGenerator':
         """
         Get an existing CxGenerator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -599,17 +599,17 @@ class CxGenerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] language_code: The language to create generators for the following fields:
                * Generator.prompt_text.text
                  If not specified, the agent's default language is used.
-        :param pulumi.Input[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict']] llm_model_settings: The LLM model settings.
+        :param pulumi.Input[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict', 'outputs.CxGeneratorLlmModelSettings']] llm_model_settings: The LLM model settings.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict']] model_parameter: Parameters passed to the LLM to configure its behavior.
+        :param pulumi.Input[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict', 'outputs.CxGeneratorModelParameter']] model_parameter: Parameters passed to the LLM to configure its behavior.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the Generator.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/generators/<Generator ID>.
         :param pulumi.Input[_builtins.str] parent: The agent to create a Generator for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict']]]] placeholders: List of custom placeholders in the prompt text.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxGeneratorPlaceholderArgs', 'CxGeneratorPlaceholderArgsDict', 'outputs.CxGeneratorPlaceholder']]]] placeholders: List of custom placeholders in the prompt text.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict']] prompt_text: Prompt for the LLM model.
+        :param pulumi.Input[Union['CxGeneratorPromptTextArgs', 'CxGeneratorPromptTextArgsDict', 'outputs.CxGeneratorPromptText']] prompt_text: Prompt for the LLM model.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

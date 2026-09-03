@@ -359,7 +359,7 @@ class AppConnector(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 principal_info: pulumi.Input[Optional[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']]] = None,
+                 principal_info: pulumi.Input[Optional[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict', 'outputs.AppConnectorPrincipalInfo']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -410,7 +410,7 @@ class AppConnector(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: ID of the AppConnector.
-        :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict', 'outputs.AppConnectorPrincipalInfo']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -474,7 +474,7 @@ class AppConnector(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 principal_info: pulumi.Input[Optional[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']]] = None,
+                 principal_info: pulumi.Input[Optional[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict', 'outputs.AppConnectorPrincipalInfo']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -515,7 +515,7 @@ class AppConnector(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            principal_info: pulumi.Input[Optional[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']]] = None,
+            principal_info: pulumi.Input[Optional[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict', 'outputs.AppConnectorPrincipalInfo']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -540,7 +540,7 @@ class AppConnector(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: ID of the AppConnector.
-        :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict', 'outputs.AppConnectorPrincipalInfo']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

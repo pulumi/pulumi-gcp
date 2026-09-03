@@ -385,7 +385,7 @@ class RepositoryGroup(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]]] = None,
+                 repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict', 'outputs.RepositoryGroupRepository']]]]] = None,
                  repository_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -448,7 +448,7 @@ class RepositoryGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the Code Repository Index, for example `us-central1`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict', 'outputs.RepositoryGroupRepository']]]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_group_id: Required. Id of the Repository Group.
         """
@@ -523,7 +523,7 @@ class RepositoryGroup(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]]] = None,
+                 repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict', 'outputs.RepositoryGroupRepository']]]]] = None,
                  repository_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -575,7 +575,7 @@ class RepositoryGroup(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]]] = None,
+            repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict', 'outputs.RepositoryGroupRepository']]]]] = None,
             repository_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'RepositoryGroup':
         """
@@ -603,7 +603,7 @@ class RepositoryGroup(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict', 'outputs.RepositoryGroupRepository']]]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_group_id: Required. Id of the Repository Group.
         :param pulumi.Input[_builtins.str] update_time: Output only. Update time stamp.

@@ -466,7 +466,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict', 'outputs.HttpRouteRule']]]]] = None,
                  __props__=None):
         """
         HttpRoute is the resource defining how HTTP traffic should be routed by a Mesh or Gateway resource.
@@ -752,7 +752,7 @@ class HttpRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the HttpRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict', 'outputs.HttpRouteRule']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
         ...
@@ -1047,7 +1047,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict', 'outputs.HttpRouteRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1098,7 +1098,7 @@ class HttpRoute(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict', 'outputs.HttpRouteRule']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'HttpRoute':
         """
@@ -1131,7 +1131,7 @@ class HttpRoute(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict', 'outputs.HttpRouteRule']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] update_time: Time the HttpRoute was updated in UTC.

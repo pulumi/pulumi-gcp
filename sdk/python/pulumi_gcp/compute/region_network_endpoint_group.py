@@ -625,19 +625,19 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']]] = None,
-                 cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']]] = None,
-                 cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']]] = None,
+                 app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict', 'outputs.RegionNetworkEndpointGroupAppEngine']]] = None,
+                 cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict', 'outputs.RegionNetworkEndpointGroupCloudFunction']]] = None,
+                 cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict', 'outputs.RegionNetworkEndpointGroupCloudRun']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_data: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']]] = None,
+                 psc_data: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict', 'outputs.RegionNetworkEndpointGroupPscData']]] = None,
                  psc_target_service: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 serverless_deployment: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']]] = None,
+                 serverless_deployment: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict', 'outputs.RegionNetworkEndpointGroupServerlessDeployment']]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -935,13 +935,13 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']] app_engine: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict', 'outputs.RegionNetworkEndpointGroupAppEngine']] app_engine: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']] cloud_function: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict', 'outputs.RegionNetworkEndpointGroupCloudFunction']] cloud_function: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']] cloud_run: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict', 'outputs.RegionNetworkEndpointGroupCloudRun']] cloud_run: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -967,13 +967,13 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']] psc_data: This field is only used for PSC NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict', 'outputs.RegionNetworkEndpointGroupPscData']] psc_data: This field is only used for PSC NEGs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional NEGs reside.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: (Optional, Beta)
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict', 'outputs.RegionNetworkEndpointGroupServerlessDeployment']] serverless_deployment: (Optional, Beta)
                This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
@@ -1294,19 +1294,19 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']]] = None,
-                 cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']]] = None,
-                 cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']]] = None,
+                 app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict', 'outputs.RegionNetworkEndpointGroupAppEngine']]] = None,
+                 cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict', 'outputs.RegionNetworkEndpointGroupCloudFunction']]] = None,
+                 cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict', 'outputs.RegionNetworkEndpointGroupCloudRun']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_data: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']]] = None,
+                 psc_data: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict', 'outputs.RegionNetworkEndpointGroupPscData']]] = None,
                  psc_target_service: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 serverless_deployment: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']]] = None,
+                 serverless_deployment: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict', 'outputs.RegionNetworkEndpointGroupServerlessDeployment']]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1344,20 +1344,20 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']]] = None,
-            cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']]] = None,
-            cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']]] = None,
+            app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict', 'outputs.RegionNetworkEndpointGroupAppEngine']]] = None,
+            cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict', 'outputs.RegionNetworkEndpointGroupCloudFunction']]] = None,
+            cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict', 'outputs.RegionNetworkEndpointGroupCloudRun']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
             network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            psc_data: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']]] = None,
+            psc_data: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict', 'outputs.RegionNetworkEndpointGroupPscData']]] = None,
             psc_target_service: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            serverless_deployment: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']]] = None,
+            serverless_deployment: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict', 'outputs.RegionNetworkEndpointGroupServerlessDeployment']]] = None,
             subnetwork: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionNetworkEndpointGroup':
         """
         Get an existing RegionNetworkEndpointGroup resource's state with the given name, id, and optional extra
@@ -1366,13 +1366,13 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']] app_engine: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict', 'outputs.RegionNetworkEndpointGroupAppEngine']] app_engine: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']] cloud_function: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict', 'outputs.RegionNetworkEndpointGroupCloudFunction']] cloud_function: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']] cloud_run: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict', 'outputs.RegionNetworkEndpointGroupCloudRun']] cloud_run: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1398,14 +1398,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']] psc_data: This field is only used for PSC NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict', 'outputs.RegionNetworkEndpointGroupPscData']] psc_data: This field is only used for PSC NEGs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional NEGs reside.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: (Optional, Beta)
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict', 'outputs.RegionNetworkEndpointGroupServerlessDeployment']] serverless_deployment: (Optional, Beta)
                This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.

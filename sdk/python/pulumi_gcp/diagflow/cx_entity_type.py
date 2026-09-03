@@ -461,8 +461,8 @@ class CxEntityType(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
-                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
-                 excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict', 'outputs.CxEntityTypeEntity']]]]] = None,
+                 excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict', 'outputs.CxEntityTypeExcludedPhrase']]]]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -555,9 +555,9 @@ class CxEntityType(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict', 'outputs.CxEntityTypeEntity']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict', 'outputs.CxEntityTypeExcludedPhrase']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kind: Indicates whether the entity type can be automatically expanded.
@@ -672,8 +672,8 @@ class CxEntityType(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
-                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
-                 excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict', 'outputs.CxEntityTypeEntity']]]]] = None,
+                 excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict', 'outputs.CxEntityTypeExcludedPhrase']]]]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -718,8 +718,8 @@ class CxEntityType(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
-            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
-            excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict', 'outputs.CxEntityTypeEntity']]]]] = None,
+            excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict', 'outputs.CxEntityTypeExcludedPhrase']]]]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             language_code: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -744,9 +744,9 @@ class CxEntityType(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict', 'outputs.CxEntityTypeEntity']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict', 'outputs.CxEntityTypeExcludedPhrase']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kind: Indicates whether the entity type can be automatically expanded.

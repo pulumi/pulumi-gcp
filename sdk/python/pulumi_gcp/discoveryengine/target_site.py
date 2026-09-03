@@ -704,7 +704,7 @@ class TargetSite(pulumi.CustomResource):
             data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             exact_match: pulumi.Input[Optional[_builtins.bool]] = None,
-            failure_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetSiteFailureReasonArgs', 'TargetSiteFailureReasonArgsDict']]]]] = None,
+            failure_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetSiteFailureReasonArgs', 'TargetSiteFailureReasonArgsDict', 'outputs.TargetSiteFailureReason']]]]] = None,
             generated_uri_pattern: pulumi.Input[Optional[_builtins.str]] = None,
             indexing_status: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -712,7 +712,7 @@ class TargetSite(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             provided_uri_pattern: pulumi.Input[Optional[_builtins.str]] = None,
             root_domain_uri: pulumi.Input[Optional[_builtins.str]] = None,
-            site_verification_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetSiteSiteVerificationInfoArgs', 'TargetSiteSiteVerificationInfoArgsDict']]]]] = None,
+            site_verification_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetSiteSiteVerificationInfoArgs', 'TargetSiteSiteVerificationInfoArgsDict', 'outputs.TargetSiteSiteVerificationInfo']]]]] = None,
             target_site_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'TargetSite':
@@ -736,7 +736,7 @@ class TargetSite(pulumi.CustomResource):
                just the specific page if the provided_uri_pattern is a specific one.
                provided_uri_pattern is always normalized to generate the URI pattern to
                be used by the search engine.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetSiteFailureReasonArgs', 'TargetSiteFailureReasonArgsDict']]]] failure_reasons: Site search indexing failure reasons.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetSiteFailureReasonArgs', 'TargetSiteFailureReasonArgsDict', 'outputs.TargetSiteFailureReason']]]] failure_reasons: Site search indexing failure reasons.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] generated_uri_pattern: This is system-generated based on the `provided_uri_pattern`.
         :param pulumi.Input[_builtins.str] indexing_status: The indexing status.
@@ -751,7 +751,7 @@ class TargetSite(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] provided_uri_pattern: The user provided URI pattern from which the `generated_uri_pattern` is
                generated.
         :param pulumi.Input[_builtins.str] root_domain_uri: Root domain of the `provided_uri_pattern`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetSiteSiteVerificationInfoArgs', 'TargetSiteSiteVerificationInfoArgsDict']]]] site_verification_infos: Site ownership and validity verification status.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetSiteSiteVerificationInfoArgs', 'TargetSiteSiteVerificationInfoArgsDict', 'outputs.TargetSiteSiteVerificationInfo']]]] site_verification_infos: Site ownership and validity verification status.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] target_site_id: The unique id of the target site.
         :param pulumi.Input[_builtins.str] type: The possible target site types.

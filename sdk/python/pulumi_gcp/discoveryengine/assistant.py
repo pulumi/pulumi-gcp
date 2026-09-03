@@ -461,12 +461,12 @@ class Assistant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict']]] = None,
+                 customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 generation_config: pulumi.Input[Optional[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict']]] = None,
+                 generation_config: pulumi.Input[Optional[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict', 'outputs.AssistantGenerationConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -545,7 +545,7 @@ class Assistant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assistant_id: The unique id of the assistant.
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
-        :param pulumi.Input[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict']] customer_policy: Customer policy for the assistant.
+        :param pulumi.Input[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']] customer_policy: Customer policy for the assistant.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -558,7 +558,7 @@ class Assistant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The assistant display name.
                It must be a UTF-8 encoded string with a length limit of 128 characters.
         :param pulumi.Input[_builtins.str] engine_id: The unique id of the engine.
-        :param pulumi.Input[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict']] generation_config: Configuration for the generation of the assistant response.
+        :param pulumi.Input[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict', 'outputs.AssistantGenerationConfig']] generation_config: Configuration for the generation of the assistant response.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -660,12 +660,12 @@ class Assistant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict']]] = None,
+                 customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 generation_config: pulumi.Input[Optional[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict']]] = None,
+                 generation_config: pulumi.Input[Optional[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict', 'outputs.AssistantGenerationConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -712,12 +712,12 @@ class Assistant(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-            customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict']]] = None,
+            customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-            generation_config: pulumi.Input[Optional[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict']]] = None,
+            generation_config: pulumi.Input[Optional[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict', 'outputs.AssistantGenerationConfig']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -731,7 +731,7 @@ class Assistant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assistant_id: The unique id of the assistant.
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
-        :param pulumi.Input[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict']] customer_policy: Customer policy for the assistant.
+        :param pulumi.Input[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']] customer_policy: Customer policy for the assistant.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -744,7 +744,7 @@ class Assistant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The assistant display name.
                It must be a UTF-8 encoded string with a length limit of 128 characters.
         :param pulumi.Input[_builtins.str] engine_id: The unique id of the engine.
-        :param pulumi.Input[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict']] generation_config: Configuration for the generation of the assistant response.
+        :param pulumi.Input[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict', 'outputs.AssistantGenerationConfig']] generation_config: Configuration for the generation of the assistant response.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".

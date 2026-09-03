@@ -239,7 +239,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
+                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict', 'outputs.NetworkEndpointListNetworkEndpoint']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -355,7 +355,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict', 'outputs.NetworkEndpointListNetworkEndpoint']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
                Structure is documented below.
@@ -489,7 +489,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
+                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict', 'outputs.NetworkEndpointListNetworkEndpoint']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -520,7 +520,7 @@ class NetworkEndpointList(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
-            network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
+            network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict', 'outputs.NetworkEndpointListNetworkEndpoint']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkEndpointList':
         """
@@ -537,7 +537,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict', 'outputs.NetworkEndpointListNetworkEndpoint']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
                Structure is documented below.

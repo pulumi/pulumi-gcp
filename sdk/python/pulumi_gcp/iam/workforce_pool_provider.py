@@ -914,12 +914,12 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  detailed_audit_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 extended_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
-                 extra_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']]] = None,
+                 extended_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']]] = None,
+                 extra_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtraAttributesOauth2Client']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc: pulumi.Input[Optional[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
+                 oidc: pulumi.Input[Optional[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict', 'outputs.WorkforcePoolProviderOidc']]] = None,
                  provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml: pulumi.Input[Optional[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']]] = None,
+                 saml: pulumi.Input[Optional[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict', 'outputs.WorkforcePoolProviderSaml']]] = None,
                  scim_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1445,7 +1445,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
-        :param pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']] extended_attributes_oauth2_client: (Optional, Deprecated)
+        :param pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']] extended_attributes_oauth2_client: (Optional, Deprecated)
                The configuration for OAuth 2.0 client used to get the extended group
                memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
                type is supported. Extended groups supports a subset of Google Cloud
@@ -1459,18 +1459,18 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                Structure is documented below.
                
                > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
-        :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
+        :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtraAttributesOauth2Client']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
                supported with SAML and OIDC protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
-        :param pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']] oidc: Represents an OpenId Connect 1.0 identity provider.
+        :param pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict', 'outputs.WorkforcePoolProviderOidc']] oidc: Represents an OpenId Connect 1.0 identity provider.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] provider_id: The ID for the provider, which becomes the final component of the resource name.
                This value must be 4-32 characters, and may contain the characters [a-z0-9-].
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
-        :param pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']] saml: Represents a SAML identity provider.
+        :param pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict', 'outputs.WorkforcePoolProviderSaml']] saml: Represents a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scim_usage: Agentspace only. Specifies whether the workforce identity pool
                provider uses SCIM-managed groups instead of the `google.groups`
@@ -1977,12 +1977,12 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  detailed_audit_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 extended_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
-                 extra_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']]] = None,
+                 extended_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']]] = None,
+                 extra_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtraAttributesOauth2Client']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc: pulumi.Input[Optional[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
+                 oidc: pulumi.Input[Optional[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict', 'outputs.WorkforcePoolProviderOidc']]] = None,
                  provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml: pulumi.Input[Optional[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']]] = None,
+                 saml: pulumi.Input[Optional[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict', 'outputs.WorkforcePoolProviderSaml']]] = None,
                  scim_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -2034,13 +2034,13 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             detailed_audit_logging: pulumi.Input[Optional[_builtins.bool]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            extended_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
-            extra_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']]] = None,
+            extended_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']]] = None,
+            extra_attributes_oauth2_client: pulumi.Input[Optional[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtraAttributesOauth2Client']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oidc: pulumi.Input[Optional[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
+            oidc: pulumi.Input[Optional[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict', 'outputs.WorkforcePoolProviderOidc']]] = None,
             provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-            saml: pulumi.Input[Optional[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']]] = None,
+            saml: pulumi.Input[Optional[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict', 'outputs.WorkforcePoolProviderSaml']]] = None,
             scim_usage: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkforcePoolProvider':
@@ -2109,7 +2109,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
-        :param pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']] extended_attributes_oauth2_client: (Optional, Deprecated)
+        :param pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']] extended_attributes_oauth2_client: (Optional, Deprecated)
                The configuration for OAuth 2.0 client used to get the extended group
                memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
                type is supported. Extended groups supports a subset of Google Cloud
@@ -2123,7 +2123,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                Structure is documented below.
                
                > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
-        :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
+        :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict', 'outputs.WorkforcePoolProviderExtraAttributesOauth2Client']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
                supported with SAML and OIDC protocol.
@@ -2131,12 +2131,12 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] name: Output only. The resource name of the provider.
                Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
-        :param pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']] oidc: Represents an OpenId Connect 1.0 identity provider.
+        :param pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict', 'outputs.WorkforcePoolProviderOidc']] oidc: Represents an OpenId Connect 1.0 identity provider.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] provider_id: The ID for the provider, which becomes the final component of the resource name.
                This value must be 4-32 characters, and may contain the characters [a-z0-9-].
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
-        :param pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']] saml: Represents a SAML identity provider.
+        :param pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict', 'outputs.WorkforcePoolProviderSaml']] saml: Represents a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scim_usage: Agentspace only. Specifies whether the workforce identity pool
                provider uses SCIM-managed groups instead of the `google.groups`

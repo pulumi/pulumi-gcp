@@ -411,11 +411,11 @@ class PreventionJobTrigger(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 inspect_job: pulumi.Input[Optional[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict']]] = None,
+                 inspect_job: pulumi.Input[Optional[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict', 'outputs.PreventionJobTriggerInspectJob']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict']]]]] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict', 'outputs.PreventionJobTriggerTrigger']]]]] = None,
                  __props__=None):
         """
         A job trigger configuration.
@@ -1000,7 +1000,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the job trigger.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the job trigger.
-        :param pulumi.Input[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict']] inspect_job: Controls what and how to inspect for findings.
+        :param pulumi.Input[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict', 'outputs.PreventionJobTriggerInspectJob']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
@@ -1010,7 +1010,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+.
                The maximum length is 100 characters. Can be empty to allow the system to generate one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict']]]] triggers: What event needs to occur for a new job to be started.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict', 'outputs.PreventionJobTriggerTrigger']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
         ...
@@ -1610,11 +1610,11 @@ class PreventionJobTrigger(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 inspect_job: pulumi.Input[Optional[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict']]] = None,
+                 inspect_job: pulumi.Input[Optional[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict', 'outputs.PreventionJobTriggerInspectJob']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict']]]]] = None,
+                 triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict', 'outputs.PreventionJobTriggerTrigger']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1654,13 +1654,13 @@ class PreventionJobTrigger(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            inspect_job: pulumi.Input[Optional[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict']]] = None,
+            inspect_job: pulumi.Input[Optional[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict', 'outputs.PreventionJobTriggerInspectJob']]] = None,
             last_run_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
-            triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict']]]]] = None,
+            triggers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict', 'outputs.PreventionJobTriggerTrigger']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PreventionJobTrigger':
         """
         Get an existing PreventionJobTrigger resource's state with the given name, id, and optional extra
@@ -1678,7 +1678,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the job trigger.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the job trigger.
-        :param pulumi.Input[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict']] inspect_job: Controls what and how to inspect for findings.
+        :param pulumi.Input[Union['PreventionJobTriggerInspectJobArgs', 'PreventionJobTriggerInspectJobArgsDict', 'outputs.PreventionJobTriggerInspectJob']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_run_time: The timestamp of the last time this trigger executed.
         :param pulumi.Input[_builtins.str] name: The resource name of the job trigger. Set by the server.
@@ -1690,7 +1690,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+.
                The maximum length is 100 characters. Can be empty to allow the system to generate one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict']]]] triggers: What event needs to occur for a new job to be started.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionJobTriggerTriggerArgs', 'PreventionJobTriggerTriggerArgsDict', 'outputs.PreventionJobTriggerTrigger']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The last update timestamp of an inspectTemplate. Set by the server.
         """

@@ -506,13 +506,13 @@ class Metric(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
+                 bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict', 'outputs.MetricBucketOptions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
                  label_extractors: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metric_descriptor: pulumi.Input[Optional[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']]] = None,
+                 metric_descriptor: pulumi.Input[Optional[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict', 'outputs.MetricMetricDescriptor']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  value_extractor: pulumi.Input[Optional[_builtins.str]] = None,
@@ -656,7 +656,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
                are supported. The bucket has to be in the same project as the metric.
-        :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
+        :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict', 'outputs.MetricBucketOptions']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -674,7 +674,7 @@ class Metric(pulumi.CustomResource):
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict', 'outputs.MetricMetricDescriptor']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
                If unspecified, it uses a default metric descriptor with a DELTA metric kind,
                INT64 value type, with no labels and a unit of "1". Such a metric counts the
                number of log entries matching the filter expression.
@@ -851,13 +851,13 @@ class Metric(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
+                 bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict', 'outputs.MetricBucketOptions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
                  label_extractors: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metric_descriptor: pulumi.Input[Optional[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']]] = None,
+                 metric_descriptor: pulumi.Input[Optional[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict', 'outputs.MetricMetricDescriptor']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  value_extractor: pulumi.Input[Optional[_builtins.str]] = None,
@@ -894,13 +894,13 @@ class Metric(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-            bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
+            bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict', 'outputs.MetricBucketOptions']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
             label_extractors: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            metric_descriptor: pulumi.Input[Optional[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']]] = None,
+            metric_descriptor: pulumi.Input[Optional[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict', 'outputs.MetricMetricDescriptor']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             value_extractor: pulumi.Input[Optional[_builtins.str]] = None) -> 'Metric':
@@ -913,7 +913,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
                are supported. The bucket has to be in the same project as the metric.
-        :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
+        :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict', 'outputs.MetricBucketOptions']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -931,7 +931,7 @@ class Metric(pulumi.CustomResource):
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict', 'outputs.MetricMetricDescriptor']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
                If unspecified, it uses a default metric descriptor with a DELTA metric kind,
                INT64 value type, with no labels and a unit of "1". Such a metric counts the
                number of log entries matching the filter expression.

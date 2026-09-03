@@ -706,17 +706,17 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+                 delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict', 'outputs.ReservationDeleteAfterDuration']]] = None,
                  delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict', 'outputs.ReservationParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
-                 share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
-                 specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
+                 reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict', 'outputs.ReservationReservationSharingPolicy']]] = None,
+                 share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict', 'outputs.ReservationShareSettings']]] = None,
+                 specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict', 'outputs.ReservationSpecificReservation']]] = None,
                  specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -897,7 +897,7 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        :param pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict', 'outputs.ReservationDeleteAfterDuration']] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
@@ -917,15 +917,15 @@ class Reservation(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['ReservationParamsArgs', 'ReservationParamsArgsDict', 'outputs.ReservationParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
+        :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict', 'outputs.ReservationReservationSharingPolicy']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
-        :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
+        :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict', 'outputs.ReservationShareSettings']] share_settings: The share setting for reservations.
                Structure is documented below.
-        :param pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']] specific_reservation: Reservation for instances with specific machine shapes.
+        :param pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict', 'outputs.ReservationSpecificReservation']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
                consume this reservation. Otherwise, it can be consumed by VMs with
@@ -1128,17 +1128,17 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+                 delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict', 'outputs.ReservationDeleteAfterDuration']]] = None,
                  delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict', 'outputs.ReservationParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
-                 share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
-                 specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
+                 reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict', 'outputs.ReservationReservationSharingPolicy']]] = None,
+                 share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict', 'outputs.ReservationShareSettings']]] = None,
+                 specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict', 'outputs.ReservationSpecificReservation']]] = None,
                  specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1190,7 +1190,7 @@ class Reservation(pulumi.CustomResource):
             block_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             commitment: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
-            delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+            delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict', 'outputs.ReservationDeleteAfterDuration']]] = None,
             delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1198,15 +1198,15 @@ class Reservation(pulumi.CustomResource):
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             linked_commitments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict', 'outputs.ReservationParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reservation_block_count: pulumi.Input[Optional[_builtins.int]] = None,
-            reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
-            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict']]]]] = None,
+            reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict', 'outputs.ReservationReservationSharingPolicy']]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict', 'outputs.ReservationResourceStatus']]]]] = None,
             satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
-            specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
+            share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict', 'outputs.ReservationShareSettings']]] = None,
+            specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict', 'outputs.ReservationSpecificReservation']]] = None,
             specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Reservation':
@@ -1221,7 +1221,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] commitment: Full or partial URL to a parent commitment. This field displays for
                reservations that are tied to a commitment.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        :param pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict', 'outputs.ReservationDeleteAfterDuration']] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
@@ -1243,21 +1243,21 @@ class Reservation(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['ReservationParamsArgs', 'ReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['ReservationParamsArgs', 'ReservationParamsArgsDict', 'outputs.ReservationParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
                The number of reservation blocks associated with this reservation.
-        :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
+        :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict', 'outputs.ReservationReservationSharingPolicy']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict']]]] resource_statuses: Status information for Reservation resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict', 'outputs.ReservationResourceStatus']]]] resource_statuses: Status information for Reservation resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
+        :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict', 'outputs.ReservationShareSettings']] share_settings: The share setting for reservations.
                Structure is documented below.
-        :param pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']] specific_reservation: Reservation for instances with specific machine shapes.
+        :param pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict', 'outputs.ReservationSpecificReservation']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
                consume this reservation. Otherwise, it can be consumed by VMs with

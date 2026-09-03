@@ -686,14 +686,14 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connected_endpoint_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringDeploymentGroupConnectedEndpointGroupArgs', 'MirroringDeploymentGroupConnectedEndpointGroupArgsDict']]]]] = None,
+            connected_endpoint_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringDeploymentGroupConnectedEndpointGroupArgs', 'MirroringDeploymentGroupConnectedEndpointGroupArgsDict', 'outputs.MirroringDeploymentGroupConnectedEndpointGroup']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringDeploymentGroupLocationArgs', 'MirroringDeploymentGroupLocationArgsDict']]]]] = None,
+            locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringDeploymentGroupLocationArgs', 'MirroringDeploymentGroupLocationArgsDict', 'outputs.MirroringDeploymentGroupLocation']]]]] = None,
             mirroring_deployment_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -709,7 +709,7 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringDeploymentGroupConnectedEndpointGroupArgs', 'MirroringDeploymentGroupConnectedEndpointGroupArgsDict']]]] connected_endpoint_groups: The list of endpoint groups that are connected to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringDeploymentGroupConnectedEndpointGroupArgs', 'MirroringDeploymentGroupConnectedEndpointGroupArgsDict', 'outputs.MirroringDeploymentGroupConnectedEndpointGroup']]]] connected_endpoint_groups: The list of endpoint groups that are connected to this resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
@@ -726,7 +726,7 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringDeploymentGroupLocationArgs', 'MirroringDeploymentGroupLocationArgsDict']]]] locations: The list of locations where the deployment group is present.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringDeploymentGroupLocationArgs', 'MirroringDeploymentGroupLocationArgsDict', 'outputs.MirroringDeploymentGroupLocation']]]] locations: The list of locations where the deployment group is present.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.

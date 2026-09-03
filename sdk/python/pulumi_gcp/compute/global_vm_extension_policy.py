@@ -414,12 +414,12 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict']]]]] = None,
-                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict']]]]] = None,
+                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.GlobalVmExtensionPolicyExtensionPolicy']]]]] = None,
+                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.GlobalVmExtensionPolicyInstanceSelector']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout_operation: pulumi.Input[Optional[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict']]] = None,
+                 rollout_operation: pulumi.Input[Optional[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict', 'outputs.GlobalVmExtensionPolicyRolloutOperation']]] = None,
                  __props__=None):
         """
         A Global VM Extension Policy.
@@ -559,15 +559,15 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict']]]] extension_policies: Map from extension (eg: "cloudops") to its policy configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.GlobalVmExtensionPolicyExtensionPolicy']]]] extension_policies: Map from extension (eg: "cloudops") to its policy configuration.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict']]]] instance_selectors: Selector to target VMs for a policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.GlobalVmExtensionPolicyInstanceSelector']]]] instance_selectors: Selector to target VMs for a policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long and match the regular expression '^a-z?$' to comply with RFC1035.
         :param pulumi.Input[_builtins.int] priority: Used to resolve conflicts when multiple policies are active. Defaults to 0.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict']] rollout_operation: Represents the rollout operation.
+        :param pulumi.Input[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict', 'outputs.GlobalVmExtensionPolicyRolloutOperation']] rollout_operation: Represents the rollout operation.
                Structure is documented below.
         """
         ...
@@ -722,12 +722,12 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict']]]]] = None,
-                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict']]]]] = None,
+                 extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.GlobalVmExtensionPolicyExtensionPolicy']]]]] = None,
+                 instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.GlobalVmExtensionPolicyInstanceSelector']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout_operation: pulumi.Input[Optional[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict']]] = None,
+                 rollout_operation: pulumi.Input[Optional[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict', 'outputs.GlobalVmExtensionPolicyRolloutOperation']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -767,13 +767,13 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict']]]]] = None,
-            instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict']]]]] = None,
+            extension_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.GlobalVmExtensionPolicyExtensionPolicy']]]]] = None,
+            instance_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.GlobalVmExtensionPolicyInstanceSelector']]]]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rollout_operation: pulumi.Input[Optional[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict']]] = None,
+            rollout_operation: pulumi.Input[Optional[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict', 'outputs.GlobalVmExtensionPolicyRolloutOperation']]] = None,
             scoped_resource_status: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             update_timestamp: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalVmExtensionPolicy':
@@ -792,16 +792,16 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict']]]] extension_policies: Map from extension (eg: "cloudops") to its policy configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyExtensionPolicyArgs', 'GlobalVmExtensionPolicyExtensionPolicyArgsDict', 'outputs.GlobalVmExtensionPolicyExtensionPolicy']]]] extension_policies: Map from extension (eg: "cloudops") to its policy configuration.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict']]]] instance_selectors: Selector to target VMs for a policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalVmExtensionPolicyInstanceSelectorArgs', 'GlobalVmExtensionPolicyInstanceSelectorArgsDict', 'outputs.GlobalVmExtensionPolicyInstanceSelector']]]] instance_selectors: Selector to target VMs for a policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kind: Type of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long and match the regular expression '^a-z?$' to comply with RFC1035.
         :param pulumi.Input[_builtins.int] priority: Used to resolve conflicts when multiple policies are active. Defaults to 0.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict']] rollout_operation: Represents the rollout operation.
+        :param pulumi.Input[Union['GlobalVmExtensionPolicyRolloutOperationArgs', 'GlobalVmExtensionPolicyRolloutOperationArgsDict', 'outputs.GlobalVmExtensionPolicyRolloutOperation']] rollout_operation: Represents the rollout operation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] scoped_resource_status: The scoped resource status.
         :param pulumi.Input[_builtins.str] self_link: Server-defined fully-qualified URL for this resource.

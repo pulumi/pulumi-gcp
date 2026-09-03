@@ -407,7 +407,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
+                 code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict', 'outputs.RepositoryReleaseConfigCodeCompilationConfig']]] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -541,7 +541,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
+        :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict', 'outputs.RepositoryReleaseConfigCodeCompilationConfig']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -701,7 +701,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
+                 code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict', 'outputs.RepositoryReleaseConfigCodeCompilationConfig']]] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -743,14 +743,14 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
+            code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict', 'outputs.RepositoryReleaseConfigCodeCompilationConfig']]] = None,
             cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             git_commitish: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            recent_scheduled_release_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs', 'RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict']]]]] = None,
+            recent_scheduled_release_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs', 'RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict', 'outputs.RepositoryReleaseConfigRecentScheduledReleaseRecord']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             repository: pulumi.Input[Optional[_builtins.str]] = None,
             time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'RepositoryReleaseConfig':
@@ -761,7 +761,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
+        :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict', 'outputs.RepositoryReleaseConfigCodeCompilationConfig']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -775,7 +775,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The release's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs', 'RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict']]]] recent_scheduled_release_records: Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs', 'RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict', 'outputs.RepositoryReleaseConfigRecentScheduledReleaseRecord']]]] recent_scheduled_release_records: Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] region: A reference to the region
         :param pulumi.Input[_builtins.str] repository: A reference to the Dataform repository

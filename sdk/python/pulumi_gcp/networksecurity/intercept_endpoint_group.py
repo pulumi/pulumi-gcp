@@ -686,8 +686,8 @@ class InterceptEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationArgs', 'InterceptEndpointGroupAssociationArgsDict']]]]] = None,
-            connected_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupConnectedDeploymentGroupArgs', 'InterceptEndpointGroupConnectedDeploymentGroupArgsDict']]]]] = None,
+            associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationArgs', 'InterceptEndpointGroupAssociationArgsDict', 'outputs.InterceptEndpointGroupAssociation']]]]] = None,
+            connected_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupConnectedDeploymentGroupArgs', 'InterceptEndpointGroupConnectedDeploymentGroupArgsDict', 'outputs.InterceptEndpointGroupConnectedDeploymentGroup']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -709,9 +709,9 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationArgs', 'InterceptEndpointGroupAssociationArgsDict']]]] associations: List of associations to this endpoint group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationArgs', 'InterceptEndpointGroupAssociationArgsDict', 'outputs.InterceptEndpointGroupAssociation']]]] associations: List of associations to this endpoint group.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupConnectedDeploymentGroupArgs', 'InterceptEndpointGroupConnectedDeploymentGroupArgsDict']]]] connected_deployment_groups: The endpoint group's view of a connected deployment group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupConnectedDeploymentGroupArgs', 'InterceptEndpointGroupConnectedDeploymentGroupArgsDict', 'outputs.InterceptEndpointGroupConnectedDeploymentGroup']]]] connected_deployment_groups: The endpoint group's view of a connected deployment group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.

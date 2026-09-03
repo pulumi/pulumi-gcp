@@ -613,7 +613,7 @@ class AppHostingBuild(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict', 'outputs.AppHostingBuildSource']]] = None,
                  __props__=None):
         """
         A single build for a backend, at a specific point codebase reference tag
@@ -796,7 +796,7 @@ class AppHostingBuild(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the Backend that this Build applies to
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict']] source: The source for the build.
+        :param pulumi.Input[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict', 'outputs.AppHostingBuildSource']] source: The source for the build.
                Structure is documented below.
         """
         ...
@@ -991,7 +991,7 @@ class AppHostingBuild(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict', 'outputs.AppHostingBuildSource']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1053,7 +1053,7 @@ class AppHostingBuild(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             error_source: pulumi.Input[Optional[_builtins.str]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingBuildErrorArgs', 'AppHostingBuildErrorArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingBuildErrorArgs', 'AppHostingBuildErrorArgsDict', 'outputs.AppHostingBuildError']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             image: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1061,7 +1061,7 @@ class AppHostingBuild(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            source: pulumi.Input[Optional[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict']]] = None,
+            source: pulumi.Input[Optional[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict', 'outputs.AppHostingBuildSource']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppHostingBuild':
@@ -1091,7 +1091,7 @@ class AppHostingBuild(pulumi.CustomResource):
                Possible values:
                CLOUD_BUILD
                CLOUD_RUN
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingBuildErrorArgs', 'AppHostingBuildErrorArgsDict']]]] errors: The `Status` type defines a logical error model that is suitable for
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingBuildErrorArgs', 'AppHostingBuildErrorArgsDict', 'outputs.AppHostingBuildError']]]] errors: The `Status` type defines a logical error model that is suitable for
                different programming environments, including REST APIs and RPC APIs. It is
                used by [gRPC](https://github.com/grpc). Each `Status` message contains
                three pieces of data: error code, error message, and error details.
@@ -1118,7 +1118,7 @@ class AppHostingBuild(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict']] source: The source for the build.
+        :param pulumi.Input[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict', 'outputs.AppHostingBuildSource']] source: The source for the build.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The state of the build.
                Possible values:

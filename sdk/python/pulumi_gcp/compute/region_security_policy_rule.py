@@ -529,13 +529,13 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
-                 network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
-                 preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict', 'outputs.RegionSecurityPolicyRuleMatch']]] = None,
+                 network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict', 'outputs.RegionSecurityPolicyRuleNetworkMatch']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.RegionSecurityPolicyRulePreconfiguredWafConfig']]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+                 rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.RegionSecurityPolicyRuleRateLimitOptions']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -794,10 +794,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict', 'outputs.RegionSecurityPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict', 'outputs.RegionSecurityPolicyRuleNetworkMatch']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
@@ -806,7 +806,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
-        :param pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.RegionSecurityPolicyRulePreconfiguredWafConfig']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
@@ -815,7 +815,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.RegionSecurityPolicyRuleRateLimitOptions']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[_builtins.str] security_policy: The name of the security policy this rule belongs to.
@@ -1084,13 +1084,13 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
-                 network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
-                 preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict', 'outputs.RegionSecurityPolicyRuleMatch']]] = None,
+                 network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict', 'outputs.RegionSecurityPolicyRuleNetworkMatch']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.RegionSecurityPolicyRulePreconfiguredWafConfig']]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+                 rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.RegionSecurityPolicyRuleRateLimitOptions']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1135,13 +1135,13 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
-            network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
-            preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict', 'outputs.RegionSecurityPolicyRuleMatch']]] = None,
+            network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict', 'outputs.RegionSecurityPolicyRuleNetworkMatch']]] = None,
+            preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.RegionSecurityPolicyRulePreconfiguredWafConfig']]] = None,
             preview: pulumi.Input[Optional[_builtins.bool]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+            rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.RegionSecurityPolicyRuleRateLimitOptions']]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionSecurityPolicyRule':
         """
@@ -1164,10 +1164,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict', 'outputs.RegionSecurityPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict', 'outputs.RegionSecurityPolicyRuleNetworkMatch']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
@@ -1176,7 +1176,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
                The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
                Structure is documented below.
-        :param pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.RegionSecurityPolicyRulePreconfiguredWafConfig']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
@@ -1185,7 +1185,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.RegionSecurityPolicyRuleRateLimitOptions']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[_builtins.str] security_policy: The name of the security policy this rule belongs to.

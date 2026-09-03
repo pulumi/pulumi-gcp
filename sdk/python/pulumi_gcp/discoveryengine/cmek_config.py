@@ -413,7 +413,7 @@ class CmekConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  set_default: pulumi.Input[Optional[_builtins.bool]] = None,
-                 single_region_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict']]]]] = None,
+                 single_region_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict', 'outputs.CmekConfigSingleRegionKey']]]]] = None,
                  __props__=None):
         """
         CmekConfig represents configurations used to enable CMEK data encryption with
@@ -477,7 +477,7 @@ class CmekConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] set_default: Set the following CmekConfig as the default to be used for child resources
                if one is not specified. The default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict']]]] single_region_keys: Single-regional CMEKs that are required for some VAIS features.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict', 'outputs.CmekConfigSingleRegionKey']]]] single_region_keys: Single-regional CMEKs that are required for some VAIS features.
                Structure is documented below.
         """
         ...
@@ -552,7 +552,7 @@ class CmekConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  set_default: pulumi.Input[Optional[_builtins.bool]] = None,
-                 single_region_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict']]]]] = None,
+                 single_region_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict', 'outputs.CmekConfigSingleRegionKey']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -602,7 +602,7 @@ class CmekConfig(pulumi.CustomResource):
             notebooklm_state: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             set_default: pulumi.Input[Optional[_builtins.bool]] = None,
-            single_region_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict']]]]] = None,
+            single_region_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict', 'outputs.CmekConfigSingleRegionKey']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'CmekConfig':
         """
         Get an existing CmekConfig resource's state with the given name, id, and optional extra
@@ -635,7 +635,7 @@ class CmekConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] set_default: Set the following CmekConfig as the default to be used for child resources
                if one is not specified. The default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict']]]] single_region_keys: Single-regional CMEKs that are required for some VAIS features.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CmekConfigSingleRegionKeyArgs', 'CmekConfigSingleRegionKeyArgsDict', 'outputs.CmekConfigSingleRegionKey']]]] single_region_keys: Single-regional CMEKs that are required for some VAIS features.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The state of the CmekConfig.
         """

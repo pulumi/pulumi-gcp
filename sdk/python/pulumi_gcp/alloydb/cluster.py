@@ -1261,29 +1261,29 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 automated_backup_policy: pulumi.Input[Optional[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']]] = None,
+                 automated_backup_policy: pulumi.Input[Optional[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict', 'outputs.ClusterAutomatedBackupPolicy']]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 continuous_backup_config: pulumi.Input[Optional[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
+                 continuous_backup_config: pulumi.Input[Optional[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict', 'outputs.ClusterContinuousBackupConfig']]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 dataplex_config: pulumi.Input[Optional[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']]] = None,
+                 dataplex_config: pulumi.Input[Optional[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict', 'outputs.ClusterDataplexConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict', 'outputs.ClusterEncryptionConfig']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 initial_user: pulumi.Input[Optional[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']]] = None,
+                 initial_user: pulumi.Input[Optional[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict', 'outputs.ClusterInitialUser']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_update_policy: pulumi.Input[Optional[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
-                 network_config: pulumi.Input[Optional[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
+                 maintenance_update_policy: pulumi.Input[Optional[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict', 'outputs.ClusterMaintenanceUpdatePolicy']]] = None,
+                 network_config: pulumi.Input[Optional[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict', 'outputs.ClusterNetworkConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_config: pulumi.Input[Optional[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
-                 restore_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
-                 restore_backupdr_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']]] = None,
-                 restore_backupdr_pitr_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']]] = None,
-                 restore_continuous_backup_source: pulumi.Input[Optional[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
-                 secondary_config: pulumi.Input[Optional[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+                 psc_config: pulumi.Input[Optional[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict', 'outputs.ClusterPscConfig']]] = None,
+                 restore_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict', 'outputs.ClusterRestoreBackupSource']]] = None,
+                 restore_backupdr_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict', 'outputs.ClusterRestoreBackupdrBackupSource']]] = None,
+                 restore_backupdr_pitr_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict', 'outputs.ClusterRestoreBackupdrPitrSource']]] = None,
+                 restore_continuous_backup_source: pulumi.Input[Optional[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict', 'outputs.ClusterRestoreContinuousBackupSource']]] = None,
+                 secondary_config: pulumi.Input[Optional[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict', 'outputs.ClusterSecondaryConfig']]] = None,
                  skip_await_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1565,18 +1565,18 @@ class Cluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
+        :param pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict', 'outputs.ClusterAutomatedBackupPolicy']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[_builtins.str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
                Default value is `PRIMARY`.
                Possible values are: `PRIMARY`, `SECONDARY`.
-        :param pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']] continuous_backup_config: The continuous backup config for this cluster.
+        :param pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict', 'outputs.ClusterContinuousBackupConfig']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
                Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
-        :param pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        :param pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict', 'outputs.ClusterDataplexConfig']] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -1594,32 +1594,32 @@ class Cluster(pulumi.CustomResource):
                or `terraform destroy` that would delete the cluster will fail.
                When the field is set to false, deleting the cluster is allowed.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Cluster.
-        :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict', 'outputs.ClusterEncryptionConfig']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
+        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict', 'outputs.ClusterInitialUser']] initial_user: Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location where the alloydb cluster should reside.
-        :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+        :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict', 'outputs.ClusterMaintenanceUpdatePolicy']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']] network_config: Metadata related to network configuration.
+        :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict', 'outputs.ClusterNetworkConfig']] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+        :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict', 'outputs.ClusterPscConfig']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict', 'outputs.ClusterRestoreBackupSource']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict', 'outputs.ClusterRestoreBackupdrBackupSource']] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict', 'outputs.ClusterRestoreBackupdrPitrSource']] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict', 'outputs.ClusterRestoreContinuousBackupSource']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict', 'outputs.ClusterSecondaryConfig']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] skip_await_major_version_upgrade: Set to true to skip awaiting on the major version upgrade of the cluster.
                Possible values: true, false
@@ -1920,29 +1920,29 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 automated_backup_policy: pulumi.Input[Optional[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']]] = None,
+                 automated_backup_policy: pulumi.Input[Optional[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict', 'outputs.ClusterAutomatedBackupPolicy']]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 continuous_backup_config: pulumi.Input[Optional[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
+                 continuous_backup_config: pulumi.Input[Optional[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict', 'outputs.ClusterContinuousBackupConfig']]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 dataplex_config: pulumi.Input[Optional[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']]] = None,
+                 dataplex_config: pulumi.Input[Optional[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict', 'outputs.ClusterDataplexConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict', 'outputs.ClusterEncryptionConfig']]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
-                 initial_user: pulumi.Input[Optional[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']]] = None,
+                 initial_user: pulumi.Input[Optional[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict', 'outputs.ClusterInitialUser']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_update_policy: pulumi.Input[Optional[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
-                 network_config: pulumi.Input[Optional[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
+                 maintenance_update_policy: pulumi.Input[Optional[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict', 'outputs.ClusterMaintenanceUpdatePolicy']]] = None,
+                 network_config: pulumi.Input[Optional[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict', 'outputs.ClusterNetworkConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_config: pulumi.Input[Optional[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
-                 restore_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
-                 restore_backupdr_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']]] = None,
-                 restore_backupdr_pitr_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']]] = None,
-                 restore_continuous_backup_source: pulumi.Input[Optional[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
-                 secondary_config: pulumi.Input[Optional[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+                 psc_config: pulumi.Input[Optional[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict', 'outputs.ClusterPscConfig']]] = None,
+                 restore_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict', 'outputs.ClusterRestoreBackupSource']]] = None,
+                 restore_backupdr_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict', 'outputs.ClusterRestoreBackupdrBackupSource']]] = None,
+                 restore_backupdr_pitr_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict', 'outputs.ClusterRestoreBackupdrPitrSource']]] = None,
+                 restore_continuous_backup_source: pulumi.Input[Optional[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict', 'outputs.ClusterRestoreContinuousBackupSource']]] = None,
+                 secondary_config: pulumi.Input[Optional[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict', 'outputs.ClusterSecondaryConfig']]] = None,
                  skip_await_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -2010,43 +2010,43 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            automated_backup_policy: pulumi.Input[Optional[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']]] = None,
-            backup_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict']]]]] = None,
-            backupdr_backup_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBackupdrBackupSourceArgs', 'ClusterBackupdrBackupSourceArgsDict']]]]] = None,
+            automated_backup_policy: pulumi.Input[Optional[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict', 'outputs.ClusterAutomatedBackupPolicy']]] = None,
+            backup_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict', 'outputs.ClusterBackupSource']]]]] = None,
+            backupdr_backup_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBackupdrBackupSourceArgs', 'ClusterBackupdrBackupSourceArgsDict', 'outputs.ClusterBackupdrBackupSource']]]]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
-            continuous_backup_config: pulumi.Input[Optional[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
-            continuous_backup_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict']]]]] = None,
+            continuous_backup_config: pulumi.Input[Optional[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict', 'outputs.ClusterContinuousBackupConfig']]] = None,
+            continuous_backup_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict', 'outputs.ClusterContinuousBackupInfo']]]]] = None,
             database_version: pulumi.Input[Optional[_builtins.str]] = None,
-            dataplex_config: pulumi.Input[Optional[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']]] = None,
+            dataplex_config: pulumi.Input[Optional[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict', 'outputs.ClusterDataplexConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_config: pulumi.Input[Optional[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
-            encryption_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict']]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict', 'outputs.ClusterEncryptionConfig']]] = None,
+            encryption_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict', 'outputs.ClusterEncryptionInfo']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            initial_user: pulumi.Input[Optional[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']]] = None,
+            initial_user: pulumi.Input[Optional[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict', 'outputs.ClusterInitialUser']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_update_policy: pulumi.Input[Optional[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
-            migration_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]]] = None,
+            maintenance_update_policy: pulumi.Input[Optional[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict', 'outputs.ClusterMaintenanceUpdatePolicy']]] = None,
+            migration_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict', 'outputs.ClusterMigrationSource']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_config: pulumi.Input[Optional[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
+            network_config: pulumi.Input[Optional[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict', 'outputs.ClusterNetworkConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            psc_config: pulumi.Input[Optional[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
+            psc_config: pulumi.Input[Optional[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict', 'outputs.ClusterPscConfig']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
-            restore_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
-            restore_backupdr_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']]] = None,
-            restore_backupdr_pitr_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']]] = None,
-            restore_continuous_backup_source: pulumi.Input[Optional[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
-            secondary_config: pulumi.Input[Optional[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+            restore_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict', 'outputs.ClusterRestoreBackupSource']]] = None,
+            restore_backupdr_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict', 'outputs.ClusterRestoreBackupdrBackupSource']]] = None,
+            restore_backupdr_pitr_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict', 'outputs.ClusterRestoreBackupdrPitrSource']]] = None,
+            restore_continuous_backup_source: pulumi.Input[Optional[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict', 'outputs.ClusterRestoreContinuousBackupSource']]] = None,
+            secondary_config: pulumi.Input[Optional[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict', 'outputs.ClusterSecondaryConfig']]] = None,
             skip_await_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
-            trial_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict']]]]] = None,
+            trial_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict', 'outputs.ClusterTrialMetadata']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -2060,24 +2060,24 @@ class Cluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
+        :param pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict', 'outputs.ClusterAutomatedBackupPolicy']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict']]]] backup_sources: Cluster created from backup.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict', 'outputs.ClusterBackupSource']]]] backup_sources: Cluster created from backup.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupdrBackupSourceArgs', 'ClusterBackupdrBackupSourceArgsDict']]]] backupdr_backup_sources: Cluster created from a BackupDR backup.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupdrBackupSourceArgs', 'ClusterBackupdrBackupSourceArgsDict', 'outputs.ClusterBackupdrBackupSource']]]] backupdr_backup_sources: Cluster created from a BackupDR backup.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[_builtins.str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
                Default value is `PRIMARY`.
                Possible values are: `PRIMARY`, `SECONDARY`.
-        :param pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']] continuous_backup_config: The continuous backup config for this cluster.
+        :param pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict', 'outputs.ClusterContinuousBackupConfig']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict', 'outputs.ClusterContinuousBackupInfo']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
                Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
-        :param pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict']] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
+        :param pulumi.Input[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict', 'outputs.ClusterDataplexConfig']] dataplex_config: Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -2097,43 +2097,43 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict', 'outputs.ClusterEncryptionConfig']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict']]]] encryption_infos: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict', 'outputs.ClusterEncryptionInfo']]]] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
+        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict', 'outputs.ClusterInitialUser']] initial_user: Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location where the alloydb cluster should reside.
-        :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+        :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict', 'outputs.ClusterMaintenanceUpdatePolicy']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]] migration_sources: Cluster created via DMS migration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict', 'outputs.ClusterMigrationSource']]]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the cluster resource.
-        :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']] network_config: Metadata related to network configuration.
+        :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict', 'outputs.ClusterNetworkConfig']] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+        :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict', 'outputs.ClusterPscConfig']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
-        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict', 'outputs.ClusterRestoreBackupSource']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict', 'outputs.ClusterRestoreBackupdrBackupSource']] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict', 'outputs.ClusterRestoreBackupdrPitrSource']] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict', 'outputs.ClusterRestoreContinuousBackupSource']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict', 'outputs.ClusterSecondaryConfig']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] skip_await_major_version_upgrade: Set to true to skip awaiting on the major version upgrade of the cluster.
                Possible values: true, false
@@ -2141,7 +2141,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: Output only. The current serving state of the cluster.
         :param pulumi.Input[_builtins.str] subscription_type: The subscrition type of cluster.
                Possible values are: `TRIAL`, `STANDARD`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict']]]] trial_metadatas: Contains information and all metadata related to TRIAL clusters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict', 'outputs.ClusterTrialMetadata']]]] trial_metadatas: Contains information and all metadata related to TRIAL clusters.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: The system-generated UID of the resource.
         """

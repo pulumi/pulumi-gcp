@@ -358,7 +358,7 @@ class ReportConfig(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_preferenceset_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict']]]]] = None,
+                 group_preferenceset_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict', 'outputs.ReportConfigGroupPreferencesetAssignment']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  report_config_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -418,7 +418,7 @@ class ReportConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name. Maximum length is 63 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict']]]] group_preferenceset_assignments: Collection of combinations of groups and preference sets.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict', 'outputs.ReportConfigGroupPreferencesetAssignment']]]] group_preferenceset_assignments: Collection of combinations of groups and preference sets.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -498,7 +498,7 @@ class ReportConfig(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_preferenceset_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict']]]]] = None,
+                 group_preferenceset_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict', 'outputs.ReportConfigGroupPreferencesetAssignment']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  report_config_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -541,7 +541,7 @@ class ReportConfig(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            group_preferenceset_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict']]]]] = None,
+            group_preferenceset_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict', 'outputs.ReportConfigGroupPreferencesetAssignment']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -563,7 +563,7 @@ class ReportConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name. Maximum length is 63 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict']]]] group_preferenceset_assignments: Collection of combinations of groups and preference sets.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportConfigGroupPreferencesetAssignmentArgs', 'ReportConfigGroupPreferencesetAssignmentArgsDict', 'outputs.ReportConfigGroupPreferencesetAssignment']]]] group_preferenceset_assignments: Collection of combinations of groups and preference sets.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Name of resource.

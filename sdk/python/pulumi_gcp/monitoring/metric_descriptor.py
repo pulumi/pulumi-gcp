@@ -534,9 +534,9 @@ class MetricDescriptor(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict', 'outputs.MetricDescriptorLabel']]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict', 'outputs.MetricDescriptorMetadata']]] = None,
                  metric_kind: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -631,11 +631,11 @@ class MetricDescriptor(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[_builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict', 'outputs.MetricDescriptorLabel']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] launch_stage: The launch stage of the metric definition.
                Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-        :param pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']] metadata: Metadata which can be used to guide usage of the metric.
+        :param pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict', 'outputs.MetricDescriptorMetadata']] metadata: Metadata which can be used to guide usage of the metric.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
@@ -764,9 +764,9 @@ class MetricDescriptor(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict', 'outputs.MetricDescriptorLabel']]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadata: pulumi.Input[Optional[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict', 'outputs.MetricDescriptorMetadata']]] = None,
                  metric_kind: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -813,9 +813,9 @@ class MetricDescriptor(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict', 'outputs.MetricDescriptorLabel']]]]] = None,
             launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
-            metadata: pulumi.Input[Optional[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
+            metadata: pulumi.Input[Optional[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict', 'outputs.MetricDescriptorMetadata']]] = None,
             metric_kind: pulumi.Input[Optional[_builtins.str]] = None,
             monitored_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -838,11 +838,11 @@ class MetricDescriptor(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[_builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict', 'outputs.MetricDescriptorLabel']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] launch_stage: The launch stage of the metric definition.
                Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-        :param pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']] metadata: Metadata which can be used to guide usage of the metric.
+        :param pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict', 'outputs.MetricDescriptorMetadata']] metadata: Metadata which can be used to guide usage of the metric.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.

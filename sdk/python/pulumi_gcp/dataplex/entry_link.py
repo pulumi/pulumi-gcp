@@ -379,12 +379,12 @@ class EntryLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict', 'outputs.EntryLinkAspect']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
+                 entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict', 'outputs.EntryLinkEntryReference']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -524,7 +524,7 @@ class EntryLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]] aspects: The Aspects attached to the Entry Link.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict', 'outputs.EntryLinkAspect']]]] aspects: The Aspects attached to the Entry Link.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -536,7 +536,7 @@ class EntryLink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
         :param pulumi.Input[_builtins.str] entry_link_type: Relative resource name of the Entry Link Type used to create this Entry Link. For example:
                projects/dataplex-types/locations/global/entryLinkTypes/definition
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]] entry_references: Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict', 'outputs.EntryLinkEntryReference']]]] entry_references: Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the entry.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -697,12 +697,12 @@ class EntryLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict', 'outputs.EntryLinkAspect']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
+                 entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict', 'outputs.EntryLinkEntryReference']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -745,13 +745,13 @@ class EntryLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+            aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict', 'outputs.EntryLinkAspect']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
             entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
-            entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
+            entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict', 'outputs.EntryLinkEntryReference']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -763,7 +763,7 @@ class EntryLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]] aspects: The Aspects attached to the Entry Link.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict', 'outputs.EntryLinkAspect']]]] aspects: The Aspects attached to the Entry Link.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry Link was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -776,7 +776,7 @@ class EntryLink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
         :param pulumi.Input[_builtins.str] entry_link_type: Relative resource name of the Entry Link Type used to create this Entry Link. For example:
                projects/dataplex-types/locations/global/entryLinkTypes/definition
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]] entry_references: Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict', 'outputs.EntryLinkEntryReference']]]] entry_references: Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the entry.
         :param pulumi.Input[_builtins.str] name: The relative resource name of the Entry Link, of the form:

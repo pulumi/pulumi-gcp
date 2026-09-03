@@ -650,8 +650,8 @@ class AiSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 create_notebook_execution_job_request: pulumi.Input[Optional[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
-                 create_pipeline_job_request: pulumi.Input[Optional[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict']]] = None,
+                 create_notebook_execution_job_request: pulumi.Input[Optional[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict', 'outputs.AiScheduleCreateNotebookExecutionJobRequest']]] = None,
+                 create_pipeline_job_request: pulumi.Input[Optional[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict', 'outputs.AiScheduleCreatePipelineJobRequest']]] = None,
                  cron: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -799,9 +799,9 @@ class AiSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
-        :param pulumi.Input[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict']] create_notebook_execution_job_request: Request message for [NotebookService.CreateNotebookExecutionJob]
+        :param pulumi.Input[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict', 'outputs.AiScheduleCreateNotebookExecutionJobRequest']] create_notebook_execution_job_request: Request message for [NotebookService.CreateNotebookExecutionJob]
                Structure is documented below.
-        :param pulumi.Input[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict']] create_pipeline_job_request: Request message for PipelineService.CreatePipelineJob.
+        :param pulumi.Input[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict', 'outputs.AiScheduleCreatePipelineJobRequest']] create_pipeline_job_request: Request message for PipelineService.CreatePipelineJob.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -975,8 +975,8 @@ class AiSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 create_notebook_execution_job_request: pulumi.Input[Optional[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
-                 create_pipeline_job_request: pulumi.Input[Optional[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict']]] = None,
+                 create_notebook_execution_job_request: pulumi.Input[Optional[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict', 'outputs.AiScheduleCreateNotebookExecutionJobRequest']]] = None,
+                 create_pipeline_job_request: pulumi.Input[Optional[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict', 'outputs.AiScheduleCreatePipelineJobRequest']]] = None,
                  cron: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1037,8 +1037,8 @@ class AiSchedule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
             catch_up: pulumi.Input[Optional[_builtins.bool]] = None,
-            create_notebook_execution_job_request: pulumi.Input[Optional[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
-            create_pipeline_job_request: pulumi.Input[Optional[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict']]] = None,
+            create_notebook_execution_job_request: pulumi.Input[Optional[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict', 'outputs.AiScheduleCreateNotebookExecutionJobRequest']]] = None,
+            create_pipeline_job_request: pulumi.Input[Optional[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict', 'outputs.AiScheduleCreatePipelineJobRequest']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             cron: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1046,7 +1046,7 @@ class AiSchedule(pulumi.CustomResource):
             end_time: pulumi.Input[Optional[_builtins.str]] = None,
             last_pause_time: pulumi.Input[Optional[_builtins.str]] = None,
             last_resume_time: pulumi.Input[Optional[_builtins.str]] = None,
-            last_scheduled_run_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiScheduleLastScheduledRunResponseArgs', 'AiScheduleLastScheduledRunResponseArgsDict']]]]] = None,
+            last_scheduled_run_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiScheduleLastScheduledRunResponseArgs', 'AiScheduleLastScheduledRunResponseArgsDict', 'outputs.AiScheduleLastScheduledRunResponse']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             max_concurrent_active_run_count: pulumi.Input[Optional[_builtins.str]] = None,
             max_concurrent_run_count: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1067,9 +1067,9 @@ class AiSchedule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         :param pulumi.Input[_builtins.bool] catch_up: Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
-        :param pulumi.Input[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict']] create_notebook_execution_job_request: Request message for [NotebookService.CreateNotebookExecutionJob]
+        :param pulumi.Input[Union['AiScheduleCreateNotebookExecutionJobRequestArgs', 'AiScheduleCreateNotebookExecutionJobRequestArgsDict', 'outputs.AiScheduleCreateNotebookExecutionJobRequest']] create_notebook_execution_job_request: Request message for [NotebookService.CreateNotebookExecutionJob]
                Structure is documented below.
-        :param pulumi.Input[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict']] create_pipeline_job_request: Request message for PipelineService.CreatePipelineJob.
+        :param pulumi.Input[Union['AiScheduleCreatePipelineJobRequestArgs', 'AiScheduleCreatePipelineJobRequestArgsDict', 'outputs.AiScheduleCreatePipelineJobRequest']] create_pipeline_job_request: Request message for PipelineService.CreatePipelineJob.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when this Schedule was created.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
@@ -1083,7 +1083,7 @@ class AiSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, The schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         :param pulumi.Input[_builtins.str] last_pause_time: Timestamp when this Schedule was last paused. Unset if never paused.
         :param pulumi.Input[_builtins.str] last_resume_time: Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiScheduleLastScheduledRunResponseArgs', 'AiScheduleLastScheduledRunResponseArgsDict']]]] last_scheduled_run_responses: Status of a scheduled run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiScheduleLastScheduledRunResponseArgs', 'AiScheduleLastScheduledRunResponseArgsDict', 'outputs.AiScheduleLastScheduledRunResponse']]]] last_scheduled_run_responses: Status of a scheduled run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the Schedule. eg us-central1
         :param pulumi.Input[_builtins.str] max_concurrent_active_run_count: Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.

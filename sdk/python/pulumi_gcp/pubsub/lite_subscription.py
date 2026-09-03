@@ -294,7 +294,7 @@ class LiteSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']]] = None,
+                 delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict', 'outputs.LiteSubscriptionDeliveryConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -370,7 +370,7 @@ class LiteSubscription(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict', 'outputs.LiteSubscriptionDeliveryConfig']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -462,7 +462,7 @@ class LiteSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']]] = None,
+                 delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict', 'outputs.LiteSubscriptionDeliveryConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -497,7 +497,7 @@ class LiteSubscription(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']]] = None,
+            delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict', 'outputs.LiteSubscriptionDeliveryConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -516,7 +516,7 @@ class LiteSubscription(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict', 'outputs.LiteSubscriptionDeliveryConfig']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

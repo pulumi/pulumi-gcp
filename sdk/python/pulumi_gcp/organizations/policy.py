@@ -348,12 +348,12 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']]] = None,
+                 boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict', 'outputs.PolicyBooleanPolicy']]] = None,
                  constraint: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']]] = None,
+                 list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict', 'outputs.PolicyListPolicy']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']]] = None,
+                 restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict', 'outputs.PolicyRestorePolicy']]] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -447,7 +447,7 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
+        :param pulumi.Input[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict', 'outputs.PolicyBooleanPolicy']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
@@ -460,9 +460,9 @@ class Policy(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
                
                ***
-        :param pulumi.Input[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        :param pulumi.Input[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict', 'outputs.PolicyListPolicy']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization to set the policy for.
-        :param pulumi.Input[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
+        :param pulumi.Input[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict', 'outputs.PolicyRestorePolicy']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
@@ -578,12 +578,12 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']]] = None,
+                 boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict', 'outputs.PolicyBooleanPolicy']]] = None,
                  constraint: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']]] = None,
+                 list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict', 'outputs.PolicyListPolicy']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']]] = None,
+                 restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict', 'outputs.PolicyRestorePolicy']]] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -617,13 +617,13 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']]] = None,
+            boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict', 'outputs.PolicyBooleanPolicy']]] = None,
             constraint: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']]] = None,
+            list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict', 'outputs.PolicyListPolicy']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']]] = None,
+            restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict', 'outputs.PolicyRestorePolicy']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None) -> 'Policy':
         """
@@ -633,7 +633,7 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
+        :param pulumi.Input[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict', 'outputs.PolicyBooleanPolicy']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
@@ -647,9 +647,9 @@ class Policy(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-        :param pulumi.Input[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        :param pulumi.Input[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict', 'outputs.PolicyListPolicy']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization to set the policy for.
-        :param pulumi.Input[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
+        :param pulumi.Input[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict', 'outputs.PolicyRestorePolicy']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.

@@ -690,13 +690,13 @@ class AiEndpoint(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict', 'outputs.AiEndpointEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
-                 private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict', 'outputs.AiEndpointPredictRequestResponseLoggingConfig']]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiEndpointPrivateServiceConnectConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  traffic_split: pulumi.Input[Optional[_builtins.str]] = None,
@@ -839,7 +839,7 @@ class AiEndpoint(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Endpoint.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
+        :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict', 'outputs.AiEndpointEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -847,9 +847,9 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[_builtins.str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
-        :param pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
+        :param pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict', 'outputs.AiEndpointPredictRequestResponseLoggingConfig']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
                Structure is documented below.
-        :param pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiEndpointPrivateServiceConnectConfig']] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1013,13 +1013,13 @@ class AiEndpoint(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict', 'outputs.AiEndpointEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
-                 private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict', 'outputs.AiEndpointPredictRequestResponseLoggingConfig']]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiEndpointPrivateServiceConnectConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  traffic_split: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1074,19 +1074,19 @@ class AiEndpoint(pulumi.CustomResource):
             dedicated_endpoint_dns: pulumi.Input[Optional[_builtins.str]] = None,
             dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            deployed_models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]]] = None,
+            deployed_models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict', 'outputs.AiEndpointDeployedModel']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict', 'outputs.AiEndpointEncryptionSpec']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             model_deployment_monitoring_job: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
-            predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
-            private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+            predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict', 'outputs.AiEndpointPredictRequestResponseLoggingConfig']]] = None,
+            private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiEndpointPrivateServiceConnectConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1109,12 +1109,12 @@ class AiEndpoint(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict', 'outputs.AiEndpointDeployedModel']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Endpoint.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
+        :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict', 'outputs.AiEndpointEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
@@ -1124,9 +1124,9 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         :param pulumi.Input[_builtins.str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[_builtins.str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
-        :param pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
+        :param pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict', 'outputs.AiEndpointPredictRequestResponseLoggingConfig']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
                Structure is documented below.
-        :param pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        :param pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict', 'outputs.AiEndpointPrivateServiceConnectConfig']] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

@@ -313,7 +313,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
+                 hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict', 'outputs.DatabaseHiveOptions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -384,7 +384,7 @@ class Database(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']] hive_options: Options of a Hive database.
+        :param pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict', 'outputs.DatabaseHiveOptions']] hive_options: Options of a Hive database.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the database.
         :param pulumi.Input[_builtins.str] type: The database type.
@@ -470,7 +470,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
+                 hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict', 'outputs.DatabaseHiveOptions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -512,7 +512,7 @@ class Database(pulumi.CustomResource):
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-            hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
+            hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict', 'outputs.DatabaseHiveOptions']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Database':
@@ -542,7 +542,7 @@ class Database(pulumi.CustomResource):
                after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples:
                "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']] hive_options: Options of a Hive database.
+        :param pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict', 'outputs.DatabaseHiveOptions']] hive_options: Options of a Hive database.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the database.
         :param pulumi.Input[_builtins.str] type: The database type.

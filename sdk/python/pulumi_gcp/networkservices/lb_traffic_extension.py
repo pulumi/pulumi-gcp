@@ -430,7 +430,7 @@ class LbTrafficExtension(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 extension_chains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict']]]]] = None,
+                 extension_chains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict', 'outputs.LbTrafficExtensionExtensionChain']]]]] = None,
                  forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -475,7 +475,7 @@ class LbTrafficExtension(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict']]]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict', 'outputs.LbTrafficExtensionExtensionChain']]]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
                Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
@@ -546,7 +546,7 @@ class LbTrafficExtension(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 extension_chains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict']]]]] = None,
+                 extension_chains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict', 'outputs.LbTrafficExtensionExtensionChain']]]]] = None,
                  forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -596,7 +596,7 @@ class LbTrafficExtension(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            extension_chains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict']]]]] = None,
+            extension_chains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict', 'outputs.LbTrafficExtensionExtensionChain']]]]] = None,
             forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -619,7 +619,7 @@ class LbTrafficExtension(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict']]]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LbTrafficExtensionExtensionChainArgs', 'LbTrafficExtensionExtensionChainArgsDict', 'outputs.LbTrafficExtensionExtensionChain']]]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
                Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.

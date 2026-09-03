@@ -497,13 +497,13 @@ class WorkflowTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
-                 jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict', 'outputs.WorkflowTemplateEncryptionConfig']]] = None,
+                 jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict', 'outputs.WorkflowTemplateJob']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
-                 placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -661,16 +661,16 @@ class WorkflowTemplate(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
+        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict', 'outputs.WorkflowTemplateEncryptionConfig']] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict', 'outputs.WorkflowTemplateJob']]]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: (Required) WorkflowTemplate scheduling information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']] placement: (Required) WorkflowTemplate scheduling information.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.int] version: Output only. The current version of this workflow template.
         """
@@ -842,13 +842,13 @@ class WorkflowTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
-                 jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict', 'outputs.WorkflowTemplateEncryptionConfig']]] = None,
+                 jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict', 'outputs.WorkflowTemplateJob']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
-                 placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -897,13 +897,13 @@ class WorkflowTemplate(pulumi.CustomResource):
             dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
-            jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict', 'outputs.WorkflowTemplateEncryptionConfig']]] = None,
+            jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict', 'outputs.WorkflowTemplateJob']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
-            placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]]] = None,
+            placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -924,16 +924,16 @@ class WorkflowTemplate(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
-        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
+        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict', 'outputs.WorkflowTemplateEncryptionConfig']] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict', 'outputs.WorkflowTemplateJob']]]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: (Required) WorkflowTemplate scheduling information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']] placement: (Required) WorkflowTemplate scheduling information.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time template was last updated.

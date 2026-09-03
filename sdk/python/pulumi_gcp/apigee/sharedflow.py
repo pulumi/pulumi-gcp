@@ -430,7 +430,7 @@ class Sharedflow(pulumi.CustomResource):
             detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
             latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             md5hash: pulumi.Input[Optional[_builtins.str]] = None,
-            meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]]] = None,
+            meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict', 'outputs.SharedflowMetaData']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Sharedflow':
@@ -453,7 +453,7 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]] meta_datas: Metadata describing the shared flow.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict', 'outputs.SharedflowMetaData']]]] meta_datas: Metadata describing the shared flow.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the shared flow.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.

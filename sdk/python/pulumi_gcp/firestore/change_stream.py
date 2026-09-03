@@ -369,9 +369,9 @@ class ChangeStream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_group_scope: pulumi.Input[Optional[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict']]] = None,
+                 collection_group_scope: pulumi.Input[Optional[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict', 'outputs.ChangeStreamCollectionGroupScope']]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
-                 database_scope: pulumi.Input[Optional[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict']]] = None,
+                 database_scope: pulumi.Input[Optional[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict', 'outputs.ChangeStreamDatabaseScope']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -463,10 +463,10 @@ class ChangeStream(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict']] collection_group_scope: Tracks changes for a specific collection group.
+        :param pulumi.Input[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict', 'outputs.ChangeStreamCollectionGroupScope']] collection_group_scope: Tracks changes for a specific collection group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database: The Firestore database ID. Defaults to `"(default)"`.
-        :param pulumi.Input[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict']] database_scope: Tracks changes across all collections in the database.
+        :param pulumi.Input[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict', 'outputs.ChangeStreamDatabaseScope']] database_scope: Tracks changes across all collections in the database.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -585,9 +585,9 @@ class ChangeStream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_group_scope: pulumi.Input[Optional[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict']]] = None,
+                 collection_group_scope: pulumi.Input[Optional[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict', 'outputs.ChangeStreamCollectionGroupScope']]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
-                 database_scope: pulumi.Input[Optional[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict']]] = None,
+                 database_scope: pulumi.Input[Optional[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict', 'outputs.ChangeStreamDatabaseScope']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -624,10 +624,10 @@ class ChangeStream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            collection_group_scope: pulumi.Input[Optional[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict']]] = None,
+            collection_group_scope: pulumi.Input[Optional[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict', 'outputs.ChangeStreamCollectionGroupScope']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             database: pulumi.Input[Optional[_builtins.str]] = None,
-            database_scope: pulumi.Input[Optional[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict']]] = None,
+            database_scope: pulumi.Input[Optional[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict', 'outputs.ChangeStreamDatabaseScope']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -642,11 +642,11 @@ class ChangeStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict']] collection_group_scope: Tracks changes for a specific collection group.
+        :param pulumi.Input[Union['ChangeStreamCollectionGroupScopeArgs', 'ChangeStreamCollectionGroupScopeArgsDict', 'outputs.ChangeStreamCollectionGroupScope']] collection_group_scope: Tracks changes for a specific collection group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of the change stream.
         :param pulumi.Input[_builtins.str] database: The Firestore database ID. Defaults to `"(default)"`.
-        :param pulumi.Input[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict']] database_scope: Tracks changes across all collections in the database.
+        :param pulumi.Input[Union['ChangeStreamDatabaseScopeArgs', 'ChangeStreamDatabaseScopeArgsDict', 'outputs.ChangeStreamDatabaseScope']] database_scope: Tracks changes across all collections in the database.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.

@@ -876,7 +876,7 @@ class FhirStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
-                 consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
+                 consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict', 'outputs.FhirStoreConsentConfig']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -887,10 +887,10 @@ class FhirStore(pulumi.CustomResource):
                  enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
-                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
-                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
-                 validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]]]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict', 'outputs.FhirStoreStreamConfig']]]]] = None,
+                 validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict', 'outputs.FhirStoreValidationConfig']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1095,7 +1095,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
-        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']] consent_config: (Optional, Beta)
+        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict', 'outputs.FhirStoreConsentConfig']] consent_config: (Optional, Beta)
                Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -1149,21 +1149,21 @@ class FhirStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
+        :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']] notification_config: (Optional, Deprecated)
                A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict', 'outputs.FhirStoreStreamConfig']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
                from the list, the server stops streaming to that location. Before adding a new config, you must add the required
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
-        :param pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
+        :param pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict', 'outputs.FhirStoreValidationConfig']] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The FHIR specification version.
                Default value is `STU3`.
@@ -1389,7 +1389,7 @@ class FhirStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
-                 consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
+                 consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict', 'outputs.FhirStoreConsentConfig']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1400,10 +1400,10 @@ class FhirStore(pulumi.CustomResource):
                  enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
-                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
-                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
-                 validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]]]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict', 'outputs.FhirStoreStreamConfig']]]]] = None,
+                 validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict', 'outputs.FhirStoreValidationConfig']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1449,7 +1449,7 @@ class FhirStore(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
-            consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
+            consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict', 'outputs.FhirStoreConsentConfig']]] = None,
             dataset: pulumi.Input[Optional[_builtins.str]] = None,
             default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1461,12 +1461,12 @@ class FhirStore(pulumi.CustomResource):
             enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
-            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
+            notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]]]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
-            validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
+            stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict', 'outputs.FhirStoreStreamConfig']]]]] = None,
+            validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict', 'outputs.FhirStoreValidationConfig']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'FhirStore':
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
@@ -1477,7 +1477,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
-        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']] consent_config: (Optional, Beta)
+        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict', 'outputs.FhirStoreConsentConfig']] consent_config: (Optional, Beta)
                Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -1532,24 +1532,24 @@ class FhirStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
+        :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']] notification_config: (Optional, Deprecated)
                A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict', 'outputs.FhirStoreStreamConfig']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
                from the list, the server stops streaming to that location. Before adding a new config, you must add the required
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
-        :param pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
+        :param pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict', 'outputs.FhirStoreValidationConfig']] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The FHIR specification version.
                Default value is `STU3`.

@@ -507,16 +507,16 @@ class TransferJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
-                 logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
+                 event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict', 'outputs.TransferJobEventStream']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict', 'outputs.TransferJobLoggingConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict', 'outputs.TransferJobNotificationConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+                 replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict', 'outputs.TransferJobReplicationSpec']]] = None,
+                 schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict', 'outputs.TransferJobSchedule']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
+                 transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict', 'outputs.TransferJobTransferSpec']]] = None,
                  __props__=None):
         """
         Creates a new Transfer Job in Google Cloud Storage Transfer.
@@ -640,19 +640,19 @@ class TransferJob(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
-        :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
-        :param pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']] logging_config: Logging configuration. Structure documented below.
+        :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict', 'outputs.TransferJobEventStream']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        :param pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict', 'outputs.TransferJobLoggingConfig']] logging_config: Logging configuration. Structure documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
-        :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict', 'outputs.TransferJobNotificationConfig']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict', 'outputs.TransferJobReplicationSpec']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
                ***
-        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict', 'outputs.TransferJobSchedule']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
+        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict', 'outputs.TransferJobTransferSpec']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         ...
     @overload
@@ -790,16 +790,16 @@ class TransferJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
-                 logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
+                 event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict', 'outputs.TransferJobEventStream']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict', 'outputs.TransferJobLoggingConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict', 'outputs.TransferJobNotificationConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
-                 schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+                 replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict', 'outputs.TransferJobReplicationSpec']]] = None,
+                 schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict', 'outputs.TransferJobSchedule']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
+                 transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict', 'outputs.TransferJobTransferSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -840,17 +840,17 @@ class TransferJob(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
+            event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict', 'outputs.TransferJobEventStream']]] = None,
             last_modification_time: pulumi.Input[Optional[_builtins.str]] = None,
-            logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
+            logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict', 'outputs.TransferJobLoggingConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
+            notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict', 'outputs.TransferJobNotificationConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
-            schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+            replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict', 'outputs.TransferJobReplicationSpec']]] = None,
+            schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict', 'outputs.TransferJobSchedule']]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None) -> 'TransferJob':
+            transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict', 'outputs.TransferJobTransferSpec']]] = None) -> 'TransferJob':
         """
         Get an existing TransferJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -867,20 +867,20 @@ class TransferJob(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deletion_time: When the Transfer Job was deleted.
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
-        :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict', 'outputs.TransferJobEventStream']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input[_builtins.str] last_modification_time: When the Transfer Job was last modified.
-        :param pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']] logging_config: Logging configuration. Structure documented below.
+        :param pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict', 'outputs.TransferJobLoggingConfig']] logging_config: Logging configuration. Structure documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
-        :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict', 'outputs.TransferJobNotificationConfig']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[_builtins.str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict', 'outputs.TransferJobReplicationSpec']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
                ***
-        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict', 'outputs.TransferJobSchedule']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
+        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict', 'outputs.TransferJobTransferSpec']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -345,8 +345,8 @@ class AppHostingTraffic(pulumi.CustomResource):
                  backend: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
-                 target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
+                 rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict', 'outputs.AppHostingTrafficRolloutPolicy']]] = None,
+                 target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict', 'outputs.AppHostingTrafficTarget']]] = None,
                  __props__=None):
         """
         Controls traffic configuration for a backend.
@@ -496,9 +496,9 @@ class AppHostingTraffic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location the Backend that this Traffic config applies to
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']] rollout_policy: The policy for how builds and rollouts are triggered and rolled out.
+        :param pulumi.Input[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict', 'outputs.AppHostingTrafficRolloutPolicy']] rollout_policy: The policy for how builds and rollouts are triggered and rolled out.
                Structure is documented below.
-        :param pulumi.Input[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']] target: Set to manually control the desired traffic for the backend. This will
+        :param pulumi.Input[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict', 'outputs.AppHostingTrafficTarget']] target: Set to manually control the desired traffic for the backend. This will
                cause current to eventually match this value. The percentages must add
                up to 100.
                Structure is documented below.
@@ -669,8 +669,8 @@ class AppHostingTraffic(pulumi.CustomResource):
                  backend: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
-                 target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
+                 rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict', 'outputs.AppHostingTrafficRolloutPolicy']]] = None,
+                 target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict', 'outputs.AppHostingTrafficTarget']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -708,14 +708,14 @@ class AppHostingTraffic(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backend: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            currents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict']]]]] = None,
+            currents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict', 'outputs.AppHostingTrafficCurrent']]]]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
-            target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
+            rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict', 'outputs.AppHostingTrafficRolloutPolicy']]] = None,
+            target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict', 'outputs.AppHostingTrafficTarget']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppHostingTraffic':
         """
@@ -727,7 +727,7 @@ class AppHostingTraffic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend: Id of the backend that this Traffic config applies to
         :param pulumi.Input[_builtins.str] create_time: Time at which the backend was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict']]]] currents: Current state of traffic allocation for the backend.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict', 'outputs.AppHostingTrafficCurrent']]]] currents: Current state of traffic allocation for the backend.
                When setting `target`, this field may differ for some time until the desired state is reached.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: Time at which the backend was deleted.
@@ -739,9 +739,9 @@ class AppHostingTraffic(pulumi.CustomResource):
                `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']] rollout_policy: The policy for how builds and rollouts are triggered and rolled out.
+        :param pulumi.Input[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict', 'outputs.AppHostingTrafficRolloutPolicy']] rollout_policy: The policy for how builds and rollouts are triggered and rolled out.
                Structure is documented below.
-        :param pulumi.Input[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']] target: Set to manually control the desired traffic for the backend. This will
+        :param pulumi.Input[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict', 'outputs.AppHostingTrafficTarget']] target: Set to manually control the desired traffic for the backend. This will
                cause current to eventually match this value. The percentages must add
                up to 100.
                Structure is documented below.

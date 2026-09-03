@@ -498,7 +498,7 @@ class Destination(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict', 'outputs.DestinationEndpoint']]]]] = None,
                  ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -568,7 +568,7 @@ class Destination(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict']]]] endpoints: The list of DestinationEndpoint resources configured for the IP prefix.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict', 'outputs.DestinationEndpoint']]]] endpoints: The list of DestinationEndpoint resources configured for the IP prefix.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ip_prefix: The IP prefix that represents your workload on another CSP.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
@@ -657,7 +657,7 @@ class Destination(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict', 'outputs.DestinationEndpoint']]]]] = None,
                  ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -713,7 +713,7 @@ class Destination(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict']]]]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict', 'outputs.DestinationEndpoint']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -722,7 +722,7 @@ class Destination(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            state_timelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationStateTimelineArgs', 'DestinationStateTimelineArgsDict']]]]] = None,
+            state_timelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationStateTimelineArgs', 'DestinationStateTimelineArgsDict', 'outputs.DestinationStateTimeline']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Destination':
         """
@@ -741,7 +741,7 @@ class Destination(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict']]]] endpoints: The list of DestinationEndpoint resources configured for the IP prefix.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DestinationEndpointArgs', 'DestinationEndpointArgsDict', 'outputs.DestinationEndpoint']]]] endpoints: The list of DestinationEndpoint resources configured for the IP prefix.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: The etag is computed by the server, and might be sent with update and
                delete requests so that the client has an up-to-date value before
@@ -758,7 +758,7 @@ class Destination(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DestinationStateTimelineArgs', 'DestinationStateTimelineArgsDict']]]] state_timelines: The timeline of the expected `Destination` states or the current rest
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DestinationStateTimelineArgs', 'DestinationStateTimelineArgsDict', 'outputs.DestinationStateTimeline']]]] state_timelines: The timeline of the expected `Destination` states or the current rest
                state. If a state change is expected, the value is `ADDING`,
                `DELETING` or `SUSPENDING`, depending on the action specified.
                Structure is documented below.

@@ -408,7 +408,7 @@ class EngineModel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
+                 default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict', 'outputs.EngineModelDefaultVersion']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -481,7 +481,7 @@ class EngineModel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict', 'outputs.EngineModelDefaultVersion']] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -584,7 +584,7 @@ class EngineModel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
+                 default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict', 'outputs.EngineModelDefaultVersion']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -625,7 +625,7 @@ class EngineModel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
+            default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict', 'outputs.EngineModelDefaultVersion']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -643,7 +643,7 @@ class EngineModel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict', 'outputs.EngineModelDefaultVersion']] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

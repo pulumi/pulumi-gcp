@@ -264,7 +264,7 @@ class CxEnvironment(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None,
+                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict', 'outputs.CxEnvironmentVersionConfig']]]]] = None,
                  __props__=None):
         """
         Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
@@ -342,7 +342,7 @@ class CxEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[_builtins.str] parent: The Agent to create an Environment for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict', 'outputs.CxEnvironmentVersionConfig']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         """
         ...
@@ -434,7 +434,7 @@ class CxEnvironment(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None,
+                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict', 'outputs.CxEnvironmentVersionConfig']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -471,7 +471,7 @@ class CxEnvironment(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None) -> 'CxEnvironment':
+            version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict', 'outputs.CxEnvironmentVersionConfig']]]]] = None) -> 'CxEnvironment':
         """
         Get an existing CxEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -491,7 +491,7 @@ class CxEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The Agent to create an Environment for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[_builtins.str] update_time: Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict', 'outputs.CxEnvironmentVersionConfig']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

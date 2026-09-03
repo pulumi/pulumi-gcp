@@ -278,7 +278,7 @@ class Workspace(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict', 'outputs.WorkspaceSettings']]] = None,
                  __props__=None):
         """
         A Data Mapper workspace is used to configure Data Mapper access, permissions and data sources for mapping clinical patient data to the FHIR standard.
@@ -339,7 +339,7 @@ class Workspace(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
-        :param pulumi.Input[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict']] settings: Settings associated with this workspace.
+        :param pulumi.Input[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict', 'outputs.WorkspaceSettings']] settings: Settings associated with this workspace.
                Structure is documented below.
         """
         ...
@@ -411,7 +411,7 @@ class Workspace(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict', 'outputs.WorkspaceSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -450,7 +450,7 @@ class Workspace(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            settings: pulumi.Input[Optional[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict']]] = None) -> 'Workspace':
+            settings: pulumi.Input[Optional[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict', 'outputs.WorkspaceSettings']]] = None) -> 'Workspace':
         """
         Get an existing Workspace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -474,7 +474,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict']] settings: Settings associated with this workspace.
+        :param pulumi.Input[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict', 'outputs.WorkspaceSettings']] settings: Settings associated with this workspace.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -700,7 +700,7 @@ class Organization(pulumi.CustomResource):
                  disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict', 'outputs.OrganizationProperties']]] = None,
                  retention: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -883,7 +883,7 @@ class Organization(pulumi.CustomResource):
                of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[_builtins.str] project_id: The project ID associated with the Apigee organization.
-        :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']] properties: Properties defined in the Apigee organization profile.
+        :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict', 'outputs.OrganizationProperties']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
                is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -1082,7 +1082,7 @@ class Organization(pulumi.CustomResource):
                  disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict', 'outputs.OrganizationProperties']]] = None,
                  retention: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1140,7 +1140,7 @@ class Organization(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict', 'outputs.OrganizationProperties']]] = None,
             retention: pulumi.Input[Optional[_builtins.str]] = None,
             runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1181,7 +1181,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[_builtins.str] name: Output only. Name of the Apigee organization.
         :param pulumi.Input[_builtins.str] project_id: The project ID associated with the Apigee organization.
-        :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']] properties: Properties defined in the Apigee organization profile.
+        :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict', 'outputs.OrganizationProperties']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
                is not EVALUATION). It controls how long Organization data will be retained after the initial delete

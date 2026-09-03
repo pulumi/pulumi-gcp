@@ -376,7 +376,7 @@ class InstanceConfig(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]]] = None,
+                 replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict', 'outputs.InstanceConfigReplica']]]]] = None,
                  __props__=None):
         """
         A possible configuration for a Cloud Spanner instance. Configurations
@@ -428,7 +428,7 @@ class InstanceConfig(pulumi.CustomResource):
                form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict', 'outputs.InstanceConfigReplica']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
                Structure is documented below.
         """
         ...
@@ -487,7 +487,7 @@ class InstanceConfig(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]]] = None,
+                 replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict', 'outputs.InstanceConfigReplica']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -532,7 +532,7 @@ class InstanceConfig(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]]] = None) -> 'InstanceConfig':
+            replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict', 'outputs.InstanceConfigReplica']]]]] = None) -> 'InstanceConfig':
         """
         Get an existing InstanceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -563,7 +563,7 @@ class InstanceConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict', 'outputs.InstanceConfigReplica']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

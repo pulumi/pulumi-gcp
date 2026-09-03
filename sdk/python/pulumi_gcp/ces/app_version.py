@@ -579,7 +579,7 @@ class AppVersion(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            snapshots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVersionSnapshotArgs', 'AppVersionSnapshotArgsDict']]]]] = None) -> 'AppVersion':
+            snapshots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVersionSnapshotArgs', 'AppVersionSnapshotArgsDict', 'outputs.AppVersionSnapshot']]]]] = None) -> 'AppVersion':
         """
         Get an existing AppVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -613,7 +613,7 @@ class AppVersion(pulumi.CustomResource):
                `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppVersionSnapshotArgs', 'AppVersionSnapshotArgsDict']]]] snapshots: A snapshot of the app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppVersionSnapshotArgs', 'AppVersionSnapshotArgsDict', 'outputs.AppVersionSnapshot']]]] snapshots: A snapshot of the app.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

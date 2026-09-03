@@ -394,7 +394,7 @@ class Datastore(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nfs_datastore: pulumi.Input[Optional[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict']]] = None,
+                 nfs_datastore: pulumi.Input[Optional[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict', 'outputs.DatastoreNfsDatastore']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -540,7 +540,7 @@ class Datastore(pulumi.CustomResource):
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
                  (section 3.5)
-        :param pulumi.Input[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict']] nfs_datastore: The NFS datastore configuration.
+        :param pulumi.Input[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict', 'outputs.DatastoreNfsDatastore']] nfs_datastore: The NFS datastore configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -693,7 +693,7 @@ class Datastore(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nfs_datastore: pulumi.Input[Optional[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict']]] = None,
+                 nfs_datastore: pulumi.Input[Optional[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict', 'outputs.DatastoreNfsDatastore']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -735,7 +735,7 @@ class Datastore(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            nfs_datastore: pulumi.Input[Optional[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict']]] = None,
+            nfs_datastore: pulumi.Input[Optional[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict', 'outputs.DatastoreNfsDatastore']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -767,7 +767,7 @@ class Datastore(pulumi.CustomResource):
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
                  (section 3.5)
-        :param pulumi.Input[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict']] nfs_datastore: The NFS datastore configuration.
+        :param pulumi.Input[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict', 'outputs.DatastoreNfsDatastore']] nfs_datastore: The NFS datastore configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

@@ -288,7 +288,7 @@ class Fleet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+                 default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict', 'outputs.FleetDefaultClusterConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -337,7 +337,7 @@ class Fleet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']] default_cluster_config: The default cluster configurations to apply across the fleet.
+        :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict', 'outputs.FleetDefaultClusterConfig']] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -413,7 +413,7 @@ class Fleet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+                 default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict', 'outputs.FleetDefaultClusterConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -446,12 +446,12 @@ class Fleet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+            default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict', 'outputs.FleetDefaultClusterConfig']]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict', 'outputs.FleetState']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Fleet':
         """
@@ -462,7 +462,7 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time the fleet was created, in RFC3339 text format.
-        :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']] default_cluster_config: The default cluster configurations to apply across the fleet.
+        :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict', 'outputs.FleetDefaultClusterConfig']] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: The time the fleet was deleted, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -475,7 +475,7 @@ class Fleet(pulumi.CustomResource):
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict']]]] states: The state of the fleet resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict', 'outputs.FleetState']]]] states: The state of the fleet resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource. This is unique across all
                Fleet resources. If a Fleet resource is deleted and another

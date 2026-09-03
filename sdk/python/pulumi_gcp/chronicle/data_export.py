@@ -450,7 +450,7 @@ class DataExport(pulumi.CustomResource):
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  include_log_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ingestion_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict']]]]] = None,
+                 ingestion_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict', 'outputs.DataExportIngestionLabel']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -535,7 +535,7 @@ class DataExport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] end_time: Last, exclusive time from the range.
         :param pulumi.Input[_builtins.str] gcs_bucket: Link to the destination Cloud Storage bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_log_types: The specific log types to include in the Data Export request.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict']]]] ingestion_labels: The ingestion labels used to filter the export.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict', 'outputs.DataExportIngestionLabel']]]] ingestion_labels: The ingestion labels used to filter the export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
@@ -641,7 +641,7 @@ class DataExport(pulumi.CustomResource):
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  include_log_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ingestion_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict']]]]] = None,
+                 ingestion_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict', 'outputs.DataExportIngestionLabel']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -694,13 +694,13 @@ class DataExport(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_export_id: pulumi.Input[Optional[_builtins.str]] = None,
-            data_export_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportDataExportStatusArgs', 'DataExportDataExportStatusArgsDict']]]]] = None,
+            data_export_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportDataExportStatusArgs', 'DataExportDataExportStatusArgsDict', 'outputs.DataExportDataExportStatus']]]]] = None,
             end_time: pulumi.Input[Optional[_builtins.str]] = None,
             estimated_volume: pulumi.Input[Optional[_builtins.int]] = None,
             exported_volume: pulumi.Input[Optional[_builtins.int]] = None,
             gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
             include_log_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ingestion_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict']]]]] = None,
+            ingestion_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict', 'outputs.DataExportIngestionLabel']]]]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -717,14 +717,14 @@ class DataExport(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Timestamp indicating when the DataExport resource was created.
         :param pulumi.Input[_builtins.str] data_export_id: The unique identifier for the data export.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExportDataExportStatusArgs', 'DataExportDataExportStatusArgsDict']]]] data_export_statuses: Status of the current export.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExportDataExportStatusArgs', 'DataExportDataExportStatusArgsDict', 'outputs.DataExportDataExportStatus']]]] data_export_statuses: Status of the current export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] end_time: Last, exclusive time from the range.
         :param pulumi.Input[_builtins.int] estimated_volume: The estimated export volume in bytes.
         :param pulumi.Input[_builtins.int] exported_volume: Actual volume of data exported.
         :param pulumi.Input[_builtins.str] gcs_bucket: Link to the destination Cloud Storage bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_log_types: The specific log types to include in the Data Export request.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict']]]] ingestion_labels: The ingestion labels used to filter the export.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExportIngestionLabelArgs', 'DataExportIngestionLabelArgsDict', 'outputs.DataExportIngestionLabel']]]] ingestion_labels: The ingestion labels used to filter the export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance.
         :param pulumi.Input[_builtins.str] location: The location of the resource.

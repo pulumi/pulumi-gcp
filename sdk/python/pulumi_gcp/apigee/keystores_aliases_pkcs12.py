@@ -500,7 +500,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: pulumi.Input[Optional[_builtins.str]] = None,
-            certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]]] = None,
+            certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict', 'outputs.KeystoresAliasesPkcs12CertsInfo']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             file: pulumi.Input[Optional[_builtins.str]] = None,
@@ -517,7 +517,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: Alias Name
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict', 'outputs.KeystoresAliasesPkcs12CertsInfo']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

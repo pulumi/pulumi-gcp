@@ -308,7 +308,7 @@ class EkmConnection(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
+                 service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict', 'outputs.EkmConnectionServiceResolver']]]]] = None,
                  __props__=None):
         """
         `Ekm Connections` are used to control the connection settings for an `EXTERNAL_VPC` CryptoKey.
@@ -372,7 +372,7 @@ class EkmConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name for the EkmConnection.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict', 'outputs.EkmConnectionServiceResolver']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
         """
         ...
@@ -452,7 +452,7 @@ class EkmConnection(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
+                 service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict', 'outputs.EkmConnectionServiceResolver']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -491,7 +491,7 @@ class EkmConnection(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None) -> 'EkmConnection':
+            service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict', 'outputs.EkmConnectionServiceResolver']]]]] = None) -> 'EkmConnection':
         """
         Get an existing EkmConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -511,7 +511,7 @@ class EkmConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name for the EkmConnection.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict', 'outputs.EkmConnectionServiceResolver']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

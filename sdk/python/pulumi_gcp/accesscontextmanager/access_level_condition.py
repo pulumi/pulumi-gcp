@@ -475,13 +475,13 @@ class AccessLevelCondition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
+                 device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict', 'outputs.AccessLevelConditionDevicePolicy']]] = None,
                  ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  negate: pulumi.Input[Optional[_builtins.bool]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None,
+                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict', 'outputs.AccessLevelConditionVpcNetworkSource']]]]] = None,
                  __props__=None):
         """
         Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -573,7 +573,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict', 'outputs.AccessLevelConditionDevicePolicy']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -605,7 +605,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict', 'outputs.AccessLevelConditionVpcNetworkSource']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         ...
@@ -712,13 +712,13 @@ class AccessLevelCondition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
+                 device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict', 'outputs.AccessLevelConditionDevicePolicy']]] = None,
                  ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  negate: pulumi.Input[Optional[_builtins.bool]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None,
+                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict', 'outputs.AccessLevelConditionVpcNetworkSource']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -753,13 +753,13 @@ class AccessLevelCondition(pulumi.CustomResource):
             access_level: pulumi.Input[Optional[_builtins.str]] = None,
             access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
+            device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict', 'outputs.AccessLevelConditionDevicePolicy']]] = None,
             ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             negate: pulumi.Input[Optional[_builtins.bool]] = None,
             regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None) -> 'AccessLevelCondition':
+            vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict', 'outputs.AccessLevelConditionVpcNetworkSource']]]]] = None) -> 'AccessLevelCondition':
         """
         Get an existing AccessLevelCondition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -775,7 +775,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict', 'outputs.AccessLevelConditionDevicePolicy']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -807,7 +807,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict', 'outputs.AccessLevelConditionVpcNetworkSource']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -165,7 +165,7 @@ class ProjectConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 platform_logs_config: pulumi.Input[Optional[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict']]] = None,
+                 platform_logs_config: pulumi.Input[Optional[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict', 'outputs.ProjectConfigPlatformLogsConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -222,7 +222,7 @@ class ProjectConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location this config is located in.
-        :param pulumi.Input[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict']] platform_logs_config: Configuration for platform logs.
+        :param pulumi.Input[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict', 'outputs.ProjectConfigPlatformLogsConfig']] platform_logs_config: Configuration for platform logs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -300,7 +300,7 @@ class ProjectConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 platform_logs_config: pulumi.Input[Optional[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict']]] = None,
+                 platform_logs_config: pulumi.Input[Optional[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict', 'outputs.ProjectConfigPlatformLogsConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -327,7 +327,7 @@ class ProjectConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            platform_logs_config: pulumi.Input[Optional[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict']]] = None,
+            platform_logs_config: pulumi.Input[Optional[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict', 'outputs.ProjectConfigPlatformLogsConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectConfig':
         """
         Get an existing ProjectConfig resource's state with the given name, id, and optional extra
@@ -339,7 +339,7 @@ class ProjectConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The name of the location this config is located in.
         :param pulumi.Input[_builtins.str] name: The name of the project's config.
                Always of the form: projects/{project}/locations/{location}/projectConfig
-        :param pulumi.Input[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict']] platform_logs_config: Configuration for platform logs.
+        :param pulumi.Input[Union['ProjectConfigPlatformLogsConfigArgs', 'ProjectConfigPlatformLogsConfigArgsDict', 'outputs.ProjectConfigPlatformLogsConfig']] platform_logs_config: Configuration for platform logs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

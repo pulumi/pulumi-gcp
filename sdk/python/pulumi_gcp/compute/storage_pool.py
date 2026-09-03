@@ -721,7 +721,7 @@ class StoragePool(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict', 'outputs.StoragePoolParams']]] = None,
                  performance_provisioning_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: pulumi.Input[Optional[_builtins.str]] = None,
                  pool_provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
@@ -837,7 +837,7 @@ class StoragePool(pulumi.CustomResource):
                which means the first character must be a lowercase letter,
                and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict', 'outputs.StoragePoolParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
                Possible values are: `STANDARD`, `ADVANCED`.
@@ -963,7 +963,7 @@ class StoragePool(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict', 'outputs.StoragePoolParams']]] = None,
                  performance_provisioning_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: pulumi.Input[Optional[_builtins.str]] = None,
                  pool_provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1029,15 +1029,15 @@ class StoragePool(pulumi.CustomResource):
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict', 'outputs.StoragePoolParams']]] = None,
             performance_provisioning_type: pulumi.Input[Optional[_builtins.str]] = None,
             pool_provisioned_capacity_gb: pulumi.Input[Optional[_builtins.str]] = None,
             pool_provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
             pool_provisioned_throughput: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict']]]]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict']]]]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict', 'outputs.StoragePoolResourceStatus']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict', 'outputs.StoragePoolStatus']]]]] = None,
             storage_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'StoragePool':
         """
@@ -1076,7 +1076,7 @@ class StoragePool(pulumi.CustomResource):
                which means the first character must be a lowercase letter,
                and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict', 'outputs.StoragePoolParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
                Possible values are: `STANDARD`, `ADVANCED`.
@@ -1090,9 +1090,9 @@ class StoragePool(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict']]]] resource_statuses: Status information for the storage pool resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict', 'outputs.StoragePoolResourceStatus']]]] resource_statuses: Status information for the storage pool resource.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict']]]] statuses: Status information for the storage pool resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict', 'outputs.StoragePoolStatus']]]] statuses: Status information for the storage pool resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] storage_pool_type: Type of the storage pool. For example, the
                following are valid values:

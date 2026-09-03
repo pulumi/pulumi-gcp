@@ -362,10 +362,10 @@ class Field(pulumi.CustomResource):
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  field: pulumi.Input[Optional[_builtins.str]] = None,
-                 index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
+                 index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict', 'outputs.FieldIndexConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None,
+                 ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict', 'outputs.FieldTtlConfig']]] = None,
                  __props__=None):
         """
         Represents a single field in the database.
@@ -623,7 +623,7 @@ class Field(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] field: The id of the field to configure.
-        :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
+        :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict', 'outputs.FieldIndexConfig']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
                the field.
@@ -631,7 +631,7 @@ class Field(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the field operation to complete.
-        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict', 'outputs.FieldTtlConfig']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         ...
@@ -904,10 +904,10 @@ class Field(pulumi.CustomResource):
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  field: pulumi.Input[Optional[_builtins.str]] = None,
-                 index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
+                 index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict', 'outputs.FieldIndexConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None,
+                 ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict', 'outputs.FieldTtlConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -944,11 +944,11 @@ class Field(pulumi.CustomResource):
             database: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             field: pulumi.Input[Optional[_builtins.str]] = None,
-            index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
+            index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict', 'outputs.FieldIndexConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
-            ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None) -> 'Field':
+            ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict', 'outputs.FieldTtlConfig']]] = None) -> 'Field':
         """
         Get an existing Field resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -965,7 +965,7 @@ class Field(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] field: The id of the field to configure.
-        :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
+        :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict', 'outputs.FieldIndexConfig']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
                the field.
@@ -975,7 +975,7 @@ class Field(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the field operation to complete.
-        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict', 'outputs.FieldTtlConfig']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

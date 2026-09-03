@@ -534,7 +534,7 @@ class HiveCatalog(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveCatalogReplicaArgs', 'HiveCatalogReplicaArgsDict']]]]] = None,
+            replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveCatalogReplicaArgs', 'HiveCatalogReplicaArgsDict', 'outputs.HiveCatalogReplica']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'HiveCatalog':
         """
         Get an existing HiveCatalog resource's state with the given name, id, and optional extra
@@ -558,7 +558,7 @@ class HiveCatalog(pulumi.CustomResource):
                catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HiveCatalogReplicaArgs', 'HiveCatalogReplicaArgsDict']]]] replicas: Output only. The replicas for the catalog metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HiveCatalogReplicaArgs', 'HiveCatalogReplicaArgsDict', 'outputs.HiveCatalogReplica']]]] replicas: Output only. The replicas for the catalog metadata.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Output only. The update time of the catalog.
         """

@@ -523,11 +523,11 @@ class NodePool(pulumi.CustomResource):
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
+                 local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict', 'outputs.NodePoolLocalDiskEncryption']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  node_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -611,14 +611,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels associated with this resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict', 'outputs.NodePoolLocalDiskEncryption']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] machine_filter: Only machines matching this filter will be allowed to join the node pool.
                The filtering language accepts strings like "name=<name>", and is
                documented in more detail in [AIP-160](https://google.aip.dev/160).
         :param pulumi.Input[_builtins.str] name: The resource name of the node pool.
-        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Configuration for each node in the NodePool
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']] node_config: Configuration for each node in the NodePool
                Structure is documented below.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the pool.
         :param pulumi.Input[_builtins.str] node_location: Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
@@ -716,11 +716,11 @@ class NodePool(pulumi.CustomResource):
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
+                 local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict', 'outputs.NodePoolLocalDiskEncryption']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  node_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -774,11 +774,11 @@ class NodePool(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
+            local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict', 'outputs.NodePoolLocalDiskEncryption']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+            node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
             node_location: pulumi.Input[Optional[_builtins.str]] = None,
             node_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -804,14 +804,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels associated with this resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
+        :param pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict', 'outputs.NodePoolLocalDiskEncryption']] local_disk_encryption: Local disk encryption options. This field is only used when enabling CMEK support.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] machine_filter: Only machines matching this filter will be allowed to join the node pool.
                The filtering language accepts strings like "name=<name>", and is
                documented in more detail in [AIP-160](https://google.aip.dev/160).
         :param pulumi.Input[_builtins.str] name: The resource name of the node pool.
-        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']] node_config: Configuration for each node in the NodePool
+        :param pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']] node_config: Configuration for each node in the NodePool
                Structure is documented below.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the pool.
         :param pulumi.Input[_builtins.str] node_location: Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.

@@ -319,7 +319,7 @@ class RouterRoutePolicy(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
-                 terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
+                 terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict', 'outputs.RouterRoutePolicyTerm']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -432,7 +432,7 @@ class RouterRoutePolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router and NAT reside.
         :param pulumi.Input[_builtins.str] router: The name of the Cloud Router in which this route policy will be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict', 'outputs.RouterRoutePolicyTerm']]]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT
                Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
@@ -560,7 +560,7 @@ class RouterRoutePolicy(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
-                 terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
+                 terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict', 'outputs.RouterRoutePolicyTerm']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -599,7 +599,7 @@ class RouterRoutePolicy(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             router: pulumi.Input[Optional[_builtins.str]] = None,
-            terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
+            terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict', 'outputs.RouterRoutePolicyTerm']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterRoutePolicy':
         """
         Get an existing RouterRoutePolicy resource's state with the given name, id, and optional extra
@@ -621,7 +621,7 @@ class RouterRoutePolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router and NAT reside.
         :param pulumi.Input[_builtins.str] router: The name of the Cloud Router in which this route policy will be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict', 'outputs.RouterRoutePolicyTerm']]]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT
                Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.

@@ -662,15 +662,15 @@ class Spoke(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
+                 gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict', 'outputs.SpokeGateway']]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  hub: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
-                 linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
-                 linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
-                 linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
-                 linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
+                 linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict', 'outputs.SpokeLinkedInterconnectAttachments']]] = None,
+                 linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict', 'outputs.SpokeLinkedProducerVpcNetwork']]] = None,
+                 linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict', 'outputs.SpokeLinkedRouterApplianceInstances']]] = None,
+                 linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict', 'outputs.SpokeLinkedVpcNetwork']]] = None,
+                 linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict', 'outputs.SpokeLinkedVpnTunnels']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1143,22 +1143,22 @@ class Spoke(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
-        :param pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']] gateway: This is a gateway that can apply specialized processing to traffic going through it.
+        :param pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict', 'outputs.SpokeGateway']] gateway: This is a gateway that can apply specialized processing to traffic going through it.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict', 'outputs.SpokeLinkedInterconnectAttachments']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
+        :param pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict', 'outputs.SpokeLinkedProducerVpcNetwork']] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']] linked_router_appliance_instances: The URIs of linked Router appliance resources
+        :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict', 'outputs.SpokeLinkedRouterApplianceInstances']] linked_router_appliance_instances: The URIs of linked Router appliance resources
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']] linked_vpc_network: VPC network that is associated with the spoke.
+        :param pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict', 'outputs.SpokeLinkedVpcNetwork']] linked_vpc_network: VPC network that is associated with the spoke.
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
+        :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict', 'outputs.SpokeLinkedVpnTunnels']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Immutable. The name of the spoke. Spoke names must be unique.
@@ -1647,15 +1647,15 @@ class Spoke(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
+                 gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict', 'outputs.SpokeGateway']]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  hub: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
-                 linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
-                 linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
-                 linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
-                 linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
+                 linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict', 'outputs.SpokeLinkedInterconnectAttachments']]] = None,
+                 linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict', 'outputs.SpokeLinkedProducerVpcNetwork']]] = None,
+                 linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict', 'outputs.SpokeLinkedRouterApplianceInstances']]] = None,
+                 linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict', 'outputs.SpokeLinkedVpcNetwork']]] = None,
+                 linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict', 'outputs.SpokeLinkedVpnTunnels']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1709,20 +1709,20 @@ class Spoke(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
+            gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict', 'outputs.SpokeGateway']]] = None,
             group: pulumi.Input[Optional[_builtins.str]] = None,
             hub: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
-            linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
-            linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
-            linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
-            linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
+            linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict', 'outputs.SpokeLinkedInterconnectAttachments']]] = None,
+            linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict', 'outputs.SpokeLinkedProducerVpcNetwork']]] = None,
+            linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict', 'outputs.SpokeLinkedRouterApplianceInstances']]] = None,
+            linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict', 'outputs.SpokeLinkedVpcNetwork']]] = None,
+            linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict', 'outputs.SpokeLinkedVpnTunnels']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reasons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict']]]]] = None,
+            reasons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict', 'outputs.SpokeReason']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Spoke':
@@ -1742,22 +1742,22 @@ class Spoke(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']] gateway: This is a gateway that can apply specialized processing to traffic going through it.
+        :param pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict', 'outputs.SpokeGateway']] gateway: This is a gateway that can apply specialized processing to traffic going through it.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict', 'outputs.SpokeLinkedInterconnectAttachments']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
+        :param pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict', 'outputs.SpokeLinkedProducerVpcNetwork']] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']] linked_router_appliance_instances: The URIs of linked Router appliance resources
+        :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict', 'outputs.SpokeLinkedRouterApplianceInstances']] linked_router_appliance_instances: The URIs of linked Router appliance resources
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']] linked_vpc_network: VPC network that is associated with the spoke.
+        :param pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict', 'outputs.SpokeLinkedVpcNetwork']] linked_vpc_network: VPC network that is associated with the spoke.
                Structure is documented below.
-        :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
+        :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict', 'outputs.SpokeLinkedVpnTunnels']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Immutable. The name of the spoke. Spoke names must be unique.
@@ -1765,7 +1765,7 @@ class Spoke(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict']]]] reasons: The reasons for the current state in the lifecycle
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict', 'outputs.SpokeReason']]]] reasons: The reasons for the current state in the lifecycle
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. The current lifecycle state of this spoke.
         :param pulumi.Input[_builtins.str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.

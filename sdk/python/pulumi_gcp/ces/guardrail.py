@@ -634,19 +634,19 @@ class Guardrail(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict', 'outputs.GuardrailAction']]] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
-                 content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+                 code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict', 'outputs.GuardrailCodeCallback']]] = None,
+                 content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict', 'outputs.GuardrailContentFilter']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
-                 llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
+                 llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict', 'outputs.GuardrailLlmPolicy']]] = None,
+                 llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict', 'outputs.GuardrailLlmPromptSecurity']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
+                 model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict', 'outputs.GuardrailModelSafety']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1002,13 +1002,13 @@ class Guardrail(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']] action: Action that is taken when a certain precondition is met.
+        :param pulumi.Input[Union['GuardrailActionArgs', 'GuardrailActionArgsDict', 'outputs.GuardrailAction']] action: Action that is taken when a certain precondition is met.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']] code_callback: Guardrail that blocks the conversation based on the code callbacks
+        :param pulumi.Input[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict', 'outputs.GuardrailCodeCallback']] code_callback: Guardrail that blocks the conversation based on the code callbacks
                provided.
                Structure is documented below.
-        :param pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']] content_filter: Guardrail that bans certain content from being used in the conversation.
+        :param pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict', 'outputs.GuardrailContentFilter']] content_filter: Guardrail that bans certain content from being used in the conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1022,14 +1022,14 @@ class Guardrail(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] guardrail_id: The ID to use for the guardrail, which will become the final component of
                the guardrail's resource name. If not provided, a unique ID will be
                automatically assigned for the guardrail.
-        :param pulumi.Input[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']] llm_policy: Guardrail that blocks the conversation if the LLM response is considered
+        :param pulumi.Input[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict', 'outputs.GuardrailLlmPolicy']] llm_policy: Guardrail that blocks the conversation if the LLM response is considered
                violating the policy based on the LLM classification.
                Structure is documented below.
-        :param pulumi.Input[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']] llm_prompt_security: Guardrail that blocks the conversation if the input is considered unsafe
+        :param pulumi.Input[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict', 'outputs.GuardrailLlmPromptSecurity']] llm_prompt_security: Guardrail that blocks the conversation if the input is considered unsafe
                based on the LLM classification.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']] model_safety: Model safety settings overrides. When this is set, it will override the
+        :param pulumi.Input[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict', 'outputs.GuardrailModelSafety']] model_safety: Model safety settings overrides. When this is set, it will override the
                default settings and trigger the guardrail if the response is considered
                unsafe.
                Structure is documented below.
@@ -1408,19 +1408,19 @@ class Guardrail(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict', 'outputs.GuardrailAction']]] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
-                 content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+                 code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict', 'outputs.GuardrailCodeCallback']]] = None,
+                 content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict', 'outputs.GuardrailContentFilter']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
-                 llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
+                 llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict', 'outputs.GuardrailLlmPolicy']]] = None,
+                 llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict', 'outputs.GuardrailLlmPromptSecurity']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
+                 model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict', 'outputs.GuardrailModelSafety']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1467,10 +1467,10 @@ class Guardrail(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
+            action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict', 'outputs.GuardrailAction']]] = None,
             app: pulumi.Input[Optional[_builtins.str]] = None,
-            code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
-            content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+            code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict', 'outputs.GuardrailCodeCallback']]] = None,
+            content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict', 'outputs.GuardrailContentFilter']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1478,10 +1478,10 @@ class Guardrail(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
-            llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
-            llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
+            llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict', 'outputs.GuardrailLlmPolicy']]] = None,
+            llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict', 'outputs.GuardrailLlmPromptSecurity']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
+            model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict', 'outputs.GuardrailModelSafety']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Guardrail':
@@ -1492,13 +1492,13 @@ class Guardrail(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']] action: Action that is taken when a certain precondition is met.
+        :param pulumi.Input[Union['GuardrailActionArgs', 'GuardrailActionArgsDict', 'outputs.GuardrailAction']] action: Action that is taken when a certain precondition is met.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']] code_callback: Guardrail that blocks the conversation based on the code callbacks
+        :param pulumi.Input[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict', 'outputs.GuardrailCodeCallback']] code_callback: Guardrail that blocks the conversation based on the code callbacks
                provided.
                Structure is documented below.
-        :param pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']] content_filter: Guardrail that bans certain content from being used in the conversation.
+        :param pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict', 'outputs.GuardrailContentFilter']] content_filter: Guardrail that bans certain content from being used in the conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the guardrail was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1516,14 +1516,14 @@ class Guardrail(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] guardrail_id: The ID to use for the guardrail, which will become the final component of
                the guardrail's resource name. If not provided, a unique ID will be
                automatically assigned for the guardrail.
-        :param pulumi.Input[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']] llm_policy: Guardrail that blocks the conversation if the LLM response is considered
+        :param pulumi.Input[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict', 'outputs.GuardrailLlmPolicy']] llm_policy: Guardrail that blocks the conversation if the LLM response is considered
                violating the policy based on the LLM classification.
                Structure is documented below.
-        :param pulumi.Input[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']] llm_prompt_security: Guardrail that blocks the conversation if the input is considered unsafe
+        :param pulumi.Input[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict', 'outputs.GuardrailLlmPromptSecurity']] llm_prompt_security: Guardrail that blocks the conversation if the input is considered unsafe
                based on the LLM classification.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']] model_safety: Model safety settings overrides. When this is set, it will override the
+        :param pulumi.Input[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict', 'outputs.GuardrailModelSafety']] model_safety: Model safety settings overrides. When this is set, it will override the
                default settings and trigger the guardrail if the response is considered
                unsafe.
                Structure is documented below.

@@ -411,7 +411,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  featurestore: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict', 'outputs.AiFeatureStoreEntityTypeMonitoringConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -535,7 +535,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict', 'outputs.AiFeatureStoreEntityTypeMonitoringConfig']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -673,7 +673,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  featurestore: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict', 'outputs.AiFeatureStoreEntityTypeMonitoringConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -719,7 +719,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             featurestore: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
+            monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict', 'outputs.AiFeatureStoreEntityTypeMonitoringConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -747,7 +747,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
+        :param pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict', 'outputs.AiFeatureStoreEntityTypeMonitoringConfig']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.

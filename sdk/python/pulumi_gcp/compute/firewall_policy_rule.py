@@ -628,11 +628,11 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict', 'outputs.FirewallPolicyRuleMatch']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
                  target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.FirewallPolicyRuleTargetSecureTag']]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -901,7 +901,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                Logs may be exported to BigQuery or Pub/Sub.
                Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict', 'outputs.FirewallPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
@@ -912,7 +912,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get this rule.
                If this field is left blank, all VMs within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.FirewallPolicyRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
                Structure is documented below.
@@ -1193,11 +1193,11 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict', 'outputs.FirewallPolicyRuleMatch']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
                  target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.FirewallPolicyRuleTargetSecureTag']]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1255,12 +1255,12 @@ class FirewallPolicyRule(pulumi.CustomResource):
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
             firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
-            match: pulumi.Input[Optional[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict', 'outputs.FirewallPolicyRuleMatch']]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
             security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
             target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
+            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.FirewallPolicyRuleTargetSecureTag']]]]] = None,
             target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None) -> 'FirewallPolicyRule':
         """
@@ -1290,7 +1290,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict', 'outputs.FirewallPolicyRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
@@ -1302,7 +1302,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get this rule.
                If this field is left blank, all VMs within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.FirewallPolicyRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
                Structure is documented below.

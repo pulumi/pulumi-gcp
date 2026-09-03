@@ -600,7 +600,7 @@ class Network(pulumi.CustomResource):
             type: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict']]]]] = None) -> 'Network':
+            vpc_networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict', 'outputs.NetworkVpcNetwork']]]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -631,7 +631,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] update_time: Last update time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict', 'outputs.NetworkVpcNetwork']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
                Structure is documented below.
         """

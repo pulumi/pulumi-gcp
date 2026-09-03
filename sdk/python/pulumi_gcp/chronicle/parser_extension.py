@@ -551,8 +551,8 @@ class ParserExtension(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cbn_snippet: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_parsing: pulumi.Input[Optional[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict']]] = None,
-                 field_extractors: pulumi.Input[Optional[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict']]] = None,
+                 dynamic_parsing: pulumi.Input[Optional[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict', 'outputs.ParserExtensionDynamicParsing']]] = None,
+                 field_extractors: pulumi.Input[Optional[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict', 'outputs.ParserExtensionFieldExtractors']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  log: pulumi.Input[Optional[_builtins.str]] = None,
@@ -666,9 +666,9 @@ class ParserExtension(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict']] dynamic_parsing: A representation of a parser extension as dynamic parsing config.
+        :param pulumi.Input[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict', 'outputs.ParserExtensionDynamicParsing']] dynamic_parsing: A representation of a parser extension as dynamic parsing config.
                Structure is documented below.
-        :param pulumi.Input[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict']] field_extractors: A representation of a parser extension as a set of field extractors.
+        :param pulumi.Input[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict', 'outputs.ParserExtensionFieldExtractors']] field_extractors: A representation of a parser extension as a set of field extractors.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -800,8 +800,8 @@ class ParserExtension(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cbn_snippet: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_parsing: pulumi.Input[Optional[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict']]] = None,
-                 field_extractors: pulumi.Input[Optional[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict']]] = None,
+                 dynamic_parsing: pulumi.Input[Optional[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict', 'outputs.ParserExtensionDynamicParsing']]] = None,
+                 field_extractors: pulumi.Input[Optional[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict', 'outputs.ParserExtensionFieldExtractors']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  log: pulumi.Input[Optional[_builtins.str]] = None,
@@ -854,9 +854,9 @@ class ParserExtension(pulumi.CustomResource):
             cbn_snippet: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            dynamic_parsing: pulumi.Input[Optional[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict']]] = None,
+            dynamic_parsing: pulumi.Input[Optional[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict', 'outputs.ParserExtensionDynamicParsing']]] = None,
             extension_validation_report: pulumi.Input[Optional[_builtins.str]] = None,
-            field_extractors: pulumi.Input[Optional[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict']]] = None,
+            field_extractors: pulumi.Input[Optional[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict', 'outputs.ParserExtensionFieldExtractors']]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             last_live_time: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -884,11 +884,11 @@ class ParserExtension(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict']] dynamic_parsing: A representation of a parser extension as dynamic parsing config.
+        :param pulumi.Input[Union['ParserExtensionDynamicParsingArgs', 'ParserExtensionDynamicParsingArgsDict', 'outputs.ParserExtensionDynamicParsing']] dynamic_parsing: A representation of a parser extension as dynamic parsing config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] extension_validation_report: The latest extension
                validation report for this extension.
-        :param pulumi.Input[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict']] field_extractors: A representation of a parser extension as a set of field extractors.
+        :param pulumi.Input[Union['ParserExtensionFieldExtractorsArgs', 'ParserExtensionFieldExtractorsArgsDict', 'outputs.ParserExtensionFieldExtractors']] field_extractors: A representation of a parser extension as a set of field extractors.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] last_live_time: The time the config was last serving live traffic.

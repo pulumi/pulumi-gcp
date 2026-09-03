@@ -708,7 +708,7 @@ class RegionalParameter(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
-            policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalParameterPolicyMemberArgs', 'RegionalParameterPolicyMemberArgsDict']]]]] = None,
+            policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalParameterPolicyMemberArgs', 'RegionalParameterPolicyMemberArgsDict', 'outputs.RegionalParameterPolicyMember']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionalParameter':
@@ -747,7 +747,7 @@ class RegionalParameter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name of the regional Parameter. Format:
                `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
         :param pulumi.Input[_builtins.str] parameter_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalParameterPolicyMemberArgs', 'RegionalParameterPolicyMemberArgsDict']]]] policy_members: An object containing a unique resource identity tied to the regional parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalParameterPolicyMemberArgs', 'RegionalParameterPolicyMemberArgsDict', 'outputs.RegionalParameterPolicyMember']]]] policy_members: An object containing a unique resource identity tied to the regional parameter.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

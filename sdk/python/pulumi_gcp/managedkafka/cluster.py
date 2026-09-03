@@ -508,16 +508,16 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']]] = None,
-                 capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
+                 broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']]] = None,
+                 capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
+                 gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
-                 tls_config: pulumi.Input[Optional[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']]] = None,
+                 rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']]] = None,
+                 tls_config: pulumi.Input[Optional[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict', 'outputs.ClusterTlsConfig']]] = None,
                  __props__=None):
         """
         A Managed Service for Apache Kafka cluster. Apache Kafka is a trademark owned by the Apache Software Foundation.
@@ -636,9 +636,9 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        :param pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -647,7 +647,7 @@ class Cluster(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
+        :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -655,9 +655,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        :param pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict', 'outputs.ClusterTlsConfig']] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
                Structure is documented below.
         """
         ...
@@ -796,16 +796,16 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']]] = None,
-                 capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
+                 broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']]] = None,
+                 capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
+                 gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
-                 tls_config: pulumi.Input[Optional[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']]] = None,
+                 rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']]] = None,
+                 tls_config: pulumi.Input[Optional[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict', 'outputs.ClusterTlsConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -851,21 +851,21 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']]] = None,
-            capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
+            broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']]] = None,
+            capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
+            gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
+            rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            tls_config: pulumi.Input[Optional[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']]] = None,
+            tls_config: pulumi.Input[Optional[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict', 'outputs.ClusterTlsConfig']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -874,9 +874,9 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        :param pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
         :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created.
@@ -887,7 +887,7 @@ class Cluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
+        :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -898,10 +898,10 @@ class Cluster(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
-        :param pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        :param pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict', 'outputs.ClusterTlsConfig']] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the cluster was last updated.
         """

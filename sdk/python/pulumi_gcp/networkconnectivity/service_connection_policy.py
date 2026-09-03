@@ -498,7 +498,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_config: pulumi.Input[Optional[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict']]] = None,
+                 psc_config: pulumi.Input[Optional[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict', 'outputs.ServiceConnectionPolicyPscConfig']]] = None,
                  service_class: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -574,7 +574,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict']] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+        :param pulumi.Input[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict', 'outputs.ServiceConnectionPolicyPscConfig']] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
@@ -663,7 +663,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_config: pulumi.Input[Optional[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict']]] = None,
+                 psc_config: pulumi.Input[Optional[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict', 'outputs.ServiceConnectionPolicyPscConfig']]] = None,
                  service_class: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -719,8 +719,8 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            psc_config: pulumi.Input[Optional[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict']]] = None,
-            psc_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceConnectionPolicyPscConnectionArgs', 'ServiceConnectionPolicyPscConnectionArgsDict']]]]] = None,
+            psc_config: pulumi.Input[Optional[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict', 'outputs.ServiceConnectionPolicyPscConfig']]] = None,
+            psc_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceConnectionPolicyPscConnectionArgs', 'ServiceConnectionPolicyPscConnectionArgsDict', 'outputs.ServiceConnectionPolicyPscConnection']]]]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             service_class: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceConnectionPolicy':
@@ -751,9 +751,9 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict']] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+        :param pulumi.Input[Union['ServiceConnectionPolicyPscConfigArgs', 'ServiceConnectionPolicyPscConfigArgsDict', 'outputs.ServiceConnectionPolicyPscConfig']] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceConnectionPolicyPscConnectionArgs', 'ServiceConnectionPolicyPscConnectionArgsDict']]]] psc_connections: Information about each Private Service Connect connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceConnectionPolicyPscConnectionArgs', 'ServiceConnectionPolicyPscConnectionArgsDict', 'outputs.ServiceConnectionPolicyPscConnection']]]] psc_connections: Information about each Private Service Connect connection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

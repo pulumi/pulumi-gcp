@@ -549,10 +549,10 @@ class Evaluation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
+                 golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict', 'outputs.EvaluationGolden']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']]] = None,
+                 scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict', 'outputs.EvaluationScenario']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -1369,12 +1369,12 @@ class Evaluation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] evaluation_id: The ID to use for the evaluation, which will become the final component of
                the evaluation's resource name. If not provided, a unique ID will be
                automatically assigned for the evaluation.
-        :param pulumi.Input[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']] golden: Golden input.
+        :param pulumi.Input[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict', 'outputs.EvaluationGolden']] golden: Golden input.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: (Required)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']] scenario: Scenario input.
+        :param pulumi.Input[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict', 'outputs.EvaluationScenario']] scenario: Scenario input.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User defined tags to categorize the evaluation.
         """
@@ -2204,10 +2204,10 @@ class Evaluation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
+                 golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict', 'outputs.EvaluationGolden']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']]] = None,
+                 scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict', 'outputs.EvaluationScenario']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2265,13 +2265,13 @@ class Evaluation(pulumi.CustomResource):
             evaluation_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
             evaluation_runs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
+            golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict', 'outputs.EvaluationGolden']]] = None,
             invalid: pulumi.Input[Optional[_builtins.bool]] = None,
             last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']]] = None,
+            scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict', 'outputs.EvaluationScenario']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Evaluation':
         """
@@ -2298,7 +2298,7 @@ class Evaluation(pulumi.CustomResource):
                the evaluation's resource name. If not provided, a unique ID will be
                automatically assigned for the evaluation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] evaluation_runs: The evaluation runs for this evaluation.
-        :param pulumi.Input[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']] golden: Golden input.
+        :param pulumi.Input[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict', 'outputs.EvaluationGolden']] golden: Golden input.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] invalid: Whether the evaluation is invalid.
         :param pulumi.Input[_builtins.str] last_updated_by: The user who last updated the evaluation.
@@ -2307,7 +2307,7 @@ class Evaluation(pulumi.CustomResource):
                Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']] scenario: Scenario input.
+        :param pulumi.Input[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict', 'outputs.EvaluationScenario']] scenario: Scenario input.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User defined tags to categorize the evaluation.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the evaluation was last updated.

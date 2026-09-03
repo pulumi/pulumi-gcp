@@ -388,7 +388,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 managed: pulumi.Input[Optional[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict']]] = None,
+                 managed: pulumi.Input[Optional[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict', 'outputs.ManagedSslCertificateManaged']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -495,7 +495,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict']] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict', 'outputs.ManagedSslCertificateManaged']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -629,7 +629,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 managed: pulumi.Input[Optional[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict']]] = None,
+                 managed: pulumi.Input[Optional[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict', 'outputs.ManagedSslCertificateManaged']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -670,7 +670,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-            managed: pulumi.Input[Optional[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict']]] = None,
+            managed: pulumi.Input[Optional[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict', 'outputs.ManagedSslCertificateManaged']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
@@ -693,7 +693,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] expire_time: Expire time of the certificate in RFC3339 text format.
-        :param pulumi.Input[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict']] managed: Properties relevant to a managed certificate.  These will be used if the
+        :param pulumi.Input[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict', 'outputs.ManagedSslCertificateManaged']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is

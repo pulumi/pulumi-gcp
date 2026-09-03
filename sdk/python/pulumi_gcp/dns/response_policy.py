@@ -267,8 +267,8 @@ class ResponsePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
+                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict', 'outputs.ResponsePolicyGkeCluster']]]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict', 'outputs.ResponsePolicyNetwork']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  response_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -371,9 +371,9 @@ class ResponsePolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict', 'outputs.ResponsePolicyGkeCluster']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]] networks: The list of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict', 'outputs.ResponsePolicyNetwork']]]] networks: The list of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -492,8 +492,8 @@ class ResponsePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
+                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict', 'outputs.ResponsePolicyGkeCluster']]]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict', 'outputs.ResponsePolicyNetwork']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  response_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -525,8 +525,8 @@ class ResponsePolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
-            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
+            gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict', 'outputs.ResponsePolicyGkeCluster']]]]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict', 'outputs.ResponsePolicyNetwork']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             response_policy_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResponsePolicy':
         """
@@ -543,9 +543,9 @@ class ResponsePolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict', 'outputs.ResponsePolicyGkeCluster']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]] networks: The list of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict', 'outputs.ResponsePolicyNetwork']]]] networks: The list of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
