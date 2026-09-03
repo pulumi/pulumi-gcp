@@ -371,7 +371,7 @@ class Occurence(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+                 attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict', 'outputs.OccurenceAttestation']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  note_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -452,7 +452,7 @@ class Occurence(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']] attestation: Occurrence that represents a single "attestation". The authenticity
+        :param pulumi.Input[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict', 'outputs.OccurenceAttestation']] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
                the signature is sufficient to establish trust. In this circumstance,
@@ -570,7 +570,7 @@ class Occurence(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+                 attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict', 'outputs.OccurenceAttestation']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  note_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -611,7 +611,7 @@ class Occurence(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+            attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict', 'outputs.OccurenceAttestation']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -628,7 +628,7 @@ class Occurence(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']] attestation: Occurrence that represents a single "attestation". The authenticity
+        :param pulumi.Input[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict', 'outputs.OccurenceAttestation']] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
                the signature is sufficient to establish trust. In this circumstance,

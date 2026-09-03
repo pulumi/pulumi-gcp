@@ -394,14 +394,14 @@ class WidgetConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_settings: pulumi.Input[Optional[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict']]] = None,
+                 access_settings: pulumi.Input[Optional[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict', 'outputs.WidgetConfigAccessSettings']]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 homepage_setting: pulumi.Input[Optional[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict']]] = None,
+                 homepage_setting: pulumi.Input[Optional[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict', 'outputs.WidgetConfigHomepageSetting']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 ui_branding: pulumi.Input[Optional[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict']]] = None,
-                 ui_settings: pulumi.Input[Optional[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict']]] = None,
+                 ui_branding: pulumi.Input[Optional[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict', 'outputs.WidgetConfigUiBranding']]] = None,
+                 ui_settings: pulumi.Input[Optional[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict', 'outputs.WidgetConfigUiSettings']]] = None,
                  widget_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -473,21 +473,21 @@ class WidgetConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict']] access_settings: Describes widget access settings.
+        :param pulumi.Input[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict', 'outputs.WidgetConfigAccessSettings']] access_settings: Describes widget access settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
         :param pulumi.Input[_builtins.str] engine_id: The engine ID.
-        :param pulumi.Input[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict']] homepage_setting: Describes the homepage setting of the widget. It includes all homepage related settings
+        :param pulumi.Input[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict', 'outputs.WidgetConfigHomepageSetting']] homepage_setting: Describes the homepage setting of the widget. It includes all homepage related settings
                and configurations, such as shortcuts.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict']] ui_branding: Describes search widget UI branding settings, such as the widget title, logo,
+        :param pulumi.Input[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict', 'outputs.WidgetConfigUiBranding']] ui_branding: Describes search widget UI branding settings, such as the widget title, logo,
                favicons, and colors.
                Structure is documented below.
-        :param pulumi.Input[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict']] ui_settings: Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
+        :param pulumi.Input[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict', 'outputs.WidgetConfigUiSettings']] ui_settings: Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] widget_config_id: The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
         """
@@ -579,14 +579,14 @@ class WidgetConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_settings: pulumi.Input[Optional[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict']]] = None,
+                 access_settings: pulumi.Input[Optional[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict', 'outputs.WidgetConfigAccessSettings']]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 homepage_setting: pulumi.Input[Optional[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict']]] = None,
+                 homepage_setting: pulumi.Input[Optional[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict', 'outputs.WidgetConfigHomepageSetting']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 ui_branding: pulumi.Input[Optional[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict']]] = None,
-                 ui_settings: pulumi.Input[Optional[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict']]] = None,
+                 ui_branding: pulumi.Input[Optional[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict', 'outputs.WidgetConfigUiBranding']]] = None,
+                 ui_settings: pulumi.Input[Optional[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict', 'outputs.WidgetConfigUiSettings']]] = None,
                  widget_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -622,16 +622,16 @@ class WidgetConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_settings: pulumi.Input[Optional[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict']]] = None,
+            access_settings: pulumi.Input[Optional[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict', 'outputs.WidgetConfigAccessSettings']]] = None,
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
             config_id: pulumi.Input[Optional[_builtins.str]] = None,
             engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-            homepage_setting: pulumi.Input[Optional[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict']]] = None,
+            homepage_setting: pulumi.Input[Optional[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict', 'outputs.WidgetConfigHomepageSetting']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            ui_branding: pulumi.Input[Optional[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict']]] = None,
-            ui_settings: pulumi.Input[Optional[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict']]] = None,
+            ui_branding: pulumi.Input[Optional[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict', 'outputs.WidgetConfigUiBranding']]] = None,
+            ui_settings: pulumi.Input[Optional[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict', 'outputs.WidgetConfigUiSettings']]] = None,
             widget_config_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WidgetConfig':
         """
         Get an existing WidgetConfig resource's state with the given name, id, and optional extra
@@ -640,12 +640,12 @@ class WidgetConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict']] access_settings: Describes widget access settings.
+        :param pulumi.Input[Union['WidgetConfigAccessSettingsArgs', 'WidgetConfigAccessSettingsArgsDict', 'outputs.WidgetConfigAccessSettings']] access_settings: Describes widget access settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
         :param pulumi.Input[_builtins.str] config_id: Output only. Unique obfuscated identifier of a WidgetConfig.
         :param pulumi.Input[_builtins.str] engine_id: The engine ID.
-        :param pulumi.Input[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict']] homepage_setting: Describes the homepage setting of the widget. It includes all homepage related settings
+        :param pulumi.Input[Union['WidgetConfigHomepageSettingArgs', 'WidgetConfigHomepageSettingArgsDict', 'outputs.WidgetConfigHomepageSetting']] homepage_setting: Describes the homepage setting of the widget. It includes all homepage related settings
                and configurations, such as shortcuts.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -654,10 +654,10 @@ class WidgetConfig(pulumi.CustomResource):
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/widgetConfigs/{widget_config_id}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict']] ui_branding: Describes search widget UI branding settings, such as the widget title, logo,
+        :param pulumi.Input[Union['WidgetConfigUiBrandingArgs', 'WidgetConfigUiBrandingArgsDict', 'outputs.WidgetConfigUiBranding']] ui_branding: Describes search widget UI branding settings, such as the widget title, logo,
                favicons, and colors.
                Structure is documented below.
-        :param pulumi.Input[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict']] ui_settings: Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
+        :param pulumi.Input[Union['WidgetConfigUiSettingsArgs', 'WidgetConfigUiSettingsArgsDict', 'outputs.WidgetConfigUiSettings']] ui_settings: Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] widget_config_id: The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
         """

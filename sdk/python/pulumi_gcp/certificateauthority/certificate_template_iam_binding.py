@@ -316,7 +316,7 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict', 'outputs.CertificateTemplateIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,7 +577,7 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_template: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict', 'outputs.CertificateTemplateIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -874,7 +874,7 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict', 'outputs.CertificateTemplateIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -912,7 +912,7 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict', 'outputs.CertificateTemplateIamBindingCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -926,7 +926,7 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_template: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['CertificateTemplateIamBindingConditionArgs', 'CertificateTemplateIamBindingConditionArgsDict', 'outputs.CertificateTemplateIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,

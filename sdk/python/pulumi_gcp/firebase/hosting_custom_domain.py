@@ -957,7 +957,7 @@ class HostingCustomDomain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
-            certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict']]]]] = None,
+            certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict', 'outputs.HostingCustomDomainCert']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -965,13 +965,13 @@ class HostingCustomDomain(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             host_state: pulumi.Input[Optional[_builtins.str]] = None,
-            issues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict']]]]] = None,
+            issues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict', 'outputs.HostingCustomDomainIssue']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ownership_state: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
-            required_dns_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict']]]]] = None,
+            required_dns_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict', 'outputs.HostingCustomDomainRequiredDnsUpdate']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None) -> 'HostingCustomDomain':
@@ -986,7 +986,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                for your domain name. Spark plan `CustomDomain`s only have access to the
                `GROUPED` cert type, while Blaze plan can select any option.
                Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict']]]] certs: The SSL certificate Hosting has for this `CustomDomain`'s domain name.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict', 'outputs.HostingCustomDomainCert']]]] certs: The SSL certificate Hosting has for this `CustomDomain`'s domain name.
                For new `CustomDomain`s, this often represents Hosting's intent to create
                a certificate, rather than an actual cert. Check the `state` field for
                more.
@@ -1026,7 +1026,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                All requests against your `CustomDomain`'s domain name are served by
                Hosting. If the `CustomDomain`'s `OwnershipState` is also `ACTIVE`, Hosting
                serves your Hosting Site's content on the domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict']]]] issues: A set of errors Hosting systems encountered when trying to establish
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict', 'outputs.HostingCustomDomainIssue']]]] issues: A set of errors Hosting systems encountered when trying to establish
                Hosting's ability to serve secure content for your domain name. Resolve
                these issues to ensure your `CustomDomain` behaves properly.
                Structure is documented below.
@@ -1073,7 +1073,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                specified, Hosting will respond to requests against this CustomDomain
                with an HTTP 301 code, and route traffic to the specified `redirect_target`
                instead.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict']]]] required_dns_updates: A set of updates you should make to the domain name's DNS records to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict', 'outputs.HostingCustomDomainRequiredDnsUpdate']]]] required_dns_updates: A set of updates you should make to the domain name's DNS records to
                let Hosting serve secure content on its behalf.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] site_id: The ID of the site in which to create this custom domain association.

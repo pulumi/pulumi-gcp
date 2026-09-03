@@ -336,11 +336,11 @@ class LiteTopic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 partition_config: pulumi.Input[Optional[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict']]] = None,
+                 partition_config: pulumi.Input[Optional[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict', 'outputs.LiteTopicPartitionConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 reservation_config: pulumi.Input[Optional[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict']]] = None,
-                 retention_config: pulumi.Input[Optional[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict']]] = None,
+                 reservation_config: pulumi.Input[Optional[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict', 'outputs.LiteTopicReservationConfig']]] = None,
+                 retention_config: pulumi.Input[Optional[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict', 'outputs.LiteTopicRetentionConfig']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -413,14 +413,14 @@ class LiteTopic(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: Name of the topic.
-        :param pulumi.Input[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict']] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict', 'outputs.LiteTopicPartitionConfig']] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the pubsub lite topic.
-        :param pulumi.Input[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict']] reservation_config: The settings for this topic's Reservation usage.
+        :param pulumi.Input[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict', 'outputs.LiteTopicReservationConfig']] reservation_config: The settings for this topic's Reservation usage.
                Structure is documented below.
-        :param pulumi.Input[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict']] retention_config: The settings for a topic's message retention.
+        :param pulumi.Input[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict', 'outputs.LiteTopicRetentionConfig']] retention_config: The settings for a topic's message retention.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] zone: The zone of the pubsub lite topic.
         """
@@ -508,11 +508,11 @@ class LiteTopic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 partition_config: pulumi.Input[Optional[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict']]] = None,
+                 partition_config: pulumi.Input[Optional[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict', 'outputs.LiteTopicPartitionConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 reservation_config: pulumi.Input[Optional[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict']]] = None,
-                 retention_config: pulumi.Input[Optional[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict']]] = None,
+                 reservation_config: pulumi.Input[Optional[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict', 'outputs.LiteTopicReservationConfig']]] = None,
+                 retention_config: pulumi.Input[Optional[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict', 'outputs.LiteTopicRetentionConfig']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -543,11 +543,11 @@ class LiteTopic(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            partition_config: pulumi.Input[Optional[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict']]] = None,
+            partition_config: pulumi.Input[Optional[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict', 'outputs.LiteTopicPartitionConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            reservation_config: pulumi.Input[Optional[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict']]] = None,
-            retention_config: pulumi.Input[Optional[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict']]] = None,
+            reservation_config: pulumi.Input[Optional[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict', 'outputs.LiteTopicReservationConfig']]] = None,
+            retention_config: pulumi.Input[Optional[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict', 'outputs.LiteTopicRetentionConfig']]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'LiteTopic':
         """
         Get an existing LiteTopic resource's state with the given name, id, and optional extra
@@ -563,14 +563,14 @@ class LiteTopic(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: Name of the topic.
-        :param pulumi.Input[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict']] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input[Union['LiteTopicPartitionConfigArgs', 'LiteTopicPartitionConfigArgsDict', 'outputs.LiteTopicPartitionConfig']] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the pubsub lite topic.
-        :param pulumi.Input[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict']] reservation_config: The settings for this topic's Reservation usage.
+        :param pulumi.Input[Union['LiteTopicReservationConfigArgs', 'LiteTopicReservationConfigArgsDict', 'outputs.LiteTopicReservationConfig']] reservation_config: The settings for this topic's Reservation usage.
                Structure is documented below.
-        :param pulumi.Input[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict']] retention_config: The settings for a topic's message retention.
+        :param pulumi.Input[Union['LiteTopicRetentionConfigArgs', 'LiteTopicRetentionConfigArgsDict', 'outputs.LiteTopicRetentionConfig']] retention_config: The settings for a topic's message retention.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] zone: The zone of the pubsub lite topic.
         """

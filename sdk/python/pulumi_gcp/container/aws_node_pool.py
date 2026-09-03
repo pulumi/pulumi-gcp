@@ -628,18 +628,18 @@ class AwsNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
+                 autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict', 'outputs.AwsNodePoolAutoscaling']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict', 'outputs.AwsNodePoolConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
+                 kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict', 'outputs.AwsNodePoolKubeletConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
-                 max_pods_constraint: pulumi.Input[Optional[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
+                 management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict', 'outputs.AwsNodePoolManagement']]] = None,
+                 max_pods_constraint: pulumi.Input[Optional[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict', 'outputs.AwsNodePoolMaxPodsConstraint']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 update_settings: pulumi.Input[Optional[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']]] = None,
+                 update_settings: pulumi.Input[Optional[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict', 'outputs.AwsNodePoolUpdateSettings']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1042,23 +1042,23 @@ class AwsNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict', 'outputs.AwsNodePoolAutoscaling']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] cluster: The awsCluster for the resource
-        :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
+        :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict', 'outputs.AwsNodePoolConfig']] config: The configuration of the node pool.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']] kubelet_config: The kubelet configuration for the node pool.
+        :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict', 'outputs.AwsNodePoolKubeletConfig']] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
-        :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict', 'outputs.AwsNodePoolManagement']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict', 'outputs.AwsNodePoolMaxPodsConstraint']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] subnet_id: The subnet where the node pool node run.
-        :param pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict', 'outputs.AwsNodePoolUpdateSettings']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         ...
@@ -1477,18 +1477,18 @@ class AwsNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
+                 autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict', 'outputs.AwsNodePoolAutoscaling']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict', 'outputs.AwsNodePoolConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
+                 kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict', 'outputs.AwsNodePoolKubeletConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
-                 max_pods_constraint: pulumi.Input[Optional[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
+                 management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict', 'outputs.AwsNodePoolManagement']]] = None,
+                 max_pods_constraint: pulumi.Input[Optional[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict', 'outputs.AwsNodePoolMaxPodsConstraint']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 update_settings: pulumi.Input[Optional[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']]] = None,
+                 update_settings: pulumi.Input[Optional[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict', 'outputs.AwsNodePoolUpdateSettings']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1545,24 +1545,24 @@ class AwsNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
+            autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict', 'outputs.AwsNodePoolAutoscaling']]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict', 'outputs.AwsNodePoolConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
+            kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict', 'outputs.AwsNodePoolKubeletConfig']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
-            max_pods_constraint: pulumi.Input[Optional[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
+            management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict', 'outputs.AwsNodePoolManagement']]] = None,
+            max_pods_constraint: pulumi.Input[Optional[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict', 'outputs.AwsNodePoolMaxPodsConstraint']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
-            update_settings: pulumi.Input[Optional[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']]] = None,
+            update_settings: pulumi.Input[Optional[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict', 'outputs.AwsNodePoolUpdateSettings']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'AwsNodePool':
         """
@@ -1576,9 +1576,9 @@ class AwsNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict', 'outputs.AwsNodePoolAutoscaling']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] cluster: The awsCluster for the resource
-        :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
+        :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict', 'outputs.AwsNodePoolConfig']] config: The configuration of the node pool.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1588,17 +1588,17 @@ class AwsNodePool(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']] kubelet_config: The kubelet configuration for the node pool.
+        :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict', 'outputs.AwsNodePoolKubeletConfig']] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
-        :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict', 'outputs.AwsNodePoolManagement']] management: The Management configuration for this node pool.
+        :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict', 'outputs.AwsNodePoolMaxPodsConstraint']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[_builtins.str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[_builtins.str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[_builtins.str] uid: Output only. A globally unique identifier for the node pool.
-        :param pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict', 'outputs.AwsNodePoolUpdateSettings']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """

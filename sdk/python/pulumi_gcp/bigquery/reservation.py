@@ -921,7 +921,7 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
+                 autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict', 'outputs.ReservationAutoscale']]] = None,
                  concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
@@ -987,7 +987,7 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
+        :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict', 'outputs.ReservationAutoscale']] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1155,7 +1155,7 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
+                 autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict', 'outputs.ReservationAutoscale']]] = None,
                  concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1211,7 +1211,7 @@ class Reservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
+            autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict', 'outputs.ReservationAutoscale']]] = None,
             concurrency: pulumi.Input[Optional[_builtins.int]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1225,7 +1225,7 @@ class Reservation(pulumi.CustomResource):
             primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]]] = None,
+            replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict', 'outputs.ReservationReplicationStatus']]]]] = None,
             reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
             secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1237,7 +1237,7 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
+        :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict', 'outputs.ReservationAutoscale']] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1301,7 +1301,7 @@ class Reservation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]] replication_statuses: The Disaster Recovery(DR) replication status of the reservation. This is only available for
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict', 'outputs.ReservationReplicationStatus']]]] replication_statuses: The Disaster Recovery(DR) replication status of the reservation. This is only available for
                the primary replicas of DR/failover reservations and provides information about the both the
                staleness of the secondary and the last error encountered while trying to replicate changes
                from the primary to the secondary. If this field is blank, it means that the reservation is

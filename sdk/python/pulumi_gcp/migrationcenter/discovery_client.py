@@ -880,7 +880,7 @@ class DiscoveryClient(pulumi.CustomResource):
             discovery_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryClientErrorArgs', 'DiscoveryClientErrorArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryClientErrorArgs', 'DiscoveryClientErrorArgsDict', 'outputs.DiscoveryClientError']]]]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             heartbeat_time: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -919,7 +919,7 @@ class DiscoveryClient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Free text display name.
                Maximum length is 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryClientErrorArgs', 'DiscoveryClientErrorArgsDict']]]] errors: Errors affecting client functionality.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryClientErrorArgs', 'DiscoveryClientErrorArgsDict', 'outputs.DiscoveryClientError']]]] errors: Errors affecting client functionality.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] expire_time: Client expiration time in UTC. If specified, the backend will not accept
                new frames after this time.

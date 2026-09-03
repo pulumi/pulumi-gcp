@@ -508,14 +508,14 @@ class CustomTargetType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
+                 custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict', 'outputs.CustomTargetTypeCustomActions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 tasks: pulumi.Input[Optional[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']]] = None,
+                 tasks: pulumi.Input[Optional[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict', 'outputs.CustomTargetTypeTasks']]] = None,
                  __props__=None):
         """
         A Cloud Deploy `CustomTargetType` defines a type of custom target that can be referenced in a
@@ -666,7 +666,7 @@ class CustomTargetType(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+        :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict', 'outputs.CustomTargetTypeCustomActions']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -682,7 +682,7 @@ class CustomTargetType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
+        :param pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict', 'outputs.CustomTargetTypeTasks']] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
                Structure is documented below.
         """
         ...
@@ -851,14 +851,14 @@ class CustomTargetType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
+                 custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict', 'outputs.CustomTargetTypeCustomActions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 tasks: pulumi.Input[Optional[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']]] = None,
+                 tasks: pulumi.Input[Optional[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict', 'outputs.CustomTargetTypeTasks']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -901,7 +901,7 @@ class CustomTargetType(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
+            custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict', 'outputs.CustomTargetTypeCustomActions']]] = None,
             custom_target_type_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -913,7 +913,7 @@ class CustomTargetType(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tasks: pulumi.Input[Optional[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']]] = None,
+            tasks: pulumi.Input[Optional[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict', 'outputs.CustomTargetTypeTasks']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomTargetType':
         """
@@ -927,7 +927,7 @@ class CustomTargetType(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Time at which the `CustomTargetType` was created.
-        :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+        :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict', 'outputs.CustomTargetTypeCustomActions']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] custom_target_type_id: Resource id of the `CustomTargetType`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -949,7 +949,7 @@ class CustomTargetType(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
+        :param pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict', 'outputs.CustomTargetTypeTasks']] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the `CustomTargetType`.
         :param pulumi.Input[_builtins.str] update_time: Time at which the `CustomTargetType` was updated.

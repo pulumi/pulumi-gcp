@@ -184,7 +184,7 @@ class PreviewFeature(pulumi.CustomResource):
                  activation_status: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None,
+                 rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict', 'outputs.PreviewFeatureRolloutOperation']]] = None,
                  __props__=None):
         """
         Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
@@ -237,7 +237,7 @@ class PreviewFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']] rollout_operation: The rollout operation of the feature.
+        :param pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict', 'outputs.PreviewFeatureRolloutOperation']] rollout_operation: The rollout operation of the feature.
                Structure is documented below.
         """
         ...
@@ -308,7 +308,7 @@ class PreviewFeature(pulumi.CustomResource):
                  activation_status: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None,
+                 rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict', 'outputs.PreviewFeatureRolloutOperation']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,7 +337,7 @@ class PreviewFeature(pulumi.CustomResource):
             activation_status: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None) -> 'PreviewFeature':
+            rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict', 'outputs.PreviewFeatureRolloutOperation']]] = None) -> 'PreviewFeature':
         """
         Get an existing PreviewFeature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -350,7 +350,7 @@ class PreviewFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']] rollout_operation: The rollout operation of the feature.
+        :param pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict', 'outputs.PreviewFeatureRolloutOperation']] rollout_operation: The rollout operation of the feature.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

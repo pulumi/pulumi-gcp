@@ -527,7 +527,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict', 'outputs.ExascaleDbStorageVaultProperties']]] = None,
                  __props__=None):
         """
         An Exascale Storage Vault Resource
@@ -659,7 +659,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict']] properties: The properties of the ExascaleDbStorageVault.
+        :param pulumi.Input[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict', 'outputs.ExascaleDbStorageVaultProperties']] properties: The properties of the ExascaleDbStorageVault.
                next ID: 12
                Structure is documented below.
         """
@@ -796,7 +796,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict', 'outputs.ExascaleDbStorageVaultProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -854,7 +854,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict', 'outputs.ExascaleDbStorageVaultProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ExascaleDbStorageVault':
         """
         Get an existing ExascaleDbStorageVault resource's state with the given name, id, and optional extra
@@ -895,7 +895,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict']] properties: The properties of the ExascaleDbStorageVault.
+        :param pulumi.Input[Union['ExascaleDbStorageVaultPropertiesArgs', 'ExascaleDbStorageVaultPropertiesArgsDict', 'outputs.ExascaleDbStorageVaultProperties']] properties: The properties of the ExascaleDbStorageVault.
                next ID: 12
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource

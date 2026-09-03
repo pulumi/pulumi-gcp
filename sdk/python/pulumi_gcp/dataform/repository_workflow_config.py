@@ -410,7 +410,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
+                 invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict', 'outputs.RepositoryWorkflowConfigInvocationConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -621,7 +621,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of workflow invocations.
-        :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict', 'outputs.RepositoryWorkflowConfigInvocationConfig']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -848,7 +848,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
+                 invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict', 'outputs.RepositoryWorkflowConfigInvocationConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -890,10 +890,10 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
+            invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict', 'outputs.RepositoryWorkflowConfigInvocationConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            recent_scheduled_execution_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs', 'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict']]]]] = None,
+            recent_scheduled_execution_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs', 'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict', 'outputs.RepositoryWorkflowConfigRecentScheduledExecutionRecord']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             release_config: pulumi.Input[Optional[_builtins.str]] = None,
             repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -913,12 +913,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of workflow invocations.
-        :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict', 'outputs.RepositoryWorkflowConfigInvocationConfig']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs', 'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict']]]] recent_scheduled_execution_records: Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs', 'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict', 'outputs.RepositoryWorkflowConfigRecentScheduledExecutionRecord']]]] recent_scheduled_execution_records: Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] region: A reference to the region
         :param pulumi.Input[_builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.

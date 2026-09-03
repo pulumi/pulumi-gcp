@@ -404,11 +404,11 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
-                 endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
+                 deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentDeployConfig']]] = None,
+                 endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentEndpointConfig']]] = None,
                  hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
+                 model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentModelConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -651,14 +651,14 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']] deploy_config: The deploy config to use for the deployment.
+        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentDeployConfig']] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
-        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']] endpoint_config: The endpoint config to use for the deployment.
+        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentEndpointConfig']] endpoint_config: The endpoint config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] hugging_face_model_id: The Hugging Face model to deploy.
                Format: Hugging Face model ID like `google/gemma-2-2b-it`.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']] model_config: The model config to use for the deployment.
+        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentModelConfig']] model_config: The model config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -920,11 +920,11 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
-                 endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
+                 deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentDeployConfig']]] = None,
+                 endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentEndpointConfig']]] = None,
                  hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
+                 model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentModelConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -960,14 +960,14 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
+            deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentDeployConfig']]] = None,
             deployed_model_display_name: pulumi.Input[Optional[_builtins.str]] = None,
             deployed_model_id: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
+            endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentEndpointConfig']]] = None,
             hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
+            model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentModelConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiEndpointWithModelGardenDeployment':
         """
@@ -983,7 +983,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']] deploy_config: The deploy config to use for the deployment.
+        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentDeployConfig']] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deployed_model_display_name: Output only. The display name assigned to the model deployed to the endpoint.
                This is not required to delete the resource but is used for debug logging.
@@ -991,12 +991,12 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                It is required to undeploy the model from the endpoint during resource deletion as described in
                https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints/undeployModel.
         :param pulumi.Input[_builtins.str] endpoint: Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']] endpoint_config: The endpoint config to use for the deployment.
+        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentEndpointConfig']] endpoint_config: The endpoint config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] hugging_face_model_id: The Hugging Face model to deploy.
                Format: Hugging Face model ID like `google/gemma-2-2b-it`.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']] model_config: The model config to use for the deployment.
+        :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentModelConfig']] model_config: The model config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

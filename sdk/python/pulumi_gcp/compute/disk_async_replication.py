@@ -166,7 +166,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
+                 secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict', 'outputs.DiskAsyncReplicationSecondaryDisk']]] = None,
                  __props__=None):
         """
         Starts and stops asynchronous persistent disk replication. For more information
@@ -211,7 +211,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                
                The `secondary_disk` block includes:
         :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
-        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict', 'outputs.DiskAsyncReplicationSecondaryDisk']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
         """
         ...
     @overload
@@ -268,7 +268,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
-                 secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
+                 secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict', 'outputs.DiskAsyncReplicationSecondaryDisk']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -297,7 +297,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
-            secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None) -> 'DiskAsyncReplication':
+            secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict', 'outputs.DiskAsyncReplicationSecondaryDisk']]] = None) -> 'DiskAsyncReplication':
         """
         Get an existing DiskAsyncReplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -314,7 +314,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                
                The `secondary_disk` block includes:
         :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
-        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict', 'outputs.DiskAsyncReplicationSecondaryDisk']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

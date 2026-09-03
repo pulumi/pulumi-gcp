@@ -579,16 +579,16 @@ class RestoreWorkload(pulumi.CustomResource):
                  backup_id: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  clear_overrides_field_mask: pulumi.Input[Optional[_builtins.str]] = None,
-                 compute_instance_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict']]] = None,
-                 compute_instance_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']]] = None,
+                 compute_instance_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict', 'outputs.RestoreWorkloadComputeInstanceRestoreProperties']]] = None,
+                 compute_instance_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadComputeInstanceTargetEnvironment']]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_restored_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']]] = None,
-                 disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']]] = None,
+                 disk_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict', 'outputs.RestoreWorkloadDiskRestoreProperties']]] = None,
+                 disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadDiskTargetEnvironment']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 region_disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']]] = None,
+                 region_disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadRegionDiskTargetEnvironment']]] = None,
                  request_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -806,9 +806,9 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_id: Required. The ID of the backup to restore from.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. The ID of the backup vault.
         :param pulumi.Input[_builtins.str] clear_overrides_field_mask: Optional. A field mask used to clear server-side default values during restore.
-        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict']] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
+        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict', 'outputs.RestoreWorkloadComputeInstanceRestoreProperties']] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: The destination environment for GCE VM restoration.
+        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadComputeInstanceTargetEnvironment']] compute_instance_target_environment: The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
         :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
@@ -819,16 +819,16 @@ class RestoreWorkload(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
+        :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict', 'outputs.RestoreWorkloadDiskRestoreProperties']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: The destination environment for zonal disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadDiskTargetEnvironment']] disk_target_environment: The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
         :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
                The resource name of the backup instance.
                
                > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
-        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: The destination environment for regional disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadRegionDiskTargetEnvironment']] region_disk_target_environment: The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
                so that if you must retry your request, the server will know to ignore
@@ -1068,16 +1068,16 @@ class RestoreWorkload(pulumi.CustomResource):
                  backup_id: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  clear_overrides_field_mask: pulumi.Input[Optional[_builtins.str]] = None,
-                 compute_instance_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict']]] = None,
-                 compute_instance_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']]] = None,
+                 compute_instance_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict', 'outputs.RestoreWorkloadComputeInstanceRestoreProperties']]] = None,
+                 compute_instance_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadComputeInstanceTargetEnvironment']]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_restored_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']]] = None,
-                 disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']]] = None,
+                 disk_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict', 'outputs.RestoreWorkloadDiskRestoreProperties']]] = None,
+                 disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadDiskTargetEnvironment']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 region_disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']]] = None,
+                 region_disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadRegionDiskTargetEnvironment']]] = None,
                  request_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1124,18 +1124,18 @@ class RestoreWorkload(pulumi.CustomResource):
             backup_id: pulumi.Input[Optional[_builtins.str]] = None,
             backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
             clear_overrides_field_mask: pulumi.Input[Optional[_builtins.str]] = None,
-            compute_instance_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict']]] = None,
-            compute_instance_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']]] = None,
+            compute_instance_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict', 'outputs.RestoreWorkloadComputeInstanceRestoreProperties']]] = None,
+            compute_instance_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadComputeInstanceTargetEnvironment']]] = None,
             data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
             delete_restored_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            disk_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']]] = None,
-            disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']]] = None,
+            disk_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict', 'outputs.RestoreWorkloadDiskRestoreProperties']]] = None,
+            disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadDiskTargetEnvironment']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            region_disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']]] = None,
+            region_disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadRegionDiskTargetEnvironment']]] = None,
             request_id: pulumi.Input[Optional[_builtins.str]] = None,
-            target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RestoreWorkloadTargetResourceArgs', 'RestoreWorkloadTargetResourceArgsDict']]]]] = None) -> 'RestoreWorkload':
+            target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RestoreWorkloadTargetResourceArgs', 'RestoreWorkloadTargetResourceArgsDict', 'outputs.RestoreWorkloadTargetResource']]]]] = None) -> 'RestoreWorkload':
         """
         Get an existing RestoreWorkload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1146,9 +1146,9 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_id: Required. The ID of the backup to restore from.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. The ID of the backup vault.
         :param pulumi.Input[_builtins.str] clear_overrides_field_mask: Optional. A field mask used to clear server-side default values during restore.
-        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict']] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
+        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict', 'outputs.RestoreWorkloadComputeInstanceRestoreProperties']] compute_instance_restore_properties: Optional. Compute Engine instance properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: The destination environment for GCE VM restoration.
+        :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadComputeInstanceTargetEnvironment']] compute_instance_target_environment: The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
         :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
@@ -1159,21 +1159,21 @@ class RestoreWorkload(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
+        :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict', 'outputs.RestoreWorkloadDiskRestoreProperties']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
-        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: The destination environment for zonal disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadDiskTargetEnvironment']] disk_target_environment: The destination environment for zonal disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
         :param pulumi.Input[_builtins.str] name: (Optional, Deprecated)
                The resource name of the backup instance.
                
                > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
-        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict']] region_disk_target_environment: The destination environment for regional disk restoration.
+        :param pulumi.Input[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadRegionDiskTargetEnvironment']] region_disk_target_environment: The destination environment for regional disk restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID
                so that if you must retry your request, the server will know to ignore
                the request if it has already been completed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RestoreWorkloadTargetResourceArgs', 'RestoreWorkloadTargetResourceArgsDict']]]] target_resources: Output only. Details of the target resource created/modified as part of restore.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RestoreWorkloadTargetResourceArgs', 'RestoreWorkloadTargetResourceArgsDict', 'outputs.RestoreWorkloadTargetResource']]]] target_resources: Output only. Details of the target resource created/modified as part of restore.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

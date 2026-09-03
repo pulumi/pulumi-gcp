@@ -582,18 +582,18 @@ class Slo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
+                 basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict', 'outputs.SloBasicSli']]] = None,
                  calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.float]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_based_sli: pulumi.Input[Optional[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']]] = None,
+                 request_based_sli: pulumi.Input[Optional[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict', 'outputs.SloRequestBasedSli']]] = None,
                  rolling_period_days: pulumi.Input[Optional[_builtins.int]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  slo_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 windows_based_sli: pulumi.Input[Optional[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']]] = None,
+                 windows_based_sli: pulumi.Input[Optional[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict', 'outputs.SloWindowsBasedSli']]] = None,
                  __props__=None):
         """
         A Service-Level Objective (SLO) describes the level of desired good
@@ -797,7 +797,7 @@ class Slo(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
+        :param pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict', 'outputs.SloBasicSli']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
@@ -818,7 +818,7 @@ class Slo(pulumi.CustomResource):
                to be met. 0 < goal <= 0.999
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
+        :param pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict', 'outputs.SloRequestBasedSli']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
                service are counted directly.
                A SLI describes a good service.
                It is used to measure and calculate the quality of the Service's
@@ -835,7 +835,7 @@ class Slo(pulumi.CustomResource):
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys
                must begin with a letter.
-        :param pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
+        :param pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict', 'outputs.SloWindowsBasedSli']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
                A SLI describes a good service. It is used to measure and calculate
@@ -1066,18 +1066,18 @@ class Slo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
+                 basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict', 'outputs.SloBasicSli']]] = None,
                  calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.float]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 request_based_sli: pulumi.Input[Optional[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']]] = None,
+                 request_based_sli: pulumi.Input[Optional[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict', 'outputs.SloRequestBasedSli']]] = None,
                  rolling_period_days: pulumi.Input[Optional[_builtins.int]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  slo_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 windows_based_sli: pulumi.Input[Optional[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']]] = None,
+                 windows_based_sli: pulumi.Input[Optional[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict', 'outputs.SloWindowsBasedSli']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1114,19 +1114,19 @@ class Slo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
+            basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict', 'outputs.SloBasicSli']]] = None,
             calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             goal: pulumi.Input[Optional[_builtins.float]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            request_based_sli: pulumi.Input[Optional[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']]] = None,
+            request_based_sli: pulumi.Input[Optional[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict', 'outputs.SloRequestBasedSli']]] = None,
             rolling_period_days: pulumi.Input[Optional[_builtins.int]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None,
             slo_id: pulumi.Input[Optional[_builtins.str]] = None,
             user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            windows_based_sli: pulumi.Input[Optional[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']]] = None) -> 'Slo':
+            windows_based_sli: pulumi.Input[Optional[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict', 'outputs.SloWindowsBasedSli']]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1134,7 +1134,7 @@ class Slo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
+        :param pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict', 'outputs.SloBasicSli']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
@@ -1157,7 +1157,7 @@ class Slo(pulumi.CustomResource):
                projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
+        :param pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict', 'outputs.SloRequestBasedSli']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
                service are counted directly.
                A SLI describes a good service.
                It is used to measure and calculate the quality of the Service's
@@ -1174,7 +1174,7 @@ class Slo(pulumi.CustomResource):
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys
                must begin with a letter.
-        :param pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
+        :param pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict', 'outputs.SloWindowsBasedSli']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
                A SLI describes a good service. It is used to measure and calculate

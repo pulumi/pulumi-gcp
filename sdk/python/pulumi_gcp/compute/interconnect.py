@@ -1186,7 +1186,7 @@ class Interconnect(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
+                 application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict', 'outputs.InterconnectApplicationAwareInterconnect']]] = None,
                  customer_name: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1194,11 +1194,11 @@ class Interconnect(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  link_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
+                 macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict', 'outputs.InterconnectMacsec']]] = None,
                  macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict', 'outputs.InterconnectParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_location: pulumi.Input[Optional[_builtins.str]] = None,
                  requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1256,7 +1256,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']] application_aware_interconnect: (Optional, Beta)
+        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict', 'outputs.InterconnectApplicationAwareInterconnect']] application_aware_interconnect: (Optional, Beta)
                Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -1288,7 +1288,7 @@ class Interconnect(pulumi.CustomResource):
                  Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
                Specifies the location inside Google's Networks.
-        :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict', 'outputs.InterconnectMacsec']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection.
@@ -1303,7 +1303,7 @@ class Interconnect(pulumi.CustomResource):
                all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications.
                This field is required for users who sign up for Cloud Interconnect using workforce identity
                federation.
-        :param pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict', 'outputs.InterconnectParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1386,7 +1386,7 @@ class Interconnect(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
+                 application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict', 'outputs.InterconnectApplicationAwareInterconnect']]] = None,
                  customer_name: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1394,11 +1394,11 @@ class Interconnect(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  link_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
+                 macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict', 'outputs.InterconnectMacsec']]] = None,
                  macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict', 'outputs.InterconnectParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_location: pulumi.Input[Optional[_builtins.str]] = None,
                  requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1471,16 +1471,16 @@ class Interconnect(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
+            application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict', 'outputs.InterconnectApplicationAwareInterconnect']]] = None,
             available_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            circuit_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict']]]]] = None,
+            circuit_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict', 'outputs.InterconnectCircuitInfo']]]]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             customer_name: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_location: pulumi.Input[Optional[_builtins.str]] = None,
-            expected_outages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]]] = None,
+            expected_outages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict', 'outputs.InterconnectExpectedOutage']]]]] = None,
             google_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
             interconnect_attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1490,12 +1490,12 @@ class Interconnect(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             link_type: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
+            macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict', 'outputs.InterconnectMacsec']]] = None,
             macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
             operational_status: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict', 'outputs.InterconnectParams']]] = None,
             peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             provisioned_link_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1518,7 +1518,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']] application_aware_interconnect: (Optional, Beta)
+        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict', 'outputs.InterconnectApplicationAwareInterconnect']] application_aware_interconnect: (Optional, Beta)
                Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -1528,7 +1528,7 @@ class Interconnect(pulumi.CustomResource):
                - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
                - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
                  Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict']]]] circuit_infos: A list of CircuitInfo objects, that describe the individual circuits in this LAG.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict', 'outputs.InterconnectCircuitInfo']]]] circuit_infos: A list of CircuitInfo objects, that describe the individual circuits in this LAG.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
@@ -1544,7 +1544,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]] expected_outages: A list of outages expected for this Interconnect.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict', 'outputs.InterconnectExpectedOutage']]]] expected_outages: A list of outages expected for this Interconnect.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] google_ip_address: IP address configured on the Google side of the Interconnect link.
                This can be used only for ping tests.
@@ -1576,7 +1576,7 @@ class Interconnect(pulumi.CustomResource):
                  Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
                Specifies the location inside Google's Networks.
-        :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict', 'outputs.InterconnectMacsec']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection.
@@ -1598,7 +1598,7 @@ class Interconnect(pulumi.CustomResource):
                  provisioned on this Interconnect.
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
                  attachments may be provisioned or updated on this Interconnect.
-        :param pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict', 'outputs.InterconnectParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_ip_address: IP address configured on the customer side of the Interconnect link.
                The customer should configure this IP address during turnup when prompted by Google NOC.

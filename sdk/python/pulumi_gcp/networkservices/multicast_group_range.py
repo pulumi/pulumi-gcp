@@ -714,7 +714,7 @@ class MulticastGroupRange(pulumi.CustomResource):
                  distribution_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict', 'outputs.MulticastGroupRangeLogConfig']]] = None,
                  multicast_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -806,7 +806,7 @@ class MulticastGroupRange(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict']] log_config: The logging configuration.
+        :param pulumi.Input[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict', 'outputs.MulticastGroupRangeLogConfig']] log_config: The logging configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] multicast_domain: The resource name of the multicast domain in which to create this
                multicast group range.
@@ -912,7 +912,7 @@ class MulticastGroupRange(pulumi.CustomResource):
                  distribution_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict', 'outputs.MulticastGroupRangeLogConfig']]] = None,
                  multicast_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_group_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -976,7 +976,7 @@ class MulticastGroupRange(pulumi.CustomResource):
             ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            log_config: pulumi.Input[Optional[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict']]] = None,
+            log_config: pulumi.Input[Optional[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict', 'outputs.MulticastGroupRangeLogConfig']]] = None,
             multicast_domain: pulumi.Input[Optional[_builtins.str]] = None,
             multicast_group_range_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -984,7 +984,7 @@ class MulticastGroupRange(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             require_explicit_accept: pulumi.Input[Optional[_builtins.bool]] = None,
             reserved_internal_range: pulumi.Input[Optional[_builtins.str]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastGroupRangeStateArgs', 'MulticastGroupRangeStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastGroupRangeStateArgs', 'MulticastGroupRangeStateArgsDict', 'outputs.MulticastGroupRangeState']]]]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastGroupRange':
         """
@@ -1022,7 +1022,7 @@ class MulticastGroupRange(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict']] log_config: The logging configuration.
+        :param pulumi.Input[Union['MulticastGroupRangeLogConfigArgs', 'MulticastGroupRangeLogConfigArgsDict', 'outputs.MulticastGroupRangeLogConfig']] log_config: The logging configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] multicast_domain: The resource name of the multicast domain in which to create this
                multicast group range.
@@ -1046,7 +1046,7 @@ class MulticastGroupRange(pulumi.CustomResource):
                and have a prefix length >= 23.
                Use the following format:
                `projects/*/locations/global/internalRanges/*`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupRangeStateArgs', 'MulticastGroupRangeStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupRangeStateArgs', 'MulticastGroupRangeStateArgsDict', 'outputs.MulticastGroupRangeState']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
                CREATING

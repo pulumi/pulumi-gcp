@@ -441,14 +441,14 @@ class Note(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+                 attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict', 'outputs.NoteAttestationAuthority']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
                  long_description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
+                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict', 'outputs.NoteRelatedUrl']]]]] = None,
                  short_description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -524,7 +524,7 @@ class Note(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+        :param pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict', 'outputs.NoteAttestationAuthority']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
                For example, an organization might have one AttestationAuthority for
                "QA" and one for "build". This Note is intended to act strictly as a
                grouping mechanism for the attached Occurrences (Attestations). This
@@ -546,7 +546,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]] related_urls: URLs associated with this note and related metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict', 'outputs.NoteRelatedUrl']]]] related_urls: URLs associated with this note and related metadata.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] short_description: A one sentence description of the note.
         """
@@ -642,14 +642,14 @@ class Note(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+                 attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict', 'outputs.NoteAttestationAuthority']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
                  long_description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
+                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict', 'outputs.NoteRelatedUrl']]]]] = None,
                  short_description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -684,7 +684,7 @@ class Note(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+            attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict', 'outputs.NoteAttestationAuthority']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -693,7 +693,7 @@ class Note(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
+            related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict', 'outputs.NoteRelatedUrl']]]]] = None,
             short_description: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Note':
         """
@@ -703,7 +703,7 @@ class Note(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+        :param pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict', 'outputs.NoteAttestationAuthority']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
                For example, an organization might have one AttestationAuthority for
                "QA" and one for "build". This Note is intended to act strictly as a
                grouping mechanism for the attached Occurrences (Attestations). This
@@ -727,7 +727,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]] related_urls: URLs associated with this note and related metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict', 'outputs.NoteRelatedUrl']]]] related_urls: URLs associated with this note and related metadata.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] short_description: A one sentence description of the note.
         :param pulumi.Input[_builtins.str] update_time: The time this note was last updated.

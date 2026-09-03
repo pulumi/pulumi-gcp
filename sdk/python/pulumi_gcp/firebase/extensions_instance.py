@@ -374,7 +374,7 @@ class ExtensionsInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict', 'outputs.ExtensionsInstanceConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -452,7 +452,7 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']] config: The current Config of the Extension Instance.
+        :param pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict', 'outputs.ExtensionsInstanceConfig']] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -557,7 +557,7 @@ class ExtensionsInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict', 'outputs.ExtensionsInstanceConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -598,17 +598,17 @@ class ExtensionsInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict', 'outputs.ExtensionsInstanceConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            error_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict']]]]] = None,
+            error_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict', 'outputs.ExtensionsInstanceErrorStatus']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             last_operation_name: pulumi.Input[Optional[_builtins.str]] = None,
             last_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict']]]]] = None,
+            runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict', 'outputs.ExtensionsInstanceRuntimeData']]]]] = None,
             service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExtensionsInstance':
@@ -619,7 +619,7 @@ class ExtensionsInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']] config: The current Config of the Extension Instance.
+        :param pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict', 'outputs.ExtensionsInstanceConfig']] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which the Extension Instance was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -628,7 +628,7 @@ class ExtensionsInstance(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict']]]] error_statuses: If this Instance has `state: ERRORED`, the error messages
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict', 'outputs.ExtensionsInstanceErrorStatus']]]] error_statuses: If this Instance has `state: ERRORED`, the error messages
                will be found here.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: A weak etag that is computed by the server based on other configuration
@@ -642,7 +642,7 @@ class ExtensionsInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name of the Extension Instance.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict']]]] runtime_datas: Data set by the extension instance at runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict', 'outputs.ExtensionsInstanceRuntimeData']]]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account_email: The email of the service account to be used at runtime by compute resources
                created for the operation of the Extension instance.

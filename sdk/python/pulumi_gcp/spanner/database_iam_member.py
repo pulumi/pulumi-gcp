@@ -290,7 +290,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict', 'outputs.DatabaseIAMMemberCondition']]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -541,7 +541,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict', 'outputs.DatabaseIAMMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database: The name of the Spanner database.
         :param pulumi.Input[_builtins.str] instance: The name of the Spanner instance the database belongs to.
@@ -822,7 +822,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict', 'outputs.DatabaseIAMMemberCondition']]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -862,7 +862,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict', 'outputs.DatabaseIAMMemberCondition']]] = None,
             database: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -876,7 +876,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['DatabaseIAMMemberConditionArgs', 'DatabaseIAMMemberConditionArgsDict', 'outputs.DatabaseIAMMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database: The name of the Spanner database.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the database's IAM policy.

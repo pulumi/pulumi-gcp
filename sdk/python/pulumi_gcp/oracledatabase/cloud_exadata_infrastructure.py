@@ -470,7 +470,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict', 'outputs.CloudExadataInfrastructureProperties']]] = None,
                  __props__=None):
         """
         A CloudExadataInfrastructure resource.
@@ -582,7 +582,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict']] properties: Various properties of Exadata Infrastructure.
+        :param pulumi.Input[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict', 'outputs.CloudExadataInfrastructureProperties']] properties: Various properties of Exadata Infrastructure.
                Structure is documented below.
         """
         ...
@@ -703,7 +703,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict', 'outputs.CloudExadataInfrastructureProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -755,7 +755,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict', 'outputs.CloudExadataInfrastructureProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CloudExadataInfrastructure':
         """
         Get an existing CloudExadataInfrastructure resource's state with the given name, id, and optional extra
@@ -789,7 +789,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict']] properties: Various properties of Exadata Infrastructure.
+        :param pulumi.Input[Union['CloudExadataInfrastructurePropertiesArgs', 'CloudExadataInfrastructurePropertiesArgsDict', 'outputs.CloudExadataInfrastructureProperties']] properties: Various properties of Exadata Infrastructure.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

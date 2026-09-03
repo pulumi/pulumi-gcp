@@ -1133,17 +1133,17 @@ class DataConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
+                 action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict', 'outputs.DataConnectorActionConfig']]] = None,
                  auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
+                 bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict', 'outputs.DataConnectorBapConfig']]] = None,
                  collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_source: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
-                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict', 'outputs.DataConnectorDestinationConfig']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict', 'outputs.DataConnectorEntity']]]]] = None,
                  incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  json_params: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1317,11 +1317,11 @@ class DataConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']] action_config: Action configuration for the data connector. Configures action
+        :param pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict', 'outputs.DataConnectorActionConfig']] action_config: Action configuration for the data connector. Configures action
                capabilities for connectors that support the ACTIONS connector mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] auto_run_disabled: Indicates whether full syncs are paused for this connector
-        :param pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']] bap_config: BAP (Business Application Platform) configuration for the data
+        :param pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict', 'outputs.DataConnectorBapConfig']] bap_config: BAP (Business Application Platform) configuration for the data
                connector. Controls which actions are enabled for connectors
                using the ACTIONS connector mode.
                Structure is documented below.
@@ -1350,10 +1350,10 @@ class DataConnector(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict', 'outputs.DataConnectorDestinationConfig']]]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]] entities: List of entities from the connected data source to ingest.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict', 'outputs.DataConnectorEntity']]]] entities: List of entities from the connected data source to ingest.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] incremental_refresh_interval: The refresh interval specifically for incremental data syncs. If unset,
                incremental syncs will use the default from env, set to 3hrs.
@@ -1563,17 +1563,17 @@ class DataConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
+                 action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict', 'outputs.DataConnectorActionConfig']]] = None,
                  auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
+                 bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict', 'outputs.DataConnectorBapConfig']]] = None,
                  collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_source: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
-                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict', 'outputs.DataConnectorDestinationConfig']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict', 'outputs.DataConnectorEntity']]]]] = None,
                  incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  json_params: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1647,10 +1647,10 @@ class DataConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
+            action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict', 'outputs.DataConnectorActionConfig']]] = None,
             action_state: pulumi.Input[Optional[_builtins.str]] = None,
             auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
+            bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict', 'outputs.DataConnectorBapConfig']]] = None,
             blocking_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1660,9 +1660,9 @@ class DataConnector(pulumi.CustomResource):
             data_source: pulumi.Input[Optional[_builtins.str]] = None,
             data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
-            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict']]]]] = None,
+            destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict', 'outputs.DataConnectorDestinationConfig']]]]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict', 'outputs.DataConnectorEntity']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict', 'outputs.DataConnectorError']]]]] = None,
             incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
             incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             json_params: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1688,7 +1688,7 @@ class DataConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']] action_config: Action configuration for the data connector. Configures action
+        :param pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict', 'outputs.DataConnectorActionConfig']] action_config: Action configuration for the data connector. Configures action
                capabilities for connectors that support the ACTIONS connector mode.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] action_state: State of the action connector. This reflects whether the action connector
@@ -1696,7 +1696,7 @@ class DataConnector(pulumi.CustomResource):
                'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
                'INITIALIZATION_FAILED', 'UPDATING'.
         :param pulumi.Input[_builtins.bool] auto_run_disabled: Indicates whether full syncs are paused for this connector
-        :param pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']] bap_config: BAP (Business Application Platform) configuration for the data
+        :param pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict', 'outputs.DataConnectorBapConfig']] bap_config: BAP (Business Application Platform) configuration for the data
                connector. Controls which actions are enabled for connectors
                using the ACTIONS connector mode.
                Structure is documented below.
@@ -1734,12 +1734,12 @@ class DataConnector(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict', 'outputs.DataConnectorDestinationConfig']]]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]] entities: List of entities from the connected data source to ingest.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict', 'outputs.DataConnectorEntity']]]] entities: List of entities from the connected data source to ingest.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict']]]] errors: The errors from initialization or from the latest connector run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict', 'outputs.DataConnectorError']]]] errors: The errors from initialization or from the latest connector run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] incremental_refresh_interval: The refresh interval specifically for incremental data syncs. If unset,
                incremental syncs will use the default from env, set to 3hrs.

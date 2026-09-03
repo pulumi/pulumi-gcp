@@ -329,13 +329,13 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: pulumi.Input[Optional[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']]] = None,
+                 basic_algorithm: pulumi.Input[Optional[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict', 'outputs.AutoscalingPolicyBasicAlgorithm']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 secondary_worker_config: pulumi.Input[Optional[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']]] = None,
-                 worker_config: pulumi.Input[Optional[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']]] = None,
+                 secondary_worker_config: pulumi.Input[Optional[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict', 'outputs.AutoscalingPolicySecondaryWorkerConfig']]] = None,
+                 worker_config: pulumi.Input[Optional[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict', 'outputs.AutoscalingPolicyWorkerConfig']]] = None,
                  __props__=None):
         """
         Describes an autoscaling policy for Dataproc cluster autoscaler.
@@ -390,7 +390,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']] basic_algorithm: Basic algorithm for autoscaling.
+        :param pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict', 'outputs.AutoscalingPolicyBasicAlgorithm']] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -405,9 +405,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
                3 and 50 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
+        :param pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict', 'outputs.AutoscalingPolicySecondaryWorkerConfig']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
                Structure is documented below.
-        :param pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']] worker_config: Describes how the autoscaler will operate for primary workers.
+        :param pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict', 'outputs.AutoscalingPolicyWorkerConfig']] worker_config: Describes how the autoscaler will operate for primary workers.
                Structure is documented below.
         """
         ...
@@ -482,13 +482,13 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: pulumi.Input[Optional[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']]] = None,
+                 basic_algorithm: pulumi.Input[Optional[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict', 'outputs.AutoscalingPolicyBasicAlgorithm']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 secondary_worker_config: pulumi.Input[Optional[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']]] = None,
-                 worker_config: pulumi.Input[Optional[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']]] = None,
+                 secondary_worker_config: pulumi.Input[Optional[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict', 'outputs.AutoscalingPolicySecondaryWorkerConfig']]] = None,
+                 worker_config: pulumi.Input[Optional[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict', 'outputs.AutoscalingPolicyWorkerConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -518,14 +518,14 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_algorithm: pulumi.Input[Optional[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']]] = None,
+            basic_algorithm: pulumi.Input[Optional[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict', 'outputs.AutoscalingPolicyBasicAlgorithm']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            secondary_worker_config: pulumi.Input[Optional[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']]] = None,
-            worker_config: pulumi.Input[Optional[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']]] = None) -> 'AutoscalingPolicy':
+            secondary_worker_config: pulumi.Input[Optional[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict', 'outputs.AutoscalingPolicySecondaryWorkerConfig']]] = None,
+            worker_config: pulumi.Input[Optional[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict', 'outputs.AutoscalingPolicyWorkerConfig']]] = None) -> 'AutoscalingPolicy':
         """
         Get an existing AutoscalingPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -533,7 +533,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict']] basic_algorithm: Basic algorithm for autoscaling.
+        :param pulumi.Input[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict', 'outputs.AutoscalingPolicyBasicAlgorithm']] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -549,9 +549,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
                3 and 50 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
+        :param pulumi.Input[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict', 'outputs.AutoscalingPolicySecondaryWorkerConfig']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
                Structure is documented below.
-        :param pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict']] worker_config: Describes how the autoscaler will operate for primary workers.
+        :param pulumi.Input[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict', 'outputs.AutoscalingPolicyWorkerConfig']] worker_config: Describes how the autoscaler will operate for primary workers.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

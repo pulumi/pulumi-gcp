@@ -1266,7 +1266,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
-                 clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
+                 clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1279,17 +1279,17 @@ class DatabaseInstance(pulumi.CustomResource):
                  master_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 point_in_time_restore_context: pulumi.Input[Optional[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']]] = None,
+                 point_in_time_restore_context: pulumi.Input[Optional[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict', 'outputs.DatabaseInstancePointInTimeRestoreContext']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 replica_configuration: pulumi.Input[Optional[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+                 replica_configuration: pulumi.Input[Optional[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict', 'outputs.DatabaseInstanceReplicaConfiguration']]] = None,
                  replica_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 replication_cluster: pulumi.Input[Optional[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
-                 restore_backup_context: pulumi.Input[Optional[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
+                 replication_cluster: pulumi.Input[Optional[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict', 'outputs.DatabaseInstanceReplicationCluster']]] = None,
+                 restore_backup_context: pulumi.Input[Optional[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict', 'outputs.DatabaseInstanceRestoreBackupContext']]] = None,
                  root_password: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict', 'outputs.DatabaseInstanceSettings']]] = None,
                  switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -1616,7 +1616,7 @@ class DatabaseInstance(pulumi.CustomResource):
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
-        :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+        :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or
@@ -1662,7 +1662,7 @@ class DatabaseInstance(pulumi.CustomResource):
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
-        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict', 'outputs.DatabaseInstancePointInTimeRestoreContext']] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
                cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -1672,11 +1672,11 @@ class DatabaseInstance(pulumi.CustomResource):
                the provider region will be used instead.
                
                ***
-        :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
+        :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict', 'outputs.DatabaseInstanceReplicaConfiguration']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
-        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
-        :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict', 'outputs.DatabaseInstanceReplicationCluster']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
+        :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict', 'outputs.DatabaseInstanceRestoreBackupContext']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -1686,7 +1686,7 @@ class DatabaseInstance(pulumi.CustomResource):
                
                > **Note:** One of `root_password` or `root_password_wo` can only be set.
         :param pulumi.Input[_builtins.str] root_password_wo_version: Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-        :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']] settings: The settings to use for the database. The
+        :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict', 'outputs.DatabaseInstanceSettings']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         :param pulumi.Input[_builtins.bool] switch_transaction_logs_to_cloud_storage_enabled: When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """
@@ -2030,7 +2030,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
-                 clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
+                 clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2043,17 +2043,17 @@ class DatabaseInstance(pulumi.CustomResource):
                  master_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 point_in_time_restore_context: pulumi.Input[Optional[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']]] = None,
+                 point_in_time_restore_context: pulumi.Input[Optional[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict', 'outputs.DatabaseInstancePointInTimeRestoreContext']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 replica_configuration: pulumi.Input[Optional[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+                 replica_configuration: pulumi.Input[Optional[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict', 'outputs.DatabaseInstanceReplicaConfiguration']]] = None,
                  replica_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 replication_cluster: pulumi.Input[Optional[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
-                 restore_backup_context: pulumi.Input[Optional[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
+                 replication_cluster: pulumi.Input[Optional[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict', 'outputs.DatabaseInstanceReplicationCluster']]] = None,
+                 restore_backup_context: pulumi.Input[Optional[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict', 'outputs.DatabaseInstanceRestoreBackupContext']]] = None,
                  root_password: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict', 'outputs.DatabaseInstanceSettings']]] = None,
                  switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2118,41 +2118,41 @@ class DatabaseInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
-            clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
+            clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']]] = None,
             connection_name: pulumi.Input[Optional[_builtins.str]] = None,
             database_version: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_name: pulumi.Input[Optional[_builtins.str]] = None,
-            dns_names: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]]] = None,
+            dns_names: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict', 'outputs.DatabaseInstanceDnsName']]]]] = None,
             encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
             final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
             first_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             include_replicas_for_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
-            ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceIpAddressArgs', 'DatabaseInstanceIpAddressArgsDict']]]]] = None,
+            ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceIpAddressArgs', 'DatabaseInstanceIpAddressArgsDict', 'outputs.DatabaseInstanceIpAddress']]]]] = None,
             maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
             master_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
-            point_in_time_restore_context: pulumi.Input[Optional[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']]] = None,
+            point_in_time_restore_context: pulumi.Input[Optional[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict', 'outputs.DatabaseInstancePointInTimeRestoreContext']]] = None,
             private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             psc_service_attachment_link: pulumi.Input[Optional[_builtins.str]] = None,
             public_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            replica_configuration: pulumi.Input[Optional[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+            replica_configuration: pulumi.Input[Optional[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict', 'outputs.DatabaseInstanceReplicaConfiguration']]] = None,
             replica_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            replication_cluster: pulumi.Input[Optional[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
-            restore_backup_context: pulumi.Input[Optional[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
+            replication_cluster: pulumi.Input[Optional[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict', 'outputs.DatabaseInstanceReplicationCluster']]] = None,
+            restore_backup_context: pulumi.Input[Optional[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict', 'outputs.DatabaseInstanceRestoreBackupContext']]] = None,
             root_password: pulumi.Input[Optional[_builtins.str]] = None,
             root_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
             root_password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceServerCaCertArgs', 'DatabaseInstanceServerCaCertArgsDict']]]]] = None,
+            server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceServerCaCertArgs', 'DatabaseInstanceServerCaCertArgsDict', 'outputs.DatabaseInstanceServerCaCert']]]]] = None,
             service_account_email_address: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
+            settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict', 'outputs.DatabaseInstanceSettings']]] = None,
             switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'DatabaseInstance':
         """
         Get an existing DatabaseInstance resource's state with the given name, id, and optional extra
@@ -2166,7 +2166,7 @@ class DatabaseInstance(pulumi.CustomResource):
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
-        :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+        :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[_builtins.str] connection_name: The connection name of the instance to be used in
@@ -2191,7 +2191,7 @@ class DatabaseInstance(pulumi.CustomResource):
                
                > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict', 'outputs.DatabaseInstanceDnsName']]]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -2217,7 +2217,7 @@ class DatabaseInstance(pulumi.CustomResource):
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
-        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict', 'outputs.DatabaseInstancePointInTimeRestoreContext']] point_in_time_restore_context: The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
                cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -2230,11 +2230,11 @@ class DatabaseInstance(pulumi.CustomResource):
                the provider region will be used instead.
                
                ***
-        :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
+        :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict', 'outputs.DatabaseInstanceReplicaConfiguration']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
-        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
-        :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict', 'outputs.DatabaseInstanceReplicationCluster']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
+        :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict', 'outputs.DatabaseInstanceRestoreBackupContext']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -2247,7 +2247,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] service_account_email_address: The service account email address assigned to the
                instance.
-        :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']] settings: The settings to use for the database. The
+        :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict', 'outputs.DatabaseInstanceSettings']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         :param pulumi.Input[_builtins.bool] switch_transaction_logs_to_cloud_storage_enabled: When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """

@@ -324,7 +324,7 @@ class EkmConnectionIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict', 'outputs.EkmConnectionIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -609,7 +609,7 @@ class EkmConnectionIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict', 'outputs.EkmConnectionIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the EkmConnection.
                A full list of valid locations can be found by running `gcloud kms locations list`.
@@ -932,7 +932,7 @@ class EkmConnectionIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict', 'outputs.EkmConnectionIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -968,7 +968,7 @@ class EkmConnectionIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict', 'outputs.EkmConnectionIamBindingCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -982,7 +982,7 @@ class EkmConnectionIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['EkmConnectionIamBindingConditionArgs', 'EkmConnectionIamBindingConditionArgsDict', 'outputs.EkmConnectionIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] location: The location for the EkmConnection.

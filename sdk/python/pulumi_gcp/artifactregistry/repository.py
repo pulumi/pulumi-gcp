@@ -808,22 +808,22 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
+                 cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict', 'outputs.RepositoryCleanupPolicy']]]]] = None,
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
+                 docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']]] = None,
+                 maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
+                 remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 virtual_repository_config: pulumi.Input[Optional[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
-                 vulnerability_scanning_config: pulumi.Input[Optional[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']]] = None,
+                 virtual_repository_config: pulumi.Input[Optional[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict', 'outputs.RepositoryVirtualRepositoryConfig']]] = None,
+                 vulnerability_scanning_config: pulumi.Input[Optional[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict', 'outputs.RepositoryVulnerabilityScanningConfig']]] = None,
                  __props__=None):
         """
         A repository for storing artifacts
@@ -1431,7 +1431,7 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict', 'outputs.RepositoryCleanupPolicy']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
@@ -1445,7 +1445,7 @@ class Repository(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
-        :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+        :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -1469,7 +1469,7 @@ class Repository(pulumi.CustomResource):
                or use the
                artifactregistry_get_locations
                data source for possible values.
-        :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']] maven_config: MavenRepositoryConfig is maven related repository details.
+        :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
@@ -1478,13 +1478,13 @@ class Repository(pulumi.CustomResource):
                Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']] remote_repository_config: Configuration specific for a Remote Repository.
+        :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_id: The last part of the repository name, for example:
                "repo1"
-        :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
+        :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict', 'outputs.RepositoryVirtualRepositoryConfig']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
-        :param pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
+        :param pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict', 'outputs.RepositoryVulnerabilityScanningConfig']] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
                Structure is documented below.
         """
         ...
@@ -2112,22 +2112,22 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
+                 cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict', 'outputs.RepositoryCleanupPolicy']]]]] = None,
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
+                 docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']]] = None,
+                 maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
+                 remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 virtual_repository_config: pulumi.Input[Optional[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
-                 vulnerability_scanning_config: pulumi.Input[Optional[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']]] = None,
+                 virtual_repository_config: pulumi.Input[Optional[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict', 'outputs.RepositoryVirtualRepositoryConfig']]] = None,
+                 vulnerability_scanning_config: pulumi.Input[Optional[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict', 'outputs.RepositoryVulnerabilityScanningConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2175,28 +2175,28 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
+            cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict', 'outputs.RepositoryCleanupPolicy']]]]] = None,
             cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
+            docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             format: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']]] = None,
+            maven_config: pulumi.Input[Optional[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']]] = None,
             mode: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             registry_uri: pulumi.Input[Optional[_builtins.str]] = None,
-            remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
+            remote_repository_config: pulumi.Input[Optional[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']]] = None,
             repository_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            virtual_repository_config: pulumi.Input[Optional[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
-            vulnerability_scanning_config: pulumi.Input[Optional[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']]] = None) -> 'Repository':
+            virtual_repository_config: pulumi.Input[Optional[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict', 'outputs.RepositoryVirtualRepositoryConfig']]] = None,
+            vulnerability_scanning_config: pulumi.Input[Optional[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict', 'outputs.RepositoryVulnerabilityScanningConfig']]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2204,7 +2204,7 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict', 'outputs.RepositoryCleanupPolicy']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
@@ -2219,7 +2219,7 @@ class Repository(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
-        :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+        :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict', 'outputs.RepositoryDockerConfig']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] format: The format of packages that are stored in the repository. Supported formats
@@ -2244,7 +2244,7 @@ class Repository(pulumi.CustomResource):
                or use the
                artifactregistry_get_locations
                data source for possible values.
-        :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']] maven_config: MavenRepositoryConfig is maven related repository details.
+        :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict', 'outputs.RepositoryMavenConfig']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
@@ -2258,14 +2258,14 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] registry_uri: The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
-        :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']] remote_repository_config: Configuration specific for a Remote Repository.
+        :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict', 'outputs.RepositoryRemoteRepositoryConfig']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[_builtins.str] update_time: The time when the repository was last updated.
-        :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
+        :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict', 'outputs.RepositoryVirtualRepositoryConfig']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
-        :param pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
+        :param pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict', 'outputs.RepositoryVulnerabilityScanningConfig']] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -271,11 +271,11 @@ class CxGenerativeSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fallback_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']]] = None,
-                 generative_safety_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict']]] = None,
-                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']]] = None,
+                 fallback_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict', 'outputs.CxGenerativeSettingsFallbackSettings']]] = None,
+                 generative_safety_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict', 'outputs.CxGenerativeSettingsGenerativeSafetySettings']]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict', 'outputs.CxGenerativeSettingsKnowledgeConnectorSettings']]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_model_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict', 'outputs.CxGenerativeSettingsLlmModelSettings']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -350,14 +350,14 @@ class CxGenerativeSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']] fallback_settings: Settings for Generative Fallback.
+        :param pulumi.Input[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict', 'outputs.CxGenerativeSettingsFallbackSettings']] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict']] generative_safety_settings: Settings for Generative Safety.
+        :param pulumi.Input[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict', 'outputs.CxGenerativeSettingsGenerativeSafetySettings']] generative_safety_settings: Settings for Generative Safety.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Settings for knowledge connector.
+        :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict', 'outputs.CxGenerativeSettingsKnowledgeConnectorSettings']] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: Language for this settings.
-        :param pulumi.Input[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict']] llm_model_settings: LLM model settings.
+        :param pulumi.Input[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict', 'outputs.CxGenerativeSettingsLlmModelSettings']] llm_model_settings: LLM model settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a flow for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -453,11 +453,11 @@ class CxGenerativeSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fallback_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']]] = None,
-                 generative_safety_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict']]] = None,
-                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']]] = None,
+                 fallback_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict', 'outputs.CxGenerativeSettingsFallbackSettings']]] = None,
+                 generative_safety_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict', 'outputs.CxGenerativeSettingsGenerativeSafetySettings']]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict', 'outputs.CxGenerativeSettingsKnowledgeConnectorSettings']]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_model_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict', 'outputs.CxGenerativeSettingsLlmModelSettings']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -487,11 +487,11 @@ class CxGenerativeSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            fallback_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']]] = None,
-            generative_safety_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict']]] = None,
-            knowledge_connector_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']]] = None,
+            fallback_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict', 'outputs.CxGenerativeSettingsFallbackSettings']]] = None,
+            generative_safety_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict', 'outputs.CxGenerativeSettingsGenerativeSafetySettings']]] = None,
+            knowledge_connector_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict', 'outputs.CxGenerativeSettingsKnowledgeConnectorSettings']]] = None,
             language_code: pulumi.Input[Optional[_builtins.str]] = None,
-            llm_model_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict']]] = None,
+            llm_model_settings: pulumi.Input[Optional[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict', 'outputs.CxGenerativeSettingsLlmModelSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None) -> 'CxGenerativeSettings':
         """
@@ -501,14 +501,14 @@ class CxGenerativeSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']] fallback_settings: Settings for Generative Fallback.
+        :param pulumi.Input[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict', 'outputs.CxGenerativeSettingsFallbackSettings']] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict']] generative_safety_settings: Settings for Generative Safety.
+        :param pulumi.Input[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict', 'outputs.CxGenerativeSettingsGenerativeSafetySettings']] generative_safety_settings: Settings for Generative Safety.
                Structure is documented below.
-        :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Settings for knowledge connector.
+        :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict', 'outputs.CxGenerativeSettingsKnowledgeConnectorSettings']] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: Language for this settings.
-        :param pulumi.Input[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict']] llm_model_settings: LLM model settings.
+        :param pulumi.Input[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict', 'outputs.CxGenerativeSettingsLlmModelSettings']] llm_model_settings: LLM model settings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the generativeSettings.
                Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/generativeSettings.

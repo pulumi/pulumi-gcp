@@ -565,15 +565,15 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ingestion_data_source_settings: pulumi.Input[Optional[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']]] = None,
+                 ingestion_data_source_settings: pulumi.Input[Optional[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict', 'outputs.TopicIngestionDataSourceSettings']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
-                 message_storage_policy: pulumi.Input[Optional[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']]] = None,
-                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict']]]]] = None,
+                 message_storage_policy: pulumi.Input[Optional[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict', 'outputs.TopicMessageStoragePolicy']]] = None,
+                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict', 'outputs.TopicMessageTransform']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema_settings: pulumi.Input[Optional[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
+                 schema_settings: pulumi.Input[Optional[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict', 'outputs.TopicSchemaSettings']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -895,7 +895,7 @@ class Topic(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+        :param pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict', 'outputs.TopicIngestionDataSourceSettings']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
@@ -914,17 +914,17 @@ class Topic(pulumi.CustomResource):
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict', 'outputs.TopicMessageStoragePolicy']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict']]]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict', 'outputs.TopicMessageTransform']]]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
                order specified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the topic.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict', 'outputs.TopicSchemaSettings']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the topic. Tag keys and
                values have the same definition as resource manager tags. Keys must be in
@@ -1268,15 +1268,15 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ingestion_data_source_settings: pulumi.Input[Optional[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']]] = None,
+                 ingestion_data_source_settings: pulumi.Input[Optional[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict', 'outputs.TopicIngestionDataSourceSettings']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
-                 message_storage_policy: pulumi.Input[Optional[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']]] = None,
-                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict']]]]] = None,
+                 message_storage_policy: pulumi.Input[Optional[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict', 'outputs.TopicMessageStoragePolicy']]] = None,
+                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict', 'outputs.TopicMessageTransform']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema_settings: pulumi.Input[Optional[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
+                 schema_settings: pulumi.Input[Optional[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict', 'outputs.TopicSchemaSettings']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1314,16 +1314,16 @@ class Topic(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ingestion_data_source_settings: pulumi.Input[Optional[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']]] = None,
+            ingestion_data_source_settings: pulumi.Input[Optional[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict', 'outputs.TopicIngestionDataSourceSettings']]] = None,
             kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
-            message_storage_policy: pulumi.Input[Optional[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']]] = None,
-            message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict']]]]] = None,
+            message_storage_policy: pulumi.Input[Optional[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict', 'outputs.TopicMessageStoragePolicy']]] = None,
+            message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict', 'outputs.TopicMessageTransform']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            schema_settings: pulumi.Input[Optional[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
+            schema_settings: pulumi.Input[Optional[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict', 'outputs.TopicSchemaSettings']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
@@ -1339,7 +1339,7 @@ class Topic(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+        :param pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict', 'outputs.TopicIngestionDataSourceSettings']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
@@ -1358,11 +1358,11 @@ class Topic(pulumi.CustomResource):
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict', 'outputs.TopicMessageStoragePolicy']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict']]]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TopicMessageTransformArgs', 'TopicMessageTransformArgsDict', 'outputs.TopicMessageTransform']]]] message_transforms: Transforms to be applied to messages published to the topic. Transforms are applied in the
                order specified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the topic.
@@ -1370,7 +1370,7 @@ class Topic(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict', 'outputs.TopicSchemaSettings']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the topic. Tag keys and
                values have the same definition as resource manager tags. Keys must be in

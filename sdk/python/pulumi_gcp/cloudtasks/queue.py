@@ -461,16 +461,16 @@ class Queue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict', 'outputs.QueueAppEngineRoutingOverride']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
+                 http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict', 'outputs.QueueHttpTarget']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_limits: pulumi.Input[Optional[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict']]] = None,
-                 retry_config: pulumi.Input[Optional[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict']]] = None,
-                 stackdriver_logging_config: pulumi.Input[Optional[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']]] = None,
+                 rate_limits: pulumi.Input[Optional[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict', 'outputs.QueueRateLimits']]] = None,
+                 retry_config: pulumi.Input[Optional[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict', 'outputs.QueueRetryConfig']]] = None,
+                 stackdriver_logging_config: pulumi.Input[Optional[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict', 'outputs.QueueStackdriverLoggingConfig']]] = None,
                  __props__=None):
         """
         A named resource to which messages are sent by publishers.
@@ -628,7 +628,7 @@ class Queue(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
+        :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict', 'outputs.QueueAppEngineRoutingOverride']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -641,13 +641,13 @@ class Queue(pulumi.CustomResource):
                
                * RUNNING: The queue is running. Tasks can be dispatched.
                * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
-        :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
+        :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict', 'outputs.QueueHttpTarget']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the queue
         :param pulumi.Input[_builtins.str] name: The queue name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict']] rate_limits: Rate limits for task dispatches.
+        :param pulumi.Input[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict', 'outputs.QueueRateLimits']] rate_limits: Rate limits for task dispatches.
                The queue's actual dispatch rate is the result of:
                * Number of tasks in the queue
                * User-specified throttling: rateLimits, retryConfig, and the queue's state.
@@ -655,9 +655,9 @@ class Queue(pulumi.CustomResource):
                  Unavailable) responses from the worker, high error rates, or to
                  smooth sudden large traffic spikes.
                  Structure is documented below.
-        :param pulumi.Input[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict']] retry_config: Settings that determine the retry behavior.
+        :param pulumi.Input[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict', 'outputs.QueueRetryConfig']] retry_config: Settings that determine the retry behavior.
                Structure is documented below.
-        :param pulumi.Input[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
+        :param pulumi.Input[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict', 'outputs.QueueStackdriverLoggingConfig']] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
                Structure is documented below.
         """
         ...
@@ -835,16 +835,16 @@ class Queue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict', 'outputs.QueueAppEngineRoutingOverride']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
+                 http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict', 'outputs.QueueHttpTarget']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_limits: pulumi.Input[Optional[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict']]] = None,
-                 retry_config: pulumi.Input[Optional[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict']]] = None,
-                 stackdriver_logging_config: pulumi.Input[Optional[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']]] = None,
+                 rate_limits: pulumi.Input[Optional[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict', 'outputs.QueueRateLimits']]] = None,
+                 retry_config: pulumi.Input[Optional[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict', 'outputs.QueueRetryConfig']]] = None,
+                 stackdriver_logging_config: pulumi.Input[Optional[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict', 'outputs.QueueStackdriverLoggingConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -877,16 +877,16 @@ class Queue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+            app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict', 'outputs.QueueAppEngineRoutingOverride']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             desired_state: pulumi.Input[Optional[_builtins.str]] = None,
-            http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
+            http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict', 'outputs.QueueHttpTarget']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rate_limits: pulumi.Input[Optional[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict']]] = None,
-            retry_config: pulumi.Input[Optional[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict']]] = None,
-            stackdriver_logging_config: pulumi.Input[Optional[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']]] = None,
+            rate_limits: pulumi.Input[Optional[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict', 'outputs.QueueRateLimits']]] = None,
+            retry_config: pulumi.Input[Optional[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict', 'outputs.QueueRetryConfig']]] = None,
+            stackdriver_logging_config: pulumi.Input[Optional[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict', 'outputs.QueueStackdriverLoggingConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
@@ -895,7 +895,7 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
+        :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict', 'outputs.QueueAppEngineRoutingOverride']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -908,13 +908,13 @@ class Queue(pulumi.CustomResource):
                
                * RUNNING: The queue is running. Tasks can be dispatched.
                * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
-        :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
+        :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict', 'outputs.QueueHttpTarget']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the queue
         :param pulumi.Input[_builtins.str] name: The queue name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict']] rate_limits: Rate limits for task dispatches.
+        :param pulumi.Input[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict', 'outputs.QueueRateLimits']] rate_limits: Rate limits for task dispatches.
                The queue's actual dispatch rate is the result of:
                * Number of tasks in the queue
                * User-specified throttling: rateLimits, retryConfig, and the queue's state.
@@ -922,9 +922,9 @@ class Queue(pulumi.CustomResource):
                  Unavailable) responses from the worker, high error rates, or to
                  smooth sudden large traffic spikes.
                  Structure is documented below.
-        :param pulumi.Input[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict']] retry_config: Settings that determine the retry behavior.
+        :param pulumi.Input[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict', 'outputs.QueueRetryConfig']] retry_config: Settings that determine the retry behavior.
                Structure is documented below.
-        :param pulumi.Input[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
+        :param pulumi.Input[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict', 'outputs.QueueStackdriverLoggingConfig']] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the queue.
         """

@@ -893,7 +893,7 @@ class Intent(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            followup_intent_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntentFollowupIntentInfoArgs', 'IntentFollowupIntentInfoArgsDict']]]]] = None,
+            followup_intent_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntentFollowupIntentInfoArgs', 'IntentFollowupIntentInfoArgsDict', 'outputs.IntentFollowupIntentInfo']]]]] = None,
             input_context_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             is_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
             ml_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -926,7 +926,7 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IntentFollowupIntentInfoArgs', 'IntentFollowupIntentInfoArgsDict']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntentFollowupIntentInfoArgs', 'IntentFollowupIntentInfoArgsDict', 'outputs.IntentFollowupIntentInfo']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
                only in the output.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_context_names: The list of context names required for this intent to be triggered.

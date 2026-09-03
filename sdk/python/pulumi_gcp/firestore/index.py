@@ -487,7 +487,7 @@ class Index(pulumi.CustomResource):
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  density: pulumi.Input[Optional[_builtins.str]] = None,
-                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict', 'outputs.IndexField']]]]] = None,
                  multikey: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -881,7 +881,7 @@ class Index(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The field(s) supported by this index. Indexes with the `ANY_API` `api_scope` in Standard
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict', 'outputs.IndexField']]]] fields: The field(s) supported by this index. Indexes with the `ANY_API` `api_scope` in Standard
                edition databases have special behavior with respect to the `__name__` field. In these
                indexes, the last non-stored field entry is always for the field path `__name__`. If, on
                creation, `__name__` was not specified as the last field, it will be added automatically
@@ -1296,7 +1296,7 @@ class Index(pulumi.CustomResource):
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  density: pulumi.Input[Optional[_builtins.str]] = None,
-                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict', 'outputs.IndexField']]]]] = None,
                  multikey: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1342,7 +1342,7 @@ class Index(pulumi.CustomResource):
             database: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             density: pulumi.Input[Optional[_builtins.str]] = None,
-            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict', 'outputs.IndexField']]]]] = None,
             multikey: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1369,7 +1369,7 @@ class Index(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The field(s) supported by this index. Indexes with the `ANY_API` `api_scope` in Standard
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict', 'outputs.IndexField']]]] fields: The field(s) supported by this index. Indexes with the `ANY_API` `api_scope` in Standard
                edition databases have special behavior with respect to the `__name__` field. In these
                indexes, the last non-stored field entry is always for the field path `__name__`. If, on
                creation, `__name__` was not specified as the last field, it will be added automatically

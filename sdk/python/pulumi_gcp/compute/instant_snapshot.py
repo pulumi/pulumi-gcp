@@ -477,7 +477,7 @@ class InstantSnapshot(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict', 'outputs.InstantSnapshotParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -553,7 +553,7 @@ class InstantSnapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict', 'outputs.InstantSnapshotParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -637,7 +637,7 @@ class InstantSnapshot(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict', 'outputs.InstantSnapshotParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -687,7 +687,7 @@ class InstantSnapshot(pulumi.CustomResource):
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict', 'outputs.InstantSnapshotParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
@@ -723,7 +723,7 @@ class InstantSnapshot(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['InstantSnapshotParamsArgs', 'InstantSnapshotParamsArgsDict', 'outputs.InstantSnapshotParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

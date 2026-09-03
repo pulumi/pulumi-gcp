@@ -419,14 +419,14 @@ class TrustConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowlisted_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]]] = None,
+                 allowlisted_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict', 'outputs.TrustConfigAllowlistedCertificate']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 trust_stores: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict']]]]] = None,
+                 trust_stores: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict', 'outputs.TrustConfigTrustStore']]]]] = None,
                  __props__=None):
         """
         TrustConfig represents a resource that represents your Public Key Infrastructure (PKI) configuration in Certificate Manager for use in mutual TLS authentication scenarios.
@@ -505,7 +505,7 @@ class TrustConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict', 'outputs.TrustConfigAllowlistedCertificate']]]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
                the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -522,7 +522,7 @@ class TrustConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict']]]] trust_stores: Set of trust stores to perform validation against.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict', 'outputs.TrustConfigTrustStore']]]] trust_stores: Set of trust stores to perform validation against.
                This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
                Structure is documented below.
         """
@@ -622,14 +622,14 @@ class TrustConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowlisted_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]]] = None,
+                 allowlisted_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict', 'outputs.TrustConfigAllowlistedCertificate']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 trust_stores: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict']]]]] = None,
+                 trust_stores: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict', 'outputs.TrustConfigTrustStore']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -665,7 +665,7 @@ class TrustConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowlisted_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]]] = None,
+            allowlisted_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict', 'outputs.TrustConfigAllowlistedCertificate']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -675,7 +675,7 @@ class TrustConfig(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            trust_stores: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict']]]]] = None,
+            trust_stores: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict', 'outputs.TrustConfigTrustStore']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrustConfig':
         """
         Get an existing TrustConfig resource's state with the given name, id, and optional extra
@@ -684,7 +684,7 @@ class TrustConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict', 'outputs.TrustConfigAllowlistedCertificate']]]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
                the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of a TrustConfig.
@@ -707,7 +707,7 @@ class TrustConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict']]]] trust_stores: Set of trust stores to perform validation against.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigTrustStoreArgs', 'TrustConfigTrustStoreArgsDict', 'outputs.TrustConfigTrustStore']]]] trust_stores: Set of trust stores to perform validation against.
                This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The last update timestamp of a TrustConfig.

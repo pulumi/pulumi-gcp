@@ -486,15 +486,15 @@ class Router(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+                 bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict', 'outputs.RouterBgp']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
-                 md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
+                 md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict', 'outputs.RouterParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -627,7 +627,7 @@ class Router(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']] bgp: BGP information specific to this router.
+        :param pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict', 'outputs.RouterBgp']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -638,7 +638,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
                attachments (interconnectAttachments).
-        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']] md5_authentication_keys: Keys used for MD5 authentication.
+        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']] md5_authentication_keys: Keys used for MD5 authentication.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -648,7 +648,7 @@ class Router(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
-        :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict', 'outputs.RouterParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -802,15 +802,15 @@ class Router(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+                 bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict', 'outputs.RouterBgp']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
-                 md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
+                 md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict', 'outputs.RouterParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -845,16 +845,16 @@ class Router(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+            bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict', 'outputs.RouterBgp']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
-            md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
+            md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict', 'outputs.RouterParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'Router':
@@ -865,7 +865,7 @@ class Router(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']] bgp: BGP information specific to this router.
+        :param pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict', 'outputs.RouterBgp']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -877,7 +877,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
                attachments (interconnectAttachments).
-        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']] md5_authentication_keys: Keys used for MD5 authentication.
+        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']] md5_authentication_keys: Keys used for MD5 authentication.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -887,7 +887,7 @@ class Router(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
-        :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict', 'outputs.RouterParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

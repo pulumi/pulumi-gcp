@@ -784,17 +784,17 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
+                 oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict', 'outputs.WorkloadIdentityPoolProviderOidc']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
+                 saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict', 'outputs.WorkloadIdentityPoolProviderSaml']]] = None,
                  workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
+                 x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict', 'outputs.WorkloadIdentityPoolProviderX509']]] = None,
                  __props__=None):
         """
         A configuration for an external identity provider.
@@ -1121,7 +1121,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```
                {"google.subject": "assertion.sub"}
                ```
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1133,11 +1133,11 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A display name for the provider. Cannot exceed 32 characters.
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict', 'outputs.WorkloadIdentityPoolProviderOidc']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict', 'outputs.WorkloadIdentityPoolProviderSaml']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -1145,7 +1145,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict', 'outputs.WorkloadIdentityPoolProviderX509']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
                client identity if the client has a certificate that chains up to this CA.
                Structure is documented below.
         """
@@ -1439,17 +1439,17 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
+                 oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict', 'outputs.WorkloadIdentityPoolProviderOidc']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
+                 saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict', 'outputs.WorkloadIdentityPoolProviderSaml']]] = None,
                  workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
+                 x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict', 'outputs.WorkloadIdentityPoolProviderX509']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1490,19 +1490,19 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
             attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+            aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
+            oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict', 'outputs.WorkloadIdentityPoolProviderOidc']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
+            saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict', 'outputs.WorkloadIdentityPoolProviderSaml']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-            x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None) -> 'WorkloadIdentityPoolProvider':
+            x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict', 'outputs.WorkloadIdentityPoolProviderX509']]] = None) -> 'WorkloadIdentityPoolProvider':
         """
         Get an existing WorkloadIdentityPoolProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1566,7 +1566,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```
                {"google.subject": "assertion.sub"}
                ```
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1580,11 +1580,11 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.str] name: The resource name of the provider as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict', 'outputs.WorkloadIdentityPoolProviderOidc']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict', 'outputs.WorkloadIdentityPoolProviderSaml']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The state of the provider.
                * STATE_UNSPECIFIED: State unspecified.
@@ -1599,7 +1599,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-        :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict', 'outputs.WorkloadIdentityPoolProviderX509']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
                client identity if the client has a certificate that chains up to this CA.
                Structure is documented below.
         """

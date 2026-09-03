@@ -415,7 +415,7 @@ class Rule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict', 'outputs.RuleCondition']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  operation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -509,7 +509,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action this rule takes.
                Possible values are: `ACTION_UNSPECIFIED`, `ALLOW`, `DENY`.
-        :param pulumi.Input[Union['RuleConditionArgs', 'RuleConditionArgsDict']] condition: Optional. A CEL expression for conditions that must be met in order for the
+        :param pulumi.Input[Union['RuleConditionArgs', 'RuleConditionArgsDict', 'outputs.RuleCondition']] condition: Optional. A CEL expression for conditions that must be met in order for the
                rule to apply. If not provided, the rule matches all objects.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -637,7 +637,7 @@ class Rule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict', 'outputs.RuleCondition']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  operation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -679,7 +679,7 @@ class Rule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict', 'outputs.RuleCondition']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -697,7 +697,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action this rule takes.
                Possible values are: `ACTION_UNSPECIFIED`, `ALLOW`, `DENY`.
-        :param pulumi.Input[Union['RuleConditionArgs', 'RuleConditionArgsDict']] condition: Optional. A CEL expression for conditions that must be met in order for the
+        :param pulumi.Input[Union['RuleConditionArgs', 'RuleConditionArgsDict', 'outputs.RuleCondition']] condition: Optional. A CEL expression for conditions that must be met in order for the
                rule to apply. If not provided, the rule matches all objects.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

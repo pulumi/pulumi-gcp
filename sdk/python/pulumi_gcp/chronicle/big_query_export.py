@@ -393,14 +393,14 @@ class BigQueryExport(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  big_query_export_package: pulumi.Input[Optional[_builtins.str]] = None,
-                 entity_graph_settings: pulumi.Input[Optional[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict']]] = None,
+                 entity_graph_settings: pulumi.Input[Optional[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict', 'outputs.BigQueryExportEntityGraphSettings']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
-                 ioc_matches_settings: pulumi.Input[Optional[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict']]] = None,
+                 ioc_matches_settings: pulumi.Input[Optional[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict', 'outputs.BigQueryExportIocMatchesSettings']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule_detections_settings: pulumi.Input[Optional[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict']]] = None,
-                 udm_events_aggregates_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict']]] = None,
-                 udm_events_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict']]] = None,
+                 rule_detections_settings: pulumi.Input[Optional[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict', 'outputs.BigQueryExportRuleDetectionsSettings']]] = None,
+                 udm_events_aggregates_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict', 'outputs.BigQueryExportUdmEventsAggregatesSettings']]] = None,
+                 udm_events_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict', 'outputs.BigQueryExportUdmEventsSettings']]] = None,
                  __props__=None):
         """
         BigQueryExport resource represents the BigQuery export configuration for a Chronicle instance.
@@ -480,19 +480,19 @@ class BigQueryExport(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] big_query_export_package: The BigQueryExportPackage entitled for the Chronicle instance.
                Possible values are: `BIG_QUERY_EXPORT_PACKAGE_BYOBQ`, `BIG_QUERY_EXPORT_PACKAGE_ADVANCED`.
-        :param pulumi.Input[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict']] entity_graph_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict', 'outputs.BigQueryExportEntityGraphSettings']] entity_graph_settings: The export settings for a data source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict']] ioc_matches_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict', 'outputs.BigQueryExportIocMatchesSettings']] ioc_matches_settings: The export settings for a data source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict']] rule_detections_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict', 'outputs.BigQueryExportRuleDetectionsSettings']] rule_detections_settings: The export settings for a data source.
                Structure is documented below.
-        :param pulumi.Input[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict']] udm_events_aggregates_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict', 'outputs.BigQueryExportUdmEventsAggregatesSettings']] udm_events_aggregates_settings: The export settings for a data source.
                Structure is documented below.
-        :param pulumi.Input[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict']] udm_events_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict', 'outputs.BigQueryExportUdmEventsSettings']] udm_events_settings: The export settings for a data source.
                Structure is documented below.
         """
         ...
@@ -591,14 +591,14 @@ class BigQueryExport(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  big_query_export_package: pulumi.Input[Optional[_builtins.str]] = None,
-                 entity_graph_settings: pulumi.Input[Optional[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict']]] = None,
+                 entity_graph_settings: pulumi.Input[Optional[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict', 'outputs.BigQueryExportEntityGraphSettings']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
-                 ioc_matches_settings: pulumi.Input[Optional[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict']]] = None,
+                 ioc_matches_settings: pulumi.Input[Optional[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict', 'outputs.BigQueryExportIocMatchesSettings']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule_detections_settings: pulumi.Input[Optional[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict']]] = None,
-                 udm_events_aggregates_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict']]] = None,
-                 udm_events_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict']]] = None,
+                 rule_detections_settings: pulumi.Input[Optional[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict', 'outputs.BigQueryExportRuleDetectionsSettings']]] = None,
+                 udm_events_aggregates_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict', 'outputs.BigQueryExportUdmEventsAggregatesSettings']]] = None,
+                 udm_events_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict', 'outputs.BigQueryExportUdmEventsSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -634,16 +634,16 @@ class BigQueryExport(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             big_query_export_package: pulumi.Input[Optional[_builtins.str]] = None,
-            entity_graph_settings: pulumi.Input[Optional[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict']]] = None,
+            entity_graph_settings: pulumi.Input[Optional[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict', 'outputs.BigQueryExportEntityGraphSettings']]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
-            ioc_matches_settings: pulumi.Input[Optional[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict']]] = None,
+            ioc_matches_settings: pulumi.Input[Optional[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict', 'outputs.BigQueryExportIocMatchesSettings']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             provisioned: pulumi.Input[Optional[_builtins.bool]] = None,
-            rule_detections_settings: pulumi.Input[Optional[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict']]] = None,
-            udm_events_aggregates_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict']]] = None,
-            udm_events_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict']]] = None) -> 'BigQueryExport':
+            rule_detections_settings: pulumi.Input[Optional[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict', 'outputs.BigQueryExportRuleDetectionsSettings']]] = None,
+            udm_events_aggregates_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict', 'outputs.BigQueryExportUdmEventsAggregatesSettings']]] = None,
+            udm_events_settings: pulumi.Input[Optional[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict', 'outputs.BigQueryExportUdmEventsSettings']]] = None) -> 'BigQueryExport':
         """
         Get an existing BigQueryExport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -653,10 +653,10 @@ class BigQueryExport(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] big_query_export_package: The BigQueryExportPackage entitled for the Chronicle instance.
                Possible values are: `BIG_QUERY_EXPORT_PACKAGE_BYOBQ`, `BIG_QUERY_EXPORT_PACKAGE_ADVANCED`.
-        :param pulumi.Input[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict']] entity_graph_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportEntityGraphSettingsArgs', 'BigQueryExportEntityGraphSettingsArgsDict', 'outputs.BigQueryExportEntityGraphSettings']] entity_graph_settings: The export settings for a data source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict']] ioc_matches_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportIocMatchesSettingsArgs', 'BigQueryExportIocMatchesSettingsArgsDict', 'outputs.BigQueryExportIocMatchesSettings']] ioc_matches_settings: The export settings for a data source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the BigQueryExport.
@@ -665,11 +665,11 @@ class BigQueryExport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] provisioned: Whether the BigQueryExport has been provisioned for the Chronicle instance.
-        :param pulumi.Input[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict']] rule_detections_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportRuleDetectionsSettingsArgs', 'BigQueryExportRuleDetectionsSettingsArgsDict', 'outputs.BigQueryExportRuleDetectionsSettings']] rule_detections_settings: The export settings for a data source.
                Structure is documented below.
-        :param pulumi.Input[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict']] udm_events_aggregates_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportUdmEventsAggregatesSettingsArgs', 'BigQueryExportUdmEventsAggregatesSettingsArgsDict', 'outputs.BigQueryExportUdmEventsAggregatesSettings']] udm_events_aggregates_settings: The export settings for a data source.
                Structure is documented below.
-        :param pulumi.Input[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict']] udm_events_settings: The export settings for a data source.
+        :param pulumi.Input[Union['BigQueryExportUdmEventsSettingsArgs', 'BigQueryExportUdmEventsSettingsArgsDict', 'outputs.BigQueryExportUdmEventsSettings']] udm_events_settings: The export settings for a data source.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

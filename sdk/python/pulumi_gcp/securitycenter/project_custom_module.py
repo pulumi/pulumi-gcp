@@ -321,7 +321,7 @@ class ProjectCustomModule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
+                 custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict', 'outputs.ProjectCustomModuleCustomConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -418,7 +418,7 @@ class ProjectCustomModule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict', 'outputs.ProjectCustomModuleCustomConfig']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -546,7 +546,7 @@ class ProjectCustomModule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
+                 custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict', 'outputs.ProjectCustomModuleCustomConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -586,7 +586,7 @@ class ProjectCustomModule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ancestor_module: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
+            custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict', 'outputs.ProjectCustomModuleCustomConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -604,7 +604,7 @@ class ProjectCustomModule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization,folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
-        :param pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict', 'outputs.ProjectCustomModuleCustomConfig']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

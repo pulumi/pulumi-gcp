@@ -603,7 +603,7 @@ class AuthProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auth_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 auth_provider_type_params: pulumi.Input[Optional[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict']]] = None,
+                 auth_provider_type_params: pulumi.Input[Optional[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict', 'outputs.AuthProviderAuthProviderTypeParams']]] = None,
                  blocked_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -666,7 +666,7 @@ class AuthProvider(pulumi.CustomResource):
                This value should be 1-63 characters, and valid characters
                are /a-z-/. The first character must be a lowercase letter, and the
                last character must be a lowercase letter or a number.
-        :param pulumi.Input[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict']] auth_provider_type_params: AuthProvider type specific parameters.
+        :param pulumi.Input[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict', 'outputs.AuthProviderAuthProviderTypeParams']] auth_provider_type_params: AuthProvider type specific parameters.
                Required when creating an auth_provider.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_scopes: List of scopes that are blocked from being requested for this
@@ -756,7 +756,7 @@ class AuthProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auth_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 auth_provider_type_params: pulumi.Input[Optional[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict']]] = None,
+                 auth_provider_type_params: pulumi.Input[Optional[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict', 'outputs.AuthProviderAuthProviderTypeParams']]] = None,
                  blocked_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -811,7 +811,7 @@ class AuthProvider(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             auth_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
-            auth_provider_type_params: pulumi.Input[Optional[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict']]] = None,
+            auth_provider_type_params: pulumi.Input[Optional[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict', 'outputs.AuthProviderAuthProviderTypeParams']]] = None,
             blocked_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deleted: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -845,7 +845,7 @@ class AuthProvider(pulumi.CustomResource):
                This value should be 1-63 characters, and valid characters
                are /a-z-/. The first character must be a lowercase letter, and the
                last character must be a lowercase letter or a number.
-        :param pulumi.Input[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict']] auth_provider_type_params: AuthProvider type specific parameters.
+        :param pulumi.Input[Union['AuthProviderAuthProviderTypeParamsArgs', 'AuthProviderAuthProviderTypeParamsArgsDict', 'outputs.AuthProviderAuthProviderTypeParams']] auth_provider_type_params: AuthProvider type specific parameters.
                Required when creating an auth_provider.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_scopes: List of scopes that are blocked from being requested for this

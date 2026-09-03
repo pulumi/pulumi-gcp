@@ -658,7 +658,7 @@ class AppGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocated_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGatewayAllocatedConnectionArgs', 'AppGatewayAllocatedConnectionArgsDict']]]]] = None,
+            allocated_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGatewayAllocatedConnectionArgs', 'AppGatewayAllocatedConnectionArgsDict', 'outputs.AppGatewayAllocatedConnection']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -678,7 +678,7 @@ class AppGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGatewayAllocatedConnectionArgs', 'AppGatewayAllocatedConnectionArgsDict']]]] allocated_connections: A list of connections allocated for the Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGatewayAllocatedConnectionArgs', 'AppGatewayAllocatedConnectionArgsDict', 'outputs.AppGatewayAllocatedConnection']]]] allocated_connections: A list of connections allocated for the Gateway.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

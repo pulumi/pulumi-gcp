@@ -563,10 +563,10 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
-                 dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
+                 automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexAutomaticResources']]] = None,
+                 dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexDedicatedResources']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
+                 deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict', 'outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig']]] = None,
                  deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -744,9 +744,9 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']] automatic_resources: A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
+        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexAutomaticResources']] automatic_resources: A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']] dedicated_resources: A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexDedicatedResources']] dedicated_resources: A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
                Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
                Available machine types for MEDIUM shard: e2-standard-16 and all machine types available for LARGE shard.
                Available machine types for LARGE shard: e2-highmem-16, n2d-standard-32.
@@ -758,7 +758,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']] deployed_index_auth_config: If set, the authentication is enabled for the private endpoint.
+        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict', 'outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig']] deployed_index_auth_config: If set, the authentication is enabled for the private endpoint.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deployed_index_id: The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
         :param pulumi.Input[_builtins.str] deployment_group: The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
@@ -962,10 +962,10 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
-                 dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
+                 automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexAutomaticResources']]] = None,
+                 dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexDedicatedResources']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
+                 deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict', 'outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig']]] = None,
                  deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1015,11 +1015,11 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
+            automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexAutomaticResources']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
+            dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexDedicatedResources']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
+            deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict', 'outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig']]] = None,
             deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1028,7 +1028,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
             index_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             index_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            private_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexEndpointDeployedIndexPrivateEndpointArgs', 'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict']]]]] = None,
+            private_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexEndpointDeployedIndexPrivateEndpointArgs', 'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict', 'outputs.AiIndexEndpointDeployedIndexPrivateEndpoint']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AiIndexEndpointDeployedIndex':
         """
@@ -1038,10 +1038,10 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']] automatic_resources: A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
+        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexAutomaticResources']] automatic_resources: A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']] dedicated_resources: A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict', 'outputs.AiIndexEndpointDeployedIndexDedicatedResources']] dedicated_resources: A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
                Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
                Available machine types for MEDIUM shard: e2-standard-16 and all machine types available for LARGE shard.
                Available machine types for LARGE shard: e2-highmem-16, n2d-standard-32.
@@ -1053,7 +1053,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']] deployed_index_auth_config: If set, the authentication is enabled for the private endpoint.
+        :param pulumi.Input[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict', 'outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig']] deployed_index_auth_config: If set, the authentication is enabled for the private endpoint.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deployed_index_id: The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
         :param pulumi.Input[_builtins.str] deployment_group: The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
@@ -1067,7 +1067,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] index_sync_time: The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] name: The name of the DeployedIndex resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexEndpointDeployedIndexPrivateEndpointArgs', 'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict']]]] private_endpoints: Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexEndpointDeployedIndexPrivateEndpointArgs', 'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict', 'outputs.AiIndexEndpointDeployedIndexPrivateEndpoint']]]] private_endpoints: Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] region: The region of the index endpoint deployment. eg us-central1
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_ip_ranges: A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.

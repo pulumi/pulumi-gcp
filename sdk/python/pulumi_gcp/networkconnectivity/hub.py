@@ -750,7 +750,7 @@ class Hub(pulumi.CustomResource):
             preset_topology: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            routing_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HubRoutingVpcArgs', 'HubRoutingVpcArgsDict']]]]] = None,
+            routing_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HubRoutingVpcArgs', 'HubRoutingVpcArgsDict', 'outputs.HubRoutingVpc']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Hub':
@@ -783,7 +783,7 @@ class Hub(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HubRoutingVpcArgs', 'HubRoutingVpcArgsDict']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HubRoutingVpcArgs', 'HubRoutingVpcArgsDict', 'outputs.HubRoutingVpc']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. The current lifecycle state of this hub.
         :param pulumi.Input[_builtins.str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.

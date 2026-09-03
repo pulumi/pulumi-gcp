@@ -315,7 +315,7 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict', 'outputs.SecurityGatewayIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -601,7 +601,7 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict', 'outputs.SecurityGatewayIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -923,7 +923,7 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict', 'outputs.SecurityGatewayIamBindingCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -961,7 +961,7 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict', 'outputs.SecurityGatewayIamBindingCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -975,7 +975,7 @@ class SecurityGatewayIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['SecurityGatewayIamBindingConditionArgs', 'SecurityGatewayIamBindingConditionArgsDict', 'outputs.SecurityGatewayIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,

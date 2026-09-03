@@ -531,17 +531,17 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleAction']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 match: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleMatch']]] = None,
                  network_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag']]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -608,7 +608,7 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict']] action: The Action to perform when the client connection triggers the rule.
+        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleAction']] action: The Action to perform when the client connection triggers the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -620,7 +620,7 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Denotes whether the network policy rule is disabled.
                When set to true, the network policy rule is not enforced and traffic behaves as if it did not exist.
                If this is unspecified, the network policy rule will be enabled.
-        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] network_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 1 and 2147482647.
@@ -630,7 +630,7 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location of this resource.
         :param pulumi.Input[_builtins.str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the traffic classification rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the traffic classification rule applies to.
                If targetSecureTag are specified, then the traffic classification rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.
@@ -719,17 +719,17 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleAction']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 match: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleMatch']]] = None,
                  network_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict']]]]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag']]]]] = None,
                  target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -771,20 +771,20 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict']]] = None,
+            action: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleAction']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
-            match: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleMatch']]] = None,
             network_policy: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None,
             rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
-            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict']]]]] = None,
+            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag']]]]] = None,
             target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'RegionNetworkPolicyTrafficClassificationRule':
         """
         Get an existing RegionNetworkPolicyTrafficClassificationRule resource's state with the given name, id, and optional extra
@@ -793,7 +793,7 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict']] action: The Action to perform when the client connection triggers the rule.
+        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleActionArgs', 'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleAction']] action: The Action to perform when the client connection triggers the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -807,7 +807,7 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
                When set to true, the network policy rule is not enforced and traffic behaves as if it did not exist.
                If this is unspecified, the network policy rule will be enabled.
         :param pulumi.Input[_builtins.str] kind: Type of the resource. Alwayscompute#networkPolicyTrafficClassificationRule for network policy traffic classification rules
-        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleMatchArgs', 'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleMatch']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] network_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 1 and 2147482647.
@@ -818,7 +818,7 @@ class RegionNetworkPolicyTrafficClassificationRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The location of this resource.
         :param pulumi.Input[_builtins.str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param pulumi.Input[_builtins.int] rule_tuple_count: Calculation of the complexity of a single network policy rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the traffic classification rule applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs', 'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict', 'outputs.RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag']]]] target_secure_tags: A list of secure tags that controls which instances the traffic classification rule applies to.
                If targetSecureTag are specified, then the traffic classification rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.

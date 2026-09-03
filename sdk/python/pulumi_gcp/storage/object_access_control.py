@@ -545,7 +545,7 @@ class ObjectAccessControl(pulumi.CustomResource):
             entity_id: pulumi.Input[Optional[_builtins.str]] = None,
             generation: pulumi.Input[Optional[_builtins.int]] = None,
             object: pulumi.Input[Optional[_builtins.str]] = None,
-            project_teams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict']]]]] = None,
+            project_teams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict', 'outputs.ObjectAccessControlProjectTeam']]]]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObjectAccessControl':
         """
         Get an existing ObjectAccessControl resource's state with the given name, id, and optional extra
@@ -575,7 +575,7 @@ class ObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entity_id: The ID for the entity
         :param pulumi.Input[_builtins.int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[_builtins.str] object: The name of the object to apply the access control to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict']]]] project_teams: The project team associated with the entity
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict', 'outputs.ObjectAccessControlProjectTeam']]]] project_teams: The project team associated with the entity
                Structure is documented below.
         :param pulumi.Input[_builtins.str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.

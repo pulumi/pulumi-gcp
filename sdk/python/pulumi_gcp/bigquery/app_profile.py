@@ -491,7 +491,7 @@ class AppProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+                 data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict', 'outputs.AppProfileDataBoostIsolationReadOnly']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -500,8 +500,8 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
-                 standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
+                 single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict', 'outputs.AppProfileSingleClusterRouting']]] = None,
+                 standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict', 'outputs.AppProfileStandardIsolation']]] = None,
                  __props__=None):
         """
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
@@ -658,7 +658,7 @@ class AppProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict', 'outputs.AppProfileDataBoostIsolationReadOnly']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -676,9 +676,9 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] row_affinity: Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
-        :param pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict', 'outputs.AppProfileSingleClusterRouting']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
-        :param pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
+        :param pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict', 'outputs.AppProfileStandardIsolation']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
                Structure is documented below.
         """
         ...
@@ -855,7 +855,7 @@ class AppProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+                 data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict', 'outputs.AppProfileDataBoostIsolationReadOnly']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -864,8 +864,8 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
-                 standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
+                 single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict', 'outputs.AppProfileSingleClusterRouting']]] = None,
+                 standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict', 'outputs.AppProfileStandardIsolation']]] = None,
                  __props__=None):
         pulumi.log.warn("""AppProfile is deprecated: gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -902,7 +902,7 @@ class AppProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-            data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+            data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict', 'outputs.AppProfileDataBoostIsolationReadOnly']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -912,8 +912,8 @@ class AppProfile(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
-            single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
-            standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None) -> 'AppProfile':
+            single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict', 'outputs.AppProfileSingleClusterRouting']]] = None,
+            standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict', 'outputs.AppProfileStandardIsolation']]] = None) -> 'AppProfile':
         """
         Get an existing AppProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -922,7 +922,7 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict', 'outputs.AppProfileDataBoostIsolationReadOnly']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -941,9 +941,9 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] row_affinity: Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
-        :param pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict', 'outputs.AppProfileSingleClusterRouting']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
-        :param pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
+        :param pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict', 'outputs.AppProfileStandardIsolation']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

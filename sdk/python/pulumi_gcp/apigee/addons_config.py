@@ -161,7 +161,7 @@ class AddonsConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
+                 addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict', 'outputs.AddonsConfigAddonsConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  org: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -271,7 +271,7 @@ class AddonsConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict', 'outputs.AddonsConfigAddonsConfig']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -406,7 +406,7 @@ class AddonsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
+                 addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict', 'outputs.AddonsConfigAddonsConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  org: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -433,7 +433,7 @@ class AddonsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
+            addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict', 'outputs.AddonsConfigAddonsConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             org: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddonsConfig':
         """
@@ -443,7 +443,7 @@ class AddonsConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict', 'outputs.AddonsConfigAddonsConfig']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

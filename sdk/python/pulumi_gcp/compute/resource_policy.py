@@ -448,14 +448,14 @@ class ResourcePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
-                 group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
-                 instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
+                 disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict', 'outputs.ResourcePolicyDiskConsistencyGroupPolicy']]] = None,
+                 group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict', 'outputs.ResourcePolicyGroupPlacementPolicy']]] = None,
+                 instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict', 'outputs.ResourcePolicyInstanceSchedulePolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
-                 workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
+                 snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict', 'outputs.ResourcePolicySnapshotSchedulePolicy']]] = None,
+                 workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict', 'outputs.ResourcePolicyWorkloadPolicy']]] = None,
                  __props__=None):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
@@ -720,11 +720,11 @@ class ResourcePolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
+        :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict', 'outputs.ResourcePolicyDiskConsistencyGroupPolicy']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
-        :param pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']] group_placement_policy: Resource policy for instances used for placement configuration.
+        :param pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict', 'outputs.ResourcePolicyGroupPlacementPolicy']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']] instance_schedule_policy: Resource policy for scheduling instance operations.
+        :param pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict', 'outputs.ResourcePolicyInstanceSchedulePolicy']] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -736,9 +736,9 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where resource policy resides.
-        :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+        :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict', 'outputs.ResourcePolicySnapshotSchedulePolicy']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
-        :param pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']] workload_policy: Represents the workload policy.
+        :param pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict', 'outputs.ResourcePolicyWorkloadPolicy']] workload_policy: Represents the workload policy.
                Structure is documented below.
         """
         ...
@@ -1018,14 +1018,14 @@ class ResourcePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
-                 group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
-                 instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
+                 disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict', 'outputs.ResourcePolicyDiskConsistencyGroupPolicy']]] = None,
+                 group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict', 'outputs.ResourcePolicyGroupPlacementPolicy']]] = None,
+                 instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict', 'outputs.ResourcePolicyInstanceSchedulePolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
-                 workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
+                 snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict', 'outputs.ResourcePolicySnapshotSchedulePolicy']]] = None,
+                 workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict', 'outputs.ResourcePolicyWorkloadPolicy']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1058,15 +1058,15 @@ class ResourcePolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
-            group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
-            instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
+            disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict', 'outputs.ResourcePolicyDiskConsistencyGroupPolicy']]] = None,
+            group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict', 'outputs.ResourcePolicyGroupPlacementPolicy']]] = None,
+            instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict', 'outputs.ResourcePolicyInstanceSchedulePolicy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
-            workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None) -> 'ResourcePolicy':
+            snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict', 'outputs.ResourcePolicySnapshotSchedulePolicy']]] = None,
+            workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict', 'outputs.ResourcePolicyWorkloadPolicy']]] = None) -> 'ResourcePolicy':
         """
         Get an existing ResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1081,11 +1081,11 @@ class ResourcePolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
+        :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict', 'outputs.ResourcePolicyDiskConsistencyGroupPolicy']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
-        :param pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']] group_placement_policy: Resource policy for instances used for placement configuration.
+        :param pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict', 'outputs.ResourcePolicyGroupPlacementPolicy']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']] instance_schedule_policy: Resource policy for scheduling instance operations.
+        :param pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict', 'outputs.ResourcePolicyInstanceSchedulePolicy']] instance_schedule_policy: Resource policy for scheduling instance operations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -1098,9 +1098,9 @@ class ResourcePolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where resource policy resides.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+        :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict', 'outputs.ResourcePolicySnapshotSchedulePolicy']] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
                Structure is documented below.
-        :param pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']] workload_policy: Represents the workload policy.
+        :param pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict', 'outputs.ResourcePolicyWorkloadPolicy']] workload_policy: Represents the workload policy.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

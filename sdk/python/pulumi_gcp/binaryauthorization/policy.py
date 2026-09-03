@@ -353,9 +353,9 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
-                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
-                 default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict', 'outputs.PolicyAdmissionWhitelistPattern']]]]] = None,
+                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict', 'outputs.PolicyClusterAdmissionRule']]]]] = None,
+                 default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict', 'outputs.PolicyDefaultAdmissionRule']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -449,11 +449,11 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict', 'outputs.PolicyAdmissionWhitelistPattern']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
                image's name matches a whitelist pattern, the image's admission
                requests will always be permitted regardless of your admission rules.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict', 'outputs.PolicyClusterAdmissionRule']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
                all container images used in a pod creation request must be attested
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
@@ -462,7 +462,7 @@ class Policy(pulumi.CustomResource):
                A location is either a compute zone (e.g. `us-central1-a`) or a region
                (e.g. `us-central1`).
                Structure is documented below.
-        :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
+        :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict', 'outputs.PolicyDefaultAdmissionRule']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -586,9 +586,9 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
-                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
-                 default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict', 'outputs.PolicyAdmissionWhitelistPattern']]]]] = None,
+                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict', 'outputs.PolicyClusterAdmissionRule']]]]] = None,
+                 default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict', 'outputs.PolicyDefaultAdmissionRule']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -621,9 +621,9 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
-            cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
-            default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+            admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict', 'outputs.PolicyAdmissionWhitelistPattern']]]]] = None,
+            cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict', 'outputs.PolicyClusterAdmissionRule']]]]] = None,
+            default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict', 'outputs.PolicyDefaultAdmissionRule']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -635,11 +635,11 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict', 'outputs.PolicyAdmissionWhitelistPattern']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an
                image's name matches a whitelist pattern, the image's admission
                requests will always be permitted regardless of your admission rules.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict', 'outputs.PolicyClusterAdmissionRule']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that
                all container images used in a pod creation request must be attested
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
@@ -648,7 +648,7 @@ class Policy(pulumi.CustomResource):
                A location is either a compute zone (e.g. `us-central1-a`) or a region
                (e.g. `us-central1`).
                Structure is documented below.
-        :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
+        :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict', 'outputs.PolicyDefaultAdmissionRule']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -233,7 +233,7 @@ class Attestor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']]] = None,
+                 attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict', 'outputs.AttestorAttestationAuthorityNote']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -344,7 +344,7 @@ class Attestor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict', 'outputs.AttestorAttestationAuthorityNote']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -482,7 +482,7 @@ class Attestor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']]] = None,
+                 attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict', 'outputs.AttestorAttestationAuthorityNote']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -513,7 +513,7 @@ class Attestor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']]] = None,
+            attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict', 'outputs.AttestorAttestationAuthorityNote']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -525,7 +525,7 @@ class Attestor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict', 'outputs.AttestorAttestationAuthorityNote']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

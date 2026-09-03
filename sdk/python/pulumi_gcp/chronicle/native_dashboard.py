@@ -594,11 +594,11 @@ class NativeDashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: pulumi.Input[Optional[_builtins.str]] = None,
-                 charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]]] = None,
+                 charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict', 'outputs.NativeDashboardChart']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict', 'outputs.NativeDashboardFilter']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -668,7 +668,7 @@ class NativeDashboard(pulumi.CustomResource):
                Possible values:
                DASHBOARD_PRIVATE
                DASHBOARD_PUBLIC
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]] charts: A list of charts included in the dashboard definition.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict', 'outputs.NativeDashboardChart']]]] charts: A list of charts included in the dashboard definition.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -678,7 +678,7 @@ class NativeDashboard(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the dashboard.
         :param pulumi.Input[_builtins.str] display_name: The display name/title of the dashboard visible to users.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]] filters: Global filters defined for the dashboard.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict', 'outputs.NativeDashboardFilter']]]] filters: Global filters defined for the dashboard.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The ID of the Chronicle instance.
         :param pulumi.Input[_builtins.bool] is_pinned: Whether the dashboard is pinned by the user.
@@ -768,11 +768,11 @@ class NativeDashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: pulumi.Input[Optional[_builtins.str]] = None,
-                 charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]]] = None,
+                 charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict', 'outputs.NativeDashboardChart']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict', 'outputs.NativeDashboardFilter']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -824,7 +824,7 @@ class NativeDashboard(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access: pulumi.Input[Optional[_builtins.str]] = None,
-            charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]]] = None,
+            charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict', 'outputs.NativeDashboardChart']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             create_user_id: pulumi.Input[Optional[_builtins.str]] = None,
             dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -832,7 +832,7 @@ class NativeDashboard(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]]] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict', 'outputs.NativeDashboardFilter']]]]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -854,7 +854,7 @@ class NativeDashboard(pulumi.CustomResource):
                Possible values:
                DASHBOARD_PRIVATE
                DASHBOARD_PUBLIC
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]] charts: A list of charts included in the dashboard definition.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict', 'outputs.NativeDashboardChart']]]] charts: A list of charts included in the dashboard definition.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the dashboard.
         :param pulumi.Input[_builtins.str] create_user_id: The ID of the user who created the dashboard.
@@ -869,7 +869,7 @@ class NativeDashboard(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name/title of the dashboard visible to users.
         :param pulumi.Input[_builtins.str] etag: Server-computed checksum for optimistic concurrency control,
                sent on update and delete requests.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]] filters: Global filters defined for the dashboard.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict', 'outputs.NativeDashboardFilter']]]] filters: Global filters defined for the dashboard.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] fingerprint: (Output)
                The server-generated fingerprint of the dashboard definition.

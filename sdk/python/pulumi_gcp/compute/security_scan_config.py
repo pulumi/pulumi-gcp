@@ -542,7 +542,7 @@ class SecurityScanConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
+                 authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict', 'outputs.SecurityScanConfigAuthentication']]] = None,
                  blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -550,7 +550,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict', 'outputs.SecurityScanConfigSchedule']]] = None,
                  starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -632,7 +632,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']] authentication: The authentication configuration.
+        :param pulumi.Input[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict', 'outputs.SecurityScanConfigAuthentication']] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklist_patterns: The blacklist URL patterns as described in
@@ -652,7 +652,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                Defaults to 15.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']] schedule: The schedule of the ScanConfig
+        :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict', 'outputs.SecurityScanConfigSchedule']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[_builtins.bool] static_ip_scan: Whether the scan configuration has enabled static IP address scan feature.
@@ -758,7 +758,7 @@ class SecurityScanConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
+                 authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict', 'outputs.SecurityScanConfigAuthentication']]] = None,
                  blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,7 +766,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  ignore_http_status_errors: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict', 'outputs.SecurityScanConfigSchedule']]] = None,
                  starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -808,7 +808,7 @@ class SecurityScanConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
+            authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict', 'outputs.SecurityScanConfigAuthentication']]] = None,
             blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -817,7 +817,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             max_qps: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict', 'outputs.SecurityScanConfigSchedule']]] = None,
             starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
             target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -829,7 +829,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']] authentication: The authentication configuration.
+        :param pulumi.Input[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict', 'outputs.SecurityScanConfigAuthentication']] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklist_patterns: The blacklist URL patterns as described in
@@ -851,7 +851,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                `projects/{{project}}/scanConfigs/{{server_generated_id}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']] schedule: The schedule of the ScanConfig
+        :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict', 'outputs.SecurityScanConfigSchedule']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[_builtins.bool] static_ip_scan: Whether the scan configuration has enabled static IP address scan feature.

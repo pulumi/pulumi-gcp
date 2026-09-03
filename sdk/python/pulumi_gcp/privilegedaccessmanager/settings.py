@@ -246,10 +246,10 @@ class Settings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
+                 email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict', 'outputs.SettingsEmailNotificationSettings']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
+                 service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict', 'outputs.SettingsServiceAccountApproverSettings']]] = None,
                  __props__=None):
         """
         Settings resource defines the properties, applied directly to the resource or inherited through the hierarchy, to enable consistent, federated use of PAM.
@@ -314,11 +314,11 @@ class Settings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']] email_notification_settings: EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
+        :param pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict', 'outputs.SettingsEmailNotificationSettings']] email_notification_settings: EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The region of the PAM settings resource.
         :param pulumi.Input[_builtins.str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
-        :param pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']] service_account_approver_settings: This controls the node-level settings for allowing service accounts as approvers.
+        :param pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict', 'outputs.SettingsServiceAccountApproverSettings']] service_account_approver_settings: This controls the node-level settings for allowing service accounts as approvers.
                Structure is documented below.
         """
         ...
@@ -403,10 +403,10 @@ class Settings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
+                 email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict', 'outputs.SettingsEmailNotificationSettings']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
+                 service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict', 'outputs.SettingsServiceAccountApproverSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -439,12 +439,12 @@ class Settings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
+            email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict', 'outputs.SettingsEmailNotificationSettings']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
+            service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict', 'outputs.SettingsServiceAccountApproverSettings']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Settings':
         """
         Get an existing Settings resource's state with the given name, id, and optional extra
@@ -455,14 +455,14 @@ class Settings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Create timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
                Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-        :param pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']] email_notification_settings: EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
+        :param pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict', 'outputs.SettingsEmailNotificationSettings']] email_notification_settings: EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Fingerprint for optimistic concurrency returned in the response of GetSettings. Must be provided in the requests to UpdateSettings. If the value provided does not match the value known to the server, ABORTED will be thrown, and the client should retry the read-modify-write cycle.
         :param pulumi.Input[_builtins.str] location: The region of the PAM settings resource.
         :param pulumi.Input[_builtins.str] name: Name of the settings resource. Possible formats:
                projects/{project-id|project-number}/locations/{location}/settings folders/{folder-number}/locations/{location}/settings organizations/{organization-number}/locations/{location}/settings
         :param pulumi.Input[_builtins.str] parent: Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
-        :param pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']] service_account_approver_settings: This controls the node-level settings for allowing service accounts as approvers.
+        :param pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict', 'outputs.SettingsServiceAccountApproverSettings']] service_account_approver_settings: This controls the node-level settings for allowing service accounts as approvers.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Update timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
                Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".

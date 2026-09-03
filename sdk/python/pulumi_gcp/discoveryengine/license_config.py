@@ -399,13 +399,13 @@ class LicenseConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-                 end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
+                 end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']]] = None,
                  free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
                  license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  license_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
+                 start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict', 'outputs.LicenseConfigStartDate']]] = None,
                  subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -462,7 +462,7 @@ class LicenseConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the license config should be auto renewed when it reaches the end date.
-        :param pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']] end_date: The planned end date.
+        :param pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']] end_date: The planned end date.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] free_trial: Whether the license config is for free trial.
         :param pulumi.Input[_builtins.str] license_config_id: The unique id of the license config.
@@ -471,7 +471,7 @@ class LicenseConfig(pulumi.CustomResource):
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']] start_date: The start date.
+        :param pulumi.Input[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict', 'outputs.LicenseConfigStartDate']] start_date: The start date.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subscription_term: Subscription term.
                Possible values are: `SUBSCRIPTION_TERM_UNSPECIFIED`, `SUBSCRIPTION_TERM_ONE_MONTH`, `SUBSCRIPTION_TERM_ONE_YEAR`, `SUBSCRIPTION_TERM_THREE_YEARS`, `SUBSCRIPTION_TERM_THREE_MONTHS`, `SUBSCRIPTION_TERM_FOURTEEN_DAYS`, `SUBSCRIPTION_TERM_CUSTOM`.
@@ -550,13 +550,13 @@ class LicenseConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-                 end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
+                 end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']]] = None,
                  free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
                  license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  license_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
+                 start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict', 'outputs.LicenseConfigStartDate']]] = None,
                  subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
                  subscription_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -602,14 +602,14 @@ class LicenseConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
-            end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
+            end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']]] = None,
             free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
             license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
             license_count: pulumi.Input[Optional[_builtins.int]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
+            start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict', 'outputs.LicenseConfigStartDate']]] = None,
             subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
             subscription_tier: pulumi.Input[Optional[_builtins.str]] = None) -> 'LicenseConfig':
         """
@@ -620,7 +620,7 @@ class LicenseConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the license config should be auto renewed when it reaches the end date.
-        :param pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']] end_date: The planned end date.
+        :param pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']] end_date: The planned end date.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] free_trial: Whether the license config is for free trial.
         :param pulumi.Input[_builtins.str] license_config_id: The unique id of the license config.
@@ -631,7 +631,7 @@ class LicenseConfig(pulumi.CustomResource):
                `projects/{project}/locations/{location}/licenseConfigs/{license_config}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']] start_date: The start date.
+        :param pulumi.Input[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict', 'outputs.LicenseConfigStartDate']] start_date: The start date.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subscription_term: Subscription term.
                Possible values are: `SUBSCRIPTION_TERM_UNSPECIFIED`, `SUBSCRIPTION_TERM_ONE_MONTH`, `SUBSCRIPTION_TERM_ONE_YEAR`, `SUBSCRIPTION_TERM_THREE_YEARS`, `SUBSCRIPTION_TERM_THREE_MONTHS`, `SUBSCRIPTION_TERM_FOURTEEN_DAYS`, `SUBSCRIPTION_TERM_CUSTOM`.

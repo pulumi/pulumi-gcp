@@ -516,7 +516,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 serial_pipeline: pulumi.Input[Optional[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']]] = None,
+                 serial_pipeline: pulumi.Input[Optional[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict', 'outputs.DeliveryPipelineSerialPipeline']]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -768,7 +768,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
-        :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict', 'outputs.DeliveryPipelineSerialPipeline']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[_builtins.bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         """
         ...
@@ -1026,7 +1026,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 serial_pipeline: pulumi.Input[Optional[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']]] = None,
+                 serial_pipeline: pulumi.Input[Optional[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict', 'outputs.DeliveryPipelineSerialPipeline']]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1069,7 +1069,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict', 'outputs.DeliveryPipelineCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1081,7 +1081,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            serial_pipeline: pulumi.Input[Optional[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']]] = None,
+            serial_pipeline: pulumi.Input[Optional[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict', 'outputs.DeliveryPipelineSerialPipeline']]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'DeliveryPipeline':
@@ -1096,7 +1096,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict', 'outputs.DeliveryPipelineCondition']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1118,7 +1118,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict', 'outputs.DeliveryPipelineSerialPipeline']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[_builtins.bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param pulumi.Input[_builtins.str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
         :param pulumi.Input[_builtins.str] update_time: Output only. Most recent time at which the pipeline was updated.

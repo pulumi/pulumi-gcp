@@ -215,7 +215,7 @@ class AiRagEngineConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
+                 rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict', 'outputs.AiRagEngineConfigRagManagedDbConfig']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -256,7 +256,7 @@ class AiRagEngineConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']] rag_managed_db_config: Required. The config of the RagManagedDb used by RagEngine.
+        :param pulumi.Input[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict', 'outputs.AiRagEngineConfigRagManagedDbConfig']] rag_managed_db_config: Required. The config of the RagManagedDb used by RagEngine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] region: The region of the RagEngineConfig. eg us-central1
         """
@@ -311,7 +311,7 @@ class AiRagEngineConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
+                 rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict', 'outputs.AiRagEngineConfigRagManagedDbConfig']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -342,7 +342,7 @@ class AiRagEngineConfig(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
+            rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict', 'outputs.AiRagEngineConfigRagManagedDbConfig']]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiRagEngineConfig':
         """
         Get an existing AiRagEngineConfig resource's state with the given name, id, and optional extra
@@ -360,7 +360,7 @@ class AiRagEngineConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name of the Dataset. This value is set by Google.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']] rag_managed_db_config: Required. The config of the RagManagedDb used by RagEngine.
+        :param pulumi.Input[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict', 'outputs.AiRagEngineConfigRagManagedDbConfig']] rag_managed_db_config: Required. The config of the RagManagedDb used by RagEngine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] region: The region of the RagEngineConfig. eg us-central1
         """

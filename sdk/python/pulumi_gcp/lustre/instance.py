@@ -883,18 +883,18 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
+                 access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
+                 dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']]] = None,
                  filesystem: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_support_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  per_unit_storage_throughput: pulumi.Input[Optional[_builtins.str]] = None,
                  placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -958,7 +958,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
+        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
                define the root user squash configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
@@ -973,7 +973,7 @@ class Instance(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
-        :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
+        :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
                tools, including when mounting the instance. Must be eight characters or
@@ -995,7 +995,7 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Defines a maintenance policy for a resource.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']] maintenance_policy: Defines a maintenance policy for a resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
@@ -1089,18 +1089,18 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
+                 access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
+                 dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']]] = None,
                  filesystem: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_support_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  per_unit_storage_throughput: pulumi.Input[Optional[_builtins.str]] = None,
                  placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1162,12 +1162,12 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
+            access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']]] = None,
             capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
+            dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             filesystem: pulumi.Input[Optional[_builtins.str]] = None,
             gke_support_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1175,7 +1175,7 @@ class Instance(pulumi.CustomResource):
             kms_key: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']]] = None,
             mount_point: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1186,7 +1186,7 @@ class Instance(pulumi.CustomResource):
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_reason: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
-            upcoming_maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict']]]]] = None,
+            upcoming_maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict', 'outputs.InstanceUpcomingMaintenanceSchedule']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -1195,7 +1195,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
+        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
                define the root user squash configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
@@ -1211,7 +1211,7 @@ class Instance(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
-        :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
+        :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
@@ -1234,7 +1234,7 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Defines a maintenance policy for a resource.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict', 'outputs.InstanceMaintenancePolicy']] maintenance_policy: Defines a maintenance policy for a resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] mount_point: Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the instance.
@@ -1268,7 +1268,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] uid: Unique ID of the resource.
                This is unrelated to the access rules which allow specifying the root
                squash uid.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict']]]] upcoming_maintenance_schedules: Represents a scheduled maintenance event.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict', 'outputs.InstanceUpcomingMaintenanceSchedule']]]] upcoming_maintenance_schedules: Represents a scheduled maintenance event.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the instance was last updated.
         """

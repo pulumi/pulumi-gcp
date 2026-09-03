@@ -144,7 +144,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
+                 network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict', 'outputs.ServiceNetworkSettingsNetworkSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -216,7 +216,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']] network_settings: Ingress settings for this service. Will apply to all versions.
+        :param pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict', 'outputs.ServiceNetworkSettingsNetworkSettings']] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -309,7 +309,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
+                 network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict', 'outputs.ServiceNetworkSettingsNetworkSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -338,7 +338,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
+            network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict', 'outputs.ServiceNetworkSettingsNetworkSettings']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceNetworkSettings':
         """
@@ -348,7 +348,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']] network_settings: Ingress settings for this service. Will apply to all versions.
+        :param pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict', 'outputs.ServiceNetworkSettingsNetworkSettings']] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

@@ -419,7 +419,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_accept: pulumi.Input[Optional[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict']]] = None,
+                 auto_accept: pulumi.Input[Optional[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict', 'outputs.GroupAutoAccept']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hub: pulumi.Input[Optional[_builtins.str]] = None,
@@ -484,7 +484,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict']] auto_accept: Optional. The auto-accept setting for this group.
+        :param pulumi.Input[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict', 'outputs.GroupAutoAccept']] auto_accept: Optional. The auto-accept setting for this group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -578,7 +578,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_accept: pulumi.Input[Optional[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict']]] = None,
+                 auto_accept: pulumi.Input[Optional[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict', 'outputs.GroupAutoAccept']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hub: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,7 +622,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_accept: pulumi.Input[Optional[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict']]] = None,
+            auto_accept: pulumi.Input[Optional[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict', 'outputs.GroupAutoAccept']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -643,7 +643,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict']] auto_accept: Optional. The auto-accept setting for this group.
+        :param pulumi.Input[Union['GroupAutoAcceptArgs', 'GroupAutoAcceptArgsDict', 'outputs.GroupAutoAccept']] auto_accept: Optional. The auto-accept setting for this group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the hub was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

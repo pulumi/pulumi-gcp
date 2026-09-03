@@ -458,7 +458,7 @@ class Runtime(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
+                 notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict', 'outputs.RuntimeNotebookRuntimeTemplateRef']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -613,7 +613,7 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Runtime.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[_builtins.str] name: The resource name of the Runtime
-        :param pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
+        :param pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict', 'outputs.RuntimeNotebookRuntimeTemplateRef']] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -784,7 +784,7 @@ class Runtime(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
+                 notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict', 'outputs.RuntimeNotebookRuntimeTemplateRef']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -835,7 +835,7 @@ class Runtime(pulumi.CustomResource):
             is_upgradable: pulumi.Input[Optional[_builtins.bool]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
+            notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict', 'outputs.RuntimeNotebookRuntimeTemplateRef']]] = None,
             notebook_runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
@@ -861,7 +861,7 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_upgradable: Output only. Checks if the NotebookRuntime is upgradable.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[_builtins.str] name: The resource name of the Runtime
-        :param pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
+        :param pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict', 'outputs.RuntimeNotebookRuntimeTemplateRef']] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
         :param pulumi.Input[_builtins.str] notebook_runtime_type: Output only. The type of the notebook runtime.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

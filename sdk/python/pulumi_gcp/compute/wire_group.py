@@ -441,11 +441,11 @@ class WireGroup(pulumi.CustomResource):
                  cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict', 'outputs.WireGroupEndpoint']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 wire_group_properties: pulumi.Input[Optional[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']]] = None,
-                 wire_properties: pulumi.Input[Optional[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict']]] = None,
+                 wire_group_properties: pulumi.Input[Optional[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict', 'outputs.WireGroupWireGroupProperties']]] = None,
+                 wire_properties: pulumi.Input[Optional[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict', 'outputs.WireGroupWireProperties']]] = None,
                  __props__=None):
         """
         The WireGroup resource represents a group of redundant wires between interconnects in two different metros. Each WireGroup belongs to a CrossSiteNetwork. A wire group defines endpoints and the wires which exist between them.
@@ -534,7 +534,7 @@ class WireGroup(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict', 'outputs.WireGroupEndpoint']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -543,10 +543,10 @@ class WireGroup(pulumi.CustomResource):
                lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']] wire_group_properties: (Optional, Beta)
+        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict', 'outputs.WireGroupWireGroupProperties']] wire_group_properties: (Optional, Beta)
                Properties specific to the wire group.
                Structure is documented below.
-        :param pulumi.Input[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict']] wire_properties: Default properties for wires within the group.
+        :param pulumi.Input[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict', 'outputs.WireGroupWireProperties']] wire_properties: Default properties for wires within the group.
                Structure is documented below.
         """
         ...
@@ -650,11 +650,11 @@ class WireGroup(pulumi.CustomResource):
                  cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict', 'outputs.WireGroupEndpoint']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 wire_group_properties: pulumi.Input[Optional[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']]] = None,
-                 wire_properties: pulumi.Input[Optional[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict']]] = None,
+                 wire_group_properties: pulumi.Input[Optional[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict', 'outputs.WireGroupWireGroupProperties']]] = None,
+                 wire_properties: pulumi.Input[Optional[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict', 'outputs.WireGroupWireProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -693,13 +693,13 @@ class WireGroup(pulumi.CustomResource):
             cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict', 'outputs.WireGroupEndpoint']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            topologies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupTopologyArgs', 'WireGroupTopologyArgsDict']]]]] = None,
-            wire_group_properties: pulumi.Input[Optional[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']]] = None,
-            wire_properties: pulumi.Input[Optional[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict']]] = None,
-            wires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupWireArgs', 'WireGroupWireArgsDict']]]]] = None) -> 'WireGroup':
+            topologies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupTopologyArgs', 'WireGroupTopologyArgsDict', 'outputs.WireGroupTopology']]]]] = None,
+            wire_group_properties: pulumi.Input[Optional[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict', 'outputs.WireGroupWireGroupProperties']]] = None,
+            wire_properties: pulumi.Input[Optional[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict', 'outputs.WireGroupWireProperties']]] = None,
+            wires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupWireArgs', 'WireGroupWireArgsDict', 'outputs.WireGroupWire']]]]] = None) -> 'WireGroup':
         """
         Get an existing WireGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -717,7 +717,7 @@ class WireGroup(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict', 'outputs.WireGroupEndpoint']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -726,14 +726,14 @@ class WireGroup(pulumi.CustomResource):
                lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupTopologyArgs', 'WireGroupTopologyArgsDict']]]] topologies: Topology details for the wire group configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupTopologyArgs', 'WireGroupTopologyArgsDict', 'outputs.WireGroupTopology']]]] topologies: Topology details for the wire group configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']] wire_group_properties: (Optional, Beta)
+        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict', 'outputs.WireGroupWireGroupProperties']] wire_group_properties: (Optional, Beta)
                Properties specific to the wire group.
                Structure is documented below.
-        :param pulumi.Input[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict']] wire_properties: Default properties for wires within the group.
+        :param pulumi.Input[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict', 'outputs.WireGroupWireProperties']] wire_properties: Default properties for wires within the group.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupWireArgs', 'WireGroupWireArgsDict']]]] wires: The single/redundant wire(s) managed by the wire group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupWireArgs', 'WireGroupWireArgsDict', 'outputs.WireGroupWire']]]] wires: The single/redundant wire(s) managed by the wire group.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

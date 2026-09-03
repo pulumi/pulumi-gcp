@@ -213,8 +213,8 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
-                 setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None,
+                 policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict', 'outputs.PolicyPolicyQuery']]] = None,
+                 setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict', 'outputs.PolicySetting']]] = None,
                  __props__=None):
         """
         A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
@@ -277,9 +277,9 @@ class Policy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']] policy_query: The PolicyQuery the Setting applies to.
+        :param pulumi.Input[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict', 'outputs.PolicyPolicyQuery']] policy_query: The PolicyQuery the Setting applies to.
                Structure is documented below.
-        :param pulumi.Input[Union['PolicySettingArgs', 'PolicySettingArgsDict']] setting: The Setting configured by this Policy.
+        :param pulumi.Input[Union['PolicySettingArgs', 'PolicySettingArgsDict', 'outputs.PolicySetting']] setting: The Setting configured by this Policy.
                Structure is documented below.
         """
         ...
@@ -357,8 +357,8 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
-                 setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None,
+                 policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict', 'outputs.PolicyPolicyQuery']]] = None,
+                 setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict', 'outputs.PolicySetting']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,8 +392,8 @@ class Policy(pulumi.CustomResource):
             customer: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
-            setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None) -> 'Policy':
+            policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict', 'outputs.PolicyPolicyQuery']]] = None,
+            setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict', 'outputs.PolicySetting']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -409,9 +409,9 @@ class Policy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The resource name of the Policy. Format: `policies/{policy_id}`.
-        :param pulumi.Input[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']] policy_query: The PolicyQuery the Setting applies to.
+        :param pulumi.Input[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict', 'outputs.PolicyPolicyQuery']] policy_query: The PolicyQuery the Setting applies to.
                Structure is documented below.
-        :param pulumi.Input[Union['PolicySettingArgs', 'PolicySettingArgsDict']] setting: The Setting configured by this Policy.
+        :param pulumi.Input[Union['PolicySettingArgs', 'PolicySettingArgsDict', 'outputs.PolicySetting']] setting: The Setting configured by this Policy.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

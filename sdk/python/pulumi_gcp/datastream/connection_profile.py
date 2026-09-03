@@ -745,24 +745,24 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']]] = None,
+                 bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict', 'outputs.ConnectionProfileBigqueryProfile']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']]] = None,
-                 gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
+                 forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict', 'outputs.ConnectionProfileForwardSshConnectivity']]] = None,
+                 gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict', 'outputs.ConnectionProfileGcsProfile']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mongodb_profile: pulumi.Input[Optional[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']]] = None,
-                 mysql_profile: pulumi.Input[Optional[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']]] = None,
-                 oracle_profile: pulumi.Input[Optional[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']]] = None,
-                 postgresql_profile: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']]] = None,
-                 private_connectivity: pulumi.Input[Optional[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']]] = None,
+                 mongodb_profile: pulumi.Input[Optional[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict', 'outputs.ConnectionProfileMongodbProfile']]] = None,
+                 mysql_profile: pulumi.Input[Optional[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict', 'outputs.ConnectionProfileMysqlProfile']]] = None,
+                 oracle_profile: pulumi.Input[Optional[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict', 'outputs.ConnectionProfileOracleProfile']]] = None,
+                 postgresql_profile: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict', 'outputs.ConnectionProfilePostgresqlProfile']]] = None,
+                 private_connectivity: pulumi.Input[Optional[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict', 'outputs.ConnectionProfilePrivateConnectivity']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 salesforce_profile: pulumi.Input[Optional[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']]] = None,
-                 spanner_profile: pulumi.Input[Optional[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']]] = None,
-                 sql_server_profile: pulumi.Input[Optional[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']]] = None,
+                 salesforce_profile: pulumi.Input[Optional[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict', 'outputs.ConnectionProfileSalesforceProfile']]] = None,
+                 spanner_profile: pulumi.Input[Optional[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict', 'outputs.ConnectionProfileSpannerProfile']]] = None,
+                 sql_server_profile: pulumi.Input[Optional[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict', 'outputs.ConnectionProfileSqlServerProfile']]] = None,
                  __props__=None):
         """
         A set of reusable connection configurations to be used as a source or destination for a stream.
@@ -1181,7 +1181,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']] bigquery_profile: BigQuery warehouse profile.
+        :param pulumi.Input[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict', 'outputs.ConnectionProfileBigqueryProfile']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1191,33 +1191,33 @@ class ConnectionProfile(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
-        :param pulumi.Input[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param pulumi.Input[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict', 'outputs.ConnectionProfileForwardSshConnectivity']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']] gcs_profile: Cloud Storage bucket profile.
+        :param pulumi.Input[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict', 'outputs.ConnectionProfileGcsProfile']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
-        :param pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']] mongodb_profile: Configuration for connecting to a MongoDB database.
+        :param pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict', 'outputs.ConnectionProfileMongodbProfile']] mongodb_profile: Configuration for connecting to a MongoDB database.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']] mysql_profile: MySQL database profile.
+        :param pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict', 'outputs.ConnectionProfileMysqlProfile']] mysql_profile: MySQL database profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']] oracle_profile: Oracle database profile.
+        :param pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict', 'outputs.ConnectionProfileOracleProfile']] oracle_profile: Oracle database profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']] postgresql_profile: PostgreSQL database profile.
+        :param pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict', 'outputs.ConnectionProfilePostgresqlProfile']] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']] private_connectivity: Private connectivity.
+        :param pulumi.Input[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict', 'outputs.ConnectionProfilePrivateConnectivity']] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: (Optional, Beta)
+        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict', 'outputs.ConnectionProfileSalesforceProfile']] salesforce_profile: (Optional, Beta)
                Salesforce profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']] spanner_profile: (Optional, Beta)
+        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict', 'outputs.ConnectionProfileSpannerProfile']] spanner_profile: (Optional, Beta)
                Spanner profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']] sql_server_profile: SQL Server database profile.
+        :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict', 'outputs.ConnectionProfileSqlServerProfile']] sql_server_profile: SQL Server database profile.
                Structure is documented below.
         """
         ...
@@ -1656,24 +1656,24 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']]] = None,
+                 bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict', 'outputs.ConnectionProfileBigqueryProfile']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']]] = None,
-                 gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
+                 forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict', 'outputs.ConnectionProfileForwardSshConnectivity']]] = None,
+                 gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict', 'outputs.ConnectionProfileGcsProfile']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mongodb_profile: pulumi.Input[Optional[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']]] = None,
-                 mysql_profile: pulumi.Input[Optional[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']]] = None,
-                 oracle_profile: pulumi.Input[Optional[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']]] = None,
-                 postgresql_profile: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']]] = None,
-                 private_connectivity: pulumi.Input[Optional[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']]] = None,
+                 mongodb_profile: pulumi.Input[Optional[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict', 'outputs.ConnectionProfileMongodbProfile']]] = None,
+                 mysql_profile: pulumi.Input[Optional[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict', 'outputs.ConnectionProfileMysqlProfile']]] = None,
+                 oracle_profile: pulumi.Input[Optional[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict', 'outputs.ConnectionProfileOracleProfile']]] = None,
+                 postgresql_profile: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict', 'outputs.ConnectionProfilePostgresqlProfile']]] = None,
+                 private_connectivity: pulumi.Input[Optional[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict', 'outputs.ConnectionProfilePrivateConnectivity']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 salesforce_profile: pulumi.Input[Optional[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']]] = None,
-                 spanner_profile: pulumi.Input[Optional[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']]] = None,
-                 sql_server_profile: pulumi.Input[Optional[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']]] = None,
+                 salesforce_profile: pulumi.Input[Optional[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict', 'outputs.ConnectionProfileSalesforceProfile']]] = None,
+                 spanner_profile: pulumi.Input[Optional[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict', 'outputs.ConnectionProfileSpannerProfile']]] = None,
+                 sql_server_profile: pulumi.Input[Optional[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict', 'outputs.ConnectionProfileSqlServerProfile']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1722,27 +1722,27 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']]] = None,
+            bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict', 'outputs.ConnectionProfileBigqueryProfile']]] = None,
             connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']]] = None,
-            gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
+            forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict', 'outputs.ConnectionProfileForwardSshConnectivity']]] = None,
+            gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict', 'outputs.ConnectionProfileGcsProfile']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mongodb_profile: pulumi.Input[Optional[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']]] = None,
-            mysql_profile: pulumi.Input[Optional[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']]] = None,
+            mongodb_profile: pulumi.Input[Optional[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict', 'outputs.ConnectionProfileMongodbProfile']]] = None,
+            mysql_profile: pulumi.Input[Optional[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict', 'outputs.ConnectionProfileMysqlProfile']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oracle_profile: pulumi.Input[Optional[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']]] = None,
-            postgresql_profile: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']]] = None,
-            private_connectivity: pulumi.Input[Optional[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']]] = None,
+            oracle_profile: pulumi.Input[Optional[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict', 'outputs.ConnectionProfileOracleProfile']]] = None,
+            postgresql_profile: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict', 'outputs.ConnectionProfilePostgresqlProfile']]] = None,
+            private_connectivity: pulumi.Input[Optional[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict', 'outputs.ConnectionProfilePrivateConnectivity']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            salesforce_profile: pulumi.Input[Optional[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']]] = None,
-            spanner_profile: pulumi.Input[Optional[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']]] = None,
-            sql_server_profile: pulumi.Input[Optional[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']]] = None) -> 'ConnectionProfile':
+            salesforce_profile: pulumi.Input[Optional[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict', 'outputs.ConnectionProfileSalesforceProfile']]] = None,
+            spanner_profile: pulumi.Input[Optional[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict', 'outputs.ConnectionProfileSpannerProfile']]] = None,
+            sql_server_profile: pulumi.Input[Optional[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict', 'outputs.ConnectionProfileSqlServerProfile']]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1750,7 +1750,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']] bigquery_profile: BigQuery warehouse profile.
+        :param pulumi.Input[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict', 'outputs.ConnectionProfileBigqueryProfile']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1761,36 +1761,36 @@ class ConnectionProfile(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param pulumi.Input[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict', 'outputs.ConnectionProfileForwardSshConnectivity']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']] gcs_profile: Cloud Storage bucket profile.
+        :param pulumi.Input[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict', 'outputs.ConnectionProfileGcsProfile']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
-        :param pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']] mongodb_profile: Configuration for connecting to a MongoDB database.
+        :param pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict', 'outputs.ConnectionProfileMongodbProfile']] mongodb_profile: Configuration for connecting to a MongoDB database.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']] mysql_profile: MySQL database profile.
+        :param pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict', 'outputs.ConnectionProfileMysqlProfile']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource's name.
-        :param pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']] oracle_profile: Oracle database profile.
+        :param pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict', 'outputs.ConnectionProfileOracleProfile']] oracle_profile: Oracle database profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']] postgresql_profile: PostgreSQL database profile.
+        :param pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict', 'outputs.ConnectionProfilePostgresqlProfile']] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict']] private_connectivity: Private connectivity.
+        :param pulumi.Input[Union['ConnectionProfilePrivateConnectivityArgs', 'ConnectionProfilePrivateConnectivityArgsDict', 'outputs.ConnectionProfilePrivateConnectivity']] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: (Optional, Beta)
+        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict', 'outputs.ConnectionProfileSalesforceProfile']] salesforce_profile: (Optional, Beta)
                Salesforce profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']] spanner_profile: (Optional, Beta)
+        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict', 'outputs.ConnectionProfileSpannerProfile']] spanner_profile: (Optional, Beta)
                Spanner profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']] sql_server_profile: SQL Server database profile.
+        :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict', 'outputs.ConnectionProfileSqlServerProfile']] sql_server_profile: SQL Server database profile.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

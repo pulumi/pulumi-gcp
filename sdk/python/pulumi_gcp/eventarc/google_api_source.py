@@ -577,7 +577,7 @@ class GoogleApiSource(pulumi.CustomResource):
                  google_api_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -659,7 +659,7 @@ class GoogleApiSource(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
+        :param pulumi.Input[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
                resources.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -748,7 +748,7 @@ class GoogleApiSource(pulumi.CustomResource):
                  google_api_source_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -807,7 +807,7 @@ class GoogleApiSource(pulumi.CustomResource):
             google_api_source_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict']]] = None,
+            logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -849,7 +849,7 @@ class GoogleApiSource(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
+        :param pulumi.Input[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
                resources.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Resource name of the form

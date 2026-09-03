@@ -576,8 +576,8 @@ class DataProduct(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']]] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
+                 access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict', 'outputs.DataProductAccessApprovalConfig']]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict', 'outputs.DataProductAccessGroup']]]]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -683,9 +683,9 @@ class DataProduct(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']] access_approval_config: Configuration for access approval for the data product.
+        :param pulumi.Input[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict', 'outputs.DataProductAccessApprovalConfig']] access_approval_config: Configuration for access approval for the data product.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]] access_groups: Custom user defined access groups at the data product level.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict', 'outputs.DataProductAccessGroup']]]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the data product.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -823,8 +823,8 @@ class DataProduct(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']]] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
+                 access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict', 'outputs.DataProductAccessApprovalConfig']]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict', 'outputs.DataProductAccessGroup']]]]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -882,8 +882,8 @@ class DataProduct(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']]] = None,
-            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
+            access_approval_config: pulumi.Input[Optional[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict', 'outputs.DataProductAccessApprovalConfig']]] = None,
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict', 'outputs.DataProductAccessGroup']]]]] = None,
             asset_count: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -908,9 +908,9 @@ class DataProduct(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict']] access_approval_config: Configuration for access approval for the data product.
+        :param pulumi.Input[Union['DataProductAccessApprovalConfigArgs', 'DataProductAccessApprovalConfigArgsDict', 'outputs.DataProductAccessApprovalConfig']] access_approval_config: Configuration for access approval for the data product.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]] access_groups: Custom user defined access groups at the data product level.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict', 'outputs.DataProductAccessGroup']]]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] asset_count: Number of associated data assets.
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp.

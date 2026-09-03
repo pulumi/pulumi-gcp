@@ -580,13 +580,13 @@ class GdcServiceInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
+                 gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict', 'outputs.GdcServiceInstanceGdceCluster']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
+                 spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict', 'outputs.GdcServiceInstanceSparkServiceInstanceConfig']]] = None,
                  __props__=None):
         """
         A service instance is an instance of the Dataproc operator running on a GDC cluster.
@@ -645,7 +645,7 @@ class GdcServiceInstance(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
-        :param pulumi.Input[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']] gdce_cluster: Gdce cluster information.
+        :param pulumi.Input[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict', 'outputs.GdcServiceInstanceGdceCluster']] gdce_cluster: Gdce cluster information.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -655,7 +655,7 @@ class GdcServiceInstance(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service_account: Requested service account to associate with ServiceInstance.
         :param pulumi.Input[_builtins.str] service_instance_id: Id of the service instance.
-        :param pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']] spark_service_instance_config: Spark-specific service instance configuration.
+        :param pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict', 'outputs.GdcServiceInstanceSparkServiceInstanceConfig']] spark_service_instance_config: Spark-specific service instance configuration.
         """
         ...
     @overload
@@ -728,13 +728,13 @@ class GdcServiceInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
+                 gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict', 'outputs.GdcServiceInstanceGdceCluster']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
+                 spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict', 'outputs.GdcServiceInstanceSparkServiceInstanceConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -785,7 +785,7 @@ class GdcServiceInstance(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_service_account: pulumi.Input[Optional[_builtins.str]] = None,
-            gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
+            gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict', 'outputs.GdcServiceInstanceGdceCluster']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -795,7 +795,7 @@ class GdcServiceInstance(pulumi.CustomResource):
             requested_state: pulumi.Input[Optional[_builtins.str]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-            spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
+            spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict', 'outputs.GdcServiceInstanceSparkServiceInstanceConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_message: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -817,7 +817,7 @@ class GdcServiceInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_service_account: Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
-        :param pulumi.Input[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']] gdce_cluster: Gdce cluster information.
+        :param pulumi.Input[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict', 'outputs.GdcServiceInstanceGdceCluster']] gdce_cluster: Gdce cluster information.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -841,7 +841,7 @@ class GdcServiceInstance(pulumi.CustomResource):
                * `FAILED`
         :param pulumi.Input[_builtins.str] service_account: Requested service account to associate with ServiceInstance.
         :param pulumi.Input[_builtins.str] service_instance_id: Id of the service instance.
-        :param pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']] spark_service_instance_config: Spark-specific service instance configuration.
+        :param pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict', 'outputs.GdcServiceInstanceSparkServiceInstanceConfig']] spark_service_instance_config: Spark-specific service instance configuration.
         :param pulumi.Input[_builtins.str] state: The current state. Possible values:
                * `CREATING`
                * `ACTIVE`

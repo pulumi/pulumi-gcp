@@ -493,9 +493,9 @@ class HiveTable(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 partition_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict']]]]] = None,
+                 partition_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict', 'outputs.HiveTablePartitionKey']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_descriptor: pulumi.Input[Optional[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict']]] = None,
+                 storage_descriptor: pulumi.Input[Optional[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict', 'outputs.HiveTableStorageDescriptor']]] = None,
                  view_expanded_text: pulumi.Input[Optional[_builtins.str]] = None,
                  view_original_text: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -612,11 +612,11 @@ class HiveTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Additional parameters associated with the table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict']]]] partition_keys: Partition keys of the table.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict', 'outputs.HiveTablePartitionKey']]]] partition_keys: Partition keys of the table.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict']] storage_descriptor: Storage descriptor of the table.
+        :param pulumi.Input[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict', 'outputs.HiveTableStorageDescriptor']] storage_descriptor: Storage descriptor of the table.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] view_expanded_text: Expanded view text for Hive views. Empty for non-view.
         :param pulumi.Input[_builtins.str] view_original_text: Original view text for Hive views. Empty for non-view.
@@ -748,9 +748,9 @@ class HiveTable(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 partition_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict']]]]] = None,
+                 partition_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict', 'outputs.HiveTablePartitionKey']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_descriptor: pulumi.Input[Optional[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict']]] = None,
+                 storage_descriptor: pulumi.Input[Optional[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict', 'outputs.HiveTableStorageDescriptor']]] = None,
                  view_expanded_text: pulumi.Input[Optional[_builtins.str]] = None,
                  view_original_text: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -801,9 +801,9 @@ class HiveTable(pulumi.CustomResource):
             last_access_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            partition_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict']]]]] = None,
+            partition_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict', 'outputs.HiveTablePartitionKey']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_descriptor: pulumi.Input[Optional[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict']]] = None,
+            storage_descriptor: pulumi.Input[Optional[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict', 'outputs.HiveTableStorageDescriptor']]] = None,
             table_type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             view_expanded_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -828,11 +828,11 @@ class HiveTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_access_time: Output only. Last access time of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Additional parameters associated with the table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict']]]] partition_keys: Partition keys of the table.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HiveTablePartitionKeyArgs', 'HiveTablePartitionKeyArgsDict', 'outputs.HiveTablePartitionKey']]]] partition_keys: Partition keys of the table.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict']] storage_descriptor: Storage descriptor of the table.
+        :param pulumi.Input[Union['HiveTableStorageDescriptorArgs', 'HiveTableStorageDescriptorArgsDict', 'outputs.HiveTableStorageDescriptor']] storage_descriptor: Storage descriptor of the table.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_type: Output only. The type of the table.
         :param pulumi.Input[_builtins.str] update_time: Output only. The update time of the table

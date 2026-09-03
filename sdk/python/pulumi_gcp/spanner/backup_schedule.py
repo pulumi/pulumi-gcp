@@ -405,14 +405,14 @@ class BackupSchedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
-                 full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
-                 incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict', 'outputs.BackupScheduleEncryptionConfig']]] = None,
+                 full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict', 'outputs.BackupScheduleFullBackupSpec']]] = None,
+                 incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict', 'outputs.BackupScheduleIncrementalBackupSpec']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict', 'outputs.BackupScheduleSpec']]] = None,
                  __props__=None):
         """
         A backup schedule for a Cloud Spanner Database.
@@ -530,10 +530,10 @@ class BackupSchedule(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
+        :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict', 'outputs.BackupScheduleEncryptionConfig']] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
-        :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
-        :param pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']] incremental_backup_spec: The schedule creates incremental backup chains.
+        :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict', 'outputs.BackupScheduleFullBackupSpec']] full_backup_spec: The schedule creates only full backups..
+        :param pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict', 'outputs.BackupScheduleIncrementalBackupSpec']] incremental_backup_spec: The schedule creates incremental backup chains.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] name: A unique identifier for the backup schedule, which cannot be changed after
                the backup schedule is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -542,7 +542,7 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] retention_duration: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
                You can set this to a value up to 366 days.
-        :param pulumi.Input[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict']] spec: Defines specifications of the backup schedule.
+        :param pulumi.Input[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict', 'outputs.BackupScheduleSpec']] spec: Defines specifications of the backup schedule.
                Structure is documented below.
         """
         ...
@@ -675,14 +675,14 @@ class BackupSchedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
-                 full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
-                 incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict', 'outputs.BackupScheduleEncryptionConfig']]] = None,
+                 full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict', 'outputs.BackupScheduleFullBackupSpec']]] = None,
+                 incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict', 'outputs.BackupScheduleIncrementalBackupSpec']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict', 'outputs.BackupScheduleSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -720,14 +720,14 @@ class BackupSchedule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             database: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
-            full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
-            incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
+            encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict', 'outputs.BackupScheduleEncryptionConfig']]] = None,
+            full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict', 'outputs.BackupScheduleFullBackupSpec']]] = None,
+            incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict', 'outputs.BackupScheduleIncrementalBackupSpec']]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict']]] = None) -> 'BackupSchedule':
+            spec: pulumi.Input[Optional[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict', 'outputs.BackupScheduleSpec']]] = None) -> 'BackupSchedule':
         """
         Get an existing BackupSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -742,10 +742,10 @@ class BackupSchedule(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
+        :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict', 'outputs.BackupScheduleEncryptionConfig']] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
-        :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
-        :param pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']] incremental_backup_spec: The schedule creates incremental backup chains.
+        :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict', 'outputs.BackupScheduleFullBackupSpec']] full_backup_spec: The schedule creates only full backups..
+        :param pulumi.Input[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict', 'outputs.BackupScheduleIncrementalBackupSpec']] incremental_backup_spec: The schedule creates incremental backup chains.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] name: A unique identifier for the backup schedule, which cannot be changed after
                the backup schedule is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -754,7 +754,7 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] retention_duration: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
                You can set this to a value up to 366 days.
-        :param pulumi.Input[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict']] spec: Defines specifications of the backup schedule.
+        :param pulumi.Input[Union['BackupScheduleSpecArgs', 'BackupScheduleSpecArgsDict', 'outputs.BackupScheduleSpec']] spec: Defines specifications of the backup schedule.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

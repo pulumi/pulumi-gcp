@@ -541,7 +541,7 @@ class RuleDeployment(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']]] = None,
+                 schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict', 'outputs.RuleDeploymentScheduleCustomizations']]] = None,
                  __props__=None):
         """
         The RuleDeployment resource represents the deployment state of a Rule.
@@ -663,7 +663,7 @@ class RuleDeployment(pulumi.CustomResource):
                Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
                For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
                suppress the diff and ignore the changes to prevent infinite update loops.
-        :param pulumi.Input[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
+        :param pulumi.Input[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict', 'outputs.RuleDeploymentScheduleCustomizations']] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
                customizable run frequencies.
                Structure is documented below.
         """
@@ -788,7 +788,7 @@ class RuleDeployment(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']]] = None,
+                 schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict', 'outputs.RuleDeploymentScheduleCustomizations']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -843,7 +843,7 @@ class RuleDeployment(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             rule: pulumi.Input[Optional[_builtins.str]] = None,
             run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']]] = None) -> 'RuleDeployment':
+            schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict', 'outputs.RuleDeploymentScheduleCustomizations']]] = None) -> 'RuleDeployment':
         """
         Get an existing RuleDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -898,7 +898,7 @@ class RuleDeployment(pulumi.CustomResource):
                Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
                For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
                suppress the diff and ignore the changes to prevent infinite update loops.
-        :param pulumi.Input[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
+        :param pulumi.Input[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict', 'outputs.RuleDeploymentScheduleCustomizations']] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
                customizable run frequencies.
                Structure is documented below.
         """

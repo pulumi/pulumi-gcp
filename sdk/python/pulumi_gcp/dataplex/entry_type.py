@@ -540,7 +540,7 @@ class EntryType(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  platform: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
+                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict', 'outputs.EntryTypeRequiredAspect']]]]] = None,
                  system: pulumi.Input[Optional[_builtins.str]] = None,
                  type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -651,7 +651,7 @@ class EntryType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] platform: The platform that Entries of this type belongs to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]] required_aspects: AspectInfo for the entry type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict', 'outputs.EntryTypeRequiredAspect']]]] required_aspects: AspectInfo for the entry type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] system: The system that Entries of this type belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] type_aliases: Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
@@ -773,7 +773,7 @@ class EntryType(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  platform: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
+                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict', 'outputs.EntryTypeRequiredAspect']]]]] = None,
                  system: pulumi.Input[Optional[_builtins.str]] = None,
                  type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -826,7 +826,7 @@ class EntryType(pulumi.CustomResource):
             platform: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
+            required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict', 'outputs.EntryTypeRequiredAspect']]]]] = None,
             system: pulumi.Input[Optional[_builtins.str]] = None,
             type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -860,7 +860,7 @@ class EntryType(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]] required_aspects: AspectInfo for the entry type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict', 'outputs.EntryTypeRequiredAspect']]]] required_aspects: AspectInfo for the entry type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] system: The system that Entries of this type belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] type_aliases: Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.

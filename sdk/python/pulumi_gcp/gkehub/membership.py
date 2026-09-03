@@ -371,9 +371,9 @@ class Membership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
+                 authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict', 'outputs.MembershipAuthority']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict', 'outputs.MembershipEndpoint']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  membership_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -483,7 +483,7 @@ class Membership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']] authority: Authority encodes how Google will recognize identities from this Membership.
+        :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict', 'outputs.MembershipAuthority']] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
@@ -493,7 +493,7 @@ class Membership(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict', 'outputs.MembershipEndpoint']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this membership.
                
@@ -628,9 +628,9 @@ class Membership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
+                 authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict', 'outputs.MembershipAuthority']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict', 'outputs.MembershipEndpoint']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  membership_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -668,10 +668,10 @@ class Membership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
+            authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict', 'outputs.MembershipAuthority']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
+            endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict', 'outputs.MembershipEndpoint']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             membership_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -685,7 +685,7 @@ class Membership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']] authority: Authority encodes how Google will recognize identities from this Membership.
+        :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict', 'outputs.MembershipAuthority']] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
@@ -696,7 +696,7 @@ class Membership(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict', 'outputs.MembershipEndpoint']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this membership.
                

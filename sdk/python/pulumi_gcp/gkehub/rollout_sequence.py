@@ -640,16 +640,16 @@ class RolloutSequence(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']]] = None,
+                 auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict', 'outputs.RolloutSequenceAutoUpgradeConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
+                 ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict', 'outputs.RolloutSequenceIgnoredClustersSelector']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
                  min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rollout_sequence_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
+                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict', 'outputs.RolloutSequenceStage']]]]] = None,
                  __props__=None):
         """
         RolloutSequence defines the desired order of upgrades.
@@ -855,7 +855,7 @@ class RolloutSequence(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']] auto_upgrade_config: Configuration for automatic upgrades.
+        :param pulumi.Input[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict', 'outputs.RolloutSequenceAutoUpgradeConfig']] auto_upgrade_config: Configuration for automatic upgrades.
                If not specified, the system applies default behavior.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -865,7 +865,7 @@ class RolloutSequence(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
-        :param pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
+        :param pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict', 'outputs.RolloutSequenceIgnoredClustersSelector']] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Rollout Sequence.
                
@@ -888,7 +888,7 @@ class RolloutSequence(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]] stages: Ordered list of stages that constitute this Rollout Sequence.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict', 'outputs.RolloutSequenceStage']]]] stages: Ordered list of stages that constitute this Rollout Sequence.
                Structure is documented below.
         """
         ...
@@ -1114,16 +1114,16 @@ class RolloutSequence(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']]] = None,
+                 auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict', 'outputs.RolloutSequenceAutoUpgradeConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
+                 ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict', 'outputs.RolloutSequenceIgnoredClustersSelector']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
                  min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rollout_sequence_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
+                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict', 'outputs.RolloutSequenceStage']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1170,23 +1170,23 @@ class RolloutSequence(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']]] = None,
+            auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict', 'outputs.RolloutSequenceAutoUpgradeConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
+            ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict', 'outputs.RolloutSequenceIgnoredClustersSelector']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
             min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            operational_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceOperationalStateArgs', 'RolloutSequenceOperationalStateArgsDict']]]]] = None,
+            operational_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceOperationalStateArgs', 'RolloutSequenceOperationalStateArgsDict', 'outputs.RolloutSequenceOperationalState']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             rollout_sequence_id: pulumi.Input[Optional[_builtins.str]] = None,
-            stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
+            stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict', 'outputs.RolloutSequenceStage']]]]] = None,
             target_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
             target_node_version: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1198,7 +1198,7 @@ class RolloutSequence(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']] auto_upgrade_config: Configuration for automatic upgrades.
+        :param pulumi.Input[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict', 'outputs.RolloutSequenceAutoUpgradeConfig']] auto_upgrade_config: Configuration for automatic upgrades.
                If not specified, the system applies default behavior.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the Rollout Sequence was created.
@@ -1212,7 +1212,7 @@ class RolloutSequence(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: etag of the Rollout Sequence.
-        :param pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
+        :param pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict', 'outputs.RolloutSequenceIgnoredClustersSelector']] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Rollout Sequence.
                
@@ -1233,14 +1233,14 @@ class RolloutSequence(pulumi.CustomResource):
                Note that the `latest` and `-` aliases are not supported for this field.
                Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
         :param pulumi.Input[_builtins.str] name: The full resource name of the RolloutSequence.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceOperationalStateArgs', 'RolloutSequenceOperationalStateArgsDict']]]] operational_states: The operational state of the rollout sequence.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceOperationalStateArgs', 'RolloutSequenceOperationalStateArgsDict', 'outputs.RolloutSequenceOperationalState']]]] operational_states: The operational state of the rollout sequence.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]] stages: Ordered list of stages that constitute this Rollout Sequence.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict', 'outputs.RolloutSequenceStage']]]] stages: Ordered list of stages that constitute this Rollout Sequence.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] target_control_plane_version: The current target control plane version.
         :param pulumi.Input[_builtins.str] target_node_version: The current target node version.

@@ -349,7 +349,7 @@ class Retrohunt(pulumi.CustomResource):
                  retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
+                 process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict', 'outputs.RetrohuntProcessInterval']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -410,7 +410,7 @@ class Retrohunt(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] retrohunt_id: The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[_builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-        :param pulumi.Input[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']] process_interval: Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        :param pulumi.Input[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict', 'outputs.RetrohuntProcessInterval']] process_interval: Represents a time interval, encoded as a Timestamp start (inclusive) and a
                Timestamp end (exclusive).
                The start must be less than or equal to the end.
                When the start equals the end, the interval is empty (matches no time).
@@ -496,7 +496,7 @@ class Retrohunt(pulumi.CustomResource):
                  retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
+                 process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict', 'outputs.RetrohuntProcessInterval']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -537,11 +537,11 @@ class Retrohunt(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
-            execution_intervals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RetrohuntExecutionIntervalArgs', 'RetrohuntExecutionIntervalArgsDict']]]]] = None,
+            execution_intervals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RetrohuntExecutionIntervalArgs', 'RetrohuntExecutionIntervalArgsDict', 'outputs.RetrohuntExecutionInterval']]]]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
+            process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict', 'outputs.RetrohuntProcessInterval']]] = None,
             progress_percentage: pulumi.Input[Optional[_builtins.float]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             rule: pulumi.Input[Optional[_builtins.str]] = None,
@@ -554,7 +554,7 @@ class Retrohunt(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] retrohunt_id: The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RetrohuntExecutionIntervalArgs', 'RetrohuntExecutionIntervalArgsDict']]]] execution_intervals: Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RetrohuntExecutionIntervalArgs', 'RetrohuntExecutionIntervalArgsDict', 'outputs.RetrohuntExecutionInterval']]]] execution_intervals: Represents a time interval, encoded as a Timestamp start (inclusive) and a
                Timestamp end (exclusive).
                The start must be less than or equal to the end.
                When the start equals the end, the interval is empty (matches no time).
@@ -567,7 +567,7 @@ class Retrohunt(pulumi.CustomResource):
                structured as {rule_id@revision_id}.
                Format:
                projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/retrohunts/{retrohunt}
-        :param pulumi.Input[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']] process_interval: Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        :param pulumi.Input[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict', 'outputs.RetrohuntProcessInterval']] process_interval: Represents a time interval, encoded as a Timestamp start (inclusive) and a
                Timestamp end (exclusive).
                The start must be less than or equal to the end.
                When the start equals the end, the interval is empty (matches no time).

@@ -527,7 +527,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_application_environment_config: pulumi.Input[Optional[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']]] = None,
+                 spark_application_environment_config: pulumi.Input[Optional[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict', 'outputs.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig']]] = None,
                  __props__=None):
         """
         An ApplicationEnvironment contains shared configuration that may be referenced by multiple SparkApplications.
@@ -618,7 +618,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
-        :param pulumi.Input[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
+        :param pulumi.Input[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict', 'outputs.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig']] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
                Structure is documented below.
         """
         ...
@@ -719,7 +719,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
-                 spark_application_environment_config: pulumi.Input[Optional[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']]] = None,
+                 spark_application_environment_config: pulumi.Input[Optional[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict', 'outputs.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -776,7 +776,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
-            spark_application_environment_config: pulumi.Input[Optional[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']]] = None,
+            spark_application_environment_config: pulumi.Input[Optional[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict', 'outputs.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'GdcApplicationEnvironment':
         """
@@ -811,7 +811,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
-        :param pulumi.Input[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
+        :param pulumi.Input[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict', 'outputs.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig']] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: System generated unique identifier for this application environment, formatted as UUID4.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was most recently updated.

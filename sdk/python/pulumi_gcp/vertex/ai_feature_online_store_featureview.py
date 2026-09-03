@@ -483,16 +483,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']]] = None,
+                 big_query_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feature_online_store: pulumi.Input[Optional[_builtins.str]] = None,
-                 feature_registry_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']]] = None,
+                 feature_registry_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 sync_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']]] = None,
-                 vector_search_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']]] = None,
+                 sync_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewSyncConfig']]] = None,
+                 vector_search_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig']]] = None,
                  __props__=None):
         """
         FeatureView is representation of values that the FeatureOnlineStore will serve based on its syncConfig.
@@ -894,7 +894,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -903,7 +903,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
@@ -913,9 +913,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewSyncConfig']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: (Optional, Beta)
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig']] vector_search_config: (Optional, Beta)
                Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
@@ -1338,16 +1338,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']]] = None,
+                 big_query_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feature_online_store: pulumi.Input[Optional[_builtins.str]] = None,
-                 feature_registry_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']]] = None,
+                 feature_registry_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 sync_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']]] = None,
-                 vector_search_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']]] = None,
+                 sync_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewSyncConfig']]] = None,
+                 vector_search_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1385,20 +1385,20 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            big_query_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']]] = None,
+            big_query_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             feature_online_store: pulumi.Input[Optional[_builtins.str]] = None,
-            feature_registry_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']]] = None,
+            feature_registry_source: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            sync_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']]] = None,
+            sync_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewSyncConfig']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            vector_search_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']]] = None) -> 'AiFeatureOnlineStoreFeatureview':
+            vector_search_config: pulumi.Input[Optional[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig']]] = None) -> 'AiFeatureOnlineStoreFeatureview':
         """
         Get an existing AiFeatureOnlineStoreFeatureview resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1406,7 +1406,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1417,7 +1417,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
@@ -1429,10 +1429,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewSyncConfig']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: (Optional, Beta)
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict', 'outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig']] vector_search_config: (Optional, Beta)
                Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """

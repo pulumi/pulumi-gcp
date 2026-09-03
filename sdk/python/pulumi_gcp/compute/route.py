@@ -917,7 +917,7 @@ class Route(pulumi.CustomResource):
                  next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict', 'outputs.RouteParams']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1142,7 +1142,7 @@ class Route(pulumi.CustomResource):
                a URL.
         :param pulumi.Input[_builtins.str] next_hop_ip: Network IP address of an instance that should handle matching packets.
         :param pulumi.Input[_builtins.str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
-        :param pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict', 'outputs.RouteParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -1353,7 +1353,7 @@ class Route(pulumi.CustomResource):
                  next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict', 'outputs.RouteParams']]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1407,7 +1407,7 @@ class Route(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict']]]]] = None,
+            as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict', 'outputs.RouteAsPath']]]]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1426,14 +1426,14 @@ class Route(pulumi.CustomResource):
             next_hop_origin: pulumi.Input[Optional[_builtins.str]] = None,
             next_hop_peering: pulumi.Input[Optional[_builtins.str]] = None,
             next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict', 'outputs.RouteParams']]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             route_status: pulumi.Input[Optional[_builtins.str]] = None,
             route_type: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict']]]]] = None) -> 'Route':
+            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict', 'outputs.RouteWarning']]]]] = None) -> 'Route':
         """
         Get an existing Route resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1441,7 +1441,7 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict']]]] as_paths: Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict', 'outputs.RouteAsPath']]]] as_paths: Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1499,7 +1499,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param pulumi.Input[_builtins.str] next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[_builtins.str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
-        :param pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict', 'outputs.RouteParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -1518,7 +1518,7 @@ class Route(pulumi.CustomResource):
                - 'STATIC' for a static route
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of instance tags to which this route applies.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict']]]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict', 'outputs.RouteWarning']]]] warnings: If potential misconfigurations are detected for this route, this field will be populated with warning messages.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

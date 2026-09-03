@@ -399,10 +399,10 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict', 'outputs.InterconnectAttachmentGroupAttachment']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict', 'outputs.InterconnectAttachmentGroupIntent']]] = None,
                  interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -451,7 +451,7 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict', 'outputs.InterconnectAttachmentGroupAttachment']]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
                Note that there are add-members and remove-members methods in gcloud.
@@ -464,7 +464,7 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
+        :param pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict', 'outputs.InterconnectAttachmentGroupIntent']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments'
@@ -541,10 +541,10 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict', 'outputs.InterconnectAttachmentGroupAttachment']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict', 'outputs.InterconnectAttachmentGroupIntent']]] = None,
                  interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -579,14 +579,14 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
-            configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupConfiguredArgs', 'InterconnectAttachmentGroupConfiguredArgsDict']]]]] = None,
+            attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict', 'outputs.InterconnectAttachmentGroupAttachment']]]]] = None,
+            configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupConfiguredArgs', 'InterconnectAttachmentGroupConfiguredArgsDict', 'outputs.InterconnectAttachmentGroupConfigured']]]]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
+            intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict', 'outputs.InterconnectAttachmentGroupIntent']]] = None,
             interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
-            logical_structures: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupLogicalStructureArgs', 'InterconnectAttachmentGroupLogicalStructureArgsDict']]]]] = None,
+            logical_structures: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupLogicalStructureArgs', 'InterconnectAttachmentGroupLogicalStructureArgsDict', 'outputs.InterconnectAttachmentGroupLogicalStructure']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'InterconnectAttachmentGroup':
         """
@@ -596,13 +596,13 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict', 'outputs.InterconnectAttachmentGroupAttachment']]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
                Note that there are add-members and remove-members methods in gcloud.
                The size of this map is limited by an "Attachments per group" quota.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupConfiguredArgs', 'InterconnectAttachmentGroupConfiguredArgsDict']]]] configureds: The redundancy this group is configured to support. The way a
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupConfiguredArgs', 'InterconnectAttachmentGroupConfiguredArgsDict', 'outputs.InterconnectAttachmentGroupConfigured']]]] configureds: The redundancy this group is configured to support. The way a
                user queries what SLA their Attachment gets is by looking at this field of
                the Attachment's AttachmentGroup.
                Structure is documented below.
@@ -614,13 +614,13 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
+        :param pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict', 'outputs.InterconnectAttachmentGroupIntent']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments'
                Interconnects. Customers do not need to set this unless directed by
                Google Support.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupLogicalStructureArgs', 'InterconnectAttachmentGroupLogicalStructureArgsDict']]]] logical_structures: An analysis of the logical layout of Attachments in this
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupLogicalStructureArgs', 'InterconnectAttachmentGroupLogicalStructureArgsDict', 'outputs.InterconnectAttachmentGroupLogicalStructure']]]] logical_structures: An analysis of the logical layout of Attachments in this
                group. Every Attachment in the group is shown once in this structure.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be

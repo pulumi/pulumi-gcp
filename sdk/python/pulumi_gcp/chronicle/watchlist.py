@@ -491,13 +491,13 @@ class Watchlist(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 entity_population_mechanism: pulumi.Input[Optional[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict']]] = None,
+                 entity_population_mechanism: pulumi.Input[Optional[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict', 'outputs.WatchlistEntityPopulationMechanism']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  multiplying_factor: pulumi.Input[Optional[_builtins.float]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  watchlist_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 watchlist_user_preferences: pulumi.Input[Optional[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']]] = None,
+                 watchlist_user_preferences: pulumi.Input[Optional[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict', 'outputs.WatchlistWatchlistUserPreferences']]] = None,
                  __props__=None):
         """
         A watchlist is a list of entities that allows for bulk operations over the included entities.
@@ -579,7 +579,7 @@ class Watchlist(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Required. Display name of the watchlist.
                Note that it must be at least one character and less than 63 characters
                (https://google.aip.dev/148).
-        :param pulumi.Input[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict']] entity_population_mechanism: Mechanism to populate entities in the watchlist.
+        :param pulumi.Input[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict', 'outputs.WatchlistEntityPopulationMechanism']] entity_population_mechanism: Mechanism to populate entities in the watchlist.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[_builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
@@ -592,7 +592,7 @@ class Watchlist(pulumi.CustomResource):
                which will become the final component of the watchlist's resource name.
                This value should be 4-63 characters, and valid characters
                are /a-z-/.
-        :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
+        :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict', 'outputs.WatchlistWatchlistUserPreferences']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
                Structure is documented below.
         """
         ...
@@ -687,13 +687,13 @@ class Watchlist(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 entity_population_mechanism: pulumi.Input[Optional[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict']]] = None,
+                 entity_population_mechanism: pulumi.Input[Optional[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict', 'outputs.WatchlistEntityPopulationMechanism']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  multiplying_factor: pulumi.Input[Optional[_builtins.float]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  watchlist_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 watchlist_user_preferences: pulumi.Input[Optional[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']]] = None,
+                 watchlist_user_preferences: pulumi.Input[Optional[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict', 'outputs.WatchlistWatchlistUserPreferences']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -739,8 +739,8 @@ class Watchlist(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            entity_counts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WatchlistEntityCountArgs', 'WatchlistEntityCountArgsDict']]]]] = None,
-            entity_population_mechanism: pulumi.Input[Optional[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict']]] = None,
+            entity_counts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WatchlistEntityCountArgs', 'WatchlistEntityCountArgsDict', 'outputs.WatchlistEntityCount']]]]] = None,
+            entity_population_mechanism: pulumi.Input[Optional[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict', 'outputs.WatchlistEntityPopulationMechanism']]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             multiplying_factor: pulumi.Input[Optional[_builtins.float]] = None,
@@ -748,7 +748,7 @@ class Watchlist(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             watchlist_id: pulumi.Input[Optional[_builtins.str]] = None,
-            watchlist_user_preferences: pulumi.Input[Optional[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']]] = None) -> 'Watchlist':
+            watchlist_user_preferences: pulumi.Input[Optional[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict', 'outputs.WatchlistWatchlistUserPreferences']]] = None) -> 'Watchlist':
         """
         Get an existing Watchlist resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -767,9 +767,9 @@ class Watchlist(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Required. Display name of the watchlist.
                Note that it must be at least one character and less than 63 characters
                (https://google.aip.dev/148).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WatchlistEntityCountArgs', 'WatchlistEntityCountArgsDict']]]] entity_counts: Count of different types of entities in the watchlist.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WatchlistEntityCountArgs', 'WatchlistEntityCountArgsDict', 'outputs.WatchlistEntityCount']]]] entity_counts: Count of different types of entities in the watchlist.
                Structure is documented below.
-        :param pulumi.Input[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict']] entity_population_mechanism: Mechanism to populate entities in the watchlist.
+        :param pulumi.Input[Union['WatchlistEntityPopulationMechanismArgs', 'WatchlistEntityPopulationMechanismArgsDict', 'outputs.WatchlistEntityPopulationMechanism']] entity_population_mechanism: Mechanism to populate entities in the watchlist.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[_builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
@@ -786,7 +786,7 @@ class Watchlist(pulumi.CustomResource):
                which will become the final component of the watchlist's resource name.
                This value should be 4-63 characters, and valid characters
                are /a-z-/.
-        :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
+        :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict', 'outputs.WatchlistWatchlistUserPreferences']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

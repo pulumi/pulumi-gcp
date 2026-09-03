@@ -478,8 +478,8 @@ class PrivateConnection(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
-                 vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']]] = None,
+                 vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']]] = None,
                  __props__=None):
         """
         The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's network.
@@ -600,10 +600,10 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
+        :param pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
                between Datastream and the consumer's PSC.
                Structure is documented below.
-        :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
         """
@@ -734,8 +734,8 @@ class PrivateConnection(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
-                 vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']]] = None,
+                 vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -781,16 +781,16 @@ class PrivateConnection(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict', 'outputs.PrivateConnectionError']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
+            psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None) -> 'PrivateConnection':
+            vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']]] = None) -> 'PrivateConnection':
         """
         Get an existing PrivateConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -810,7 +810,7 @@ class PrivateConnection(pulumi.CustomResource):
                When set to "DELETE", the command will behave as if set to "DEFAULT".
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]] errors: The PrivateConnection error in case of failure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict', 'outputs.PrivateConnectionError']]]] errors: The PrivateConnection error in case of failure.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -820,13 +820,13 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
+        :param pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
                between Datastream and the consumer's PSC.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: State of the PrivateConnection.
-        :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
         """

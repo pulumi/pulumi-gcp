@@ -348,11 +348,11 @@ class FolderBucketConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cmek_settings: pulumi.Input[Optional[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict']]] = None,
+                 cmek_settings: pulumi.Input[Optional[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict', 'outputs.FolderBucketConfigCmekSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
-                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict']]]]] = None,
+                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict', 'outputs.FolderBucketConfigIndexConfig']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -399,7 +399,7 @@ class FolderBucketConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict', 'outputs.FolderBucketConfigCmekSettings']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -408,7 +408,7 @@ class FolderBucketConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[_builtins.str] folder: The parent resource that contains the logging bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict', 'outputs.FolderBucketConfigIndexConfig']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the bucket.
         :param pulumi.Input[_builtins.int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
@@ -474,11 +474,11 @@ class FolderBucketConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cmek_settings: pulumi.Input[Optional[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict']]] = None,
+                 cmek_settings: pulumi.Input[Optional[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict', 'outputs.FolderBucketConfigCmekSettings']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
-                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict']]]]] = None,
+                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict', 'outputs.FolderBucketConfigIndexConfig']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -517,11 +517,11 @@ class FolderBucketConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
-            cmek_settings: pulumi.Input[Optional[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict']]] = None,
+            cmek_settings: pulumi.Input[Optional[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict', 'outputs.FolderBucketConfigCmekSettings']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             folder: pulumi.Input[Optional[_builtins.str]] = None,
-            index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict']]]]] = None,
+            index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict', 'outputs.FolderBucketConfigIndexConfig']]]]] = None,
             lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -534,7 +534,7 @@ class FolderBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[Union['FolderBucketConfigCmekSettingsArgs', 'FolderBucketConfigCmekSettingsArgsDict', 'outputs.FolderBucketConfigCmekSettings']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -543,7 +543,7 @@ class FolderBucketConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[_builtins.str] folder: The parent resource that contains the logging bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FolderBucketConfigIndexConfigArgs', 'FolderBucketConfigIndexConfigArgsDict', 'outputs.FolderBucketConfigIndexConfig']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[_builtins.str] location: The location of the bucket.
         :param pulumi.Input[_builtins.str] name: The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"

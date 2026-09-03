@@ -443,12 +443,12 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
+                 initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict', 'outputs.RepositoryInitialConfig']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']]] = None,
+                 scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict', 'outputs.RepositoryScanConfig']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -607,14 +607,14 @@ class Repository(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
-        :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']] initial_config: Initial configurations for the repository.
+        :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict', 'outputs.RepositoryInitialConfig']] initial_config: Initial configurations for the repository.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the repository is hosted.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
-        :param pulumi.Input[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']] scan_config: Provides configuration for scanning.
+        :param pulumi.Input[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict', 'outputs.RepositoryScanConfig']] scan_config: Provides configuration for scanning.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Repository level service account.
         """
@@ -788,12 +788,12 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
+                 initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict', 'outputs.RepositoryInitialConfig']]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']]] = None,
+                 scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict', 'outputs.RepositoryScanConfig']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -837,17 +837,17 @@ class Repository(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
+            initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict', 'outputs.RepositoryInitialConfig']]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             repository_id: pulumi.Input[Optional[_builtins.str]] = None,
-            scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']]] = None,
+            scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict', 'outputs.RepositoryScanConfig']]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            uris: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]]] = None) -> 'Repository':
+            uris: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict', 'outputs.RepositoryUri']]]]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -863,7 +863,7 @@ class Repository(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
-        :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']] initial_config: Initial configurations for the repository.
+        :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict', 'outputs.RepositoryInitialConfig']] initial_config: Initial configurations for the repository.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the repository is hosted.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
@@ -871,12 +871,12 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
-        :param pulumi.Input[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']] scan_config: Provides configuration for scanning.
+        :param pulumi.Input[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict', 'outputs.RepositoryScanConfig']] scan_config: Provides configuration for scanning.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Repository level service account.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the repository.
         :param pulumi.Input[_builtins.str] update_time: Time the repository was updated in UTC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]] uris: URIs for the repository.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict', 'outputs.RepositoryUri']]]] uris: URIs for the repository.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

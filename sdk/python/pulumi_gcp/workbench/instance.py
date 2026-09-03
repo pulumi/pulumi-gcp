@@ -701,7 +701,7 @@ class Instance(pulumi.CustomResource):
                  enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
+                 gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict', 'outputs.InstanceGceSetup']]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1010,7 +1010,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
-        :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
+        :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict', 'outputs.InstanceGceSetup']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_owners: 'Optional. Input only. The owner of this instance after creation. Format:
@@ -1342,7 +1342,7 @@ class Instance(pulumi.CustomResource):
                  enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
+                 gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict', 'outputs.InstanceGceSetup']]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1404,8 +1404,8 @@ class Instance(pulumi.CustomResource):
             enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
-            gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
-            health_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]]] = None,
+            gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict', 'outputs.InstanceGceSetup']]] = None,
+            health_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict', 'outputs.InstanceHealthInfo']]]]] = None,
             health_state: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1417,7 +1417,7 @@ class Instance(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            upgrade_histories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict']]]]] = None) -> 'Instance':
+            upgrade_histories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict', 'outputs.InstanceUpgradeHistory']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1441,9 +1441,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
-        :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
+        :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict', 'outputs.InstanceGceSetup']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]] health_infos: 'Output only. Additional information about instance health. Example:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict', 'outputs.InstanceHealthInfo']]]] health_infos: 'Output only. Additional information about instance health. Example:
                healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status":
                "-1", "jupyterlab_status": "-1", "updated": "2020-10-18 09:40:03.573409" }'
         :param pulumi.Input[_builtins.str] health_state: Output only. Instance health_state.
@@ -1469,7 +1469,7 @@ class Instance(pulumi.CustomResource):
                Output only. The state of this instance upgrade history entry.
         :param pulumi.Input[_builtins.str] update_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict']]]] upgrade_histories: Output only. The upgrade history of this instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict', 'outputs.InstanceUpgradeHistory']]]] upgrade_histories: Output only. The upgrade history of this instance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

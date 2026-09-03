@@ -564,7 +564,7 @@ class BackupVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 backup_retention_policy: pulumi.Input[Optional[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
+                 backup_retention_policy: pulumi.Input[Optional[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict', 'outputs.BackupVaultBackupRetentionPolicy']]] = None,
                  backup_vault_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -621,7 +621,7 @@ class BackupVault(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_region: Region in which backup is stored.
-        :param pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']] backup_retention_policy: Backup retention policy defining the retention of the backups.
+        :param pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict', 'outputs.BackupVaultBackupRetentionPolicy']] backup_retention_policy: Backup retention policy defining the retention of the backups.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
@@ -710,7 +710,7 @@ class BackupVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 backup_retention_policy: pulumi.Input[Optional[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
+                 backup_retention_policy: pulumi.Input[Optional[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict', 'outputs.BackupVaultBackupRetentionPolicy']]] = None,
                  backup_vault_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -762,7 +762,7 @@ class BackupVault(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_region: pulumi.Input[Optional[_builtins.str]] = None,
-            backup_retention_policy: pulumi.Input[Optional[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
+            backup_retention_policy: pulumi.Input[Optional[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict', 'outputs.BackupVaultBackupRetentionPolicy']]] = None,
             backup_vault_type: pulumi.Input[Optional[_builtins.str]] = None,
             backups_crypto_key_version: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -788,7 +788,7 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_region: Region in which backup is stored.
-        :param pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']] backup_retention_policy: Backup retention policy defining the retention of the backups.
+        :param pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict', 'outputs.BackupVaultBackupRetentionPolicy']] backup_retention_policy: Backup retention policy defining the retention of the backups.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.

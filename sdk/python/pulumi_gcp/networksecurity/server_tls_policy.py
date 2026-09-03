@@ -457,10 +457,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mtls_policy: pulumi.Input[Optional[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict']]] = None,
+                 mtls_policy: pulumi.Input[Optional[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict', 'outputs.ServerTlsPolicyMtlsPolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 server_certificate: pulumi.Input[Optional[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']]] = None,
+                 server_certificate: pulumi.Input[Optional[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict', 'outputs.ServerTlsPolicyServerCertificate']]] = None,
                  __props__=None):
         """
         ServerTlsPolicy is a resource that specifies how a server should authenticate incoming requests. This resource itself does not affect configuration unless it is attached to a target HTTPS proxy or endpoint config selector resource.
@@ -608,13 +608,13 @@ class ServerTlsPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the server tls policy.
                The default value is `global`.
-        :param pulumi.Input[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict']] mtls_policy: This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
+        :param pulumi.Input[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict', 'outputs.ServerTlsPolicyMtlsPolicy']] mtls_policy: This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the ServerTlsPolicy resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+        :param pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict', 'outputs.ServerTlsPolicyServerCertificate']] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         """
         ...
@@ -772,10 +772,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mtls_policy: pulumi.Input[Optional[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict']]] = None,
+                 mtls_policy: pulumi.Input[Optional[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict', 'outputs.ServerTlsPolicyMtlsPolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 server_certificate: pulumi.Input[Optional[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']]] = None,
+                 server_certificate: pulumi.Input[Optional[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict', 'outputs.ServerTlsPolicyServerCertificate']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -817,11 +817,11 @@ class ServerTlsPolicy(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mtls_policy: pulumi.Input[Optional[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict']]] = None,
+            mtls_policy: pulumi.Input[Optional[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict', 'outputs.ServerTlsPolicyMtlsPolicy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            server_certificate: pulumi.Input[Optional[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']]] = None,
+            server_certificate: pulumi.Input[Optional[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict', 'outputs.ServerTlsPolicyServerCertificate']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerTlsPolicy':
         """
         Get an existing ServerTlsPolicy resource's state with the given name, id, and optional extra
@@ -847,7 +847,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the server tls policy.
                The default value is `global`.
-        :param pulumi.Input[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict']] mtls_policy: This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
+        :param pulumi.Input[Union['ServerTlsPolicyMtlsPolicyArgs', 'ServerTlsPolicyMtlsPolicyArgsDict', 'outputs.ServerTlsPolicyMtlsPolicy']] mtls_policy: This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the ServerTlsPolicy resource.
@@ -855,7 +855,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+        :param pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict', 'outputs.ServerTlsPolicyServerCertificate']] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Time the ServerTlsPolicy was updated in UTC.
         """

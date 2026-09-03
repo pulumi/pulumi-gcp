@@ -537,10 +537,10 @@ class AiIndex(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict', 'outputs.AiIndexEncryptionSpec']]] = None,
                  index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict', 'outputs.AiIndexMetadata']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -673,7 +673,7 @@ class AiIndex(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        :param pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict', 'outputs.AiIndexEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -681,7 +681,7 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']] metadata: Additional information about the Index.
+        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict', 'outputs.AiIndexMetadata']] metadata: Additional information about the Index.
                Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
                Attempts to create an Index without this field will result in an API error.
                Structure is documented below.
@@ -832,10 +832,10 @@ class AiIndex(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict', 'outputs.AiIndexEncryptionSpec']]] = None,
                  index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
+                 metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict', 'outputs.AiIndexMetadata']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -883,16 +883,16 @@ class AiIndex(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            deployed_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexDeployedIndexArgs', 'AiIndexDeployedIndexArgsDict']]]]] = None,
+            deployed_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexDeployedIndexArgs', 'AiIndexDeployedIndexArgsDict', 'outputs.AiIndexDeployedIndex']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict', 'outputs.AiIndexEncryptionSpec']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            index_stats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict']]]]] = None,
+            index_stats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict', 'outputs.AiIndexIndexStat']]]]] = None,
             index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
+            metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict', 'outputs.AiIndexMetadata']]] = None,
             metadata_schema_uri: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -913,15 +913,15 @@ class AiIndex(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexDeployedIndexArgs', 'AiIndexDeployedIndexArgsDict']]]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexDeployedIndexArgs', 'AiIndexDeployedIndexArgsDict', 'outputs.AiIndexDeployedIndex']]]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        :param pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict', 'outputs.AiIndexEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict']]]] index_stats: Stats of the index resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict', 'outputs.AiIndexIndexStat']]]] index_stats: Stats of the index resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -929,7 +929,7 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']] metadata: Additional information about the Index.
+        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict', 'outputs.AiIndexMetadata']] metadata: Additional information about the Index.
                Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
                Attempts to create an Index without this field will result in an API error.
                Structure is documented below.

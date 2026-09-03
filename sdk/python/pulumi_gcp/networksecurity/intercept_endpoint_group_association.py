@@ -731,8 +731,8 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
             intercept_endpoint_group_association_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict']]]]] = None,
-            locations_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict']]]]] = None,
+            locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict', 'outputs.InterceptEndpointGroupAssociationLocation']]]]] = None,
+            locations_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict', 'outputs.InterceptEndpointGroupAssociationLocationsDetail']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,10 +766,10 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The cloud location of the association, currently restricted to `global`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict']]]] locations: The list of locations where the association is configured. This information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict', 'outputs.InterceptEndpointGroupAssociationLocation']]]] locations: The list of locations where the association is configured. This information
                is retrieved from the linked endpoint group.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict']]]] locations_details: (Deprecated)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationsDetailArgs', 'InterceptEndpointGroupAssociationLocationsDetailArgsDict', 'outputs.InterceptEndpointGroupAssociationLocationsDetail']]]] locations_details: (Deprecated)
                The list of locations where the association is present. This information
                is retrieved from the linked endpoint group, and not configured as part
                of the association itself.

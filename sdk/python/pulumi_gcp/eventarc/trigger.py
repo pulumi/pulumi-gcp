@@ -591,16 +591,16 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict', 'outputs.TriggerDestination']]] = None,
                  event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
+                 matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict', 'outputs.TriggerMatchingCriteria']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict', 'outputs.TriggerRetryPolicy']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
+                 transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict', 'outputs.TriggerTransport']]] = None,
                  __props__=None):
         """
         The Eventarc Trigger resource
@@ -691,23 +691,23 @@ class Trigger(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict', 'outputs.TriggerDestination']] destination: Required. Destination specifies where the events should be sent to.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict', 'outputs.TriggerMatchingCriteria']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']] retry_policy: The retry policy configuration for the Trigger.
+        :param pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict', 'outputs.TriggerRetryPolicy']] retry_policy: The retry policy configuration for the Trigger.
                Can only be set with Cloud Run destinations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict', 'outputs.TriggerTransport']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
                Structure is documented below.
         """
         ...
@@ -813,16 +813,16 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict', 'outputs.TriggerDestination']]] = None,
                  event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
+                 matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict', 'outputs.TriggerMatchingCriteria']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict', 'outputs.TriggerRetryPolicy']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
+                 transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict', 'outputs.TriggerTransport']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -873,19 +873,19 @@ class Trigger(pulumi.CustomResource):
             conditions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict', 'outputs.TriggerDestination']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
+            matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict', 'outputs.TriggerMatchingCriteria']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
+            retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict', 'outputs.TriggerRetryPolicy']]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
-            transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
+            transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict', 'outputs.TriggerTransport']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Trigger':
         """
@@ -904,7 +904,7 @@ class Trigger(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict', 'outputs.TriggerDestination']] destination: Required. Destination specifies where the events should be sent to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
@@ -913,18 +913,18 @@ class Trigger(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict', 'outputs.TriggerMatchingCriteria']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']] retry_policy: The retry policy configuration for the Trigger.
+        :param pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict', 'outputs.TriggerRetryPolicy']] retry_policy: The retry policy configuration for the Trigger.
                Can only be set with Cloud Run destinations.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict', 'outputs.TriggerTransport']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[_builtins.str] update_time: Output only. The last-modified time.

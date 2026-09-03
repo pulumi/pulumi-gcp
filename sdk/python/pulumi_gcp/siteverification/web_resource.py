@@ -203,7 +203,7 @@ class WebResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
+                 site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict', 'outputs.WebResourceSite']]] = None,
                  verification_method: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -272,7 +272,7 @@ class WebResource(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']] site: Container for the address and type of a site for which a verification token will be verified.
+        :param pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict', 'outputs.WebResourceSite']] site: Container for the address and type of a site for which a verification token will be verified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] verification_method: The verification method for the Site Verification system to use to verify
                this site or domain.
@@ -358,7 +358,7 @@ class WebResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
+                 site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict', 'outputs.WebResourceSite']]] = None,
                  verification_method: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -390,7 +390,7 @@ class WebResource(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
+            site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict', 'outputs.WebResourceSite']]] = None,
             verification_method: pulumi.Input[Optional[_builtins.str]] = None,
             web_resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WebResource':
         """
@@ -408,7 +408,7 @@ class WebResource(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: The email addresses of all direct, verified owners of this exact property. Indirect owners —
                for example verified owners of the containing domain—are not included in this list.
-        :param pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']] site: Container for the address and type of a site for which a verification token will be verified.
+        :param pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict', 'outputs.WebResourceSite']] site: Container for the address and type of a site for which a verification token will be verified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] verification_method: The verification method for the Site Verification system to use to verify
                this site or domain.

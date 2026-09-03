@@ -290,7 +290,7 @@ class RolloutPlan(pulumi.CustomResource):
                  location_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None,
+                 waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict', 'outputs.RolloutPlanWave']]]]] = None,
                  __props__=None):
         """
         A RolloutPlan is the customer-defined strategy to divide a large-scale change
@@ -359,7 +359,7 @@ class RolloutPlan(pulumi.CustomResource):
                The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]] waves: The waves included in this rollout plan.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict', 'outputs.RolloutPlanWave']]]] waves: The waves included in this rollout plan.
                Structure is documented below.
         """
         ...
@@ -440,7 +440,7 @@ class RolloutPlan(pulumi.CustomResource):
                  location_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None,
+                 waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict', 'outputs.RolloutPlanWave']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -475,7 +475,7 @@ class RolloutPlan(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None) -> 'RolloutPlan':
+            waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict', 'outputs.RolloutPlanWave']]]]] = None) -> 'RolloutPlan':
         """
         Get an existing RolloutPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -497,7 +497,7 @@ class RolloutPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]] waves: The waves included in this rollout plan.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict', 'outputs.RolloutPlanWave']]]] waves: The waves included in this rollout plan.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

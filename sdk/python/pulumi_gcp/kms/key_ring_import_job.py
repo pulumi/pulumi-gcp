@@ -472,7 +472,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyRingImportJobAttestationArgs', 'KeyRingImportJobAttestationArgsDict']]]]] = None,
+            attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyRingImportJobAttestationArgs', 'KeyRingImportJobAttestationArgsDict', 'outputs.KeyRingImportJobAttestation']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             import_job_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -480,7 +480,7 @@ class KeyRingImportJob(pulumi.CustomResource):
             key_ring: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             protection_level: pulumi.Input[Optional[_builtins.str]] = None,
-            public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyRingImportJobPublicKeyArgs', 'KeyRingImportJobPublicKeyArgsDict']]]]] = None,
+            public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyRingImportJobPublicKeyArgs', 'KeyRingImportJobPublicKeyArgsDict', 'outputs.KeyRingImportJobPublicKey']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeyRingImportJob':
         """
         Get an existing KeyRingImportJob resource's state with the given name, id, and optional extra
@@ -489,7 +489,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyRingImportJobAttestationArgs', 'KeyRingImportJobAttestationArgsDict']]]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyRingImportJobAttestationArgs', 'KeyRingImportJobAttestationArgsDict', 'outputs.KeyRingImportJobAttestation']]]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
                Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only present if the chosen ImportMethod is one with a protection level of HSM.
                Structure is documented below.
@@ -510,7 +510,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
                Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyRingImportJobPublicKeyArgs', 'KeyRingImportJobPublicKeyArgsDict']]]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyRingImportJobPublicKeyArgs', 'KeyRingImportJobPublicKeyArgsDict', 'outputs.KeyRingImportJobPublicKey']]]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the ImportJob, indicating if it can be used.
         """

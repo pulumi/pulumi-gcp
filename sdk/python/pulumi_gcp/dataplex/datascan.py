@@ -698,17 +698,17 @@ class Datascan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: pulumi.Input[Optional[Union['DatascanDataArgs', 'DatascanDataArgsDict']]] = None,
-                 data_discovery_spec: pulumi.Input[Optional[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']]] = None,
-                 data_documentation_spec: pulumi.Input[Optional[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict']]] = None,
-                 data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
-                 data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['DatascanDataArgs', 'DatascanDataArgsDict', 'outputs.DatascanData']]] = None,
+                 data_discovery_spec: pulumi.Input[Optional[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict', 'outputs.DatascanDataDiscoverySpec']]] = None,
+                 data_documentation_spec: pulumi.Input[Optional[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict', 'outputs.DatascanDataDocumentationSpec']]] = None,
+                 data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict', 'outputs.DatascanDataProfileSpec']]] = None,
+                 data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict', 'outputs.DatascanDataQualitySpec']]] = None,
                  data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
-                 execution_spec: pulumi.Input[Optional[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']]] = None,
+                 execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict', 'outputs.DatascanExecutionIdentity']]] = None,
+                 execution_spec: pulumi.Input[Optional[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict', 'outputs.DatascanExecutionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1744,15 +1744,15 @@ class Datascan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']] data: The data source for DataScan.
+        :param pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict', 'outputs.DatascanData']] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']] data_discovery_spec: DataDiscoveryScan related setting.
+        :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict', 'outputs.DatascanDataDiscoverySpec']] data_discovery_spec: DataDiscoveryScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict']] data_documentation_spec: DataDocumentationScan related setting.
+        :param pulumi.Input[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict', 'outputs.DatascanDataDocumentationSpec']] data_documentation_spec: DataDocumentationScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']] data_profile_spec: DataProfileScan related setting.
+        :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict', 'outputs.DatascanDataProfileSpec']] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
+        :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict', 'outputs.DatascanDataQualitySpec']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1763,9 +1763,9 @@ class Datascan(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
-        :param pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        :param pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict', 'outputs.DatascanExecutionIdentity']] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']] execution_spec: DataScan execution settings.
+        :param pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict', 'outputs.DatascanExecutionSpec']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the scan. A list of key->value pairs.
                
@@ -2825,17 +2825,17 @@ class Datascan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: pulumi.Input[Optional[Union['DatascanDataArgs', 'DatascanDataArgsDict']]] = None,
-                 data_discovery_spec: pulumi.Input[Optional[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']]] = None,
-                 data_documentation_spec: pulumi.Input[Optional[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict']]] = None,
-                 data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
-                 data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['DatascanDataArgs', 'DatascanDataArgsDict', 'outputs.DatascanData']]] = None,
+                 data_discovery_spec: pulumi.Input[Optional[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict', 'outputs.DatascanDataDiscoverySpec']]] = None,
+                 data_documentation_spec: pulumi.Input[Optional[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict', 'outputs.DatascanDataDocumentationSpec']]] = None,
+                 data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict', 'outputs.DatascanDataProfileSpec']]] = None,
+                 data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict', 'outputs.DatascanDataQualitySpec']]] = None,
                  data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
-                 execution_spec: pulumi.Input[Optional[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']]] = None,
+                 execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict', 'outputs.DatascanExecutionIdentity']]] = None,
+                 execution_spec: pulumi.Input[Optional[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict', 'outputs.DatascanExecutionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2892,19 +2892,19 @@ class Datascan(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            data: pulumi.Input[Optional[Union['DatascanDataArgs', 'DatascanDataArgsDict']]] = None,
-            data_discovery_spec: pulumi.Input[Optional[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']]] = None,
-            data_documentation_spec: pulumi.Input[Optional[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict']]] = None,
-            data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
-            data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
+            data: pulumi.Input[Optional[Union['DatascanDataArgs', 'DatascanDataArgsDict', 'outputs.DatascanData']]] = None,
+            data_discovery_spec: pulumi.Input[Optional[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict', 'outputs.DatascanDataDiscoverySpec']]] = None,
+            data_documentation_spec: pulumi.Input[Optional[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict', 'outputs.DatascanDataDocumentationSpec']]] = None,
+            data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict', 'outputs.DatascanDataProfileSpec']]] = None,
+            data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict', 'outputs.DatascanDataQualitySpec']]] = None,
             data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
-            execution_spec: pulumi.Input[Optional[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']]] = None,
-            execution_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatascanExecutionStatusArgs', 'DatascanExecutionStatusArgsDict']]]]] = None,
+            execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict', 'outputs.DatascanExecutionIdentity']]] = None,
+            execution_spec: pulumi.Input[Optional[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict', 'outputs.DatascanExecutionSpec']]] = None,
+            execution_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatascanExecutionStatusArgs', 'DatascanExecutionStatusArgsDict', 'outputs.DatascanExecutionStatus']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2922,15 +2922,15 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time when the scan was created.
-        :param pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict']] data: The data source for DataScan.
+        :param pulumi.Input[Union['DatascanDataArgs', 'DatascanDataArgsDict', 'outputs.DatascanData']] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']] data_discovery_spec: DataDiscoveryScan related setting.
+        :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict', 'outputs.DatascanDataDiscoverySpec']] data_discovery_spec: DataDiscoveryScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict']] data_documentation_spec: DataDocumentationScan related setting.
+        :param pulumi.Input[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict', 'outputs.DatascanDataDocumentationSpec']] data_documentation_spec: DataDocumentationScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']] data_profile_spec: DataProfileScan related setting.
+        :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict', 'outputs.DatascanDataProfileSpec']] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
+        :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict', 'outputs.DatascanDataQualitySpec']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -2942,11 +2942,11 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        :param pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict', 'outputs.DatascanExecutionIdentity']] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
                Structure is documented below.
-        :param pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']] execution_spec: DataScan execution settings.
+        :param pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict', 'outputs.DatascanExecutionSpec']] execution_spec: DataScan execution settings.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatascanExecutionStatusArgs', 'DatascanExecutionStatusArgsDict']]]] execution_statuses: Status of the data scan execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatascanExecutionStatusArgs', 'DatascanExecutionStatusArgsDict', 'outputs.DatascanExecutionStatus']]]] execution_statuses: Status of the data scan execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the scan. A list of key->value pairs.
                

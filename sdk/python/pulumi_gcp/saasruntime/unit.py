@@ -830,7 +830,7 @@ class Unit(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
+                 maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict', 'outputs.UnitMaintenance']]] = None,
                  management_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  tenant: pulumi.Input[Optional[_builtins.str]] = None,
@@ -901,7 +901,7 @@ class Unit(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']] maintenance: Captures requested directives for performing future maintenance on the
+        :param pulumi.Input[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict', 'outputs.UnitMaintenance']] maintenance: Captures requested directives for performing future maintenance on the
                unit. This includes a request for the unit to skip maintenance for a period
                of time and remain pinned to its current release as well as controls for
                postponing maintenance scheduled in future.
@@ -990,7 +990,7 @@ class Unit(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
+                 maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict', 'outputs.UnitMaintenance']]] = None,
                  management_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  tenant: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1051,21 +1051,21 @@ class Unit(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict', 'outputs.UnitCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict']]]]] = None,
-            dependents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict']]]]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict', 'outputs.UnitDependency']]]]] = None,
+            dependents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict', 'outputs.UnitDependent']]]]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            input_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict']]]]] = None,
+            input_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict', 'outputs.UnitInputVariable']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
+            maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict', 'outputs.UnitMaintenance']]] = None,
             management_mode: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ongoing_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            output_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict']]]]] = None,
+            output_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict', 'outputs.UnitOutputVariable']]]]] = None,
             pending_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1092,7 +1092,7 @@ class Unit(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict']]]] conditions: A set of conditions which indicate the various conditions this resource can
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict', 'outputs.UnitCondition']]]] conditions: A set of conditions which indicate the various conditions this resource can
                have.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -1102,21 +1102,21 @@ class Unit(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict']]]] dependencies: Set of dependencies for this unit. Maximum 10.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict', 'outputs.UnitDependency']]]] dependencies: Set of dependencies for this unit. Maximum 10.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict']]]] dependents: List of Units that depend on this unit. Unit can only be deprovisioned if
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict', 'outputs.UnitDependent']]]] dependents: List of Units that depend on this unit. Unit can only be deprovisioned if
                this list is empty. Maximum 1000.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict']]]] input_variables: Indicates the current input variables deployed by the unit
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict', 'outputs.UnitInputVariable']]]] input_variables: Indicates the current input variables deployed by the unit
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
                similar to Kubernetes resource labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']] maintenance: Captures requested directives for performing future maintenance on the
+        :param pulumi.Input[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict', 'outputs.UnitMaintenance']] maintenance: Captures requested directives for performing future maintenance on the
                unit. This includes a request for the unit to skip maintenance for a period
                of time and remain pinned to its current release as well as controls for
                postponing maintenance scheduled in future.
@@ -1131,7 +1131,7 @@ class Unit(pulumi.CustomResource):
                scheme:
                "projects/{project}/locations/{location}/units/{unit}"
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ongoing_operations: List of concurrent UnitOperations that are operating on this Unit.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict']]]] output_variables: Set of key/value pairs corresponding to output variables from execution of
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict', 'outputs.UnitOutputVariable']]]] output_variables: Set of key/value pairs corresponding to output variables from execution of
                actuation templates. The variables are declared in actuation configs (e.g
                in helm chart or terraform) and the values are fetched and returned by the
                actuation engine upon completion of execution.

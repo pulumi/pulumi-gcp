@@ -804,7 +804,7 @@ class VolumeReplication(pulumi.CustomResource):
                  delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
+                 destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict', 'outputs.VolumeReplicationDestinationVolumeParameters']]] = None,
                  force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -920,7 +920,7 @@ class VolumeReplication(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An description of this resource.
-        :param pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']] destination_volume_parameters: Destination volume parameters.
+        :param pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict', 'outputs.VolumeReplicationDestinationVolumeParameters']] destination_volume_parameters: Destination volume parameters.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_stopping: Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
                currently receives an update and stopping the update might be undesirable. Set this parameter to true
@@ -1058,7 +1058,7 @@ class VolumeReplication(pulumi.CustomResource):
                  delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
+                 destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict', 'outputs.VolumeReplicationDestinationVolumeParameters']]] = None,
                  force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1127,13 +1127,13 @@ class VolumeReplication(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             destination_volume: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
+            destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict', 'outputs.VolumeReplicationDestinationVolumeParameters']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
             healthy: pulumi.Input[Optional[_builtins.bool]] = None,
-            hybrid_peering_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]]] = None,
+            hybrid_peering_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict', 'outputs.VolumeReplicationHybridPeeringDetail']]]]] = None,
             hybrid_replication_type: pulumi.Input[Optional[_builtins.str]] = None,
-            hybrid_replication_user_commands: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict']]]]] = None,
+            hybrid_replication_user_commands: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict', 'outputs.VolumeReplicationHybridReplicationUserCommand']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             mirror_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1146,7 +1146,7 @@ class VolumeReplication(pulumi.CustomResource):
             source_volume: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_details: pulumi.Input[Optional[_builtins.str]] = None,
-            transfer_stats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict']]]]] = None,
+            transfer_stats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict', 'outputs.VolumeReplicationTransferStat']]]]] = None,
             volume_name: pulumi.Input[Optional[_builtins.str]] = None,
             wait_for_mirror: pulumi.Input[Optional[_builtins.bool]] = None) -> 'VolumeReplication':
         """
@@ -1172,7 +1172,7 @@ class VolumeReplication(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An description of this resource.
         :param pulumi.Input[_builtins.str] destination_volume: Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
-        :param pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']] destination_volume_parameters: Destination volume parameters.
+        :param pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict', 'outputs.VolumeReplicationDestinationVolumeParameters']] destination_volume_parameters: Destination volume parameters.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] force_stopping: Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
@@ -1182,10 +1182,10 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] healthy: Condition of the relationship. Can be one of the following:
                - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
                - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]] hybrid_peering_details: HybridPeeringDetails contains details about the hybrid peering.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict', 'outputs.VolumeReplicationHybridPeeringDetail']]]] hybrid_peering_details: HybridPeeringDetails contains details about the hybrid peering.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] hybrid_replication_type: Hybrid replication type.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict']]]] hybrid_replication_user_commands: Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict', 'outputs.VolumeReplicationHybridReplicationUserCommand']]]] hybrid_replication_user_commands: Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
                
@@ -1213,7 +1213,7 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_volume: Full resource name of source volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
         :param pulumi.Input[_builtins.str] state: Indicates the state of replication resource. State of the mirror itself is indicated in mirrorState.
         :param pulumi.Input[_builtins.str] state_details: State details of the replication resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict']]]] transfer_stats: Replication transfer statistics. All statistics are updated every 5 minutes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict', 'outputs.VolumeReplicationTransferStat']]]] transfer_stats: Replication transfer statistics. All statistics are updated every 5 minutes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] volume_name: The name of the existing source volume.
         :param pulumi.Input[_builtins.bool] wait_for_mirror: Replication resource state is independent of mirror_state. With enough data, it can take many hours

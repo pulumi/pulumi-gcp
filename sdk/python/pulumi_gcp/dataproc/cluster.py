@@ -426,14 +426,14 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+                 cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict', 'outputs.ClusterClusterConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
+                 virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict', 'outputs.ClusterVirtualClusterConfig']]] = None,
                  __props__=None):
         """
         Manages a Cloud Dataproc cluster resource within GCP.
@@ -548,7 +548,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict', 'outputs.ClusterClusterConfig']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -577,7 +577,7 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict', 'outputs.ClusterVirtualClusterConfig']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         ...
@@ -712,14 +712,14 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+                 cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict', 'outputs.ClusterClusterConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
+                 virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict', 'outputs.ClusterVirtualClusterConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -751,7 +751,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+            cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict', 'outputs.ClusterClusterConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
@@ -760,7 +760,7 @@ class Cluster(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None) -> 'Cluster':
+            virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict', 'outputs.ClusterVirtualClusterConfig']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -768,7 +768,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict', 'outputs.ClusterClusterConfig']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -801,7 +801,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict', 'outputs.ClusterVirtualClusterConfig']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

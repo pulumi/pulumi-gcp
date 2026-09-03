@@ -775,16 +775,16 @@ class AiPersistentResource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict', 'outputs.AiPersistentResourceEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_interface_config: pulumi.Input[Optional[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict']]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict', 'outputs.AiPersistentResourcePscInterfaceConfig']]] = None,
                  reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict']]]]] = None,
-                 resource_runtime_spec: pulumi.Input[Optional[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict']]] = None,
+                 resource_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict', 'outputs.AiPersistentResourceResourcePool']]]]] = None,
+                 resource_runtime_spec: pulumi.Input[Optional[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict', 'outputs.AiPersistentResourceResourceRuntimeSpec']]] = None,
                  __props__=None):
         """
         Represents long-lasting resources that are dedicated to users to runs custom
@@ -974,7 +974,7 @@ class AiPersistentResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the PersistentResource.
                The name can be up to 128 characters long and can consist of any UTF-8
                characters.
-        :param pulumi.Input[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict']] encryption_spec: Represents a customer-managed encryption key specification that can be
+        :param pulumi.Input[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict', 'outputs.AiPersistentResourceEncryptionSpec']] encryption_spec: Represents a customer-managed encryption key specification that can be
                applied to a Vertex AI resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize PersistentResource.
@@ -1004,7 +1004,7 @@ class AiPersistentResource(pulumi.CustomResource):
                network.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict']] psc_interface_config: Configuration for PSC-I.
+        :param pulumi.Input[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict', 'outputs.AiPersistentResourcePscInterfaceConfig']] psc_interface_config: Configuration for PSC-I.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_ip_ranges: A list of names for the reserved IP ranges under the VPC network
                that can be used for this persistent resource.
@@ -1012,9 +1012,9 @@ class AiPersistentResource(pulumi.CustomResource):
                ranges. Otherwise, the persistent resource is deployed to any IP
                ranges under the provided VPC network.
                Example: ['vertex-ai-ip-range'].
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict']]]] resource_pools: The spec of the pools of different resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict', 'outputs.AiPersistentResourceResourcePool']]]] resource_pools: The spec of the pools of different resources.
                Structure is documented below.
-        :param pulumi.Input[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict']] resource_runtime_spec: Configuration for the runtime on a PersistentResource instance.
+        :param pulumi.Input[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict', 'outputs.AiPersistentResourceResourceRuntimeSpec']] resource_runtime_spec: Configuration for the runtime on a PersistentResource instance.
                Structure is documented below.
         """
         ...
@@ -1217,16 +1217,16 @@ class AiPersistentResource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict', 'outputs.AiPersistentResourceEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 psc_interface_config: pulumi.Input[Optional[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict']]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict', 'outputs.AiPersistentResourcePscInterfaceConfig']]] = None,
                  reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict']]]]] = None,
-                 resource_runtime_spec: pulumi.Input[Optional[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict']]] = None,
+                 resource_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict', 'outputs.AiPersistentResourceResourcePool']]]]] = None,
+                 resource_runtime_spec: pulumi.Input[Optional[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict', 'outputs.AiPersistentResourceResourceRuntimeSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1276,19 +1276,19 @@ class AiPersistentResource(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict']]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceErrorArgs', 'AiPersistentResourceErrorArgsDict']]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict', 'outputs.AiPersistentResourceEncryptionSpec']]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceErrorArgs', 'AiPersistentResourceErrorArgsDict', 'outputs.AiPersistentResourceError']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            psc_interface_config: pulumi.Input[Optional[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict']]] = None,
+            psc_interface_config: pulumi.Input[Optional[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict', 'outputs.AiPersistentResourcePscInterfaceConfig']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict']]]]] = None,
-            resource_runtime_spec: pulumi.Input[Optional[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict']]] = None,
-            resource_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourceRuntimeArgs', 'AiPersistentResourceResourceRuntimeArgsDict']]]]] = None,
+            resource_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict', 'outputs.AiPersistentResourceResourcePool']]]]] = None,
+            resource_runtime_spec: pulumi.Input[Optional[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict', 'outputs.AiPersistentResourceResourceRuntimeSpec']]] = None,
+            resource_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiPersistentResourceResourceRuntimeArgs', 'AiPersistentResourceResourceRuntimeArgsDict', 'outputs.AiPersistentResourceResourceRuntime']]]]] = None,
             satisfies_pzi: pulumi.Input[Optional[_builtins.bool]] = None,
             satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
             start_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1312,10 +1312,10 @@ class AiPersistentResource(pulumi.CustomResource):
                The name can be up to 128 characters long and can consist of any UTF-8
                characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict']] encryption_spec: Represents a customer-managed encryption key specification that can be
+        :param pulumi.Input[Union['AiPersistentResourceEncryptionSpecArgs', 'AiPersistentResourceEncryptionSpecArgsDict', 'outputs.AiPersistentResourceEncryptionSpec']] encryption_spec: Represents a customer-managed encryption key specification that can be
                applied to a Vertex AI resource.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceErrorArgs', 'AiPersistentResourceErrorArgsDict']]]] errors: The `Status` type defines a logical error model that is suitable for
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceErrorArgs', 'AiPersistentResourceErrorArgsDict', 'outputs.AiPersistentResourceError']]]] errors: The `Status` type defines a logical error model that is suitable for
                different programming environments, including REST APIs and RPC APIs. It is
                used by [gRPC](https://github.com/grpc). Each `Status` message contains
                three pieces of data: error code, error message, and error details.
@@ -1349,7 +1349,7 @@ class AiPersistentResource(pulumi.CustomResource):
                network.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict']] psc_interface_config: Configuration for PSC-I.
+        :param pulumi.Input[Union['AiPersistentResourcePscInterfaceConfigArgs', 'AiPersistentResourcePscInterfaceConfigArgsDict', 'outputs.AiPersistentResourcePscInterfaceConfig']] psc_interface_config: Configuration for PSC-I.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
@@ -1359,11 +1359,11 @@ class AiPersistentResource(pulumi.CustomResource):
                ranges. Otherwise, the persistent resource is deployed to any IP
                ranges under the provided VPC network.
                Example: ['vertex-ai-ip-range'].
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict']]]] resource_pools: The spec of the pools of different resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceResourcePoolArgs', 'AiPersistentResourceResourcePoolArgsDict', 'outputs.AiPersistentResourceResourcePool']]]] resource_pools: The spec of the pools of different resources.
                Structure is documented below.
-        :param pulumi.Input[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict']] resource_runtime_spec: Configuration for the runtime on a PersistentResource instance.
+        :param pulumi.Input[Union['AiPersistentResourceResourceRuntimeSpecArgs', 'AiPersistentResourceResourceRuntimeSpecArgsDict', 'outputs.AiPersistentResourceResourceRuntimeSpec']] resource_runtime_spec: Configuration for the runtime on a PersistentResource instance.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceResourceRuntimeArgs', 'AiPersistentResourceResourceRuntimeArgsDict']]]] resource_runtimes: Persistent Cluster runtime information as output
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiPersistentResourceResourceRuntimeArgs', 'AiPersistentResourceResourceRuntimeArgsDict', 'outputs.AiPersistentResourceResourceRuntime']]]] resource_runtimes: Persistent Cluster runtime information as output
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] satisfies_pzi: Reserved for future use.
         :param pulumi.Input[_builtins.bool] satisfies_pzs: Reserved for future use.

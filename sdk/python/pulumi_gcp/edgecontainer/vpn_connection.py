@@ -526,7 +526,7 @@ class VpnConnection(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None,
+                 vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict', 'outputs.VpnConnectionVpcProject']]] = None,
                  __props__=None):
         """
         A VPN connection
@@ -619,7 +619,7 @@ class VpnConnection(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] router: The VPN connection Cloud Router name.
         :param pulumi.Input[_builtins.str] vpc: The network ID of VPC to connect to.
-        :param pulumi.Input[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
+        :param pulumi.Input[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict', 'outputs.VpnConnectionVpcProject']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
                Structure is documented below.
         """
         ...
@@ -723,7 +723,7 @@ class VpnConnection(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  router: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None,
+                 vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict', 'outputs.VpnConnectionVpcProject']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -768,7 +768,7 @@ class VpnConnection(pulumi.CustomResource):
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict']]]]] = None,
+            details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict', 'outputs.VpnConnectionDetail']]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -780,7 +780,7 @@ class VpnConnection(pulumi.CustomResource):
             router: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             vpc: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None) -> 'VpnConnection':
+            vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict', 'outputs.VpnConnectionVpcProject']]] = None) -> 'VpnConnection':
         """
         Get an existing VpnConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -796,7 +796,7 @@ class VpnConnection(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict']]]] details: A nested object resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict', 'outputs.VpnConnectionDetail']]]] details: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_high_availability: Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -814,7 +814,7 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] router: The VPN connection Cloud Router name.
         :param pulumi.Input[_builtins.str] update_time: The time when the VPN connection was last updated.
         :param pulumi.Input[_builtins.str] vpc: The network ID of VPC to connect to.
-        :param pulumi.Input[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
+        :param pulumi.Input[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict', 'outputs.VpnConnectionVpcProject']] vpc_project: Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

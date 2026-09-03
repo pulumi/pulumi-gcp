@@ -302,7 +302,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_data: pulumi.Input[Optional[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
+                 local_data: pulumi.Input[Optional[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict', 'outputs.ResponsePolicyRuleLocalData']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  response_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,7 +379,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-        :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
+        :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict', 'outputs.ResponsePolicyRuleLocalData']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -472,7 +472,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 local_data: pulumi.Input[Optional[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
+                 local_data: pulumi.Input[Optional[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict', 'outputs.ResponsePolicyRuleLocalData']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  response_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -511,7 +511,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
             behavior: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             dns_name: pulumi.Input[Optional[_builtins.str]] = None,
-            local_data: pulumi.Input[Optional[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
+            local_data: pulumi.Input[Optional[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict', 'outputs.ResponsePolicyRuleLocalData']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             response_policy: pulumi.Input[Optional[_builtins.str]] = None,
             rule_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResponsePolicyRule':
@@ -531,7 +531,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-        :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
+        :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict', 'outputs.ResponsePolicyRuleLocalData']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

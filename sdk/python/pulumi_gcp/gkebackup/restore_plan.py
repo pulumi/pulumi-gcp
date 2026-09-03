@@ -468,7 +468,7 @@ class RestorePlan(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 restore_config: pulumi.Input[Optional[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']]] = None,
+                 restore_config: pulumi.Input[Optional[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict', 'outputs.RestorePlanRestoreConfig']]] = None,
                  __props__=None):
         """
         Represents a Restore Plan instance.
@@ -1020,7 +1020,7 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']] restore_config: Defines the configuration of Restores created via this RestorePlan.
+        :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict', 'outputs.RestorePlanRestoreConfig']] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         """
         ...
@@ -1580,7 +1580,7 @@ class RestorePlan(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 restore_config: pulumi.Input[Optional[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']]] = None,
+                 restore_config: pulumi.Input[Optional[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict', 'outputs.RestorePlanRestoreConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1634,7 +1634,7 @@ class RestorePlan(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            restore_config: pulumi.Input[Optional[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']]] = None,
+            restore_config: pulumi.Input[Optional[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict', 'outputs.RestorePlanRestoreConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_reason: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'RestorePlan':
@@ -1668,7 +1668,7 @@ class RestorePlan(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']] restore_config: Defines the configuration of Restores created via this RestorePlan.
+        :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict', 'outputs.RestorePlanRestoreConfig']] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The State of the RestorePlan.
         :param pulumi.Input[_builtins.str] state_reason: Detailed description of why RestorePlan is in its current state.

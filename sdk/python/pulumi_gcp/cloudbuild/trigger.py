@@ -1078,31 +1078,31 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
-                 bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
-                 build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
+                 approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict', 'outputs.TriggerApprovalConfig']]] = None,
+                 bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict', 'outputs.TriggerBitbucketServerTriggerConfig']]] = None,
+                 build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict', 'outputs.TriggerBuild']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
+                 developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict', 'outputs.TriggerDeveloperConnectEventConfig']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filename: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_file_source: pulumi.Input[Optional[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']]] = None,
-                 github: pulumi.Input[Optional[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']]] = None,
+                 git_file_source: pulumi.Input[Optional[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict', 'outputs.TriggerGitFileSource']]] = None,
+                 github: pulumi.Input[Optional[Union['TriggerGithubArgs', 'TriggerGithubArgsDict', 'outputs.TriggerGithub']]] = None,
                  ignored_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  include_build_logs: pulumi.Input[Optional[_builtins.str]] = None,
                  included_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pubsub_config: pulumi.Input[Optional[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']]] = None,
-                 repository_event_config: pulumi.Input[Optional[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']]] = None,
+                 pubsub_config: pulumi.Input[Optional[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict', 'outputs.TriggerPubsubConfig']]] = None,
+                 repository_event_config: pulumi.Input[Optional[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict', 'outputs.TriggerRepositoryEventConfig']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_to_build: pulumi.Input[Optional[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']]] = None,
+                 source_to_build: pulumi.Input[Optional[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict', 'outputs.TriggerSourceToBuild']]] = None,
                  substitutions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 trigger_template: pulumi.Input[Optional[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']]] = None,
-                 webhook_config: pulumi.Input[Optional[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']]] = None,
+                 trigger_template: pulumi.Input[Optional[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict', 'outputs.TriggerTriggerTemplate']]] = None,
+                 webhook_config: pulumi.Input[Optional[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict', 'outputs.TriggerWebhookConfig']]] = None,
                  __props__=None):
         """
         Configuration for an automated build in response to source repository changes.
@@ -1774,13 +1774,13 @@ class Trigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+        :param pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict', 'outputs.TriggerApprovalConfig']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        :param pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict', 'outputs.TriggerBitbucketServerTriggerConfig']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']] build: Contents of the build template. Either a filename or build template must be provided.
+        :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict', 'outputs.TriggerBuild']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1789,16 +1789,16 @@ class Trigger(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
-        :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
+        :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict', 'outputs.TriggerDeveloperConnectEventConfig']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[_builtins.str] filename: Path, from the source root, to a file whose contents is used for the template.
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
                When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
         :param pulumi.Input[_builtins.str] filter: A Common Expression Language string. Used only with Pub/Sub and Webhook.
-        :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']] git_file_source: The file source describing the local or remote Build template.
+        :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict', 'outputs.TriggerGitFileSource']] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict', 'outputs.TriggerGithub']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
@@ -1825,29 +1825,29 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict', 'outputs.TriggerPubsubConfig']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict', 'outputs.TriggerRepositoryEventConfig']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
                ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
                Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
-        :param pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']] source_to_build: The repo and ref of the repository from which to build.
+        :param pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict', 'outputs.TriggerSourceToBuild']] source_to_build: The repo and ref of the repository from which to build.
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for annotation of a BuildTrigger
-        :param pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']] trigger_template: Template describing the types of source changes to trigger a build.
+        :param pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict', 'outputs.TriggerTriggerTemplate']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict', 'outputs.TriggerWebhookConfig']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
                Structure is documented below.
         """
@@ -2540,31 +2540,31 @@ class Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
-                 bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
-                 build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
+                 approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict', 'outputs.TriggerApprovalConfig']]] = None,
+                 bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict', 'outputs.TriggerBitbucketServerTriggerConfig']]] = None,
+                 build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict', 'outputs.TriggerBuild']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
+                 developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict', 'outputs.TriggerDeveloperConnectEventConfig']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filename: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_file_source: pulumi.Input[Optional[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']]] = None,
-                 github: pulumi.Input[Optional[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']]] = None,
+                 git_file_source: pulumi.Input[Optional[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict', 'outputs.TriggerGitFileSource']]] = None,
+                 github: pulumi.Input[Optional[Union['TriggerGithubArgs', 'TriggerGithubArgsDict', 'outputs.TriggerGithub']]] = None,
                  ignored_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  include_build_logs: pulumi.Input[Optional[_builtins.str]] = None,
                  included_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 pubsub_config: pulumi.Input[Optional[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']]] = None,
-                 repository_event_config: pulumi.Input[Optional[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']]] = None,
+                 pubsub_config: pulumi.Input[Optional[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict', 'outputs.TriggerPubsubConfig']]] = None,
+                 repository_event_config: pulumi.Input[Optional[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict', 'outputs.TriggerRepositoryEventConfig']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_to_build: pulumi.Input[Optional[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']]] = None,
+                 source_to_build: pulumi.Input[Optional[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict', 'outputs.TriggerSourceToBuild']]] = None,
                  substitutions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 trigger_template: pulumi.Input[Optional[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']]] = None,
-                 webhook_config: pulumi.Input[Optional[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']]] = None,
+                 trigger_template: pulumi.Input[Optional[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict', 'outputs.TriggerTriggerTemplate']]] = None,
+                 webhook_config: pulumi.Input[Optional[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict', 'outputs.TriggerWebhookConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2611,33 +2611,33 @@ class Trigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
-            bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
-            build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
+            approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict', 'outputs.TriggerApprovalConfig']]] = None,
+            bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict', 'outputs.TriggerBitbucketServerTriggerConfig']]] = None,
+            build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict', 'outputs.TriggerBuild']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
+            developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict', 'outputs.TriggerDeveloperConnectEventConfig']]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             filename: pulumi.Input[Optional[_builtins.str]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
-            git_file_source: pulumi.Input[Optional[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']]] = None,
-            github: pulumi.Input[Optional[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']]] = None,
+            git_file_source: pulumi.Input[Optional[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict', 'outputs.TriggerGitFileSource']]] = None,
+            github: pulumi.Input[Optional[Union['TriggerGithubArgs', 'TriggerGithubArgsDict', 'outputs.TriggerGithub']]] = None,
             ignored_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             include_build_logs: pulumi.Input[Optional[_builtins.str]] = None,
             included_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            pubsub_config: pulumi.Input[Optional[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']]] = None,
-            repository_event_config: pulumi.Input[Optional[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']]] = None,
+            pubsub_config: pulumi.Input[Optional[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict', 'outputs.TriggerPubsubConfig']]] = None,
+            repository_event_config: pulumi.Input[Optional[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict', 'outputs.TriggerRepositoryEventConfig']]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
-            source_to_build: pulumi.Input[Optional[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']]] = None,
+            source_to_build: pulumi.Input[Optional[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict', 'outputs.TriggerSourceToBuild']]] = None,
             substitutions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
-            trigger_template: pulumi.Input[Optional[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']]] = None,
-            webhook_config: pulumi.Input[Optional[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']]] = None) -> 'Trigger':
+            trigger_template: pulumi.Input[Optional[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict', 'outputs.TriggerTriggerTemplate']]] = None,
+            webhook_config: pulumi.Input[Optional[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict', 'outputs.TriggerWebhookConfig']]] = None) -> 'Trigger':
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2645,13 +2645,13 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+        :param pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict', 'outputs.TriggerApprovalConfig']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        :param pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict', 'outputs.TriggerBitbucketServerTriggerConfig']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']] build: Contents of the build template. Either a filename or build template must be provided.
+        :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict', 'outputs.TriggerBuild']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time when the trigger was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -2661,16 +2661,16 @@ class Trigger(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
-        :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
+        :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict', 'outputs.TriggerDeveloperConnectEventConfig']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[_builtins.str] filename: Path, from the source root, to a file whose contents is used for the template.
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
                When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
         :param pulumi.Input[_builtins.str] filter: A Common Expression Language string. Used only with Pub/Sub and Webhook.
-        :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']] git_file_source: The file source describing the local or remote Build template.
+        :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict', 'outputs.TriggerGitFileSource']] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict', 'outputs.TriggerGithub']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
@@ -2697,17 +2697,17 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict', 'outputs.TriggerPubsubConfig']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict', 'outputs.TriggerRepositoryEventConfig']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
                ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
                Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
-        :param pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']] source_to_build: The repo and ref of the repository from which to build.
+        :param pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict', 'outputs.TriggerSourceToBuild']] source_to_build: The repo and ref of the repository from which to build.
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
@@ -2715,12 +2715,12 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for annotation of a BuildTrigger
         :param pulumi.Input[_builtins.str] trigger_id: The unique identifier for the trigger.
-        :param pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']] trigger_template: Template describing the types of source changes to trigger a build.
+        :param pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict', 'outputs.TriggerTriggerTemplate']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
                Structure is documented below.
-        :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict', 'outputs.TriggerWebhookConfig']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
                Structure is documented below.
         """

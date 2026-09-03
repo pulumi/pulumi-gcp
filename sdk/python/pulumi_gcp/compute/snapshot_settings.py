@@ -118,7 +118,7 @@ class SnapshotSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None,
+                 storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict', 'outputs.SnapshotSettingsStorageLocation']]] = None,
                  __props__=None):
         """
         Updates your project's snapshot settings and sets a new default storage location for snapshots.
@@ -165,7 +165,7 @@ class SnapshotSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']] storage_location: Policy of which storage location is going to be resolved, and additional data
+        :param pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict', 'outputs.SnapshotSettingsStorageLocation']] storage_location: Policy of which storage location is going to be resolved, and additional data
                that particularizes how the policy is going to be carried out
                Structure is documented below.
         """
@@ -232,7 +232,7 @@ class SnapshotSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None,
+                 storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict', 'outputs.SnapshotSettingsStorageLocation']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -257,7 +257,7 @@ class SnapshotSettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None) -> 'SnapshotSettings':
+            storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict', 'outputs.SnapshotSettingsStorageLocation']]] = None) -> 'SnapshotSettings':
         """
         Get an existing SnapshotSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -267,7 +267,7 @@ class SnapshotSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']] storage_location: Policy of which storage location is going to be resolved, and additional data
+        :param pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict', 'outputs.SnapshotSettingsStorageLocation']] storage_location: Policy of which storage location is going to be resolved, and additional data
                that particularizes how the policy is going to be carried out
                Structure is documented below.
         """

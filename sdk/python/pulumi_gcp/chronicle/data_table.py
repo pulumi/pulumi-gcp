@@ -570,7 +570,7 @@ class DataTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict']]]]] = None,
+                 column_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict', 'outputs.DataTableColumnInfo']]]]] = None,
                  data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -578,7 +578,7 @@ class DataTable(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope_info: pulumi.Input[Optional[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict']]] = None,
+                 scope_info: pulumi.Input[Optional[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict', 'outputs.DataTableScopeInfo']]] = None,
                  __props__=None):
         """
         Represents a Chronicle Data Table, a multicolumn structure used to ingest your own data into Google SecOps.
@@ -681,7 +681,7 @@ class DataTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict']]]] column_infos: Details of all the columns in the table
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict', 'outputs.DataTableColumnInfo']]]] column_infos: Details of all the columns in the table
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_table_id: The ID to use for the data table. This is also the display name for
                the data table. It must satisfy the following requirements:
@@ -705,7 +705,7 @@ class DataTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] row_time_to_live: User-provided TTL of the data table.
-        :param pulumi.Input[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict']] scope_info: DataTableScopeInfo specifies the scope info of the data table.
+        :param pulumi.Input[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict', 'outputs.DataTableScopeInfo']] scope_info: DataTableScopeInfo specifies the scope info of the data table.
                Structure is documented below.
         """
         ...
@@ -828,7 +828,7 @@ class DataTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict']]]]] = None,
+                 column_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict', 'outputs.DataTableColumnInfo']]]]] = None,
                  data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -836,7 +836,7 @@ class DataTable(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope_info: pulumi.Input[Optional[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict']]] = None,
+                 scope_info: pulumi.Input[Optional[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict', 'outputs.DataTableScopeInfo']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -884,7 +884,7 @@ class DataTable(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             approximate_row_count: pulumi.Input[Optional[_builtins.int]] = None,
-            column_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict']]]]] = None,
+            column_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict', 'outputs.DataTableColumnInfo']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_table_uuid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -899,7 +899,7 @@ class DataTable(pulumi.CustomResource):
             row_time_to_live_update_time: pulumi.Input[Optional[_builtins.str]] = None,
             rule_associations_count: pulumi.Input[Optional[_builtins.int]] = None,
             rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            scope_info: pulumi.Input[Optional[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict']]] = None,
+            scope_info: pulumi.Input[Optional[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict', 'outputs.DataTableScopeInfo']]] = None,
             update_source: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataTable':
         """
@@ -910,7 +910,7 @@ class DataTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] approximate_row_count: The count of rows in the data table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict']]]] column_infos: Details of all the columns in the table
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict', 'outputs.DataTableColumnInfo']]]] column_infos: Details of all the columns in the table
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Table create time
         :param pulumi.Input[_builtins.str] data_table_id: The ID to use for the data table. This is also the display name for
@@ -946,7 +946,7 @@ class DataTable(pulumi.CustomResource):
                data table. Format:
                projects/{project}/locations/{location}/instances/{instance}/rules/{rule}.
                {rule} here refers to the rule id.
-        :param pulumi.Input[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict']] scope_info: DataTableScopeInfo specifies the scope info of the data table.
+        :param pulumi.Input[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict', 'outputs.DataTableScopeInfo']] scope_info: DataTableScopeInfo specifies the scope info of the data table.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_source: Possible values:
                USER

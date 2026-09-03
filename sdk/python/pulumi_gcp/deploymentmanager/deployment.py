@@ -499,11 +499,11 @@ class Deployment(pulumi.CustomResource):
                  delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict', 'outputs.DeploymentLabel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict', 'outputs.DeploymentTarget']]] = None,
                  __props__=None):
         """
         A collection of resources that are deployed and managed together using
@@ -582,7 +582,7 @@ class Deployment(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict', 'outputs.DeploymentLabel']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Unique name for the deployment
         :param pulumi.Input[_builtins.bool] preview: If set to true, a deployment is created with "shell" resources
@@ -595,7 +595,7 @@ class Deployment(pulumi.CustomResource):
                to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict']] target: Parameters that define your deployment, including the deployment
+        :param pulumi.Input[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict', 'outputs.DeploymentTarget']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
         """
@@ -677,11 +677,11 @@ class Deployment(pulumi.CustomResource):
                  delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict', 'outputs.DeploymentLabel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  preview: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict', 'outputs.DeploymentTarget']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -720,13 +720,13 @@ class Deployment(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict', 'outputs.DeploymentLabel']]]]] = None,
             manifest: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             preview: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            target: pulumi.Input[Optional[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict']]] = None) -> 'Deployment':
+            target: pulumi.Input[Optional[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict', 'outputs.DeploymentTarget']]] = None) -> 'Deployment':
         """
         Get an existing Deployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -757,7 +757,7 @@ class Deployment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[_builtins.str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict', 'outputs.DeploymentLabel']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
@@ -773,7 +773,7 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: Output only. Server defined URL for the resource.
-        :param pulumi.Input[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict']] target: Parameters that define your deployment, including the deployment
+        :param pulumi.Input[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict', 'outputs.DeploymentTarget']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
         """

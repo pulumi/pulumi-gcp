@@ -143,7 +143,7 @@ class HostingVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict', 'outputs.HostingVersionConfig']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -358,7 +358,7 @@ class HostingVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
+        :param pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict', 'outputs.HostingVersionConfig']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this Version.
         """
@@ -593,7 +593,7 @@ class HostingVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict', 'outputs.HostingVersionConfig']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -620,7 +620,7 @@ class HostingVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict', 'outputs.HostingVersionConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostingVersion':
@@ -631,7 +631,7 @@ class HostingVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
+        :param pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict', 'outputs.HostingVersionConfig']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name for the version, in the format:
                sites/SITE_ID/versions/VERSION_ID

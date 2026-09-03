@@ -603,20 +603,20 @@ class Control(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boost_action: pulumi.Input[Optional[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict']]] = None,
+                 boost_action: pulumi.Input[Optional[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict', 'outputs.ControlBoostAction']]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict', 'outputs.ControlCondition']]]]] = None,
                  control_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']]] = None,
+                 filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict', 'outputs.ControlFilterAction']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 promote_action: pulumi.Input[Optional[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict']]] = None,
-                 redirect_action: pulumi.Input[Optional[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict']]] = None,
+                 promote_action: pulumi.Input[Optional[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict', 'outputs.ControlPromoteAction']]] = None,
+                 redirect_action: pulumi.Input[Optional[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict', 'outputs.ControlRedirectAction']]] = None,
                  solution_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 synonyms_action: pulumi.Input[Optional[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict']]] = None,
+                 synonyms_action: pulumi.Input[Optional[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict', 'outputs.ControlSynonymsAction']]] = None,
                  use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -687,10 +687,10 @@ class Control(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict']] boost_action: Changes the returned order of results.
+        :param pulumi.Input[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict', 'outputs.ControlBoostAction']] boost_action: Changes the returned order of results.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID. Currently only accepts "default_collection".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]] conditions: The conditions under which the control is active.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict', 'outputs.ControlCondition']]]] conditions: The conditions under which the control is active.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] control_id: The unique id of the control.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -702,19 +702,19 @@ class Control(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the control. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[_builtins.str] engine_id: The engine to add the control to.
-        :param pulumi.Input[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']] filter_action: Removes entries from returned results.
+        :param pulumi.Input[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict', 'outputs.ControlFilterAction']] filter_action: Removes entries from returned results.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict']] promote_action: Promotes a specified link for a query.
+        :param pulumi.Input[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict', 'outputs.ControlPromoteAction']] promote_action: Promotes a specified link for a query.
                Structure is documented below.
-        :param pulumi.Input[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict']] redirect_action: Redirects to a specified URI.
+        :param pulumi.Input[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict', 'outputs.ControlRedirectAction']] redirect_action: Redirects to a specified URI.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] solution_type: The solution type that the control belongs to.
                Possible values are: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
-        :param pulumi.Input[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict']] synonyms_action: Associates queries with each other.
+        :param pulumi.Input[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict', 'outputs.ControlSynonymsAction']] synonyms_action: Associates queries with each other.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] use_cases: The use cases that the control is used for.
                Each value may be one of: `SEARCH_USE_CASE_SEARCH`, `SEARCH_USE_CASE_BROWSE`.
@@ -806,20 +806,20 @@ class Control(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boost_action: pulumi.Input[Optional[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict']]] = None,
+                 boost_action: pulumi.Input[Optional[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict', 'outputs.ControlBoostAction']]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict', 'outputs.ControlCondition']]]]] = None,
                  control_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']]] = None,
+                 filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict', 'outputs.ControlFilterAction']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 promote_action: pulumi.Input[Optional[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict']]] = None,
-                 redirect_action: pulumi.Input[Optional[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict']]] = None,
+                 promote_action: pulumi.Input[Optional[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict', 'outputs.ControlPromoteAction']]] = None,
+                 redirect_action: pulumi.Input[Optional[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict', 'outputs.ControlRedirectAction']]] = None,
                  solution_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 synonyms_action: pulumi.Input[Optional[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict']]] = None,
+                 synonyms_action: pulumi.Input[Optional[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict', 'outputs.ControlSynonymsAction']]] = None,
                  use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -866,21 +866,21 @@ class Control(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            boost_action: pulumi.Input[Optional[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict']]] = None,
+            boost_action: pulumi.Input[Optional[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict', 'outputs.ControlBoostAction']]] = None,
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict', 'outputs.ControlCondition']]]]] = None,
             control_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             engine_id: pulumi.Input[Optional[_builtins.str]] = None,
-            filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']]] = None,
+            filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict', 'outputs.ControlFilterAction']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            promote_action: pulumi.Input[Optional[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict']]] = None,
-            redirect_action: pulumi.Input[Optional[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict']]] = None,
+            promote_action: pulumi.Input[Optional[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict', 'outputs.ControlPromoteAction']]] = None,
+            redirect_action: pulumi.Input[Optional[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict', 'outputs.ControlRedirectAction']]] = None,
             solution_type: pulumi.Input[Optional[_builtins.str]] = None,
-            synonyms_action: pulumi.Input[Optional[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict']]] = None,
+            synonyms_action: pulumi.Input[Optional[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict', 'outputs.ControlSynonymsAction']]] = None,
             use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Control':
         """
         Get an existing Control resource's state with the given name, id, and optional extra
@@ -889,10 +889,10 @@ class Control(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict']] boost_action: Changes the returned order of results.
+        :param pulumi.Input[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict', 'outputs.ControlBoostAction']] boost_action: Changes the returned order of results.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID. Currently only accepts "default_collection".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]] conditions: The conditions under which the control is active.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict', 'outputs.ControlCondition']]]] conditions: The conditions under which the control is active.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] control_id: The unique id of the control.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -904,7 +904,7 @@ class Control(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the control. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[_builtins.str] engine_id: The engine to add the control to.
-        :param pulumi.Input[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']] filter_action: Removes entries from returned results.
+        :param pulumi.Input[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict', 'outputs.ControlFilterAction']] filter_action: Removes entries from returned results.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -914,13 +914,13 @@ class Control(pulumi.CustomResource):
                characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict']] promote_action: Promotes a specified link for a query.
+        :param pulumi.Input[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict', 'outputs.ControlPromoteAction']] promote_action: Promotes a specified link for a query.
                Structure is documented below.
-        :param pulumi.Input[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict']] redirect_action: Redirects to a specified URI.
+        :param pulumi.Input[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict', 'outputs.ControlRedirectAction']] redirect_action: Redirects to a specified URI.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] solution_type: The solution type that the control belongs to.
                Possible values are: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
-        :param pulumi.Input[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict']] synonyms_action: Associates queries with each other.
+        :param pulumi.Input[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict', 'outputs.ControlSynonymsAction']] synonyms_action: Associates queries with each other.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] use_cases: The use cases that the control is used for.
                Each value may be one of: `SEARCH_USE_CASE_SEARCH`, `SEARCH_USE_CASE_BROWSE`.

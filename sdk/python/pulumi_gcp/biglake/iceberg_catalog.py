@@ -552,11 +552,11 @@ class IcebergCatalog(pulumi.CustomResource):
                  default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']]] = None,
+                 federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict', 'outputs.IcebergCatalogFederatedCatalogOptions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']]] = None,
+                 restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict', 'outputs.IcebergCatalogRestrictedLocationsConfig']]] = None,
                  __props__=None):
         """
         IcebergCatalogs are top-level containers for Apache Iceberg REST Catalog served Namespaces and Tables.
@@ -719,7 +719,7 @@ class IcebergCatalog(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
-        :param pulumi.Input[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+        :param pulumi.Input[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict', 'outputs.IcebergCatalogFederatedCatalogOptions']] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
                is CATALOG_TYPE_FEDERATED.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
@@ -731,7 +731,7 @@ class IcebergCatalog(pulumi.CustomResource):
                catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
+        :param pulumi.Input[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict', 'outputs.IcebergCatalogRestrictedLocationsConfig']] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
                by resources within this catalog.
                Structure is documented below.
         """
@@ -903,11 +903,11 @@ class IcebergCatalog(pulumi.CustomResource):
                  default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']]] = None,
+                 federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict', 'outputs.IcebergCatalogFederatedCatalogOptions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']]] = None,
+                 restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict', 'outputs.IcebergCatalogRestrictedLocationsConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -953,12 +953,12 @@ class IcebergCatalog(pulumi.CustomResource):
             default_location: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']]] = None,
+            federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict', 'outputs.IcebergCatalogFederatedCatalogOptions']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict']]]]] = None,
-            restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']]] = None,
+            replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict', 'outputs.IcebergCatalogReplica']]]]] = None,
+            restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict', 'outputs.IcebergCatalogRestrictedLocationsConfig']]] = None,
             storage_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'IcebergCatalog':
         """
@@ -988,7 +988,7 @@ class IcebergCatalog(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
-        :param pulumi.Input[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+        :param pulumi.Input[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict', 'outputs.IcebergCatalogFederatedCatalogOptions']] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
                is CATALOG_TYPE_FEDERATED.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
@@ -1000,9 +1000,9 @@ class IcebergCatalog(pulumi.CustomResource):
                catalog's location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict']]]] replicas: Output only. The replicas for the catalog metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict', 'outputs.IcebergCatalogReplica']]]] replicas: Output only. The replicas for the catalog metadata.
                Structure is documented below.
-        :param pulumi.Input[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict']] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
+        :param pulumi.Input[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict', 'outputs.IcebergCatalogRestrictedLocationsConfig']] restricted_locations_config: Configuration for the additional GCS locations that are permitted for use
                by resources within this catalog.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_regions: Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.

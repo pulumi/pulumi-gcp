@@ -890,15 +890,15 @@ class Instance(pulumi.CustomResource):
                  deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
-                 file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
-                 initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
+                 directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict', 'outputs.InstanceDirectoryServices']]] = None,
+                 file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict', 'outputs.InstanceFileShares']]] = None,
+                 initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict', 'outputs.InstanceInitialReplication']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]]] = None,
+                 performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict', 'outputs.InstancePerformanceConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1047,13 +1047,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[_builtins.str] description: A description of the instance.
         :param pulumi.Input[_builtins.str] desired_replica_state: The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
-        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration.
+        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict', 'outputs.InstanceDirectoryServices']] directory_services: Directory Services configuration.
                Should only be set if protocol is "NFS_V4_1".
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
+        :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict', 'outputs.InstanceFileShares']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated.
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict', 'outputs.InstanceInitialReplication']] initial_replication: Replication configuration, once set, this cannot be updated.
                Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: KMS key name used for data encryption.
@@ -1063,10 +1063,10 @@ class Instance(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[_builtins.str] name: The resource name of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided,
+        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict', 'outputs.InstancePerformanceConfig']] performance_config: Performance configuration for the instance. If not provided,
                the default performance settings will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1249,15 +1249,15 @@ class Instance(pulumi.CustomResource):
                  deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
-                 file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
-                 initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
+                 directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict', 'outputs.InstanceDirectoryServices']]] = None,
+                 file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict', 'outputs.InstanceFileShares']]] = None,
+                 initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict', 'outputs.InstanceInitialReplication']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]]] = None,
+                 performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict', 'outputs.InstancePerformanceConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1320,18 +1320,18 @@ class Instance(pulumi.CustomResource):
             deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
-            directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
+            directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict', 'outputs.InstanceDirectoryServices']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]]] = None,
+            effective_replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict', 'outputs.InstanceEffectiveReplication']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
-            initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
+            file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict', 'outputs.InstanceFileShares']]] = None,
+            initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict', 'outputs.InstanceInitialReplication']]] = None,
             kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-            performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]]] = None,
+            performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict', 'outputs.InstancePerformanceConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1356,18 +1356,18 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[_builtins.str] description: A description of the instance.
         :param pulumi.Input[_builtins.str] desired_replica_state: The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
-        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration.
+        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict', 'outputs.InstanceDirectoryServices']] directory_services: Directory Services configuration.
                Should only be set if protocol is "NFS_V4_1".
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]] effective_replications: Output only fields for replication configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict', 'outputs.InstanceEffectiveReplication']]]] effective_replications: Output only fields for replication configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Server-specified ETag for the instance resource to prevent
                simultaneous updates from overwriting each other.
-        :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
+        :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict', 'outputs.InstanceFileShares']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated.
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict', 'outputs.InstanceInitialReplication']] initial_replication: Replication configuration, once set, this cannot be updated.
                Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: KMS key name used for data encryption.
@@ -1377,10 +1377,10 @@ class Instance(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[_builtins.str] name: The resource name of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided,
+        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict', 'outputs.InstancePerformanceConfig']] performance_config: Performance configuration for the instance. If not provided,
                the default performance settings will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

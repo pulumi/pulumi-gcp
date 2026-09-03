@@ -593,7 +593,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
                  data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']]] = None,
+                 destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict', 'outputs.DataExchangeSubscriptionDestinationDataset']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -724,7 +724,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']] destination_dataset: BigQuery destination dataset to create for the subscriber.
+        :param pulumi.Input[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict', 'outputs.DataExchangeSubscriptionDestinationDataset']] destination_dataset: BigQuery destination dataset to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the Subscription (and its linked dataset) should reside.
                This is the subscriber's desired location for the created resources.
@@ -876,7 +876,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
                  data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']]] = None,
+                 destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict', 'outputs.DataExchangeSubscriptionDestinationDataset']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -938,10 +938,10 @@ class DataExchangeSubscription(pulumi.CustomResource):
             data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
             data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']]] = None,
+            destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict', 'outputs.DataExchangeSubscriptionDestinationDataset']]] = None,
             last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
-            linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedDatasetMapArgs', 'DataExchangeSubscriptionLinkedDatasetMapArgsDict']]]]] = None,
-            linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedResourceArgs', 'DataExchangeSubscriptionLinkedResourceArgsDict']]]]] = None,
+            linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedDatasetMapArgs', 'DataExchangeSubscriptionLinkedDatasetMapArgsDict', 'outputs.DataExchangeSubscriptionLinkedDatasetMap']]]]] = None,
+            linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedResourceArgs', 'DataExchangeSubscriptionLinkedResourceArgsDict', 'outputs.DataExchangeSubscriptionLinkedResource']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -971,14 +971,14 @@ class DataExchangeSubscription(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']] destination_dataset: BigQuery destination dataset to create for the subscriber.
+        :param pulumi.Input[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict', 'outputs.DataExchangeSubscriptionDestinationDataset']] destination_dataset: BigQuery destination dataset to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_modify_time: Timestamp when the subscription was last modified.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedDatasetMapArgs', 'DataExchangeSubscriptionLinkedDatasetMapArgsDict']]]] linked_dataset_maps: Output only. Map of listing resource names to associated linked resource,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedDatasetMapArgs', 'DataExchangeSubscriptionLinkedDatasetMapArgsDict', 'outputs.DataExchangeSubscriptionLinkedDatasetMap']]]] linked_dataset_maps: Output only. Map of listing resource names to associated linked resource,
                e.g. projects/123/locations/us/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
                For Data Exchange subscriptions, this map may contain multiple entries if the Data Exchange has multiple listings.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedResourceArgs', 'DataExchangeSubscriptionLinkedResourceArgsDict']]]] linked_resources: Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedResourceArgs', 'DataExchangeSubscriptionLinkedResourceArgsDict', 'outputs.DataExchangeSubscriptionLinkedResource']]]] linked_resources: Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the Subscription (and its linked dataset) should reside.
                This is the subscriber's desired location for the created resources.

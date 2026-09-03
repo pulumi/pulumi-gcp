@@ -3792,98 +3792,98 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
+                 addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict', 'outputs.ClusterAddonsConfig']]] = None,
                  allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
-                 anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
-                 authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
-                 autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
+                 anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict', 'outputs.ClusterAnonymousAuthenticationConfig']]] = None,
+                 authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict', 'outputs.ClusterAuthenticatorGroupsConfig']]] = None,
+                 autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict', 'outputs.ClusterAutopilotClusterPolicyConfig']]] = None,
                  autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
-                 cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict', 'outputs.ClusterBinaryAuthorization']]] = None,
+                 cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict', 'outputs.ClusterClusterAutoscaling']]] = None,
                  cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
-                 confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
-                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
-                 cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
-                 database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
+                 cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict', 'outputs.ClusterClusterTelemetry']]] = None,
+                 confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict', 'outputs.ClusterConfidentialNodes']]] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict', 'outputs.ClusterControlPlaneEndpointsConfig']]] = None,
+                 cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict', 'outputs.ClusterCostManagementConfig']]] = None,
+                 database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict', 'outputs.ClusterDatabaseEncryption']]] = None,
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
-                 default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+                 default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict', 'outputs.ClusterDefaultSnatStatus']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict', 'outputs.ClusterDnsConfig']]] = None,
                  enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
-                 enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
+                 enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict', 'outputs.ClusterEnableK8sBetaApis']]] = None,
                  enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_multi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
-                 enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
-                 fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
-                 gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
-                 gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
-                 identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict', 'outputs.ClusterEnterpriseConfig']]] = None,
+                 fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict', 'outputs.ClusterFleet']]] = None,
+                 gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict', 'outputs.ClusterGatewayApiConfig']]] = None,
+                 gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict', 'outputs.ClusterGkeAutoUpgradeConfig']]] = None,
+                 identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict', 'outputs.ClusterIdentityServiceConfig']]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
+                 ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict', 'outputs.ClusterIpAllocationPolicy']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict', 'outputs.ClusterLoggingConfig']]] = None,
                  logging_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
-                 managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
-                 master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
-                 master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
-                 mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']]] = None,
+                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']]] = None,
+                 managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']]] = None,
+                 master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']]] = None,
+                 master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict', 'outputs.ClusterMasterAuthorizedNetworksConfig']]] = None,
+                 mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict', 'outputs.ClusterMeshCertificates']]] = None,
                  min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict', 'outputs.ClusterMonitoringConfig']]] = None,
                  monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
-                 network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']]] = None,
+                 network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict', 'outputs.ClusterNetworkPolicy']]] = None,
                  networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
-                 node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict', 'outputs.ClusterNodeConfig']]] = None,
+                 node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict', 'outputs.ClusterNodeCreationConfig']]] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
-                 node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
-                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
+                 node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict', 'outputs.ClusterNodePoolAutoConfig']]] = None,
+                 node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict', 'outputs.ClusterNodePoolDefaults']]] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict', 'outputs.ClusterNodePool']]]]] = None,
                  node_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
-                 pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
-                 pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
-                 private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict', 'outputs.ClusterNotificationConfig']]] = None,
+                 pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict', 'outputs.ClusterPodAutoscaling']]] = None,
+                 pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict', 'outputs.ClusterPodSecurityPolicyConfig']]] = None,
+                 private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict', 'outputs.ClusterPrivateClusterConfig']]] = None,
                  private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
-                 rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
-                 release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
+                 protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict', 'outputs.ClusterProtectConfig']]] = None,
+                 rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict', 'outputs.ClusterRbacBindingConfig']]] = None,
+                 release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict', 'outputs.ClusterReleaseChannel']]] = None,
                  remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
-                 rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']]] = None,
-                 secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
-                 secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
-                 security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
-                 service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+                 resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
+                 rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+                 secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
+                 secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
+                 security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
+                 service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict', 'outputs.ClusterServiceExternalIpsConfig']]] = None,
                  skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
-                 tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
-                 user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
-                 vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
-                 workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
-                 workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
+                 tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']]] = None,
+                 user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']]] = None,
+                 vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict', 'outputs.ClusterVerticalPodAutoscaling']]] = None,
+                 workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict', 'outputs.ClusterWorkloadAltsConfig']]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict', 'outputs.ClusterWorkloadIdentityConfig']]] = None,
                  __props__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster.
@@ -4040,25 +4040,25 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']] addons_config: The configuration for addons supported by GKE.
+        :param pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict', 'outputs.ClusterAddonsConfig']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
-        :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-        :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
+        :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict', 'outputs.ClusterAnonymousAuthenticationConfig']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+        :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict', 'outputs.ClusterAuthenticatorGroupsConfig']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        :param pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict', 'outputs.ClusterAutopilotClusterPolicyConfig']] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
                allowlist Cloud Storage paths for the cluster. These paths are used with the
                `--autopilot-privileged-admission` flag to authorize privileged workloads in
                Autopilot clusters. See the Cluster API's
                [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
                documentation for more details.
-        :param pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary
+        :param pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict', 'outputs.ClusterBinaryAuthorization']] binary_authorization: Configuration options for the Binary
                Authorization feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+        :param pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict', 'outputs.ClusterClusterAutoscaling']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
@@ -4067,23 +4067,23 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']] cluster_telemetry: ) Configuration for
+        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict', 'outputs.ClusterClusterTelemetry']] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
-        :param pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
+        :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict', 'outputs.ClusterConfidentialNodes']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict', 'outputs.ClusterControlPlaneEndpointsConfig']] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']] cost_management_config: Configuration for the
+        :param pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict', 'outputs.ClusterCostManagementConfig']] cost_management_config: Configuration for the
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']] database_encryption: Structure is documented below.
+        :param pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict', 'outputs.ClusterDatabaseEncryption']] database_encryption: Structure is documented below.
         :param pulumi.Input[_builtins.str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         :param pulumi.Input[_builtins.str] dataplane_optimization_mode: The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict', 'outputs.ClusterDefaultSnatStatus']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -4099,7 +4099,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
         :param pulumi.Input[_builtins.str] desired_emulated_version: The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
-        :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict', 'outputs.ClusterDnsConfig']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -4107,7 +4107,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_cilium_clusterwide_network_policy: Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[_builtins.bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-        :param pulumi.Input[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
+        :param pulumi.Input[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict', 'outputs.ClusterEnableK8sBetaApis']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -4121,12 +4121,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[_builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
-        :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
-        :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
-        :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict', 'outputs.ClusterEnterpriseConfig']] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+        :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict', 'outputs.ClusterFleet']] fleet: Fleet configuration for the cluster. Structure is documented below.
+        :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict', 'outputs.ClusterGatewayApiConfig']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict', 'outputs.ClusterGkeAutoUpgradeConfig']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict', 'outputs.ClusterIdentityServiceConfig']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
@@ -4135,7 +4135,7 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']] ip_allocation_policy: Configuration of cluster IP allocation for
+        :param pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict', 'outputs.ClusterIpAllocationPolicy']] ip_allocation_policy: Configuration of cluster IP allocation for
                VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) in which the cluster
@@ -4144,27 +4144,27 @@ class Cluster(pulumi.CustomResource):
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
-        :param pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']] logging_config: Logging configuration for the cluster.
+        :param pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict', 'outputs.ClusterLoggingConfig']] logging_config: Logging configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
-        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
+        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
+        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
                you see an unexpected diff unsetting your client cert, ensure you have the
                `container.clusters.getCredentials` permission.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']] master_authorized_networks_config: The desired
+        :param pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict', 'outputs.ClusterMasterAuthorizedNetworksConfig']] master_authorized_networks_config: The desired
                configuration options for master authorized networks. Omit the
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']] mesh_certificates: Structure is documented below.
+        :param pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict', 'outputs.ClusterMeshCertificates']] mesh_certificates: Structure is documented below.
         :param pulumi.Input[_builtins.str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -4178,7 +4178,7 @@ class Cluster(pulumi.CustomResource):
                > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
                to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
                region are guaranteed to support the same version.
-        :param pulumi.Input[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']] monitoring_config: Monitoring configuration for the cluster.
+        :param pulumi.Input[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict', 'outputs.ClusterMonitoringConfig']] monitoring_config: Monitoring configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
@@ -4194,18 +4194,18 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']] network_performance_config: Network bandwidth tier configuration.
-        :param pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']] network_policy: Configuration options for the
+        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']] network_performance_config: Network bandwidth tier configuration.
+        :param pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict', 'outputs.ClusterNetworkPolicy']] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[_builtins.str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
-        :param pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']] node_config: Parameters used in creating the default node pool.
+        :param pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict', 'outputs.ClusterNodeConfig']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        :param pulumi.Input[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict', 'outputs.ClusterNodeCreationConfig']] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -4217,11 +4217,11 @@ class Cluster(pulumi.CustomResource):
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param pulumi.Input[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
+        :param pulumi.Input[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict', 'outputs.ClusterNodePoolAutoConfig']] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
-        :param pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
+        :param pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict', 'outputs.ClusterNodePoolDefaults']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict', 'outputs.ClusterNodePool']]]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
                to say "these are the _only_ node pools associated with this cluster", use the
@@ -4234,21 +4234,21 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
+        :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict', 'outputs.ClusterNotificationConfig']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict', 'outputs.ClusterPodAutoscaling']] pod_autoscaling: Configuration for the
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict', 'outputs.ClusterPodSecurityPolicyConfig']] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        :param pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict', 'outputs.ClusterPrivateClusterConfig']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: )
+        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict', 'outputs.ClusterProtectConfig']] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
-        :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-        :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+        :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict', 'outputs.ClusterRbacBindingConfig']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+        :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict', 'outputs.ClusterReleaseChannel']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
@@ -4265,28 +4265,28 @@ class Cluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']] resource_usage_export_config: Configuration for the
+        :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
+        :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: Configuration for the
+        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']] secret_sync_config: Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-        :param pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']] service_external_ips_config: Structure is documented below.
+        :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+        :param pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict', 'outputs.ClusterServiceExternalIpsConfig']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']] tpu_config: TPU configuration for the cluster.
-        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
-        :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']] tpu_config: TPU configuration for the cluster.
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
+        :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict', 'outputs.ClusterVerticalPodAutoscaling']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: )
+        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict', 'outputs.ClusterWorkloadAltsConfig']] workload_alts_config: )
                Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-        :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
+        :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict', 'outputs.ClusterWorkloadIdentityConfig']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
         """
@@ -4464,98 +4464,98 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
+                 addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict', 'outputs.ClusterAddonsConfig']]] = None,
                  allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
-                 anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
-                 authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
-                 autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
+                 anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict', 'outputs.ClusterAnonymousAuthenticationConfig']]] = None,
+                 authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict', 'outputs.ClusterAuthenticatorGroupsConfig']]] = None,
+                 autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict', 'outputs.ClusterAutopilotClusterPolicyConfig']]] = None,
                  autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
-                 cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict', 'outputs.ClusterBinaryAuthorization']]] = None,
+                 cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict', 'outputs.ClusterClusterAutoscaling']]] = None,
                  cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
-                 confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
-                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
-                 cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
-                 database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
+                 cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict', 'outputs.ClusterClusterTelemetry']]] = None,
+                 confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict', 'outputs.ClusterConfidentialNodes']]] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict', 'outputs.ClusterControlPlaneEndpointsConfig']]] = None,
+                 cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict', 'outputs.ClusterCostManagementConfig']]] = None,
+                 database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict', 'outputs.ClusterDatabaseEncryption']]] = None,
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
-                 default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+                 default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict', 'outputs.ClusterDefaultSnatStatus']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict', 'outputs.ClusterDnsConfig']]] = None,
                  enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
-                 enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
+                 enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict', 'outputs.ClusterEnableK8sBetaApis']]] = None,
                  enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_multi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
-                 enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
-                 fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
-                 gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
-                 gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
-                 identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict', 'outputs.ClusterEnterpriseConfig']]] = None,
+                 fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict', 'outputs.ClusterFleet']]] = None,
+                 gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict', 'outputs.ClusterGatewayApiConfig']]] = None,
+                 gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict', 'outputs.ClusterGkeAutoUpgradeConfig']]] = None,
+                 identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict', 'outputs.ClusterIdentityServiceConfig']]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
-                 ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
+                 ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict', 'outputs.ClusterIpAllocationPolicy']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict', 'outputs.ClusterLoggingConfig']]] = None,
                  logging_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
-                 managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
-                 master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
-                 master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
-                 mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']]] = None,
+                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']]] = None,
+                 managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']]] = None,
+                 master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']]] = None,
+                 master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict', 'outputs.ClusterMasterAuthorizedNetworksConfig']]] = None,
+                 mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict', 'outputs.ClusterMeshCertificates']]] = None,
                  min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict', 'outputs.ClusterMonitoringConfig']]] = None,
                  monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
-                 network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']]] = None,
+                 network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict', 'outputs.ClusterNetworkPolicy']]] = None,
                  networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
-                 node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict', 'outputs.ClusterNodeConfig']]] = None,
+                 node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict', 'outputs.ClusterNodeCreationConfig']]] = None,
                  node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
-                 node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
-                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
+                 node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict', 'outputs.ClusterNodePoolAutoConfig']]] = None,
+                 node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict', 'outputs.ClusterNodePoolDefaults']]] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict', 'outputs.ClusterNodePool']]]]] = None,
                  node_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
-                 pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
-                 pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
-                 private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict', 'outputs.ClusterNotificationConfig']]] = None,
+                 pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict', 'outputs.ClusterPodAutoscaling']]] = None,
+                 pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict', 'outputs.ClusterPodSecurityPolicyConfig']]] = None,
+                 private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict', 'outputs.ClusterPrivateClusterConfig']]] = None,
                  private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
-                 rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
-                 release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
+                 protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict', 'outputs.ClusterProtectConfig']]] = None,
+                 rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict', 'outputs.ClusterRbacBindingConfig']]] = None,
+                 release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict', 'outputs.ClusterReleaseChannel']]] = None,
                  remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
-                 rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']]] = None,
-                 secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
-                 secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
-                 security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
-                 service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+                 resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
+                 rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+                 secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
+                 secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
+                 security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
+                 service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict', 'outputs.ClusterServiceExternalIpsConfig']]] = None,
                  skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
-                 tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
-                 user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
-                 vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
-                 workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
-                 workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
+                 tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']]] = None,
+                 user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']]] = None,
+                 vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict', 'outputs.ClusterVerticalPodAutoscaling']]] = None,
+                 workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict', 'outputs.ClusterWorkloadAltsConfig']]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict', 'outputs.ClusterWorkloadIdentityConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -4679,37 +4679,37 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
+            addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict', 'outputs.ClusterAddonsConfig']]] = None,
             allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
-            anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
-            authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
-            autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
+            anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict', 'outputs.ClusterAnonymousAuthenticationConfig']]] = None,
+            authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict', 'outputs.ClusterAuthenticatorGroupsConfig']]] = None,
+            autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict', 'outputs.ClusterAutopilotClusterPolicyConfig']]] = None,
             autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
-            cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict', 'outputs.ClusterBinaryAuthorization']]] = None,
+            cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict', 'outputs.ClusterClusterAutoscaling']]] = None,
             cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
-            cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
-            confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
-            control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
-            cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
-            database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
+            cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict', 'outputs.ClusterClusterTelemetry']]] = None,
+            confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict', 'outputs.ClusterConfidentialNodes']]] = None,
+            control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict', 'outputs.ClusterControlPlaneEndpointsConfig']]] = None,
+            cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict', 'outputs.ClusterCostManagementConfig']]] = None,
+            database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict', 'outputs.ClusterDatabaseEncryption']]] = None,
             datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
             dataplane_optimization_mode: pulumi.Input[Optional[_builtins.str]] = None,
             default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
-            default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+            default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict', 'outputs.ClusterDefaultSnatStatus']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
             disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
-            dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
+            dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict', 'outputs.ClusterDnsConfig']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
             enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
-            enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
+            enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict', 'outputs.ClusterEnableK8sBetaApis']]] = None,
             enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -4717,70 +4717,70 @@ class Cluster(pulumi.CustomResource):
             enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-            enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
-            fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
-            gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
-            gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
-            identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+            enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict', 'outputs.ClusterEnterpriseConfig']]] = None,
+            fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict', 'outputs.ClusterFleet']]] = None,
+            gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict', 'outputs.ClusterGatewayApiConfig']]] = None,
+            gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict', 'outputs.ClusterGkeAutoUpgradeConfig']]] = None,
+            identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict', 'outputs.ClusterIdentityServiceConfig']]] = None,
             ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
             in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
             initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
-            ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
+            ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict', 'outputs.ClusterIpAllocationPolicy']]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
+            logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict', 'outputs.ClusterLoggingConfig']]] = None,
             logging_service: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-            managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
-            managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
-            master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
-            master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']]] = None,
+            managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']]] = None,
+            managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']]] = None,
+            master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']]] = None,
+            master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict', 'outputs.ClusterMasterAuthorizedNetworksConfig']]] = None,
             master_version: pulumi.Input[Optional[_builtins.str]] = None,
-            mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
+            mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict', 'outputs.ClusterMeshCertificates']]] = None,
             min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
-            monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
+            monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict', 'outputs.ClusterMonitoringConfig']]] = None,
             monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
-            network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
-            network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
+            network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']]] = None,
+            network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict', 'outputs.ClusterNetworkPolicy']]] = None,
             networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
-            node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']]] = None,
+            node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict', 'outputs.ClusterNodeConfig']]] = None,
+            node_creation_config: pulumi.Input[Optional[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict', 'outputs.ClusterNodeCreationConfig']]] = None,
             node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
-            node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
-            node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
+            node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict', 'outputs.ClusterNodePoolAutoConfig']]] = None,
+            node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict', 'outputs.ClusterNodePoolDefaults']]] = None,
+            node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict', 'outputs.ClusterNodePool']]]]] = None,
             node_version: pulumi.Input[Optional[_builtins.str]] = None,
-            notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
+            notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict', 'outputs.ClusterNotificationConfig']]] = None,
             operation: pulumi.Input[Optional[_builtins.str]] = None,
-            pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
-            pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
-            private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
+            pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict', 'outputs.ClusterPodAutoscaling']]] = None,
+            pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict', 'outputs.ClusterPodSecurityPolicyConfig']]] = None,
+            private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict', 'outputs.ClusterPrivateClusterConfig']]] = None,
             private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
+            protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict', 'outputs.ClusterProtectConfig']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
-            release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
+            rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict', 'outputs.ClusterRbacBindingConfig']]] = None,
+            release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict', 'outputs.ClusterReleaseChannel']]] = None,
             remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
-            rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']]] = None,
-            secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
-            secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
-            security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
+            resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']]] = None,
+            rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']]] = None,
+            secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']]] = None,
+            secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']]] = None,
+            security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+            service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict', 'outputs.ClusterServiceExternalIpsConfig']]] = None,
             services_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             skip_node_pool_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
             subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
-            tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
+            tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']]] = None,
             tpu_ipv4_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
-            user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
-            vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
-            workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
-            workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None) -> 'Cluster':
+            user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']]] = None,
+            vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict', 'outputs.ClusterVerticalPodAutoscaling']]] = None,
+            workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict', 'outputs.ClusterWorkloadAltsConfig']]] = None,
+            workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict', 'outputs.ClusterWorkloadIdentityConfig']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -4788,25 +4788,25 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']] addons_config: The configuration for addons supported by GKE.
+        :param pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict', 'outputs.ClusterAddonsConfig']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
-        :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-        :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
+        :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict', 'outputs.ClusterAnonymousAuthenticationConfig']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+        :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict', 'outputs.ClusterAuthenticatorGroupsConfig']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        :param pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict', 'outputs.ClusterAutopilotClusterPolicyConfig']] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
                allowlist Cloud Storage paths for the cluster. These paths are used with the
                `--autopilot-privileged-admission` flag to authorize privileged workloads in
                Autopilot clusters. See the Cluster API's
                [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
                documentation for more details.
-        :param pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary
+        :param pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict', 'outputs.ClusterBinaryAuthorization']] binary_authorization: Configuration options for the Binary
                Authorization feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+        :param pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict', 'outputs.ClusterClusterAutoscaling']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
@@ -4815,23 +4815,23 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']] cluster_telemetry: ) Configuration for
+        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict', 'outputs.ClusterClusterTelemetry']] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
-        :param pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
+        :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict', 'outputs.ClusterConfidentialNodes']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict', 'outputs.ClusterControlPlaneEndpointsConfig']] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']] cost_management_config: Configuration for the
+        :param pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict', 'outputs.ClusterCostManagementConfig']] cost_management_config: Configuration for the
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']] database_encryption: Structure is documented below.
+        :param pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict', 'outputs.ClusterDatabaseEncryption']] database_encryption: Structure is documented below.
         :param pulumi.Input[_builtins.str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         :param pulumi.Input[_builtins.str] dataplane_optimization_mode: The dataplane optimization mode for the cluster. Possible values: `SCALE_OPTIMIZED`.
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict', 'outputs.ClusterDefaultSnatStatus']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -4847,7 +4847,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
         :param pulumi.Input[_builtins.str] desired_emulated_version: The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
-        :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict', 'outputs.ClusterDnsConfig']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] emulated_version: The current emulated Kubernetes version running on the GKE cluster control plane.
         :param pulumi.Input[_builtins.bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -4857,7 +4857,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_cilium_clusterwide_network_policy: Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[_builtins.bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-        :param pulumi.Input[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
+        :param pulumi.Input[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict', 'outputs.ClusterEnableK8sBetaApis']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -4872,12 +4872,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[_builtins.str] endpoint: The IP address of this cluster's Kubernetes master.
-        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
-        :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
-        :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
-        :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
+        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict', 'outputs.ClusterEnterpriseConfig']] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+        :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict', 'outputs.ClusterFleet']] fleet: Fleet configuration for the cluster. Structure is documented below.
+        :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict', 'outputs.ClusterGatewayApiConfig']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict', 'outputs.ClusterGkeAutoUpgradeConfig']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
+        :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict', 'outputs.ClusterIdentityServiceConfig']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the GKE node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.str] in_transit_encryption_config: Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         :param pulumi.Input[_builtins.int] initial_node_count: The number of nodes to create in this
@@ -4886,7 +4886,7 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']] ip_allocation_policy: Configuration of cluster IP allocation for
+        :param pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict', 'outputs.ClusterIpAllocationPolicy']] ip_allocation_policy: Configuration of cluster IP allocation for
                VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint of the set of labels for this cluster.
@@ -4896,22 +4896,22 @@ class Cluster(pulumi.CustomResource):
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
-        :param pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']] logging_config: Logging configuration for the cluster.
+        :param pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict', 'outputs.ClusterLoggingConfig']] logging_config: Logging configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
-        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
+        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
+        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict', 'outputs.ClusterManagedMachineLearningDiagnosticsConfig']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict', 'outputs.ClusterManagedOpentelemetryConfig']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict', 'outputs.ClusterMasterAuth']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
                you see an unexpected diff unsetting your client cert, ensure you have the
                `container.clusters.getCredentials` permission.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']] master_authorized_networks_config: The desired
+        :param pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict', 'outputs.ClusterMasterAuthorizedNetworksConfig']] master_authorized_networks_config: The desired
                configuration options for master authorized networks. Omit the
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
@@ -4919,7 +4919,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] master_version: The current version of the master in the cluster. This may
                be different than the `min_master_version` set in the config if the master
                has been updated by GKE.
-        :param pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']] mesh_certificates: Structure is documented below.
+        :param pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict', 'outputs.ClusterMeshCertificates']] mesh_certificates: Structure is documented below.
         :param pulumi.Input[_builtins.str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -4933,7 +4933,7 @@ class Cluster(pulumi.CustomResource):
                > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
                to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
                region are guaranteed to support the same version.
-        :param pulumi.Input[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']] monitoring_config: Monitoring configuration for the cluster.
+        :param pulumi.Input[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict', 'outputs.ClusterMonitoringConfig']] monitoring_config: Monitoring configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
@@ -4949,18 +4949,18 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']] network_performance_config: Network bandwidth tier configuration.
-        :param pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']] network_policy: Configuration options for the
+        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']] network_performance_config: Network bandwidth tier configuration.
+        :param pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict', 'outputs.ClusterNetworkPolicy']] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[_builtins.str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
-        :param pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']] node_config: Parameters used in creating the default node pool.
+        :param pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict', 'outputs.ClusterNodeConfig']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict']] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
+        :param pulumi.Input[Union['ClusterNodeCreationConfigArgs', 'ClusterNodeCreationConfigArgsDict', 'outputs.ClusterNodeCreationConfig']] node_creation_config: Configuration for [node creation config](https://clouddocs.devsite.corp.google.com/kubernetes-engine/security/control-plane-node-creation). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -4972,11 +4972,11 @@ class Cluster(pulumi.CustomResource):
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param pulumi.Input[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
+        :param pulumi.Input[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict', 'outputs.ClusterNodePoolAutoConfig']] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
-        :param pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
+        :param pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict', 'outputs.ClusterNodePoolDefaults']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict', 'outputs.ClusterNodePool']]]] node_pools: List of node pools associated with this cluster. Structure is documented below. See container.NodePool for exact schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
                to say "these are the _only_ node pools associated with this cluster", use the
@@ -4989,22 +4989,22 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container_get_engine_versions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
+        :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict', 'outputs.ClusterNotificationConfig']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict', 'outputs.ClusterPodAutoscaling']] pod_autoscaling: Configuration for the
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict', 'outputs.ClusterPodSecurityPolicyConfig']] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        :param pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict', 'outputs.ClusterPrivateClusterConfig']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: )
+        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict', 'outputs.ClusterProtectConfig']] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-        :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+        :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict', 'outputs.ClusterRbacBindingConfig']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+        :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict', 'outputs.ClusterReleaseChannel']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
@@ -5021,19 +5021,19 @@ class Cluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']] resource_usage_export_config: Configuration for the
+        :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict', 'outputs.ClusterResourceUsageExportConfig']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
+        :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict', 'outputs.ClusterRollbackSafeUpgrade']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict', 'outputs.ClusterSecretManagerConfig']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: Configuration for the
+        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict', 'outputs.ClusterSecretSyncConfig']] secret_sync_config: Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+        :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict', 'outputs.ClusterSecurityPostureConfig']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The server-defined URL for the resource.
-        :param pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']] service_external_ips_config: Structure is documented below.
+        :param pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict', 'outputs.ClusterServiceExternalIpsConfig']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[_builtins.str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
                cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -5041,16 +5041,16 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']] tpu_config: TPU configuration for the cluster.
+        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']] tpu_config: TPU configuration for the cluster.
         :param pulumi.Input[_builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
-        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
-        :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
+        :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict', 'outputs.ClusterVerticalPodAutoscaling']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: )
+        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict', 'outputs.ClusterWorkloadAltsConfig']] workload_alts_config: )
                Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-        :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
+        :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict', 'outputs.ClusterWorkloadIdentityConfig']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
         """

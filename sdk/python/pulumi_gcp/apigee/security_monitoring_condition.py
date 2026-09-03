@@ -338,7 +338,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
+                 include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict', 'outputs.SecurityMonitoringConditionIncludeAllResources']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -422,7 +422,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']] include_all_resources: A nested object resource.
+        :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict', 'outputs.SecurityMonitoringConditionIncludeAllResources']] include_all_resources: A nested object resource.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Monitoring Condition,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[_builtins.str] profile: ID of security profile of the security monitoring condition.
@@ -521,7 +521,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
+                 include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict', 'outputs.SecurityMonitoringConditionIncludeAllResources']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -566,7 +566,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
             condition_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
+            include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict', 'outputs.SecurityMonitoringConditionIncludeAllResources']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             profile: pulumi.Input[Optional[_builtins.str]] = None,
@@ -589,7 +589,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']] include_all_resources: A nested object resource.
+        :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict', 'outputs.SecurityMonitoringConditionIncludeAllResources']] include_all_resources: A nested object resource.
         :param pulumi.Input[_builtins.str] name: Name of the security monitoring condition resource,
                in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Monitoring Condition,

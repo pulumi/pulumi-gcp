@@ -528,7 +528,7 @@ class GoldengateDeployment(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict', 'outputs.GoldengateDeploymentProperties']]] = None,
                  __props__=None):
         """
         This resource helps to create a GoldengateDeployment which enables running Oracle GoldenGate in Google Cloud.
@@ -643,7 +643,7 @@ class GoldengateDeployment(pulumi.CustomResource):
                allocation.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict']] properties: Properties of GoldengateDeployment.
+        :param pulumi.Input[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict', 'outputs.GoldengateDeploymentProperties']] properties: Properties of GoldengateDeployment.
                Structure is documented below.
         """
         ...
@@ -764,7 +764,7 @@ class GoldengateDeployment(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict', 'outputs.GoldengateDeploymentProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -826,7 +826,7 @@ class GoldengateDeployment(pulumi.CustomResource):
             odb_network: pulumi.Input[Optional[_builtins.str]] = None,
             odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict', 'outputs.GoldengateDeploymentProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'GoldengateDeployment':
         """
         Get an existing GoldengateDeployment resource's state with the given name, id, and optional extra
@@ -865,7 +865,7 @@ class GoldengateDeployment(pulumi.CustomResource):
                allocation.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict']] properties: Properties of GoldengateDeployment.
+        :param pulumi.Input[Union['GoldengateDeploymentPropertiesArgs', 'GoldengateDeploymentPropertiesArgsDict', 'outputs.GoldengateDeploymentProperties']] properties: Properties of GoldengateDeployment.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

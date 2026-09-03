@@ -385,7 +385,7 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
+                 container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict', 'outputs.EnvironmentContainerImage']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -393,7 +393,7 @@ class Environment(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None,
+                 vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict', 'outputs.EnvironmentVmImage']]] = None,
                  __props__=None):
         """
         > **Warning:** `notebooks.Environment` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
@@ -441,7 +441,7 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict', 'outputs.EnvironmentContainerImage']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -458,7 +458,7 @@ class Environment(pulumi.CustomResource):
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict', 'outputs.EnvironmentVmImage']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         ...
@@ -526,7 +526,7 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
+                 container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict', 'outputs.EnvironmentContainerImage']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -534,7 +534,7 @@ class Environment(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None,
+                 vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict', 'outputs.EnvironmentVmImage']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -566,7 +566,7 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
+            container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict', 'outputs.EnvironmentContainerImage']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -575,7 +575,7 @@ class Environment(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None) -> 'Environment':
+            vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict', 'outputs.EnvironmentVmImage']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -583,7 +583,7 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict', 'outputs.EnvironmentContainerImage']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Instance creation time
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -601,7 +601,7 @@ class Environment(pulumi.CustomResource):
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict', 'outputs.EnvironmentVmImage']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -733,14 +733,14 @@ class UnitOperation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deprovision: pulumi.Input[Optional[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict']]] = None,
+                 deprovision: pulumi.Input[Optional[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict', 'outputs.UnitOperationDeprovision']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 provision: pulumi.Input[Optional[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict']]] = None,
+                 provision: pulumi.Input[Optional[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict', 'outputs.UnitOperationProvision']]] = None,
                  unit: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_operation_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 upgrade: pulumi.Input[Optional[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict']]] = None,
+                 upgrade: pulumi.Input[Optional[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict', 'outputs.UnitOperationUpgrade']]] = None,
                  wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -931,7 +931,7 @@ class UnitOperation(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict']] deprovision: Deprovision is the unit operation that deprovision the underlying
+        :param pulumi.Input[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict', 'outputs.UnitOperationDeprovision']] deprovision: Deprovision is the unit operation that deprovision the underlying
                resources represented by a Unit. Can only execute if the Unit is currently
                provisioned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
@@ -941,13 +941,13 @@ class UnitOperation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict']] provision: Provision is the unit operation that provision the underlying resources
+        :param pulumi.Input[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict', 'outputs.UnitOperationProvision']] provision: Provision is the unit operation that provision the underlying resources
                represented by a Unit. Can only execute if the Unit is not currently
                provisioned.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unit: The Unit a given UnitOperation will act upon.
         :param pulumi.Input[_builtins.str] unit_operation_id: The ID value for the new unit operation.
-        :param pulumi.Input[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict']] upgrade: Upgrade is the unit operation that upgrades a provisioned unit, which may
+        :param pulumi.Input[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict', 'outputs.UnitOperationUpgrade']] upgrade: Upgrade is the unit operation that upgrades a provisioned unit, which may
                also include the underlying resources represented by a Unit. Can only execute
                if the Unit is currently provisioned.
                Structure is documented below.
@@ -1151,14 +1151,14 @@ class UnitOperation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 deprovision: pulumi.Input[Optional[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict']]] = None,
+                 deprovision: pulumi.Input[Optional[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict', 'outputs.UnitOperationDeprovision']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 provision: pulumi.Input[Optional[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict']]] = None,
+                 provision: pulumi.Input[Optional[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict', 'outputs.UnitOperationProvision']]] = None,
                  unit: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_operation_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 upgrade: pulumi.Input[Optional[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict']]] = None,
+                 upgrade: pulumi.Input[Optional[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict', 'outputs.UnitOperationUpgrade']]] = None,
                  wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1211,10 +1211,10 @@ class UnitOperation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitOperationConditionArgs', 'UnitOperationConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitOperationConditionArgs', 'UnitOperationConditionArgsDict', 'outputs.UnitOperationCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            deprovision: pulumi.Input[Optional[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict']]] = None,
+            deprovision: pulumi.Input[Optional[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict', 'outputs.UnitOperationDeprovision']]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             engine_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1224,14 +1224,14 @@ class UnitOperation(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            provision: pulumi.Input[Optional[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict']]] = None,
+            provision: pulumi.Input[Optional[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict', 'outputs.UnitOperationProvision']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             unit: pulumi.Input[Optional[_builtins.str]] = None,
             unit_operation_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            upgrade: pulumi.Input[Optional[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict']]] = None,
+            upgrade: pulumi.Input[Optional[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict', 'outputs.UnitOperationUpgrade']]] = None,
             wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None) -> 'UnitOperation':
         """
         Get an existing UnitOperation resource's state with the given name, id, and optional extra
@@ -1246,7 +1246,7 @@ class UnitOperation(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitOperationConditionArgs', 'UnitOperationConditionArgsDict']]]] conditions: A set of conditions which indicate the various conditions this resource can
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitOperationConditionArgs', 'UnitOperationConditionArgsDict', 'outputs.UnitOperationCondition']]]] conditions: A set of conditions which indicate the various conditions this resource can
                have.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -1256,7 +1256,7 @@ class UnitOperation(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict']] deprovision: Deprovision is the unit operation that deprovision the underlying
+        :param pulumi.Input[Union['UnitOperationDeprovisionArgs', 'UnitOperationDeprovisionArgsDict', 'outputs.UnitOperationDeprovision']] deprovision: Deprovision is the unit operation that deprovision the underlying
                resources represented by a Unit. Can only execute if the Unit is currently
                provisioned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -1283,7 +1283,7 @@ class UnitOperation(pulumi.CustomResource):
                "projects/{project}/locations/{location}/unitOperations/{unitOperation}"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict']] provision: Provision is the unit operation that provision the underlying resources
+        :param pulumi.Input[Union['UnitOperationProvisionArgs', 'UnitOperationProvisionArgsDict', 'outputs.UnitOperationProvision']] provision: Provision is the unit operation that provision the underlying resources
                represented by a Unit. Can only execute if the Unit is not currently
                provisioned.
                Structure is documented below.
@@ -1308,7 +1308,7 @@ class UnitOperation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was last updated. Any
                change to the resource made by users must refresh this value.
                Changes to a resource made by the service should refresh this value.
-        :param pulumi.Input[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict']] upgrade: Upgrade is the unit operation that upgrades a provisioned unit, which may
+        :param pulumi.Input[Union['UnitOperationUpgradeArgs', 'UnitOperationUpgradeArgsDict', 'outputs.UnitOperationUpgrade']] upgrade: Upgrade is the unit operation that upgrades a provisioned unit, which may
                also include the underlying resources represented by a Unit. Can only execute
                if the Unit is currently provisioned.
                Structure is documented below.

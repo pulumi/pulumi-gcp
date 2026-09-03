@@ -431,10 +431,10 @@ class ConnectCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_config: pulumi.Input[Optional[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict']]] = None,
+                 capacity_config: pulumi.Input[Optional[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict', 'outputs.ConnectClusterCapacityConfig']]] = None,
                  connect_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_config: pulumi.Input[Optional[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict']]] = None,
+                 gcp_config: pulumi.Input[Optional[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict', 'outputs.ConnectClusterGcpConfig']]] = None,
                  kafka_cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -513,7 +513,7 @@ class ConnectCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
+        :param pulumi.Input[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict', 'outputs.ConnectClusterCapacityConfig']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connect_cluster_id: The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -522,7 +522,7 @@ class ConnectCluster(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
+        :param pulumi.Input[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict', 'outputs.ConnectClusterGcpConfig']] gcp_config: Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kafka_cluster: The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
@@ -624,10 +624,10 @@ class ConnectCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_config: pulumi.Input[Optional[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict']]] = None,
+                 capacity_config: pulumi.Input[Optional[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict', 'outputs.ConnectClusterCapacityConfig']]] = None,
                  connect_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 gcp_config: pulumi.Input[Optional[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict']]] = None,
+                 gcp_config: pulumi.Input[Optional[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict', 'outputs.ConnectClusterGcpConfig']]] = None,
                  kafka_cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -677,12 +677,12 @@ class ConnectCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capacity_config: pulumi.Input[Optional[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict']]] = None,
+            capacity_config: pulumi.Input[Optional[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict', 'outputs.ConnectClusterCapacityConfig']]] = None,
             connect_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gcp_config: pulumi.Input[Optional[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict']]] = None,
+            gcp_config: pulumi.Input[Optional[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict', 'outputs.ConnectClusterGcpConfig']]] = None,
             kafka_cluster: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -698,7 +698,7 @@ class ConnectCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
+        :param pulumi.Input[Union['ConnectClusterCapacityConfigArgs', 'ConnectClusterCapacityConfigArgsDict', 'outputs.ConnectClusterCapacityConfig']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connect_cluster_id: The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
         :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created.
@@ -709,7 +709,7 @@ class ConnectCluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
+        :param pulumi.Input[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict', 'outputs.ConnectClusterGcpConfig']] gcp_config: Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kafka_cluster: The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.

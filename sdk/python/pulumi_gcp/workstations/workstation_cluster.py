@@ -736,11 +736,11 @@ class WorkstationCluster(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']]] = None,
+                 domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict', 'outputs.WorkstationClusterDomainConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_cluster_config: pulumi.Input[Optional[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict']]] = None,
+                 private_cluster_config: pulumi.Input[Optional[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict', 'outputs.WorkstationClusterPrivateClusterConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -936,7 +936,7 @@ class WorkstationCluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']] domain_config: Configuration options for a custom domain.
+        :param pulumi.Input[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict', 'outputs.WorkstationClusterDomainConfig']] domain_config: Configuration options for a custom domain.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -944,7 +944,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location where the workstation cluster should reside.
         :param pulumi.Input[_builtins.str] network: The relative resource name of the VPC network on which the instance can be accessed.
                It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
-        :param pulumi.Input[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict']] private_cluster_config: Configuration for private cluster.
+        :param pulumi.Input[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict', 'outputs.WorkstationClusterPrivateClusterConfig']] private_cluster_config: Configuration for private cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1160,11 +1160,11 @@ class WorkstationCluster(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']]] = None,
+                 domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict', 'outputs.WorkstationClusterDomainConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_cluster_config: pulumi.Input[Optional[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict']]] = None,
+                 private_cluster_config: pulumi.Input[Optional[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict', 'outputs.WorkstationClusterPrivateClusterConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1223,13 +1223,13 @@ class WorkstationCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationClusterConditionArgs', 'WorkstationClusterConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationClusterConditionArgs', 'WorkstationClusterConditionArgsDict', 'outputs.WorkstationClusterCondition']]]]] = None,
             control_plane_ip: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             degraded: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']]] = None,
+            domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict', 'outputs.WorkstationClusterDomainConfig']]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1237,7 +1237,7 @@ class WorkstationCluster(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
-            private_cluster_config: pulumi.Input[Optional[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict']]] = None,
+            private_cluster_config: pulumi.Input[Optional[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict', 'outputs.WorkstationClusterPrivateClusterConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1256,7 +1256,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationClusterConditionArgs', 'WorkstationClusterConditionArgsDict']]]] conditions: Status conditions describing the current resource state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationClusterConditionArgs', 'WorkstationClusterConditionArgsDict', 'outputs.WorkstationClusterCondition']]]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] control_plane_ip: The private IP address of the control plane for this workstation cluster.
                Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
@@ -1270,7 +1270,7 @@ class WorkstationCluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']] domain_config: Configuration options for a custom domain.
+        :param pulumi.Input[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict', 'outputs.WorkstationClusterDomainConfig']] domain_config: Configuration options for a custom domain.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1283,7 +1283,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster resource.
         :param pulumi.Input[_builtins.str] network: The relative resource name of the VPC network on which the instance can be accessed.
                It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
-        :param pulumi.Input[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict']] private_cluster_config: Configuration for private cluster.
+        :param pulumi.Input[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict', 'outputs.WorkstationClusterPrivateClusterConfig']] private_cluster_config: Configuration for private cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

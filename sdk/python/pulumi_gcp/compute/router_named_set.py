@@ -352,7 +352,7 @@ class RouterNamedSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict']]]]] = None,
+                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict', 'outputs.RouterNamedSetElement']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -506,7 +506,7 @@ class RouterNamedSet(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the Named Set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict']]]] elements: CEL expressions that are comparable to constructs of this set's type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict', 'outputs.RouterNamedSetElement']]]] elements: CEL expressions that are comparable to constructs of this set's type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Named Set, which must be a resource ID segment and unique
                within all named sets owned by the Router.
@@ -678,7 +678,7 @@ class RouterNamedSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict']]]]] = None,
+                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict', 'outputs.RouterNamedSetElement']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -718,7 +718,7 @@ class RouterNamedSet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict']]]]] = None,
+            elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict', 'outputs.RouterNamedSetElement']]]]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -739,7 +739,7 @@ class RouterNamedSet(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the Named Set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict']]]] elements: CEL expressions that are comparable to constructs of this set's type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNamedSetElementArgs', 'RouterNamedSetElementArgsDict', 'outputs.RouterNamedSetElement']]]] elements: CEL expressions that are comparable to constructs of this set's type.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.

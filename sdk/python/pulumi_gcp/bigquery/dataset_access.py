@@ -605,8 +605,8 @@ class DatasetAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
-                 condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
+                 authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict', 'outputs.DatasetAccessAuthorizedDataset']]] = None,
+                 condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict', 'outputs.DatasetAccessCondition']]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -614,10 +614,10 @@ class DatasetAccess(pulumi.CustomResource):
                  iam_member: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
+                 routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict', 'outputs.DatasetAccessRoutine']]] = None,
                  special_group: pulumi.Input[Optional[_builtins.str]] = None,
                  user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
-                 view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None,
+                 view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict', 'outputs.DatasetAccessView']]] = None,
                  __props__=None):
         """
         Gives dataset access for a single entity. This resource is intended to be used in cases where
@@ -746,9 +746,9 @@ class DatasetAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+        :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict', 'outputs.DatasetAccessAuthorizedDataset']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
-        :param pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']] condition: Condition for the binding. If CEL expression in this field is true, this
+        :param pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict', 'outputs.DatasetAccessCondition']] condition: Condition for the binding. If CEL expression in this field is true, this
                access binding will be considered.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
@@ -773,7 +773,7 @@ class DatasetAccess(pulumi.CustomResource):
                swapped by the API to their basic counterparts, and will show a diff
                post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
-        :param pulumi.Input[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']] routine: A routine from a different dataset to grant access to. Queries
+        :param pulumi.Input[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict', 'outputs.DatasetAccessRoutine']] routine: A routine from a different dataset to grant access to. Queries
                executed against that routine will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that routine is updated by any user, access to the routine
@@ -786,7 +786,7 @@ class DatasetAccess(pulumi.CustomResource):
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[_builtins.str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
-        :param pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']] view: A view from a different dataset to grant access to. Queries
+        :param pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict', 'outputs.DatasetAccessView']] view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that view is updated by any user, access to the view
@@ -939,8 +939,8 @@ class DatasetAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
-                 condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
+                 authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict', 'outputs.DatasetAccessAuthorizedDataset']]] = None,
+                 condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict', 'outputs.DatasetAccessCondition']]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -948,10 +948,10 @@ class DatasetAccess(pulumi.CustomResource):
                  iam_member: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
+                 routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict', 'outputs.DatasetAccessRoutine']]] = None,
                  special_group: pulumi.Input[Optional[_builtins.str]] = None,
                  user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
-                 view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None,
+                 view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict', 'outputs.DatasetAccessView']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -988,8 +988,8 @@ class DatasetAccess(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_updated_member: pulumi.Input[Optional[_builtins.bool]] = None,
-            authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
-            condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
+            authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict', 'outputs.DatasetAccessAuthorizedDataset']]] = None,
+            condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict', 'outputs.DatasetAccessCondition']]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -997,10 +997,10 @@ class DatasetAccess(pulumi.CustomResource):
             iam_member: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
-            routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
+            routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict', 'outputs.DatasetAccessRoutine']]] = None,
             special_group: pulumi.Input[Optional[_builtins.str]] = None,
             user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
-            view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None) -> 'DatasetAccess':
+            view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict', 'outputs.DatasetAccessView']]] = None) -> 'DatasetAccess':
         """
         Get an existing DatasetAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1009,9 +1009,9 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
-        :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+        :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict', 'outputs.DatasetAccessAuthorizedDataset']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
-        :param pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']] condition: Condition for the binding. If CEL expression in this field is true, this
+        :param pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict', 'outputs.DatasetAccessCondition']] condition: Condition for the binding. If CEL expression in this field is true, this
                access binding will be considered.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
@@ -1036,7 +1036,7 @@ class DatasetAccess(pulumi.CustomResource):
                swapped by the API to their basic counterparts, and will show a diff
                post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
-        :param pulumi.Input[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']] routine: A routine from a different dataset to grant access to. Queries
+        :param pulumi.Input[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict', 'outputs.DatasetAccessRoutine']] routine: A routine from a different dataset to grant access to. Queries
                executed against that routine will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that routine is updated by any user, access to the routine
@@ -1049,7 +1049,7 @@ class DatasetAccess(pulumi.CustomResource):
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[_builtins.str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
-        :param pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']] view: A view from a different dataset to grant access to. Queries
+        :param pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict', 'outputs.DatasetAccessView']] view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that view is updated by any user, access to the view

@@ -678,7 +678,7 @@ class MembershipBinding(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict', 'outputs.MembershipBindingState']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MembershipBinding':
         """
@@ -711,7 +711,7 @@ class MembershipBinding(pulumi.CustomResource):
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict']]]] states: State of the membership binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipBindingStateArgs', 'MembershipBindingStateArgsDict', 'outputs.MembershipBindingState']]]] states: State of the membership binding resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[_builtins.str] update_time: Time the MembershipBinding was updated in UTC.

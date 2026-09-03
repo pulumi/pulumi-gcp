@@ -591,8 +591,8 @@ class Automation(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
-                 selector: pulumi.Input[Optional[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict', 'outputs.AutomationRule']]]]] = None,
+                 selector: pulumi.Input[Optional[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict', 'outputs.AutomationSelector']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -793,9 +793,9 @@ class Automation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the `Automation`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict', 'outputs.AutomationRule']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
                Structure is documented below.
-        :param pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']] selector: Required. Selected resources to which the automation will be applied.
+        :param pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict', 'outputs.AutomationSelector']] selector: Required. Selected resources to which the automation will be applied.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
         :param pulumi.Input[_builtins.bool] suspended: Optional. When Suspended, automation is deactivated from execution.
@@ -1006,8 +1006,8 @@ class Automation(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
-                 selector: pulumi.Input[Optional[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict', 'outputs.AutomationRule']]]]] = None,
+                 selector: pulumi.Input[Optional[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict', 'outputs.AutomationSelector']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1073,8 +1073,8 @@ class Automation(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
-            selector: pulumi.Input[Optional[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict', 'outputs.AutomationRule']]]]] = None,
+            selector: pulumi.Input[Optional[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict', 'outputs.AutomationSelector']]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1110,9 +1110,9 @@ class Automation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict', 'outputs.AutomationRule']]]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
                Structure is documented below.
-        :param pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict']] selector: Required. Selected resources to which the automation will be applied.
+        :param pulumi.Input[Union['AutomationSelectorArgs', 'AutomationSelectorArgsDict', 'outputs.AutomationSelector']] selector: Required. Selected resources to which the automation will be applied.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
         :param pulumi.Input[_builtins.bool] suspended: Optional. When Suspended, automation is deactivated from execution.

@@ -500,7 +500,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
+                 certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict', 'outputs.CertificateIssuanceConfigCertificateAuthorityConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
@@ -604,7 +604,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+        :param pulumi.Input[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict', 'outputs.CertificateIssuanceConfigCertificateAuthorityConfig']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -744,7 +744,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
+                 certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict', 'outputs.CertificateIssuanceConfigCertificateAuthorityConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
@@ -797,7 +797,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
+            certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict', 'outputs.CertificateIssuanceConfigCertificateAuthorityConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -818,7 +818,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+        :param pulumi.Input[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict', 'outputs.CertificateIssuanceConfigCertificateAuthorityConfig']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds with up to nine fractional digits.

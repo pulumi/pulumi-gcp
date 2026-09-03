@@ -233,7 +233,7 @@ class V2QueuedResource(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
+                 tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict', 'outputs.V2QueuedResourceTpu']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -340,7 +340,7 @@ class V2QueuedResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The immutable name of the Queued Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']] tpu: Defines a TPU resource.
+        :param pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict', 'outputs.V2QueuedResourceTpu']] tpu: Defines a TPU resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] zone: The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
         """
@@ -461,7 +461,7 @@ class V2QueuedResource(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
+                 tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict', 'outputs.V2QueuedResourceTpu']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -490,7 +490,7 @@ class V2QueuedResource(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
+            tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict', 'outputs.V2QueuedResourceTpu']]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'V2QueuedResource':
         """
         Get an existing V2QueuedResource resource's state with the given name, id, and optional extra
@@ -508,7 +508,7 @@ class V2QueuedResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The immutable name of the Queued Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']] tpu: Defines a TPU resource.
+        :param pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict', 'outputs.V2QueuedResourceTpu']] tpu: Defines a TPU resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] zone: The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
         """

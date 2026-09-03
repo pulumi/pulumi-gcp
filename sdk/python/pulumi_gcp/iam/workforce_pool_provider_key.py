@@ -341,7 +341,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
+                 key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict', 'outputs.WorkforcePoolProviderKeyKeyData']]] = None,
                  key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -415,7 +415,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']] key_data: Immutable. Public half of the asymmetric key.
+        :param pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict', 'outputs.WorkforcePoolProviderKeyKeyData']] key_data: Immutable. Public half of the asymmetric key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] key_id: The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         :param pulumi.Input[_builtins.str] location: The location for the resource.
@@ -505,7 +505,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
+                 key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict', 'outputs.WorkforcePoolProviderKeyKeyData']]] = None,
                  key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -554,7 +554,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-            key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
+            key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict', 'outputs.WorkforcePoolProviderKeyKeyData']]] = None,
             key_id: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,7 +577,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expire_time: The time after which the key will be permanently deleted and cannot be recovered.
                Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
-        :param pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']] key_data: Immutable. Public half of the asymmetric key.
+        :param pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict', 'outputs.WorkforcePoolProviderKeyKeyData']] key_data: Immutable. Public half of the asymmetric key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] key_id: The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         :param pulumi.Input[_builtins.str] location: The location for the resource.

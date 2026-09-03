@@ -308,7 +308,7 @@ class CustomService(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
+                 telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict', 'outputs.CustomServiceTelemetry']]] = None,
                  user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -375,7 +375,7 @@ class CustomService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict', 'outputs.CustomServiceTelemetry']] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
                with a letter. Label keys and values may contain lowercase letters,
@@ -460,7 +460,7 @@ class CustomService(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
+                 telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict', 'outputs.CustomServiceTelemetry']]] = None,
                  user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -493,7 +493,7 @@ class CustomService(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_id: pulumi.Input[Optional[_builtins.str]] = None,
-            telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
+            telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict', 'outputs.CustomServiceTelemetry']]] = None,
             user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CustomService':
         """
         Get an existing CustomService resource's state with the given name, id, and optional extra
@@ -515,7 +515,7 @@ class CustomService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict', 'outputs.CustomServiceTelemetry']] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
                with a letter. Label keys and values may contain lowercase letters,

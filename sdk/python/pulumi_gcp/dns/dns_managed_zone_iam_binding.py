@@ -275,7 +275,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict', 'outputs.DnsManagedZoneIamBindingCondition']]] = None,
                  managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -547,7 +547,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict', 'outputs.DnsManagedZoneIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] managed_zone: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -853,7 +853,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict', 'outputs.DnsManagedZoneIamBindingCondition']]] = None,
                  managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -889,7 +889,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict', 'outputs.DnsManagedZoneIamBindingCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -902,7 +902,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['DnsManagedZoneIamBindingConditionArgs', 'DnsManagedZoneIamBindingConditionArgsDict', 'outputs.DnsManagedZoneIamBindingCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] managed_zone: Used to find the parent resource to bind the IAM policy to

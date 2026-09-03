@@ -554,7 +554,7 @@ class GoldengateConnection(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict', 'outputs.GoldengateConnectionProperties']]] = None,
                  __props__=None):
         """
         GoldengateConnection is a resource that represents metadata to establish a connection to a source or target data.
@@ -874,7 +874,7 @@ class GoldengateConnection(pulumi.CustomResource):
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict']] properties: The properties of a GoldengateConnection.
+        :param pulumi.Input[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict', 'outputs.GoldengateConnectionProperties']] properties: The properties of a GoldengateConnection.
                Structure is documented below.
         """
         ...
@@ -1194,7 +1194,7 @@ class GoldengateConnection(pulumi.CustomResource):
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 properties: pulumi.Input[Optional[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict']]] = None,
+                 properties: pulumi.Input[Optional[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict', 'outputs.GoldengateConnectionProperties']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1252,7 +1252,7 @@ class GoldengateConnection(pulumi.CustomResource):
             odb_network: pulumi.Input[Optional[_builtins.str]] = None,
             odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            properties: pulumi.Input[Optional[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict']]] = None,
+            properties: pulumi.Input[Optional[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict', 'outputs.GoldengateConnectionProperties']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'GoldengateConnection':
         """
         Get an existing GoldengateConnection resource's state with the given name, id, and optional extra
@@ -1297,7 +1297,7 @@ class GoldengateConnection(pulumi.CustomResource):
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict']] properties: The properties of a GoldengateConnection.
+        :param pulumi.Input[Union['GoldengateConnectionPropertiesArgs', 'GoldengateConnectionPropertiesArgsDict', 'outputs.GoldengateConnectionProperties']] properties: The properties of a GoldengateConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.

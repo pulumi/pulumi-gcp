@@ -584,13 +584,13 @@ class InsightsConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
-                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict', 'outputs.InsightsConfigArtifactConfig']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
+                 target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict', 'outputs.InsightsConfigTargetProjects']]] = None,
                  __props__=None):
         """
         Description
@@ -844,7 +844,7 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_hub_application: The name of the App Hub Application.
                Format:
                projects/{project}/locations/{location}/applications/{application}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict', 'outputs.InsightsConfigArtifactConfig']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -859,7 +859,7 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']] target_projects: The projects to track with the InsightsConfig.
+        :param pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict', 'outputs.InsightsConfigTargetProjects']] target_projects: The projects to track with the InsightsConfig.
                Structure is documented below.
         """
         ...
@@ -1128,13 +1128,13 @@ class InsightsConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
-                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict', 'outputs.InsightsConfigArtifactConfig']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
+                 target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict', 'outputs.InsightsConfigTargetProjects']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1181,12 +1181,12 @@ class InsightsConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
-            artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+            artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict', 'outputs.InsightsConfigArtifactConfig']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict', 'outputs.InsightsConfigError']]]]] = None,
             insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1194,9 +1194,9 @@ class InsightsConfig(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
-            runtime_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigRuntimeConfigArgs', 'InsightsConfigRuntimeConfigArgsDict']]]]] = None,
+            runtime_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigRuntimeConfigArgs', 'InsightsConfigRuntimeConfigArgsDict', 'outputs.InsightsConfigRuntimeConfig']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
+            target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict', 'outputs.InsightsConfigTargetProjects']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'InsightsConfig':
         """
         Get an existing InsightsConfig resource's state with the given name, id, and optional extra
@@ -1212,7 +1212,7 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_hub_application: The name of the App Hub Application.
                Format:
                projects/{project}/locations/{location}/applications/{application}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict', 'outputs.InsightsConfigArtifactConfig']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1223,7 +1223,7 @@ class InsightsConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]] errors: Any errors that occurred while setting up the InsightsConfig.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict', 'outputs.InsightsConfigError']]]] errors: Any errors that occurred while setting up the InsightsConfig.
                Each error will be in the format: `field_name: error_message`, e.g.
                GetAppHubApplication: Permission denied while getting App Hub
                application. Please grant permissions to the P4SA.
@@ -1245,7 +1245,7 @@ class InsightsConfig(pulumi.CustomResource):
                user's intended state, and the service is actively updating the resource to
                reconcile them. This can happen due to user-triggered updates or
                system actions like failover or maintenance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigRuntimeConfigArgs', 'InsightsConfigRuntimeConfigArgsDict']]]] runtime_configs: The runtime configurations where the application is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigRuntimeConfigArgs', 'InsightsConfigRuntimeConfigArgsDict', 'outputs.InsightsConfigRuntimeConfig']]]] runtime_configs: The runtime configurations where the application is deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: (Output)
                The state of the Runtime.
@@ -1253,7 +1253,7 @@ class InsightsConfig(pulumi.CustomResource):
                STATE_UNSPECIFIED
                LINKED
                UNLINKED
-        :param pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']] target_projects: The projects to track with the InsightsConfig.
+        :param pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict', 'outputs.InsightsConfigTargetProjects']] target_projects: The projects to track with the InsightsConfig.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: [Output only] Update timestamp
         """

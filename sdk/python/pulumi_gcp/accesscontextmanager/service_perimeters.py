@@ -167,7 +167,7 @@ class ServicePerimeters(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
+                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict', 'outputs.ServicePerimetersServicePerimeter']]]]] = None,
                  __props__=None):
         """
         Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
@@ -256,7 +256,7 @@ class ServicePerimeters(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict', 'outputs.ServicePerimetersServicePerimeter']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         ...
@@ -359,7 +359,7 @@ class ServicePerimeters(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
+                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict', 'outputs.ServicePerimetersServicePerimeter']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,7 +386,7 @@ class ServicePerimeters(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None) -> 'ServicePerimeters':
+            service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict', 'outputs.ServicePerimetersServicePerimeter']]]]] = None) -> 'ServicePerimeters':
         """
         Get an existing ServicePerimeters resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -402,7 +402,7 @@ class ServicePerimeters(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict', 'outputs.ServicePerimetersServicePerimeter']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

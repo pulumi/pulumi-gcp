@@ -606,17 +606,17 @@ class AuthzPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+                 custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict', 'outputs.AuthzPolicyCustomProvider']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
+                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict', 'outputs.AuthzPolicyHttpRule']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]]] = None,
+                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict', 'outputs.AuthzPolicyNetworkRule']]]]] = None,
                  policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict', 'outputs.AuthzPolicyTarget']]] = None,
                  __props__=None):
         """
         AuthzPolicy is a resource that allows to forward traffic to a callout backend designed to scan the traffic for security purposes.
@@ -693,7 +693,7 @@ class AuthzPolicy(pulumi.CustomResource):
                3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
                   Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
-        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict', 'outputs.AuthzPolicyCustomProvider']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -702,7 +702,7 @@ class AuthzPolicy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict', 'outputs.AuthzPolicyHttpRule']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
                Limited to 5 rules.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
@@ -711,7 +711,7 @@ class AuthzPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict', 'outputs.AuthzPolicyNetworkRule']]]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
                Limited to 5 rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
@@ -723,7 +723,7 @@ class AuthzPolicy(pulumi.CustomResource):
                Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']] target: Specifies the set of resources to which this policy should be applied to.
+        :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict', 'outputs.AuthzPolicyTarget']] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
         """
         ...
@@ -812,17 +812,17 @@ class AuthzPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+                 custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict', 'outputs.AuthzPolicyCustomProvider']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
+                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict', 'outputs.AuthzPolicyHttpRule']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]]] = None,
+                 network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict', 'outputs.AuthzPolicyNetworkRule']]]]] = None,
                  policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict', 'outputs.AuthzPolicyTarget']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -868,19 +868,19 @@ class AuthzPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+            custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict', 'outputs.AuthzPolicyCustomProvider']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
+            http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict', 'outputs.AuthzPolicyHttpRule']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]]] = None,
+            network_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict', 'outputs.AuthzPolicyNetworkRule']]]]] = None,
             policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
+            target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict', 'outputs.AuthzPolicyTarget']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthzPolicy':
         """
         Get an existing AuthzPolicy resource's state with the given name, id, and optional extra
@@ -899,7 +899,7 @@ class AuthzPolicy(pulumi.CustomResource):
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
                   Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
-        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict', 'outputs.AuthzPolicyCustomProvider']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -909,7 +909,7 @@ class AuthzPolicy(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict', 'outputs.AuthzPolicyHttpRule']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
                Limited to 5 rules.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
@@ -918,7 +918,7 @@ class AuthzPolicy(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict']]]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyNetworkRuleArgs', 'AuthzPolicyNetworkRuleArgsDict', 'outputs.AuthzPolicyNetworkRule']]]] network_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
                Limited to 5 rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_profile: Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
@@ -932,7 +932,7 @@ class AuthzPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']] target: Specifies the set of resources to which this policy should be applied to.
+        :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict', 'outputs.AuthzPolicyTarget']] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
         """

@@ -329,7 +329,7 @@ class Connector(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None,
+                 task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict', 'outputs.ConnectorTaskRestartPolicy']]] = None,
                  __props__=None):
         """
         A Managed Service for Kafka Connect Connectors.
@@ -444,7 +444,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']] task_restart_policy: A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
+        :param pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict', 'outputs.ConnectorTaskRestartPolicy']] task_restart_policy: A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
                Structure is documented below.
         """
         ...
@@ -573,7 +573,7 @@ class Connector(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None,
+                 task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict', 'outputs.ConnectorTaskRestartPolicy']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -616,7 +616,7 @@ class Connector(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None) -> 'Connector':
+            task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict', 'outputs.ConnectorTaskRestartPolicy']]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -638,7 +638,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: The current state of the connect. Possible values: `STATE_UNSPECIFIED`, `UNASSIGNED`, `RUNNING`, `PAUSED`, `FAILED`, `RESTARTING`, and `STOPPED`.
-        :param pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']] task_restart_policy: A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
+        :param pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict', 'outputs.ConnectorTaskRestartPolicy']] task_restart_policy: A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

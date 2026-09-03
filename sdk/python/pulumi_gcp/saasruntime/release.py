@@ -638,14 +638,14 @@ class Release(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict']]] = None,
+                 blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 input_variable_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict']]]]] = None,
+                 input_variable_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict', 'outputs.ReleaseInputVariableDefault']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  release_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 release_requirements: pulumi.Input[Optional[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict']]] = None,
+                 release_requirements: pulumi.Input[Optional[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict', 'outputs.ReleaseReleaseRequirements']]] = None,
                  unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -718,7 +718,7 @@ class Release(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict']] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
+        :param pulumi.Input[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
                provision a unit. Metadata such as, type of the engine used to actuate the
                blueprint (e.g. terraform, helm etc) and version will come from the image
                manifest. If the hostname is omitted, it will be assumed to be the regional
@@ -730,7 +730,7 @@ class Release(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict']]]] input_variable_defaults: Mapping of input variables to default values. Maximum 100
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict', 'outputs.ReleaseInputVariableDefault']]]] input_variable_defaults: Mapping of input variables to default values. Maximum 100
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
                similar to Kubernetes resource labels.
@@ -740,7 +740,7 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] release_id: The ID value for the new release.
-        :param pulumi.Input[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict']] release_requirements: Set of requirements to be fulfilled on the Unit when using this Release.
+        :param pulumi.Input[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict', 'outputs.ReleaseReleaseRequirements']] release_requirements: Set of requirements to be fulfilled on the Unit when using this Release.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unit_kind: Reference to the UnitKind this Release corresponds to (required and
                immutable once created).
@@ -829,14 +829,14 @@ class Release(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict']]] = None,
+                 blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 input_variable_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict']]]]] = None,
+                 input_variable_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict', 'outputs.ReleaseInputVariableDefault']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  release_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 release_requirements: pulumi.Input[Optional[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict']]] = None,
+                 release_requirements: pulumi.Input[Optional[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict', 'outputs.ReleaseReleaseRequirements']]] = None,
                  unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -886,22 +886,22 @@ class Release(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict']]] = None,
+            blueprint: pulumi.Input[Optional[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            input_variable_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict']]]]] = None,
-            input_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableArgs', 'ReleaseInputVariableArgsDict']]]]] = None,
+            input_variable_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict', 'outputs.ReleaseInputVariableDefault']]]]] = None,
+            input_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseInputVariableArgs', 'ReleaseInputVariableArgsDict', 'outputs.ReleaseInputVariable']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            output_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseOutputVariableArgs', 'ReleaseOutputVariableArgsDict']]]]] = None,
+            output_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReleaseOutputVariableArgs', 'ReleaseOutputVariableArgsDict', 'outputs.ReleaseOutputVariable']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             release_id: pulumi.Input[Optional[_builtins.str]] = None,
-            release_requirements: pulumi.Input[Optional[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict']]] = None,
+            release_requirements: pulumi.Input[Optional[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict', 'outputs.ReleaseReleaseRequirements']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Release':
@@ -918,7 +918,7 @@ class Release(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict']] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
+        :param pulumi.Input[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict', 'outputs.ReleaseBlueprint']] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
                provision a unit. Metadata such as, type of the engine used to actuate the
                blueprint (e.g. terraform, helm etc) and version will come from the image
                manifest. If the hostname is omitted, it will be assumed to be the regional
@@ -936,9 +936,9 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
                and server agree on the ordering of a resource being written.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict']]]] input_variable_defaults: Mapping of input variables to default values. Maximum 100
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict', 'outputs.ReleaseInputVariableDefault']]]] input_variable_defaults: Mapping of input variables to default values. Maximum 100
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseInputVariableArgs', 'ReleaseInputVariableArgsDict']]]] input_variables: List of input variables declared on the blueprint and can be present with
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseInputVariableArgs', 'ReleaseInputVariableArgsDict', 'outputs.ReleaseInputVariable']]]] input_variables: List of input variables declared on the blueprint and can be present with
                their values on the unit spec
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
@@ -949,7 +949,7 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name (full URI of the resource) following the standard naming
                scheme:
                "projects/{project}/locations/{location}/releases/{release}"
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseOutputVariableArgs', 'ReleaseOutputVariableArgsDict']]]] output_variables: List of output variables declared on the blueprint and can be present with
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseOutputVariableArgs', 'ReleaseOutputVariableArgsDict', 'outputs.ReleaseOutputVariable']]]] output_variables: List of output variables declared on the blueprint and can be present with
                their values on the unit status
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -957,7 +957,7 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] release_id: The ID value for the new release.
-        :param pulumi.Input[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict']] release_requirements: Set of requirements to be fulfilled on the Unit when using this Release.
+        :param pulumi.Input[Union['ReleaseReleaseRequirementsArgs', 'ReleaseReleaseRequirementsArgsDict', 'outputs.ReleaseReleaseRequirements']] release_requirements: Set of requirements to be fulfilled on the Unit when using this Release.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is

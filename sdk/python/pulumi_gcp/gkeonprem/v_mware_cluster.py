@@ -1148,26 +1148,26 @@ class VMwareCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 anti_affinity_groups: pulumi.Input[Optional[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict']]] = None,
-                 authorization: pulumi.Input[Optional[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict']]] = None,
-                 auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict']]] = None,
-                 control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict']]] = None,
-                 dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
+                 anti_affinity_groups: pulumi.Input[Optional[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict', 'outputs.VMwareClusterAntiAffinityGroups']]] = None,
+                 authorization: pulumi.Input[Optional[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict', 'outputs.VMwareClusterAuthorization']]] = None,
+                 auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict', 'outputs.VMwareClusterAutoRepairConfig']]] = None,
+                 control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict', 'outputs.VMwareClusterControlPlaneNode']]] = None,
+                 dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict', 'outputs.VMwareClusterDataplaneV2']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_control_plane_v2: pulumi.Input[Optional[_builtins.bool]] = None,
-                 load_balancer: pulumi.Input[Optional[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict', 'outputs.VMwareClusterLoadBalancer']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict', 'outputs.VMwareClusterNetworkConfig']]] = None,
                  on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_validations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 storage: pulumi.Input[Optional[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
-                 upgrade_policy: pulumi.Input[Optional[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
-                 vcenter: pulumi.Input[Optional[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict', 'outputs.VMwareClusterStorage']]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict', 'outputs.VMwareClusterUpgradePolicy']]] = None,
+                 vcenter: pulumi.Input[Optional[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict', 'outputs.VMwareClusterVcenter']]] = None,
                  vm_tracking_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -1438,16 +1438,16 @@ class VMwareCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
+        :param pulumi.Input[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict', 'outputs.VMwareClusterAntiAffinityGroups']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
+        :param pulumi.Input[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict', 'outputs.VMwareClusterAuthorization']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict', 'outputs.VMwareClusterAutoRepairConfig']] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
+        :param pulumi.Input[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict', 'outputs.VMwareClusterControlPlaneNode']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+        :param pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict', 'outputs.VMwareClusterDataplaneV2']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1459,22 +1459,22 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
         :param pulumi.Input[_builtins.bool] enable_control_plane_v2: Enable control plane V2. Default to false.
-        :param pulumi.Input[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']] load_balancer: Load Balancer configuration.
+        :param pulumi.Input[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict', 'outputs.VMwareClusterLoadBalancer']] load_balancer: Load Balancer configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The VMware cluster name.
-        :param pulumi.Input[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict']] network_config: The VMware User Cluster network configuration.
+        :param pulumi.Input[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict', 'outputs.VMwareClusterNetworkConfig']] network_config: The VMware User Cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skip_validations: A list of validations to skip during preflight checks.
                Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
-        :param pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']] storage: Storage configuration.
+        :param pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict', 'outputs.VMwareClusterStorage']] storage: Storage configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict', 'outputs.VMwareClusterUpgradePolicy']] upgrade_policy: Specifies upgrade policy for the cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster.
+        :param pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict', 'outputs.VMwareClusterVcenter']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster.
                Inherited from the admin cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] vm_tracking_enabled: Enable VM tracking.
@@ -1753,26 +1753,26 @@ class VMwareCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 anti_affinity_groups: pulumi.Input[Optional[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict']]] = None,
-                 authorization: pulumi.Input[Optional[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict']]] = None,
-                 auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict']]] = None,
-                 control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict']]] = None,
-                 dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
+                 anti_affinity_groups: pulumi.Input[Optional[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict', 'outputs.VMwareClusterAntiAffinityGroups']]] = None,
+                 authorization: pulumi.Input[Optional[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict', 'outputs.VMwareClusterAuthorization']]] = None,
+                 auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict', 'outputs.VMwareClusterAutoRepairConfig']]] = None,
+                 control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict', 'outputs.VMwareClusterControlPlaneNode']]] = None,
+                 dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict', 'outputs.VMwareClusterDataplaneV2']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_control_plane_v2: pulumi.Input[Optional[_builtins.bool]] = None,
-                 load_balancer: pulumi.Input[Optional[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict', 'outputs.VMwareClusterLoadBalancer']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict', 'outputs.VMwareClusterNetworkConfig']]] = None,
                  on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_validations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 storage: pulumi.Input[Optional[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
-                 upgrade_policy: pulumi.Input[Optional[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
-                 vcenter: pulumi.Input[Optional[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict', 'outputs.VMwareClusterStorage']]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict', 'outputs.VMwareClusterUpgradePolicy']]] = None,
+                 vcenter: pulumi.Input[Optional[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict', 'outputs.VMwareClusterVcenter']]] = None,
                  vm_tracking_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1839,12 +1839,12 @@ class VMwareCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            anti_affinity_groups: pulumi.Input[Optional[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict']]] = None,
-            authorization: pulumi.Input[Optional[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict']]] = None,
-            auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict']]] = None,
-            control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict']]] = None,
+            anti_affinity_groups: pulumi.Input[Optional[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict', 'outputs.VMwareClusterAntiAffinityGroups']]] = None,
+            authorization: pulumi.Input[Optional[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict', 'outputs.VMwareClusterAuthorization']]] = None,
+            auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict', 'outputs.VMwareClusterAutoRepairConfig']]] = None,
+            control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict', 'outputs.VMwareClusterControlPlaneNode']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
+            dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict', 'outputs.VMwareClusterDataplaneV2']]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1854,24 +1854,24 @@ class VMwareCluster(pulumi.CustomResource):
             enable_control_plane_v2: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            fleets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterFleetArgs', 'VMwareClusterFleetArgsDict']]]]] = None,
-            load_balancer: pulumi.Input[Optional[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']]] = None,
+            fleets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterFleetArgs', 'VMwareClusterFleetArgsDict', 'outputs.VMwareClusterFleet']]]]] = None,
+            load_balancer: pulumi.Input[Optional[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict', 'outputs.VMwareClusterLoadBalancer']]] = None,
             local_name: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_config: pulumi.Input[Optional[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict']]] = None,
+            network_config: pulumi.Input[Optional[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict', 'outputs.VMwareClusterNetworkConfig']]] = None,
             on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             skip_validations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterStatusArgs', 'VMwareClusterStatusArgsDict']]]]] = None,
-            storage: pulumi.Input[Optional[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterStatusArgs', 'VMwareClusterStatusArgsDict', 'outputs.VMwareClusterStatus']]]]] = None,
+            storage: pulumi.Input[Optional[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict', 'outputs.VMwareClusterStorage']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            upgrade_policy: pulumi.Input[Optional[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
-            validation_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterValidationCheckArgs', 'VMwareClusterValidationCheckArgsDict']]]]] = None,
-            vcenter: pulumi.Input[Optional[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
+            upgrade_policy: pulumi.Input[Optional[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict', 'outputs.VMwareClusterUpgradePolicy']]] = None,
+            validation_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterValidationCheckArgs', 'VMwareClusterValidationCheckArgsDict', 'outputs.VMwareClusterValidationCheck']]]]] = None,
+            vcenter: pulumi.Input[Optional[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict', 'outputs.VMwareClusterVcenter']]] = None,
             vm_tracking_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'VMwareCluster':
         """
         Get an existing VMwareCluster resource's state with the given name, id, and optional extra
@@ -1895,17 +1895,17 @@ class VMwareCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
+        :param pulumi.Input[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict', 'outputs.VMwareClusterAntiAffinityGroups']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
+        :param pulumi.Input[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict', 'outputs.VMwareClusterAuthorization']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict', 'outputs.VMwareClusterAutoRepairConfig']] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
+        :param pulumi.Input[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict', 'outputs.VMwareClusterControlPlaneNode']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which VMware User Cluster was created.
-        :param pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+        :param pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict', 'outputs.VMwareClusterDataplaneV2']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1925,9 +1925,9 @@ class VMwareCluster(pulumi.CustomResource):
                client has an up-to-date value before proceeding.
                Allows clients to perform consistent read-modify-writes
                through optimistic concurrency control.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterFleetArgs', 'VMwareClusterFleetArgsDict']]]] fleets: Fleet configuration for the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterFleetArgs', 'VMwareClusterFleetArgsDict', 'outputs.VMwareClusterFleet']]]] fleets: Fleet configuration for the cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']] load_balancer: Load Balancer configuration.
+        :param pulumi.Input[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict', 'outputs.VMwareClusterLoadBalancer']] load_balancer: Load Balancer configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] local_name: The object name of the VMware OnPremUserCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
@@ -1941,7 +1941,7 @@ class VMwareCluster(pulumi.CustomResource):
                cluster controller logs.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The VMware cluster name.
-        :param pulumi.Input[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict']] network_config: The VMware User Cluster network configuration.
+        :param pulumi.Input[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict', 'outputs.VMwareClusterNetworkConfig']] network_config: The VMware User Cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1951,18 +1951,18 @@ class VMwareCluster(pulumi.CustomResource):
                Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterStatusArgs', 'VMwareClusterStatusArgsDict']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterStatusArgs', 'VMwareClusterStatusArgsDict', 'outputs.VMwareClusterStatus']]]] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']] storage: Storage configuration.
+        :param pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict', 'outputs.VMwareClusterStorage']] storage: Storage configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the VMware User Cluster.
         :param pulumi.Input[_builtins.str] update_time: The time at which VMware User Cluster was last updated.
-        :param pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict', 'outputs.VMwareClusterUpgradePolicy']] upgrade_policy: Specifies upgrade policy for the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterValidationCheckArgs', 'VMwareClusterValidationCheckArgsDict']]]] validation_checks: ValidationCheck represents the result of the preflight check job.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterValidationCheckArgs', 'VMwareClusterValidationCheckArgsDict', 'outputs.VMwareClusterValidationCheck']]]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
-        :param pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster.
+        :param pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict', 'outputs.VMwareClusterVcenter']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster.
                Inherited from the admin cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] vm_tracking_enabled: Enable VM tracking.

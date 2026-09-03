@@ -421,9 +421,9 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_backup_policy: pulumi.Input[Optional[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']]] = None,
+                 automated_backup_policy: pulumi.Input[Optional[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict', 'outputs.TableAutomatedBackupPolicy']]] = None,
                  change_stream_retention: pulumi.Input[Optional[_builtins.str]] = None,
-                 column_families: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]]] = None,
+                 column_families: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict', 'outputs.TableColumnFamily']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -512,9 +512,9 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by `retention_period` and `frequency`. To create a table with automated backup disabled, either omit the `automated_backup_policy` argument or set both `retention_period` and `frequency` to "0". To disable automated backup on an existing table that has automated backup enabled, set both `retention_period` and `frequency` to "0". When updating an existing table, change the `retention_period` or `frequency` by setting the respective property to a non-zero value. The policy also accepts an optional `locations` list to specify backup storage locations; if `locations` is omitted, the policy defaults to all clusters in the instance. If the `automated_backup_policy` argument is not provided on update, the resource's automated backup policy will not be modified.
+        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict', 'outputs.TableAutomatedBackupPolicy']] automated_backup_policy: Defines an automated backup policy for a table, specified by `retention_period` and `frequency`. To create a table with automated backup disabled, either omit the `automated_backup_policy` argument or set both `retention_period` and `frequency` to "0". To disable automated backup on an existing table that has automated backup enabled, set both `retention_period` and `frequency` to "0". When updating an existing table, change the `retention_period` or `frequency` by setting the respective property to a non-zero value. The policy also accepts an optional `locations` list to specify backup storage locations; if `locations` is omitted, the policy defaults to all clusters in the instance. If the `automated_backup_policy` argument is not provided on update, the resource's automated backup policy will not be modified.
         :param pulumi.Input[_builtins.str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict', 'outputs.TableColumnFamily']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -637,9 +637,9 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_backup_policy: pulumi.Input[Optional[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']]] = None,
+                 automated_backup_policy: pulumi.Input[Optional[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict', 'outputs.TableAutomatedBackupPolicy']]] = None,
                  change_stream_retention: pulumi.Input[Optional[_builtins.str]] = None,
-                 column_families: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]]] = None,
+                 column_families: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict', 'outputs.TableColumnFamily']]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -678,9 +678,9 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            automated_backup_policy: pulumi.Input[Optional[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']]] = None,
+            automated_backup_policy: pulumi.Input[Optional[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict', 'outputs.TableAutomatedBackupPolicy']]] = None,
             change_stream_retention: pulumi.Input[Optional[_builtins.str]] = None,
-            column_families: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]]] = None,
+            column_families: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict', 'outputs.TableColumnFamily']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -695,9 +695,9 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by `retention_period` and `frequency`. To create a table with automated backup disabled, either omit the `automated_backup_policy` argument or set both `retention_period` and `frequency` to "0". To disable automated backup on an existing table that has automated backup enabled, set both `retention_period` and `frequency` to "0". When updating an existing table, change the `retention_period` or `frequency` by setting the respective property to a non-zero value. The policy also accepts an optional `locations` list to specify backup storage locations; if `locations` is omitted, the policy defaults to all clusters in the instance. If the `automated_backup_policy` argument is not provided on update, the resource's automated backup policy will not be modified.
+        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict', 'outputs.TableAutomatedBackupPolicy']] automated_backup_policy: Defines an automated backup policy for a table, specified by `retention_period` and `frequency`. To create a table with automated backup disabled, either omit the `automated_backup_policy` argument or set both `retention_period` and `frequency` to "0". To disable automated backup on an existing table that has automated backup enabled, set both `retention_period` and `frequency` to "0". When updating an existing table, change the `retention_period` or `frequency` by setting the respective property to a non-zero value. The policy also accepts an optional `locations` list to specify backup storage locations; if `locations` is omitted, the policy defaults to all clusters in the instance. If the `automated_backup_policy` argument is not provided on update, the resource's automated backup policy will not be modified.
         :param pulumi.Input[_builtins.str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict', 'outputs.TableColumnFamily']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.

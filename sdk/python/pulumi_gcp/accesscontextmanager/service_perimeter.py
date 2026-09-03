@@ -521,8 +521,8 @@ class ServicePerimeter(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
-                 status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict', 'outputs.ServicePerimeterSpec']]] = None,
+                 status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict', 'outputs.ServicePerimeterStatus']]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -761,12 +761,12 @@ class ServicePerimeter(pulumi.CustomResource):
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param pulumi.Input[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']] spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param pulumi.Input[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict', 'outputs.ServicePerimeterSpec']] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param pulumi.Input[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']] status: ServicePerimeter configuration. Specifies sets of resources,
+        :param pulumi.Input[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict', 'outputs.ServicePerimeterStatus']] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.
@@ -1011,8 +1011,8 @@ class ServicePerimeter(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
-                 status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict', 'outputs.ServicePerimeterSpec']]] = None,
+                 status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict', 'outputs.ServicePerimeterStatus']]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1055,8 +1055,8 @@ class ServicePerimeter(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
-            status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict', 'outputs.ServicePerimeterSpec']]] = None,
+            status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict', 'outputs.ServicePerimeterStatus']]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ServicePerimeter':
@@ -1097,12 +1097,12 @@ class ServicePerimeter(pulumi.CustomResource):
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
                Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-        :param pulumi.Input[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']] spec: Proposed (or dry run) ServicePerimeter configuration.
+        :param pulumi.Input[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict', 'outputs.ServicePerimeterSpec']] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
                the `useExplicitDryRunSpec` flag is set.
                Structure is documented below.
-        :param pulumi.Input[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']] status: ServicePerimeter configuration. Specifies sets of resources,
+        :param pulumi.Input[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict', 'outputs.ServicePerimeterStatus']] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.

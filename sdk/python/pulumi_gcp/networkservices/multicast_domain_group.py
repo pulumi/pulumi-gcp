@@ -670,7 +670,7 @@ class MulticastDomainGroup(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastDomainGroupStateArgs', 'MulticastDomainGroupStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastDomainGroupStateArgs', 'MulticastDomainGroupStateArgsDict', 'outputs.MulticastDomainGroupState']]]]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastDomainGroup':
         """
@@ -706,7 +706,7 @@ class MulticastDomainGroup(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainGroupStateArgs', 'MulticastDomainGroupStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainGroupStateArgs', 'MulticastDomainGroupStateArgsDict', 'outputs.MulticastDomainGroupState']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
                CREATING

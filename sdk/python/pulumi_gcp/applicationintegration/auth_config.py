@@ -588,8 +588,8 @@ class AuthConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
-                 decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+                 client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict', 'outputs.AuthConfigClientCertificate']]] = None,
+                 decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict', 'outputs.AuthConfigDecryptedCredential']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -651,9 +651,9 @@ class AuthConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']] client_certificate: Raw client certificate
+        :param pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict', 'outputs.AuthConfigClientCertificate']] client_certificate: Raw client certificate
                Structure is documented below.
-        :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']] decrypted_credential: Raw auth credentials.
+        :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict', 'outputs.AuthConfigDecryptedCredential']] decrypted_credential: Raw auth credentials.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -744,8 +744,8 @@ class AuthConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
-                 decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+                 client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict', 'outputs.AuthConfigClientCertificate']]] = None,
+                 decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict', 'outputs.AuthConfigDecryptedCredential']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -799,11 +799,11 @@ class AuthConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
-            client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
+            client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict', 'outputs.AuthConfigClientCertificate']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator_email: pulumi.Input[Optional[_builtins.str]] = None,
             credential_type: pulumi.Input[Optional[_builtins.str]] = None,
-            decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+            decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict', 'outputs.AuthConfigDecryptedCredential']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -827,13 +827,13 @@ class AuthConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_id: Certificate id for client certificate.
-        :param pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']] client_certificate: Raw client certificate
+        :param pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict', 'outputs.AuthConfigClientCertificate']] client_certificate: Raw client certificate
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the auth config is created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] creator_email: The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[_builtins.str] credential_type: Credential type of the encrypted credential.
-        :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']] decrypted_credential: Raw auth credentials.
+        :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict', 'outputs.AuthConfigDecryptedCredential']] decrypted_credential: Raw auth credentials.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

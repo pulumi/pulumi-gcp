@@ -411,7 +411,7 @@ class QaScorecardRevision(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
             qa_scorecard_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
-            snapshots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaScorecardRevisionSnapshotArgs', 'QaScorecardRevisionSnapshotArgsDict']]]]] = None,
+            snapshots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaScorecardRevisionSnapshotArgs', 'QaScorecardRevisionSnapshotArgsDict', 'outputs.QaScorecardRevisionSnapshot']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'QaScorecardRevision':
         """
         Get an existing QaScorecardRevision resource's state with the given name, id, and optional extra
@@ -434,7 +434,7 @@ class QaScorecardRevision(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] qa_scorecard_revision_id: A unique ID for the new QaScorecardRevision. This ID will become the final
                component of the QaScorecardRevision's resource name.
                If no ID is specified this resource will get the latest revision on the given scorecard.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QaScorecardRevisionSnapshotArgs', 'QaScorecardRevisionSnapshotArgsDict']]]] snapshots: A QaScorecard represents a collection of questions to be scored during
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QaScorecardRevisionSnapshotArgs', 'QaScorecardRevisionSnapshotArgsDict', 'outputs.QaScorecardRevisionSnapshot']]]] snapshots: A QaScorecard represents a collection of questions to be scored during
                analysis.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: State of the scorecard revision, indicating whether it's ready to

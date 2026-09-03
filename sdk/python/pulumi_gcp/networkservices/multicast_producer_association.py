@@ -739,7 +739,7 @@ class MulticastProducerAssociation(pulumi.CustomResource):
             network: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastProducerAssociationStateArgs', 'MulticastProducerAssociationStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastProducerAssociationStateArgs', 'MulticastProducerAssociationStateArgsDict', 'outputs.MulticastProducerAssociationState']]]]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastProducerAssociation':
         """
@@ -781,7 +781,7 @@ class MulticastProducerAssociation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastProducerAssociationStateArgs', 'MulticastProducerAssociationStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastProducerAssociationStateArgs', 'MulticastProducerAssociationStateArgsDict', 'outputs.MulticastProducerAssociationState']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
                CREATING

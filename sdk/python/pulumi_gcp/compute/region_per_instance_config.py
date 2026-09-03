@@ -445,7 +445,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 preserved_state: pulumi.Input[Optional[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']]] = None,
+                 preserved_state: pulumi.Input[Optional[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict', 'outputs.RegionPerInstanceConfigPreservedState']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  region_instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,7 +574,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[_builtins.str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict', 'outputs.RegionPerInstanceConfigPreservedState']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -712,7 +712,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 preserved_state: pulumi.Input[Optional[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']]] = None,
+                 preserved_state: pulumi.Input[Optional[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict', 'outputs.RegionPerInstanceConfigPreservedState']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  region_instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
@@ -753,7 +753,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
             most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            preserved_state: pulumi.Input[Optional[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']]] = None,
+            preserved_state: pulumi.Input[Optional[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict', 'outputs.RegionPerInstanceConfigPreservedState']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             region_instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
@@ -785,7 +785,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[_builtins.str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['RegionPerInstanceConfigPreservedStateArgs', 'RegionPerInstanceConfigPreservedStateArgsDict', 'outputs.RegionPerInstanceConfigPreservedState']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

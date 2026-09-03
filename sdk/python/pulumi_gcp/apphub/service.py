@@ -475,7 +475,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']]] = None,
+                 attributes: pulumi.Input[Optional[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict', 'outputs.ServiceAttributes']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovered_service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -688,7 +688,7 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict', 'outputs.ServiceAttributes']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -927,7 +927,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attributes: pulumi.Input[Optional[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']]] = None,
+                 attributes: pulumi.Input[Optional[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict', 'outputs.ServiceAttributes']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovered_service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -979,7 +979,7 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
-            attributes: pulumi.Input[Optional[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']]] = None,
+            attributes: pulumi.Input[Optional[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict', 'outputs.ServiceAttributes']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -989,8 +989,8 @@ class Service(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_id: pulumi.Input[Optional[_builtins.str]] = None,
-            service_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceServicePropertyArgs', 'ServiceServicePropertyArgsDict']]]]] = None,
-            service_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceServiceReferenceArgs', 'ServiceServiceReferenceArgsDict']]]]] = None,
+            service_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceServicePropertyArgs', 'ServiceServicePropertyArgsDict', 'outputs.ServiceServiceProperty']]]]] = None,
+            service_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceServiceReferenceArgs', 'ServiceServiceReferenceArgsDict', 'outputs.ServiceServiceReference']]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Service':
@@ -1002,7 +1002,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-        :param pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict']] attributes: Consumer provided attributes.
+        :param pulumi.Input[Union['ServiceAttributesArgs', 'ServiceAttributesArgsDict', 'outputs.ServiceAttributes']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1020,9 +1020,9 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service_id: The Service identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServicePropertyArgs', 'ServiceServicePropertyArgsDict']]]] service_properties: Properties of an underlying cloud resource that can comprise a Service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServicePropertyArgs', 'ServiceServicePropertyArgsDict', 'outputs.ServiceServiceProperty']]]] service_properties: Properties of an underlying cloud resource that can comprise a Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServiceReferenceArgs', 'ServiceServiceReferenceArgsDict']]]] service_references: Reference to an underlying networking resource that can comprise a Service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServiceReferenceArgs', 'ServiceServiceReferenceArgsDict', 'outputs.ServiceServiceReference']]]] service_references: Reference to an underlying networking resource that can comprise a Service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
         :param pulumi.Input[_builtins.str] uid: Output only. A universally unique identifier (UUID) for the `Service` in the UUID4

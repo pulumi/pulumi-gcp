@@ -372,7 +372,7 @@ class OauthIdpConfig(pulumi.CustomResource):
                  issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 response_type: pulumi.Input[Optional[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict']]] = None,
+                 response_type: pulumi.Input[Optional[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict', 'outputs.OauthIdpConfigResponseType']]] = None,
                  __props__=None):
         """
         OIDC IdP configuration for a Identity Toolkit project.
@@ -435,7 +435,7 @@ class OauthIdpConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the OauthIdpConfig. Must start with `oidc.`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict']] response_type: The response type to request for in the OAuth authorization flow.
+        :param pulumi.Input[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict', 'outputs.OauthIdpConfigResponseType']] response_type: The response type to request for in the OAuth authorization flow.
                You can set either idToken or code to true, but not both.
                Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
                Structure is documented below.
@@ -514,7 +514,7 @@ class OauthIdpConfig(pulumi.CustomResource):
                  issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 response_type: pulumi.Input[Optional[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict']]] = None,
+                 response_type: pulumi.Input[Optional[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict', 'outputs.OauthIdpConfigResponseType']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -555,7 +555,7 @@ class OauthIdpConfig(pulumi.CustomResource):
             issuer: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            response_type: pulumi.Input[Optional[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict']]] = None) -> 'OauthIdpConfig':
+            response_type: pulumi.Input[Optional[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict', 'outputs.OauthIdpConfigResponseType']]] = None) -> 'OauthIdpConfig':
         """
         Get an existing OauthIdpConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -577,7 +577,7 @@ class OauthIdpConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the OauthIdpConfig. Must start with `oidc.`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict']] response_type: The response type to request for in the OAuth authorization flow.
+        :param pulumi.Input[Union['OauthIdpConfigResponseTypeArgs', 'OauthIdpConfigResponseTypeArgsDict', 'outputs.OauthIdpConfigResponseType']] response_type: The response type to request for in the OAuth authorization flow.
                You can set either idToken or code to true, but not both.
                Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
                Structure is documented below.

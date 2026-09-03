@@ -844,7 +844,7 @@ class Network(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
                  network_profile: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict', 'outputs.NetworkParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1013,7 +1013,7 @@ class Network(pulumi.CustomResource):
                following are valid URLs:
                * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
-        :param pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict', 'outputs.NetworkParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1172,7 +1172,7 @@ class Network(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
                  network_profile: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict', 'outputs.NetworkParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1232,7 +1232,7 @@ class Network(pulumi.CustomResource):
             network_id: pulumi.Input[Optional[_builtins.str]] = None,
             network_profile: pulumi.Input[Optional[_builtins.str]] = None,
             numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict', 'outputs.NetworkParams']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
@@ -1298,7 +1298,7 @@ class Network(pulumi.CustomResource):
                * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[_builtins.str] numeric_id: (Deprecated)
                The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict', 'outputs.NetworkParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

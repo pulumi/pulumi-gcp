@@ -336,7 +336,7 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict', 'outputs.V2OrganizationNotificationConfigStreamingConfig']]] = None,
                  __props__=None):
         """
         This is a continuous export that exports findings to a Pub/Sub topic.
@@ -395,7 +395,7 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
                Config lives in.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict', 'outputs.V2OrganizationNotificationConfigStreamingConfig']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         ...
@@ -467,7 +467,7 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict', 'outputs.V2OrganizationNotificationConfigStreamingConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -512,7 +512,7 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
             organization: pulumi.Input[Optional[_builtins.str]] = None,
             pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
-            streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None) -> 'V2OrganizationNotificationConfig':
+            streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict', 'outputs.V2OrganizationNotificationConfigStreamingConfig']]] = None) -> 'V2OrganizationNotificationConfig':
         """
         Get an existing V2OrganizationNotificationConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -537,7 +537,7 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
                "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[_builtins.str] service_account: The service account that needs "pubsub.topics.publish" permission to
                publish to the Pub/Sub topic.
-        :param pulumi.Input[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict', 'outputs.V2OrganizationNotificationConfigStreamingConfig']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

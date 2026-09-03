@@ -459,7 +459,7 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict']]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict', 'outputs.MulticloudDataTransferConfigService']]]]] = None,
                  __props__=None):
         """
         'Manage Multicloud Data Transfer Configs'
@@ -529,7 +529,7 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the MulticloudDataTransferConfig resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict']]]] services: Maps services to their current or planned states. Service names are keys,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict', 'outputs.MulticloudDataTransferConfigService']]]] services: Maps services to their current or planned states. Service names are keys,
                and the associated values describe the state of the service.
                Structure is documented below.
         """
@@ -611,7 +611,7 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict']]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict', 'outputs.MulticloudDataTransferConfigService']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -662,7 +662,7 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict']]]]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict', 'outputs.MulticloudDataTransferConfigService']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticloudDataTransferConfig':
         """
@@ -698,7 +698,7 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict']]]] services: Maps services to their current or planned states. Service names are keys,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticloudDataTransferConfigServiceArgs', 'MulticloudDataTransferConfigServiceArgsDict', 'outputs.MulticloudDataTransferConfigService']]]] services: Maps services to their current or planned states. Service names are keys,
                and the associated values describe the state of the service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: The Google-generated unique ID for the MulticloudDataTransferConfig

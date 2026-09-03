@@ -286,7 +286,7 @@ class Dataset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict', 'outputs.DatasetEncryptionSpec']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -367,7 +367,7 @@ class Dataset(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource.
+        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict', 'outputs.DatasetEncryptionSpec']] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the Dataset.
         :param pulumi.Input[_builtins.str] name: The resource name for the Dataset.
@@ -466,7 +466,7 @@ class Dataset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict', 'outputs.DatasetEncryptionSpec']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -500,7 +500,7 @@ class Dataset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict', 'outputs.DatasetEncryptionSpec']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -519,7 +519,7 @@ class Dataset(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource.
+        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict', 'outputs.DatasetEncryptionSpec']] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the Dataset.
         :param pulumi.Input[_builtins.str] name: The resource name for the Dataset.

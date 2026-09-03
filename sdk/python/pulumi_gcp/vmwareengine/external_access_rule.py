@@ -509,13 +509,13 @@ class ExternalAccessRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
+                 destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict', 'outputs.ExternalAccessRuleDestinationIpRange']]]]] = None,
                  destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict', 'outputs.ExternalAccessRuleSourceIpRange']]]]] = None,
                  source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -634,7 +634,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description for the external access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict', 'outputs.ExternalAccessRuleDestinationIpRange']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
                traffic that has a destination IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_ports: A list of destination ports to which the external access rule applies.
@@ -644,7 +644,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[_builtins.int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict', 'outputs.ExternalAccessRuleSourceIpRange']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
                traffic that has a source IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ports: A list of source ports to which the external access rule applies.
@@ -778,13 +778,13 @@ class ExternalAccessRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
+                 destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict', 'outputs.ExternalAccessRuleDestinationIpRange']]]]] = None,
                  destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict', 'outputs.ExternalAccessRuleSourceIpRange']]]]] = None,
                  source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -840,13 +840,13 @@ class ExternalAccessRule(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
+            destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict', 'outputs.ExternalAccessRuleDestinationIpRange']]]]] = None,
             destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
-            source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
+            source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict', 'outputs.ExternalAccessRuleSourceIpRange']]]]] = None,
             source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -870,7 +870,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description for the external access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict', 'outputs.ExternalAccessRuleDestinationIpRange']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to
                traffic that has a destination IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_ports: A list of destination ports to which the external access rule applies.
@@ -880,7 +880,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[_builtins.int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict', 'outputs.ExternalAccessRuleSourceIpRange']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
                traffic that has a source IP address in these ranges.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ports: A list of source ports to which the external access rule applies.

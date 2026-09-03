@@ -602,11 +602,11 @@ class EdgeCacheService(pulumi.CustomResource):
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict', 'outputs.EdgeCacheServiceLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
-                 routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
+                 routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict', 'outputs.EdgeCacheServiceRouting']]] = None,
                  ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1020,7 +1020,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the EdgeCache resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+        :param pulumi.Input[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict', 'outputs.EdgeCacheServiceLogConfig']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -1030,7 +1030,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
-        :param pulumi.Input[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
+        :param pulumi.Input[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict', 'outputs.EdgeCacheServiceRouting']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
@@ -1455,11 +1455,11 @@ class EdgeCacheService(pulumi.CustomResource):
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
+                 log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict', 'outputs.EdgeCacheServiceLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
-                 routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
+                 routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict', 'outputs.EdgeCacheServiceRouting']]] = None,
                  ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1511,12 +1511,12 @@ class EdgeCacheService(pulumi.CustomResource):
             ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
+            log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict', 'outputs.EdgeCacheServiceLogConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
-            routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
+            routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict', 'outputs.EdgeCacheServiceRouting']]] = None,
             ssl_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'EdgeCacheService':
         """
         Get an existing EdgeCacheService resource's state with the given name, id, and optional extra
@@ -1545,7 +1545,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the EdgeCache resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+        :param pulumi.Input[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict', 'outputs.EdgeCacheServiceLogConfig']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -1557,7 +1557,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
-        :param pulumi.Input[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
+        :param pulumi.Input[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict', 'outputs.EdgeCacheServiceRouting']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.

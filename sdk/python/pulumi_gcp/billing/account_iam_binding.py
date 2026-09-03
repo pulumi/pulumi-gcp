@@ -220,7 +220,7 @@ class AccountIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AccountIamBindingConditionArgs', 'AccountIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AccountIamBindingConditionArgs', 'AccountIamBindingConditionArgsDict', 'outputs.AccountIamBindingCondition']]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -453,7 +453,7 @@ class AccountIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AccountIamBindingConditionArgs', 'AccountIamBindingConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AccountIamBindingConditionArgs', 'AccountIamBindingConditionArgsDict', 'outputs.AccountIamBindingCondition']]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -487,7 +487,7 @@ class AccountIamBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['AccountIamBindingConditionArgs', 'AccountIamBindingConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['AccountIamBindingConditionArgs', 'AccountIamBindingConditionArgsDict', 'outputs.AccountIamBindingCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountIamBinding':

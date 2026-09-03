@@ -1292,14 +1292,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: pulumi.Input[Optional[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
+                 advanced_machine_features: pulumi.Input[Optional[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict', 'outputs.RegionInstanceTemplateAdvancedMachineFeatures']]] = None,
                  can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
-                 confidential_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
+                 confidential_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateConfidentialInstanceConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict']]]]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict', 'outputs.RegionInstanceTemplateDisk']]]]] = None,
                  enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
-                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
+                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict', 'outputs.RegionInstanceTemplateGuestAccelerator']]]]] = None,
                  instance_description: pulumi.Input[Optional[_builtins.str]] = None,
                  key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1309,19 +1309,19 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                  min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
-                 network_performance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict', 'outputs.RegionInstanceTemplateNetworkInterface']]]]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict', 'outputs.RegionInstanceTemplateNetworkPerformanceConfig']]] = None,
                  partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 reservation_affinity: pulumi.Input[Optional[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict']]] = None,
+                 reservation_affinity: pulumi.Input[Optional[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict', 'outputs.RegionInstanceTemplateReservationAffinity']]] = None,
                  resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduling: pulumi.Input[Optional[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict']]] = None,
-                 service_account: pulumi.Input[Optional[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict']]] = None,
-                 shielded_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict', 'outputs.RegionInstanceTemplateScheduling']]] = None,
+                 service_account: pulumi.Input[Optional[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict', 'outputs.RegionInstanceTemplateServiceAccount']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateShieldedInstanceConfig']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 workload_identity_config: pulumi.Input[Optional[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict']]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict', 'outputs.RegionInstanceTemplateWorkloadIdentityConfig']]] = None,
                  __props__=None):
         """
         Manages a VM instance template resource within GCE. For more information see
@@ -1557,10 +1557,10 @@ class RegionInstanceTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
+        :param pulumi.Input[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict', 'outputs.RegionInstanceTemplateAdvancedMachineFeatures']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
-        :param pulumi.Input[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateConfidentialInstanceConfig']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1568,12 +1568,12 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A brief description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict']]]] disks: Disks to attach to instances created from this template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict', 'outputs.RegionInstanceTemplateDisk']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[_builtins.bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict', 'outputs.RegionInstanceTemplateGuestAccelerator']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[_builtins.str] instance_description: A brief description to use for instances
                created from this template.
         :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
@@ -1606,10 +1606,10 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
                `name_prefix` + YYmmdd + 3 digit incremental counter
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to instances created from
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict', 'outputs.RegionInstanceTemplateNetworkInterface']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance created from the
+        :param pulumi.Input[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict', 'outputs.RegionInstanceTemplateNetworkPerformanceConfig']] network_performance_config: Configures network performance settings for the instance created from the
                template. Structure is documented below. **Note**: `machine_type`
                must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1620,17 +1620,17 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The Region in which the resource belongs.
                If region is not provided, the provider region is used.
-        :param pulumi.Input[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict', 'outputs.RegionInstanceTemplateReservationAffinity']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[_builtins.str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict']] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict', 'outputs.RegionInstanceTemplateScheduling']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
-        :param pulumi.Input[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict']] service_account: Service account to attach to the instance. Structure is documented below.
-        :param pulumi.Input[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict', 'outputs.RegionInstanceTemplateServiceAccount']] service_account: Service account to attach to the instance. Structure is documented below.
+        :param pulumi.Input[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateShieldedInstanceConfig']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to attach to the instance.
-        :param pulumi.Input[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity Config. More details about
+        :param pulumi.Input[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict', 'outputs.RegionInstanceTemplateWorkloadIdentityConfig']] workload_identity_config: Workload Identity Config. More details about
                this configuration option are detailed below.
         """
         ...
@@ -1886,14 +1886,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: pulumi.Input[Optional[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
+                 advanced_machine_features: pulumi.Input[Optional[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict', 'outputs.RegionInstanceTemplateAdvancedMachineFeatures']]] = None,
                  can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
-                 confidential_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
+                 confidential_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateConfidentialInstanceConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict']]]]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict', 'outputs.RegionInstanceTemplateDisk']]]]] = None,
                  enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
-                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
+                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict', 'outputs.RegionInstanceTemplateGuestAccelerator']]]]] = None,
                  instance_description: pulumi.Input[Optional[_builtins.str]] = None,
                  key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1903,19 +1903,19 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                  min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
-                 network_performance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict', 'outputs.RegionInstanceTemplateNetworkInterface']]]]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict', 'outputs.RegionInstanceTemplateNetworkPerformanceConfig']]] = None,
                  partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 reservation_affinity: pulumi.Input[Optional[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict']]] = None,
+                 reservation_affinity: pulumi.Input[Optional[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict', 'outputs.RegionInstanceTemplateReservationAffinity']]] = None,
                  resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduling: pulumi.Input[Optional[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict']]] = None,
-                 service_account: pulumi.Input[Optional[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict']]] = None,
-                 shielded_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict', 'outputs.RegionInstanceTemplateScheduling']]] = None,
+                 service_account: pulumi.Input[Optional[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict', 'outputs.RegionInstanceTemplateServiceAccount']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateShieldedInstanceConfig']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 workload_identity_config: pulumi.Input[Optional[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict']]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict', 'outputs.RegionInstanceTemplateWorkloadIdentityConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1978,16 +1978,16 @@ class RegionInstanceTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_machine_features: pulumi.Input[Optional[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
+            advanced_machine_features: pulumi.Input[Optional[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict', 'outputs.RegionInstanceTemplateAdvancedMachineFeatures']]] = None,
             can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
-            confidential_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
+            confidential_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateConfidentialInstanceConfig']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict']]]]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict', 'outputs.RegionInstanceTemplateDisk']]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
-            guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
+            guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict', 'outputs.RegionInstanceTemplateGuestAccelerator']]]]] = None,
             instance_description: pulumi.Input[Optional[_builtins.str]] = None,
             key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1998,23 +1998,23 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
-            network_performance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict', 'outputs.RegionInstanceTemplateNetworkInterface']]]]] = None,
+            network_performance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict', 'outputs.RegionInstanceTemplateNetworkPerformanceConfig']]] = None,
             numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
             partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            reservation_affinity: pulumi.Input[Optional[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict']]] = None,
+            reservation_affinity: pulumi.Input[Optional[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict', 'outputs.RegionInstanceTemplateReservationAffinity']]] = None,
             resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
-            scheduling: pulumi.Input[Optional[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict']]] = None,
+            scheduling: pulumi.Input[Optional[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict', 'outputs.RegionInstanceTemplateScheduling']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            service_account: pulumi.Input[Optional[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict']]] = None,
-            shielded_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
+            service_account: pulumi.Input[Optional[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict', 'outputs.RegionInstanceTemplateServiceAccount']]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateShieldedInstanceConfig']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
-            workload_identity_config: pulumi.Input[Optional[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict']]] = None) -> 'RegionInstanceTemplate':
+            workload_identity_config: pulumi.Input[Optional[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict', 'outputs.RegionInstanceTemplateWorkloadIdentityConfig']]] = None) -> 'RegionInstanceTemplate':
         """
         Get an existing RegionInstanceTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2022,10 +2022,10 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
+        :param pulumi.Input[Union['RegionInstanceTemplateAdvancedMachineFeaturesArgs', 'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict', 'outputs.RegionInstanceTemplateAdvancedMachineFeatures']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
-        :param pulumi.Input[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input[Union['RegionInstanceTemplateConfidentialInstanceConfigArgs', 'RegionInstanceTemplateConfidentialInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateConfidentialInstanceConfig']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -2034,13 +2034,13 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A brief description of this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict']]]] disks: Disks to attach to instances created from this template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateDiskArgs', 'RegionInstanceTemplateDiskArgsDict', 'outputs.RegionInstanceTemplateDisk']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateGuestAcceleratorArgs', 'RegionInstanceTemplateGuestAcceleratorArgsDict', 'outputs.RegionInstanceTemplateGuestAccelerator']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[_builtins.str] instance_description: A brief description to use for instances
                created from this template.
         :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
@@ -2074,10 +2074,10 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
                `name_prefix` + YYmmdd + 3 digit incremental counter
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to instances created from
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict', 'outputs.RegionInstanceTemplateNetworkInterface']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance created from the
+        :param pulumi.Input[Union['RegionInstanceTemplateNetworkPerformanceConfigArgs', 'RegionInstanceTemplateNetworkPerformanceConfigArgsDict', 'outputs.RegionInstanceTemplateNetworkPerformanceConfig']] network_performance_config: Configures network performance settings for the instance created from the
                template. Structure is documented below. **Note**: `machine_type`
                must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -2090,19 +2090,19 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The Region in which the resource belongs.
                If region is not provided, the provider region is used.
-        :param pulumi.Input[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[Union['RegionInstanceTemplateReservationAffinityArgs', 'RegionInstanceTemplateReservationAffinityArgsDict', 'outputs.RegionInstanceTemplateReservationAffinity']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[_builtins.str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict']] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input[Union['RegionInstanceTemplateSchedulingArgs', 'RegionInstanceTemplateSchedulingArgsDict', 'outputs.RegionInstanceTemplateScheduling']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict']] service_account: Service account to attach to the instance. Structure is documented below.
-        :param pulumi.Input[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input[Union['RegionInstanceTemplateServiceAccountArgs', 'RegionInstanceTemplateServiceAccountArgsDict', 'outputs.RegionInstanceTemplateServiceAccount']] service_account: Service account to attach to the instance. Structure is documented below.
+        :param pulumi.Input[Union['RegionInstanceTemplateShieldedInstanceConfigArgs', 'RegionInstanceTemplateShieldedInstanceConfigArgsDict', 'outputs.RegionInstanceTemplateShieldedInstanceConfig']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to attach to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity Config. More details about
+        :param pulumi.Input[Union['RegionInstanceTemplateWorkloadIdentityConfigArgs', 'RegionInstanceTemplateWorkloadIdentityConfigArgsDict', 'outputs.RegionInstanceTemplateWorkloadIdentityConfig']] workload_identity_config: Workload Identity Config. More details about
                this configuration option are detailed below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -653,9 +653,9 @@ class Index(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 dedicated_infrastructure: pulumi.Input[Optional[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict']]] = None,
+                 dedicated_infrastructure: pulumi.Input[Optional[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict', 'outputs.IndexDedicatedInfrastructure']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dense_scann: pulumi.Input[Optional[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict']]] = None,
+                 dense_scann: pulumi.Input[Optional[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict', 'outputs.IndexDenseScann']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  distance_metric: pulumi.Input[Optional[_builtins.str]] = None,
@@ -813,7 +813,7 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] collection_id: The ID of the parent Collection.
-        :param pulumi.Input[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict']] dedicated_infrastructure: Dedicated infrastructure for the index. This field belongs to the
+        :param pulumi.Input[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict', 'outputs.IndexDedicatedInfrastructure']] dedicated_infrastructure: Dedicated infrastructure for the index. This field belongs to the
                `infra_type` oneof; if omitted, the server populates it with the
                default `PERFORMANCE_OPTIMIZED` mode and an autoscaling spec of
                `min_replica_count=2`, `max_replica_count=2`.
@@ -824,7 +824,7 @@ class Index(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict']] dense_scann: Dense ScaNN index configuration. This field belongs to the
+        :param pulumi.Input[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict', 'outputs.IndexDenseScann']] dense_scann: Dense ScaNN index configuration. This field belongs to the
                `index_type` oneof; if omitted, the server populates it with default
                ScaNN settings.
                Structure is documented below.
@@ -1013,9 +1013,9 @@ class Index(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 dedicated_infrastructure: pulumi.Input[Optional[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict']]] = None,
+                 dedicated_infrastructure: pulumi.Input[Optional[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict', 'outputs.IndexDedicatedInfrastructure']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dense_scann: pulumi.Input[Optional[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict']]] = None,
+                 dense_scann: pulumi.Input[Optional[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict', 'outputs.IndexDenseScann']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  distance_metric: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1076,9 +1076,9 @@ class Index(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            dedicated_infrastructure: pulumi.Input[Optional[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict']]] = None,
+            dedicated_infrastructure: pulumi.Input[Optional[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict', 'outputs.IndexDedicatedInfrastructure']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            dense_scann: pulumi.Input[Optional[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict']]] = None,
+            dense_scann: pulumi.Input[Optional[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict', 'outputs.IndexDenseScann']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             distance_metric: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1102,7 +1102,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] collection_id: The ID of the parent Collection.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create time stamp
-        :param pulumi.Input[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict']] dedicated_infrastructure: Dedicated infrastructure for the index. This field belongs to the
+        :param pulumi.Input[Union['IndexDedicatedInfrastructureArgs', 'IndexDedicatedInfrastructureArgsDict', 'outputs.IndexDedicatedInfrastructure']] dedicated_infrastructure: Dedicated infrastructure for the index. This field belongs to the
                `infra_type` oneof; if omitted, the server populates it with the
                default `PERFORMANCE_OPTIMIZED` mode and an autoscaling spec of
                `min_replica_count=2`, `max_replica_count=2`.
@@ -1113,7 +1113,7 @@ class Index(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict']] dense_scann: Dense ScaNN index configuration. This field belongs to the
+        :param pulumi.Input[Union['IndexDenseScannArgs', 'IndexDenseScannArgsDict', 'outputs.IndexDenseScann']] dense_scann: Dense ScaNN index configuration. This field belongs to the
                `index_type` oneof; if omitted, the server populates it with default
                ScaNN settings.
                Structure is documented below.

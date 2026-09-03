@@ -731,7 +731,7 @@ class Backup(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict', 'outputs.BackupEncryptionConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -858,7 +858,7 @@ class Backup(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the backup.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Backup.
-        :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict', 'outputs.BackupEncryptionConfig']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -1001,7 +1001,7 @@ class Backup(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_config: pulumi.Input[Optional[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict', 'outputs.BackupEncryptionConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1071,10 +1071,10 @@ class Backup(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_config: pulumi.Input[Optional[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']]] = None,
-            encryption_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupEncryptionInfoArgs', 'BackupEncryptionInfoArgsDict']]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict', 'outputs.BackupEncryptionConfig']]] = None,
+            encryption_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupEncryptionInfoArgs', 'BackupEncryptionInfoArgsDict', 'outputs.BackupEncryptionInfo']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            expiry_quantities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupExpiryQuantityArgs', 'BackupExpiryQuantityArgsDict']]]]] = None,
+            expiry_quantities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupExpiryQuantityArgs', 'BackupExpiryQuantityArgsDict', 'outputs.BackupExpiryQuantity']]]]] = None,
             expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1116,12 +1116,12 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Backup.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict', 'outputs.BackupEncryptionConfig']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupEncryptionInfoArgs', 'BackupEncryptionInfoArgsDict']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupEncryptionInfoArgs', 'BackupEncryptionInfoArgsDict', 'outputs.BackupEncryptionInfo']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupExpiryQuantityArgs', 'BackupExpiryQuantityArgsDict']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupExpiryQuantityArgs', 'BackupExpiryQuantityArgsDict', 'outputs.BackupExpiryQuantity']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
                Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] expiry_time: Output only. The time at which after the backup is eligible to be garbage collected.

@@ -378,9 +378,9 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']]] = None,
-                 scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
-                 session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
+                 principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict', 'outputs.GcpUserAccessBindingPrincipal']]] = None,
+                 scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict', 'outputs.GcpUserAccessBindingScopedAccessSetting']]]]] = None,
+                 session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict', 'outputs.GcpUserAccessBindingSessionSettings']]] = None,
                  __props__=None):
         """
         Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access.
@@ -464,11 +464,11 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                This field does not accept group email addresses or aliases.
                Example: "01d520gv4vjcrht"
         :param pulumi.Input[_builtins.str] organization_id: Required. ID of the parent organization.
-        :param pulumi.Input[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        :param pulumi.Input[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict', 'outputs.GcpUserAccessBindingPrincipal']] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict', 'outputs.GcpUserAccessBindingScopedAccessSetting']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
-        :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
+        :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict', 'outputs.GcpUserAccessBindingSessionSettings']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
                Structure is documented below.
         """
         ...
@@ -560,9 +560,9 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']]] = None,
-                 scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
-                 session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
+                 principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict', 'outputs.GcpUserAccessBindingPrincipal']]] = None,
+                 scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict', 'outputs.GcpUserAccessBindingScopedAccessSetting']]]]] = None,
+                 session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict', 'outputs.GcpUserAccessBindingSessionSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -599,9 +599,9 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             group_key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-            principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']]] = None,
-            scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
-            session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None) -> 'GcpUserAccessBinding':
+            principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict', 'outputs.GcpUserAccessBindingPrincipal']]] = None,
+            scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict', 'outputs.GcpUserAccessBindingScopedAccessSetting']]]]] = None,
+            session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict', 'outputs.GcpUserAccessBindingSessionSettings']]] = None) -> 'GcpUserAccessBinding':
         """
         Get an existing GcpUserAccessBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -627,11 +627,11 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                Example: "01d520gv4vjcrht"
         :param pulumi.Input[_builtins.str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[_builtins.str] organization_id: Required. ID of the parent organization.
-        :param pulumi.Input[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        :param pulumi.Input[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict', 'outputs.GcpUserAccessBindingPrincipal']] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict', 'outputs.GcpUserAccessBindingScopedAccessSetting']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
-        :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
+        :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict', 'outputs.GcpUserAccessBindingSessionSettings']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

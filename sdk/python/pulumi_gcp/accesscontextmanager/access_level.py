@@ -308,8 +308,8 @@ class AccessLevel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
-                 custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
+                 basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict', 'outputs.AccessLevelBasic']]] = None,
+                 custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict', 'outputs.AccessLevelCustom']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,9 +379,9 @@ class AccessLevel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict', 'outputs.AccessLevelBasic']] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict', 'outputs.AccessLevelCustom']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -480,8 +480,8 @@ class AccessLevel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
-                 custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
+                 basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict', 'outputs.AccessLevelBasic']]] = None,
+                 custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict', 'outputs.AccessLevelCustom']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -517,8 +517,8 @@ class AccessLevel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
-            custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
+            basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict', 'outputs.AccessLevelBasic']]] = None,
+            custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict', 'outputs.AccessLevelCustom']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -531,9 +531,9 @@ class AccessLevel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict', 'outputs.AccessLevelBasic']] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict', 'outputs.AccessLevelCustom']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

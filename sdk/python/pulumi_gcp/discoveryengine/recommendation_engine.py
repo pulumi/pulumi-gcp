@@ -426,14 +426,14 @@ class RecommendationEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 common_config: pulumi.Input[Optional[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict']]] = None,
+                 common_config: pulumi.Input[Optional[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict', 'outputs.RecommendationEngineCommonConfig']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 media_recommendation_engine_config: pulumi.Input[Optional[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict']]] = None,
+                 media_recommendation_engine_config: pulumi.Input[Optional[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict', 'outputs.RecommendationEngineMediaRecommendationEngineConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -527,7 +527,7 @@ class RecommendationEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict', 'outputs.RecommendationEngineCommonConfig']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -543,7 +543,7 @@ class RecommendationEngine(pulumi.CustomResource):
                Possible values are: `GENERIC`, `MEDIA`.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
-        :param pulumi.Input[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict']] media_recommendation_engine_config: Configurations for a Media Recommendation Engine. Only applicable on the data stores
+        :param pulumi.Input[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict', 'outputs.RecommendationEngineMediaRecommendationEngineConfig']] media_recommendation_engine_config: Configurations for a Media Recommendation Engine. Only applicable on the data stores
                with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -659,14 +659,14 @@ class RecommendationEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 common_config: pulumi.Input[Optional[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict']]] = None,
+                 common_config: pulumi.Input[Optional[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict', 'outputs.RecommendationEngineCommonConfig']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 media_recommendation_engine_config: pulumi.Input[Optional[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict']]] = None,
+                 media_recommendation_engine_config: pulumi.Input[Optional[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict', 'outputs.RecommendationEngineMediaRecommendationEngineConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -707,7 +707,7 @@ class RecommendationEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            common_config: pulumi.Input[Optional[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict']]] = None,
+            common_config: pulumi.Input[Optional[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict', 'outputs.RecommendationEngineCommonConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -715,7 +715,7 @@ class RecommendationEngine(pulumi.CustomResource):
             engine_id: pulumi.Input[Optional[_builtins.str]] = None,
             industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            media_recommendation_engine_config: pulumi.Input[Optional[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict']]] = None,
+            media_recommendation_engine_config: pulumi.Input[Optional[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict', 'outputs.RecommendationEngineMediaRecommendationEngineConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'RecommendationEngine':
@@ -726,7 +726,7 @@ class RecommendationEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['RecommendationEngineCommonConfigArgs', 'RecommendationEngineCommonConfigArgsDict', 'outputs.RecommendationEngineCommonConfig']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
@@ -743,7 +743,7 @@ class RecommendationEngine(pulumi.CustomResource):
                Possible values are: `GENERIC`, `MEDIA`.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
-        :param pulumi.Input[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict']] media_recommendation_engine_config: Configurations for a Media Recommendation Engine. Only applicable on the data stores
+        :param pulumi.Input[Union['RecommendationEngineMediaRecommendationEngineConfigArgs', 'RecommendationEngineMediaRecommendationEngineConfigArgsDict', 'outputs.RecommendationEngineMediaRecommendationEngineConfig']] media_recommendation_engine_config: Configurations for a Media Recommendation Engine. Only applicable on the data stores
                with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the recommendation engine. Values are of the format

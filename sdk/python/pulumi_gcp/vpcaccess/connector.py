@@ -537,7 +537,7 @@ class Connector(pulumi.CustomResource):
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
+                 subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict', 'outputs.ConnectorSubnet']]] = None,
                  __props__=None):
         """
         Serverless VPC Access connector resource.
@@ -628,7 +628,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
-        :param pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']] subnet: The subnet in which to house the connector
+        :param pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict', 'outputs.ConnectorSubnet']] subnet: The subnet in which to house the connector
                Structure is documented below.
         """
         ...
@@ -727,7 +727,7 @@ class Connector(pulumi.CustomResource):
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
+                 subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict', 'outputs.ConnectorSubnet']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -776,7 +776,7 @@ class Connector(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None) -> 'Connector':
+            subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict', 'outputs.ConnectorSubnet']]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -810,7 +810,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] self_link: The fully qualified name of this VPC connector
         :param pulumi.Input[_builtins.str] state: State of the VPC access connector.
-        :param pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']] subnet: The subnet in which to house the connector
+        :param pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict', 'outputs.ConnectorSubnet']] subnet: The subnet in which to house the connector
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

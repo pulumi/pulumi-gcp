@@ -409,15 +409,15 @@ class Binding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_provider_binding: pulumi.Input[Optional[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict']]] = None,
+                 auth_provider_binding: pulumi.Input[Optional[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict', 'outputs.BindingAuthProviderBinding']]] = None,
                  binding_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['BindingSourceArgs', 'BindingSourceArgsDict']]] = None,
-                 target: pulumi.Input[Optional[Union['BindingTargetArgs', 'BindingTargetArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['BindingSourceArgs', 'BindingSourceArgsDict', 'outputs.BindingSource']]] = None,
+                 target: pulumi.Input[Optional[Union['BindingTargetArgs', 'BindingTargetArgsDict', 'outputs.BindingTarget']]] = None,
                  __props__=None):
         """
         Represents a user-defined Binding.
@@ -477,7 +477,7 @@ class Binding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict']] auth_provider_binding: The auth provider of the Binding.
+        :param pulumi.Input[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict', 'outputs.BindingAuthProviderBinding']] auth_provider_binding: The auth provider of the Binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] binding_id: The name of the Binding.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -491,9 +491,9 @@ class Binding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BindingSourceArgs', 'BindingSourceArgsDict']] source: The source of the Binding.
+        :param pulumi.Input[Union['BindingSourceArgs', 'BindingSourceArgsDict', 'outputs.BindingSource']] source: The source of the Binding.
                Structure is documented below.
-        :param pulumi.Input[Union['BindingTargetArgs', 'BindingTargetArgsDict']] target: The target of the Binding.
+        :param pulumi.Input[Union['BindingTargetArgs', 'BindingTargetArgsDict', 'outputs.BindingTarget']] target: The target of the Binding.
                Structure is documented below.
         """
         ...
@@ -573,15 +573,15 @@ class Binding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_provider_binding: pulumi.Input[Optional[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict']]] = None,
+                 auth_provider_binding: pulumi.Input[Optional[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict', 'outputs.BindingAuthProviderBinding']]] = None,
                  binding_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['BindingSourceArgs', 'BindingSourceArgsDict']]] = None,
-                 target: pulumi.Input[Optional[Union['BindingTargetArgs', 'BindingTargetArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['BindingSourceArgs', 'BindingSourceArgsDict', 'outputs.BindingSource']]] = None,
+                 target: pulumi.Input[Optional[Union['BindingTargetArgs', 'BindingTargetArgsDict', 'outputs.BindingTarget']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,7 +623,7 @@ class Binding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_provider_binding: pulumi.Input[Optional[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict']]] = None,
+            auth_provider_binding: pulumi.Input[Optional[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict', 'outputs.BindingAuthProviderBinding']]] = None,
             binding_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -632,8 +632,8 @@ class Binding(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            source: pulumi.Input[Optional[Union['BindingSourceArgs', 'BindingSourceArgsDict']]] = None,
-            target: pulumi.Input[Optional[Union['BindingTargetArgs', 'BindingTargetArgsDict']]] = None,
+            source: pulumi.Input[Optional[Union['BindingSourceArgs', 'BindingSourceArgsDict', 'outputs.BindingSource']]] = None,
+            target: pulumi.Input[Optional[Union['BindingTargetArgs', 'BindingTargetArgsDict', 'outputs.BindingTarget']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Binding':
         """
         Get an existing Binding resource's state with the given name, id, and optional extra
@@ -642,7 +642,7 @@ class Binding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict']] auth_provider_binding: The auth provider of the Binding.
+        :param pulumi.Input[Union['BindingAuthProviderBindingArgs', 'BindingAuthProviderBindingArgsDict', 'outputs.BindingAuthProviderBinding']] auth_provider_binding: The auth provider of the Binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] binding_id: The name of the Binding.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -658,9 +658,9 @@ class Binding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The resource name of the Binding.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BindingSourceArgs', 'BindingSourceArgsDict']] source: The source of the Binding.
+        :param pulumi.Input[Union['BindingSourceArgs', 'BindingSourceArgsDict', 'outputs.BindingSource']] source: The source of the Binding.
                Structure is documented below.
-        :param pulumi.Input[Union['BindingTargetArgs', 'BindingTargetArgsDict']] target: The target of the Binding.
+        :param pulumi.Input[Union['BindingTargetArgs', 'BindingTargetArgsDict', 'outputs.BindingTarget']] target: The target of the Binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
         """

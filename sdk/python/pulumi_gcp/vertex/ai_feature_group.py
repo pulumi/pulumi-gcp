@@ -384,7 +384,7 @@ class AiFeatureGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query: pulumi.Input[Optional[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']]] = None,
+                 big_query: pulumi.Input[Optional[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict', 'outputs.AiFeatureGroupBigQuery']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -472,7 +472,7 @@ class AiFeatureGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+        :param pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict', 'outputs.AiFeatureGroupBigQuery']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -588,7 +588,7 @@ class AiFeatureGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query: pulumi.Input[Optional[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']]] = None,
+                 big_query: pulumi.Input[Optional[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict', 'outputs.AiFeatureGroupBigQuery']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -628,7 +628,7 @@ class AiFeatureGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            big_query: pulumi.Input[Optional[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']]] = None,
+            big_query: pulumi.Input[Optional[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict', 'outputs.AiFeatureGroupBigQuery']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -647,7 +647,7 @@ class AiFeatureGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+        :param pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict', 'outputs.AiFeatureGroupBigQuery']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the FeatureGroup was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

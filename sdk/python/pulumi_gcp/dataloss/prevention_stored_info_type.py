@@ -371,11 +371,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']]] = None,
+                 dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeDictionary']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 large_custom_dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict']]] = None,
+                 large_custom_dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeLargeCustomDictionary']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 regex: pulumi.Input[Optional[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict']]] = None,
+                 regex: pulumi.Input[Optional[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict', 'outputs.PreventionStoredInfoTypeRegex']]] = None,
                  stored_info_type_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -495,17 +495,17 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the info type.
-        :param pulumi.Input[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']] dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeDictionary']] dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the info type.
-        :param pulumi.Input[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict']] large_custom_dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeLargeCustomDictionary']] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the info type in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-        :param pulumi.Input[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict']] regex: Regular expression which defines the rule.
+        :param pulumi.Input[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict', 'outputs.PreventionStoredInfoTypeRegex']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
@@ -642,11 +642,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']]] = None,
+                 dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeDictionary']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 large_custom_dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict']]] = None,
+                 large_custom_dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeLargeCustomDictionary']]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 regex: pulumi.Input[Optional[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict']]] = None,
+                 regex: pulumi.Input[Optional[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict', 'outputs.PreventionStoredInfoTypeRegex']]] = None,
                  stored_info_type_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -680,12 +680,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']]] = None,
+            dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeDictionary']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            large_custom_dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict']]] = None,
+            large_custom_dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeLargeCustomDictionary']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            regex: pulumi.Input[Optional[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict']]] = None,
+            regex: pulumi.Input[Optional[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict', 'outputs.PreventionStoredInfoTypeRegex']]] = None,
             stored_info_type_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PreventionStoredInfoType':
         """
         Get an existing PreventionStoredInfoType resource's state with the given name, id, and optional extra
@@ -701,10 +701,10 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the info type.
-        :param pulumi.Input[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']] dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeDictionary']] dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the info type.
-        :param pulumi.Input[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict']] large_custom_dictionary: Dictionary which defines the rule.
+        :param pulumi.Input[Union['PreventionStoredInfoTypeLargeCustomDictionaryArgs', 'PreventionStoredInfoTypeLargeCustomDictionaryArgsDict', 'outputs.PreventionStoredInfoTypeLargeCustomDictionary']] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the info type. Set by the server.
         :param pulumi.Input[_builtins.str] parent: The parent of the info type in any of the following formats:
@@ -712,7 +712,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-        :param pulumi.Input[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict']] regex: Regular expression which defines the rule.
+        :param pulumi.Input[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict', 'outputs.PreventionStoredInfoTypeRegex']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100

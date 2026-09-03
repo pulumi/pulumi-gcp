@@ -947,7 +947,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict', 'outputs.JobBinaryAuthorization']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -960,7 +960,7 @@ class Job(pulumi.CustomResource):
                  run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
                  start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
+                 template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict', 'outputs.JobTemplate']]] = None,
                  __props__=None):
         """
         A Cloud Run Job resource that references a container image which is run to completion.
@@ -1373,7 +1373,7 @@ class Job(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict', 'outputs.JobBinaryAuthorization']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
@@ -1410,7 +1410,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-        :param pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict']] template: The template used to create executions for this Job.
+        :param pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict', 'outputs.JobTemplate']] template: The template used to create executions for this Job.
                Structure is documented below.
         """
         ...
@@ -1838,7 +1838,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict', 'outputs.JobBinaryAuthorization']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1851,7 +1851,7 @@ class Job(pulumi.CustomResource):
                  run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
                  start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
+                 template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict', 'outputs.JobTemplate']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1911,10 +1911,10 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict', 'outputs.JobBinaryAuthorization']]] = None,
             client: pulumi.Input[Optional[_builtins.str]] = None,
             client_version: pulumi.Input[Optional[_builtins.str]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobConditionArgs', 'JobConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobConditionArgs', 'JobConditionArgsDict', 'outputs.JobCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1928,7 +1928,7 @@ class Job(pulumi.CustomResource):
             generation: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
-            latest_created_executions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLatestCreatedExecutionArgs', 'JobLatestCreatedExecutionArgsDict']]]]] = None,
+            latest_created_executions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLatestCreatedExecutionArgs', 'JobLatestCreatedExecutionArgsDict', 'outputs.JobLatestCreatedExecution']]]]] = None,
             launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1939,8 +1939,8 @@ class Job(pulumi.CustomResource):
             run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
             start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
-            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict']]]]] = None,
+            template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict', 'outputs.JobTemplate']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict', 'outputs.JobTerminalCondition']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
@@ -1956,11 +1956,11 @@ class Job(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict', 'outputs.JobBinaryAuthorization']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobConditionArgs', 'JobConditionArgsDict']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobConditionArgs', 'JobConditionArgsDict', 'outputs.JobCondition']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: (Output)
                Creation timestamp of the execution.
@@ -1992,7 +1992,7 @@ class Job(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] last_modifier: Email address of the last authenticated modifier.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLatestCreatedExecutionArgs', 'JobLatestCreatedExecutionArgsDict']]]] latest_created_executions: Name of the last created execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLatestCreatedExecutionArgs', 'JobLatestCreatedExecutionArgsDict', 'outputs.JobLatestCreatedExecution']]]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
                If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -2016,9 +2016,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-        :param pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict']] template: The template used to create executions for this Job.
+        :param pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict', 'outputs.JobTemplate']] template: The template used to create executions for this Job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict', 'outputs.JobTerminalCondition']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[_builtins.str] update_time: The last-modified time.

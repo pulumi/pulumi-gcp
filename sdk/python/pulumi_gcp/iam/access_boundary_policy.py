@@ -244,7 +244,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict', 'outputs.AccessBoundaryPolicyRule']]]]] = None,
                  __props__=None):
         """
         Represents a collection of access boundary policies to apply to a given resource.
@@ -333,7 +333,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the rule.
         :param pulumi.Input[_builtins.str] name: The name of the policy.
         :param pulumi.Input[_builtins.str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict', 'outputs.AccessBoundaryPolicyRule']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         ...
@@ -437,7 +437,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict', 'outputs.AccessBoundaryPolicyRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,7 +472,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]]] = None) -> 'AccessBoundaryPolicy':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict', 'outputs.AccessBoundaryPolicyRule']]]]] = None) -> 'AccessBoundaryPolicy':
         """
         Get an existing AccessBoundaryPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -490,7 +490,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[_builtins.str] name: The name of the policy.
         :param pulumi.Input[_builtins.str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict', 'outputs.AccessBoundaryPolicyRule']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

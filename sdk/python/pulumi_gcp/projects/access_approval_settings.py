@@ -376,7 +376,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_key_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 enrolled_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict']]]]] = None,
+                 enrolled_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict', 'outputs.AccessApprovalSettingsEnrolledService']]]]] = None,
                  notification_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -465,7 +465,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict', 'outputs.AccessApprovalSettingsEnrolledService']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
@@ -575,7 +575,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_key_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 enrolled_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict']]]]] = None,
+                 enrolled_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict', 'outputs.AccessApprovalSettingsEnrolledService']]]]] = None,
                  notification_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -616,7 +616,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             ancestor_has_active_key_version: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             enrolled_ancestor: pulumi.Input[Optional[_builtins.bool]] = None,
-            enrolled_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict']]]]] = None,
+            enrolled_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict', 'outputs.AccessApprovalSettingsEnrolledService']]]]] = None,
             invalid_key_version: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notification_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -640,7 +640,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict', 'outputs.AccessApprovalSettingsEnrolledService']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.

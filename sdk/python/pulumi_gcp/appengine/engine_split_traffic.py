@@ -179,7 +179,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
                  migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
-                 split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None,
+                 split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict', 'outputs.EngineSplitTrafficSplit']]] = None,
                  __props__=None):
         """
         Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
@@ -282,7 +282,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service: The name of the service these settings apply to.
-        :param pulumi.Input[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict', 'outputs.EngineSplitTrafficSplit']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         """
         ...
@@ -404,7 +404,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
                  migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
-                 split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None,
+                 split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict', 'outputs.EngineSplitTrafficSplit']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,7 +435,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None,
-            split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None) -> 'EngineSplitTraffic':
+            split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict', 'outputs.EngineSplitTrafficSplit']]] = None) -> 'EngineSplitTraffic':
         """
         Get an existing EngineSplitTraffic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -447,7 +447,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service: The name of the service these settings apply to.
-        :param pulumi.Input[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict', 'outputs.EngineSplitTrafficSplit']] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -411,7 +411,7 @@ class BlockchainNodes(pulumi.CustomResource):
                  blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
+                 ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict', 'outputs.BlockchainNodesEthereumDetails']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -540,7 +540,7 @@ class BlockchainNodes(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']] ethereum_details: User-provided key-value pairs
+        :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict', 'outputs.BlockchainNodesEthereumDetails']] ethereum_details: User-provided key-value pairs
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-provided key-value pairs
                
@@ -687,7 +687,7 @@ class BlockchainNodes(pulumi.CustomResource):
                  blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
+                 ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict', 'outputs.BlockchainNodesEthereumDetails']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -731,11 +731,11 @@ class BlockchainNodes(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
             blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
-            connection_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]]] = None,
+            connection_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict', 'outputs.BlockchainNodesConnectionInfo']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
+            ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict', 'outputs.BlockchainNodesEthereumDetails']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -752,7 +752,7 @@ class BlockchainNodes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] blockchain_node_id: ID of the requesting object.
         :param pulumi.Input[_builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]] connection_infos: The connection information through which to interact with a blockchain node.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict', 'outputs.BlockchainNodesConnectionInfo']]]] connection_infos: The connection information through which to interact with a blockchain node.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the blockchain node was first created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -762,7 +762,7 @@ class BlockchainNodes(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']] ethereum_details: User-provided key-value pairs
+        :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict', 'outputs.BlockchainNodesEthereumDetails']] ethereum_details: User-provided key-value pairs
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-provided key-value pairs
                

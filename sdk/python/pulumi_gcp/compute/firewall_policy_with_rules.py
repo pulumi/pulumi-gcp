@@ -344,7 +344,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict', 'outputs.FirewallPolicyWithRulesRule']]]]] = None,
                  short_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -523,7 +523,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] parent: The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict']]]] rules: A list of firewall policy rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict', 'outputs.FirewallPolicyWithRulesRule']]]] rules: A list of firewall policy rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] short_name: A textual name of the security policy.
         """
@@ -716,7 +716,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict', 'outputs.FirewallPolicyWithRulesRule']]]]] = None,
                  short_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -761,9 +761,9 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            predefined_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesPredefinedRuleArgs', 'FirewallPolicyWithRulesPredefinedRuleArgsDict']]]]] = None,
+            predefined_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesPredefinedRuleArgs', 'FirewallPolicyWithRulesPredefinedRuleArgsDict', 'outputs.FirewallPolicyWithRulesPredefinedRule']]]]] = None,
             rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict', 'outputs.FirewallPolicyWithRulesRule']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None,
             short_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallPolicyWithRules':
@@ -786,10 +786,10 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[_builtins.str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesPredefinedRuleArgs', 'FirewallPolicyWithRulesPredefinedRuleArgsDict']]]] predefined_rules: A list of pre-define firewall policy rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesPredefinedRuleArgs', 'FirewallPolicyWithRulesPredefinedRuleArgsDict', 'outputs.FirewallPolicyWithRulesPredefinedRule']]]] predefined_rules: A list of pre-define firewall policy rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict']]]] rules: A list of firewall policy rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict', 'outputs.FirewallPolicyWithRulesRule']]]] rules: A list of firewall policy rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[_builtins.str] self_link_with_id: Server-defined URL for this resource with the resource id.

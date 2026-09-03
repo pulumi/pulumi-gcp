@@ -876,23 +876,23 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']]] = None,
-                 config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]]] = None,
+                 auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']]] = None,
+                 config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]]] = None,
                  connector_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]]] = None,
-                 eventing_config: pulumi.Input[Optional[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict', 'outputs.ConnectionDestinationConfig']]]]] = None,
+                 eventing_config: pulumi.Input[Optional[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict', 'outputs.ConnectionEventingConfig']]] = None,
                  eventing_enablement_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 lock_config: pulumi.Input[Optional[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']]] = None,
-                 log_config: pulumi.Input[Optional[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']]] = None,
+                 lock_config: pulumi.Input[Optional[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict', 'outputs.ConnectionLockConfig']]] = None,
+                 log_config: pulumi.Input[Optional[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict', 'outputs.ConnectionLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict', 'outputs.ConnectionNodeConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']]] = None,
+                 ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -1183,9 +1183,9 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']] auth_config: authConfig for the connection.
+        :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connector_version: connectorVersion of the Connector.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1195,9 +1195,9 @@ class Connection(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An arbitrary description for the Connection.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict', 'outputs.ConnectionDestinationConfig']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict', 'outputs.ConnectionEventingConfig']] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[_builtins.str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
@@ -1206,17 +1206,17 @@ class Connection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location in which Connection needs to be created.
-        :param pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict', 'outputs.ConnectionLockConfig']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']] log_config: Log configuration for the connection.
+        :param pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict', 'outputs.ConnectionLogConfig']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of Connection needs to be created.
-        :param pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']] node_config: Node configuration for the connection.
+        :param pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict', 'outputs.ConnectionNodeConfig']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service_account: Service account needed for runtime plane to access Google Cloud resources.
-        :param pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']] ssl_config: SSL Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] suspended: Suspended indicates if a user has suspended a connection or not.
         """
@@ -1527,23 +1527,23 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']]] = None,
-                 config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]]] = None,
+                 auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']]] = None,
+                 config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]]] = None,
                  connector_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]]] = None,
-                 eventing_config: pulumi.Input[Optional[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict', 'outputs.ConnectionDestinationConfig']]]]] = None,
+                 eventing_config: pulumi.Input[Optional[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict', 'outputs.ConnectionEventingConfig']]] = None,
                  eventing_enablement_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 lock_config: pulumi.Input[Optional[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']]] = None,
-                 log_config: pulumi.Input[Optional[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']]] = None,
+                 lock_config: pulumi.Input[Optional[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict', 'outputs.ConnectionLockConfig']]] = None,
+                 log_config: pulumi.Input[Optional[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict', 'outputs.ConnectionLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_config: pulumi.Input[Optional[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict', 'outputs.ConnectionNodeConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']]] = None,
+                 ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1599,32 +1599,32 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']]] = None,
-            config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]]] = None,
+            auth_config: pulumi.Input[Optional[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']]] = None,
+            config_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]]] = None,
             connection_revision: pulumi.Input[Optional[_builtins.str]] = None,
             connector_version: pulumi.Input[Optional[_builtins.str]] = None,
-            connector_version_infra_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConnectorVersionInfraConfigArgs', 'ConnectionConnectorVersionInfraConfigArgsDict']]]]] = None,
+            connector_version_infra_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionConnectorVersionInfraConfigArgs', 'ConnectionConnectorVersionInfraConfigArgsDict', 'outputs.ConnectionConnectorVersionInfraConfig']]]]] = None,
             connector_version_launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]]] = None,
+            destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict', 'outputs.ConnectionDestinationConfig']]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            eventing_config: pulumi.Input[Optional[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']]] = None,
+            eventing_config: pulumi.Input[Optional[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict', 'outputs.ConnectionEventingConfig']]] = None,
             eventing_enablement_type: pulumi.Input[Optional[_builtins.str]] = None,
-            eventing_runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionEventingRuntimeDataArgs', 'ConnectionEventingRuntimeDataArgsDict']]]]] = None,
+            eventing_runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionEventingRuntimeDataArgs', 'ConnectionEventingRuntimeDataArgsDict', 'outputs.ConnectionEventingRuntimeData']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            lock_config: pulumi.Input[Optional[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']]] = None,
-            log_config: pulumi.Input[Optional[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']]] = None,
+            lock_config: pulumi.Input[Optional[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict', 'outputs.ConnectionLockConfig']]] = None,
+            log_config: pulumi.Input[Optional[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict', 'outputs.ConnectionLogConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            node_config: pulumi.Input[Optional[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']]] = None,
+            node_config: pulumi.Input[Optional[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict', 'outputs.ConnectionNodeConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             service_directory: pulumi.Input[Optional[_builtins.str]] = None,
-            ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict']]]]] = None,
+            ssl_config: pulumi.Input[Optional[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict', 'outputs.ConnectionStatus']]]]] = None,
             subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Connection':
@@ -1635,13 +1635,13 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']] auth_config: authConfig for the connection.
+        :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict', 'outputs.ConnectionAuthConfig']] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict', 'outputs.ConnectionConfigVariable']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
         :param pulumi.Input[_builtins.str] connector_version: connectorVersion of the Connector.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConnectorVersionInfraConfigArgs', 'ConnectionConnectorVersionInfraConfigArgsDict']]]] connector_version_infra_configs: This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConnectorVersionInfraConfigArgs', 'ConnectionConnectorVersionInfraConfigArgsDict', 'outputs.ConnectionConnectorVersionInfraConfig']]]] connector_version_infra_configs: This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[_builtins.str] create_time: Time the Namespace was created in UTC.
@@ -1652,26 +1652,26 @@ class Connection(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An arbitrary description for the Connection.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict', 'outputs.ConnectionDestinationConfig']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict', 'outputs.ConnectionEventingConfig']] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[_builtins.str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionEventingRuntimeDataArgs', 'ConnectionEventingRuntimeDataArgsDict']]]] eventing_runtime_datas: Eventing Runtime Data.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionEventingRuntimeDataArgs', 'ConnectionEventingRuntimeDataArgsDict', 'outputs.ConnectionEventingRuntimeData']]]] eventing_runtime_datas: Eventing Runtime Data.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location in which Connection needs to be created.
-        :param pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict', 'outputs.ConnectionLockConfig']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']] log_config: Log configuration for the connection.
+        :param pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict', 'outputs.ConnectionLogConfig']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of Connection needs to be created.
-        :param pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']] node_config: Node configuration for the connection.
+        :param pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict', 'outputs.ConnectionNodeConfig']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1680,9 +1680,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account: Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input[_builtins.str] service_directory: The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
                e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
-        :param pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict', 'outputs.ConnectionSslConfig']] ssl_config: SSL Configuration of a connection
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict', 'outputs.ConnectionStatus']]]] statuses: (Output)
                Current status of eventing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subscription_type: This subscription type enum states the subscription type of the project.

@@ -852,8 +852,8 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationArgs', 'MirroringEndpointGroupAssociationArgsDict']]]]] = None,
-            connected_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupConnectedDeploymentGroupArgs', 'MirroringEndpointGroupConnectedDeploymentGroupArgsDict']]]]] = None,
+            associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationArgs', 'MirroringEndpointGroupAssociationArgsDict', 'outputs.MirroringEndpointGroupAssociation']]]]] = None,
+            connected_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupConnectedDeploymentGroupArgs', 'MirroringEndpointGroupConnectedDeploymentGroupArgsDict', 'outputs.MirroringEndpointGroupConnectedDeploymentGroup']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -877,9 +877,9 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationArgs', 'MirroringEndpointGroupAssociationArgsDict']]]] associations: List of associations to this endpoint group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationArgs', 'MirroringEndpointGroupAssociationArgsDict', 'outputs.MirroringEndpointGroupAssociation']]]] associations: List of associations to this endpoint group.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupConnectedDeploymentGroupArgs', 'MirroringEndpointGroupConnectedDeploymentGroupArgsDict']]]] connected_deployment_groups: List of details about the connected deployment groups to this endpoint
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupConnectedDeploymentGroupArgs', 'MirroringEndpointGroupConnectedDeploymentGroupArgsDict', 'outputs.MirroringEndpointGroupConnectedDeploymentGroup']]]] connected_deployment_groups: List of details about the connected deployment groups to this endpoint
                group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.

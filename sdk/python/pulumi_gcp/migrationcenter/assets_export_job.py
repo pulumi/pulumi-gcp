@@ -541,14 +541,14 @@ class AssetsExportJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assets_export_job_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict', 'outputs.AssetsExportJobCondition']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 performance_data: pulumi.Input[Optional[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict']]] = None,
+                 performance_data: pulumi.Input[Optional[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict', 'outputs.AssetsExportJobPerformanceData']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  show_hidden: pulumi.Input[Optional[_builtins.bool]] = None,
-                 signed_uri_destination: pulumi.Input[Optional[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict']]] = None,
+                 signed_uri_destination: pulumi.Input[Optional[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict', 'outputs.AssetsExportJobSignedUriDestination']]] = None,
                  __props__=None):
         """
         AssetsExportJob represents a batch job that exports Migration Center assets to external destinations such as Cloud Storage.
@@ -596,7 +596,7 @@ class AssetsExportJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assets_export_job_id: The ID to use for the asset export job.
-        :param pulumi.Input[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict']] condition: Conditions for selecting assets to export.
+        :param pulumi.Input[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict', 'outputs.AssetsExportJobCondition']] condition: Conditions for selecting assets to export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -616,13 +616,13 @@ class AssetsExportJob(pulumi.CustomResource):
                  **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                  Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict']] performance_data: Configuration for performance data exports.
+        :param pulumi.Input[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict', 'outputs.AssetsExportJobPerformanceData']] performance_data: Configuration for performance data exports.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] show_hidden: When this value is set to 'true' the response will include all assets,
                including those that are hidden.
-        :param pulumi.Input[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict']] signed_uri_destination: Signed URI destination configuration.
+        :param pulumi.Input[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict', 'outputs.AssetsExportJobSignedUriDestination']] signed_uri_destination: Signed URI destination configuration.
                Structure is documented below.
         """
         ...
@@ -690,14 +690,14 @@ class AssetsExportJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assets_export_job_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict', 'outputs.AssetsExportJobCondition']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 performance_data: pulumi.Input[Optional[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict']]] = None,
+                 performance_data: pulumi.Input[Optional[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict', 'outputs.AssetsExportJobPerformanceData']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  show_hidden: pulumi.Input[Optional[_builtins.bool]] = None,
-                 signed_uri_destination: pulumi.Input[Optional[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict']]] = None,
+                 signed_uri_destination: pulumi.Input[Optional[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict', 'outputs.AssetsExportJobSignedUriDestination']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -741,21 +741,21 @@ class AssetsExportJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             assets_export_job_id: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict', 'outputs.AssetsExportJobCondition']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            inventories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobInventoryArgs', 'AssetsExportJobInventoryArgsDict']]]]] = None,
+            inventories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobInventoryArgs', 'AssetsExportJobInventoryArgsDict', 'outputs.AssetsExportJobInventory']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobNetworkDependencyArgs', 'AssetsExportJobNetworkDependencyArgsDict']]]]] = None,
-            performance_data: pulumi.Input[Optional[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict']]] = None,
+            network_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobNetworkDependencyArgs', 'AssetsExportJobNetworkDependencyArgsDict', 'outputs.AssetsExportJobNetworkDependency']]]]] = None,
+            performance_data: pulumi.Input[Optional[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict', 'outputs.AssetsExportJobPerformanceData']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            recent_executions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobRecentExecutionArgs', 'AssetsExportJobRecentExecutionArgsDict']]]]] = None,
+            recent_executions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetsExportJobRecentExecutionArgs', 'AssetsExportJobRecentExecutionArgsDict', 'outputs.AssetsExportJobRecentExecution']]]]] = None,
             show_hidden: pulumi.Input[Optional[_builtins.bool]] = None,
-            signed_uri_destination: pulumi.Input[Optional[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict']]] = None,
+            signed_uri_destination: pulumi.Input[Optional[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict', 'outputs.AssetsExportJobSignedUriDestination']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AssetsExportJob':
         """
         Get an existing AssetsExportJob resource's state with the given name, id, and optional extra
@@ -765,7 +765,7 @@ class AssetsExportJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assets_export_job_id: The ID to use for the asset export job.
-        :param pulumi.Input[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict']] condition: Conditions for selecting assets to export.
+        :param pulumi.Input[Union['AssetsExportJobConditionArgs', 'AssetsExportJobConditionArgsDict', 'outputs.AssetsExportJobCondition']] condition: Conditions for selecting assets to export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Resource creation time.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -775,7 +775,7 @@ class AssetsExportJob(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetsExportJobInventoryArgs', 'AssetsExportJobInventoryArgsDict']]]] inventories: Configuration for asset inventory details exports.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetsExportJobInventoryArgs', 'AssetsExportJobInventoryArgsDict', 'outputs.AssetsExportJobInventory']]]] inventories: Configuration for asset inventory details exports.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                Labels must meet the following constraints:
                * Keys and values can contain only lowercase letters, numeric characters,
@@ -789,18 +789,18 @@ class AssetsExportJob(pulumi.CustomResource):
                  Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetsExportJobNetworkDependencyArgs', 'AssetsExportJobNetworkDependencyArgsDict']]]] network_dependencies: Configuration for network dependencies exports.
-        :param pulumi.Input[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict']] performance_data: Configuration for performance data exports.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetsExportJobNetworkDependencyArgs', 'AssetsExportJobNetworkDependencyArgsDict', 'outputs.AssetsExportJobNetworkDependency']]]] network_dependencies: Configuration for network dependencies exports.
+        :param pulumi.Input[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict', 'outputs.AssetsExportJobPerformanceData']] performance_data: Configuration for performance data exports.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetsExportJobRecentExecutionArgs', 'AssetsExportJobRecentExecutionArgsDict']]]] recent_executions: Recent non expired executions of the job.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetsExportJobRecentExecutionArgs', 'AssetsExportJobRecentExecutionArgsDict', 'outputs.AssetsExportJobRecentExecution']]]] recent_executions: Recent non expired executions of the job.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] show_hidden: When this value is set to 'true' the response will include all assets,
                including those that are hidden.
-        :param pulumi.Input[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict']] signed_uri_destination: Signed URI destination configuration.
+        :param pulumi.Input[Union['AssetsExportJobSignedUriDestinationArgs', 'AssetsExportJobSignedUriDestinationArgsDict', 'outputs.AssetsExportJobSignedUriDestination']] signed_uri_destination: Signed URI destination configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Resource update time.
         """

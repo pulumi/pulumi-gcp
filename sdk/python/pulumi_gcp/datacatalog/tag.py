@@ -292,7 +292,7 @@ class Tag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict', 'outputs.TagField']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -587,7 +587,7 @@ class Tag(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict', 'outputs.TagField']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
@@ -898,7 +898,7 @@ class Tag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict', 'outputs.TagField']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -933,7 +933,7 @@ class Tag(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             column: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict', 'outputs.TagField']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -955,7 +955,7 @@ class Tag(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict', 'outputs.TagField']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the tag in URL format. Example:

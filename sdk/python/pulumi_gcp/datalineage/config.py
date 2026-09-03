@@ -236,7 +236,7 @@ class Config(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
+                 ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict', 'outputs.ConfigIngestion']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -361,7 +361,7 @@ class Config(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']] ingestion: Defines how Lineage should be ingested for this resource.
+        :param pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict', 'outputs.ConfigIngestion']] ingestion: Defines how Lineage should be ingested for this resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The region of the data lineage configuration for integration.
         :param pulumi.Input[_builtins.str] parent: Parent scope for the config.
@@ -502,7 +502,7 @@ class Config(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
+                 ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict', 'outputs.ConfigIngestion']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -538,7 +538,7 @@ class Config(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
+            ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict', 'outputs.ConfigIngestion']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None) -> 'Config':
@@ -556,7 +556,7 @@ class Config(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: Used for optimistic concurrency control when patching config.
-        :param pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']] ingestion: Defines how Lineage should be ingested for this resource.
+        :param pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict', 'outputs.ConfigIngestion']] ingestion: Defines how Lineage should be ingested for this resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The region of the data lineage configuration for integration.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the config.

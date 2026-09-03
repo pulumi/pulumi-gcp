@@ -1265,8 +1265,8 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
-                 build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict', 'outputs.ServiceBinaryAuthorization']]] = None,
+                 build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict', 'outputs.ServiceBuildConfig']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1280,13 +1280,13 @@ class Service(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
+                 multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict', 'outputs.ServiceMultiRegionSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+                 scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None,
                  __props__=None):
         """
         Service acts as a top-level container that manages a set of configurations and revision templates which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
@@ -2004,9 +2004,9 @@ class Service(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict', 'outputs.ServiceBinaryAuthorization']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']] build_config: Configuration for building a Cloud Run function.
+        :param pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict', 'outputs.ServiceBuildConfig']] build_config: Configuration for building a Cloud Run function.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
@@ -2041,19 +2041,19 @@ class Service(pulumi.CustomResource):
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run service
-        :param pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        :param pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict', 'outputs.ServiceMultiRegionSettings']] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the Service.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']] scaling: Scaling settings that apply to the whole service
+        :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: The template used to create revisions for this Service.
+        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         """
         ...
@@ -2786,8 +2786,8 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
-                 build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict', 'outputs.ServiceBinaryAuthorization']]] = None,
+                 build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict', 'outputs.ServiceBuildConfig']]] = None,
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2801,13 +2801,13 @@ class Service(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
+                 multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict', 'outputs.ServiceMultiRegionSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+                 scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2878,11 +2878,11 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
-            build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict', 'outputs.ServiceBinaryAuthorization']]] = None,
+            build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict', 'outputs.ServiceBuildConfig']]] = None,
             client: pulumi.Input[Optional[_builtins.str]] = None,
             client_version: pulumi.Input[Optional[_builtins.str]] = None,
-            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict']]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict', 'outputs.ServiceCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2905,18 +2905,18 @@ class Service(pulumi.CustomResource):
             latest_ready_revision: pulumi.Input[Optional[_builtins.str]] = None,
             launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
+            multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict', 'outputs.ServiceMultiRegionSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
-            scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+            scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict']]]]] = None,
-            traffic_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficStatusArgs', 'ServiceTrafficStatusArgsDict']]]]] = None,
-            traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+            template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict', 'outputs.ServiceTerminalCondition']]]]] = None,
+            traffic_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficStatusArgs', 'ServiceTrafficStatusArgsDict', 'outputs.ServiceTrafficStatus']]]]] = None,
+            traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2934,13 +2934,13 @@ class Service(pulumi.CustomResource):
                This field follows Kubernetes annotations' namespacing, limits, and rules.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict', 'outputs.ServiceBinaryAuthorization']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']] build_config: Configuration for building a Cloud Run function.
+        :param pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict', 'outputs.ServiceBuildConfig']] build_config: Configuration for building a Cloud Run function.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict', 'outputs.ServiceCondition']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] creator: Email address of the authenticated creator.
@@ -2984,7 +2984,7 @@ class Service(pulumi.CustomResource):
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run service
-        :param pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        :param pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict', 'outputs.ServiceMultiRegionSettings']] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the Service.
         :param pulumi.Input[_builtins.str] observed_generation: The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -2996,18 +2996,18 @@ class Service(pulumi.CustomResource):
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
-        :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']] scaling: Scaling settings that apply to the whole service
+        :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: The template used to create revisions for this Service.
+        :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict', 'outputs.ServiceTerminalCondition']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficStatusArgs', 'ServiceTrafficStatusArgsDict']]]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficStatusArgs', 'ServiceTrafficStatusArgsDict', 'outputs.ServiceTrafficStatus']]]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[_builtins.str] update_time: The last-modified time.

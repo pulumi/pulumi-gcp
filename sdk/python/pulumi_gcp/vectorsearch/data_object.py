@@ -426,7 +426,7 @@ class DataObject(pulumi.CustomResource):
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 vectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict']]]]] = None,
+                 vectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict', 'outputs.DataObjectVector']]]]] = None,
                  __props__=None):
         """
         A DataObject is a single item of data (with optional vectors) stored in a
@@ -638,7 +638,7 @@ class DataObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict']]]] vectors: The vectors of the DataObject, keyed by the vector field name as
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict', 'outputs.DataObjectVector']]]] vectors: The vectors of the DataObject, keyed by the vector field name as
                defined in the parent Collection's `vector_schema`.
                If a vector field is configured with a `vertex_embedding_config` on
                the Collection, the server will populate the vector automatically
@@ -862,7 +862,7 @@ class DataObject(pulumi.CustomResource):
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 vectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict']]]]] = None,
+                 vectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict', 'outputs.DataObjectVector']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -909,7 +909,7 @@ class DataObject(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            vectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict']]]]] = None) -> 'DataObject':
+            vectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict', 'outputs.DataObjectVector']]]]] = None) -> 'DataObject':
         """
         Get an existing DataObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -940,7 +940,7 @@ class DataObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] update_time: [Output only] Update time stamp
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict']]]] vectors: The vectors of the DataObject, keyed by the vector field name as
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict', 'outputs.DataObjectVector']]]] vectors: The vectors of the DataObject, keyed by the vector field name as
                defined in the parent Collection's `vector_schema`.
                If a vector field is configured with a `vertex_embedding_config` on
                the Collection, the server will populate the vector automatically

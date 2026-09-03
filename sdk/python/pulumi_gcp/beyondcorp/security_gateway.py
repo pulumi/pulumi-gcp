@@ -521,13 +521,13 @@ class SecurityGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
+                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict', 'outputs.SecurityGatewayHub']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
+                 logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict', 'outputs.SecurityGatewayLogging']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict', 'outputs.SecurityGatewayProxyProtocolConfig']]] = None,
                  security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
+                 service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict', 'outputs.SecurityGatewayServiceDiscovery']]] = None,
                  __props__=None):
         """
         Deployment of Security Gateway.
@@ -630,23 +630,23 @@ class SecurityGateway(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict', 'outputs.SecurityGatewayHub']]]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
                as a key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: (Optional, Deprecated)
                Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
                
                > **Warning:** `location` is deprecated and will be removed in a future major release.
-        :param pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']] logging: Settings related to Cloud Logging.
+        :param pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict', 'outputs.SecurityGatewayLogging']] logging: Settings related to Cloud Logging.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']] proxy_protocol_config: Shared proxy configuration for all apps.
+        :param pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict', 'outputs.SecurityGatewayProxyProtocolConfig']] proxy_protocol_config: Shared proxy configuration for all apps.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
-        :param pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']] service_discovery: Settings related to the Service Discovery.
+        :param pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict', 'outputs.SecurityGatewayServiceDiscovery']] service_discovery: Settings related to the Service Discovery.
                Structure is documented below.
         """
         ...
@@ -763,13 +763,13 @@ class SecurityGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
+                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict', 'outputs.SecurityGatewayHub']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
+                 logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict', 'outputs.SecurityGatewayLogging']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict', 'outputs.SecurityGatewayProxyProtocolConfig']]] = None,
                  security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
+                 service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict', 'outputs.SecurityGatewayServiceDiscovery']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -811,14 +811,14 @@ class SecurityGateway(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
+            hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict', 'outputs.SecurityGatewayHub']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
+            logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict', 'outputs.SecurityGatewayLogging']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
+            proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict', 'outputs.SecurityGatewayProxyProtocolConfig']]] = None,
             security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
-            service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
+            service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict', 'outputs.SecurityGatewayServiceDiscovery']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityGateway':
         """
@@ -840,24 +840,24 @@ class SecurityGateway(pulumi.CustomResource):
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_ips: Output only. IP addresses that will be used for establishing
                connection to the endpoints.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict', 'outputs.SecurityGatewayHub']]]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
                as a key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: (Optional, Deprecated)
                Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
                
                > **Warning:** `location` is deprecated and will be removed in a future major release.
-        :param pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']] logging: Settings related to Cloud Logging.
+        :param pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict', 'outputs.SecurityGatewayLogging']] logging: Settings related to Cloud Logging.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']] proxy_protocol_config: Shared proxy configuration for all apps.
+        :param pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict', 'outputs.SecurityGatewayProxyProtocolConfig']] proxy_protocol_config: Shared proxy configuration for all apps.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
-        :param pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']] service_discovery: Settings related to the Service Discovery.
+        :param pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict', 'outputs.SecurityGatewayServiceDiscovery']] service_discovery: Settings related to the Service Discovery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. The operational state of the SecurityGateway.
                Possible values:

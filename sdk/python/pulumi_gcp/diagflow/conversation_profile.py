@@ -712,23 +712,23 @@ class ConversationProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']]] = None,
+                 automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict', 'outputs.ConversationProfileAutomatedAgentConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']]] = None,
-                 human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']]] = None,
+                 human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict', 'outputs.ConversationProfileHumanAgentAssistantConfig']]] = None,
+                 human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict', 'outputs.ConversationProfileHumanAgentHandoffConfig']]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']]] = None,
-                 new_message_event_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']]] = None,
-                 new_recognition_result_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']]] = None,
-                 notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict', 'outputs.ConversationProfileLoggingConfig']]] = None,
+                 new_message_event_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict', 'outputs.ConversationProfileNewMessageEventNotificationConfig']]] = None,
+                 new_recognition_result_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict', 'outputs.ConversationProfileNewRecognitionResultNotificationConfig']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict', 'outputs.ConversationProfileNotificationConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
-                 sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']]] = None,
-                 stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
+                 sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict', 'outputs.ConversationProfileSipConfig']]] = None,
+                 stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict', 'outputs.ConversationProfileSttConfig']]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
+                 tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict', 'outputs.ConversationProfileTtsConfig']]] = None,
                  use_bidi_streaming: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -822,7 +822,7 @@ class ConversationProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']] automated_agent_config: Configuration for an automated agent to use with this profile
+        :param pulumi.Input[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict', 'outputs.ConversationProfileAutomatedAgentConfig']] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -831,32 +831,32 @@ class ConversationProfile(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
-        :param pulumi.Input[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']] human_agent_assistant_config: Configuration for connecting to a live agent
+        :param pulumi.Input[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict', 'outputs.ConversationProfileHumanAgentAssistantConfig']] human_agent_assistant_config: Configuration for connecting to a live agent
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
+        :param pulumi.Input[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict', 'outputs.ConversationProfileHumanAgentHandoffConfig']] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: Language code for the conversation profile. This should be a BCP-47 language tag.
         :param pulumi.Input[_builtins.str] location: The location of the conversation profile.
-        :param pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']] logging_config: Defines logging behavior for conversation lifecycle events.
+        :param pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict', 'outputs.ConversationProfileLoggingConfig']] logging_config: Defines logging behavior for conversation lifecycle events.
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
+        :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict', 'outputs.ConversationProfileNewMessageEventNotificationConfig']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        :param pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict', 'outputs.ConversationProfileNewRecognitionResultNotificationConfig']] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']] notification_config: Pub/Sub topic on which to publish new agent assistant events.
+        :param pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict', 'outputs.ConversationProfileNotificationConfig']] notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the CX SecuritySettings reference for the agent.
-        :param pulumi.Input[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']] sip_config: (Optional, Beta)
+        :param pulumi.Input[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict', 'outputs.ConversationProfileSipConfig']] sip_config: (Optional, Beta)
                Configuration for SIP.
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']] stt_config: Settings for speech transcription.
+        :param pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict', 'outputs.ConversationProfileSttConfig']] stt_config: Settings for speech transcription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
-        :param pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
+        :param pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict', 'outputs.ConversationProfileTtsConfig']] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] use_bidi_streaming: (Optional, Beta)
                Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
@@ -971,23 +971,23 @@ class ConversationProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']]] = None,
+                 automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict', 'outputs.ConversationProfileAutomatedAgentConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']]] = None,
-                 human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']]] = None,
+                 human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict', 'outputs.ConversationProfileHumanAgentAssistantConfig']]] = None,
+                 human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict', 'outputs.ConversationProfileHumanAgentHandoffConfig']]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 logging_config: pulumi.Input[Optional[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']]] = None,
-                 new_message_event_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']]] = None,
-                 new_recognition_result_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']]] = None,
-                 notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict', 'outputs.ConversationProfileLoggingConfig']]] = None,
+                 new_message_event_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict', 'outputs.ConversationProfileNewMessageEventNotificationConfig']]] = None,
+                 new_recognition_result_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict', 'outputs.ConversationProfileNewRecognitionResultNotificationConfig']]] = None,
+                 notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict', 'outputs.ConversationProfileNotificationConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
-                 sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']]] = None,
-                 stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
+                 sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict', 'outputs.ConversationProfileSipConfig']]] = None,
+                 stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict', 'outputs.ConversationProfileSttConfig']]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
+                 tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict', 'outputs.ConversationProfileTtsConfig']]] = None,
                  use_bidi_streaming: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1031,24 +1031,24 @@ class ConversationProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']]] = None,
+            automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict', 'outputs.ConversationProfileAutomatedAgentConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']]] = None,
-            human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']]] = None,
+            human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict', 'outputs.ConversationProfileHumanAgentAssistantConfig']]] = None,
+            human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict', 'outputs.ConversationProfileHumanAgentHandoffConfig']]] = None,
             language_code: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            logging_config: pulumi.Input[Optional[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']]] = None,
+            logging_config: pulumi.Input[Optional[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict', 'outputs.ConversationProfileLoggingConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            new_message_event_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']]] = None,
-            new_recognition_result_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']]] = None,
-            notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
+            new_message_event_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict', 'outputs.ConversationProfileNewMessageEventNotificationConfig']]] = None,
+            new_recognition_result_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict', 'outputs.ConversationProfileNewRecognitionResultNotificationConfig']]] = None,
+            notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict', 'outputs.ConversationProfileNotificationConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             security_settings: pulumi.Input[Optional[_builtins.str]] = None,
-            sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']]] = None,
-            stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
+            sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict', 'outputs.ConversationProfileSipConfig']]] = None,
+            stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict', 'outputs.ConversationProfileSttConfig']]] = None,
             time_zone: pulumi.Input[Optional[_builtins.str]] = None,
-            tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
+            tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict', 'outputs.ConversationProfileTtsConfig']]] = None,
             use_bidi_streaming: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ConversationProfile':
         """
         Get an existing ConversationProfile resource's state with the given name, id, and optional extra
@@ -1057,7 +1057,7 @@ class ConversationProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']] automated_agent_config: Configuration for an automated agent to use with this profile
+        :param pulumi.Input[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict', 'outputs.ConversationProfileAutomatedAgentConfig']] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1066,33 +1066,33 @@ class ConversationProfile(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
-        :param pulumi.Input[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']] human_agent_assistant_config: Configuration for connecting to a live agent
+        :param pulumi.Input[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict', 'outputs.ConversationProfileHumanAgentAssistantConfig']] human_agent_assistant_config: Configuration for connecting to a live agent
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
+        :param pulumi.Input[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict', 'outputs.ConversationProfileHumanAgentHandoffConfig']] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: Language code for the conversation profile. This should be a BCP-47 language tag.
         :param pulumi.Input[_builtins.str] location: The location of the conversation profile.
-        :param pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']] logging_config: Defines logging behavior for conversation lifecycle events.
+        :param pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict', 'outputs.ConversationProfileLoggingConfig']] logging_config: Defines logging behavior for conversation lifecycle events.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of this conversation profile.
-        :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
+        :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict', 'outputs.ConversationProfileNewMessageEventNotificationConfig']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        :param pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict', 'outputs.ConversationProfileNewRecognitionResultNotificationConfig']] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']] notification_config: Pub/Sub topic on which to publish new agent assistant events.
+        :param pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict', 'outputs.ConversationProfileNotificationConfig']] notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the CX SecuritySettings reference for the agent.
-        :param pulumi.Input[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']] sip_config: (Optional, Beta)
+        :param pulumi.Input[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict', 'outputs.ConversationProfileSipConfig']] sip_config: (Optional, Beta)
                Configuration for SIP.
                Structure is documented below.
-        :param pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']] stt_config: Settings for speech transcription.
+        :param pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict', 'outputs.ConversationProfileSttConfig']] stt_config: Settings for speech transcription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
-        :param pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
+        :param pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict', 'outputs.ConversationProfileTtsConfig']] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] use_bidi_streaming: (Optional, Beta)
                Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.

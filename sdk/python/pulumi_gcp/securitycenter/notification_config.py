@@ -303,7 +303,7 @@ class NotificationConfig(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 streaming_config: pulumi.Input[Optional[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict', 'outputs.NotificationConfigStreamingConfig']]] = None,
                  __props__=None):
         """
         A Cloud Security Command Center (Cloud SCC) notification configs. A
@@ -366,7 +366,7 @@ class NotificationConfig(pulumi.CustomResource):
                Config lives in.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict', 'outputs.NotificationConfigStreamingConfig']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         ...
@@ -442,7 +442,7 @@ class NotificationConfig(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 streaming_config: pulumi.Input[Optional[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict', 'outputs.NotificationConfigStreamingConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,7 +485,7 @@ class NotificationConfig(pulumi.CustomResource):
             organization: pulumi.Input[Optional[_builtins.str]] = None,
             pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
-            streaming_config: pulumi.Input[Optional[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']]] = None) -> 'NotificationConfig':
+            streaming_config: pulumi.Input[Optional[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict', 'outputs.NotificationConfigStreamingConfig']]] = None) -> 'NotificationConfig':
         """
         Get an existing NotificationConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -509,7 +509,7 @@ class NotificationConfig(pulumi.CustomResource):
                "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[_builtins.str] service_account: The service account that needs "pubsub.topics.publish" permission to
                publish to the Pub/Sub topic.
-        :param pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['NotificationConfigStreamingConfigArgs', 'NotificationConfigStreamingConfigArgsDict', 'outputs.NotificationConfigStreamingConfig']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

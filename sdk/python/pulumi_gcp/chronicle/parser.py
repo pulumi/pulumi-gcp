@@ -706,11 +706,11 @@ class Parser(pulumi.CustomResource):
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  logtype: pulumi.Input[Optional[_builtins.str]] = None,
-                 low_code: pulumi.Input[Optional[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict']]] = None,
+                 low_code: pulumi.Input[Optional[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict', 'outputs.ParserLowCode']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  validated_on_empty_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  validation_skipped: pulumi.Input[Optional[_builtins.bool]] = None,
-                 version_info: pulumi.Input[Optional[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict']]] = None,
+                 version_info: pulumi.Input[Optional[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict', 'outputs.ParserVersionInfo']]] = None,
                  __props__=None):
         """
         A parser is a configuration that parses raw logs of a specific log type into Unified Data Model (UDM) events.
@@ -809,7 +809,7 @@ class Parser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] logtype: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict']] low_code: Message to represent LowCodeParser.
+        :param pulumi.Input[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict', 'outputs.ParserLowCode']] low_code: Message to represent LowCodeParser.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -819,7 +819,7 @@ class Parser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] validation_skipped: If true, bypasses parser validation.
                If enabled, the parser won't be rejected during the validation
                phase and validation will be skipped.
-        :param pulumi.Input[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict']] version_info: ParserVersionInfo gives the version information of the parser and related
+        :param pulumi.Input[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict', 'outputs.ParserVersionInfo']] version_info: ParserVersionInfo gives the version information of the parser and related
                properties like pinned etc.
                Structure is documented below.
         """
@@ -932,11 +932,11 @@ class Parser(pulumi.CustomResource):
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  logtype: pulumi.Input[Optional[_builtins.str]] = None,
-                 low_code: pulumi.Input[Optional[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict']]] = None,
+                 low_code: pulumi.Input[Optional[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict', 'outputs.ParserLowCode']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  validated_on_empty_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  validation_skipped: pulumi.Input[Optional[_builtins.bool]] = None,
-                 version_info: pulumi.Input[Optional[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict']]] = None,
+                 version_info: pulumi.Input[Optional[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict', 'outputs.ParserVersionInfo']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -985,15 +985,15 @@ class Parser(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cbn: pulumi.Input[Optional[_builtins.str]] = None,
-            changelogs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParserChangelogArgs', 'ParserChangelogArgsDict']]]]] = None,
+            changelogs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParserChangelogArgs', 'ParserChangelogArgsDict', 'outputs.ParserChangelog']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            creators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParserCreatorArgs', 'ParserCreatorArgsDict']]]]] = None,
+            creators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParserCreatorArgs', 'ParserCreatorArgsDict', 'outputs.ParserCreator']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             dynamic_parsing_config: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             logtype: pulumi.Input[Optional[_builtins.str]] = None,
-            low_code: pulumi.Input[Optional[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict']]] = None,
+            low_code: pulumi.Input[Optional[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict', 'outputs.ParserLowCode']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parser: pulumi.Input[Optional[_builtins.str]] = None,
             parser_extension: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1005,7 +1005,7 @@ class Parser(pulumi.CustomResource):
             validation_report: pulumi.Input[Optional[_builtins.str]] = None,
             validation_skipped: pulumi.Input[Optional[_builtins.bool]] = None,
             validation_stage: pulumi.Input[Optional[_builtins.str]] = None,
-            version_info: pulumi.Input[Optional[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict']]] = None) -> 'Parser':
+            version_info: pulumi.Input[Optional[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict', 'outputs.ParserVersionInfo']]] = None) -> 'Parser':
         """
         Get an existing Parser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1016,11 +1016,11 @@ class Parser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cbn: if the parser is built using config
                documentation:
                https://cloud.google.com/chronicle/docs/preview/parser-extensions/parsing-overview
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ParserChangelogArgs', 'ParserChangelogArgsDict']]]] changelogs: Changelogs of a parser.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ParserChangelogArgs', 'ParserChangelogArgsDict', 'outputs.ParserChangelog']]]] changelogs: Changelogs of a parser.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: (Output)
                Time at which changelog was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ParserCreatorArgs', 'ParserCreatorArgsDict']]]] creators: Information about the creator of the parser.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ParserCreatorArgs', 'ParserCreatorArgsDict', 'outputs.ParserCreator']]]] creators: Information about the creator of the parser.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1032,7 +1032,7 @@ class Parser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] logtype: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict']] low_code: Message to represent LowCodeParser.
+        :param pulumi.Input[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict', 'outputs.ParserLowCode']] low_code: Message to represent LowCodeParser.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: name of the parser resource.
         :param pulumi.Input[_builtins.str] parser: Output only. The server-generated ID of the parser.
@@ -1092,7 +1092,7 @@ class Parser(pulumi.CustomResource):
                DELETE_CANDIDATE
                INTERNAL_ERROR
                VALIDATION_SKIPPED
-        :param pulumi.Input[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict']] version_info: ParserVersionInfo gives the version information of the parser and related
+        :param pulumi.Input[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict', 'outputs.ParserVersionInfo']] version_info: ParserVersionInfo gives the version information of the parser and related
                properties like pinned etc.
                Structure is documented below.
         """

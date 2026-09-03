@@ -785,18 +785,18 @@ class HealthCheck(pulumi.CustomResource):
                  check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
-                 grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']]] = None,
+                 grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict', 'outputs.HealthCheckGrpcHealthCheck']]] = None,
+                 grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict', 'outputs.HealthCheckGrpcTlsHealthCheck']]] = None,
                  healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-                 http2_health_check: pulumi.Input[Optional[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']]] = None,
-                 http_health_check: pulumi.Input[Optional[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']]] = None,
-                 https_health_check: pulumi.Input[Optional[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']]] = None,
-                 log_config: pulumi.Input[Optional[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
+                 http2_health_check: pulumi.Input[Optional[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict', 'outputs.HealthCheckHttp2HealthCheck']]] = None,
+                 http_health_check: pulumi.Input[Optional[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict', 'outputs.HealthCheckHttpHealthCheck']]] = None,
+                 https_health_check: pulumi.Input[Optional[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict', 'outputs.HealthCheckHttpsHealthCheck']]] = None,
+                 log_config: pulumi.Input[Optional[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict', 'outputs.HealthCheckLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_health_check: pulumi.Input[Optional[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
-                 tcp_health_check: pulumi.Input[Optional[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
+                 ssl_health_check: pulumi.Input[Optional[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict', 'outputs.HealthCheckSslHealthCheck']]] = None,
+                 tcp_health_check: pulumi.Input[Optional[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict', 'outputs.HealthCheckTcpHealthCheck']]] = None,
                  timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -1170,19 +1170,19 @@ class HealthCheck(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict', 'outputs.HealthCheckGrpcHealthCheck']] grpc_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']] grpc_tls_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict', 'outputs.HealthCheckGrpcTlsHealthCheck']] grpc_tls_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict', 'outputs.HealthCheckHttp2HealthCheck']] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict', 'outputs.HealthCheckHttpHealthCheck']] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict', 'outputs.HealthCheckHttpsHealthCheck']] https_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
+        :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict', 'outputs.HealthCheckLogConfig']] log_config: Configure logging on this health check.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1205,9 +1205,9 @@ class HealthCheck(pulumi.CustomResource):
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
                  instance group auto-healing.
-        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict', 'outputs.HealthCheckSslHealthCheck']] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict', 'outputs.HealthCheckTcpHealthCheck']] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -1597,18 +1597,18 @@ class HealthCheck(pulumi.CustomResource):
                  check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
-                 grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']]] = None,
+                 grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict', 'outputs.HealthCheckGrpcHealthCheck']]] = None,
+                 grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict', 'outputs.HealthCheckGrpcTlsHealthCheck']]] = None,
                  healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-                 http2_health_check: pulumi.Input[Optional[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']]] = None,
-                 http_health_check: pulumi.Input[Optional[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']]] = None,
-                 https_health_check: pulumi.Input[Optional[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']]] = None,
-                 log_config: pulumi.Input[Optional[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
+                 http2_health_check: pulumi.Input[Optional[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict', 'outputs.HealthCheckHttp2HealthCheck']]] = None,
+                 http_health_check: pulumi.Input[Optional[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict', 'outputs.HealthCheckHttpHealthCheck']]] = None,
+                 https_health_check: pulumi.Input[Optional[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict', 'outputs.HealthCheckHttpsHealthCheck']]] = None,
+                 log_config: pulumi.Input[Optional[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict', 'outputs.HealthCheckLogConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_health_check: pulumi.Input[Optional[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
-                 tcp_health_check: pulumi.Input[Optional[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
+                 ssl_health_check: pulumi.Input[Optional[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict', 'outputs.HealthCheckSslHealthCheck']]] = None,
+                 tcp_health_check: pulumi.Input[Optional[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict', 'outputs.HealthCheckTcpHealthCheck']]] = None,
                  timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -1654,19 +1654,19 @@ class HealthCheck(pulumi.CustomResource):
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
-            grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']]] = None,
+            grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict', 'outputs.HealthCheckGrpcHealthCheck']]] = None,
+            grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict', 'outputs.HealthCheckGrpcTlsHealthCheck']]] = None,
             healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
-            http2_health_check: pulumi.Input[Optional[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']]] = None,
-            http_health_check: pulumi.Input[Optional[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']]] = None,
-            https_health_check: pulumi.Input[Optional[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']]] = None,
-            log_config: pulumi.Input[Optional[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
+            http2_health_check: pulumi.Input[Optional[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict', 'outputs.HealthCheckHttp2HealthCheck']]] = None,
+            http_health_check: pulumi.Input[Optional[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict', 'outputs.HealthCheckHttpHealthCheck']]] = None,
+            https_health_check: pulumi.Input[Optional[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict', 'outputs.HealthCheckHttpsHealthCheck']]] = None,
+            log_config: pulumi.Input[Optional[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict', 'outputs.HealthCheckLogConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             source_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ssl_health_check: pulumi.Input[Optional[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
-            tcp_health_check: pulumi.Input[Optional[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
+            ssl_health_check: pulumi.Input[Optional[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict', 'outputs.HealthCheckSslHealthCheck']]] = None,
+            tcp_health_check: pulumi.Input[Optional[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict', 'outputs.HealthCheckTcpHealthCheck']]] = None,
             timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None) -> 'HealthCheck':
@@ -1688,19 +1688,19 @@ class HealthCheck(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict', 'outputs.HealthCheckGrpcHealthCheck']] grpc_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']] grpc_tls_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict', 'outputs.HealthCheckGrpcTlsHealthCheck']] grpc_tls_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict', 'outputs.HealthCheckHttp2HealthCheck']] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict', 'outputs.HealthCheckHttpHealthCheck']] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict', 'outputs.HealthCheckHttpsHealthCheck']] https_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
+        :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict', 'outputs.HealthCheckLogConfig']] log_config: Configure logging on this health check.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1724,9 +1724,9 @@ class HealthCheck(pulumi.CustomResource):
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
                  instance group auto-healing.
-        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict', 'outputs.HealthCheckSslHealthCheck']] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
+        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict', 'outputs.HealthCheckTcpHealthCheck']] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have

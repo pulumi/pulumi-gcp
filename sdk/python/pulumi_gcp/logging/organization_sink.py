@@ -478,12 +478,12 @@ class OrganizationSink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: pulumi.Input[Optional[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict']]] = None,
+                 bigquery_options: pulumi.Input[Optional[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict', 'outputs.OrganizationSinkBigqueryOptions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict']]]]] = None,
+                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict', 'outputs.OrganizationSinkExclusion']]]]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
                  include_children: pulumi.Input[Optional[_builtins.bool]] = None,
                  intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -532,7 +532,7 @@ class OrganizationSink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict', 'outputs.OrganizationSinkBigqueryOptions']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -550,7 +550,7 @@ class OrganizationSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[_builtins.bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict', 'outputs.OrganizationSinkExclusion']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[_builtins.str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -622,12 +622,12 @@ class OrganizationSink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: pulumi.Input[Optional[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict']]] = None,
+                 bigquery_options: pulumi.Input[Optional[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict', 'outputs.OrganizationSinkBigqueryOptions']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict']]]]] = None,
+                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict', 'outputs.OrganizationSinkExclusion']]]]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
                  include_children: pulumi.Input[Optional[_builtins.bool]] = None,
                  intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -668,12 +668,12 @@ class OrganizationSink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_options: pulumi.Input[Optional[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict']]] = None,
+            bigquery_options: pulumi.Input[Optional[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict', 'outputs.OrganizationSinkBigqueryOptions']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             destination: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict']]]]] = None,
+            exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict', 'outputs.OrganizationSinkExclusion']]]]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
             include_children: pulumi.Input[Optional[_builtins.bool]] = None,
             intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -687,7 +687,7 @@ class OrganizationSink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict', 'outputs.OrganizationSinkBigqueryOptions']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -705,7 +705,7 @@ class OrganizationSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[_builtins.bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict', 'outputs.OrganizationSinkExclusion']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[_builtins.str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.

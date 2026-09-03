@@ -195,7 +195,7 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  edition_config: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict', 'outputs.ControlProjectIntelligenceConfigFilter']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -245,7 +245,7 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
-        :param pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
+        :param pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict', 'outputs.ControlProjectIntelligenceConfigFilter']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier of the GCP project. For GCP project, this field can be project name or project number.
         """
@@ -315,7 +315,7 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  edition_config: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict', 'outputs.ControlProjectIntelligenceConfigFilter']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -343,10 +343,10 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             edition_config: pulumi.Input[Optional[_builtins.str]] = None,
-            effective_intelligence_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict']]]]] = None,
-            filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
+            effective_intelligence_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict', 'outputs.ControlProjectIntelligenceConfigEffectiveIntelligenceConfig']]]]] = None,
+            filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict', 'outputs.ControlProjectIntelligenceConfigFilter']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            trial_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigTrialConfigArgs', 'ControlProjectIntelligenceConfigTrialConfigArgsDict']]]]] = None,
+            trial_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigTrialConfigArgs', 'ControlProjectIntelligenceConfigTrialConfigArgsDict', 'outputs.ControlProjectIntelligenceConfigTrialConfig']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ControlProjectIntelligenceConfig':
         """
         Get an existing ControlProjectIntelligenceConfig resource's state with the given name, id, and optional extra
@@ -356,12 +356,12 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict']]]] effective_intelligence_configs: The Intelligence config that is effective for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict', 'outputs.ControlProjectIntelligenceConfigEffectiveIntelligenceConfig']]]] effective_intelligence_configs: The Intelligence config that is effective for the resource.
                Structure is documented below.
-        :param pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
+        :param pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict', 'outputs.ControlProjectIntelligenceConfigFilter']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier of the GCP project. For GCP project, this field can be project name or project number.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigTrialConfigArgs', 'ControlProjectIntelligenceConfigTrialConfigArgsDict']]]] trial_configs: The trial configuration of the Storage Intelligence resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigTrialConfigArgs', 'ControlProjectIntelligenceConfigTrialConfigArgsDict', 'outputs.ControlProjectIntelligenceConfigTrialConfig']]]] trial_configs: The trial configuration of the Storage Intelligence resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time at which the Storage Intelligence Config resource is last updated.
         """

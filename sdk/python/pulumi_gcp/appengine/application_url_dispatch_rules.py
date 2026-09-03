@@ -166,7 +166,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
+                 dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict', 'outputs.ApplicationUrlDispatchRulesDispatchRule']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -246,7 +246,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict', 'outputs.ApplicationUrlDispatchRulesDispatchRule']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -342,7 +342,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
+                 dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict', 'outputs.ApplicationUrlDispatchRulesDispatchRule']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -369,7 +369,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
+            dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict', 'outputs.ApplicationUrlDispatchRulesDispatchRule']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationUrlDispatchRules':
         """
         Get an existing ApplicationUrlDispatchRules resource's state with the given name, id, and optional extra
@@ -384,7 +384,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict', 'outputs.ApplicationUrlDispatchRulesDispatchRule']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

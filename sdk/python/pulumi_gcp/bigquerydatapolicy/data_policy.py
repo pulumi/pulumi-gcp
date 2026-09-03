@@ -310,7 +310,7 @@ class DataPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
+                 data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict', 'outputs.DataPolicyDataMaskingPolicy']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -409,7 +409,7 @@ class DataPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict', 'outputs.DataPolicyDataMaskingPolicy']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[_builtins.str] data_policy_type: The enrollment level of the service.
@@ -535,7 +535,7 @@ class DataPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
+                 data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict', 'outputs.DataPolicyDataMaskingPolicy']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,7 +577,7 @@ class DataPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
+            data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict', 'outputs.DataPolicyDataMaskingPolicy']]] = None,
             data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -592,7 +592,7 @@ class DataPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict', 'outputs.DataPolicyDataMaskingPolicy']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[_builtins.str] data_policy_type: The enrollment level of the service.

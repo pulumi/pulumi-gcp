@@ -280,7 +280,7 @@ class SecurityProfileV2(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict']]]]] = None,
+                 profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict', 'outputs.SecurityProfileV2ProfileAssessmentConfig']]]]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -371,7 +371,7 @@ class SecurityProfileV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the security profile.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Profile V2,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict']]]] profile_assessment_configs: A map of the assessment name and the assessment config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict', 'outputs.SecurityProfileV2ProfileAssessmentConfig']]]] profile_assessment_configs: A map of the assessment name and the assessment config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] profile_id: Resource ID of the security profile.
         """
@@ -476,7 +476,7 @@ class SecurityProfileV2(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict']]]]] = None,
+                 profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict', 'outputs.SecurityProfileV2ProfileAssessmentConfig']]]]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -516,7 +516,7 @@ class SecurityProfileV2(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict']]]]] = None,
+            profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict', 'outputs.SecurityProfileV2ProfileAssessmentConfig']]]]] = None,
             profile_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityProfileV2':
         """
@@ -538,7 +538,7 @@ class SecurityProfileV2(pulumi.CustomResource):
                in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Profile V2,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict']]]] profile_assessment_configs: A map of the assessment name and the assessment config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict', 'outputs.SecurityProfileV2ProfileAssessmentConfig']]]] profile_assessment_configs: A map of the assessment name and the assessment config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] profile_id: Resource ID of the security profile.
         :param pulumi.Input[_builtins.str] update_time: The timestamp at which this profile was most recently updated.

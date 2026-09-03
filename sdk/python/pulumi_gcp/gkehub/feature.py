@@ -428,12 +428,12 @@ class Feature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
+                 fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict', 'outputs.FeatureFleetDefaultMemberConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict', 'outputs.FeatureSpec']]] = None,
                  __props__=None):
         """
         Feature represents the settings and status of any Hub Feature.
@@ -796,7 +796,7 @@ class Feature(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+        :param pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict', 'outputs.FeatureFleetDefaultMemberConfig']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -805,7 +805,7 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The full, unique name of this Feature resource
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict', 'outputs.FeatureSpec']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
                Structure is documented below.
         """
         ...
@@ -1183,12 +1183,12 @@ class Feature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
+                 fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict', 'outputs.FeatureFleetDefaultMemberConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict', 'outputs.FeatureSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1230,15 +1230,15 @@ class Feature(pulumi.CustomResource):
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
+            fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict', 'outputs.FeatureFleetDefaultMemberConfig']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict']]]]] = None,
-            spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict']]]]] = None,
+            resource_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict', 'outputs.FeatureResourceState']]]]] = None,
+            spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict', 'outputs.FeatureSpec']]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict', 'outputs.FeatureState']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Feature':
         """
         Get an existing Feature resource's state with the given name, id, and optional extra
@@ -1256,7 +1256,7 @@ class Feature(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+        :param pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict', 'outputs.FeatureFleetDefaultMemberConfig']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1267,11 +1267,11 @@ class Feature(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict']]]] resource_states: State of the Feature resource itself.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict', 'outputs.FeatureResourceState']]]] resource_states: State of the Feature resource itself.
                Structure is documented below.
-        :param pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict', 'outputs.FeatureSpec']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict', 'outputs.FeatureState']]]] states: (Output)
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: (Output)

@@ -328,7 +328,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
+                 deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict', 'outputs.PreventionDeidentifyTemplateDeidentifyConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -498,7 +498,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict', 'outputs.PreventionDeidentifyTemplateDeidentifyConfig']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -699,7 +699,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
+                 deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict', 'outputs.PreventionDeidentifyTemplateDeidentifyConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -738,7 +738,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
+            deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict', 'outputs.PreventionDeidentifyTemplateDeidentifyConfig']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -754,7 +754,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
-        :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict', 'outputs.PreventionDeidentifyTemplateDeidentifyConfig']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

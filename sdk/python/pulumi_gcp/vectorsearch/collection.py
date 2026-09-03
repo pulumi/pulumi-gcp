@@ -527,11 +527,11 @@ class Collection(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict', 'outputs.CollectionEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 vector_schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict']]]]] = None,
+                 vector_schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict', 'outputs.CollectionVectorSchema']]]]] = None,
                  __props__=None):
         """
         Description
@@ -667,7 +667,7 @@ class Collection(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-specified description of the collection
         :param pulumi.Input[_builtins.str] display_name: User-specified display name of the collection
-        :param pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']] encryption_spec: Represents a customer-managed encryption key specification that can be
+        :param pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict', 'outputs.CollectionEncryptionSpec']] encryption_spec: Represents a customer-managed encryption key specification that can be
                applied to a Vector Search collection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -676,7 +676,7 @@ class Collection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict']]]] vector_schemas: Schema for vector fields. Only vector fields in this schema will be
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict', 'outputs.CollectionVectorSchema']]]] vector_schemas: Schema for vector fields. Only vector fields in this schema will be
                searchable.
                Field names must contain only alphanumeric characters,
                underscores, and hyphens.
@@ -824,11 +824,11 @@ class Collection(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption_spec: pulumi.Input[Optional[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict', 'outputs.CollectionEncryptionSpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 vector_schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict']]]]] = None,
+                 vector_schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict', 'outputs.CollectionVectorSchema']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -876,14 +876,14 @@ class Collection(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: pulumi.Input[Optional[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict', 'outputs.CollectionEncryptionSpec']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            vector_schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict']]]]] = None) -> 'Collection':
+            vector_schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict', 'outputs.CollectionVectorSchema']]]]] = None) -> 'Collection':
         """
         Get an existing Collection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -909,7 +909,7 @@ class Collection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: User-specified description of the collection
         :param pulumi.Input[_builtins.str] display_name: User-specified display name of the collection
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']] encryption_spec: Represents a customer-managed encryption key specification that can be
+        :param pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict', 'outputs.CollectionEncryptionSpec']] encryption_spec: Represents a customer-managed encryption key specification that can be
                applied to a Vector Search collection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -922,7 +922,7 @@ class Collection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: [Output only] Update time stamp
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict']]]] vector_schemas: Schema for vector fields. Only vector fields in this schema will be
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CollectionVectorSchemaArgs', 'CollectionVectorSchemaArgsDict', 'outputs.CollectionVectorSchema']]]] vector_schemas: Schema for vector fields. Only vector fields in this schema will be
                searchable.
                Field names must contain only alphanumeric characters,
                underscores, and hyphens.

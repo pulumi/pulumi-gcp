@@ -630,7 +630,7 @@ class DnsAuthorization(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            dns_resource_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DnsAuthorizationDnsResourceRecordArgs', 'DnsAuthorizationDnsResourceRecordArgsDict']]]]] = None,
+            dns_resource_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DnsAuthorizationDnsResourceRecordArgs', 'DnsAuthorizationDnsResourceRecordArgsDict', 'outputs.DnsAuthorizationDnsResourceRecord']]]]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -653,7 +653,7 @@ class DnsAuthorization(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DnsAuthorizationDnsResourceRecordArgs', 'DnsAuthorizationDnsResourceRecordArgsDict']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DnsAuthorizationDnsResourceRecordArgs', 'DnsAuthorizationDnsResourceRecordArgsDict', 'outputs.DnsAuthorizationDnsResourceRecord']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
                to DNS configuration for the authorization to be usable by
                certificate.
                Structure is documented below.

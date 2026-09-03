@@ -628,7 +628,7 @@ class Deployment(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  quota_validation: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 terraform_blueprint: pulumi.Input[Optional[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict']]] = None,
+                 terraform_blueprint: pulumi.Input[Optional[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict', 'outputs.DeploymentTerraformBlueprint']]] = None,
                  tf_version_constraint: pulumi.Input[Optional[_builtins.str]] = None,
                  worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -711,7 +711,7 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] quota_validation: Controls quota checks.
                Possible values are: `ENABLED`, `ENFORCED`.
         :param pulumi.Input[_builtins.str] service_account: Required. User-specified Service Account (SA) credentials to be used when actuating resources.
-        :param pulumi.Input[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict']] terraform_blueprint: A bundle of HCL files in a GCS bucket or Git repo.
+        :param pulumi.Input[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict', 'outputs.DeploymentTerraformBlueprint']] terraform_blueprint: A bundle of HCL files in a GCS bucket or Git repo.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tf_version_constraint: Optional constraint on the Terraform version.
         :param pulumi.Input[_builtins.str] worker_pool: Custom Cloud Build worker pool resource name.
@@ -803,7 +803,7 @@ class Deployment(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  quota_validation: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 terraform_blueprint: pulumi.Input[Optional[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict']]] = None,
+                 terraform_blueprint: pulumi.Input[Optional[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict', 'outputs.DeploymentTerraformBlueprint']]] = None,
                  tf_version_constraint: pulumi.Input[Optional[_builtins.str]] = None,
                  worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -868,7 +868,7 @@ class Deployment(pulumi.CustomResource):
             quota_validation: pulumi.Input[Optional[_builtins.str]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            terraform_blueprint: pulumi.Input[Optional[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict']]] = None,
+            terraform_blueprint: pulumi.Input[Optional[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict', 'outputs.DeploymentTerraformBlueprint']]] = None,
             tf_version_constraint: pulumi.Input[Optional[_builtins.str]] = None,
             worker_pool: pulumi.Input[Optional[_builtins.str]] = None) -> 'Deployment':
         """
@@ -906,7 +906,7 @@ class Deployment(pulumi.CustomResource):
                Possible values are: `ENABLED`, `ENFORCED`.
         :param pulumi.Input[_builtins.str] service_account: Required. User-specified Service Account (SA) credentials to be used when actuating resources.
         :param pulumi.Input[_builtins.str] state: Output only. Current state of the deployment.
-        :param pulumi.Input[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict']] terraform_blueprint: A bundle of HCL files in a GCS bucket or Git repo.
+        :param pulumi.Input[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict', 'outputs.DeploymentTerraformBlueprint']] terraform_blueprint: A bundle of HCL files in a GCS bucket or Git repo.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tf_version_constraint: Optional constraint on the Terraform version.
         :param pulumi.Input[_builtins.str] worker_pool: Custom Cloud Build worker pool resource name.

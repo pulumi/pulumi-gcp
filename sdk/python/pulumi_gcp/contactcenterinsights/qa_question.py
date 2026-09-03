@@ -704,21 +704,21 @@ class QaQuestion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  abbreviation: pulumi.Input[Optional[_builtins.str]] = None,
-                 answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]]] = None,
+                 answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict', 'outputs.QaQuestionAnswerChoice']]]]] = None,
                  answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']]] = None,
+                 metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict', 'outputs.QaQuestionMetrics']]] = None,
                  order: pulumi.Input[Optional[_builtins.int]] = None,
-                 predefined_question_config: pulumi.Input[Optional[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict']]] = None,
+                 predefined_question_config: pulumi.Input[Optional[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict', 'outputs.QaQuestionPredefinedQuestionConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 qa_question_data_options: pulumi.Input[Optional[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict']]] = None,
+                 qa_question_data_options: pulumi.Input[Optional[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict', 'outputs.QaQuestionQaQuestionDataOptions']]] = None,
                  qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
                  question_body: pulumi.Input[Optional[_builtins.str]] = None,
                  question_type: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tuning_metadata: pulumi.Input[Optional[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict']]] = None,
+                 tuning_metadata: pulumi.Input[Optional[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict', 'outputs.QaQuestionTuningMetadata']]] = None,
                  __props__=None):
         """
         A single question to be scored by the Insights QA feature.
@@ -746,7 +746,7 @@ class QaQuestion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] abbreviation: Short, descriptive string, used in the UI where it's not practical
                to display the full question body. E.g., "Greeting".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]] answer_choices: A list of valid answers to the question, which the LLM must choose from.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict', 'outputs.QaQuestionAnswerChoice']]]] answer_choices: A list of valid answers to the question, which the LLM must choose from.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] answer_instructions: Instructions describing how to determine the answer.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -756,16 +756,16 @@ class QaQuestion(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
+        :param pulumi.Input[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict', 'outputs.QaQuestionMetrics']] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
                was fine tuned for this question.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] order: Defines the order of the question within its parent scorecard revision.
-        :param pulumi.Input[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict']] predefined_question_config: Configuration for a predefined question. This field will only be set if the
+        :param pulumi.Input[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict', 'outputs.QaQuestionPredefinedQuestionConfig']] predefined_question_config: Configuration for a predefined question. This field will only be set if the
                Question Type is predefined.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict']] qa_question_data_options: Options for configuring the data used to generate the QA question.
+        :param pulumi.Input[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict', 'outputs.QaQuestionQaQuestionDataOptions']] qa_question_data_options: Options for configuring the data used to generate the QA question.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] qa_scorecard: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] question_body: Question text. E.g., "Did the agent greet the customer?"
@@ -782,7 +782,7 @@ class QaQuestion(pulumi.CustomResource):
                  projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
                  Both default and custom tags are used to group questions and to influence
                  the scoring of each question.
-        :param pulumi.Input[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict']] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
+        :param pulumi.Input[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict', 'outputs.QaQuestionTuningMetadata']] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
                scorecard containing this question has been tuned.
                Structure is documented below.
         """
@@ -830,21 +830,21 @@ class QaQuestion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  abbreviation: pulumi.Input[Optional[_builtins.str]] = None,
-                 answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]]] = None,
+                 answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict', 'outputs.QaQuestionAnswerChoice']]]]] = None,
                  answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']]] = None,
+                 metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict', 'outputs.QaQuestionMetrics']]] = None,
                  order: pulumi.Input[Optional[_builtins.int]] = None,
-                 predefined_question_config: pulumi.Input[Optional[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict']]] = None,
+                 predefined_question_config: pulumi.Input[Optional[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict', 'outputs.QaQuestionPredefinedQuestionConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 qa_question_data_options: pulumi.Input[Optional[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict']]] = None,
+                 qa_question_data_options: pulumi.Input[Optional[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict', 'outputs.QaQuestionQaQuestionDataOptions']]] = None,
                  qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
                  question_body: pulumi.Input[Optional[_builtins.str]] = None,
                  question_type: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tuning_metadata: pulumi.Input[Optional[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict']]] = None,
+                 tuning_metadata: pulumi.Input[Optional[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict', 'outputs.QaQuestionTuningMetadata']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -890,23 +890,23 @@ class QaQuestion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             abbreviation: pulumi.Input[Optional[_builtins.str]] = None,
-            answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]]] = None,
+            answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict', 'outputs.QaQuestionAnswerChoice']]]]] = None,
             answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']]] = None,
+            metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict', 'outputs.QaQuestionMetrics']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             order: pulumi.Input[Optional[_builtins.int]] = None,
-            predefined_question_config: pulumi.Input[Optional[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict']]] = None,
+            predefined_question_config: pulumi.Input[Optional[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict', 'outputs.QaQuestionPredefinedQuestionConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            qa_question_data_options: pulumi.Input[Optional[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict']]] = None,
+            qa_question_data_options: pulumi.Input[Optional[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict', 'outputs.QaQuestionQaQuestionDataOptions']]] = None,
             qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
             question_body: pulumi.Input[Optional[_builtins.str]] = None,
             question_type: pulumi.Input[Optional[_builtins.str]] = None,
             revision: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tuning_metadata: pulumi.Input[Optional[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict']]] = None,
+            tuning_metadata: pulumi.Input[Optional[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict', 'outputs.QaQuestionTuningMetadata']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'QaQuestion':
         """
         Get an existing QaQuestion resource's state with the given name, id, and optional extra
@@ -917,7 +917,7 @@ class QaQuestion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] abbreviation: Short, descriptive string, used in the UI where it's not practical
                to display the full question body. E.g., "Greeting".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]] answer_choices: A list of valid answers to the question, which the LLM must choose from.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict', 'outputs.QaQuestionAnswerChoice']]]] answer_choices: A list of valid answers to the question, which the LLM must choose from.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] answer_instructions: Instructions describing how to determine the answer.
         :param pulumi.Input[_builtins.str] create_time: The time at which this question was created.
@@ -928,19 +928,19 @@ class QaQuestion(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
+        :param pulumi.Input[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict', 'outputs.QaQuestionMetrics']] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
                was fine tuned for this question.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the question.
                Format:
                projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
         :param pulumi.Input[_builtins.int] order: Defines the order of the question within its parent scorecard revision.
-        :param pulumi.Input[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict']] predefined_question_config: Configuration for a predefined question. This field will only be set if the
+        :param pulumi.Input[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict', 'outputs.QaQuestionPredefinedQuestionConfig']] predefined_question_config: Configuration for a predefined question. This field will only be set if the
                Question Type is predefined.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict']] qa_question_data_options: Options for configuring the data used to generate the QA question.
+        :param pulumi.Input[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict', 'outputs.QaQuestionQaQuestionDataOptions']] qa_question_data_options: Options for configuring the data used to generate the QA question.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] qa_scorecard: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] question_body: Question text. E.g., "Did the agent greet the customer?"
@@ -957,7 +957,7 @@ class QaQuestion(pulumi.CustomResource):
                  projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
                  Both default and custom tags are used to group questions and to influence
                  the scoring of each question.
-        :param pulumi.Input[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict']] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
+        :param pulumi.Input[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict', 'outputs.QaQuestionTuningMetadata']] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
                scorecard containing this question has been tuned.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The most recent time at which the question was updated.

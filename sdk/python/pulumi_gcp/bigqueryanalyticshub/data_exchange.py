@@ -504,7 +504,7 @@ class DataExchange(pulumi.CustomResource):
                  log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
+                 sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict', 'outputs.DataExchangeSharingEnvironmentConfig']]] = None,
                  __props__=None):
         """
         A Bigquery Analytics Hub data exchange
@@ -610,7 +610,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']] sharing_environment_config: Configurable data sharing environment option for a data exchange.
+        :param pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict', 'outputs.DataExchangeSharingEnvironmentConfig']] sharing_environment_config: Configurable data sharing environment option for a data exchange.
                This field is required for data clean room exchanges.
                Structure is documented below.
         """
@@ -730,7 +730,7 @@ class DataExchange(pulumi.CustomResource):
                  log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
+                 sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict', 'outputs.DataExchangeSharingEnvironmentConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -783,7 +783,7 @@ class DataExchange(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None) -> 'DataExchange':
+            sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict', 'outputs.DataExchangeSharingEnvironmentConfig']]] = None) -> 'DataExchange':
         """
         Get an existing DataExchange resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -812,7 +812,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']] sharing_environment_config: Configurable data sharing environment option for a data exchange.
+        :param pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict', 'outputs.DataExchangeSharingEnvironmentConfig']] sharing_environment_config: Configurable data sharing environment option for a data exchange.
                This field is required for data clean room exchanges.
                Structure is documented below.
         """

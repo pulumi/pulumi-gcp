@@ -639,13 +639,13 @@ class RegionCommitment(pulumi.CustomResource):
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
-                 license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
+                 license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict', 'outputs.RegionCommitmentLicenseResource']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict', 'outputs.RegionCommitmentParams']]] = None,
                  plan: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict', 'outputs.RegionCommitmentResource']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -757,14 +757,14 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment. This field will suppress
                diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
                change another field at the same time.
-        :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict', 'outputs.RegionCommitmentLicenseResource']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict', 'outputs.RegionCommitmentParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -772,7 +772,7 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: URL of the region where this commitment may be used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]] resources: A list of commitment amounts for particular resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict', 'outputs.RegionCommitmentResource']]]] resources: A list of commitment amounts for particular resources.
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type of commitment, which affects the discount rate and the eligible resources.
@@ -900,13 +900,13 @@ class RegionCommitment(pulumi.CustomResource):
                  category: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
-                 license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
+                 license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict', 'outputs.RegionCommitmentLicenseResource']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
+                 params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict', 'outputs.RegionCommitmentParams']]] = None,
                  plan: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict', 'outputs.RegionCommitmentResource']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -955,13 +955,13 @@ class RegionCommitment(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             end_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
-            license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
+            license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict', 'outputs.RegionCommitmentLicenseResource']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
+            params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict', 'outputs.RegionCommitmentParams']]] = None,
             plan: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict', 'outputs.RegionCommitmentResource']]]]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             start_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -990,14 +990,14 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment. This field will suppress
                diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
                change another field at the same time.
-        :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict', 'outputs.RegionCommitmentLicenseResource']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+        :param pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict', 'outputs.RegionCommitmentParams']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -1005,7 +1005,7 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: URL of the region where this commitment may be used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]] resources: A list of commitment amounts for particular resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict', 'outputs.RegionCommitmentResource']]]] resources: A list of commitment amounts for particular resources.
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.

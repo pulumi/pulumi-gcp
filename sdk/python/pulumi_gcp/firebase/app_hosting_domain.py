@@ -408,7 +408,7 @@ class AppHostingDomain(pulumi.CustomResource):
                  domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 serve: pulumi.Input[Optional[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict']]] = None,
+                 serve: pulumi.Input[Optional[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict', 'outputs.AppHostingDomainServe']]] = None,
                  __props__=None):
         """
         A domain name that is associated with a backend.
@@ -501,7 +501,7 @@ class AppHostingDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the Backend that this Domain is associated with
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict']] serve: The serving behavior of the domain. If specified, the domain will
+        :param pulumi.Input[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict', 'outputs.AppHostingDomainServe']] serve: The serving behavior of the domain. If specified, the domain will
                serve content other than its Backend's live content.
                Structure is documented below.
         """
@@ -608,7 +608,7 @@ class AppHostingDomain(pulumi.CustomResource):
                  domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 serve: pulumi.Input[Optional[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict']]] = None,
+                 serve: pulumi.Input[Optional[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict', 'outputs.AppHostingDomainServe']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -650,7 +650,7 @@ class AppHostingDomain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backend: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_domain_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingDomainCustomDomainStatusArgs', 'AppHostingDomainCustomDomainStatusArgsDict']]]]] = None,
+            custom_domain_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingDomainCustomDomainStatusArgs', 'AppHostingDomainCustomDomainStatusArgsDict', 'outputs.AppHostingDomainCustomDomainStatus']]]]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             domain_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -659,7 +659,7 @@ class AppHostingDomain(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             purge_time: pulumi.Input[Optional[_builtins.str]] = None,
-            serve: pulumi.Input[Optional[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict']]] = None,
+            serve: pulumi.Input[Optional[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict', 'outputs.AppHostingDomainServe']]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppHostingDomain':
         """
@@ -671,7 +671,7 @@ class AppHostingDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[_builtins.str] create_time: Time at which the domain was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingDomainCustomDomainStatusArgs', 'AppHostingDomainCustomDomainStatusArgsDict']]]] custom_domain_statuses: The status of a custom domain's linkage to the Backend.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingDomainCustomDomainStatusArgs', 'AppHostingDomainCustomDomainStatusArgsDict', 'outputs.AppHostingDomainCustomDomainStatus']]]] custom_domain_statuses: The status of a custom domain's linkage to the Backend.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: Time at which the domain was deleted.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -691,7 +691,7 @@ class AppHostingDomain(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] purge_time: Time at which a soft-deleted domain will be purged, rendering in
                permanently deleted.
-        :param pulumi.Input[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict']] serve: The serving behavior of the domain. If specified, the domain will
+        :param pulumi.Input[Union['AppHostingDomainServeArgs', 'AppHostingDomainServeArgsDict', 'outputs.AppHostingDomainServe']] serve: The serving behavior of the domain. If specified, the domain will
                serve content other than its Backend's live content.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: System-assigned, unique identifier.

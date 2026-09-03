@@ -117,7 +117,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict', 'outputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy']]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -198,7 +198,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
+        :param pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict', 'outputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy']] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this folder. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
                Structure is documented below.
@@ -301,7 +301,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict', 'outputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy']]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -326,7 +326,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+            default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict', 'outputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy']]] = None,
             folder: pulumi.Input[Optional[_builtins.str]] = None) -> 'FolderKajPolicyConfig':
         """
         Get an existing FolderKajPolicyConfig resource's state with the given name, id, and optional extra
@@ -335,7 +335,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
+        :param pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict', 'outputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy']] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this folder. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
                Structure is documented below.

@@ -363,9 +363,9 @@ class DashboardChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chart_layout: pulumi.Input[Optional[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict']]] = None,
-                 dashboard_chart: pulumi.Input[Optional[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict']]] = None,
-                 dashboard_query: pulumi.Input[Optional[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict']]] = None,
+                 chart_layout: pulumi.Input[Optional[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict', 'outputs.DashboardChartChartLayout']]] = None,
+                 dashboard_chart: pulumi.Input[Optional[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict', 'outputs.DashboardChartDashboardChart']]] = None,
+                 dashboard_query: pulumi.Input[Optional[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict', 'outputs.DashboardChartDashboardQuery']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -566,11 +566,11 @@ class DashboardChart(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict']] chart_layout: The layout of this chart within the NativeDashboard.
+        :param pulumi.Input[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict', 'outputs.DashboardChartChartLayout']] chart_layout: The layout of this chart within the NativeDashboard.
                Structure is documented below.
-        :param pulumi.Input[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict']] dashboard_chart: Core configuration details for the DashboardChart.
+        :param pulumi.Input[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict', 'outputs.DashboardChartDashboardChart']] dashboard_chart: Core configuration details for the DashboardChart.
                Structure is documented below.
-        :param pulumi.Input[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict']] dashboard_query: The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
+        :param pulumi.Input[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict', 'outputs.DashboardChartDashboardQuery']] dashboard_query: The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -797,9 +797,9 @@ class DashboardChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chart_layout: pulumi.Input[Optional[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict']]] = None,
-                 dashboard_chart: pulumi.Input[Optional[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict']]] = None,
-                 dashboard_query: pulumi.Input[Optional[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict']]] = None,
+                 chart_layout: pulumi.Input[Optional[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict', 'outputs.DashboardChartChartLayout']]] = None,
+                 dashboard_chart: pulumi.Input[Optional[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict', 'outputs.DashboardChartDashboardChart']]] = None,
+                 dashboard_query: pulumi.Input[Optional[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict', 'outputs.DashboardChartDashboardQuery']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -841,9 +841,9 @@ class DashboardChart(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             chart_id: pulumi.Input[Optional[_builtins.str]] = None,
-            chart_layout: pulumi.Input[Optional[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict']]] = None,
-            dashboard_chart: pulumi.Input[Optional[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict']]] = None,
-            dashboard_query: pulumi.Input[Optional[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict']]] = None,
+            chart_layout: pulumi.Input[Optional[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict', 'outputs.DashboardChartChartLayout']]] = None,
+            dashboard_chart: pulumi.Input[Optional[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict', 'outputs.DashboardChartDashboardChart']]] = None,
+            dashboard_query: pulumi.Input[Optional[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict', 'outputs.DashboardChartDashboardQuery']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -858,11 +858,11 @@ class DashboardChart(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] chart_id: The unique identifier of the chart, automatically extracted from the full resource name.
-        :param pulumi.Input[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict']] chart_layout: The layout of this chart within the NativeDashboard.
+        :param pulumi.Input[Union['DashboardChartChartLayoutArgs', 'DashboardChartChartLayoutArgsDict', 'outputs.DashboardChartChartLayout']] chart_layout: The layout of this chart within the NativeDashboard.
                Structure is documented below.
-        :param pulumi.Input[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict']] dashboard_chart: Core configuration details for the DashboardChart.
+        :param pulumi.Input[Union['DashboardChartDashboardChartArgs', 'DashboardChartDashboardChartArgsDict', 'outputs.DashboardChartDashboardChart']] dashboard_chart: Core configuration details for the DashboardChart.
                Structure is documented below.
-        :param pulumi.Input[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict']] dashboard_query: The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
+        :param pulumi.Input[Union['DashboardChartDashboardQueryArgs', 'DashboardChartDashboardQueryArgsDict', 'outputs.DashboardChartDashboardQuery']] dashboard_query: The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

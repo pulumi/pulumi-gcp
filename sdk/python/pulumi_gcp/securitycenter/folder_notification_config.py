@@ -299,7 +299,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict', 'outputs.FolderNotificationConfigStreamingConfig']]] = None,
                  __props__=None):
         """
         A Cloud Security Command Center (Cloud SCC) notification configs. A
@@ -367,7 +367,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] folder: Numerical ID of the parent folder.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict', 'outputs.FolderNotificationConfigStreamingConfig']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         ...
@@ -449,7 +449,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
                  pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
-                 streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict', 'outputs.FolderNotificationConfigStreamingConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -492,7 +492,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
-            streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None) -> 'FolderNotificationConfig':
+            streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict', 'outputs.FolderNotificationConfigStreamingConfig']]] = None) -> 'FolderNotificationConfig':
         """
         Get an existing FolderNotificationConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -515,7 +515,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
                "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[_builtins.str] service_account: The service account that needs "pubsub.topics.publish" permission to
                publish to the Pub/Sub topic.
-        :param pulumi.Input[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict', 'outputs.FolderNotificationConfigStreamingConfig']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

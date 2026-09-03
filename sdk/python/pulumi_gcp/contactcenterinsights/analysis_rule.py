@@ -407,7 +407,7 @@ class AnalysisRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  analysis_percentage: pulumi.Input[Optional[_builtins.float]] = None,
-                 annotator_selector: pulumi.Input[Optional[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict']]] = None,
+                 annotator_selector: pulumi.Input[Optional[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict', 'outputs.AnalysisRuleAnnotatorSelector']]] = None,
                  conversation_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -533,7 +533,7 @@ class AnalysisRule(pulumi.CustomResource):
                automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
                are sampled in a determenestic way. The original runtime_percentage &
                upload percentage will be replaced by defining filters on the conversation.
-        :param pulumi.Input[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict']] annotator_selector: Selector of all available annotators and phrase matchers to run.
+        :param pulumi.Input[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict', 'outputs.AnalysisRuleAnnotatorSelector']] annotator_selector: Selector of all available annotators and phrase matchers to run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] conversation_filter: Filter for the conversations that should apply this analysis
                rule. An empty filter means this analysis rule applies to all
@@ -685,7 +685,7 @@ class AnalysisRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  analysis_percentage: pulumi.Input[Optional[_builtins.float]] = None,
-                 annotator_selector: pulumi.Input[Optional[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict']]] = None,
+                 annotator_selector: pulumi.Input[Optional[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict', 'outputs.AnalysisRuleAnnotatorSelector']]] = None,
                  conversation_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -725,7 +725,7 @@ class AnalysisRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active: pulumi.Input[Optional[_builtins.bool]] = None,
             analysis_percentage: pulumi.Input[Optional[_builtins.float]] = None,
-            annotator_selector: pulumi.Input[Optional[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict']]] = None,
+            annotator_selector: pulumi.Input[Optional[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict', 'outputs.AnalysisRuleAnnotatorSelector']]] = None,
             conversation_filter: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -747,7 +747,7 @@ class AnalysisRule(pulumi.CustomResource):
                automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
                are sampled in a determenestic way. The original runtime_percentage &
                upload percentage will be replaced by defining filters on the conversation.
-        :param pulumi.Input[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict']] annotator_selector: Selector of all available annotators and phrase matchers to run.
+        :param pulumi.Input[Union['AnalysisRuleAnnotatorSelectorArgs', 'AnalysisRuleAnnotatorSelectorArgsDict', 'outputs.AnalysisRuleAnnotatorSelector']] annotator_selector: Selector of all available annotators and phrase matchers to run.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] conversation_filter: Filter for the conversations that should apply this analysis
                rule. An empty filter means this analysis rule applies to all

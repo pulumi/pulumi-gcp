@@ -486,16 +486,16 @@ class BatchOperationsJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']]] = None,
-                 delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']]] = None,
+                 bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict', 'outputs.BatchOperationsJobBucketList']]] = None,
+                 delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict', 'outputs.BatchOperationsJobDeleteObject']]] = None,
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']]] = None,
-                 put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict']]] = None,
-                 rewrite_object: pulumi.Input[Optional[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict']]] = None,
+                 put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']]] = None,
+                 put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']]] = None,
+                 rewrite_object: pulumi.Input[Optional[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict', 'outputs.BatchOperationsJobRewriteObject']]] = None,
                  __props__=None):
         """
         Storage Batch Operations (SBO) is a Cloud Storage management feature that offers a
@@ -579,9 +579,9 @@ class BatchOperationsJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']] bucket_list: List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
+        :param pulumi.Input[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict', 'outputs.BatchOperationsJobBucketList']] bucket_list: List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
                Structure is documented below.
-        :param pulumi.Input[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']] delete_object: allows batch operations to delete objects in bucket
+        :param pulumi.Input[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict', 'outputs.BatchOperationsJobDeleteObject']] delete_object: allows batch operations to delete objects in bucket
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_protection: If set to `true`, the storage batch operation job will not be deleted and new job will be created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -594,11 +594,11 @@ class BatchOperationsJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']] put_metadata: allows batch operations to update metadata for objects in bucket
+        :param pulumi.Input[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']] put_metadata: allows batch operations to update metadata for objects in bucket
                Structure is documented below.
-        :param pulumi.Input[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict']] put_object_hold: allows to update temporary hold or eventBased hold for objects in bucket.
+        :param pulumi.Input[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']] put_object_hold: allows to update temporary hold or eventBased hold for objects in bucket.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict']] rewrite_object: allows to update encryption key for objects in bucket.
+        :param pulumi.Input[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict', 'outputs.BatchOperationsJobRewriteObject']] rewrite_object: allows to update encryption key for objects in bucket.
                Structure is documented below.
         """
         ...
@@ -702,16 +702,16 @@ class BatchOperationsJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']]] = None,
-                 delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']]] = None,
+                 bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict', 'outputs.BatchOperationsJobBucketList']]] = None,
+                 delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict', 'outputs.BatchOperationsJobDeleteObject']]] = None,
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']]] = None,
-                 put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict']]] = None,
-                 rewrite_object: pulumi.Input[Optional[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict']]] = None,
+                 put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']]] = None,
+                 put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']]] = None,
+                 rewrite_object: pulumi.Input[Optional[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict', 'outputs.BatchOperationsJobRewriteObject']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -746,18 +746,18 @@ class BatchOperationsJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']]] = None,
+            bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict', 'outputs.BatchOperationsJobBucketList']]] = None,
             complete_time: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']]] = None,
+            delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict', 'outputs.BatchOperationsJobDeleteObject']]] = None,
             delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             job_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']]] = None,
-            put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict']]] = None,
-            rewrite_object: pulumi.Input[Optional[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict']]] = None,
+            put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']]] = None,
+            put_object_hold: pulumi.Input[Optional[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']]] = None,
+            rewrite_object: pulumi.Input[Optional[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict', 'outputs.BatchOperationsJobRewriteObject']]] = None,
             schedule_time: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BatchOperationsJob':
@@ -768,11 +768,11 @@ class BatchOperationsJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']] bucket_list: List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
+        :param pulumi.Input[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict', 'outputs.BatchOperationsJobBucketList']] bucket_list: List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
                Structure is documented below.
         :param pulumi.Input[_builtins.str] complete_time: The time that the job was completed.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this storage batch operation was created.
-        :param pulumi.Input[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']] delete_object: allows batch operations to delete objects in bucket
+        :param pulumi.Input[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict', 'outputs.BatchOperationsJobDeleteObject']] delete_object: allows batch operations to delete objects in bucket
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_protection: If set to `true`, the storage batch operation job will not be deleted and new job will be created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -785,11 +785,11 @@ class BatchOperationsJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']] put_metadata: allows batch operations to update metadata for objects in bucket
+        :param pulumi.Input[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict', 'outputs.BatchOperationsJobPutMetadata']] put_metadata: allows batch operations to update metadata for objects in bucket
                Structure is documented below.
-        :param pulumi.Input[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict']] put_object_hold: allows to update temporary hold or eventBased hold for objects in bucket.
+        :param pulumi.Input[Union['BatchOperationsJobPutObjectHoldArgs', 'BatchOperationsJobPutObjectHoldArgsDict', 'outputs.BatchOperationsJobPutObjectHold']] put_object_hold: allows to update temporary hold or eventBased hold for objects in bucket.
                Structure is documented below.
-        :param pulumi.Input[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict']] rewrite_object: allows to update encryption key for objects in bucket.
+        :param pulumi.Input[Union['BatchOperationsJobRewriteObjectArgs', 'BatchOperationsJobRewriteObjectArgsDict', 'outputs.BatchOperationsJobRewriteObject']] rewrite_object: allows to update encryption key for objects in bucket.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] schedule_time: The time that the job was scheduled.
         :param pulumi.Input[_builtins.str] state: State of the job.

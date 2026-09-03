@@ -476,7 +476,7 @@ class ListingSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
+                 destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']]] = None,
                  listing_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -595,7 +595,7 @@ class ListingSubscription(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']] destination_dataset: The destination dataset for this subscription.
+        :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']] destination_dataset: The destination dataset for this subscription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
@@ -730,7 +730,7 @@ class ListingSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
+                 destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']]] = None,
                  listing_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -780,14 +780,14 @@ class ListingSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commercial_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict']]]]] = None,
+            commercial_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict', 'outputs.ListingSubscriptionCommercialInfo']]]]] = None,
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
+            destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']]] = None,
             last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
-            linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict']]]]] = None,
-            linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict']]]]] = None,
+            linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict', 'outputs.ListingSubscriptionLinkedDatasetMap']]]]] = None,
+            linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict', 'outputs.ListingSubscriptionLinkedResource']]]]] = None,
             listing_id: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -806,7 +806,7 @@ class ListingSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict']]]] commercial_infos: Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict', 'outputs.ListingSubscriptionCommercialInfo']]]] commercial_infos: Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: Timestamp when the subscription was created.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -816,13 +816,13 @@ class ListingSubscription(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']] destination_dataset: The destination dataset for this subscription.
+        :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']] destination_dataset: The destination dataset for this subscription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_modify_time: Timestamp when the subscription was last modified.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict']]]] linked_dataset_maps: Output only. Map of listing resource names to associated linked resource,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict', 'outputs.ListingSubscriptionLinkedDatasetMap']]]] linked_dataset_maps: Output only. Map of listing resource names to associated linked resource,
                e.g. projects/123/locations/US/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict']]]] linked_resources: Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict', 'outputs.ListingSubscriptionLinkedResource']]]] linked_resources: Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.

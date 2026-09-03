@@ -601,16 +601,16 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
-                 cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
+                 alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict', 'outputs.ConnectionProfileAlloydb']]] = None,
+                 cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict', 'outputs.ConnectionProfileCloudsql']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
-                 oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
-                 postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
+                 mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict', 'outputs.ConnectionProfileMysql']]] = None,
+                 oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict', 'outputs.ConnectionProfileOracle']]] = None,
+                 postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict', 'outputs.ConnectionProfilePostgresql']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1023,9 +1023,9 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param pulumi.Input[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict', 'outputs.ConnectionProfileAlloydb']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+        :param pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict', 'outputs.ConnectionProfileCloudsql']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1040,11 +1040,11 @@ class ConnectionProfile(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location where the connection profile should reside.
-        :param pulumi.Input[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']] mysql: Specifies connection parameters required specifically for MySQL databases.
+        :param pulumi.Input[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict', 'outputs.ConnectionProfileMysql']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']] oracle: Specifies connection parameters required specifically for Oracle databases.
+        :param pulumi.Input[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict', 'outputs.ConnectionProfileOracle']] oracle: Specifies connection parameters required specifically for Oracle databases.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
+        :param pulumi.Input[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict', 'outputs.ConnectionProfilePostgresql']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1479,16 +1479,16 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
-                 cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
+                 alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict', 'outputs.ConnectionProfileAlloydb']]] = None,
+                 cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict', 'outputs.ConnectionProfileCloudsql']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
-                 oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
-                 postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
+                 mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict', 'outputs.ConnectionProfileMysql']]] = None,
+                 oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict', 'outputs.ConnectionProfileOracle']]] = None,
+                 postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict', 'outputs.ConnectionProfilePostgresql']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1533,21 +1533,21 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
-            cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
+            alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict', 'outputs.ConnectionProfileAlloydb']]] = None,
+            cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict', 'outputs.ConnectionProfileCloudsql']]] = None,
             connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dbprovider: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict', 'outputs.ConnectionProfileError']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
+            mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict', 'outputs.ConnectionProfileMysql']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
-            postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
+            oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict', 'outputs.ConnectionProfileOracle']]] = None,
+            postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict', 'outputs.ConnectionProfilePostgresql']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1559,9 +1559,9 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param pulumi.Input[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict', 'outputs.ConnectionProfileAlloydb']] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+        :param pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict', 'outputs.ConnectionProfileCloudsql']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
@@ -1574,19 +1574,19 @@ class ConnectionProfile(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict']]]] errors: Output only. The error details in case of state FAILED.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict', 'outputs.ConnectionProfileError']]]] errors: Output only. The error details in case of state FAILED.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location where the connection profile should reside.
-        :param pulumi.Input[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']] mysql: Specifies connection parameters required specifically for MySQL databases.
+        :param pulumi.Input[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict', 'outputs.ConnectionProfileMysql']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
-        :param pulumi.Input[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']] oracle: Specifies connection parameters required specifically for Oracle databases.
+        :param pulumi.Input[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict', 'outputs.ConnectionProfileOracle']] oracle: Specifies connection parameters required specifically for Oracle databases.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
+        :param pulumi.Input[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict', 'outputs.ConnectionProfilePostgresql']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

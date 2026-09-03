@@ -650,7 +650,7 @@ class ImportJob(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            execution_reports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImportJobExecutionReportArgs', 'ImportJobExecutionReportArgsDict']]]]] = None,
+            execution_reports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImportJobExecutionReportArgs', 'ImportJobExecutionReportArgsDict', 'outputs.ImportJobExecutionReport']]]]] = None,
             import_job_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -659,7 +659,7 @@ class ImportJob(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            validation_reports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImportJobValidationReportArgs', 'ImportJobValidationReportArgsDict']]]]] = None) -> 'ImportJob':
+            validation_reports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImportJobValidationReportArgs', 'ImportJobValidationReportArgsDict', 'outputs.ImportJobValidationReport']]]]] = None) -> 'ImportJob':
         """
         Get an existing ImportJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -678,7 +678,7 @@ class ImportJob(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name. Maximum length is 256 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImportJobExecutionReportArgs', 'ImportJobExecutionReportArgsDict']]]] execution_reports: A resource that reports result of the import job execution.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImportJobExecutionReportArgs', 'ImportJobExecutionReportArgsDict', 'outputs.ImportJobExecutionReport']]]] execution_reports: A resource that reports result of the import job execution.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] import_job_id: ID of the import job.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -700,7 +700,7 @@ class ImportJob(pulumi.CustomResource):
                IMPORT_JOB_STATE_FAILED_VALIDATION
                IMPORT_JOB_STATE_READY
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the import job was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImportJobValidationReportArgs', 'ImportJobValidationReportArgsDict']]]] validation_reports: A resource that aggregates errors across import job files.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImportJobValidationReportArgs', 'ImportJobValidationReportArgsDict', 'outputs.ImportJobValidationReport']]]] validation_reports: A resource that aggregates errors across import job files.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

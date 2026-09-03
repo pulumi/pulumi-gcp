@@ -991,27 +991,27 @@ class Agent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 after_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict']]]]] = None,
-                 after_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict']]]]] = None,
-                 after_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict']]]]] = None,
+                 after_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict', 'outputs.AgentAfterAgentCallback']]]]] = None,
+                 after_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict', 'outputs.AgentAfterModelCallback']]]]] = None,
+                 after_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict', 'outputs.AgentAfterToolCallback']]]]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 before_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict']]]]] = None,
-                 before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict']]]]] = None,
-                 before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]]] = None,
+                 before_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict', 'outputs.AgentBeforeAgentCallback']]]]] = None,
+                 before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict', 'outputs.AgentBeforeModelCallback']]]]] = None,
+                 before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict', 'outputs.AgentBeforeToolCallback']]]]] = None,
                  child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instruction: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_agent: pulumi.Input[Optional[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict']]] = None,
+                 llm_agent: pulumi.Input[Optional[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict', 'outputs.AgentLlmAgent']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_settings: pulumi.Input[Optional[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict']]] = None,
+                 model_settings: pulumi.Input[Optional[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict', 'outputs.AgentModelSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict']]] = None,
+                 remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']]] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict']]]]] = None,
+                 toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]]] = None,
                  __props__=None):
         """
         Description
@@ -1275,18 +1275,18 @@ class Agent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict']]]] after_agent_callbacks: The callbacks to execute after the agent is called.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict', 'outputs.AgentAfterAgentCallback']]]] after_agent_callbacks: The callbacks to execute after the agent is called.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict']]]] after_model_callbacks: The callbacks to execute after the model is called. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict', 'outputs.AgentAfterModelCallback']]]] after_model_callbacks: The callbacks to execute after the model is called. If there are multiple
                calls to the model, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict']]]] after_tool_callbacks: The callbacks to execute after the tool is invoked. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict', 'outputs.AgentAfterToolCallback']]]] after_tool_callbacks: The callbacks to execute after the tool is invoked. If there are multiple
                tool invocations, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
@@ -1296,18 +1296,18 @@ class Agent(pulumi.CustomResource):
                the agent's resource name. If not provided, a unique ID will be
                automatically assigned for the agent.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict']]]] before_agent_callbacks: The callbacks to execute before the agent is called.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict', 'outputs.AgentBeforeAgentCallback']]]] before_agent_callbacks: The callbacks to execute before the agent is called.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict']]]] before_model_callbacks: The callbacks to execute before the model is called. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict', 'outputs.AgentBeforeModelCallback']]]] before_model_callbacks: The callbacks to execute before the model is called. If there are multiple
                calls to the model, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]] before_tool_callbacks: The callbacks to execute before the tool is invoked. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict', 'outputs.AgentBeforeToolCallback']]]] before_tool_callbacks: The callbacks to execute before the tool is invoked. If there are multiple
                tool invocations, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
@@ -1327,14 +1327,14 @@ class Agent(pulumi.CustomResource):
                Format:
                `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
         :param pulumi.Input[_builtins.str] instruction: Instructions for the LLM model to guide the agent's behavior.
-        :param pulumi.Input[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict']] llm_agent: Default agent type. The agent uses instructions and callbacks specified in
+        :param pulumi.Input[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict', 'outputs.AgentLlmAgent']] llm_agent: Default agent type. The agent uses instructions and callbacks specified in
                the agent to perform the task using a large language model.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict']] model_settings: Model settings contains various configurations for the LLM model.
+        :param pulumi.Input[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict', 'outputs.AgentModelSettings']] model_settings: Model settings contains various configurations for the LLM model.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict']] remote_dialogflow_agent: The agent which will transfer execution to an existing remote
+        :param pulumi.Input[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']] remote_dialogflow_agent: The agent which will transfer execution to an existing remote
                [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
                agent flow. The corresponding Dialogflow agent will process subsequent user
                queries until the session ends or flow ends and the control is transferred
@@ -1342,7 +1342,7 @@ class Agent(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: List of available tools for the agent.
                Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict']]]] toolsets: List of toolsets for the agent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]] toolsets: List of toolsets for the agent.
                Structure is documented below.
         """
         ...
@@ -1626,27 +1626,27 @@ class Agent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 after_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict']]]]] = None,
-                 after_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict']]]]] = None,
-                 after_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict']]]]] = None,
+                 after_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict', 'outputs.AgentAfterAgentCallback']]]]] = None,
+                 after_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict', 'outputs.AgentAfterModelCallback']]]]] = None,
+                 after_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict', 'outputs.AgentAfterToolCallback']]]]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
-                 before_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict']]]]] = None,
-                 before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict']]]]] = None,
-                 before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]]] = None,
+                 before_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict', 'outputs.AgentBeforeAgentCallback']]]]] = None,
+                 before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict', 'outputs.AgentBeforeModelCallback']]]]] = None,
+                 before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict', 'outputs.AgentBeforeToolCallback']]]]] = None,
                  child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instruction: pulumi.Input[Optional[_builtins.str]] = None,
-                 llm_agent: pulumi.Input[Optional[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict']]] = None,
+                 llm_agent: pulumi.Input[Optional[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict', 'outputs.AgentLlmAgent']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_settings: pulumi.Input[Optional[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict']]] = None,
+                 model_settings: pulumi.Input[Optional[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict', 'outputs.AgentModelSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict']]] = None,
+                 remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']]] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict']]]]] = None,
+                 toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1698,14 +1698,14 @@ class Agent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            after_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict']]]]] = None,
-            after_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict']]]]] = None,
-            after_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict']]]]] = None,
+            after_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict', 'outputs.AgentAfterAgentCallback']]]]] = None,
+            after_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict', 'outputs.AgentAfterModelCallback']]]]] = None,
+            after_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict', 'outputs.AgentAfterToolCallback']]]]] = None,
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             app: pulumi.Input[Optional[_builtins.str]] = None,
-            before_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict']]]]] = None,
-            before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict']]]]] = None,
-            before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]]] = None,
+            before_agent_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict', 'outputs.AgentBeforeAgentCallback']]]]] = None,
+            before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict', 'outputs.AgentBeforeModelCallback']]]]] = None,
+            before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict', 'outputs.AgentBeforeToolCallback']]]]] = None,
             child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1715,14 +1715,14 @@ class Agent(pulumi.CustomResource):
             generated_summary: pulumi.Input[Optional[_builtins.str]] = None,
             guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instruction: pulumi.Input[Optional[_builtins.str]] = None,
-            llm_agent: pulumi.Input[Optional[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict']]] = None,
+            llm_agent: pulumi.Input[Optional[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict', 'outputs.AgentLlmAgent']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            model_settings: pulumi.Input[Optional[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict']]] = None,
+            model_settings: pulumi.Input[Optional[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict', 'outputs.AgentModelSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict']]] = None,
+            remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']]] = None,
             tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict']]]]] = None,
+            toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Agent':
         """
         Get an existing Agent resource's state with the given name, id, and optional extra
@@ -1731,18 +1731,18 @@ class Agent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict']]]] after_agent_callbacks: The callbacks to execute after the agent is called.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterAgentCallbackArgs', 'AgentAfterAgentCallbackArgsDict', 'outputs.AgentAfterAgentCallback']]]] after_agent_callbacks: The callbacks to execute after the agent is called.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict']]]] after_model_callbacks: The callbacks to execute after the model is called. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterModelCallbackArgs', 'AgentAfterModelCallbackArgsDict', 'outputs.AgentAfterModelCallback']]]] after_model_callbacks: The callbacks to execute after the model is called. If there are multiple
                calls to the model, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict']]]] after_tool_callbacks: The callbacks to execute after the tool is invoked. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentAfterToolCallbackArgs', 'AgentAfterToolCallbackArgsDict', 'outputs.AgentAfterToolCallback']]]] after_tool_callbacks: The callbacks to execute after the tool is invoked. If there are multiple
                tool invocations, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
@@ -1752,18 +1752,18 @@ class Agent(pulumi.CustomResource):
                the agent's resource name. If not provided, a unique ID will be
                automatically assigned for the agent.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict']]]] before_agent_callbacks: The callbacks to execute before the agent is called.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeAgentCallbackArgs', 'AgentBeforeAgentCallbackArgsDict', 'outputs.AgentBeforeAgentCallback']]]] before_agent_callbacks: The callbacks to execute before the agent is called.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict']]]] before_model_callbacks: The callbacks to execute before the model is called. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict', 'outputs.AgentBeforeModelCallback']]]] before_model_callbacks: The callbacks to execute before the model is called. If there are multiple
                calls to the model, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
                execution stops and any remaining callbacks are skipped.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]] before_tool_callbacks: The callbacks to execute before the tool is invoked. If there are multiple
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict', 'outputs.AgentBeforeToolCallback']]]] before_tool_callbacks: The callbacks to execute before the tool is invoked. If there are multiple
                tool invocations, the callback will be executed multiple times.
                The provided callbacks are executed sequentially in the exact order they
                are given in the list. If a callback returns an overridden response,
@@ -1789,16 +1789,16 @@ class Agent(pulumi.CustomResource):
                Format:
                `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
         :param pulumi.Input[_builtins.str] instruction: Instructions for the LLM model to guide the agent's behavior.
-        :param pulumi.Input[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict']] llm_agent: Default agent type. The agent uses instructions and callbacks specified in
+        :param pulumi.Input[Union['AgentLlmAgentArgs', 'AgentLlmAgentArgsDict', 'outputs.AgentLlmAgent']] llm_agent: Default agent type. The agent uses instructions and callbacks specified in
                the agent to perform the task using a large language model.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict']] model_settings: Model settings contains various configurations for the LLM model.
+        :param pulumi.Input[Union['AgentModelSettingsArgs', 'AgentModelSettingsArgsDict', 'outputs.AgentModelSettings']] model_settings: Model settings contains various configurations for the LLM model.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of the agent.
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict']] remote_dialogflow_agent: The agent which will transfer execution to an existing remote
+        :param pulumi.Input[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']] remote_dialogflow_agent: The agent which will transfer execution to an existing remote
                [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
                agent flow. The corresponding Dialogflow agent will process subsequent user
                queries until the session ends or flow ends and the control is transferred
@@ -1806,7 +1806,7 @@ class Agent(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: List of available tools for the agent.
                Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict']]]] toolsets: List of toolsets for the agent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]] toolsets: List of toolsets for the agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the agent was last updated.
         """

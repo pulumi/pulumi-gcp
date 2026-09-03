@@ -588,12 +588,12 @@ class VMwareNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict', 'outputs.VMwareNodePoolConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+                 node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict', 'outputs.VMwareNodePoolNodePoolAutoscaling']]] = None,
                  on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None,
@@ -785,7 +785,7 @@ class VMwareNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']] config: The node configuration of the node pool.
+        :param pulumi.Input[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict', 'outputs.VMwareNodePoolConfig']] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -796,7 +796,7 @@ class VMwareNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name for the node pool.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The vmware node pool name.
-        :param pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
+        :param pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict', 'outputs.VMwareNodePoolNodePoolAutoscaling']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] on_prem_version: Anthos version for the node pool. Defaults to the user cluster version.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -999,12 +999,12 @@ class VMwareNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict', 'outputs.VMwareNodePoolConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+                 node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict', 'outputs.VMwareNodePoolNodePoolAutoscaling']]] = None,
                  on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1053,7 +1053,7 @@ class VMwareNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict', 'outputs.VMwareNodePoolConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1062,12 +1062,12 @@ class VMwareNodePool(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+            node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict', 'outputs.VMwareNodePoolNodePoolAutoscaling']]] = None,
             on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareNodePoolStatusArgs', 'VMwareNodePoolStatusArgsDict']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareNodePoolStatusArgs', 'VMwareNodePoolStatusArgsDict', 'outputs.VMwareNodePoolStatus']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None) -> 'VMwareNodePool':
@@ -1089,7 +1089,7 @@ class VMwareNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']] config: The node configuration of the node pool.
+        :param pulumi.Input[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict', 'outputs.VMwareNodePoolConfig']] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
@@ -1108,7 +1108,7 @@ class VMwareNodePool(pulumi.CustomResource):
                through optimistic concurrency control.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] name: The vmware node pool name.
-        :param pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
+        :param pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict', 'outputs.VMwareNodePoolNodePoolAutoscaling']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] on_prem_version: Anthos version for the node pool. Defaults to the user cluster version.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1116,7 +1116,7 @@ class VMwareNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareNodePoolStatusArgs', 'VMwareNodePoolStatusArgsDict']]]] statuses: ResourceStatus representing detailed cluster state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareNodePoolStatusArgs', 'VMwareNodePoolStatusArgsDict', 'outputs.VMwareNodePoolStatus']]]] statuses: ResourceStatus representing detailed cluster state.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the node pool.
         :param pulumi.Input[_builtins.str] update_time: The time the cluster was last updated, in RFC3339 text format.

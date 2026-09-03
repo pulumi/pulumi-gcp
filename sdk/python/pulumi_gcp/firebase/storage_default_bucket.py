@@ -347,7 +347,7 @@ class StorageDefaultBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            buckets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDefaultBucketBucketArgs', 'StorageDefaultBucketBucketArgsDict']]]]] = None,
+            buckets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDefaultBucketBucketArgs', 'StorageDefaultBucketBucketArgsDict', 'outputs.StorageDefaultBucketBucket']]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -359,7 +359,7 @@ class StorageDefaultBucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StorageDefaultBucketBucketArgs', 'StorageDefaultBucketBucketArgsDict']]]] buckets: The resource name of the underlying Google Cloud Storage bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StorageDefaultBucketBucketArgs', 'StorageDefaultBucketBucketArgsDict', 'outputs.StorageDefaultBucketBucket']]]] buckets: The resource name of the underlying Google Cloud Storage bucket.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,

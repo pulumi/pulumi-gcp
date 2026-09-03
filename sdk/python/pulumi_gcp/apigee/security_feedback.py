@@ -383,7 +383,7 @@ class SecurityFeedback(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
+                 feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict', 'outputs.SecurityFeedbackFeedbackContext']]]]] = None,
                  feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
                  feedback_type: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -479,7 +479,7 @@ class SecurityFeedback(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the feedback.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict', 'outputs.SecurityFeedbackFeedbackContext']]]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] feedback_id: Resource ID of the security feedback.
         :param pulumi.Input[_builtins.str] feedback_type: The type of feedback being submitted.
@@ -593,7 +593,7 @@ class SecurityFeedback(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
+                 feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict', 'outputs.SecurityFeedbackFeedbackContext']]]]] = None,
                  feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
                  feedback_type: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -640,7 +640,7 @@ class SecurityFeedback(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
+            feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict', 'outputs.SecurityFeedbackFeedbackContext']]]]] = None,
             feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
             feedback_type: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -663,7 +663,7 @@ class SecurityFeedback(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the feedback.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict', 'outputs.SecurityFeedbackFeedbackContext']]]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] feedback_id: Resource ID of the security feedback.
         :param pulumi.Input[_builtins.str] feedback_type: The type of feedback being submitted.

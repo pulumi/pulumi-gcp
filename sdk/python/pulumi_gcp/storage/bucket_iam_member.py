@@ -236,7 +236,7 @@ class BucketIAMMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict', 'outputs.BucketIAMMemberCondition']]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -493,7 +493,7 @@ class BucketIAMMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict', 'outputs.BucketIAMMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -782,7 +782,7 @@ class BucketIAMMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict', 'outputs.BucketIAMMemberCondition']]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -816,7 +816,7 @@ class BucketIAMMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict', 'outputs.BucketIAMMemberCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             member: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketIAMMember':
@@ -828,7 +828,7 @@ class BucketIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict', 'outputs.BucketIAMMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.

@@ -393,7 +393,7 @@ class AppGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict', 'outputs.AppGroupAttribute']]]]] = None,
                  channel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  channel_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,7 +515,7 @@ class AppGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]] attributes: A list of attributes
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict', 'outputs.AppGroupAttribute']]]] attributes: A list of attributes
                Structure is documented below.
         :param pulumi.Input[_builtins.str] channel_id: Channel identifier identifies the owner maintaining this grouping.
         :param pulumi.Input[_builtins.str] channel_uri: A reference to the associated storefront/marketplace.
@@ -664,7 +664,7 @@ class AppGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict', 'outputs.AppGroupAttribute']]]]] = None,
                  channel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  channel_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -706,7 +706,7 @@ class AppGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict', 'outputs.AppGroupAttribute']]]]] = None,
             channel_id: pulumi.Input[Optional[_builtins.str]] = None,
             channel_uri: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -725,7 +725,7 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_group_id: Internal identifier that cannot be edited
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]] attributes: A list of attributes
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict', 'outputs.AppGroupAttribute']]]] attributes: A list of attributes
                Structure is documented below.
         :param pulumi.Input[_builtins.str] channel_id: Channel identifier identifies the owner maintaining this grouping.
         :param pulumi.Input[_builtins.str] channel_uri: A reference to the associated storefront/marketplace.

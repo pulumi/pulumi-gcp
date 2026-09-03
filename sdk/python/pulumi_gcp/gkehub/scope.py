@@ -580,7 +580,7 @@ class Scope(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             scope_id: pulumi.Input[Optional[_builtins.str]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict', 'outputs.ScopeState']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Scope':
         """
@@ -614,7 +614,7 @@ class Scope(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] scope_id: The client-provided identifier of the scope.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict']]]] states: State of the scope resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict', 'outputs.ScopeState']]]] states: State of the scope resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[_builtins.str] update_time: Time the Scope was updated in UTC.

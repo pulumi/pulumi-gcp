@@ -537,15 +537,15 @@ class Registration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
-                 dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
+                 contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict', 'outputs.RegistrationContactSettings']]] = None,
+                 dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict', 'outputs.RegistrationDnsSettings']]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
+                 management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict', 'outputs.RegistrationManagementSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
+                 yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict', 'outputs.RegistrationYearlyPrice']]] = None,
                  __props__=None):
         """
         Registers a new domain name and creates a corresponding Registration resource.
@@ -649,9 +649,9 @@ class Registration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
-        :param pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']] contact_settings: Required. Settings for contact information linked to the Registration.
+        :param pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict', 'outputs.RegistrationContactSettings']] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
-        :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']] dns_settings: Settings controlling the DNS configuration of the Registration.
+        :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict', 'outputs.RegistrationDnsSettings']] dns_settings: Settings controlling the DNS configuration of the Registration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
@@ -659,11 +659,11 @@ class Registration(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+        :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict', 'outputs.RegistrationManagementSettings']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
+        :param pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict', 'outputs.RegistrationYearlyPrice']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
                registrations.retrieveRegisterParameters or registrations.searchDomains calls.
                Structure is documented below.
         """
@@ -788,15 +788,15 @@ class Registration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
-                 dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
+                 contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict', 'outputs.RegistrationContactSettings']]] = None,
+                 dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict', 'outputs.RegistrationDnsSettings']]] = None,
                  domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
+                 management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict', 'outputs.RegistrationManagementSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
+                 yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict', 'outputs.RegistrationYearlyPrice']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -846,9 +846,9 @@ class Registration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
+            contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict', 'outputs.RegistrationContactSettings']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
+            dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict', 'outputs.RegistrationDnsSettings']]] = None,
             domain_name: pulumi.Input[Optional[_builtins.str]] = None,
             domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -856,14 +856,14 @@ class Registration(pulumi.CustomResource):
             issues: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
+            management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict', 'outputs.RegistrationManagementSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             register_failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             supported_privacies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None) -> 'Registration':
+            yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict', 'outputs.RegistrationYearlyPrice']]] = None) -> 'Registration':
         """
         Get an existing Registration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -872,10 +872,10 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
-        :param pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']] contact_settings: Required. Settings for contact information linked to the Registration.
+        :param pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict', 'outputs.RegistrationContactSettings']] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the automation was created.
-        :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']] dns_settings: Settings controlling the DNS configuration of the Registration.
+        :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict', 'outputs.RegistrationDnsSettings']] dns_settings: Settings controlling the DNS configuration of the Registration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
@@ -886,7 +886,7 @@ class Registration(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+        :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict', 'outputs.RegistrationManagementSettings']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -896,7 +896,7 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         :param pulumi.Input[_builtins.str] state: Output only. The current state of the Registration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_privacies: Output only. Set of options for the contactSettings.privacy field that this Registration supports.
-        :param pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
+        :param pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict', 'outputs.RegistrationYearlyPrice']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
                registrations.retrieveRegisterParameters or registrations.searchDomains calls.
                Structure is documented below.
         """

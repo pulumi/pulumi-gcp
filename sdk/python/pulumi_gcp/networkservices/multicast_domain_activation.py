@@ -565,7 +565,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
                  multicast_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_domain_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 traffic_spec: pulumi.Input[Optional[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict']]] = None,
+                 traffic_spec: pulumi.Input[Optional[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict', 'outputs.MulticastDomainActivationTrafficSpec']]] = None,
                  __props__=None):
         """
         Create a multicast domain activation in the specified location of the current project.
@@ -643,7 +643,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict']] traffic_spec: Specifies the traffic volume and multicast group scale parameters that are
+        :param pulumi.Input[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict', 'outputs.MulticastDomainActivationTrafficSpec']] traffic_spec: Specifies the traffic volume and multicast group scale parameters that are
                used to set up multicast infrastructure for a multicast domain in a zone.
                Structure is documented below.
         """
@@ -727,7 +727,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
                  multicast_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  multicast_domain_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 traffic_spec: pulumi.Input[Optional[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict']]] = None,
+                 traffic_spec: pulumi.Input[Optional[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict', 'outputs.MulticastDomainActivationTrafficSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -785,8 +785,8 @@ class MulticastDomainActivation(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastDomainActivationStateArgs', 'MulticastDomainActivationStateArgsDict']]]]] = None,
-            traffic_spec: pulumi.Input[Optional[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict']]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastDomainActivationStateArgs', 'MulticastDomainActivationStateArgsDict', 'outputs.MulticastDomainActivationState']]]]] = None,
+            traffic_spec: pulumi.Input[Optional[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict', 'outputs.MulticastDomainActivationTrafficSpec']]] = None,
             unique_id: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastDomainActivation':
         """
@@ -828,7 +828,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainActivationStateArgs', 'MulticastDomainActivationStateArgsDict']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainActivationStateArgs', 'MulticastDomainActivationStateArgsDict', 'outputs.MulticastDomainActivationState']]]] states: (Output)
                The state of the multicast resource.
                Possible values:
                CREATING
@@ -838,7 +838,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
                UPDATING
                UPDATE_FAILED
                INACTIVE
-        :param pulumi.Input[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict']] traffic_spec: Specifies the traffic volume and multicast group scale parameters that are
+        :param pulumi.Input[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict', 'outputs.MulticastDomainActivationTrafficSpec']] traffic_spec: Specifies the traffic volume and multicast group scale parameters that are
                used to set up multicast infrastructure for a multicast domain in a zone.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is

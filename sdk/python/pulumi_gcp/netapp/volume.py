@@ -1382,33 +1382,33 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: pulumi.Input[Optional[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']]] = None,
-                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict']]]]] = None,
-                 cache_parameters: pulumi.Input[Optional[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict']]] = None,
+                 backup_config: pulumi.Input[Optional[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict', 'outputs.VolumeBackupConfig']]] = None,
+                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict', 'outputs.VolumeBlockDevice']]]]] = None,
+                 cache_parameters: pulumi.Input[Optional[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict', 'outputs.VolumeCacheParameters']]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 export_policy: pulumi.Input[Optional[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
-                 hybrid_replication_parameters: pulumi.Input[Optional[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']]] = None,
+                 export_policy: pulumi.Input[Optional[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict', 'outputs.VolumeExportPolicy']]] = None,
+                 hybrid_replication_parameters: pulumi.Input[Optional[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict', 'outputs.VolumeHybridReplicationParameters']]] = None,
                  kerberos_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  large_capacity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 large_capacity_config: pulumi.Input[Optional[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']]] = None,
+                 large_capacity_config: pulumi.Input[Optional[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict', 'outputs.VolumeLargeCapacityConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  multiple_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 restore_parameters: pulumi.Input[Optional[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']]] = None,
+                 restore_parameters: pulumi.Input[Optional[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict', 'outputs.VolumeRestoreParameters']]] = None,
                  restricted_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_style: pulumi.Input[Optional[_builtins.str]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
-                 snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
+                 snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']]] = None,
                  storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  throughput_mibps: pulumi.Input[Optional[_builtins.float]] = None,
-                 tiering_policy: pulumi.Input[Optional[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
+                 tiering_policy: pulumi.Input[Optional[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict', 'outputs.VolumeTieringPolicy']]] = None,
                  unix_permissions: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1469,12 +1469,12 @@ class Volume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']] backup_config: Backup configuration for the volume.
+        :param pulumi.Input[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict', 'outputs.VolumeBackupConfig']] backup_config: Backup configuration for the volume.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict']]]] block_devices: Block device represents the device(s) which are stored in the block volume.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict', 'outputs.VolumeBlockDevice']]]] block_devices: Block device represents the device(s) which are stored in the block volume.
                Currently, only one block device is permitted per Volume.
                Structure is documented below.
-        :param pulumi.Input[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict']] cache_parameters: Cache parameters for the volume.
+        :param pulumi.Input[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict', 'outputs.VolumeCacheParameters']] cache_parameters: Cache parameters for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the volume (in GiB).
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
@@ -1489,9 +1489,9 @@ class Volume(pulumi.CustomResource):
                
                Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
+        :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict', 'outputs.VolumeExportPolicy']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
-        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict', 'outputs.VolumeHybridReplicationParameters']] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
                [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
                are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
                Structure is documented below.
@@ -1501,7 +1501,7 @@ class Volume(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
-        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
+        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict', 'outputs.VolumeLargeCapacityConfig']] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
                supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
                internal constituents, and must be created in a large capacity pool.
                Structure is documented below.
@@ -1513,7 +1513,7 @@ class Volume(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
-        :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+        :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict', 'outputs.VolumeRestoreParameters']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
@@ -1524,12 +1524,12 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
         :param pulumi.Input[_builtins.bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
-        :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
+        :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         :param pulumi.Input[_builtins.float] throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
-        :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
+        :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict', 'outputs.VolumeTieringPolicy']] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         """
@@ -1610,33 +1610,33 @@ class Volume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: pulumi.Input[Optional[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']]] = None,
-                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict']]]]] = None,
-                 cache_parameters: pulumi.Input[Optional[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict']]] = None,
+                 backup_config: pulumi.Input[Optional[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict', 'outputs.VolumeBackupConfig']]] = None,
+                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict', 'outputs.VolumeBlockDevice']]]]] = None,
+                 cache_parameters: pulumi.Input[Optional[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict', 'outputs.VolumeCacheParameters']]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 export_policy: pulumi.Input[Optional[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
-                 hybrid_replication_parameters: pulumi.Input[Optional[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']]] = None,
+                 export_policy: pulumi.Input[Optional[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict', 'outputs.VolumeExportPolicy']]] = None,
+                 hybrid_replication_parameters: pulumi.Input[Optional[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict', 'outputs.VolumeHybridReplicationParameters']]] = None,
                  kerberos_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  large_capacity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 large_capacity_config: pulumi.Input[Optional[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']]] = None,
+                 large_capacity_config: pulumi.Input[Optional[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict', 'outputs.VolumeLargeCapacityConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  multiple_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 restore_parameters: pulumi.Input[Optional[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']]] = None,
+                 restore_parameters: pulumi.Input[Optional[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict', 'outputs.VolumeRestoreParameters']]] = None,
                  restricted_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_style: pulumi.Input[Optional[_builtins.str]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
-                 snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
+                 snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']]] = None,
                  storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  throughput_mibps: pulumi.Input[Optional[_builtins.float]] = None,
-                 tiering_policy: pulumi.Input[Optional[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
+                 tiering_policy: pulumi.Input[Optional[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict', 'outputs.VolumeTieringPolicy']]] = None,
                  unix_permissions: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1715,9 +1715,9 @@ class Volume(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_directory: pulumi.Input[Optional[_builtins.str]] = None,
-            backup_config: pulumi.Input[Optional[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']]] = None,
-            block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict']]]]] = None,
-            cache_parameters: pulumi.Input[Optional[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict']]] = None,
+            backup_config: pulumi.Input[Optional[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict', 'outputs.VolumeBackupConfig']]] = None,
+            block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict', 'outputs.VolumeBlockDevice']]]]] = None,
+            cache_parameters: pulumi.Input[Optional[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict', 'outputs.VolumeCacheParameters']]] = None,
             capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
             cold_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1725,18 +1725,18 @@ class Volume(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
-            export_policy: pulumi.Input[Optional[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
+            export_policy: pulumi.Input[Optional[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict', 'outputs.VolumeExportPolicy']]] = None,
             has_replication: pulumi.Input[Optional[_builtins.bool]] = None,
             hot_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
-            hybrid_replication_parameters: pulumi.Input[Optional[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']]] = None,
+            hybrid_replication_parameters: pulumi.Input[Optional[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict', 'outputs.VolumeHybridReplicationParameters']]] = None,
             kerberos_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             kms_config: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             large_capacity: pulumi.Input[Optional[_builtins.bool]] = None,
-            large_capacity_config: pulumi.Input[Optional[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']]] = None,
+            large_capacity_config: pulumi.Input[Optional[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict', 'outputs.VolumeLargeCapacityConfig']]] = None,
             ldap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]]] = None,
+            mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict', 'outputs.VolumeMountOption']]]]] = None,
             multiple_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1745,19 +1745,19 @@ class Volume(pulumi.CustomResource):
             psa_range: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
-            restore_parameters: pulumi.Input[Optional[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']]] = None,
+            restore_parameters: pulumi.Input[Optional[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict', 'outputs.VolumeRestoreParameters']]] = None,
             restricted_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             security_style: pulumi.Input[Optional[_builtins.str]] = None,
             service_level: pulumi.Input[Optional[_builtins.str]] = None,
             share_name: pulumi.Input[Optional[_builtins.str]] = None,
             smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
-            snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
+            snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_details: pulumi.Input[Optional[_builtins.str]] = None,
             storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
             throughput_mibps: pulumi.Input[Optional[_builtins.float]] = None,
-            tiering_policy: pulumi.Input[Optional[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
+            tiering_policy: pulumi.Input[Optional[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict', 'outputs.VolumeTieringPolicy']]] = None,
             unix_permissions: pulumi.Input[Optional[_builtins.str]] = None,
             used_gib: pulumi.Input[Optional[_builtins.str]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Volume':
@@ -1769,12 +1769,12 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
-        :param pulumi.Input[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']] backup_config: Backup configuration for the volume.
+        :param pulumi.Input[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict', 'outputs.VolumeBackupConfig']] backup_config: Backup configuration for the volume.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict']]]] block_devices: Block device represents the device(s) which are stored in the block volume.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeBlockDeviceArgs', 'VolumeBlockDeviceArgsDict', 'outputs.VolumeBlockDevice']]]] block_devices: Block device represents the device(s) which are stored in the block volume.
                Currently, only one block device is permitted per Volume.
                Structure is documented below.
-        :param pulumi.Input[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict']] cache_parameters: Cache parameters for the volume.
+        :param pulumi.Input[Union['VolumeCacheParametersArgs', 'VolumeCacheParametersArgsDict', 'outputs.VolumeCacheParameters']] cache_parameters: Cache parameters for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the volume (in GiB).
         :param pulumi.Input[_builtins.str] cold_tier_size_gib: Output only. Size of the volume cold tier data in GiB.
@@ -1793,11 +1793,11 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
-        :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
+        :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict', 'outputs.VolumeExportPolicy']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
         :param pulumi.Input[_builtins.str] hot_tier_size_used_gib: Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
-        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict', 'outputs.VolumeHybridReplicationParameters']] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
                [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
                are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
                Structure is documented below.
@@ -1808,13 +1808,13 @@ class Volume(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
-        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
+        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict', 'outputs.VolumeLargeCapacityConfig']] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
                supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
                internal constituents, and must be created in a large capacity pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] ldap_enabled: Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         :param pulumi.Input[_builtins.str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]] mount_options: Reports mount instructions for this volume.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict', 'outputs.VolumeMountOption']]]] mount_options: Reports mount instructions for this volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
                Only the volume with largeCapacity will be allowed to have multiple endpoints.
@@ -1828,7 +1828,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional volume.
-        :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+        :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict', 'outputs.VolumeRestoreParameters']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
@@ -1840,14 +1840,14 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
         :param pulumi.Input[_builtins.bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
-        :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
+        :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: State of the volume.
         :param pulumi.Input[_builtins.str] state_details: State details of the volume.
         :param pulumi.Input[_builtins.str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         :param pulumi.Input[_builtins.float] throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
-        :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
+        :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict', 'outputs.VolumeTieringPolicy']] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         :param pulumi.Input[_builtins.str] used_gib: Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.

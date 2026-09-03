@@ -316,7 +316,7 @@ class WebCloudRunServiceIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_run_service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict', 'outputs.WebCloudRunServiceIamMemberCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -602,7 +602,7 @@ class WebCloudRunServiceIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_run_service_name: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict', 'outputs.WebCloudRunServiceIamMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of a cloud run service. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -924,7 +924,7 @@ class WebCloudRunServiceIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_run_service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict', 'outputs.WebCloudRunServiceIamMemberCondition']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  member: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -962,7 +962,7 @@ class WebCloudRunServiceIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_run_service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict', 'outputs.WebCloudRunServiceIamMemberCondition']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -976,7 +976,7 @@ class WebCloudRunServiceIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_run_service_name: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['WebCloudRunServiceIamMemberConditionArgs', 'WebCloudRunServiceIamMemberConditionArgsDict', 'outputs.WebCloudRunServiceIamMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] location: The location of a cloud run service. Used to find the parent resource to bind the IAM policy to. If not specified,

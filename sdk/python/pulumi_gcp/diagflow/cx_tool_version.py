@@ -260,7 +260,7 @@ class CxToolVersion(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
+                 tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict', 'outputs.CxToolVersionTool']]] = None,
                  __props__=None):
         """
         Tool version is a snapshot of the tool at certain timestamp.
@@ -689,7 +689,7 @@ class CxToolVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the tool version.
         :param pulumi.Input[_builtins.str] parent: The tool to create a Version for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
-        :param pulumi.Input[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']] tool: Snapshot of the tool to be associated with this version.
+        :param pulumi.Input[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict', 'outputs.CxToolVersionTool']] tool: Snapshot of the tool to be associated with this version.
                Structure is documented below.
         """
         ...
@@ -1132,7 +1132,7 @@ class CxToolVersion(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
-                 tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
+                 tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict', 'outputs.CxToolVersionTool']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1170,7 +1170,7 @@ class CxToolVersion(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
-            tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
+            tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict', 'outputs.CxToolVersionTool']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'CxToolVersion':
         """
         Get an existing CxToolVersion resource's state with the given name, id, and optional extra
@@ -1194,7 +1194,7 @@ class CxToolVersion(pulumi.CustomResource):
                Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/tools/<ToolID>/versions/<VersionID>.
         :param pulumi.Input[_builtins.str] parent: The tool to create a Version for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
-        :param pulumi.Input[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']] tool: Snapshot of the tool to be associated with this version.
+        :param pulumi.Input[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict', 'outputs.CxToolVersionTool']] tool: Snapshot of the tool to be associated with this version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Last time the tool version was created or modified.
                Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.

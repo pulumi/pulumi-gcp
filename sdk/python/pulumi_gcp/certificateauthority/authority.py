@@ -914,13 +914,13 @@ class Authority(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict', 'outputs.AuthorityConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-                 key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
+                 key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict', 'outputs.AuthorityKeySpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -928,9 +928,9 @@ class Authority(pulumi.CustomResource):
                  pool: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
-                 subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
+                 subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict', 'outputs.AuthoritySubordinateConfig']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
+                 user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict', 'outputs.AuthorityUserDefinedAccessUrls']]] = None,
                  __props__=None):
         """
         A CertificateAuthority represents an individual Certificate Authority. A
@@ -1255,7 +1255,7 @@ class Authority(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
-        :param pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict', 'outputs.AuthorityConfig']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1276,7 +1276,7 @@ class Authority(pulumi.CustomResource):
                created.
         :param pulumi.Input[_builtins.bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
                Use with care. Defaults to `false`.
-        :param pulumi.Input[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+        :param pulumi.Input[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict', 'outputs.AuthorityKeySpec']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
@@ -1299,7 +1299,7 @@ class Authority(pulumi.CustomResource):
                possible without a 30-day grace period where undeletion would have been
                allowed. If you proceed, there will be no way to recover this CA.
                Use with care. Defaults to `false`.
-        :param pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+        :param pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict', 'outputs.AuthoritySubordinateConfig']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The Type of this CertificateAuthority.
@@ -1307,7 +1307,7 @@ class Authority(pulumi.CustomResource):
                be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
                Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
-        :param pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+        :param pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict', 'outputs.AuthorityUserDefinedAccessUrls']] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
                that can be specified by users.
                Structure is documented below.
         """
@@ -1653,13 +1653,13 @@ class Authority(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict', 'outputs.AuthorityConfig']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-                 key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
+                 key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict', 'outputs.AuthorityKeySpec']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1667,9 +1667,9 @@ class Authority(pulumi.CustomResource):
                  pool: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
-                 subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
+                 subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict', 'outputs.AuthoritySubordinateConfig']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
+                 user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict', 'outputs.AuthorityUserDefinedAccessUrls']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1727,9 +1727,9 @@ class Authority(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthorityAccessUrlArgs', 'AuthorityAccessUrlArgsDict']]]]] = None,
+            access_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthorityAccessUrlArgs', 'AuthorityAccessUrlArgsDict', 'outputs.AuthorityAccessUrl']]]]] = None,
             certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict', 'outputs.AuthorityConfig']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1737,7 +1737,7 @@ class Authority(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-            key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
+            key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict', 'outputs.AuthorityKeySpec']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             lifetime: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1749,10 +1749,10 @@ class Authority(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
+            subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict', 'outputs.AuthoritySubordinateConfig']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None) -> 'Authority':
+            user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict', 'outputs.AuthorityUserDefinedAccessUrls']]] = None) -> 'Authority':
         """
         Get an existing Authority resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1760,10 +1760,10 @@ class Authority(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorityAccessUrlArgs', 'AuthorityAccessUrlArgsDict']]]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorityAccessUrlArgs', 'AuthorityAccessUrlArgsDict', 'outputs.AuthorityAccessUrl']]]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
-        :param pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict', 'outputs.AuthorityConfig']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -1788,7 +1788,7 @@ class Authority(pulumi.CustomResource):
                created.
         :param pulumi.Input[_builtins.bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
                Use with care. Defaults to `false`.
-        :param pulumi.Input[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+        :param pulumi.Input[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict', 'outputs.AuthorityKeySpec']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
@@ -1820,7 +1820,7 @@ class Authority(pulumi.CustomResource):
                allowed. If you proceed, there will be no way to recover this CA.
                Use with care. Defaults to `false`.
         :param pulumi.Input[_builtins.str] state: The State for this CertificateAuthority.
-        :param pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+        :param pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict', 'outputs.AuthoritySubordinateConfig']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The Type of this CertificateAuthority.
@@ -1831,7 +1831,7 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+        :param pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict', 'outputs.AuthorityUserDefinedAccessUrls']] user_defined_access_urls: Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
                that can be specified by users.
                Structure is documented below.
         """

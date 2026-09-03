@@ -518,12 +518,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
+                 instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict', 'outputs.OsPolicyAssignmentInstanceFilter']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
+                 os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict', 'outputs.OsPolicyAssignmentOsPolicy']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
+                 rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict', 'outputs.OsPolicyAssignmentRollout']]] = None,
                  skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -655,14 +655,14 @@ class OsPolicyAssignment(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
-        :param pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict', 'outputs.OsPolicyAssignmentInstanceFilter']] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict', 'outputs.OsPolicyAssignmentOsPolicy']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project for the resource
-        :param pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict', 'outputs.OsPolicyAssignmentRollout']] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
@@ -812,12 +812,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
+                 instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict', 'outputs.OsPolicyAssignmentInstanceFilter']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
+                 os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict', 'outputs.OsPolicyAssignmentOsPolicy']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
+                 rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict', 'outputs.OsPolicyAssignmentRollout']]] = None,
                  skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -868,15 +868,15 @@ class OsPolicyAssignment(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
+            instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict', 'outputs.OsPolicyAssignmentInstanceFilter']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
+            os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict', 'outputs.OsPolicyAssignmentOsPolicy']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
             revision_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
+            rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict', 'outputs.OsPolicyAssignmentRollout']]] = None,
             rollout_state: pulumi.Input[Optional[_builtins.str]] = None,
             skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'OsPolicyAssignment':
@@ -902,11 +902,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
-        :param pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict', 'outputs.OsPolicyAssignmentInstanceFilter']] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict', 'outputs.OsPolicyAssignmentOsPolicy']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Indicates that reconciliation is in progress
@@ -915,7 +915,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                created.
         :param pulumi.Input[_builtins.str] revision_id: Output only. The assignment revision ID A new revision is
                committed whenever a rollout is triggered for a OS policy assignment
-        :param pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict', 'outputs.OsPolicyAssignmentRollout']] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment

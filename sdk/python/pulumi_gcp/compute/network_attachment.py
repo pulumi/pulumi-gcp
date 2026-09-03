@@ -780,7 +780,7 @@ class NetworkAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAttachmentConnectionEndpointArgs', 'NetworkAttachmentConnectionEndpointArgsDict']]]]] = None,
+            connection_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAttachmentConnectionEndpointArgs', 'NetworkAttachmentConnectionEndpointArgsDict', 'outputs.NetworkAttachmentConnectionEndpoint']]]]] = None,
             connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -803,7 +803,7 @@ class NetworkAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAttachmentConnectionEndpointArgs', 'NetworkAttachmentConnectionEndpointArgsDict']]]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAttachmentConnectionEndpointArgs', 'NetworkAttachmentConnectionEndpointArgsDict', 'outputs.NetworkAttachmentConnectionEndpoint']]]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
                Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.

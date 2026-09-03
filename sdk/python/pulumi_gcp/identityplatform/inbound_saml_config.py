@@ -310,10 +310,10 @@ class InboundSamlConfig(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
+                 idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict', 'outputs.InboundSamlConfigIdpConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None,
+                 sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict', 'outputs.InboundSamlConfigSpConfig']]] = None,
                  __props__=None):
         """
         Inbound SAML configuration for a Identity Toolkit project.
@@ -375,14 +375,14 @@ class InboundSamlConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
-        :param pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict', 'outputs.InboundSamlConfigIdpConfig']] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
                alphanumeric character, and have at least 2 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict', 'outputs.InboundSamlConfigSpConfig']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """
@@ -460,10 +460,10 @@ class InboundSamlConfig(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
+                 idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict', 'outputs.InboundSamlConfigIdpConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None,
+                 sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict', 'outputs.InboundSamlConfigSpConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -499,10 +499,10 @@ class InboundSamlConfig(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
+            idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict', 'outputs.InboundSamlConfigIdpConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None) -> 'InboundSamlConfig':
+            sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict', 'outputs.InboundSamlConfigSpConfig']]] = None) -> 'InboundSamlConfig':
         """
         Get an existing InboundSamlConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -518,14 +518,14 @@ class InboundSamlConfig(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
-        :param pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict', 'outputs.InboundSamlConfigIdpConfig']] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
                alphanumeric character, and have at least 2 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict', 'outputs.InboundSamlConfigSpConfig']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """

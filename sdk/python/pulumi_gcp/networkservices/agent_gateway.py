@@ -589,15 +589,15 @@ class AgentGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
+                 google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict', 'outputs.AgentGatewayGoogleManaged']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict', 'outputs.AgentGatewayNetworkConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
+                 self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict', 'outputs.AgentGatewaySelfManaged']]] = None,
                  __props__=None):
         """
         AgentGateway represents the agent gateway resource.
@@ -725,7 +725,7 @@ class AgentGateway(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']] google_managed: Configuration for Google Managed deployment mode.
+        :param pulumi.Input[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict', 'outputs.AgentGatewayGoogleManaged']] google_managed: Configuration for Google Managed deployment mode.
                Proxy is orchestrated and managed by GoogleCloud in a tenant project.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the AgentGateway resource.
@@ -734,7 +734,7 @@ class AgentGateway(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the agent gateway.
         :param pulumi.Input[_builtins.str] name: Name of the AgentGateway resource.
-        :param pulumi.Input[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']] network_config: Network configuration for the AgentGateway.
+        :param pulumi.Input[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict', 'outputs.AgentGatewayNetworkConfig']] network_config: Network configuration for the AgentGateway.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -746,7 +746,7 @@ class AgentGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
                Note: Currently limited to project-scoped registries Must be of format
                `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
-        :param pulumi.Input[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']] self_managed: Configuration for Self Managed deployment mode.
+        :param pulumi.Input[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict', 'outputs.AgentGatewaySelfManaged']] self_managed: Configuration for Self Managed deployment mode.
                Attach to existing Application Load Balancers or Secure Web Proxies.
                Structure is documented below.
         """
@@ -890,15 +890,15 @@ class AgentGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
+                 google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict', 'outputs.AgentGatewayGoogleManaged']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict', 'outputs.AgentGatewayNetworkConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
+                 self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict', 'outputs.AgentGatewaySelfManaged']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -939,22 +939,22 @@ class AgentGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_gateway_cards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict']]]]] = None,
+            agent_gateway_cards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict', 'outputs.AgentGatewayAgentGatewayCard']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
+            google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict', 'outputs.AgentGatewayGoogleManaged']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
+            network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict', 'outputs.AgentGatewayNetworkConfig']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
+            self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict', 'outputs.AgentGatewaySelfManaged']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AgentGateway':
         """
         Get an existing AgentGateway resource's state with the given name, id, and optional extra
@@ -963,7 +963,7 @@ class AgentGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict']]]] agent_gateway_cards: AgentGatewayOutputCard contains informational output-only fields.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict', 'outputs.AgentGatewayAgentGatewayCard']]]] agent_gateway_cards: AgentGatewayOutputCard contains informational output-only fields.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -978,7 +978,7 @@ class AgentGateway(pulumi.CustomResource):
                If this is provided, it must match the server's etag. If the provided etag
                does not match the server's etag, the request will fail with a 409 ABORTED
                error.
-        :param pulumi.Input[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']] google_managed: Configuration for Google Managed deployment mode.
+        :param pulumi.Input[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict', 'outputs.AgentGatewayGoogleManaged']] google_managed: Configuration for Google Managed deployment mode.
                Proxy is orchestrated and managed by GoogleCloud in a tenant project.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the AgentGateway resource.
@@ -987,7 +987,7 @@ class AgentGateway(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the agent gateway.
         :param pulumi.Input[_builtins.str] name: Name of the AgentGateway resource.
-        :param pulumi.Input[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']] network_config: Network configuration for the AgentGateway.
+        :param pulumi.Input[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict', 'outputs.AgentGatewayNetworkConfig']] network_config: Network configuration for the AgentGateway.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1001,7 +1001,7 @@ class AgentGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] registries: A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
                Note: Currently limited to project-scoped registries Must be of format
                `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
-        :param pulumi.Input[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']] self_managed: Configuration for Self Managed deployment mode.
+        :param pulumi.Input[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict', 'outputs.AgentGatewaySelfManaged']] self_managed: Configuration for Self Managed deployment mode.
                Attach to existing Application Load Balancers or Secure Web Proxies.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.

@@ -567,9 +567,9 @@ class PrivateCloud(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
+                 management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict', 'outputs.PrivateCloudManagementCluster']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict', 'outputs.PrivateCloudNetworkConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -692,10 +692,10 @@ class PrivateCloud(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[_builtins.str] location: The location where the PrivateCloud should reside.
-        :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
+        :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict', 'outputs.PrivateCloudManagementCluster']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the PrivateCloud.
-        :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']] network_config: Network configuration in the consumer project with which the peering has to be done.
+        :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict', 'outputs.PrivateCloudNetworkConfig']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -835,9 +835,9 @@ class PrivateCloud(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
+                 management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict', 'outputs.PrivateCloudManagementCluster']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
+                 network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict', 'outputs.PrivateCloudNetworkConfig']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -891,19 +891,19 @@ class PrivateCloud(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
-            hcxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]]] = None,
+            hcxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict', 'outputs.PrivateCloudHcx']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
+            management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict', 'outputs.PrivateCloudManagementCluster']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
-            nsxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]]] = None,
+            network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict', 'outputs.PrivateCloudNetworkConfig']]] = None,
+            nsxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict', 'outputs.PrivateCloudNsx']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            vcenters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]]] = None) -> 'PrivateCloud':
+            vcenters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict', 'outputs.PrivateCloudVcenter']]]]] = None) -> 'PrivateCloud':
         """
         Get an existing PrivateCloud resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -928,15 +928,15 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expire_time: Time when the resource will be irreversibly deleted.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]] hcxes: Details about a HCX Cloud Manager appliance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict', 'outputs.PrivateCloudHcx']]]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location where the PrivateCloud should reside.
-        :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
+        :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict', 'outputs.PrivateCloudManagementCluster']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the PrivateCloud.
-        :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']] network_config: Network configuration in the consumer project with which the peering has to be done.
+        :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict', 'outputs.PrivateCloudNetworkConfig']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]] nsxes: Details about a NSX Manager appliance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict', 'outputs.PrivateCloudNsx']]]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -949,7 +949,7 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] update_time: Last update time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]] vcenters: Details about a vCenter Server management appliance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict', 'outputs.PrivateCloudVcenter']]]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

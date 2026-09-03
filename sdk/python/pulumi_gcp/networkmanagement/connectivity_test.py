@@ -529,14 +529,14 @@ class ConnectivityTest(pulumi.CustomResource):
                  bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict', 'outputs.ConnectivityTestDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
-                 source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict', 'outputs.ConnectivityTestSource']]] = None,
                  __props__=None):
         """
         A connectivity test are a static analysis of your resource configurations
@@ -720,7 +720,7 @@ class ConnectivityTest(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
-        :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict', 'outputs.ConnectivityTestDestination']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the destination location.
                Reachability analysis proceeds even if the destination location is
@@ -740,7 +740,7 @@ class ConnectivityTest(pulumi.CustomResource):
                boundaries.
         :param pulumi.Input[_builtins.bool] round_trip: Whether run analysis for the return path from destination to source.
                Default value is false.
-        :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict', 'outputs.ConnectivityTestSource']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the source location.
                Reachability analysis might proceed even if the source location is
@@ -943,14 +943,14 @@ class ConnectivityTest(pulumi.CustomResource):
                  bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict', 'outputs.ConnectivityTestDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
-                 source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict', 'outputs.ConnectivityTestSource']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -992,7 +992,7 @@ class ConnectivityTest(pulumi.CustomResource):
             bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict', 'outputs.ConnectivityTestDestination']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1001,7 +1001,7 @@ class ConnectivityTest(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
-            source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None) -> 'ConnectivityTest':
+            source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict', 'outputs.ConnectivityTestSource']]] = None) -> 'ConnectivityTest':
         """
         Get an existing ConnectivityTest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1018,7 +1018,7 @@ class ConnectivityTest(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
-        :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict', 'outputs.ConnectivityTestDestination']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the destination location.
                Reachability analysis proceeds even if the destination location is
@@ -1041,7 +1041,7 @@ class ConnectivityTest(pulumi.CustomResource):
                boundaries.
         :param pulumi.Input[_builtins.bool] round_trip: Whether run analysis for the return path from destination to source.
                Default value is false.
-        :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict', 'outputs.ConnectivityTestSource']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the source location.
                Reachability analysis might proceed even if the source location is

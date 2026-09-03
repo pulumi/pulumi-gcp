@@ -644,7 +644,7 @@ class Report(pulumi.CustomResource):
             report_config: pulumi.Input[Optional[_builtins.str]] = None,
             report_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            summaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportSummaryArgs', 'ReportSummaryArgsDict']]]]] = None,
+            summaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportSummaryArgs', 'ReportSummaryArgsDict', 'outputs.ReportSummary']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Report':
         """
@@ -678,7 +678,7 @@ class Report(pulumi.CustomResource):
                PENDING
                SUCCEEDED
                FAILED
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportSummaryArgs', 'ReportSummaryArgsDict']]]] summaries: Describes the Summary view of a Report, which contains aggregated values
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReportSummaryArgs', 'ReportSummaryArgsDict', 'outputs.ReportSummary']]]] summaries: Describes the Summary view of a Report, which contains aggregated values
                for all the groups and preference sets included in this Report.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: Report type.

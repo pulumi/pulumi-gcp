@@ -401,7 +401,7 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict', 'outputs.UllMirroringCollectorRuleMatch']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  ull_mirroring_collector: pulumi.Input[Optional[_builtins.str]] = None,
                  ull_mirroring_collector_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -499,7 +499,7 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']] match: Match defines what traffic to mirror.
+        :param pulumi.Input[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict', 'outputs.UllMirroringCollectorRuleMatch']] match: Match defines what traffic to mirror.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -611,7 +611,7 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict', 'outputs.UllMirroringCollectorRuleMatch']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  ull_mirroring_collector: pulumi.Input[Optional[_builtins.str]] = None,
                  ull_mirroring_collector_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -662,7 +662,7 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict', 'outputs.UllMirroringCollectorRuleMatch']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -689,7 +689,7 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']] match: Match defines what traffic to mirror.
+        :param pulumi.Input[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict', 'outputs.UllMirroringCollectorRuleMatch']] match: Match defines what traffic to mirror.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the UllMirroringCollectorRule.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

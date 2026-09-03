@@ -230,7 +230,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
+                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict', 'outputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -504,7 +504,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]] desired_user_created_endpoints: A list of desired user endpoints
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict', 'outputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint']]]] desired_user_created_endpoints: A list of desired user endpoints
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Memorystore instance these endpoints should be added to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -794,7 +794,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
+                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict', 'outputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -825,7 +825,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
+            desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict', 'outputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceDesiredUserCreatedEndpoints':
@@ -842,7 +842,7 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]] desired_user_created_endpoints: A list of desired user endpoints
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict', 'outputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint']]]] desired_user_created_endpoints: A list of desired user endpoints
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Memorystore instance these endpoints should be added to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.

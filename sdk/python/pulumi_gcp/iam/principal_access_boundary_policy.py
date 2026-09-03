@@ -407,7 +407,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict', 'outputs.PrincipalAccessBoundaryPolicyDetails']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
@@ -495,7 +495,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']] details: Principal access boundary policy details
+        :param pulumi.Input[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict', 'outputs.PrincipalAccessBoundaryPolicyDetails']] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
         :param pulumi.Input[_builtins.str] location: The location the principal access boundary policy is in.
@@ -595,7 +595,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict', 'outputs.PrincipalAccessBoundaryPolicyDetails']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[_builtins.str]] = None,
@@ -641,7 +641,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']]] = None,
+            details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict', 'outputs.PrincipalAccessBoundaryPolicyDetails']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -670,7 +670,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']] details: Principal access boundary policy details
+        :param pulumi.Input[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict', 'outputs.PrincipalAccessBoundaryPolicyDetails']] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.

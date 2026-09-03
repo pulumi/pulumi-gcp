@@ -632,18 +632,18 @@ class RegionUrlMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_route_action: pulumi.Input[Optional[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict']]] = None,
+                 default_route_action: pulumi.Input[Optional[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict', 'outputs.RegionUrlMapDefaultRouteAction']]] = None,
                  default_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_url_redirect: pulumi.Input[Optional[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']]] = None,
+                 default_url_redirect: pulumi.Input[Optional[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict', 'outputs.RegionUrlMapDefaultUrlRedirect']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 header_action: pulumi.Input[Optional[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']]] = None,
-                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]]] = None,
+                 header_action: pulumi.Input[Optional[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict', 'outputs.RegionUrlMapHeaderAction']]] = None,
+                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict', 'outputs.RegionUrlMapHostRule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]]] = None,
+                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict', 'outputs.RegionUrlMapPathMatcher']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict']]]]] = None,
+                 tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict', 'outputs.RegionUrlMapTest']]]]] = None,
                  __props__=None):
         """
         UrlMaps are used to route requests to a backend service based on rules
@@ -1634,7 +1634,7 @@ class RegionUrlMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        :param pulumi.Input[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict', 'outputs.RegionUrlMapDefaultRouteAction']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
                defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
@@ -1646,7 +1646,7 @@ class RegionUrlMap(pulumi.CustomResource):
                weightedBackendServices. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified.  Only one of defaultService,
                defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
-        :param pulumi.Input[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+        :param pulumi.Input[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict', 'outputs.RegionUrlMapDefaultUrlRedirect']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
@@ -1658,12 +1658,12 @@ class RegionUrlMap(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict', 'outputs.RegionUrlMapHeaderAction']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict', 'outputs.RegionUrlMapHostRule']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1672,13 +1672,13 @@ class RegionUrlMap(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict', 'outputs.RegionUrlMapPathMatcher']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The Region in which the url map should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict', 'outputs.RegionUrlMapTest']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
                succeed only if all of the test cases pass.
                Structure is documented below.
         """
@@ -2690,18 +2690,18 @@ class RegionUrlMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_route_action: pulumi.Input[Optional[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict']]] = None,
+                 default_route_action: pulumi.Input[Optional[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict', 'outputs.RegionUrlMapDefaultRouteAction']]] = None,
                  default_service: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_url_redirect: pulumi.Input[Optional[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']]] = None,
+                 default_url_redirect: pulumi.Input[Optional[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict', 'outputs.RegionUrlMapDefaultUrlRedirect']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 header_action: pulumi.Input[Optional[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']]] = None,
-                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]]] = None,
+                 header_action: pulumi.Input[Optional[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict', 'outputs.RegionUrlMapHeaderAction']]] = None,
+                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict', 'outputs.RegionUrlMapHostRule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]]] = None,
+                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict', 'outputs.RegionUrlMapPathMatcher']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict']]]]] = None,
+                 tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict', 'outputs.RegionUrlMapTest']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2738,21 +2738,21 @@ class RegionUrlMap(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
-            default_route_action: pulumi.Input[Optional[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict']]] = None,
+            default_route_action: pulumi.Input[Optional[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict', 'outputs.RegionUrlMapDefaultRouteAction']]] = None,
             default_service: pulumi.Input[Optional[_builtins.str]] = None,
-            default_url_redirect: pulumi.Input[Optional[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']]] = None,
+            default_url_redirect: pulumi.Input[Optional[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict', 'outputs.RegionUrlMapDefaultUrlRedirect']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
-            header_action: pulumi.Input[Optional[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']]] = None,
-            host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]]] = None,
+            header_action: pulumi.Input[Optional[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict', 'outputs.RegionUrlMapHeaderAction']]] = None,
+            host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict', 'outputs.RegionUrlMapHostRule']]]]] = None,
             map_id: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]]] = None,
+            path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict', 'outputs.RegionUrlMapPathMatcher']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
-            tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict']]]]] = None) -> 'RegionUrlMap':
+            tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict', 'outputs.RegionUrlMapTest']]]]] = None) -> 'RegionUrlMap':
         """
         Get an existing RegionUrlMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2761,7 +2761,7 @@ class RegionUrlMap(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        :param pulumi.Input[Union['RegionUrlMapDefaultRouteActionArgs', 'RegionUrlMapDefaultRouteActionArgsDict', 'outputs.RegionUrlMapDefaultRouteAction']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
                defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
@@ -2773,7 +2773,7 @@ class RegionUrlMap(pulumi.CustomResource):
                weightedBackendServices. Conversely, if routeAction specifies any
                weightedBackendServices, service must not be specified.  Only one of defaultService,
                defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
-        :param pulumi.Input[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+        :param pulumi.Input[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict', 'outputs.RegionUrlMapDefaultUrlRedirect']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
@@ -2787,12 +2787,12 @@ class RegionUrlMap(pulumi.CustomResource):
                you create the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
-        :param pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+        :param pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict', 'outputs.RegionUrlMapHeaderAction']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
                headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict', 'outputs.RegionUrlMapHostRule']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] map_id: The unique identifier for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -2802,14 +2802,14 @@ class RegionUrlMap(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict', 'outputs.RegionUrlMapPathMatcher']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The Region in which the url map should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapTestArgs', 'RegionUrlMapTestArgsDict', 'outputs.RegionUrlMapTest']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
                succeed only if all of the test cases pass.
                Structure is documented below.
         """

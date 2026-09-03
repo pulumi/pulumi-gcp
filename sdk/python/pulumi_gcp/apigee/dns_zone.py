@@ -280,7 +280,7 @@ class DnsZone(pulumi.CustomResource):
                  dns_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 peering_config: pulumi.Input[Optional[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict']]] = None,
+                 peering_config: pulumi.Input[Optional[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict', 'outputs.DnsZonePeeringConfig']]] = None,
                  __props__=None):
         """
         Apigee Dns Zone.
@@ -345,7 +345,7 @@ class DnsZone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain: Doamin for the zone.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict']] peering_config: Peering zone config
+        :param pulumi.Input[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict', 'outputs.DnsZonePeeringConfig']] peering_config: Peering zone config
                Structure is documented below.
         """
         ...
@@ -424,7 +424,7 @@ class DnsZone(pulumi.CustomResource):
                  dns_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 peering_config: pulumi.Input[Optional[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict']]] = None,
+                 peering_config: pulumi.Input[Optional[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict', 'outputs.DnsZonePeeringConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,7 +467,7 @@ class DnsZone(pulumi.CustomResource):
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            peering_config: pulumi.Input[Optional[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict']]] = None) -> 'DnsZone':
+            peering_config: pulumi.Input[Optional[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict', 'outputs.DnsZonePeeringConfig']]] = None) -> 'DnsZone':
         """
         Get an existing DnsZone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -488,7 +488,7 @@ class DnsZone(pulumi.CustomResource):
                organizations/{organization}/dnsZones/{dnsZone}.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-        :param pulumi.Input[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict']] peering_config: Peering zone config
+        :param pulumi.Input[Union['DnsZonePeeringConfigArgs', 'DnsZonePeeringConfigArgsDict', 'outputs.DnsZonePeeringConfig']] peering_config: Peering zone config
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

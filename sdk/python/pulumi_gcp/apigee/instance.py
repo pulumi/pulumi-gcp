@@ -520,7 +520,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
+                 access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict', 'outputs.InstanceAccessLoggingConfig']]] = None,
                  consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -697,7 +697,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']] access_logging_config: Access logging configuration enables the access logging feature at the instance.
+        :param pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict', 'outputs.InstanceAccessLoggingConfig']] access_logging_config: Access logging configuration enables the access logging feature at the instance.
                Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_accept_lists: Optional. Customer accept list represents the list of projects (id/number) on customer
@@ -912,7 +912,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
+                 access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict', 'outputs.InstanceAccessLoggingConfig']]] = None,
                  consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -960,7 +960,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
+            access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict', 'outputs.InstanceAccessLoggingConfig']]] = None,
             consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -981,7 +981,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']] access_logging_config: Access logging configuration enables the access logging feature at the instance.
+        :param pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict', 'outputs.InstanceAccessLoggingConfig']] access_logging_config: Access logging configuration enables the access logging feature at the instance.
                Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_accept_lists: Optional. Customer accept list represents the list of projects (id/number) on customer

@@ -464,14 +464,14 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_spec: pulumi.Input[Optional[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict']]] = None,
+                 agent_spec: pulumi.Input[Optional[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict', 'outputs.ServiceAgentSpec']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint_spec: pulumi.Input[Optional[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict']]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict']]]]] = None,
+                 endpoint_spec: pulumi.Input[Optional[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict', 'outputs.ServiceEndpointSpec']]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict', 'outputs.ServiceInterface']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mcp_server_spec: pulumi.Input[Optional[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict']]] = None,
+                 mcp_server_spec: pulumi.Input[Optional[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict', 'outputs.ServiceMcpServerSpec']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -539,7 +539,7 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict']] agent_spec: The spec of the Agent. When set, the type of the Service is Agent.
+        :param pulumi.Input[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict', 'outputs.ServiceAgentSpec']] agent_spec: The spec of the Agent. When set, the type of the Service is Agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -549,12 +549,12 @@ class Service(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Service.
         :param pulumi.Input[_builtins.str] display_name: User-defined display name for the Service. Can have a maximum length of 63 characters.
-        :param pulumi.Input[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict']] endpoint_spec: The spec of the Endpoint. When set, the type of the Service is Endpoint.
+        :param pulumi.Input[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict', 'outputs.ServiceEndpointSpec']] endpoint_spec: The spec of the Endpoint. When set, the type of the Service is Endpoint.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict']]]] interfaces: The connection details for the Service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict', 'outputs.ServiceInterface']]]] interfaces: The connection details for the Service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
-        :param pulumi.Input[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict']] mcp_server_spec: The spec of the MCP Server. When set, the type of the Service is MCP Server.
+        :param pulumi.Input[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict', 'outputs.ServiceMcpServerSpec']] mcp_server_spec: The spec of the MCP Server. When set, the type of the Service is MCP Server.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -643,14 +643,14 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_spec: pulumi.Input[Optional[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict']]] = None,
+                 agent_spec: pulumi.Input[Optional[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict', 'outputs.ServiceAgentSpec']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoint_spec: pulumi.Input[Optional[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict']]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict']]]]] = None,
+                 endpoint_spec: pulumi.Input[Optional[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict', 'outputs.ServiceEndpointSpec']]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict', 'outputs.ServiceInterface']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 mcp_server_spec: pulumi.Input[Optional[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict']]] = None,
+                 mcp_server_spec: pulumi.Input[Optional[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict', 'outputs.ServiceMcpServerSpec']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -690,15 +690,15 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_spec: pulumi.Input[Optional[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict']]] = None,
+            agent_spec: pulumi.Input[Optional[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict', 'outputs.ServiceAgentSpec']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoint_spec: pulumi.Input[Optional[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict']]] = None,
-            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict']]]]] = None,
+            endpoint_spec: pulumi.Input[Optional[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict', 'outputs.ServiceEndpointSpec']]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict', 'outputs.ServiceInterface']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            mcp_server_spec: pulumi.Input[Optional[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict']]] = None,
+            mcp_server_spec: pulumi.Input[Optional[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict', 'outputs.ServiceMcpServerSpec']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             registry_resource: pulumi.Input[Optional[_builtins.str]] = None,
@@ -711,7 +711,7 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict']] agent_spec: The spec of the Agent. When set, the type of the Service is Agent.
+        :param pulumi.Input[Union['ServiceAgentSpecArgs', 'ServiceAgentSpecArgsDict', 'outputs.ServiceAgentSpec']] agent_spec: The spec of the Agent. When set, the type of the Service is Agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -722,12 +722,12 @@ class Service(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Service.
         :param pulumi.Input[_builtins.str] display_name: User-defined display name for the Service. Can have a maximum length of 63 characters.
-        :param pulumi.Input[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict']] endpoint_spec: The spec of the Endpoint. When set, the type of the Service is Endpoint.
+        :param pulumi.Input[Union['ServiceEndpointSpecArgs', 'ServiceEndpointSpecArgsDict', 'outputs.ServiceEndpointSpec']] endpoint_spec: The spec of the Endpoint. When set, the type of the Service is Endpoint.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict']]]] interfaces: The connection details for the Service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict', 'outputs.ServiceInterface']]]] interfaces: The connection details for the Service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
-        :param pulumi.Input[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict']] mcp_server_spec: The spec of the MCP Server. When set, the type of the Service is MCP Server.
+        :param pulumi.Input[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict', 'outputs.ServiceMcpServerSpec']] mcp_server_spec: The spec of the MCP Server. When set, the type of the Service is MCP Server.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the Service.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
