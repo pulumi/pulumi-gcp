@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -10924,8 +10924,7 @@ type GetDataSourceReferencesDataSourceReference struct {
 	// The last time a successful backup was made.
 	LastSuccessfulBackupTime string `pulumi:"lastSuccessfulBackupTime"`
 	Name                     string `pulumi:"name"`
-	// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType string `pulumi:"resourceType"`
+	ResourceType             string `pulumi:"resourceType"`
 }
 
 // GetDataSourceReferencesDataSourceReferenceInput is an input type that accepts GetDataSourceReferencesDataSourceReferenceArgs and GetDataSourceReferencesDataSourceReferenceOutput values.
@@ -10953,8 +10952,7 @@ type GetDataSourceReferencesDataSourceReferenceArgs struct {
 	// The last time a successful backup was made.
 	LastSuccessfulBackupTime pulumi.StringInput `pulumi:"lastSuccessfulBackupTime"`
 	Name                     pulumi.StringInput `pulumi:"name"`
-	// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	ResourceType             pulumi.StringInput `pulumi:"resourceType"`
 }
 
 func (GetDataSourceReferencesDataSourceReferenceArgs) ElementType() reflect.Type {
@@ -11042,7 +11040,6 @@ func (o GetDataSourceReferencesDataSourceReferenceOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
 func (o GetDataSourceReferencesDataSourceReferenceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.ResourceType }).(pulumi.StringOutput)
 }

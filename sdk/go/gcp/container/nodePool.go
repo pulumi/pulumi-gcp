@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,8 +78,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -203,7 +203,14 @@ type NodePool struct {
 	// auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
+	// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+	// Prefixes with lengths longer than 14 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 14 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 15 - 31 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -329,7 +336,14 @@ type nodePoolState struct {
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
+	// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+	// Prefixes with lengths longer than 14 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 14 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 15 - 31 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -423,7 +437,14 @@ type NodePoolState struct {
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
+	// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+	// Prefixes with lengths longer than 14 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 14 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 15 - 31 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringPtrInput
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -517,7 +538,14 @@ type nodePoolArgs struct {
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
+	// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+	// Prefixes with lengths longer than 14 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 14 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 15 - 31 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -607,7 +635,14 @@ type NodePoolArgs struct {
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
+	// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+	// Prefixes with lengths longer than 14 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 14 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 15 - 31 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringPtrInput
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -822,7 +857,14 @@ func (o NodePoolOutput) Name() pulumi.StringOutput {
 }
 
 // Creates a unique name for the node pool beginning
-// with the specified prefix. Conflicts with `name`.
+// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+// Prefixes with lengths longer than 14 characters will use a shortened
+// UUID that will be more prone to collisions.
+//
+// Resulting name for a `namePrefix` <= 14 characters:
+// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+// Resulting name for a `namePrefix` 15 - 31 characters:
+// `namePrefix` + YYmmdd + 3 digit incremental counter
 func (o NodePoolOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }

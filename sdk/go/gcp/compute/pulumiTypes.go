@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55599,13 +55599,6 @@ func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArrayOutpu
 }
 
 type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone struct {
-	// (Output, Deprecated)
-	// URLs of Attachments in the given zone, to the given
-	// region, on Interconnects in the given facility and metro. Every
-	// Attachment in the AG has such an entry.
-	//
-	// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-	Attachment []string `pulumi:"attachment"`
 	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
 	// strings. Users are encouraged, but not required, to use their preferred
 	// format for resource links as keys.
@@ -55632,13 +55625,6 @@ type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneInput int
 }
 
 type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs struct {
-	// (Output, Deprecated)
-	// URLs of Attachments in the given zone, to the given
-	// region, on Interconnects in the given facility and metro. Every
-	// Attachment in the AG has such an entry.
-	//
-	// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-	Attachment pulumi.StringArrayInput `pulumi:"attachment"`
 	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
 	// strings. Users are encouraged, but not required, to use their preferred
 	// format for resource links as keys.
@@ -55702,18 +55688,6 @@ func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput
 
 func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput) ToInterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutputWithContext(ctx context.Context) InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput {
 	return o
-}
-
-// (Output, Deprecated)
-// URLs of Attachments in the given zone, to the given
-// region, on Interconnects in the given facility and metro. Every
-// Attachment in the AG has such an entry.
-//
-// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput) Attachment() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone) []string {
-		return v.Attachment
-	}).(pulumi.StringArrayOutput)
 }
 
 // Attachments in the AttachmentGroup. Keys are arbitrary user-specified

@@ -19,11 +19,11 @@ __all__ = ['WorkforcePoolProviderScimTenantArgs', 'WorkforcePoolProviderScimTena
 @pulumi.input_type
 class WorkforcePoolProviderScimTenantArgs:
     def __init__(__self__, *,
+                 claim_mapping: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
                  location: pulumi.Input[_builtins.str],
                  provider_id: pulumi.Input[_builtins.str],
                  scim_tenant_id: pulumi.Input[_builtins.str],
                  workforce_pool_id: pulumi.Input[_builtins.str],
-                 claim_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -31,11 +31,11 @@ class WorkforcePoolProviderScimTenantArgs:
         """
         The set of arguments for constructing a WorkforcePoolProviderScimTenant resource.
 
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the workforce pool.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -46,12 +46,11 @@ class WorkforcePoolProviderScimTenantArgs:
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
         """
+        pulumi.set(__self__, "claim_mapping", claim_mapping)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "provider_id", provider_id)
         pulumi.set(__self__, "scim_tenant_id", scim_tenant_id)
         pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
-        if claim_mapping is not None:
-            pulumi.set(__self__, "claim_mapping", claim_mapping)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -60,6 +59,18 @@ class WorkforcePoolProviderScimTenantArgs:
             pulumi.set(__self__, "display_name", display_name)
         if hard_delete is not None:
             pulumi.set(__self__, "hard_delete", hard_delete)
+
+    @_builtins.property
+    @pulumi.getter(name="claimMapping")
+    def claim_mapping(self) -> pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]:
+        """
+        Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        """
+        return pulumi.get(self, "claim_mapping")
+
+    @claim_mapping.setter
+    def claim_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "claim_mapping", value)
 
     @_builtins.property
     @pulumi.getter
@@ -108,18 +119,6 @@ class WorkforcePoolProviderScimTenantArgs:
     @workforce_pool_id.setter
     def workforce_pool_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workforce_pool_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="claimMapping")
-    def claim_mapping(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
-        """
-        return pulumi.get(self, "claim_mapping")
-
-    @claim_mapping.setter
-    def claim_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "claim_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -666,6 +665,8 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkforcePoolProviderScimTenantArgs.__new__(WorkforcePoolProviderScimTenantArgs)
 
+            if claim_mapping is None and not opts.urn:
+                raise TypeError("Missing required property 'claim_mapping'")
             __props__.__dict__["claim_mapping"] = claim_mapping
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
@@ -782,7 +783,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="claimMapping")
-    def claim_mapping(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def claim_mapping(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         """

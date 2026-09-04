@@ -24452,14 +24452,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility(dict):
 @pulumi.output_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
     def __init__(__self__, *,
-                 attachment: Optional[Sequence[_builtins.str]] = None,
                  attachments: Optional[Sequence[_builtins.str]] = None,
                  zone: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] attachment: (Output, Deprecated)
-               URLs of Attachments in the given zone, to the given
-               region, on Interconnects in the given facility and metro. Every
-               Attachment in the AG has such an entry.
         :param Sequence[_builtins.str] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -24471,24 +24466,10 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
-        if attachment is not None:
-            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-    def attachment(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (Output, Deprecated)
-        URLs of Attachments in the given zone, to the given
-        region, on Interconnects in the given facility and metro. Every
-        Attachment in the AG has such an entry.
-        """
-        return pulumi.get(self, "attachment")
 
     @_builtins.property
     @pulumi.getter

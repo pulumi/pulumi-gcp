@@ -213,8 +213,6 @@ if typing.TYPE_CHECKING:
     memorystore = __memorystore
     import pulumi_gcp.migrationcenter as __migrationcenter
     migrationcenter = __migrationcenter
-    import pulumi_gcp.ml as __ml
-    ml = __ml
     import pulumi_gcp.modelarmor as __modelarmor
     modelarmor = __modelarmor
     import pulumi_gcp.monitoring as __monitoring
@@ -229,8 +227,6 @@ if typing.TYPE_CHECKING:
     networksecurity = __networksecurity
     import pulumi_gcp.networkservices as __networkservices
     networkservices = __networkservices
-    import pulumi_gcp.notebooks as __notebooks
-    notebooks = __notebooks
     import pulumi_gcp.observability as __observability
     observability = __observability
     import pulumi_gcp.oracledatabase as __oracledatabase
@@ -408,7 +404,6 @@ else:
     memcache = _utilities.lazy_import('pulumi_gcp.memcache')
     memorystore = _utilities.lazy_import('pulumi_gcp.memorystore')
     migrationcenter = _utilities.lazy_import('pulumi_gcp.migrationcenter')
-    ml = _utilities.lazy_import('pulumi_gcp.ml')
     modelarmor = _utilities.lazy_import('pulumi_gcp.modelarmor')
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
     netapp = _utilities.lazy_import('pulumi_gcp.netapp')
@@ -416,7 +411,6 @@ else:
     networkmanagement = _utilities.lazy_import('pulumi_gcp.networkmanagement')
     networksecurity = _utilities.lazy_import('pulumi_gcp.networksecurity')
     networkservices = _utilities.lazy_import('pulumi_gcp.networkservices')
-    notebooks = _utilities.lazy_import('pulumi_gcp.notebooks')
     observability = _utilities.lazy_import('pulumi_gcp.observability')
     oracledatabase = _utilities.lazy_import('pulumi_gcp.oracledatabase')
     organizations = _utilities.lazy_import('pulumi_gcp.organizations')
@@ -1410,30 +1404,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.backupdisasterrecovery",
   "classes": {
    "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig": "ServiceConfig"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "beyondcorp/appConnection",
-  "fqn": "pulumi_gcp.beyondcorp",
-  "classes": {
-   "gcp:beyondcorp/appConnection:AppConnection": "AppConnection"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "beyondcorp/appConnector",
-  "fqn": "pulumi_gcp.beyondcorp",
-  "classes": {
-   "gcp:beyondcorp/appConnector:AppConnector": "AppConnector"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "beyondcorp/appGateway",
-  "fqn": "pulumi_gcp.beyondcorp",
-  "classes": {
-   "gcp:beyondcorp/appGateway:AppGateway": "AppGateway"
   }
  },
  {
@@ -8038,22 +8008,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "iap/brand",
-  "fqn": "pulumi_gcp.iap",
-  "classes": {
-   "gcp:iap/brand:Brand": "Brand"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "iap/client",
-  "fqn": "pulumi_gcp.iap",
-  "classes": {
-   "gcp:iap/client:Client": "Client"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "iap/locationWebIamBinding",
   "fqn": "pulumi_gcp.iap",
   "classes": {
@@ -8966,14 +8920,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "ml/engineModel",
-  "fqn": "pulumi_gcp.ml",
-  "classes": {
-   "gcp:ml/engineModel:EngineModel": "EngineModel"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "modelarmor/floorsetting",
   "fqn": "pulumi_gcp.modelarmor",
   "classes": {
@@ -9762,78 +9708,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/wasmPlugin:WasmPlugin": "WasmPlugin"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/environment",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/environment:Environment": "Environment"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/instance",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/instance:Instance": "Instance"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/instanceIamBinding",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/instanceIamMember",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/instanceIamMember:InstanceIamMember": "InstanceIamMember"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/instanceIamPolicy",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/runtime",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/runtime:Runtime": "Runtime"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/runtimeIamBinding",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding": "RuntimeIamBinding"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/runtimeIamMember",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/runtimeIamMember:RuntimeIamMember": "RuntimeIamMember"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "notebooks/runtimeIamPolicy",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": "RuntimeIamPolicy"
   }
  },
  {
@@ -12042,14 +11916,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy": "AiReasoningEngineIamPolicy"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "vertex/aiSchedule",
-  "fqn": "pulumi_gcp.vertex",
-  "classes": {
-   "gcp:vertex/aiSchedule:AiSchedule": "AiSchedule"
   }
  },
  {

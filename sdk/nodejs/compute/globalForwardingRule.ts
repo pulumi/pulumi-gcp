@@ -22,18 +22,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "check-backend",
- *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
  * });
  * const defaultBackendService = new gcp.compute.BackendService("default", {
  *     name: "backend",
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     healthChecks: defaultHealthCheck.id,
  * });
  * const defaultURLMap = new gcp.compute.URLMap("default", {
  *     name: "url-map-target-proxy",
@@ -557,7 +560,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
@@ -905,7 +908,7 @@ export interface GlobalForwardingRuleState {
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
@@ -1153,7 +1156,7 @@ export interface GlobalForwardingRuleArgs {
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;

@@ -1019,13 +1019,6 @@ namespace Pulumi.Gcp
             set => _migrationCenterCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _mlEngineCustomEndpoint = new __Value<string?>(() => __config.Get("mlEngineCustomEndpoint"));
-        public static string? MlEngineCustomEndpoint
-        {
-            get => _mlEngineCustomEndpoint.Get();
-            set => _mlEngineCustomEndpoint.Set(value);
-        }
-
         private static readonly __Value<string?> _modelArmorCustomEndpoint = new __Value<string?>(() => __config.Get("modelArmorCustomEndpoint"));
         public static string? ModelArmorCustomEndpoint
         {
@@ -1087,13 +1080,6 @@ namespace Pulumi.Gcp
         {
             get => _networkServicesCustomEndpoint.Get();
             set => _networkServicesCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _notebooksCustomEndpoint = new __Value<string?>(() => __config.Get("notebooksCustomEndpoint"));
-        public static string? NotebooksCustomEndpoint
-        {
-            get => _notebooksCustomEndpoint.Get();
-            set => _notebooksCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _observabilityCustomEndpoint = new __Value<string?>(() => __config.Get("observabilityCustomEndpoint"));

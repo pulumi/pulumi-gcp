@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,7 +63,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -114,7 +114,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -154,10 +154,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -272,7 +272,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -319,7 +319,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -364,9 +364,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -454,7 +454,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -508,8 +508,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -566,7 +566,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -616,8 +616,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -697,8 +697,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -750,10 +750,10 @@ import (
 //								HttpGet: &cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{
 //									Path: pulumi.String("/"),
 //									Port: pulumi.Int(8080),
-//									HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{
-//										map[string]string{
-//											"name":  "TEST-HEADER",
-//											"value": "test-value",
+//									HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{
+//										&cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{
+//											Name:  pulumi.String("TEST-HEADER"),
+//											Value: pulumi.String("test-value"),
 //										},
 //									},
 //								},
@@ -819,14 +819,6 @@ type WorkerPool struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
-	// (Optional, Deprecated)
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-	//
-	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	//
-	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -973,14 +965,6 @@ type workerPoolState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator *string `pulumi:"creator"`
-	// (Optional, Deprecated)
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-	//
-	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	//
-	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	CustomAudiences []string `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1087,14 +1071,6 @@ type WorkerPoolState struct {
 	CreateTime pulumi.StringPtrInput
 	// Email address of the authenticated creator.
 	Creator pulumi.StringPtrInput
-	// (Optional, Deprecated)
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-	//
-	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	//
-	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	CustomAudiences pulumi.StringArrayInput
 	// The deletion time.
 	DeleteTime pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1198,14 +1174,6 @@ type workerPoolArgs struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
-	// (Optional, Deprecated)
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-	//
-	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	//
-	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	CustomAudiences []string `pulumi:"customAudiences"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1268,14 +1236,6 @@ type WorkerPoolArgs struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
-	// (Optional, Deprecated)
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-	//
-	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	//
-	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-	CustomAudiences pulumi.StringArrayInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1449,17 +1409,6 @@ func (o WorkerPoolOutput) CreateTime() pulumi.StringOutput {
 // Email address of the authenticated creator.
 func (o WorkerPoolOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
-}
-
-// (Optional, Deprecated)
-// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-//
-// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-//
-// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-func (o WorkerPoolOutput) CustomAudiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WorkerPool) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
 }
 
 // The deletion time.

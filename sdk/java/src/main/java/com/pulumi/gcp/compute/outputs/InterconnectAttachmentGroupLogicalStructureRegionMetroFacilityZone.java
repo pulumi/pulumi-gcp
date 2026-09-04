@@ -13,18 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
     /**
-     * @return (Output, Deprecated)
-     * URLs of Attachments in the given zone, to the given
-     * region, on Interconnects in the given facility and metro. Every
-     * Attachment in the AG has such an entry.
-     * 
-     * @deprecated
-     * `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-     * 
-     */
-    @Deprecated /* `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead. */
-    private @Nullable List<String> attachment;
-    /**
      * @return Attachments in the AttachmentGroup. Keys are arbitrary user-specified
      * strings. Users are encouraged, but not required, to use their preferred
      * format for resource links as keys.
@@ -44,20 +32,6 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
     private @Nullable String zone;
 
     private InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone() {}
-    /**
-     * @return (Output, Deprecated)
-     * URLs of Attachments in the given zone, to the given
-     * region, on Interconnects in the given facility and metro. Every
-     * Attachment in the AG has such an entry.
-     * 
-     * @deprecated
-     * `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-     * 
-     */
-    @Deprecated /* `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead. */
-    public List<String> attachment() {
-        return this.attachment == null ? List.of() : this.attachment;
-    }
     /**
      * @return Attachments in the AttachmentGroup. Keys are arbitrary user-specified
      * strings. Users are encouraged, but not required, to use their preferred
@@ -90,26 +64,15 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> attachment;
         private @Nullable List<String> attachments;
         private @Nullable String zone;
         public Builder() {}
         public Builder(InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.attachment = defaults.attachment;
     	      this.attachments = defaults.attachments;
     	      this.zone = defaults.zone;
         }
 
-        @CustomType.Setter
-        public Builder attachment(@Nullable List<String> attachment) {
-
-            this.attachment = attachment;
-            return this;
-        }
-        public Builder attachment(String... attachment) {
-            return attachment(List.of(attachment));
-        }
         @CustomType.Setter
         public Builder attachments(@Nullable List<String> attachments) {
 
@@ -127,7 +90,6 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
         }
         public InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone build() {
             final var _resultValue = new InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone();
-            _resultValue.attachment = attachment;
             _resultValue.attachments = attachments;
             _resultValue.zone = zone;
             return _resultValue;

@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -442,9 +442,6 @@ func GetMemorystoreCustomEndpoint(ctx *pulumi.Context) string {
 func GetMigrationCenterCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:migrationCenterCustomEndpoint")
 }
-func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:mlEngineCustomEndpoint")
-}
 func GetModelArmorCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:modelArmorCustomEndpoint")
 }
@@ -471,9 +468,6 @@ func GetNetworkSecurityCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetNetworkServicesCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkServicesCustomEndpoint")
-}
-func GetNotebooksCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:notebooksCustomEndpoint")
 }
 func GetObservabilityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:observabilityCustomEndpoint")

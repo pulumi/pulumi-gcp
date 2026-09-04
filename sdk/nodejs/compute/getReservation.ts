@@ -65,7 +65,6 @@ export interface GetReservationResult {
     readonly name: string;
     readonly params: outputs.compute.GetReservationParam[];
     readonly project?: string;
-    readonly reservationBlockCount: number;
     readonly reservationSharingPolicies: outputs.compute.GetReservationReservationSharingPolicy[];
     readonly resourceStatuses: outputs.compute.GetReservationResourceStatus[];
     readonly satisfiesPzs: boolean;

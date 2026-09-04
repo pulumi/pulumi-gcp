@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -4521,8 +4521,8 @@ type DataTransferConfigSensitiveParams struct {
 	//
 	// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 	SecretAccessKeyWo *string `pulumi:"secretAccessKeyWo"`
-	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	SecretAccessKeyWoVersion *int `pulumi:"secretAccessKeyWoVersion"`
+	// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretAccessKeyWoVersion *string `pulumi:"secretAccessKeyWoVersion"`
 }
 
 // DataTransferConfigSensitiveParamsInput is an input type that accepts DataTransferConfigSensitiveParamsArgs and DataTransferConfigSensitiveParamsOutput values.
@@ -4547,8 +4547,8 @@ type DataTransferConfigSensitiveParamsArgs struct {
 	//
 	// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 	SecretAccessKeyWo pulumi.StringPtrInput `pulumi:"secretAccessKeyWo"`
-	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	SecretAccessKeyWoVersion pulumi.IntPtrInput `pulumi:"secretAccessKeyWoVersion"`
+	// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretAccessKeyWoVersion pulumi.StringPtrInput `pulumi:"secretAccessKeyWoVersion"`
 }
 
 func (DataTransferConfigSensitiveParamsArgs) ElementType() reflect.Type {
@@ -4644,9 +4644,9 @@ func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWo() pulumi.Stri
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKeyWo }).(pulumi.StringPtrOutput)
 }
 
-// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *int { return v.SecretAccessKeyWoVersion }).(pulumi.IntPtrOutput)
+// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKeyWoVersion }).(pulumi.StringPtrOutput)
 }
 
 type DataTransferConfigSensitiveParamsPtrOutput struct{ *pulumi.OutputState }
@@ -4699,14 +4699,14 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWo() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *int {
+// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SecretAccessKeyWoVersion
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type Datapolicyv2DataPolicyDataGovernanceTag struct {

@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? PasswordWo;
         /// <summary>
-        /// The password write-only version.
+        /// Triggers update of `PasswordWo` write-only. Increment this value when an update to `PasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         /// </summary>
         public readonly string? PasswordWoVersion;
         /// <summary>
