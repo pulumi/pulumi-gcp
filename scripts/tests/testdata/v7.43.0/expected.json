@@ -1,0 +1,59 @@
+{
+  "sha": "c1a4c311722ebacc3e768641f41bdfa6b2d9f0d4",
+  "tag": "v7.43.0",
+  "section": "7.43.0 (Unreleased)",
+  "features": [
+    {
+      "kind": "Resource",
+      "resource": "google_cloud_support_support_event_subscription",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12783",
+      "products": [
+        {
+          "path": "mmv1/products/cloudsupport/product.yaml",
+          "name": "CloudSupport",
+          "snake_case": "cloud_support"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18377"
+    },
+    {
+      "kind": "Resource",
+      "resource": "google_compute_region_network_policy_traffic_classification_rule",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12778",
+      "products": [
+        {
+          "path": "mmv1/products/compute/product.yaml",
+          "name": "Compute",
+          "snake_case": "compute"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18087"
+    },
+    {
+      "kind": "Resource",
+      "resource": "google_apihub_runtime_project_attachment",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12764",
+      "products": [
+        {
+          "path": "mmv1/products/apihub/product.yaml",
+          "name": "Apihub",
+          "snake_case": "apihub"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18360"
+    },
+    {
+      "kind": "Resource",
+      "resource": "google_netapp_trial",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12777",
+      "products": [
+        {
+          "path": "mmv1/products/netapp/product.yaml",
+          "name": "Netapp",
+          "snake_case": "netapp"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18102"
+    }
+  ]
+}

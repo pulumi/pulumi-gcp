@@ -175,6 +175,15 @@ const (
 	gcpWorkstations             = "Workstations"             // Workstations
 )
 
+// moduleMapping assigns each upstream resource to a Pulumi module, keyed by the
+// resource name with the `google_` prefix stripped. The longest matching key
+// wins, and there is no default module, so a resource whose prefix is missing
+// from this map fails tfgen rather than landing somewhere arbitrary.
+//
+// The keys are magic-modules product names in snake_case. `scripts/new_resources`
+// walks an upstream release to the product each of its new resources belongs to
+// and prints that name, which is the key to add here. See
+// scripts/new_resources/README.md.
 var moduleMapping = map[string]string{
 	"access_approval":                 gcpAccessApproval,
 	"access_context_manager":          gcpAccessContextManager,
@@ -3005,10 +3014,17 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		})
 
-	prov.MustComputeTokens(tks.MappedModules("google_", "",
+	if err := prov.ComputeTokens(tks.MappedModules("google_", "",
 		moduleMapping, func(module, name string) (string, error) {
 			return string(gcpResource(module, name)), nil
-		}))
+		})); err != nil {
+		contract.Failf("%v\n\n"+
+			"A resource whose prefix is missing from `moduleMapping` in provider/resources.go\n"+
+			"is the usual cause, which is what a new upstream product looks like. Run\n"+
+			"`scripts/new_resources` to resolve the new resources in this upstream release to\n"+
+			"their magic-modules products, then add each product name to `moduleMapping`.\n"+
+			"See scripts/new_resources/README.md.", err)
+	}
 
 	prov.SetAutonaming(255, "-")
 
