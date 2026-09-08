@@ -300,6 +300,7 @@ namespace Pulumi.Gcp.Ces
     ///             Agent = "projects/example/locations/us/agents/fake-agent",
     ///             FlowId = "fake-flow",
     ///             EnvironmentId = "fake-env",
+    ///             LanguageCodeVariable = "language_code",
     ///             InputVariableMapping = 
     ///             {
     ///                 { "example", "1" },

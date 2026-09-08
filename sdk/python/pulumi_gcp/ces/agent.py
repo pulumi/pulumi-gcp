@@ -1202,6 +1202,7 @@ class Agent(pulumi.CustomResource):
                 "agent": "projects/example/locations/us/agents/fake-agent",
                 "flow_id": "fake-flow",
                 "environment_id": "fake-env",
+                "language_code_variable": "language_code",
                 "input_variable_mapping": {
                     "example": "1",
                 },
@@ -1540,6 +1541,7 @@ class Agent(pulumi.CustomResource):
                 "agent": "projects/example/locations/us/agents/fake-agent",
                 "flow_id": "fake-flow",
                 "environment_id": "fake-env",
+                "language_code_variable": "language_code",
                 "input_variable_mapping": {
                     "example": "1",
                 },

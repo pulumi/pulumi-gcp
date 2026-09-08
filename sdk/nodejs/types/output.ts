@@ -15189,12 +15189,343 @@ export namespace bigqueryanalyticshub {
         projectId: string;
     }
 
+    export interface ListingSubscriptionDestinationPubsubSubscription {
+        /**
+         * Destination Pub/Sub subscription resource.
+         * Structure is documented below.
+         */
+        pubsubSubscription: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription {
+        /**
+         * The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+         * acknowledge receipt before resending the message. In the interval after the message is delivered
+         * and before it is acknowledged, it is considered to be outstanding. During that time period, the
+         * message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+         * used as the initial value for the ack deadline. To override this value for a given message, call
+         * `ModifyAckDeadline` with the corresponding `ackId` if using non-streaming pull or send the
+         * `ackId` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+         * deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+         * seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+         * delivery, this value is also used to set the request timeout for the call to the push endpoint.
+         * If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+         * the message.
+         */
+        ackDeadlineSeconds?: number;
+        /**
+         * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        bigqueryConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig;
+        /**
+         * If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        cloudStorageConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig;
+        /**
+         * A policy that specifies the conditions for dead lettering messages in this subscription. If
+         * `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+         * with this subscriptions's parent project (i.e.,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+         * Acknowledge() messages on this subscription.
+         * Structure is documented below.
+         */
+        deadLetterPolicy?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy;
+        /**
+         * Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+         * receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+         * requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+         * to the endpoint will not be made.
+         */
+        detached?: boolean;
+        /**
+         * If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+         * value of `messageId` on this subscription: The message sent to a subscriber is guaranteed not
+         * to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+         * not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+         * message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+         * a publisher client. These copies are considered distinct by Pub/Sub and have distinct `messageId`
+         * values.
+         */
+        enableExactlyOnceDelivery?: boolean;
+        /**
+         * If true, messages published with the same `orderingKey` in `PubsubMessage`
+         * will be delivered to the subscribers in the order in which they are received
+         * by the Pub/Sub system. Otherwise, they may be delivered in any order.
+         */
+        enableMessageOrdering?: boolean;
+        /**
+         * A policy that specifies the conditions for this subscription's expiration. A subscription is
+         * considered active as long as any connected subscriber is successfully consuming messages from
+         * the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+         * set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+         * `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+         * is not set, the subscription never expires.
+         * Structure is documented below.
+         */
+        expirationPolicy?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy;
+        /**
+         * An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+         * whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+         * no messages are filtered out.
+         */
+        filter?: string;
+        /**
+         * See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+         */
+        labels?: {[key: string]: string};
+        /**
+         * How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+         * message is published. If `retainAckedMessages` is true, then this also configures the retention
+         * of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+         * to 7 days. Cannot be more than 31 days or less than 10 minutes.
+         */
+        messageRetentionDuration?: string;
+        /**
+         * Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+         */
+        name: string;
+        /**
+         * If push delivery is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        pushConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig;
+        /**
+         * Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+         * the subscription's backlog, even if they are acknowledged, until they fall out of the
+         * `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+         * in the past to replay previously-acknowledged messages.
+         */
+        retainAckedMessages?: boolean;
+        /**
+         * A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+         * the default retry policy is applied. This generally implies that messages will be retried as soon
+         * as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+         * deadline exceeded events for a given message.
+         * Structure is documented below.
+         */
+        retryPolicy?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig {
+        /**
+         * When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+         * not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+         * must be kept in sync and any messages with extra fields are not written and remain in the
+         * subscription's backlog.
+         */
+        dropUnknownFields?: boolean;
+        /**
+         * The service account to use to write to BigQuery. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub service agent,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
+        /**
+         * The name of the table to which to write data, of the form
+         * {projectId}.{datasetId}.{tableId}
+         */
+        table?: string;
+        /**
+         * When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+         * `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+         */
+        useTableSchema?: boolean;
+        /**
+         * When true, use the topic's schema as the columns to write to in BigQuery,
+         * if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+         */
+        useTopicSchema?: boolean;
+        /**
+         * When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+         * to additional columns in the table. The subscription name, message_id, and publishTime fields
+         * are put in their own columns while all other message properties (other than data) are written
+         * to a JSON object in the attributes column.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig {
+        /**
+         * If set, message data will be written to Cloud Storage in Avro format.
+         * Structure is documented below.
+         */
+        avroConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig;
+        /**
+         * User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+         * The bucket name must be without any prefix like "gs://". See the
+         * [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+         */
+        bucket?: string;
+        /**
+         * User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+         * See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+         */
+        filenameDatetimeFormat?: string;
+        /**
+         * User-provided prefix for Cloud Storage filename. See the
+         * [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+         */
+        filenamePrefix?: string;
+        /**
+         * User-provided suffix for Cloud Storage filename. See the
+         * [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+         * Must not end in "/".
+         */
+        filenameSuffix?: string;
+        /**
+         * The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+         * Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+         * than the limit.
+         */
+        maxBytes?: string;
+        /**
+         * The maximum duration that can elapse before a new Cloud Storage file is created.
+         * Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+         * acknowledgement deadline.
+         */
+        maxDuration?: string;
+        /**
+         * The maximum number of messages that can be written to a Cloud Storage file before a new file
+         * is created. Min 1000 messages.
+         */
+        maxMessages?: string;
+        /**
+         * The service account to use to write to Cloud Storage. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub service agent,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig {
+        /**
+         * When true, the output Cloud Storage file will be serialized using
+         * the topic schema, if it exists.
+         */
+        useTopicSchema?: boolean;
+        /**
+         * When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+         * as additional fields in the output. The subscription name, message_id, and publishTime fields
+         * are put in their own fields while all other message properties other than data (for example,
+         * an ordering_key, if present) are added as entries in the attributes map.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy {
+        /**
+         * The name of the topic to which dead letter messages should be published. Format is
+         * `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+         * subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+         * must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+         * Users should ensure that there is a subscription attached to this topic since messages published to
+         * a topic with no subscriptions are lost.
+         */
+        deadLetterTopic?: string;
+        /**
+         * The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+         * The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+         * the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+         * ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+         * ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+         * default value of 5 is used.
+         */
+        maxDeliveryAttempts?: number;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy {
+        /**
+         * Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+         * is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+         * associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+         * the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+         */
+        ttl?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig {
+        /**
+         * Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+         * The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+         * pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+         * the shape of the pushed message (i.e., its fields and metadata). If not present during the
+         * `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+         * If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+         * will always return a valid version, even if the subscription was created without this attribute.
+         * The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+         * defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+         */
+        attributes?: {[key: string]: string};
+        /**
+         * When set, the payload to the push endpoint is not wrapped.
+         * Structure is documented below.
+         */
+        noWrapper?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper;
+        /**
+         * If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+         * Authorization header in the HTTP request for every pushed message.
+         * Structure is documented below.
+         */
+        oidcToken?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken;
+        /**
+         * A URL locating the endpoint to which messages should be pushed.
+         * For example, a Webhook endpoint might use `https://example.com/push`.
+         */
+        pushEndpoint?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper {
+        /**
+         * When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+         * HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. The audience claim identifies the recipients
+         * that the JWT is intended for. The audience value is a single case-sensitive string. Having
+         * multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+         * token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+         * the Push endpoint URL will be used.
+         */
+        audience?: string;
+        /**
+         * Service account email used for generating the OIDC token. For more information
+         * on setting up authentication, see Push subscriptions.
+         */
+        serviceAccountEmail?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy {
+        /**
+         * The maximum delay between consecutive deliveries of a given message.
+         * Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+         */
+        maximumBackoff?: string;
+        /**
+         * The minimum delay between consecutive deliveries of a given message.
+         * Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+         */
+        minimumBackoff?: string;
+    }
+
     export interface ListingSubscriptionLinkedDatasetMap {
         /**
          * (Output)
          * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
          */
         linkedDataset: string;
+        /**
+         * (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         */
+        linkedPubsubSubscription: string;
         /**
          * (Output)
          * Output only. Listing for which linked resource is created.
@@ -15212,6 +15543,11 @@ export namespace bigqueryanalyticshub {
          * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
          */
         linkedDataset: string;
+        /**
+         * (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         */
+        linkedPubsubSubscription: string;
         /**
          * (Output)
          * Output only. Listing for which linked resource is created.
@@ -18903,6 +19239,12 @@ export namespace ces {
          */
         inputVariableMapping?: {[key: string]: string};
         /**
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session. If unspecified, the default language code of the
+         * Dialogflow agent will be used.
+         */
+        languageCodeVariable?: string;
+        /**
          * The mapping of the Dialogflow session parameters names to the app
          * variables names to be sent back to the CES agent after the Dialogflow
          * agent execution ends.
@@ -19099,6 +19441,11 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfig?: outputs.ces.AppDefaultChannelProfileWebWidgetConfig;
+        /**
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfig?: outputs.ces.AppDefaultChannelProfileWhatsappConfig;
     }
 
     export interface AppDefaultChannelProfilePersonaProperty {
@@ -19134,6 +19481,80 @@ export namespace ces {
          * The title of the web widget.
          */
         webWidgetTitle?: string;
+    }
+
+    export interface AppDefaultChannelProfileWhatsappConfig {
+        /**
+         * (Output)
+         * The description of the Meta business page or profile.
+         */
+        description: string;
+        /**
+         * (Output)
+         * The fetched Meta business page name.
+         */
+        displayName: string;
+        /**
+         * The phone number in E.164 format.
+         */
+        phoneNumber?: string;
+        /**
+         * The Meta phone number ID.
+         */
+        phoneNumberId: string;
+        /**
+         * (Output)
+         * The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl: string;
+        /**
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: string;
+    }
+
+    export interface AppErrorHandlingSettings {
+        /**
+         * Configuration for ending the session in case of system errors (e.g. LLM
+         * errors).
+         * Structure is documented below.
+         */
+        endSessionConfig?: outputs.ces.AppErrorHandlingSettingsEndSessionConfig;
+        /**
+         * The strategy to use for error handling.
+         * Possible values:
+         * NONE
+         * FALLBACK_RESPONSE
+         * END_SESSION
+         */
+        errorHandlingStrategy?: string;
+        /**
+         * Configuration for handling fallback responses.
+         * Structure is documented below.
+         */
+        fallbackResponseConfig?: outputs.ces.AppErrorHandlingSettingsFallbackResponseConfig;
+    }
+
+    export interface AppErrorHandlingSettingsEndSessionConfig {
+        /**
+         * Whether to escalate the session in EndSession. If session is escalated,
+         * metadata in EndSession will contain sessionEscalated = true.
+         */
+        escalateSession?: boolean;
+    }
+
+    export interface AppErrorHandlingSettingsFallbackResponseConfig {
+        /**
+         * The fallback messages in case of system errors (e.g. LLM errors),
+         * mapped by supported language code
+         * (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+         */
+        customFallbackMessages?: {[key: string]: string};
+        /**
+         * The maximum number of fallback attempts to make before the agent
+         * emitting EndSession Signal.
+         */
+        maxFallbackAttempts?: number;
     }
 
     export interface AppEvaluationMetricsThresholds {
@@ -19288,6 +19709,11 @@ export namespace ces {
          * Whether to disable conversation logging for the sessions.
          */
         disableConversationLogging?: boolean;
+        /**
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         */
+        retentionWindow: string;
     }
 
     export interface AppLoggingSettingsRedactionConfig {
@@ -19787,6 +20213,12 @@ export namespace ces {
         inputVariableMapping: {[key: string]: string};
         /**
          * (Output)
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session.
+         */
+        languageCodeVariable: string;
+        /**
+         * (Output)
          * The mapping of the Dialogflow session parameters names to the app
          * variables names to be sent back to the CES agent after the Dialogflow
          * agent execution ends.
@@ -19854,6 +20286,12 @@ export namespace ces {
          * The display name of the app version.
          */
         displayName: string;
+        /**
+         * (Output)
+         * Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         */
+        errorHandlingSettings: outputs.ces.AppVersionSnapshotAppErrorHandlingSetting[];
         /**
          * (Output)
          * ETag used to ensure the object hasn't changed during a read-modify-write
@@ -19935,6 +20373,12 @@ export namespace ces {
          * Structure is documented below.
          */
         variableDeclarations: outputs.ces.AppVersionSnapshotAppVariableDeclaration[];
+        /**
+         * (Output)
+         * VPC-SC settings for the app.
+         * Structure is documented below.
+         */
+        vpcScSettings: outputs.ces.AppVersionSnapshotAppVpcScSetting[];
     }
 
     export interface AppVersionSnapshotAppAudioProcessingConfig {
@@ -20132,6 +20576,12 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfigs: outputs.ces.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig[];
+        /**
+         * (Output)
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfigs: outputs.ces.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig[];
     }
 
     export interface AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
@@ -20171,6 +20621,87 @@ export namespace ces {
          * The title of the web widget.
          */
         webWidgetTitle: string;
+    }
+
+    export interface AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig {
+        /**
+         * The description of the app version.
+         */
+        description: string;
+        /**
+         * The display name of the app version.
+         */
+        displayName: string;
+        /**
+         * (Output)
+         * The phone number in E.164 format.
+         */
+        phoneNumber: string;
+        /**
+         * (Output)
+         * The Meta phone number ID.
+         */
+        phoneNumberId: string;
+        /**
+         * (Output)
+         * The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl: string;
+        /**
+         * (Output)
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: string;
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSetting {
+        /**
+         * (Output)
+         * Configuration for ending the session in case of system errors (e.g. LLM
+         * errors).
+         * Structure is documented below.
+         */
+        endSessionConfigs: outputs.ces.AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig[];
+        /**
+         * (Output)
+         * The strategy to use for error handling.
+         * Possible values:
+         * NONE
+         * FALLBACK_RESPONSE
+         * END_SESSION
+         */
+        errorHandlingStrategy: string;
+        /**
+         * (Output)
+         * Configuration for handling fallback responses.
+         * Structure is documented below.
+         */
+        fallbackResponseConfigs: outputs.ces.AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig[];
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig {
+        /**
+         * (Output)
+         * Whether to escalate the session in EndSession. If session is escalated,
+         * metadata in EndSession will contain sessionEscalated = true.
+         */
+        escalateSession: boolean;
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig {
+        /**
+         * (Output)
+         * The fallback messages in case of system errors (e.g. LLM errors),
+         * mapped by supported language code
+         * (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+         */
+        customFallbackMessages: {[key: string]: string};
+        /**
+         * (Output)
+         * The maximum number of fallback attempts to make before the agent
+         * emitting EndSession Signal.
+         */
+        maxFallbackAttempts: number;
     }
 
     export interface AppVersionSnapshotAppEvaluationMetricsThreshold {
@@ -20344,6 +20875,12 @@ export namespace ces {
          * Whether to disable conversation logging for the sessions.
          */
         disableConversationLogging: boolean;
+        /**
+         * (Output)
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         */
+        retentionWindow: string;
     }
 
     export interface AppVersionSnapshotAppLoggingSettingRedactionConfig {
@@ -20519,6 +21056,18 @@ export namespace ces {
          * Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
          */
         uniqueItems: boolean;
+    }
+
+    export interface AppVersionSnapshotAppVpcScSetting {
+        /**
+         * (Output)
+         * The allowed HTTP(s) origins that OpenAPI tools in the App are
+         * able to directly call when VPC Service Controls are enabled. These strings
+         * must match the origin exactly, including the port if specified. For
+         * example, "https://example.com" or "https://example.com:443". This list does
+         * not yet apply to Python tools that may make direct HTTP calls.
+         */
+        allowedOrigins: string[];
     }
 
     export interface AppVersionSnapshotExample {
@@ -22412,6 +22961,17 @@ export namespace ces {
         displayName: string;
     }
 
+    export interface AppVpcScSettings {
+        /**
+         * The allowed HTTP(s) origins that OpenAPI tools in the App are
+         * able to directly call when VPC Service Controls are enabled. These strings
+         * must match the origin exactly, including the port if specified. For
+         * example, "https://example.com" or "https://example.com:443". This list does
+         * not yet apply to Python tools that may make direct HTTP calls.
+         */
+        allowedOrigins?: string[];
+    }
+
     export interface DeploymentChannelProfile {
         /**
          * The type of the channel profile.
@@ -22511,6 +23071,86 @@ export namespace ces {
          * Indicates whether reCAPTCHA verification for the web widget is enabled.
          */
         enableRecaptcha?: boolean;
+    }
+
+    export interface DeploymentInstagramCredentials {
+        /**
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        authCode?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `authCode` or `authCodeWo` can only be set.
+         */
+        authCodeWo?: string;
+        /**
+         * Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        authCodeWoVersion?: string;
+        /**
+         * The Conversation Profile ID to use for the deployment.
+         */
+        conversationProfileId?: string;
+    }
+
+    export interface DeploymentWhatsappCredentials {
+        /**
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        authCode?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `authCode` or `authCodeWo` can only be set.
+         */
+        authCodeWo?: string;
+        /**
+         * Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        authCodeWoVersion?: string;
+        /**
+         * The Business Account ID to use for the phone number.
+         */
+        businessAccountId: string;
+        /**
+         * The Conversation Profile ID to use for the deployment.
+         */
+        conversationProfileId?: string;
+        /**
+         * The phone number to register with WhatsApp.
+         */
+        phoneNumber: string;
+        /**
+         * The 6-digit PIN created by the user for two-step verification.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        pin?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The 6-digit PIN created by the user for two-step verification.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `pin` or `pinWo` can only be set.
+         */
+        pinWo?: string;
+        /**
+         * Triggers update of `pinWo` write-only. Increment this value when an update to `pinWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        pinWoVersion?: string;
+        /**
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: string;
     }
 
     export interface EvaluationGolden {
@@ -24715,7 +25355,7 @@ export namespace ces {
     export interface ToolMcpTool {
         /**
          * (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          */
         apiAuthentications: outputs.ces.ToolMcpToolApiAuthentication[];
@@ -24871,7 +25511,8 @@ export namespace ces {
         oauthGrantType: string;
         /**
          * (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          */
         scopes: string[];
         /**
@@ -24943,7 +25584,7 @@ export namespace ces {
     export interface ToolOpenApiTool {
         /**
          * (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          */
         apiAuthentications: outputs.ces.ToolOpenApiToolApiAuthentication[];
@@ -25080,7 +25721,8 @@ export namespace ces {
         oauthGrantType: string;
         /**
          * (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          */
         scopes: string[];
         /**
@@ -25190,6 +25832,12 @@ export namespace ces {
         agentCards: outputs.ces.ToolRemoteAgentToolAgentCard[];
         /**
          * (Output)
+         * Authentication information required for calling the remote agent.
+         * Structure is documented below.
+         */
+        apiAuthentications: outputs.ces.ToolRemoteAgentToolApiAuthentication[];
+        /**
+         * (Output)
          * The description of the system tool.
          */
         description: string;
@@ -25296,6 +25944,133 @@ export namespace ces {
          * HTTPS URL in production.
          */
         url: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthentication {
+        /**
+         * (Output)
+         * Configurations for authentication with API key.
+         * Structure is documented below.
+         */
+        apiKeyConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationApiKeyConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         */
+        bearerTokenConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationBearerTokenConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication with OAuth.
+         * Structure is documented below.
+         */
+        oauthConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationOauthConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication using a custom service account.
+         * Structure is documented below.
+         */
+        serviceAccountAuthConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication with [ID
+         * token](https://cloud.google.com/docs/authentication/token-types#id) generated
+         * from service agent.
+         */
+        serviceAgentIdTokenAuthConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig[];
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationApiKeyConfig {
+        /**
+         * (Output)
+         * The name of the SecretManager secret version resource storing the API key.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         * Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+         * service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        apiKeySecretVersion: string;
+        /**
+         * (Output)
+         * The parameter name or the header name of the API key.
+         * E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+         */
+        keyName: string;
+        /**
+         * (Output)
+         * Key location in the request.
+         * Possible values:
+         * HEADER
+         * QUERY_STRING
+         */
+        requestLocation: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationBearerTokenConfig {
+        /**
+         * (Output)
+         * The bearer token. Must be in the format $context.variables.<name_of_variable>.
+         */
+        token: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationOauthConfig {
+        /**
+         * (Output)
+         * The client ID from the OAuth provider.
+         */
+        clientId: string;
+        /**
+         * (Output)
+         * The name of the SecretManager secret version resource storing the
+         * client secret.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         * Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+         * service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        clientSecretVersion: string;
+        /**
+         * (Output)
+         * OAuth grant types.
+         * Possible values:
+         * CLIENT_CREDENTIAL
+         */
+        oauthGrantType: string;
+        /**
+         * (Output)
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         */
+        scopes: string[];
+        /**
+         * (Output)
+         * The token endpoint in the OAuth provider to exchange for an access token.
+         */
+        tokenEndpoint: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig {
+        /**
+         * (Output)
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         */
+        scopes: string[];
+        /**
+         * (Output)
+         * The email address of the service account used for authenticatation. CES
+         * uses this service account to exchange an access token and the access token
+         * is then sent in the `Authorization` header of the request.
+         * The service account must have the
+         * `roles/iam.serviceAccountTokenCreator` role granted to the
+         * CES service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        serviceAccount: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig {
     }
 
     export interface ToolSystemTool {
@@ -40645,6 +41420,10 @@ export namespace cloudrunv2 {
          */
         resources: outputs.cloudrunv2.GetWorkerPoolTemplateContainerResource[];
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher: boolean;
+        /**
          * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
          */
         startupProbes: outputs.cloudrunv2.GetWorkerPoolTemplateContainerStartupProbe[];
@@ -42867,6 +43646,10 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         resources: outputs.cloudrunv2.WorkerPoolTemplateContainerResources;
+        /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: boolean;
         /**
          * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
          * Structure is documented below.
@@ -111178,6 +111961,18 @@ export namespace eventarc {
         schemaDefinition?: string;
     }
 
+    export interface PipelineIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface PipelineIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface PipelineInputPayloadFormat {
         /**
          * The format of an AVRO message payload.
@@ -130480,6 +131275,53 @@ export namespace monitoring {
         min?: number;
     }
 
+    export interface SnoozeCriteria {
+        /**
+         * When you define a snooze, you can also define a filter for that snooze.
+         * The filter is a string containing one or more key-value pairs. The string
+         * uses the standard https://google.aip.dev/160 filter syntax. If you define
+         * a filter for a snooze, then the snooze can only apply to one alert policy.
+         * When the snooze is active, incidents won't be created when the incident
+         * would have key-value pairs (labels) that match those specified by the
+         * filter in the snooze.
+         * Snooze filters support resource, metric, and metadata labels. If multiple
+         * labels are used, then they must be connected with an AND operator. For
+         * example, the following filter applies the snooze to incidents that have a
+         * resource label with an instance ID of 1234567890, a metric label with an
+         * instance name of test_group, a metadata user label with a key of foo and a
+         * value of bar, and a metadata system label with a key of region and a value
+         * of us-central1:
+         * "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\""
+         */
+        filter?: string;
+        /**
+         * The specific AlertPolicy names for the alert that should be snoozed.
+         * The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+         * There is a limit of 16 policies per snooze. This limit is checked during
+         * snooze creation. Exactly 1 alert policy is required if filter is specified
+         * at the same time.
+         */
+        policies?: string[];
+    }
+
+    export interface SnoozeInterval {
+        /**
+         * The end of the time interval.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+         * "2014-10-02T15:01:23.045123456Z".
+         */
+        endTime: string;
+        /**
+         * The beginning of the time interval. The default value for the start time
+         * is the end time. The start time must not be later than the end time.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+         * "2014-10-02T15:01:23.045123456Z".
+         */
+        startTime?: string;
+    }
+
     export interface UptimeCheckConfigContentMatcher {
         /**
          * String or regex content to match (max 1024 bytes)
@@ -135808,6 +136650,26 @@ export namespace networkservices {
          * The identifier for this object. Format specified above.
          */
         versionName: string;
+    }
+
+}
+
+export namespace observability {
+    export interface BucketCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]
+         */
+        kmsKey?: string;
+        /**
+         * (Output)
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]
+         */
+        kmsKeyVersion: string;
+        /**
+         * (Output)
+         * The service account used to access the key.
+         */
+        serviceAccountId: string;
     }
 
 }
@@ -166583,6 +167445,10 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecBuildSpec {
         /**
+         * Optional. The service account that the Cloud Build builder runs as.
+         */
+        serviceAccount?: string;
+        /**
          * Optional. The resource name of the Cloud Build WorkerPool to use for the build.
          */
         workerPool?: string;
@@ -166603,7 +167469,6 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecDeploymentSpec {
         /**
-         * (Optional, Beta)
          * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
          * Structure is documented below.
          */
@@ -166839,7 +167704,6 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecSourceCodeSpec {
         /**
-         * (Optional, Beta)
          * Optional. Specification for the deploying from agent config.
          * Structure is documented below.
          */
@@ -166993,6 +167857,61 @@ export namespace vertex {
          * Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
          */
         runtimeRevisionName: string;
+    }
+
+    export interface AiSemanticGovernancePolicyEngineGatewayConfig {
+        /**
+         * Additional consumer projects permitted to attach their own PSC endpoint
+         * to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+         * the customer creates the PSC endpoint in a project other than this
+         * gateway's network project. Each listed project is VPC-SC enforced: it
+         * must be within the caller's service perimeter. The owning
+         * SemanticGovernancePolicyEngine's own project is always permitted
+         * implicitly and need not be listed. Format: projects/{project} (ID or number).
+         */
+        allowedProjects?: string[];
+        /**
+         * (Output)
+         * The fully qualified record name of the created A-record in Cloud DNS.
+         */
+        dnsRecord: string;
+        /**
+         * FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+         */
+        dnsZoneName?: string;
+        /**
+         * (Output)
+         * The private IP address of the PSC endpoint.
+         */
+        ipAddress: string;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * The URI of the network resource where PSC-E will be provisioned. If not
+         * provided 'default' network will be used. Format:
+         * projects/{project}/global/networks/{network}
+         */
+        network?: string;
+        /**
+         * (Output)
+         * The self-link or name of the Private Service Connect endpoint forwarding
+         * rule.
+         */
+        pscEndpoint: string;
+        /**
+         * (Output)
+         * The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+         * PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+         */
+        state: string;
+        /**
+         * The URI of the subnetwork resource where PSC-E will be provisioned. If
+         * not provided 'default' subnet will be used from the same {location}
+         * Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+         */
+        subnetwork?: string;
     }
 
     export interface AiTensorboardEncryptionSpec {
@@ -168798,8 +169717,10 @@ export namespace workstations {
          */
         code: number;
         /**
-         * (Output)
+         * (Output, Deprecated)
          * A list of messages that carry the error details.
+         *
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          */
         details: {[key: string]: string}[];
         /**
@@ -168860,8 +169781,10 @@ export namespace workstations {
          */
         code: number;
         /**
-         * (Output)
+         * (Output, Deprecated)
          * A list of messages that carry the error details.
+         *
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          */
         details: {[key: string]: string}[];
         /**

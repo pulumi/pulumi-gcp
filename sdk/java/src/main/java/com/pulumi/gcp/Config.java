@@ -460,6 +460,9 @@ public final class Config {
     public Optional<String> networkManagementCustomEndpoint() {
         return Codegen.stringProp("networkManagementCustomEndpoint").config(config).get();
     }
+    public Optional<String> networkManagementv1CustomEndpoint() {
+        return Codegen.stringProp("networkManagementv1CustomEndpoint").config(config).get();
+    }
     public Optional<String> networkSecurityCustomEndpoint() {
         return Codegen.stringProp("networkSecurityCustomEndpoint").config(config).get();
     }

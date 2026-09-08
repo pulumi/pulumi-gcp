@@ -24,6 +24,158 @@ import (
 //
 // ## Example Usage
 //
+// ### Apigee Endpoint Attachment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+//				Name:    pulumi.String("apigee-network"),
+//				Project: pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigee_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("apigee-range"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Project:      pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerServiceHealthCheck, err := compute.NewHealthCheck(ctx, "producer_service_health_check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("producer-service-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//				Project: pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("producer-service"),
+//				Region:       pulumi.String("us-central1"),
+//				HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				Project:      pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNetwork, err := compute.NewNetwork(ctx, "psc_ilb_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("psc-ilb-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//				Project:               pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-producer-subnetwork"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				IpCidrRange: pulumi.String("10.0.99.0/24"),
+//				Project:     pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbTargetService, err := compute.NewForwardingRule(ctx, "psc_ilb_target_service", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("producer-forwarding-rule"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             pscIlbNetwork.Name,
+//				Subnetwork:          pscIlbProducerSubnetwork.Name,
+//				Project:             pulumi.Any(project.ProjectId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-nat"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				IpCidrRange: pulumi.String("10.0.199.0/24"),
+//				Project:     pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbServiceAttachment, err := compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+//				Name:                 pulumi.String("my-psc-ilb"),
+//				Region:               pulumi.String("us-central1"),
+//				Description:          pulumi.String("A service attachment configured with Terraform"),
+//				EnableProxyProtocol:  pulumi.Bool(true),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				NatSubnets: pulumi.StringArray{
+//					pscIlbNat.ID().ToIDOutput().ToStringOutput(),
+//				},
+//				TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
+//				Project:       pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         pulumi.String(current.Project),
+//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewEndpointAttachment(ctx, "apigee_endpoint_attachment", &apigee.EndpointAttachmentArgs{
+//				OrgId:                apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				EndpointAttachmentId: pulumi.String("tf-test_77884"),
+//				Location:             pulumi.String("us-central1"),
+//				ServiceAttachment:    pscIlbServiceAttachment.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // EndpointAttachment can be imported using any of these accepted formats:

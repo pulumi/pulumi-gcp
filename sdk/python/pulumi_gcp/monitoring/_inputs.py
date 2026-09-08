@@ -119,6 +119,10 @@ __all__ = [
     'SloWindowsBasedSliMetricSumInRangeArgsDict',
     'SloWindowsBasedSliMetricSumInRangeRangeArgs',
     'SloWindowsBasedSliMetricSumInRangeRangeArgsDict',
+    'SnoozeCriteriaArgs',
+    'SnoozeCriteriaArgsDict',
+    'SnoozeIntervalArgs',
+    'SnoozeIntervalArgsDict',
     'UptimeCheckConfigContentMatcherArgs',
     'UptimeCheckConfigContentMatcherArgsDict',
     'UptimeCheckConfigContentMatcherJsonPathMatcherArgs',
@@ -5767,6 +5771,178 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
     @min.setter
     def min(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "min", value)
+
+
+class SnoozeCriteriaArgsDict(TypedDict):
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    When you define a snooze, you can also define a filter for that snooze.
+    The filter is a string containing one or more key-value pairs. The string
+    uses the standard https://google.aip.dev/160 filter syntax. If you define
+    a filter for a snooze, then the snooze can only apply to one alert policy.
+    When the snooze is active, incidents won't be created when the incident
+    would have key-value pairs (labels) that match those specified by the
+    filter in the snooze.
+    Snooze filters support resource, metric, and metadata labels. If multiple
+    labels are used, then they must be connected with an AND operator. For
+    example, the following filter applies the snooze to incidents that have a
+    resource label with an instance ID of 1234567890, a metric label with an
+    instance name of test_group, a metadata user label with a key of foo and a
+    value of bar, and a metadata system label with a key of region and a value
+    of us-central1:
+    "filter": "resource.labels.instance_id=\\"1234567890\\" AND metric.labels.instance_name=\\"test_group\\" AND metadata.user_labels.foo=\\"bar\\" AND metadata.system_labels.region=\\"us-central1\\""
+    """
+    policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The specific AlertPolicy names for the alert that should be snoozed.
+    The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+    There is a limit of 16 policies per snooze. This limit is checked during
+    snooze creation. Exactly 1 alert policy is required if filter is specified
+    at the same time.
+    """
+
+@pulumi.input_type
+class SnoozeCriteriaArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] filter: When you define a snooze, you can also define a filter for that snooze.
+               The filter is a string containing one or more key-value pairs. The string
+               uses the standard https://google.aip.dev/160 filter syntax. If you define
+               a filter for a snooze, then the snooze can only apply to one alert policy.
+               When the snooze is active, incidents won't be created when the incident
+               would have key-value pairs (labels) that match those specified by the
+               filter in the snooze.
+               Snooze filters support resource, metric, and metadata labels. If multiple
+               labels are used, then they must be connected with an AND operator. For
+               example, the following filter applies the snooze to incidents that have a
+               resource label with an instance ID of 1234567890, a metric label with an
+               instance name of test_group, a metadata user label with a key of foo and a
+               value of bar, and a metadata system label with a key of region and a value
+               of us-central1:
+               "filter": "resource.labels.instance_id=\\"1234567890\\" AND metric.labels.instance_name=\\"test_group\\" AND metadata.user_labels.foo=\\"bar\\" AND metadata.system_labels.region=\\"us-central1\\""
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: The specific AlertPolicy names for the alert that should be snoozed.
+               The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+               There is a limit of 16 policies per snooze. This limit is checked during
+               snooze creation. Exactly 1 alert policy is required if filter is specified
+               at the same time.
+        """
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        When you define a snooze, you can also define a filter for that snooze.
+        The filter is a string containing one or more key-value pairs. The string
+        uses the standard https://google.aip.dev/160 filter syntax. If you define
+        a filter for a snooze, then the snooze can only apply to one alert policy.
+        When the snooze is active, incidents won't be created when the incident
+        would have key-value pairs (labels) that match those specified by the
+        filter in the snooze.
+        Snooze filters support resource, metric, and metadata labels. If multiple
+        labels are used, then they must be connected with an AND operator. For
+        example, the following filter applies the snooze to incidents that have a
+        resource label with an instance ID of 1234567890, a metric label with an
+        instance name of test_group, a metadata user label with a key of foo and a
+        value of bar, and a metadata system label with a key of region and a value
+        of us-central1:
+        "filter": "resource.labels.instance_id=\\"1234567890\\" AND metric.labels.instance_name=\\"test_group\\" AND metadata.user_labels.foo=\\"bar\\" AND metadata.system_labels.region=\\"us-central1\\""
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The specific AlertPolicy names for the alert that should be snoozed.
+        The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+        There is a limit of 16 policies per snooze. This limit is checked during
+        snooze creation. Exactly 1 alert policy is required if filter is specified
+        at the same time.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "policies", value)
+
+
+class SnoozeIntervalArgsDict(TypedDict):
+    end_time: pulumi.Input[_builtins.str]
+    """
+    The end of the time interval.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+    up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+    "2014-10-02T15:01:23.045123456Z".
+    """
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The beginning of the time interval. The default value for the start time
+    is the end time. The start time must not be later than the end time.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+    up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+    "2014-10-02T15:01:23.045123456Z".
+    """
+
+@pulumi.input_type
+class SnoozeIntervalArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[_builtins.str],
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end_time: The end of the time interval.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+               up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+               "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] start_time: The beginning of the time interval. The default value for the start time
+               is the end time. The start time must not be later than the end time.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+               up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+               "2014-10-02T15:01:23.045123456Z".
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        The end of the time interval.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+        "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The beginning of the time interval. The default value for the start time
+        is the end time. The start time must not be later than the end time.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+        "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
 
 
 class UptimeCheckConfigContentMatcherArgsDict(TypedDict):

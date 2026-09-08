@@ -77,6 +77,20 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _webWidgetConfigs = value;
         }
 
+        [Input("whatsappConfigs")]
+        private InputList<Inputs.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs>? _whatsappConfigs;
+
+        /// <summary>
+        /// (Output)
+        /// Configuration specific to WhatsApp deployments.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs> WhatsappConfigs
+        {
+            get => _whatsappConfigs ?? (_whatsappConfigs = new InputList<Inputs.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs>());
+            set => _whatsappConfigs = value;
+        }
+
         public AppVersionSnapshotAppDefaultChannelProfileArgs()
         {
         }

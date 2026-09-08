@@ -15270,6 +15270,8 @@ type WorkerPoolTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *WorkerPoolTemplateContainerResources `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher *bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	// Structure is documented below.
 	StartupProbe *WorkerPoolTemplateContainerStartupProbe `pulumi:"startupProbe"`
@@ -15311,6 +15313,8 @@ type WorkerPoolTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources WorkerPoolTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolPtrInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	// Structure is documented below.
 	StartupProbe WorkerPoolTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
@@ -15413,6 +15417,11 @@ func (o WorkerPoolTemplateContainerOutput) Name() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o WorkerPoolTemplateContainerOutput) Resources() WorkerPoolTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) *WorkerPoolTemplateContainerResources { return v.Resources }).(WorkerPoolTemplateContainerResourcesPtrOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o WorkerPoolTemplateContainerOutput) SandboxLauncher() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainer) *bool { return v.SandboxLauncher }).(pulumi.BoolPtrOutput)
 }
 
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
@@ -30035,6 +30044,8 @@ type GetWorkerPoolTemplateContainer struct {
 	Name string `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources []GetWorkerPoolTemplateContainerResource `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	StartupProbes []GetWorkerPoolTemplateContainerStartupProbe `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
@@ -30071,6 +30082,8 @@ type GetWorkerPoolTemplateContainerArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources GetWorkerPoolTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	StartupProbes GetWorkerPoolTemplateContainerStartupProbeArrayInput `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
@@ -30170,6 +30183,11 @@ func (o GetWorkerPoolTemplateContainerOutput) Name() pulumi.StringOutput {
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetWorkerPoolTemplateContainerOutput) Resources() GetWorkerPoolTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []GetWorkerPoolTemplateContainerResource { return v.Resources }).(GetWorkerPoolTemplateContainerResourceArrayOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o GetWorkerPoolTemplateContainerOutput) SandboxLauncher() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) bool { return v.SandboxLauncher }).(pulumi.BoolOutput)
 }
 
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.

@@ -26339,6 +26339,8 @@ func (o AiReasoningEngineSpecPtrOutput) SourceCodeSpec() AiReasoningEngineSpecSo
 }
 
 type AiReasoningEngineSpecBuildSpec struct {
+	// Optional. The service account that the Cloud Build builder runs as.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
 	WorkerPool *string `pulumi:"workerPool"`
 }
@@ -26355,6 +26357,8 @@ type AiReasoningEngineSpecBuildSpecInput interface {
 }
 
 type AiReasoningEngineSpecBuildSpecArgs struct {
+	// Optional. The service account that the Cloud Build builder runs as.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
 	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
 }
@@ -26436,6 +26440,11 @@ func (o AiReasoningEngineSpecBuildSpecOutput) ToAiReasoningEngineSpecBuildSpecPt
 	}).(AiReasoningEngineSpecBuildSpecPtrOutput)
 }
 
+// Optional. The service account that the Cloud Build builder runs as.
+func (o AiReasoningEngineSpecBuildSpecOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecBuildSpec) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The resource name of the Cloud Build WorkerPool to use for the build.
 func (o AiReasoningEngineSpecBuildSpecOutput) WorkerPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecBuildSpec) *string { return v.WorkerPool }).(pulumi.StringPtrOutput)
@@ -26463,6 +26472,16 @@ func (o AiReasoningEngineSpecBuildSpecPtrOutput) Elem() AiReasoningEngineSpecBui
 		var ret AiReasoningEngineSpecBuildSpec
 		return ret
 	}).(AiReasoningEngineSpecBuildSpecOutput)
+}
+
+// Optional. The service account that the Cloud Build builder runs as.
+func (o AiReasoningEngineSpecBuildSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecBuildSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. The resource name of the Cloud Build WorkerPool to use for the build.
@@ -26640,7 +26659,6 @@ func (o AiReasoningEngineSpecContainerSpecPtrOutput) Port() pulumi.IntPtrOutput 
 }
 
 type AiReasoningEngineSpecDeploymentSpec struct {
-	// (Optional, Beta)
 	// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
 	// Structure is documented below.
 	AgentGatewayConfig *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig `pulumi:"agentGatewayConfig"`
@@ -26706,7 +26724,6 @@ type AiReasoningEngineSpecDeploymentSpecInput interface {
 }
 
 type AiReasoningEngineSpecDeploymentSpecArgs struct {
-	// (Optional, Beta)
 	// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
 	// Structure is documented below.
 	AgentGatewayConfig AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrInput `pulumi:"agentGatewayConfig"`
@@ -26837,7 +26854,6 @@ func (o AiReasoningEngineSpecDeploymentSpecOutput) ToAiReasoningEngineSpecDeploy
 	}).(AiReasoningEngineSpecDeploymentSpecPtrOutput)
 }
 
-// (Optional, Beta)
 // Optional. Agent Gateway configuration for a Reasoning Engine deployment.
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecOutput) AgentGatewayConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
@@ -26954,7 +26970,6 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) Elem() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecDeploymentSpecOutput)
 }
 
-// (Optional, Beta)
 // Optional. Agent Gateway configuration for a Reasoning Engine deployment.
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) AgentGatewayConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
@@ -28709,7 +28724,6 @@ func (o AiReasoningEngineSpecPackageSpecPtrOutput) RequirementsGcsUri() pulumi.S
 }
 
 type AiReasoningEngineSpecSourceCodeSpec struct {
-	// (Optional, Beta)
 	// Optional. Specification for the deploying from agent config.
 	// Structure is documented below.
 	AgentConfigSource *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource `pulumi:"agentConfigSource"`
@@ -28739,7 +28753,6 @@ type AiReasoningEngineSpecSourceCodeSpecInput interface {
 }
 
 type AiReasoningEngineSpecSourceCodeSpecArgs struct {
-	// (Optional, Beta)
 	// Optional. Specification for the deploying from agent config.
 	// Structure is documented below.
 	AgentConfigSource AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrInput `pulumi:"agentConfigSource"`
@@ -28834,7 +28847,6 @@ func (o AiReasoningEngineSpecSourceCodeSpecOutput) ToAiReasoningEngineSpecSource
 	}).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
 }
 
-// (Optional, Beta)
 // Optional. Specification for the deploying from agent config.
 // Structure is documented below.
 func (o AiReasoningEngineSpecSourceCodeSpecOutput) AgentConfigSource() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
@@ -28899,7 +28911,6 @@ func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) Elem() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecSourceCodeSpecOutput)
 }
 
-// (Optional, Beta)
 // Optional. Specification for the deploying from agent config.
 // Structure is documented below.
 func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) AgentConfigSource() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
@@ -30766,6 +30777,223 @@ func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput) Index
 	}).(AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput)
 }
 
+type AiSemanticGovernancePolicyEngineGatewayConfig struct {
+	// Additional consumer projects permitted to attach their own PSC endpoint
+	// to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+	// the customer creates the PSC endpoint in a project other than this
+	// gateway's network project. Each listed project is VPC-SC enforced: it
+	// must be within the caller's service perimeter. The owning
+	// SemanticGovernancePolicyEngine's own project is always permitted
+	// implicitly and need not be listed. Format: projects/{project} (ID or number).
+	AllowedProjects []string `pulumi:"allowedProjects"`
+	// (Output)
+	// The fully qualified record name of the created A-record in Cloud DNS.
+	DnsRecord *string `pulumi:"dnsRecord"`
+	// FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+	DnsZoneName *string `pulumi:"dnsZoneName"`
+	// (Output)
+	// The private IP address of the PSC endpoint.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// The URI of the network resource where PSC-E will be provisioned. If not
+	// provided 'default' network will be used. Format:
+	// projects/{project}/global/networks/{network}
+	Network *string `pulumi:"network"`
+	// (Output)
+	// The self-link or name of the Private Service Connect endpoint forwarding
+	// rule.
+	PscEndpoint *string `pulumi:"pscEndpoint"`
+	// (Output)
+	// The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+	// PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+	State *string `pulumi:"state"`
+	// The URI of the subnetwork resource where PSC-E will be provisioned. If
+	// not provided 'default' subnet will be used from the same {location}
+	// Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// AiSemanticGovernancePolicyEngineGatewayConfigInput is an input type that accepts AiSemanticGovernancePolicyEngineGatewayConfigArgs and AiSemanticGovernancePolicyEngineGatewayConfigOutput values.
+// You can construct a concrete instance of `AiSemanticGovernancePolicyEngineGatewayConfigInput` via:
+//
+//	AiSemanticGovernancePolicyEngineGatewayConfigArgs{...}
+type AiSemanticGovernancePolicyEngineGatewayConfigInput interface {
+	pulumi.Input
+
+	ToAiSemanticGovernancePolicyEngineGatewayConfigOutput() AiSemanticGovernancePolicyEngineGatewayConfigOutput
+	ToAiSemanticGovernancePolicyEngineGatewayConfigOutputWithContext(context.Context) AiSemanticGovernancePolicyEngineGatewayConfigOutput
+}
+
+type AiSemanticGovernancePolicyEngineGatewayConfigArgs struct {
+	// Additional consumer projects permitted to attach their own PSC endpoint
+	// to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+	// the customer creates the PSC endpoint in a project other than this
+	// gateway's network project. Each listed project is VPC-SC enforced: it
+	// must be within the caller's service perimeter. The owning
+	// SemanticGovernancePolicyEngine's own project is always permitted
+	// implicitly and need not be listed. Format: projects/{project} (ID or number).
+	AllowedProjects pulumi.StringArrayInput `pulumi:"allowedProjects"`
+	// (Output)
+	// The fully qualified record name of the created A-record in Cloud DNS.
+	DnsRecord pulumi.StringPtrInput `pulumi:"dnsRecord"`
+	// FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+	DnsZoneName pulumi.StringPtrInput `pulumi:"dnsZoneName"`
+	// (Output)
+	// The private IP address of the PSC endpoint.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URI of the network resource where PSC-E will be provisioned. If not
+	// provided 'default' network will be used. Format:
+	// projects/{project}/global/networks/{network}
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// (Output)
+	// The self-link or name of the Private Service Connect endpoint forwarding
+	// rule.
+	PscEndpoint pulumi.StringPtrInput `pulumi:"pscEndpoint"`
+	// (Output)
+	// The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+	// PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The URI of the subnetwork resource where PSC-E will be provisioned. If
+	// not provided 'default' subnet will be used from the same {location}
+	// Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (AiSemanticGovernancePolicyEngineGatewayConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSemanticGovernancePolicyEngineGatewayConfig)(nil)).Elem()
+}
+
+func (i AiSemanticGovernancePolicyEngineGatewayConfigArgs) ToAiSemanticGovernancePolicyEngineGatewayConfigOutput() AiSemanticGovernancePolicyEngineGatewayConfigOutput {
+	return i.ToAiSemanticGovernancePolicyEngineGatewayConfigOutputWithContext(context.Background())
+}
+
+func (i AiSemanticGovernancePolicyEngineGatewayConfigArgs) ToAiSemanticGovernancePolicyEngineGatewayConfigOutputWithContext(ctx context.Context) AiSemanticGovernancePolicyEngineGatewayConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSemanticGovernancePolicyEngineGatewayConfigOutput)
+}
+
+// AiSemanticGovernancePolicyEngineGatewayConfigArrayInput is an input type that accepts AiSemanticGovernancePolicyEngineGatewayConfigArray and AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput values.
+// You can construct a concrete instance of `AiSemanticGovernancePolicyEngineGatewayConfigArrayInput` via:
+//
+//	AiSemanticGovernancePolicyEngineGatewayConfigArray{ AiSemanticGovernancePolicyEngineGatewayConfigArgs{...} }
+type AiSemanticGovernancePolicyEngineGatewayConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiSemanticGovernancePolicyEngineGatewayConfigArrayOutput() AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput
+	ToAiSemanticGovernancePolicyEngineGatewayConfigArrayOutputWithContext(context.Context) AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput
+}
+
+type AiSemanticGovernancePolicyEngineGatewayConfigArray []AiSemanticGovernancePolicyEngineGatewayConfigInput
+
+func (AiSemanticGovernancePolicyEngineGatewayConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiSemanticGovernancePolicyEngineGatewayConfig)(nil)).Elem()
+}
+
+func (i AiSemanticGovernancePolicyEngineGatewayConfigArray) ToAiSemanticGovernancePolicyEngineGatewayConfigArrayOutput() AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput {
+	return i.ToAiSemanticGovernancePolicyEngineGatewayConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiSemanticGovernancePolicyEngineGatewayConfigArray) ToAiSemanticGovernancePolicyEngineGatewayConfigArrayOutputWithContext(ctx context.Context) AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput)
+}
+
+type AiSemanticGovernancePolicyEngineGatewayConfigOutput struct{ *pulumi.OutputState }
+
+func (AiSemanticGovernancePolicyEngineGatewayConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSemanticGovernancePolicyEngineGatewayConfig)(nil)).Elem()
+}
+
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) ToAiSemanticGovernancePolicyEngineGatewayConfigOutput() AiSemanticGovernancePolicyEngineGatewayConfigOutput {
+	return o
+}
+
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) ToAiSemanticGovernancePolicyEngineGatewayConfigOutputWithContext(ctx context.Context) AiSemanticGovernancePolicyEngineGatewayConfigOutput {
+	return o
+}
+
+// Additional consumer projects permitted to attach their own PSC endpoint
+// to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+// the customer creates the PSC endpoint in a project other than this
+// gateway's network project. Each listed project is VPC-SC enforced: it
+// must be within the caller's service perimeter. The owning
+// SemanticGovernancePolicyEngine's own project is always permitted
+// implicitly and need not be listed. Format: projects/{project} (ID or number).
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) AllowedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) []string { return v.AllowedProjects }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The fully qualified record name of the created A-record in Cloud DNS.
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) DnsRecord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) *string { return v.DnsRecord }).(pulumi.StringPtrOutput)
+}
+
+// FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) DnsZoneName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) *string { return v.DnsZoneName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The private IP address of the PSC endpoint.
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URI of the network resource where PSC-E will be provisioned. If not
+// provided 'default' network will be used. Format:
+// projects/{project}/global/networks/{network}
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The self-link or name of the Private Service Connect endpoint forwarding
+// rule.
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) PscEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) *string { return v.PscEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+// PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the subnetwork resource where PSC-E will be provisioned. If
+// not provided 'default' subnet will be used from the same {location}
+// Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+func (o AiSemanticGovernancePolicyEngineGatewayConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSemanticGovernancePolicyEngineGatewayConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiSemanticGovernancePolicyEngineGatewayConfig)(nil)).Elem()
+}
+
+func (o AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput) ToAiSemanticGovernancePolicyEngineGatewayConfigArrayOutput() AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput {
+	return o
+}
+
+func (o AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput) ToAiSemanticGovernancePolicyEngineGatewayConfigArrayOutputWithContext(ctx context.Context) AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput {
+	return o
+}
+
+func (o AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput) Index(i pulumi.IntInput) AiSemanticGovernancePolicyEngineGatewayConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiSemanticGovernancePolicyEngineGatewayConfig {
+		return vs[0].([]AiSemanticGovernancePolicyEngineGatewayConfig)[vs[1].(int)]
+	}).(AiSemanticGovernancePolicyEngineGatewayConfigOutput)
+}
+
 type AiTensorboardEncryptionSpec struct {
 	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -32201,6 +32429,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualPtrInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualTargetInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSemanticGovernancePolicyEngineGatewayConfigInput)(nil)).Elem(), AiSemanticGovernancePolicyEngineGatewayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSemanticGovernancePolicyEngineGatewayConfigArrayInput)(nil)).Elem(), AiSemanticGovernancePolicyEngineGatewayConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexInput)(nil)).Elem(), GetAiIndexDeployedIndexArgs{})
@@ -32576,6 +32806,8 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput{})
+	pulumi.RegisterOutputType(AiSemanticGovernancePolicyEngineGatewayConfigOutput{})
+	pulumi.RegisterOutputType(AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexOutput{})

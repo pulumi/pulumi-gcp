@@ -280,9 +280,10 @@ import (
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{
-//					Agent:         pulumi.String("projects/example/locations/us/agents/fake-agent"),
-//					FlowId:        pulumi.String("fake-flow"),
-//					EnvironmentId: pulumi.String("fake-env"),
+//					Agent:                pulumi.String("projects/example/locations/us/agents/fake-agent"),
+//					FlowId:               pulumi.String("fake-flow"),
+//					EnvironmentId:        pulumi.String("fake-env"),
+//					LanguageCodeVariable: pulumi.String("language_code"),
 //					InputVariableMapping: pulumi.StringMap{
 //						"example": pulumi.String("1"),
 //					},

@@ -67,6 +67,21 @@ public final class LicenseConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Timestamp of the most recent user-initiated update.
+     * 
+     */
+    @Import(name="lastUserUpdateTime")
+    private @Nullable Output<String> lastUserUpdateTime;
+
+    /**
+     * @return Timestamp of the most recent user-initiated update.
+     * 
+     */
+    public Optional<Output<String>> lastUserUpdateTime() {
+        return Optional.ofNullable(this.lastUserUpdateTime);
+    }
+
+    /**
      * The unique id of the license config.
      * 
      */
@@ -204,6 +219,7 @@ public final class LicenseConfigState extends com.pulumi.resources.ResourceArgs 
         this.autoRenew = $.autoRenew;
         this.endDate = $.endDate;
         this.freeTrial = $.freeTrial;
+        this.lastUserUpdateTime = $.lastUserUpdateTime;
         this.licenseConfigId = $.licenseConfigId;
         this.licenseCount = $.licenseCount;
         this.location = $.location;
@@ -295,6 +311,27 @@ public final class LicenseConfigState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder freeTrial(Boolean freeTrial) {
             return freeTrial(Output.of(freeTrial));
+        }
+
+        /**
+         * @param lastUserUpdateTime Timestamp of the most recent user-initiated update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUserUpdateTime(@Nullable Output<String> lastUserUpdateTime) {
+            $.lastUserUpdateTime = lastUserUpdateTime;
+            return this;
+        }
+
+        /**
+         * @param lastUserUpdateTime Timestamp of the most recent user-initiated update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUserUpdateTime(String lastUserUpdateTime) {
+            return lastUserUpdateTime(Output.of(lastUserUpdateTime));
         }
 
         /**

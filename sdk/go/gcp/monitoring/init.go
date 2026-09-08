@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationChannel{}
 	case "gcp:monitoring/slo:Slo":
 		r = &Slo{}
+	case "gcp:monitoring/snooze:Snooze":
+		r = &Snooze{}
 	case "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig":
 		r = &UptimeCheckConfig{}
 	default:
@@ -97,6 +99,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"monitoring/slo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"monitoring/snooze",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

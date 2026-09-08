@@ -567,9 +567,9 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         To get more information about ReasoningEngine, see:
 
-        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+        * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
         * How-to Guides
-            * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+            * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 
         ## Example Usage
 
@@ -858,6 +858,9 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "agent_framework": "google-adk",
                 "class_methods": json.dumps(class_methods),
                 "service_account": service_account.email,
+                "build_spec": {
+                    "service_account": service_account.email,
+                },
                 "deployment_spec": {
                     "min_instances": 1,
                     "max_instances": 3,
@@ -1208,9 +1211,9 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         To get more information about ReasoningEngine, see:
 
-        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+        * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
         * How-to Guides
-            * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+            * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 
         ## Example Usage
 
@@ -1499,6 +1502,9 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "agent_framework": "google-adk",
                 "class_methods": json.dumps(class_methods),
                 "service_account": service_account.email,
+                "build_spec": {
+                    "service_account": service_account.email,
+                },
                 "deployment_spec": {
                     "min_instances": 1,
                     "max_instances": 3,

@@ -189,6 +189,13 @@ type AuthzExtension struct {
 	// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
 	// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen pulumi.BoolOutput `pulumi:"failOpen"`
+	// List of the Envoy attributes to forward to the extension server. The attributes
+	// provided here are included as part of the `ProcessingRequest.attributes` field
+	// (of type `map`), where the keys are the attribute names. Refer to the
+	// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+	// for the names of attributes that can be forwarded. If omitted, no attributes
+	// are sent. Each element is a string indicating the attribute name.
+	ForwardAttributes pulumi.StringArrayOutput `pulumi:"forwardAttributes"`
 	// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders pulumi.StringArrayOutput `pulumi:"forwardHeaders"`
 	// Set of labels associated with the AuthzExtension resource.
@@ -309,6 +316,13 @@ type authzExtensionState struct {
 	// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
 	// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen *bool `pulumi:"failOpen"`
+	// List of the Envoy attributes to forward to the extension server. The attributes
+	// provided here are included as part of the `ProcessingRequest.attributes` field
+	// (of type `map`), where the keys are the attribute names. Refer to the
+	// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+	// for the names of attributes that can be forwarded. If omitted, no attributes
+	// are sent. Each element is a string indicating the attribute name.
+	ForwardAttributes []string `pulumi:"forwardAttributes"`
 	// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders []string `pulumi:"forwardHeaders"`
 	// Set of labels associated with the AuthzExtension resource.
@@ -386,6 +400,13 @@ type AuthzExtensionState struct {
 	// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
 	// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen pulumi.BoolPtrInput
+	// List of the Envoy attributes to forward to the extension server. The attributes
+	// provided here are included as part of the `ProcessingRequest.attributes` field
+	// (of type `map`), where the keys are the attribute names. Refer to the
+	// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+	// for the names of attributes that can be forwarded. If omitted, no attributes
+	// are sent. Each element is a string indicating the attribute name.
+	ForwardAttributes pulumi.StringArrayInput
 	// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders pulumi.StringArrayInput
 	// Set of labels associated with the AuthzExtension resource.
@@ -463,6 +484,13 @@ type authzExtensionArgs struct {
 	// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
 	// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen *bool `pulumi:"failOpen"`
+	// List of the Envoy attributes to forward to the extension server. The attributes
+	// provided here are included as part of the `ProcessingRequest.attributes` field
+	// (of type `map`), where the keys are the attribute names. Refer to the
+	// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+	// for the names of attributes that can be forwarded. If omitted, no attributes
+	// are sent. Each element is a string indicating the attribute name.
+	ForwardAttributes []string `pulumi:"forwardAttributes"`
 	// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders []string `pulumi:"forwardHeaders"`
 	// Set of labels associated with the AuthzExtension resource.
@@ -532,6 +560,13 @@ type AuthzExtensionArgs struct {
 	// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
 	// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen pulumi.BoolPtrInput
+	// List of the Envoy attributes to forward to the extension server. The attributes
+	// provided here are included as part of the `ProcessingRequest.attributes` field
+	// (of type `map`), where the keys are the attribute names. Refer to the
+	// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+	// for the names of attributes that can be forwarded. If omitted, no attributes
+	// are sent. Each element is a string indicating the attribute name.
+	ForwardAttributes pulumi.StringArrayInput
 	// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders pulumi.StringArrayInput
 	// Set of labels associated with the AuthzExtension resource.
@@ -706,6 +741,16 @@ func (o AuthzExtensionOutput) EffectiveLabels() pulumi.StringMapOutput {
 // * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 func (o AuthzExtensionOutput) FailOpen() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AuthzExtension) pulumi.BoolOutput { return v.FailOpen }).(pulumi.BoolOutput)
+}
+
+// List of the Envoy attributes to forward to the extension server. The attributes
+// provided here are included as part of the `ProcessingRequest.attributes` field
+// (of type `map`), where the keys are the attribute names. Refer to the
+// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+// for the names of attributes that can be forwarded. If omitted, no attributes
+// are sent. Each element is a string indicating the attribute name.
+func (o AuthzExtensionOutput) ForwardAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthzExtension) pulumi.StringArrayOutput { return v.ForwardAttributes }).(pulumi.StringArrayOutput)
 }
 
 // List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.

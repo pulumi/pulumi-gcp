@@ -168,6 +168,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly networkConnectivityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkConnectivityv1CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkManagementCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly networkManagementv1CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkSecurityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkServicesCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly observabilityCustomEndpoint: pulumi.Output<string | undefined>;
@@ -393,6 +394,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["networkConnectivityCustomEndpoint"] = args?.networkConnectivityCustomEndpoint;
             resourceInputs["networkConnectivityv1CustomEndpoint"] = args?.networkConnectivityv1CustomEndpoint;
             resourceInputs["networkManagementCustomEndpoint"] = args?.networkManagementCustomEndpoint;
+            resourceInputs["networkManagementv1CustomEndpoint"] = args?.networkManagementv1CustomEndpoint;
             resourceInputs["networkSecurityCustomEndpoint"] = args?.networkSecurityCustomEndpoint;
             resourceInputs["networkServicesCustomEndpoint"] = args?.networkServicesCustomEndpoint;
             resourceInputs["observabilityCustomEndpoint"] = args?.observabilityCustomEndpoint;
@@ -631,6 +633,7 @@ export interface ProviderArgs {
     networkConnectivityCustomEndpoint?: pulumi.Input<string | undefined>;
     networkConnectivityv1CustomEndpoint?: pulumi.Input<string | undefined>;
     networkManagementCustomEndpoint?: pulumi.Input<string | undefined>;
+    networkManagementv1CustomEndpoint?: pulumi.Input<string | undefined>;
     networkSecurityCustomEndpoint?: pulumi.Input<string | undefined>;
     networkServicesCustomEndpoint?: pulumi.Input<string | undefined>;
     observabilityCustomEndpoint?: pulumi.Input<string | undefined>;

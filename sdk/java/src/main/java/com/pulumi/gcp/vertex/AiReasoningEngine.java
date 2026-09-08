@@ -25,9 +25,9 @@ import javax.annotation.Nullable;
  * 
  * To get more information about ReasoningEngine, see:
  * 
- * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+ * * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
  * * How-to Guides
- *     * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+ *     * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
  * 
  * ## Example Usage
  * 
@@ -477,6 +477,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecBuildSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
@@ -603,6 +604,9 @@ import javax.annotation.Nullable;
  *                 .classMethods(serializeJson(
  *                     classMethods))
  *                 .serviceAccount(serviceAccount.email())
+ *                 .buildSpec(AiReasoningEngineSpecBuildSpecArgs.builder()
+ *                     .serviceAccount(serviceAccount.email())
+ *                     .build())
  *                 .deploymentSpec(AiReasoningEngineSpecDeploymentSpecArgs.builder()
  *                     .minInstances(1)
  *                     .maxInstances(3)

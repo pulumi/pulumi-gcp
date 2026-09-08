@@ -59,6 +59,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly string? DisplayName;
         /// <summary>
         /// (Output)
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppVersionSnapshotAppErrorHandlingSetting> ErrorHandlingSettings;
+        /// <summary>
+        /// (Output)
         /// ETag used to ensure the object hasn't changed during a read-modify-write
         /// operation. If the etag is empty, the update will overwrite any concurrent
         /// changes.
@@ -138,6 +144,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppVersionSnapshotAppVariableDeclaration> VariableDeclarations;
+        /// <summary>
+        /// (Output)
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppVersionSnapshotAppVpcScSetting> VpcScSettings;
 
         [OutputConstructor]
         private AppVersionSnapshotApp(
@@ -156,6 +168,8 @@ namespace Pulumi.Gcp.Ces.Outputs
             string? description,
 
             string? displayName,
+
+            ImmutableArray<Outputs.AppVersionSnapshotAppErrorHandlingSetting> errorHandlingSettings,
 
             string? etag,
 
@@ -181,7 +195,9 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             string? updateTime,
 
-            ImmutableArray<Outputs.AppVersionSnapshotAppVariableDeclaration> variableDeclarations)
+            ImmutableArray<Outputs.AppVersionSnapshotAppVariableDeclaration> variableDeclarations,
+
+            ImmutableArray<Outputs.AppVersionSnapshotAppVpcScSetting> vpcScSettings)
         {
             AudioProcessingConfigs = audioProcessingConfigs;
             ClientCertificateSettings = clientCertificateSettings;
@@ -191,6 +207,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             DeploymentCount = deploymentCount;
             Description = description;
             DisplayName = displayName;
+            ErrorHandlingSettings = errorHandlingSettings;
             Etag = etag;
             EvaluationMetricsThresholds = evaluationMetricsThresholds;
             GlobalInstruction = globalInstruction;
@@ -204,6 +221,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             TimeZoneSettings = timeZoneSettings;
             UpdateTime = updateTime;
             VariableDeclarations = variableDeclarations;
+            VpcScSettings = vpcScSettings;
         }
     }
 }

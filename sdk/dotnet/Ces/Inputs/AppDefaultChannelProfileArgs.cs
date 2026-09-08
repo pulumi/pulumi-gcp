@@ -59,6 +59,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("webWidgetConfig")]
         public Input<Inputs.AppDefaultChannelProfileWebWidgetConfigArgs>? WebWidgetConfig { get; set; }
 
+        /// <summary>
+        /// Configuration specific to WhatsApp deployments.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("whatsappConfig")]
+        public Input<Inputs.AppDefaultChannelProfileWhatsappConfigArgs>? WhatsappConfig { get; set; }
+
         public AppDefaultChannelProfileArgs()
         {
         }

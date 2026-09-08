@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:networkmanagement/connectivityTest:ConnectivityTest":
 		r = &ConnectivityTest{}
+	case "gcp:networkmanagement/networkMonitoringProvider:NetworkMonitoringProvider":
+		r = &NetworkMonitoringProvider{}
 	case "gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig":
 		r = &OrganizationVpcFlowLogsConfig{}
 	case "gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkmanagement/connectivityTest",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkmanagement/networkMonitoringProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

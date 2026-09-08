@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			defaultAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "default", &vertex.AiReasoningEngineArgs{
-//				DisplayName: pulumi.String("vertex-mds-_91657"),
+//				DisplayName: pulumi.String("vertex-mds-_89946"),
 //				Description: pulumi.String("Retrieves tenant project number"),
 //				Region:      pulumi.String("us-central1"),
 //				Spec: &vertex.AiReasoningEngineSpecArgs{

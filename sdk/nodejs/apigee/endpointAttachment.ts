@@ -17,6 +17,100 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Apigee Endpoint Attachment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigee_network", {
+ *     name: "apigee-network",
+ *     project: current.then(current => current.project),
+ * });
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
+ *     name: "apigee-range",
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ *     project: current.then(current => current.project),
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigee_vpc_connection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const producerServiceHealthCheck = new gcp.compute.HealthCheck("producer_service_health_check", {
+ *     name: "producer-service-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ *     project: current.then(current => current.project),
+ * });
+ * const producerServiceBackend = new gcp.compute.RegionBackendService("producer_service_backend", {
+ *     name: "producer-service",
+ *     region: "us-central1",
+ *     healthChecks: producerServiceHealthCheck.id,
+ *     project: current.then(current => current.project),
+ * });
+ * const pscIlbNetwork = new gcp.compute.Network("psc_ilb_network", {
+ *     name: "psc-ilb-network",
+ *     autoCreateSubnetworks: false,
+ *     project: current.then(current => current.project),
+ * });
+ * const pscIlbProducerSubnetwork = new gcp.compute.Subnetwork("psc_ilb_producer_subnetwork", {
+ *     name: "psc-ilb-producer-subnetwork",
+ *     region: "us-central1",
+ *     network: pscIlbNetwork.id,
+ *     ipCidrRange: "10.0.99.0/24",
+ *     project: current.then(current => current.project),
+ * });
+ * const pscIlbTargetService = new gcp.compute.ForwardingRule("psc_ilb_target_service", {
+ *     name: "producer-forwarding-rule",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: producerServiceBackend.id,
+ *     allPorts: true,
+ *     network: pscIlbNetwork.name,
+ *     subnetwork: pscIlbProducerSubnetwork.name,
+ *     project: project.projectId,
+ * });
+ * const pscIlbNat = new gcp.compute.Subnetwork("psc_ilb_nat", {
+ *     name: "psc-ilb-nat",
+ *     region: "us-central1",
+ *     network: pscIlbNetwork.id,
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     ipCidrRange: "10.0.199.0/24",
+ *     project: current.then(current => current.project),
+ * });
+ * const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("psc_ilb_service_attachment", {
+ *     name: "my-psc-ilb",
+ *     region: "us-central1",
+ *     description: "A service attachment configured with Terraform",
+ *     enableProxyProtocol: true,
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     natSubnets: [pscIlbNat.id],
+ *     targetService: pscIlbTargetService.id,
+ *     project: current.then(current => current.project),
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
+ * });
+ * const apigeeEndpointAttachment = new gcp.apigee.EndpointAttachment("apigee_endpoint_attachment", {
+ *     orgId: apigeeOrg.id,
+ *     endpointAttachmentId: "tf-test_77884",
+ *     location: "us-central1",
+ *     serviceAttachment: pscIlbServiceAttachment.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * EndpointAttachment can be imported using any of these accepted formats:

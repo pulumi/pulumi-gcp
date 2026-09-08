@@ -614,6 +614,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('networkManagementCustomEndpoint')
 
     @_builtins.property
+    def network_managementv1_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('networkManagementv1CustomEndpoint')
+
+    @_builtins.property
     def network_security_custom_endpoint(self) -> Optional[str]:
         return __config__.get('networkSecurityCustomEndpoint')
 

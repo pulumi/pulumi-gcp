@@ -10,12 +10,14 @@ import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigArgs;
 import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppDataStoreSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileArgs;
+import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsArgs;
 import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppModelSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppVariableDeclarationArgs;
+import com.pulumi.gcp.ces.inputs.AppVpcScSettingsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -173,6 +175,23 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+
+    /**
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="errorHandlingSettings")
+    private @Nullable Output<AppErrorHandlingSettingsArgs> errorHandlingSettings;
+
+    /**
+     * @return Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppErrorHandlingSettingsArgs>> errorHandlingSettings() {
+        return Optional.ofNullable(this.errorHandlingSettings);
     }
 
     /**
@@ -413,6 +432,23 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.variableDeclarations);
     }
 
+    /**
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vpcScSettings")
+    private @Nullable Output<AppVpcScSettingsArgs> vpcScSettings;
+
+    /**
+     * @return VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppVpcScSettingsArgs>> vpcScSettings() {
+        return Optional.ofNullable(this.vpcScSettings);
+    }
+
     private AppArgs() {}
 
     private AppArgs(AppArgs $) {
@@ -424,6 +460,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.errorHandlingSettings = $.errorHandlingSettings;
         this.evaluationMetricsThresholds = $.evaluationMetricsThresholds;
         this.globalInstruction = $.globalInstruction;
         this.guardrails = $.guardrails;
@@ -438,6 +475,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.timeZoneSettings = $.timeZoneSettings;
         this.toolExecutionMode = $.toolExecutionMode;
         this.variableDeclarations = $.variableDeclarations;
+        this.vpcScSettings = $.vpcScSettings;
     }
 
     public static Builder builder() {
@@ -650,6 +688,29 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param errorHandlingSettings Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorHandlingSettings(@Nullable Output<AppErrorHandlingSettingsArgs> errorHandlingSettings) {
+            $.errorHandlingSettings = errorHandlingSettings;
+            return this;
+        }
+
+        /**
+         * @param errorHandlingSettings Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorHandlingSettings(AppErrorHandlingSettingsArgs errorHandlingSettings) {
+            return errorHandlingSettings(Output.of(errorHandlingSettings));
         }
 
         /**
@@ -995,6 +1056,29 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder variableDeclarations(AppVariableDeclarationArgs... variableDeclarations) {
             return variableDeclarations(List.of(variableDeclarations));
+        }
+
+        /**
+         * @param vpcScSettings VPC-SC settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScSettings(@Nullable Output<AppVpcScSettingsArgs> vpcScSettings) {
+            $.vpcScSettings = vpcScSettings;
+            return this;
+        }
+
+        /**
+         * @param vpcScSettings VPC-SC settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScSettings(AppVpcScSettingsArgs vpcScSettings) {
+            return vpcScSettings(Output.of(vpcScSettings));
         }
 
         public AppArgs build() {

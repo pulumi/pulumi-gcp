@@ -30,6 +30,7 @@ class AppArgs:
                  default_channel_profile: pulumi.Input[Optional['AppDefaultChannelProfileArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_handling_settings: pulumi.Input[Optional['AppErrorHandlingSettingsArgs']] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional['AppEvaluationMetricsThresholdsArgs']] = None,
                  global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -42,7 +43,8 @@ class AppArgs:
                  root_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone_settings: pulumi.Input[Optional['AppTimeZoneSettingsArgs']] = None,
                  tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
+                 variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None,
+                 vpc_sc_settings: pulumi.Input[Optional['AppVpcScSettingsArgs']] = None):
         """
         The set of arguments for constructing a App resource.
 
@@ -68,6 +70,8 @@ class AppArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
+        :param pulumi.Input['AppErrorHandlingSettingsArgs'] error_handling_settings: Settings to describe how errors should be handled in the app.
+               Structure is documented below.
         :param pulumi.Input['AppEvaluationMetricsThresholdsArgs'] evaluation_metrics_thresholds: Threshold settings for metrics in an Evaluation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] global_instruction: Instructions for all the agents in the app.
@@ -95,6 +99,8 @@ class AppArgs:
                See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
         :param pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]] variable_declarations: The declarations of the variables.
                Structure is documented below.
+        :param pulumi.Input['AppVpcScSettingsArgs'] vpc_sc_settings: VPC-SC settings for the app.
+               Structure is documented below.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -111,6 +117,8 @@ class AppArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if error_handling_settings is not None:
+            pulumi.set(__self__, "error_handling_settings", error_handling_settings)
         if evaluation_metrics_thresholds is not None:
             pulumi.set(__self__, "evaluation_metrics_thresholds", evaluation_metrics_thresholds)
         if global_instruction is not None:
@@ -137,6 +145,8 @@ class AppArgs:
             pulumi.set(__self__, "tool_execution_mode", tool_execution_mode)
         if variable_declarations is not None:
             pulumi.set(__self__, "variable_declarations", variable_declarations)
+        if vpc_sc_settings is not None:
+            pulumi.set(__self__, "vpc_sc_settings", vpc_sc_settings)
 
     @_builtins.property
     @pulumi.getter(name="appId")
@@ -258,6 +268,19 @@ class AppArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorHandlingSettings")
+    def error_handling_settings(self) -> pulumi.Input[Optional['AppErrorHandlingSettingsArgs']]:
+        """
+        Settings to describe how errors should be handled in the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_handling_settings")
+
+    @error_handling_settings.setter
+    def error_handling_settings(self, value: pulumi.Input[Optional['AppErrorHandlingSettingsArgs']]):
+        pulumi.set(self, "error_handling_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationMetricsThresholds")
@@ -429,6 +452,19 @@ class AppArgs:
     def variable_declarations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]]):
         pulumi.set(self, "variable_declarations", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcScSettings")
+    def vpc_sc_settings(self) -> pulumi.Input[Optional['AppVpcScSettingsArgs']]:
+        """
+        VPC-SC settings for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_sc_settings")
+
+    @vpc_sc_settings.setter
+    def vpc_sc_settings(self, value: pulumi.Input[Optional['AppVpcScSettingsArgs']]):
+        pulumi.set(self, "vpc_sc_settings", value)
+
 
 @pulumi.input_type
 class _AppState:
@@ -443,6 +479,7 @@ class _AppState:
                  deployment_count: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_handling_settings: pulumi.Input[Optional['AppErrorHandlingSettingsArgs']] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional['AppEvaluationMetricsThresholdsArgs']] = None,
                  global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -459,7 +496,8 @@ class _AppState:
                  time_zone_settings: pulumi.Input[Optional['AppTimeZoneSettingsArgs']] = None,
                  tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
+                 variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None,
+                 vpc_sc_settings: pulumi.Input[Optional['AppVpcScSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering App resources.
 
@@ -486,6 +524,8 @@ class _AppState:
         :param pulumi.Input[_builtins.int] deployment_count: Number of deployments in the app.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
         :param pulumi.Input[_builtins.str] display_name: Display name of the app.
+        :param pulumi.Input['AppErrorHandlingSettingsArgs'] error_handling_settings: Settings to describe how errors should be handled in the app.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
@@ -520,6 +560,8 @@ class _AppState:
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the app was last updated.
         :param pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]] variable_declarations: The declarations of the variables.
                Structure is documented below.
+        :param pulumi.Input['AppVpcScSettingsArgs'] vpc_sc_settings: VPC-SC settings for the app.
+               Structure is documented below.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -541,6 +583,8 @@ class _AppState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if error_handling_settings is not None:
+            pulumi.set(__self__, "error_handling_settings", error_handling_settings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if evaluation_metrics_thresholds is not None:
@@ -575,6 +619,8 @@ class _AppState:
             pulumi.set(__self__, "update_time", update_time)
         if variable_declarations is not None:
             pulumi.set(__self__, "variable_declarations", variable_declarations)
+        if vpc_sc_settings is not None:
+            pulumi.set(__self__, "vpc_sc_settings", vpc_sc_settings)
 
     @_builtins.property
     @pulumi.getter(name="appId")
@@ -708,6 +754,19 @@ class _AppState:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorHandlingSettings")
+    def error_handling_settings(self) -> pulumi.Input[Optional['AppErrorHandlingSettingsArgs']]:
+        """
+        Settings to describe how errors should be handled in the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_handling_settings")
+
+    @error_handling_settings.setter
+    def error_handling_settings(self, value: pulumi.Input[Optional['AppErrorHandlingSettingsArgs']]):
+        pulumi.set(self, "error_handling_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -930,6 +989,19 @@ class _AppState:
     def variable_declarations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]]):
         pulumi.set(self, "variable_declarations", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcScSettings")
+    def vpc_sc_settings(self) -> pulumi.Input[Optional['AppVpcScSettingsArgs']]:
+        """
+        VPC-SC settings for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_sc_settings")
+
+    @vpc_sc_settings.setter
+    def vpc_sc_settings(self, value: pulumi.Input[Optional['AppVpcScSettingsArgs']]):
+        pulumi.set(self, "vpc_sc_settings", value)
+
 
 @pulumi.type_token("gcp:ces/app:App")
 class App(pulumi.CustomResource):
@@ -945,6 +1017,7 @@ class App(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_handling_settings: pulumi.Input[Optional[Union['AppErrorHandlingSettingsArgs', 'AppErrorHandlingSettingsArgsDict', 'outputs.AppErrorHandlingSettings']]] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict', 'outputs.AppEvaluationMetricsThresholds']]] = None,
                  global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -959,6 +1032,7 @@ class App(pulumi.CustomResource):
                  time_zone_settings: pulumi.Input[Optional[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict', 'outputs.AppTimeZoneSettings']]] = None,
                  tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict', 'outputs.AppVariableDeclaration']]]]] = None,
+                 vpc_sc_settings: pulumi.Input[Optional[Union['AppVpcScSettingsArgs', 'AppVpcScSettingsArgsDict', 'outputs.AppVpcScSettings']]] = None,
                  __props__=None):
         """
         Customer Engagement Suite App
@@ -1135,6 +1209,21 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
+            },
+            vpc_sc_settings={
+                "allowed_origins": ["https://example.com"],
+            },
+            error_handling_settings={
+                "error_handling_strategy": "FALLBACK_RESPONSE",
+                "fallback_response_config": {
+                    "custom_fallback_messages": {
+                        "en-US": "An error occurred, please try again.",
+                    },
+                    "max_fallback_attempts": 3,
+                },
+                "end_session_config": {
+                    "escalate_session": True,
+                },
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1325,6 +1414,8 @@ class App(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
         :param pulumi.Input[_builtins.str] display_name: Display name of the app.
+        :param pulumi.Input[Union['AppErrorHandlingSettingsArgs', 'AppErrorHandlingSettingsArgsDict', 'outputs.AppErrorHandlingSettings']] error_handling_settings: Settings to describe how errors should be handled in the app.
+               Structure is documented below.
         :param pulumi.Input[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict', 'outputs.AppEvaluationMetricsThresholds']] evaluation_metrics_thresholds: Threshold settings for metrics in an Evaluation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] global_instruction: Instructions for all the agents in the app.
@@ -1352,6 +1443,8 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tool_execution_mode: The tool execution mode for the app.
                See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict', 'outputs.AppVariableDeclaration']]]] variable_declarations: The declarations of the variables.
+               Structure is documented below.
+        :param pulumi.Input[Union['AppVpcScSettingsArgs', 'AppVpcScSettingsArgsDict', 'outputs.AppVpcScSettings']] vpc_sc_settings: VPC-SC settings for the app.
                Structure is documented below.
         """
         ...
@@ -1535,6 +1628,21 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
+            },
+            vpc_sc_settings={
+                "allowed_origins": ["https://example.com"],
+            },
+            error_handling_settings={
+                "error_handling_strategy": "FALLBACK_RESPONSE",
+                "fallback_response_config": {
+                    "custom_fallback_messages": {
+                        "en-US": "An error occurred, please try again.",
+                    },
+                    "max_fallback_attempts": 3,
+                },
+                "end_session_config": {
+                    "escalate_session": True,
+                },
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1725,6 +1833,7 @@ class App(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_handling_settings: pulumi.Input[Optional[Union['AppErrorHandlingSettingsArgs', 'AppErrorHandlingSettingsArgsDict', 'outputs.AppErrorHandlingSettings']]] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict', 'outputs.AppEvaluationMetricsThresholds']]] = None,
                  global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1739,6 +1848,7 @@ class App(pulumi.CustomResource):
                  time_zone_settings: pulumi.Input[Optional[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict', 'outputs.AppTimeZoneSettings']]] = None,
                  tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict', 'outputs.AppVariableDeclaration']]]]] = None,
+                 vpc_sc_settings: pulumi.Input[Optional[Union['AppVpcScSettingsArgs', 'AppVpcScSettingsArgsDict', 'outputs.AppVpcScSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1760,6 +1870,7 @@ class App(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["error_handling_settings"] = error_handling_settings
             __props__.__dict__["evaluation_metrics_thresholds"] = evaluation_metrics_thresholds
             __props__.__dict__["global_instruction"] = global_instruction
             __props__.__dict__["guardrails"] = guardrails
@@ -1776,6 +1887,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["time_zone_settings"] = time_zone_settings
             __props__.__dict__["tool_execution_mode"] = tool_execution_mode
             __props__.__dict__["variable_declarations"] = variable_declarations
+            __props__.__dict__["vpc_sc_settings"] = vpc_sc_settings
             __props__.__dict__["create_time"] = None
             __props__.__dict__["deployment_count"] = None
             __props__.__dict__["etag"] = None
@@ -1801,6 +1913,7 @@ class App(pulumi.CustomResource):
             deployment_count: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_handling_settings: pulumi.Input[Optional[Union['AppErrorHandlingSettingsArgs', 'AppErrorHandlingSettingsArgsDict', 'outputs.AppErrorHandlingSettings']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             evaluation_metrics_thresholds: pulumi.Input[Optional[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict', 'outputs.AppEvaluationMetricsThresholds']]] = None,
             global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1817,7 +1930,8 @@ class App(pulumi.CustomResource):
             time_zone_settings: pulumi.Input[Optional[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict', 'outputs.AppTimeZoneSettings']]] = None,
             tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict', 'outputs.AppVariableDeclaration']]]]] = None) -> 'App':
+            variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict', 'outputs.AppVariableDeclaration']]]]] = None,
+            vpc_sc_settings: pulumi.Input[Optional[Union['AppVpcScSettingsArgs', 'AppVpcScSettingsArgsDict', 'outputs.AppVpcScSettings']]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1848,6 +1962,8 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] deployment_count: Number of deployments in the app.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
         :param pulumi.Input[_builtins.str] display_name: Display name of the app.
+        :param pulumi.Input[Union['AppErrorHandlingSettingsArgs', 'AppErrorHandlingSettingsArgsDict', 'outputs.AppErrorHandlingSettings']] error_handling_settings: Settings to describe how errors should be handled in the app.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
@@ -1882,6 +1998,8 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the app was last updated.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict', 'outputs.AppVariableDeclaration']]]] variable_declarations: The declarations of the variables.
                Structure is documented below.
+        :param pulumi.Input[Union['AppVpcScSettingsArgs', 'AppVpcScSettingsArgsDict', 'outputs.AppVpcScSettings']] vpc_sc_settings: VPC-SC settings for the app.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1897,6 +2015,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["deployment_count"] = deployment_count
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["error_handling_settings"] = error_handling_settings
         __props__.__dict__["etag"] = etag
         __props__.__dict__["evaluation_metrics_thresholds"] = evaluation_metrics_thresholds
         __props__.__dict__["global_instruction"] = global_instruction
@@ -1914,6 +2033,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["tool_execution_mode"] = tool_execution_mode
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["variable_declarations"] = variable_declarations
+        __props__.__dict__["vpc_sc_settings"] = vpc_sc_settings
         return App(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -2008,6 +2128,15 @@ class App(pulumi.CustomResource):
         Display name of the app.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="errorHandlingSettings")
+    def error_handling_settings(self) -> pulumi.Output[Optional['outputs.AppErrorHandlingSettings']]:
+        """
+        Settings to describe how errors should be handled in the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_handling_settings")
 
     @_builtins.property
     @pulumi.getter
@@ -2161,4 +2290,13 @@ class App(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "variable_declarations")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcScSettings")
+    def vpc_sc_settings(self) -> pulumi.Output[Optional['outputs.AppVpcScSettings']]:
+        """
+        VPC-SC settings for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_sc_settings")
 

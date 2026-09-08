@@ -196,6 +196,7 @@ __all__ = [
     'AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest',
     'AiReasoningEngineTrafficConfigTrafficSplitManual',
     'AiReasoningEngineTrafficConfigTrafficSplitManualTarget',
+    'AiSemanticGovernancePolicyEngineGatewayConfig',
     'AiTensorboardEncryptionSpec',
     'GetAiIndexDeployedIndexResult',
     'GetAiIndexEncryptionSpecResult',
@@ -9407,7 +9408,9 @@ class AiReasoningEngineSpecBuildSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "workerPool":
+        if key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "workerPool":
             suggest = "worker_pool"
 
         if suggest:
@@ -9422,12 +9425,24 @@ class AiReasoningEngineSpecBuildSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 service_account: Optional[_builtins.str] = None,
                  worker_pool: Optional[_builtins.str] = None):
         """
+        :param _builtins.str service_account: Optional. The service account that the Cloud Build builder runs as.
         :param _builtins.str worker_pool: Optional. The resource name of the Cloud Build WorkerPool to use for the build.
         """
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if worker_pool is not None:
             pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[_builtins.str]:
+        """
+        Optional. The service account that the Cloud Build builder runs as.
+        """
+        return pulumi.get(self, "service_account")
 
     @_builtins.property
     @pulumi.getter(name="workerPool")
@@ -9539,8 +9554,7 @@ class AiReasoningEngineSpecDeploymentSpec(dict):
                  resource_limits: Optional[Mapping[str, _builtins.str]] = None,
                  secret_envs: Optional[Sequence['outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv']] = None):
         """
-        :param 'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs' agent_gateway_config: (Optional, Beta)
-               Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+        :param 'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs' agent_gateway_config: Optional. Agent Gateway configuration for a Reasoning Engine deployment.
                Structure is documented below.
         :param _builtins.str agent_server_mode: (Optional, Beta)
                Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
@@ -9608,7 +9622,6 @@ class AiReasoningEngineSpecDeploymentSpec(dict):
     @pulumi.getter(name="agentGatewayConfig")
     def agent_gateway_config(self) -> Optional['outputs.AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig']:
         """
-        (Optional, Beta)
         Optional. Agent Gateway configuration for a Reasoning Engine deployment.
         Structure is documented below.
         """
@@ -10317,8 +10330,7 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
                  inline_source: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource'] = None,
                  python_spec: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec'] = None):
         """
-        :param 'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs' agent_config_source: (Optional, Beta)
-               Optional. Specification for the deploying from agent config.
+        :param 'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs' agent_config_source: Optional. Specification for the deploying from agent config.
                Structure is documented below.
         :param 'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs' developer_connect_source: Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
                Structure is documented below.
@@ -10344,7 +10356,6 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
     @pulumi.getter(name="agentConfigSource")
     def agent_config_source(self) -> Optional['outputs.AiReasoningEngineSpecSourceCodeSpecAgentConfigSource']:
         """
-        (Optional, Beta)
         Optional. Specification for the deploying from agent config.
         Structure is documented below.
         """
@@ -10883,6 +10894,177 @@ class AiReasoningEngineTrafficConfigTrafficSplitManualTarget(dict):
         Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `traffic_config` is updated in Terraform.
         """
         return pulumi.get(self, "runtime_revision_name")
+
+
+@pulumi.output_type
+class AiSemanticGovernancePolicyEngineGatewayConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedProjects":
+            suggest = "allowed_projects"
+        elif key == "dnsRecord":
+            suggest = "dns_record"
+        elif key == "dnsZoneName":
+            suggest = "dns_zone_name"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "pscEndpoint":
+            suggest = "psc_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiSemanticGovernancePolicyEngineGatewayConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiSemanticGovernancePolicyEngineGatewayConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiSemanticGovernancePolicyEngineGatewayConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 allowed_projects: Optional[Sequence[_builtins.str]] = None,
+                 dns_record: Optional[_builtins.str] = None,
+                 dns_zone_name: Optional[_builtins.str] = None,
+                 ip_address: Optional[_builtins.str] = None,
+                 network: Optional[_builtins.str] = None,
+                 psc_endpoint: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 subnetwork: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The identifier for this object. Format specified above.
+        :param Sequence[_builtins.str] allowed_projects: Additional consumer projects permitted to attach their own PSC endpoint
+               to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+               the customer creates the PSC endpoint in a project other than this
+               gateway's network project. Each listed project is VPC-SC enforced: it
+               must be within the caller's service perimeter. The owning
+               SemanticGovernancePolicyEngine's own project is always permitted
+               implicitly and need not be listed. Format: projects/{project} (ID or number).
+        :param _builtins.str dns_record: (Output)
+               The fully qualified record name of the created A-record in Cloud DNS.
+        :param _builtins.str dns_zone_name: FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+        :param _builtins.str ip_address: (Output)
+               The private IP address of the PSC endpoint.
+        :param _builtins.str network: The URI of the network resource where PSC-E will be provisioned. If not
+               provided 'default' network will be used. Format:
+               projects/{project}/global/networks/{network}
+        :param _builtins.str psc_endpoint: (Output)
+               The self-link or name of the Private Service Connect endpoint forwarding
+               rule.
+        :param _builtins.str state: (Output)
+               The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+               PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+        :param _builtins.str subnetwork: The URI of the subnetwork resource where PSC-E will be provisioned. If
+               not provided 'default' subnet will be used from the same {location}
+               Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+        """
+        pulumi.set(__self__, "name", name)
+        if allowed_projects is not None:
+            pulumi.set(__self__, "allowed_projects", allowed_projects)
+        if dns_record is not None:
+            pulumi.set(__self__, "dns_record", dns_record)
+        if dns_zone_name is not None:
+            pulumi.set(__self__, "dns_zone_name", dns_zone_name)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedProjects")
+    def allowed_projects(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Additional consumer projects permitted to attach their own PSC endpoint
+        to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+        the customer creates the PSC endpoint in a project other than this
+        gateway's network project. Each listed project is VPC-SC enforced: it
+        must be within the caller's service perimeter. The owning
+        SemanticGovernancePolicyEngine's own project is always permitted
+        implicitly and need not be listed. Format: projects/{project} (ID or number).
+        """
+        return pulumi.get(self, "allowed_projects")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsRecord")
+    def dns_record(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The fully qualified record name of the created A-record in Cloud DNS.
+        """
+        return pulumi.get(self, "dns_record")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsZoneName")
+    def dns_zone_name(self) -> Optional[_builtins.str]:
+        """
+        FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+        """
+        return pulumi.get(self, "dns_zone_name")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The private IP address of the PSC endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        The URI of the network resource where PSC-E will be provisioned. If not
+        provided 'default' network will be used. Format:
+        projects/{project}/global/networks/{network}
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The self-link or name of the Private Service Connect endpoint forwarding
+        rule.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+        PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[_builtins.str]:
+        """
+        The URI of the subnetwork resource where PSC-E will be provisioned. If
+        not provided 'default' subnet will be used from the same {location}
+        Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+        """
+        return pulumi.get(self, "subnetwork")
 
 
 @pulumi.output_type

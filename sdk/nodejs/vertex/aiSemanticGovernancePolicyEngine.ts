@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -94,6 +96,12 @@ export class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
+     * Configurations for gateways. The keys are user-defined names for each gateway.
+     * At most 5 gateway configurations are allowed.
+     * Structure is documented below.
+     */
+    declare public readonly gatewayConfigs: pulumi.Output<outputs.vertex.AiSemanticGovernancePolicyEngineGatewayConfig[] | undefined>;
+    /**
      * The IP address allocated for the SGPE's managed PSC endpoint.
      */
     declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
@@ -149,6 +157,7 @@ export class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
             const state = argsOrState as AiSemanticGovernancePolicyEngineState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["gatewayConfigs"] = state?.gatewayConfigs;
             resourceInputs["ipAddress"] = state?.ipAddress;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -160,6 +169,7 @@ export class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
         } else {
             const args = argsOrState as AiSemanticGovernancePolicyEngineArgs | undefined;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["gatewayConfigs"] = args?.gatewayConfigs;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -193,6 +203,12 @@ export interface AiSemanticGovernancePolicyEngineState {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Configurations for gateways. The keys are user-defined names for each gateway.
+     * At most 5 gateway configurations are allowed.
+     * Structure is documented below.
+     */
+    gatewayConfigs?: pulumi.Input<pulumi.Input<inputs.vertex.AiSemanticGovernancePolicyEngineGatewayConfig>[] | undefined>;
     /**
      * The IP address allocated for the SGPE's managed PSC endpoint.
      */
@@ -248,6 +264,12 @@ export interface AiSemanticGovernancePolicyEngineArgs {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Configurations for gateways. The keys are user-defined names for each gateway.
+     * At most 5 gateway configurations are allowed.
+     * Structure is documented below.
+     */
+    gatewayConfigs?: pulumi.Input<pulumi.Input<inputs.vertex.AiSemanticGovernancePolicyEngineGatewayConfig>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

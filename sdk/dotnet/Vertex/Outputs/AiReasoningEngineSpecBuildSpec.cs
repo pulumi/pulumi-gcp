@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecBuildSpec
     {
         /// <summary>
+        /// Optional. The service account that the Cloud Build builder runs as.
+        /// </summary>
+        public readonly string? ServiceAccount;
+        /// <summary>
         /// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
         /// </summary>
         public readonly string? WorkerPool;
 
         [OutputConstructor]
-        private AiReasoningEngineSpecBuildSpec(string? workerPool)
+        private AiReasoningEngineSpecBuildSpec(
+            string? serviceAccount,
+
+            string? workerPool)
         {
+            ServiceAccount = serviceAccount;
             WorkerPool = workerPool;
         }
     }

@@ -25,7 +25,6 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     public static final AiReasoningEngineSpecDeploymentSpecArgs Empty = new AiReasoningEngineSpecDeploymentSpecArgs();
 
     /**
-     * (Optional, Beta)
      * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
      * Structure is documented below.
      * 
@@ -34,8 +33,7 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     private @Nullable Output<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs> agentGatewayConfig;
 
     /**
-     * @return (Optional, Beta)
-     * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+     * @return Optional. Agent Gateway configuration for a Reasoning Engine deployment.
      * Structure is documented below.
      * 
      */
@@ -284,8 +282,7 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param agentGatewayConfig (Optional, Beta)
-         * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+         * @param agentGatewayConfig Optional. Agent Gateway configuration for a Reasoning Engine deployment.
          * Structure is documented below.
          * 
          * @return builder
@@ -297,8 +294,7 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param agentGatewayConfig (Optional, Beta)
-         * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+         * @param agentGatewayConfig Optional. Agent Gateway configuration for a Reasoning Engine deployment.
          * Structure is documented below.
          * 
          * @return builder

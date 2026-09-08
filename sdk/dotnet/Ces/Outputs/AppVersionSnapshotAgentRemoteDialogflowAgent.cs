@@ -40,6 +40,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly ImmutableDictionary<string, string>? InputVariableMapping;
         /// <summary>
         /// (Output)
+        /// The name of the variable that contains the language code to be used for
+        /// the Dialogflow session.
+        /// </summary>
+        public readonly string? LanguageCodeVariable;
+        /// <summary>
+        /// (Output)
         /// The mapping of the Dialogflow session parameters names to the app
         /// variables names to be sent back to the CES agent after the Dialogflow
         /// agent execution ends.
@@ -56,12 +62,15 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             ImmutableDictionary<string, string>? inputVariableMapping,
 
+            string? languageCodeVariable,
+
             ImmutableDictionary<string, string>? outputVariableMapping)
         {
             Agent = agent;
             EnvironmentId = environmentId;
             FlowId = flowId;
             InputVariableMapping = inputVariableMapping;
+            LanguageCodeVariable = languageCodeVariable;
             OutputVariableMapping = outputVariableMapping;
         }
     }

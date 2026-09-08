@@ -197,6 +197,7 @@ import * as utilities from "../utilities";
  *         agent: "projects/example/locations/us/agents/fake-agent",
  *         flowId: "fake-flow",
  *         environmentId: "fake-env",
+ *         languageCodeVariable: "language_code",
  *         inputVariableMapping: {
  *             example: "1",
  *         },

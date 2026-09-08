@@ -1050,6 +1050,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.networkManagementCustomEndpoint);
     }
 
+    @Import(name="networkManagementv1CustomEndpoint")
+    private @Nullable Output<String> networkManagementv1CustomEndpoint;
+
+    public Optional<Output<String>> networkManagementv1CustomEndpoint() {
+        return Optional.ofNullable(this.networkManagementv1CustomEndpoint);
+    }
+
     @Import(name="networkSecurityCustomEndpoint")
     private @Nullable Output<String> networkSecurityCustomEndpoint;
 
@@ -1690,6 +1697,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.networkConnectivityCustomEndpoint = $.networkConnectivityCustomEndpoint;
         this.networkConnectivityv1CustomEndpoint = $.networkConnectivityv1CustomEndpoint;
         this.networkManagementCustomEndpoint = $.networkManagementCustomEndpoint;
+        this.networkManagementv1CustomEndpoint = $.networkManagementv1CustomEndpoint;
         this.networkSecurityCustomEndpoint = $.networkSecurityCustomEndpoint;
         this.networkServicesCustomEndpoint = $.networkServicesCustomEndpoint;
         this.observabilityCustomEndpoint = $.observabilityCustomEndpoint;
@@ -3105,6 +3113,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder networkManagementCustomEndpoint(String networkManagementCustomEndpoint) {
             return networkManagementCustomEndpoint(Output.of(networkManagementCustomEndpoint));
+        }
+
+        public Builder networkManagementv1CustomEndpoint(@Nullable Output<String> networkManagementv1CustomEndpoint) {
+            $.networkManagementv1CustomEndpoint = networkManagementv1CustomEndpoint;
+            return this;
+        }
+
+        public Builder networkManagementv1CustomEndpoint(String networkManagementv1CustomEndpoint) {
+            return networkManagementv1CustomEndpoint(Output.of(networkManagementv1CustomEndpoint));
         }
 
         public Builder networkSecurityCustomEndpoint(@Nullable Output<String> networkSecurityCustomEndpoint) {

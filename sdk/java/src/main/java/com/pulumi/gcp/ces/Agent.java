@@ -306,6 +306,7 @@ import javax.annotation.Nullable;
  *                 .agent("projects/example/locations/us/agents/fake-agent")
  *                 .flowId("fake-flow")
  *                 .environmentId("fake-env")
+ *                 .languageCodeVariable("language_code")
  *                 .inputVariableMapping(Map.of("example", "1"))
  *                 .outputVariableMapping(Map.of("example", "1"))
  *                 .build())

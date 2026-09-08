@@ -6316,6 +6316,8 @@ class WorkerPoolTemplateContainer(dict):
             suggest = "depends_ons"
         elif key == "livenessProbe":
             suggest = "liveness_probe"
+        elif key == "sandboxLauncher":
+            suggest = "sandbox_launcher"
         elif key == "startupProbe":
             suggest = "startup_probe"
         elif key == "volumeMounts":
@@ -6343,6 +6345,7 @@ class WorkerPoolTemplateContainer(dict):
                  liveness_probe: Optional['outputs.WorkerPoolTemplateContainerLivenessProbe'] = None,
                  name: Optional[_builtins.str] = None,
                  resources: Optional['outputs.WorkerPoolTemplateContainerResources'] = None,
+                 sandbox_launcher: Optional[_builtins.bool] = None,
                  startup_probe: Optional['outputs.WorkerPoolTemplateContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.WorkerPoolTemplateContainerVolumeMount']] = None,
                  working_dir: Optional[_builtins.str] = None):
@@ -6358,6 +6361,7 @@ class WorkerPoolTemplateContainer(dict):
         :param _builtins.str name: Name of the container specified as a DNS_LABEL.
         :param 'WorkerPoolTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param 'WorkerPoolTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
                Structure is documented below.
         :param Sequence['WorkerPoolTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
@@ -6379,6 +6383,8 @@ class WorkerPoolTemplateContainer(dict):
             pulumi.set(__self__, "name", name)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if sandbox_launcher is not None:
+            pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         if startup_probe is not None:
             pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
@@ -6452,6 +6458,14 @@ class WorkerPoolTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> Optional[_builtins.bool]:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
@@ -12214,6 +12228,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
                  liveness_probes: Sequence['outputs.GetWorkerPoolTemplateContainerLivenessProbeResult'],
                  name: _builtins.str,
                  resources: Sequence['outputs.GetWorkerPoolTemplateContainerResourceResult'],
+                 sandbox_launcher: _builtins.bool,
                  startup_probes: Sequence['outputs.GetWorkerPoolTemplateContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetWorkerPoolTemplateContainerVolumeMountResult'],
                  working_dir: _builtins.str):
@@ -12226,6 +12241,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
         :param Sequence['GetWorkerPoolTemplateContainerLivenessProbeArgs'] liveness_probes: Periodic probe of container liveness. Container will be restarted if the probe fails.
         :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
         :param Sequence['GetWorkerPoolTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param Sequence['GetWorkerPoolTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         :param Sequence['GetWorkerPoolTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
         :param _builtins.str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -12238,6 +12254,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
         pulumi.set(__self__, "liveness_probes", liveness_probes)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
@@ -12305,6 +12322,14 @@ class GetWorkerPoolTemplateContainerResult(dict):
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> _builtins.bool:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbes")

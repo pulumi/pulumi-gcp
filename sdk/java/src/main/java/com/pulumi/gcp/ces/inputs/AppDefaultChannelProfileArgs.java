@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfilePersonaPropertyArgs;
 import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigArgs;
+import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWhatsappConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -130,6 +131,23 @@ public final class AppDefaultChannelProfileArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.webWidgetConfig);
     }
 
+    /**
+     * Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="whatsappConfig")
+    private @Nullable Output<AppDefaultChannelProfileWhatsappConfigArgs> whatsappConfig;
+
+    /**
+     * @return Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppDefaultChannelProfileWhatsappConfigArgs>> whatsappConfig() {
+        return Optional.ofNullable(this.whatsappConfig);
+    }
+
     private AppDefaultChannelProfileArgs() {}
 
     private AppDefaultChannelProfileArgs(AppDefaultChannelProfileArgs $) {
@@ -139,6 +157,7 @@ public final class AppDefaultChannelProfileArgs extends com.pulumi.resources.Res
         this.personaProperty = $.personaProperty;
         this.profileId = $.profileId;
         this.webWidgetConfig = $.webWidgetConfig;
+        this.whatsappConfig = $.whatsappConfig;
     }
 
     public static Builder builder() {
@@ -305,6 +324,29 @@ public final class AppDefaultChannelProfileArgs extends com.pulumi.resources.Res
          */
         public Builder webWidgetConfig(AppDefaultChannelProfileWebWidgetConfigArgs webWidgetConfig) {
             return webWidgetConfig(Output.of(webWidgetConfig));
+        }
+
+        /**
+         * @param whatsappConfig Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whatsappConfig(@Nullable Output<AppDefaultChannelProfileWhatsappConfigArgs> whatsappConfig) {
+            $.whatsappConfig = whatsappConfig;
+            return this;
+        }
+
+        /**
+         * @param whatsappConfig Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whatsappConfig(AppDefaultChannelProfileWhatsappConfigArgs whatsappConfig) {
+            return whatsappConfig(Output.of(whatsappConfig));
         }
 
         public AppDefaultChannelProfileArgs build() {

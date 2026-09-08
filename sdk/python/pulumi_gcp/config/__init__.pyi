@@ -311,6 +311,8 @@ networkConnectivityv1CustomEndpoint: Optional[str]
 
 networkManagementCustomEndpoint: Optional[str]
 
+networkManagementv1CustomEndpoint: Optional[str]
+
 networkSecurityCustomEndpoint: Optional[str]
 
 networkServicesCustomEndpoint: Optional[str]

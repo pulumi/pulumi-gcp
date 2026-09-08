@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MuteConfig{}
 	case "gcp:securitycenter/notificationConfig:NotificationConfig":
 		r = &NotificationConfig{}
+	case "gcp:securitycenter/notificationServiceAccount:NotificationServiceAccount":
+		r = &NotificationServiceAccount{}
 	case "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule":
 		r = &OrganizationCustomModule{}
 	case "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport":
@@ -169,6 +171,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/notificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/notificationServiceAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

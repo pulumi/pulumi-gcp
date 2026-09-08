@@ -51,7 +51,7 @@ class WorkstationClusterCondition(dict):
         """
         :param _builtins.int code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, _builtins.str]] details: (Output)
+        :param Sequence[Mapping[str, _builtins.str]] details: (Output, Deprecated)
                A list of messages that carry the error details.
         :param _builtins.str message: (Output)
                Human readable message indicating details about the current status.
@@ -74,9 +74,10 @@ class WorkstationClusterCondition(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""")
     def details(self) -> Optional[Sequence[Mapping[str, _builtins.str]]]:
         """
-        (Output)
+        (Output, Deprecated)
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
@@ -240,7 +241,7 @@ class WorkstationConfigCondition(dict):
         """
         :param _builtins.int code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, _builtins.str]] details: (Output)
+        :param Sequence[Mapping[str, _builtins.str]] details: (Output, Deprecated)
                A list of messages that carry the error details.
         :param _builtins.str message: (Output)
                Human readable message indicating details about the current status.
@@ -263,9 +264,10 @@ class WorkstationConfigCondition(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""")
     def details(self) -> Optional[Sequence[Mapping[str, _builtins.str]]]:
         """
-        (Output)
+        (Output, Deprecated)
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")

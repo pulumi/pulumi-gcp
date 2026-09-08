@@ -33,6 +33,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MessageBus{}
 	case "gcp:eventarc/pipeline:Pipeline":
 		r = &Pipeline{}
+	case "gcp:eventarc/pipelineIamBinding:PipelineIamBinding":
+		r = &PipelineIamBinding{}
+	case "gcp:eventarc/pipelineIamMember:PipelineIamMember":
+		r = &PipelineIamMember{}
+	case "gcp:eventarc/pipelineIamPolicy:PipelineIamPolicy":
+		r = &PipelineIamPolicy{}
 	case "gcp:eventarc/trigger:Trigger":
 		r = &Trigger{}
 	default:
@@ -76,6 +82,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"eventarc/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"eventarc/pipelineIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"eventarc/pipelineIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"eventarc/pipelineIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

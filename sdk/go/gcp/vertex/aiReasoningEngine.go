@@ -16,9 +16,9 @@ import (
 //
 // To get more information about ReasoningEngine, see:
 //
-// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+// * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
 // * How-to Guides
-//   - [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+//   - [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 //
 // ## Example Usage
 //
@@ -554,6 +554,9 @@ import (
 //					AgentFramework: pulumi.String("google-adk"),
 //					ClassMethods:   pulumi.String(json0),
 //					ServiceAccount: serviceAccount.Email,
+//					BuildSpec: &vertex.AiReasoningEngineSpecBuildSpecArgs{
+//						ServiceAccount: serviceAccount.Email,
+//					},
 //					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 //						MinInstances:         pulumi.Int(1),
 //						MaxInstances:         pulumi.Int(3),

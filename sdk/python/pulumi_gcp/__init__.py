@@ -6656,6 +6656,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "eventarc/pipelineIamBinding",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/pipelineIamBinding:PipelineIamBinding": "PipelineIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "eventarc/pipelineIamMember",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/pipelineIamMember:PipelineIamMember": "PipelineIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "eventarc/pipelineIamPolicy",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/pipelineIamPolicy:PipelineIamPolicy": "PipelineIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/trigger",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
@@ -9008,6 +9032,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "monitoring/snooze",
+  "fqn": "pulumi_gcp.monitoring",
+  "classes": {
+   "gcp:monitoring/snooze:Snooze": "Snooze"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "monitoring/uptimeCheckConfig",
   "fqn": "pulumi_gcp.monitoring",
   "classes": {
@@ -9220,6 +9252,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkmanagement",
   "classes": {
    "gcp:networkmanagement/connectivityTest:ConnectivityTest": "ConnectivityTest"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkmanagement/networkMonitoringProvider",
+  "fqn": "pulumi_gcp.networkmanagement",
+  "classes": {
+   "gcp:networkmanagement/networkMonitoringProvider:NetworkMonitoringProvider": "NetworkMonitoringProvider"
   }
  },
  {
@@ -9708,6 +9748,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/wasmPlugin:WasmPlugin": "WasmPlugin"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "observability/bucket",
+  "fqn": "pulumi_gcp.observability",
+  "classes": {
+   "gcp:observability/bucket:Bucket": "Bucket"
   }
  },
  {
@@ -10684,6 +10732,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/notificationConfig:NotificationConfig": "NotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/notificationServiceAccount",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/notificationServiceAccount:NotificationServiceAccount": "NotificationServiceAccount"
   }
  },
  {
