@@ -6,7 +6,7 @@ Subject: [PATCH] Allow disabling the partner name
 Add options to set or disable partner name.
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index 13c3f4012..1ec620a98 100644
+index 13c3f401205f..1ec620a980a5 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
 @@ -165,6 +165,19 @@ func Provider() *schema.Provider {
