@@ -14,7 +14,7 @@ ones. Upstream places its own capture below the conditional reads, so
 this patch hoists it back above them.
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index 90bb70114181..8707708e5b59 100644
+index e07e3ea96070..6fc7139514bb 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
 @@ -3011,10 +3011,17 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})

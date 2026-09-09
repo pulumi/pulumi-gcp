@@ -5,7 +5,7 @@ Subject: [PATCH] compute: fix empty boot disk resource_policies guard
 
 
 diff --git a/google-beta/services/compute/resource_compute_instance.go b/google-beta/services/compute/resource_compute_instance.go
-index 35a13499118c..558e2880a3c3 100644
+index a5983496df93..c3ca3402df73 100644
 --- a/google-beta/services/compute/resource_compute_instance.go
 +++ b/google-beta/services/compute/resource_compute_instance.go
 @@ -24,6 +24,7 @@ import (
@@ -16,17 +16,17 @@ index 35a13499118c..558e2880a3c3 100644
  	"strconv"
  	"strings"
  	"time"
-@@ -4812,7 +4813,7 @@ func flattenBootDisk(d *schema.ResourceData, disk *compute.AttachedDisk, config
- 
+@@ -4704,7 +4705,7 @@ func flattenBootDisk(d *schema.ResourceData, disk map[string]interface{}, config
  	// Resource policies can get autofilled from the API and on this field and this will cause the instance to recreate
  	// This overrides any value set by the API not to cause a diff when the user didn't set this in their config.
--	if d.Get("boot_disk.0.initialize_params.0.resource_policies.0") == nil || d.Get("boot_disk.0.initialize_params.0.resource_policies") == nil {
-+	if v, ok := d.GetOkExists("boot_disk.0.initialize_params.0.resource_policies"); !ok || tpgresource.IsEmptyValue(reflect.ValueOf(v)) {
- 		diskDetails.ResourcePolicies = nil
+ 	if diskDetails != nil {
+-		if d.Get("boot_disk.0.initialize_params.0.resource_policies.0") == nil || d.Get("boot_disk.0.initialize_params.0.resource_policies") == nil {
++		if v, ok := d.GetOkExists("boot_disk.0.initialize_params.0.resource_policies"); !ok || tpgresource.IsEmptyValue(reflect.ValueOf(v)) {
+ 			delete(diskDetails, "resourcePolicies")
+ 		}
  	}
- 
 diff --git a/google-beta/services/compute/resource_compute_instance_internal_test.go b/google-beta/services/compute/resource_compute_instance_internal_test.go
-index 41a22e9fd9db..87568027ef4f 100644
+index 41a22e9fd9db..0eed663c7246 100644
 --- a/google-beta/services/compute/resource_compute_instance_internal_test.go
 +++ b/google-beta/services/compute/resource_compute_instance_internal_test.go
 @@ -17,9 +17,18 @@
@@ -48,7 +48,7 @@ index 41a22e9fd9db..87568027ef4f 100644
  )
  
  func TestComputeInstance_networkIPCustomizedDiff(t *testing.T) {
-@@ -149,3 +158,112 @@ func TestComputeInstance_networkIPCustomizedDiff(t *testing.T) {
+@@ -149,3 +158,116 @@ func TestComputeInstance_networkIPCustomizedDiff(t *testing.T) {
  		}
  	}
  }
@@ -61,7 +61,7 @@ index 41a22e9fd9db..87568027ef4f 100644
 +
 +	cases := map[string]struct {
 +		resourcePolicies []interface{}
-+		wantPolicies     []string
++		wantPolicies     interface{}
 +	}{
 +		"empty list stays unset": {
 +			resourcePolicies: []interface{}{},
@@ -69,7 +69,7 @@ index 41a22e9fd9db..87568027ef4f 100644
 +		},
 +		"configured value is preserved": {
 +			resourcePolicies: []interface{}{"policy-a"},
-+			wantPolicies:     apiResourcePolicies,
++			wantPolicies:     []interface{}{"policy-a", "policy-b"},
 +		},
 +	}
 +
@@ -112,11 +112,11 @@ index 41a22e9fd9db..87568027ef4f 100644
 +				Type:             "projects/test-project/zones/us-central1-a/diskTypes/pd-balanced",
 +			})
 +
-+			flattened := flattenBootDisk(d, &compute.AttachedDisk{
-+				AutoDelete: true,
-+				DeviceName: "test-disk",
-+				Mode:       "READ_WRITE",
-+				Source:     diskSource,
++			flattened := flattenBootDisk(d, map[string]interface{}{
++				"autoDelete": true,
++				"deviceName": "test-disk",
++				"mode":       "READ_WRITE",
++				"source":     diskSource,
 +			}, config)
 +
 +			initializeParams, ok := flattened[0]["initialize_params"].([]map[string]interface{})
@@ -125,7 +125,11 @@ index 41a22e9fd9db..87568027ef4f 100644
 +			}
 +
 +			gotPolicies := initializeParams[0]["resource_policies"]
-+			if !reflect.DeepEqual(gotPolicies, tc.wantPolicies) {
++			if tc.wantPolicies == nil {
++				if gotPolicies != nil {
++					t.Fatalf("expected resource_policies to be unset, got %#v", gotPolicies)
++				}
++			} else if !reflect.DeepEqual(gotPolicies, tc.wantPolicies) {
 +				t.Fatalf("unexpected flattened resource_policies: got %#v, want %#v", gotPolicies, tc.wantPolicies)
 +			}
 +		})
