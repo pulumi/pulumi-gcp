@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,10 +34,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -167,10 +167,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -257,6 +257,147 @@ import (
 //				AppEngineBundledServices: pulumi.StringArray{
 //					pulumi.String("BUNDLED_SERVICE_TYPE_MAIL"),
 //					pulumi.String("BUNDLED_SERVICE_TYPE_DATASTORE_V3"),
+//				},
+//				DeleteServiceOnDestroy: pulumi.Bool(true),
+//				ServiceAccount:         serviceAccount.Email,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gaeApi,
+//				storageViewer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### App Engine Standard App Version Vpc Access
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("gae-sa"),
+//				DisplayName: pulumi.String("Test Service Account for GAE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gaeApi, err := projects.NewIAMMember(ctx, "gae_api", &projects.IAMMemberArgs{
+//				Project: serviceAccount.Project,
+//				Role:    pulumi.String("roles/compute.networkUser"),
+//				Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			storageViewer, err := projects.NewIAMMember(ctx, "storage_viewer", &projects.IAMMemberArgs{
+//				Project: serviceAccount.Project,
+//				Role:    pulumi.String("roles/storage.objectViewer"),
+//				Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			custom, err := compute.NewNetwork(ctx, "custom", &compute.NetworkArgs{
+//				Name:                  pulumi.String("custom-net-vpc-service"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			customSubnetwork, err := compute.NewSubnetwork(ctx, "custom", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("custom-sub-vpc-service"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     custom.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("tf-test-gae-bkt-vpc-access"),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			requirements, err := storage.NewBucketObject(ctx, "requirements", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("requirements.txt"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := storage.NewBucketObject(ctx, "main", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("main.py"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/hello-world-flask/main.py"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = appengine.NewStandardAppVersion(ctx, "gae-std-app-ver-vpc-access", &appengine.StandardAppVersionArgs{
+//				VersionId: pulumi.String("v1"),
+//				Service:   pulumi.String("vpc-service"),
+//				Runtime:   pulumi.String("python310"),
+//				VpcAccess: &appengine.StandardAppVersionVpcAccessArgs{
+//					EgressSetting: pulumi.String("ALL_TRAFFIC"),
+//					NetworkInterfaces: appengine.StandardAppVersionVpcAccessNetworkInterfaceArray{
+//						&appengine.StandardAppVersionVpcAccessNetworkInterfaceArgs{
+//							Network:    custom.Name,
+//							Subnetwork: customSubnetwork.Name,
+//							Tags: pulumi.StringArray{
+//								pulumi.String("tag1"),
+//								pulumi.String("tag2"),
+//							},
+//						},
+//					},
+//				},
+//				Deployment: &appengine.StandardAppVersionDeploymentArgs{
+//					Files: appengine.StandardAppVersionDeploymentFileArray{
+//						&appengine.StandardAppVersionDeploymentFileArgs{
+//							Name: pulumi.String("main.py"),
+//							SourceUrl: pulumi.All(bucket.Name, main.Name).ApplyT(func(_args []interface{}) (string, error) {
+//								bucketName := _args[0].(string)
+//								mainName := _args[1].(string)
+//								return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, mainName), nil
+//							}).(pulumi.StringOutput),
+//						},
+//						&appengine.StandardAppVersionDeploymentFileArgs{
+//							Name: pulumi.String("requirements.txt"),
+//							SourceUrl: pulumi.All(bucket.Name, requirements.Name).ApplyT(func(_args []interface{}) (string, error) {
+//								bucketName := _args[0].(string)
+//								requirementsName := _args[1].(string)
+//								return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, requirementsName), nil
+//							}).(pulumi.StringOutput),
+//						},
+//					},
+//				},
+//				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+//					Shell: pulumi.String("gunicorn -b :$PORT main:app"),
 //				},
 //				DeleteServiceOnDestroy: pulumi.Bool(true),
 //				ServiceAccount:         serviceAccount.Email,
@@ -360,6 +501,10 @@ type StandardAppVersion struct {
 	Threadsafe pulumi.BoolPtrOutput `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
+	// (Optional, Beta)
+	// Direct VPC Access settings for standard apps.
+	// Structure is documented below.
+	VpcAccess StandardAppVersionVpcAccessPtrOutput `pulumi:"vpcAccess"`
 	// Enables VPC connectivity for standard apps.
 	// Structure is documented below.
 	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrOutput `pulumi:"vpcAccessConnector"`
@@ -476,6 +621,10 @@ type standardAppVersionState struct {
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
+	// (Optional, Beta)
+	// Direct VPC Access settings for standard apps.
+	// Structure is documented below.
+	VpcAccess *StandardAppVersionVpcAccess `pulumi:"vpcAccess"`
 	// Enables VPC connectivity for standard apps.
 	// Structure is documented below.
 	VpcAccessConnector *StandardAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
@@ -551,6 +700,10 @@ type StandardAppVersionState struct {
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Direct VPC Access settings for standard apps.
+	// Structure is documented below.
+	VpcAccess StandardAppVersionVpcAccessPtrInput
 	// Enables VPC connectivity for standard apps.
 	// Structure is documented below.
 	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrInput
@@ -628,6 +781,10 @@ type standardAppVersionArgs struct {
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
+	// (Optional, Beta)
+	// Direct VPC Access settings for standard apps.
+	// Structure is documented below.
+	VpcAccess *StandardAppVersionVpcAccess `pulumi:"vpcAccess"`
 	// Enables VPC connectivity for standard apps.
 	// Structure is documented below.
 	VpcAccessConnector *StandardAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
@@ -702,6 +859,10 @@ type StandardAppVersionArgs struct {
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Direct VPC Access settings for standard apps.
+	// Structure is documented below.
+	VpcAccess StandardAppVersionVpcAccessPtrInput
 	// Enables VPC connectivity for standard apps.
 	// Structure is documented below.
 	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrInput
@@ -930,6 +1091,13 @@ func (o StandardAppVersionOutput) Threadsafe() pulumi.BoolPtrOutput {
 // Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 func (o StandardAppVersionOutput) VersionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringPtrOutput { return v.VersionId }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Direct VPC Access settings for standard apps.
+// Structure is documented below.
+func (o StandardAppVersionOutput) VpcAccess() StandardAppVersionVpcAccessPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionVpcAccessPtrOutput { return v.VpcAccess }).(StandardAppVersionVpcAccessPtrOutput)
 }
 
 // Enables VPC connectivity for standard apps.

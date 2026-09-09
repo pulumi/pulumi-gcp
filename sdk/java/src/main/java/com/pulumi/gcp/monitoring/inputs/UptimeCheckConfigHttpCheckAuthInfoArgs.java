@@ -59,14 +59,14 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
     }
 
     /**
-     * The password write-only version.
+     * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     @Import(name="passwordWoVersion")
     private @Nullable Output<String> passwordWoVersion;
 
     /**
-     * @return The password write-only version.
+     * @return Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     public Optional<Output<String>> passwordWoVersion() {
@@ -170,7 +170,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
         }
 
         /**
-         * @param passwordWoVersion The password write-only version.
+         * @param passwordWoVersion Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
         }
 
         /**
-         * @param passwordWoVersion The password write-only version.
+         * @param passwordWoVersion Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 

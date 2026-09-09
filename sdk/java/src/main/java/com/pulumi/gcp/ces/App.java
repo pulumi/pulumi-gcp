@@ -14,12 +14,14 @@ import com.pulumi.gcp.ces.outputs.AppAudioProcessingConfig;
 import com.pulumi.gcp.ces.outputs.AppClientCertificateSettings;
 import com.pulumi.gcp.ces.outputs.AppDataStoreSettings;
 import com.pulumi.gcp.ces.outputs.AppDefaultChannelProfile;
+import com.pulumi.gcp.ces.outputs.AppErrorHandlingSettings;
 import com.pulumi.gcp.ces.outputs.AppEvaluationMetricsThresholds;
 import com.pulumi.gcp.ces.outputs.AppLanguageSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettings;
 import com.pulumi.gcp.ces.outputs.AppModelSettings;
 import com.pulumi.gcp.ces.outputs.AppTimeZoneSettings;
 import com.pulumi.gcp.ces.outputs.AppVariableDeclaration;
+import com.pulumi.gcp.ces.outputs.AppVpcScSettings;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -83,6 +85,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigArgs;
  * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppVpcScSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsFallbackResponseConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsEndSessionConfigArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -270,6 +276,19 @@ import javax.annotation.Nullable;
  *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .privateKey(fakeSecretVersion.name())
+ *                 .build())
+ *             .vpcScSettings(AppVpcScSettingsArgs.builder()
+ *                 .allowedOrigins("https://example.com")
+ *                 .build())
+ *             .errorHandlingSettings(AppErrorHandlingSettingsArgs.builder()
+ *                 .errorHandlingStrategy("FALLBACK_RESPONSE")
+ *                 .fallbackResponseConfig(AppErrorHandlingSettingsFallbackResponseConfigArgs.builder()
+ *                     .customFallbackMessages(Map.of("en-US", "An error occurred, please try again."))
+ *                     .maxFallbackAttempts(3)
+ *                     .build())
+ *                 .endSessionConfig(AppErrorHandlingSettingsEndSessionConfigArgs.builder()
+ *                     .escalateSession(true)
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -658,6 +677,22 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="errorHandlingSettings", refs={AppErrorHandlingSettings.class}, tree="[0]")
+    private Output</* @Nullable */ AppErrorHandlingSettings> errorHandlingSettings;
+
+    /**
+     * @return Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AppErrorHandlingSettings>> errorHandlingSettings() {
+        return Codegen.optional(this.errorHandlingSettings);
+    }
+    /**
      * Etag used to ensure the object hasn&#39;t changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
@@ -928,6 +963,22 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AppVariableDeclaration>>> variableDeclarations() {
         return Codegen.optional(this.variableDeclarations);
+    }
+    /**
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="vpcScSettings", refs={AppVpcScSettings.class}, tree="[0]")
+    private Output</* @Nullable */ AppVpcScSettings> vpcScSettings;
+
+    /**
+     * @return VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AppVpcScSettings>> vpcScSettings() {
+        return Codegen.optional(this.vpcScSettings);
     }
 
     /**

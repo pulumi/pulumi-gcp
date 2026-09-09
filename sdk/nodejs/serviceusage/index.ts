@@ -10,6 +10,11 @@ export type ConsumerQuotaOverride = import("./consumerQuotaOverride").ConsumerQu
 export const ConsumerQuotaOverride: typeof import("./consumerQuotaOverride").ConsumerQuotaOverride = null as any;
 utilities.lazyLoad(exports, ["ConsumerQuotaOverride"], () => require("./consumerQuotaOverride"));
 
+export { V2ConsumerPolicyArgs, V2ConsumerPolicyState } from "./v2consumerPolicy";
+export type V2ConsumerPolicy = import("./v2consumerPolicy").V2ConsumerPolicy;
+export const V2ConsumerPolicy: typeof import("./v2consumerPolicy").V2ConsumerPolicy = null as any;
+utilities.lazyLoad(exports, ["V2ConsumerPolicy"], () => require("./v2consumerPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride":
                 return new ConsumerQuotaOverride(name, <any>undefined, { urn })
+            case "gcp:serviceusage/v2ConsumerPolicy:V2ConsumerPolicy":
+                return new V2ConsumerPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "serviceusage/consumerQuotaOverride", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceusage/v2ConsumerPolicy", _module)

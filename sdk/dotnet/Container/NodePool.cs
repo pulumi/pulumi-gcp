@@ -238,7 +238,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Creates a unique name for the node pool beginning
-        /// with the specified prefix. Conflicts with `Name`.
+        /// with the specified prefix. Conflicts with `Name`. Max length is 31 characters.
+        /// Prefixes with lengths longer than 14 characters will use a shortened
+        /// UUID that will be more prone to collisions.
+        /// 
+        /// Resulting name for a `NamePrefix` &lt;= 14 characters:
+        /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `NamePrefix` 15 - 31 characters:
+        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
@@ -463,7 +470,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Creates a unique name for the node pool beginning
-        /// with the specified prefix. Conflicts with `Name`.
+        /// with the specified prefix. Conflicts with `Name`. Max length is 31 characters.
+        /// Prefixes with lengths longer than 14 characters will use a shortened
+        /// UUID that will be more prone to collisions.
+        /// 
+        /// Resulting name for a `NamePrefix` &lt;= 14 characters:
+        /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `NamePrefix` 15 - 31 characters:
+        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -683,7 +697,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Creates a unique name for the node pool beginning
-        /// with the specified prefix. Conflicts with `Name`.
+        /// with the specified prefix. Conflicts with `Name`. Max length is 31 characters.
+        /// Prefixes with lengths longer than 14 characters will use a shortened
+        /// UUID that will be more prone to collisions.
+        /// 
+        /// Resulting name for a `NamePrefix` &lt;= 14 characters:
+        /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `NamePrefix` 15 - 31 characters:
+        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }

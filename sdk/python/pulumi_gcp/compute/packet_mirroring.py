@@ -512,7 +512,7 @@ class PacketMirroring(pulumi.CustomResource):
             machine_type="e2-medium",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             })
         default_subnetwork = gcp.compute.Subnetwork("default",
@@ -654,7 +654,7 @@ class PacketMirroring(pulumi.CustomResource):
             machine_type="e2-medium",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             })
         default_subnetwork = gcp.compute.Subnetwork("default",

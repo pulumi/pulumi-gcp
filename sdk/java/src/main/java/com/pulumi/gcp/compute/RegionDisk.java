@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var disk = new Disk("disk", DiskArgs.builder()
  *             .name("my-disk")
- *             .image("debian-cloud/debian-11")
+ *             .image("debian-cloud/debian-13")
  *             .size(50)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")

@@ -137,6 +137,21 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Whether resource mutations should be enabled.
+     * 
+     */
+    @Import(name="mutationsEnabled")
+    private @Nullable Output<Boolean> mutationsEnabled;
+
+    /**
+     * @return Whether resource mutations should be enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> mutationsEnabled() {
+        return Optional.ofNullable(this.mutationsEnabled);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -183,6 +198,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         this.geminiGcpEnablementSettingId = $.geminiGcpEnablementSettingId;
         this.labels = $.labels;
         this.location = $.location;
+        this.mutationsEnabled = $.mutationsEnabled;
         this.project = $.project;
         this.webGroundingType = $.webGroundingType;
     }
@@ -357,6 +373,27 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param mutationsEnabled Whether resource mutations should be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mutationsEnabled(@Nullable Output<Boolean> mutationsEnabled) {
+            $.mutationsEnabled = mutationsEnabled;
+            return this;
+        }
+
+        /**
+         * @param mutationsEnabled Whether resource mutations should be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mutationsEnabled(Boolean mutationsEnabled) {
+            return mutationsEnabled(Output.of(mutationsEnabled));
         }
 
         /**

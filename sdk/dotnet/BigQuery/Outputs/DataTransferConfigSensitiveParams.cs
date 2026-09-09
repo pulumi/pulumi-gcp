@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? SecretAccessKeyWo;
         /// <summary>
-        /// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// Triggers update of `SecretAccessKeyWo` write-only. Increment this value when an update to `SecretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         /// </summary>
-        public readonly int? SecretAccessKeyWoVersion;
+        public readonly string? SecretAccessKeyWoVersion;
 
         [OutputConstructor]
         private DataTransferConfigSensitiveParams(
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string? secretAccessKeyWo,
 
-            int? secretAccessKeyWoVersion)
+            string? secretAccessKeyWoVersion)
         {
             SecretAccessKey = secretAccessKey;
             SecretAccessKeyWo = secretAccessKeyWo;

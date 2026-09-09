@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Tpu
     ///     var disk = new Gcp.Compute.Disk("disk", new()
     ///     {
     ///         Name = "tpu-disk",
-    ///         Image = "debian-cloud/debian-11",
+    ///         Image = "debian-cloud/debian-13",
     ///         Size = 10,
     ///         Type = "pd-ssd",
     ///         Zone = "us-central1-c",

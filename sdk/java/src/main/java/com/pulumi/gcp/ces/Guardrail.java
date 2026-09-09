@@ -499,6 +499,7 @@ import javax.annotation.Nullable;
  *                     .pythonCode("""
  * def callback(context):
  *     return {'override': False}                    """)
+ *                     .proactiveExecutionEnabled(true)
  *                     .build())
  *                 .build())
  *             .build());

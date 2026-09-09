@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			defaultAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "default", &vertex.AiReasoningEngineArgs{
-//				DisplayName: pulumi.String("vertex-mds-_91657"),
+//				DisplayName: pulumi.String("vertex-mds-_90552"),
 //				Description: pulumi.String("Retrieves tenant project number"),
 //				Region:      pulumi.String("us-central1"),
 //				Spec: &vertex.AiReasoningEngineSpecArgs{

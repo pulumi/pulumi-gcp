@@ -11,11 +11,17 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.ces.DeploymentArgs;
 import com.pulumi.gcp.ces.inputs.DeploymentState;
 import com.pulumi.gcp.ces.outputs.DeploymentChannelProfile;
+import com.pulumi.gcp.ces.outputs.DeploymentInstagramCredentials;
+import com.pulumi.gcp.ces.outputs.DeploymentWhatsappCredentials;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Description
+ * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+ * Read more about Write-only Arguments.
  * 
  * ## Example Usage
  * 
@@ -317,6 +323,22 @@ public class Deployment extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
+     * Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="instagramCredentials", refs={DeploymentInstagramCredentials.class}, tree="[0]")
+    private Output</* @Nullable */ DeploymentInstagramCredentials> instagramCredentials;
+
+    /**
+     * @return Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DeploymentInstagramCredentials>> instagramCredentials() {
+        return Codegen.optional(this.instagramCredentials);
+    }
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
@@ -377,6 +399,22 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="whatsappCredentials", refs={DeploymentWhatsappCredentials.class}, tree="[0]")
+    private Output</* @Nullable */ DeploymentWhatsappCredentials> whatsappCredentials;
+
+    /**
+     * @return Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DeploymentWhatsappCredentials>> whatsappCredentials() {
+        return Codegen.optional(this.whatsappCredentials);
     }
 
     /**

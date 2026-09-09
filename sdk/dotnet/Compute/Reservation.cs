@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         Family = "debian-11",
+    ///         Family = "debian-13",
     ///         Project = "debian-cloud",
     ///     });
     /// 
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         Family = "debian-11",
+    ///         Family = "debian-13",
     ///         Project = "debian-cloud",
     ///     });
     /// 
@@ -361,13 +361,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
-
-        /// <summary>
-        /// (Output)
-        /// The number of reservation blocks associated with this reservation.
-        /// </summary>
-        [Output("reservationBlockCount")]
-        public Output<int> ReservationBlockCount { get; private set; } = null!;
 
         /// <summary>
         /// Sharing policy for reservations with Google Cloud managed services.
@@ -688,13 +681,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// (Output)
-        /// The number of reservation blocks associated with this reservation.
-        /// </summary>
-        [Input("reservationBlockCount")]
-        public Input<int>? ReservationBlockCount { get; set; }
 
         /// <summary>
         /// Sharing policy for reservations with Google Cloud managed services.

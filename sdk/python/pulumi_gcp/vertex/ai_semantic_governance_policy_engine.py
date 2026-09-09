@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AiSemanticGovernancePolicyEngineArgs', 'AiSemanticGovernancePolicyEngine']
 
@@ -20,6 +22,7 @@ __all__ = ['AiSemanticGovernancePolicyEngineArgs', 'AiSemanticGovernancePolicyEn
 class AiSemanticGovernancePolicyEngineArgs:
     def __init__(__self__, *,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -31,12 +34,17 @@ class AiSemanticGovernancePolicyEngineArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]] gateway_configs: Configurations for gateways. The keys are user-defined names for each gateway.
+               At most 5 gateway configurations are allowed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the SemanticGovernancePolicyEngine, e.g. 'us-central1'.
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if gateway_configs is not None:
+            pulumi.set(__self__, "gateway_configs", gateway_configs)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -58,6 +66,20 @@ class AiSemanticGovernancePolicyEngineArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayConfigs")
+    def gateway_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]]]:
+        """
+        Configurations for gateways. The keys are user-defined names for each gateway.
+        At most 5 gateway configurations are allowed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_configs")
+
+    @gateway_configs.setter
+    def gateway_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]]]):
+        pulumi.set(self, "gateway_configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -90,6 +112,7 @@ class _AiSemanticGovernancePolicyEngineState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -109,6 +132,9 @@ class _AiSemanticGovernancePolicyEngineState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]] gateway_configs: Configurations for gateways. The keys are user-defined names for each gateway.
+               At most 5 gateway configurations are allowed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] ip_address: The IP address allocated for the SGPE's managed PSC endpoint.
         :param pulumi.Input[_builtins.str] name: The resource name of the SemanticGovernancePolicyEngine, in the form
                'projects/{project}/locations/{region}/semanticGovernancePolicyEngine'.
@@ -130,6 +156,8 @@ class _AiSemanticGovernancePolicyEngineState:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if gateway_configs is not None:
+            pulumi.set(__self__, "gateway_configs", gateway_configs)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if name is not None:
@@ -176,6 +204,20 @@ class _AiSemanticGovernancePolicyEngineState:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayConfigs")
+    def gateway_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]]]:
+        """
+        Configurations for gateways. The keys are user-defined names for each gateway.
+        At most 5 gateway configurations are allowed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_configs")
+
+    @gateway_configs.setter
+    def gateway_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiSemanticGovernancePolicyEngineGatewayConfigArgs']]]]):
+        pulumi.set(self, "gateway_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
@@ -289,6 +331,7 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSemanticGovernancePolicyEngineGatewayConfigArgs', 'AiSemanticGovernancePolicyEngineGatewayConfigArgsDict', 'outputs.AiSemanticGovernancePolicyEngineGatewayConfig']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -348,6 +391,9 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiSemanticGovernancePolicyEngineGatewayConfigArgs', 'AiSemanticGovernancePolicyEngineGatewayConfigArgsDict', 'outputs.AiSemanticGovernancePolicyEngineGatewayConfig']]]] gateway_configs: Configurations for gateways. The keys are user-defined names for each gateway.
+               At most 5 gateway configurations are allowed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the SemanticGovernancePolicyEngine, e.g. 'us-central1'.
@@ -422,6 +468,7 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSemanticGovernancePolicyEngineGatewayConfigArgs', 'AiSemanticGovernancePolicyEngineGatewayConfigArgsDict', 'outputs.AiSemanticGovernancePolicyEngineGatewayConfig']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -434,6 +481,7 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
             __props__ = AiSemanticGovernancePolicyEngineArgs.__new__(AiSemanticGovernancePolicyEngineArgs)
 
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["gateway_configs"] = gateway_configs
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
@@ -455,6 +503,7 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSemanticGovernancePolicyEngineGatewayConfigArgs', 'AiSemanticGovernancePolicyEngineGatewayConfigArgsDict', 'outputs.AiSemanticGovernancePolicyEngineGatewayConfig']]]]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -478,6 +527,9 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiSemanticGovernancePolicyEngineGatewayConfigArgs', 'AiSemanticGovernancePolicyEngineGatewayConfigArgsDict', 'outputs.AiSemanticGovernancePolicyEngineGatewayConfig']]]] gateway_configs: Configurations for gateways. The keys are user-defined names for each gateway.
+               At most 5 gateway configurations are allowed.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] ip_address: The IP address allocated for the SGPE's managed PSC endpoint.
         :param pulumi.Input[_builtins.str] name: The resource name of the SemanticGovernancePolicyEngine, in the form
                'projects/{project}/locations/{region}/semanticGovernancePolicyEngine'.
@@ -501,6 +553,7 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["gateway_configs"] = gateway_configs
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -532,6 +585,16 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
         When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayConfigs")
+    def gateway_configs(self) -> pulumi.Output[Optional[Sequence['outputs.AiSemanticGovernancePolicyEngineGatewayConfig']]]:
+        """
+        Configurations for gateways. The keys are user-defined names for each gateway.
+        At most 5 gateway configurations are allowed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_configs")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")

@@ -35,8 +35,7 @@ class AiReasoningEngineArgs:
         The set of arguments for constructing a AiReasoningEngine resource.
 
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
-        :param pulumi.Input['AiReasoningEngineContextSpecArgs'] context_spec: (Optional, Beta)
-               Optional. Configuration for how Agent Engine sub-resources should manage context.
+        :param pulumi.Input['AiReasoningEngineContextSpecArgs'] context_spec: Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine.
                Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
@@ -102,7 +101,6 @@ class AiReasoningEngineArgs:
     @pulumi.getter(name="contextSpec")
     def context_spec(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']]:
         """
-        (Optional, Beta)
         Optional. Configuration for how Agent Engine sub-resources should manage context.
         Structure is documented below.
         """
@@ -250,8 +248,7 @@ class _AiReasoningEngineState:
         """
         Input properties used for looking up and filtering AiReasoningEngine resources.
 
-        :param pulumi.Input['AiReasoningEngineContextSpecArgs'] context_spec: (Optional, Beta)
-               Optional. Configuration for how Agent Engine sub-resources should manage context.
+        :param pulumi.Input['AiReasoningEngineContextSpecArgs'] context_spec: Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
@@ -330,7 +327,6 @@ class _AiReasoningEngineState:
     @pulumi.getter(name="contextSpec")
     def context_spec(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']]:
         """
-        (Optional, Beta)
         Optional. Configuration for how Agent Engine sub-resources should manage context.
         Structure is documented below.
         """
@@ -567,9 +563,9 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         To get more information about ReasoningEngine, see:
 
-        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+        * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
         * How-to Guides
-            * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+            * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 
         ## Example Usage
 
@@ -858,6 +854,9 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "agent_framework": "google-adk",
                 "class_methods": json.dumps(class_methods),
                 "service_account": service_account.email,
+                "build_spec": {
+                    "service_account": service_account.email,
+                },
                 "deployment_spec": {
                     "min_instances": 1,
                     "max_instances": 3,
@@ -995,6 +994,17 @@ class AiReasoningEngine(pulumi.CustomResource):
                                                         "id": "exec-result-1",
                                                         "outcome": "OUTCOME_OK",
                                                         "output": "pizza",
+                                                    },
+                                                },
+                                                {
+                                                    "audio_transcription": {
+                                                        "speaker_label": "spk_1",
+                                                        "text": "I like pepperoni pizza",
+                                                        "words": [{
+                                                            "start_offset": "0.5s",
+                                                            "end_offset": "1.5s",
+                                                            "word": "pepperoni",
+                                                        }],
                                                     },
                                                 },
                                             ],
@@ -1165,8 +1175,7 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']] context_spec: (Optional, Beta)
-               Optional. Configuration for how Agent Engine sub-resources should manage context.
+        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']] context_spec: Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine.
                Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
@@ -1208,9 +1217,9 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         To get more information about ReasoningEngine, see:
 
-        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+        * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
         * How-to Guides
-            * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+            * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 
         ## Example Usage
 
@@ -1499,6 +1508,9 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "agent_framework": "google-adk",
                 "class_methods": json.dumps(class_methods),
                 "service_account": service_account.email,
+                "build_spec": {
+                    "service_account": service_account.email,
+                },
                 "deployment_spec": {
                     "min_instances": 1,
                     "max_instances": 3,
@@ -1636,6 +1648,17 @@ class AiReasoningEngine(pulumi.CustomResource):
                                                         "id": "exec-result-1",
                                                         "outcome": "OUTCOME_OK",
                                                         "output": "pizza",
+                                                    },
+                                                },
+                                                {
+                                                    "audio_transcription": {
+                                                        "speaker_label": "spk_1",
+                                                        "text": "I like pepperoni pizza",
+                                                        "words": [{
+                                                            "start_offset": "0.5s",
+                                                            "end_offset": "1.5s",
+                                                            "word": "pepperoni",
+                                                        }],
                                                     },
                                                 },
                                             ],
@@ -1891,8 +1914,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']] context_spec: (Optional, Beta)
-               Optional. Configuration for how Agent Engine sub-resources should manage context.
+        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict', 'outputs.AiReasoningEngineContextSpec']] context_spec: Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
@@ -1960,7 +1982,6 @@ class AiReasoningEngine(pulumi.CustomResource):
     @pulumi.getter(name="contextSpec")
     def context_spec(self) -> pulumi.Output['outputs.AiReasoningEngineContextSpec']:
         """
-        (Optional, Beta)
         Optional. Configuration for how Agent Engine sub-resources should manage context.
         Structure is documented below.
         """

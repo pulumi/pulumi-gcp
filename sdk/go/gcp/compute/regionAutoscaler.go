@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -45,7 +45,7 @@ import (
 //				MachineType: pulumi.String("e2-standard-4"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("debian-cloud/debian-11"),
+//						SourceImage: pulumi.String("debian-cloud/debian-13"),
 //						DiskSizeGb:  pulumi.Int(250),
 //					},
 //				},
@@ -115,7 +115,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-11"),
+//				Family:  pulumi.StringRef("debian-13"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
 //			if err != nil {

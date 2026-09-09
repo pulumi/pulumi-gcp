@@ -297,8 +297,6 @@ memorystoreCustomEndpoint: Optional[str]
 
 migrationCenterCustomEndpoint: Optional[str]
 
-mlEngineCustomEndpoint: Optional[str]
-
 modelArmorCustomEndpoint: Optional[str]
 
 modelArmorGlobalCustomEndpoint: Optional[str]
@@ -313,11 +311,11 @@ networkConnectivityv1CustomEndpoint: Optional[str]
 
 networkManagementCustomEndpoint: Optional[str]
 
+networkManagementv1CustomEndpoint: Optional[str]
+
 networkSecurityCustomEndpoint: Optional[str]
 
 networkServicesCustomEndpoint: Optional[str]
-
-notebooksCustomEndpoint: Optional[str]
 
 observabilityCustomEndpoint: Optional[str]
 
@@ -405,6 +403,8 @@ serviceNetworkingCustomEndpoint: Optional[str]
 
 serviceUsageCustomEndpoint: Optional[str]
 
+serviceUsageV2CustomEndpoint: Optional[str]
+
 siteVerificationCustomEndpoint: Optional[str]
 
 skipRegionValidation: bool
@@ -420,6 +420,8 @@ storageBatchOperationsCustomEndpoint: Optional[str]
 storageControlCustomEndpoint: Optional[str]
 
 storageCustomEndpoint: Optional[str]
+
+storageFtpCustomEndpoint: Optional[str]
 
 storageInsightsCustomEndpoint: Optional[str]
 

@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "backend-service",
     ///         Protocol = "SSL",
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 

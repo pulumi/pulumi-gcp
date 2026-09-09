@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *         network: "default",
  *     }],
  *     disks: [{
- *         sourceImage: "debian-cloud/debian-11",
+ *         sourceImage: "debian-cloud/debian-13",
  *         autoDelete: true,
  *         boot: true,
  *     }],
@@ -45,11 +45,14 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-f",
  *     targetSize: 1,
  * });
- * const _default = new gcp.compute.HttpHealthCheck("default", {
+ * const _default = new gcp.compute.HealthCheck("default", {
  *     name: "test",
- *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
  * });
  * const exampleBackend = new gcp.compute.BackendService("example_backend", {
  *     name: "my-backend-service",

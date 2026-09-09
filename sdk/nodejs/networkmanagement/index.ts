@@ -20,6 +20,11 @@ export const getConnectivityTests: typeof import("./getConnectivityTests").getCo
 export const getConnectivityTestsOutput: typeof import("./getConnectivityTests").getConnectivityTestsOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectivityTests","getConnectivityTestsOutput"], () => require("./getConnectivityTests"));
 
+export { NetworkMonitoringProviderArgs, NetworkMonitoringProviderState } from "./networkMonitoringProvider";
+export type NetworkMonitoringProvider = import("./networkMonitoringProvider").NetworkMonitoringProvider;
+export const NetworkMonitoringProvider: typeof import("./networkMonitoringProvider").NetworkMonitoringProvider = null as any;
+utilities.lazyLoad(exports, ["NetworkMonitoringProvider"], () => require("./networkMonitoringProvider"));
+
 export { OrganizationVpcFlowLogsConfigArgs, OrganizationVpcFlowLogsConfigState } from "./organizationVpcFlowLogsConfig";
 export type OrganizationVpcFlowLogsConfig = import("./organizationVpcFlowLogsConfig").OrganizationVpcFlowLogsConfig;
 export const OrganizationVpcFlowLogsConfig: typeof import("./organizationVpcFlowLogsConfig").OrganizationVpcFlowLogsConfig = null as any;
@@ -37,6 +42,8 @@ const _module = {
         switch (type) {
             case "gcp:networkmanagement/connectivityTest:ConnectivityTest":
                 return new ConnectivityTest(name, <any>undefined, { urn })
+            case "gcp:networkmanagement/networkMonitoringProvider:NetworkMonitoringProvider":
+                return new NetworkMonitoringProvider(name, <any>undefined, { urn })
             case "gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig":
                 return new OrganizationVpcFlowLogsConfig(name, <any>undefined, { urn })
             case "gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig":
@@ -47,5 +54,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "networkmanagement/connectivityTest", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkmanagement/networkMonitoringProvider", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkmanagement/organizationVpcFlowLogsConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkmanagement/vpcFlowLogsConfig", _module)

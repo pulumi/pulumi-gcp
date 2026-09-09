@@ -24452,14 +24452,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility(dict):
 @pulumi.output_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
     def __init__(__self__, *,
-                 attachment: Optional[Sequence[_builtins.str]] = None,
                  attachments: Optional[Sequence[_builtins.str]] = None,
                  zone: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] attachment: (Output, Deprecated)
-               URLs of Attachments in the given zone, to the given
-               region, on Interconnects in the given facility and metro. Every
-               Attachment in the AG has such an entry.
         :param Sequence[_builtins.str] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -24471,24 +24466,10 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
-        if attachment is not None:
-            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-    def attachment(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (Output, Deprecated)
-        URLs of Attachments in the given zone, to the given
-        region, on Interconnects in the given facility and metro. Every
-        Attachment in the AG has such an entry.
-        """
-        return pulumi.get(self, "attachment")
 
     @_builtins.property
     @pulumi.getter
@@ -81220,6 +81201,7 @@ class GetInterconnectLocationsLocationResult(dict):
 class GetMachineTypesMachineTypeResult(dict):
     def __init__(__self__, *,
                  accelerators: Sequence['outputs.GetMachineTypesMachineTypeAcceleratorResult'],
+                 architecture: _builtins.str,
                  bundled_local_ssds: Sequence['outputs.GetMachineTypesMachineTypeBundledLocalSsdResult'],
                  deprecateds: Sequence['outputs.GetMachineTypesMachineTypeDeprecatedResult'],
                  description: _builtins.str,
@@ -81232,6 +81214,7 @@ class GetMachineTypesMachineTypeResult(dict):
                  self_link: _builtins.str):
         """
         :param Sequence['GetMachineTypesMachineTypeAcceleratorArgs'] accelerators: A list of accelerator configurations assigned to this machine type. Structure is documented below.
+        :param _builtins.str architecture: The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
         :param Sequence['GetMachineTypesMachineTypeBundledLocalSsdArgs'] bundled_local_ssds: (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
         :param Sequence['GetMachineTypesMachineTypeDeprecatedArgs'] deprecateds: The deprecation status associated with this machine type. Structure is documented below.
         :param _builtins.str description: A textual description of the machine type.
@@ -81244,6 +81227,7 @@ class GetMachineTypesMachineTypeResult(dict):
         :param _builtins.str self_link: The server-defined URL for the machine type.
         """
         pulumi.set(__self__, "accelerators", accelerators)
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "bundled_local_ssds", bundled_local_ssds)
         pulumi.set(__self__, "deprecateds", deprecateds)
         pulumi.set(__self__, "description", description)
@@ -81262,6 +81246,14 @@ class GetMachineTypesMachineTypeResult(dict):
         A list of accelerator configurations assigned to this machine type. Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> _builtins.str:
+        """
+        The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+        """
+        return pulumi.get(self, "architecture")
 
     @_builtins.property
     @pulumi.getter(name="bundledLocalSsds")

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,12 +32,12 @@ import (
 //	"encoding/json"
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -142,9 +142,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -152,7 +152,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("psc-network-_13786"),
+//				Name: pulumi.String("psc-network-_57926"),
 //			})
 //			if err != nil {
 //				return err
@@ -162,7 +162,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_29040"),
+//				Name:        pulumi.String("endpoint-name_91657"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -198,8 +198,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -207,7 +207,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_78181"),
+//				Name:        pulumi.String("endpoint-name_51247"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),

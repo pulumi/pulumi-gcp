@@ -12,12 +12,18 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
     public sealed class WorkerPoolTemplateContainerLivenessProbeHttpGetGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("httpHeaders")]
+        private InputList<Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderGetArgs>? _httpHeaders;
+
         /// <summary>
         /// Optional. Custom headers to set in the request. HTTP allows repeated headers.
         /// Structure is documented below.
         /// </summary>
-        [Input("httpHeaders")]
-        public Input<Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersGetArgs>? HttpHeaders { get; set; }
+        public InputList<Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderGetArgs> HttpHeaders
+        {
+            get => _httpHeaders ?? (_httpHeaders = new InputList<Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderGetArgs>());
+            set => _httpHeaders = value;
+        }
 
         /// <summary>
         /// Optional. Path to access on the HTTP server. Defaults to '/'.

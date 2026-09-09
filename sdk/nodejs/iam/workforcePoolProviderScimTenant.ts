@@ -124,7 +124,7 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
     /**
      * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      */
-    declare public readonly claimMapping: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly claimMapping: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -213,6 +213,9 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
             resourceInputs["workforcePoolId"] = state?.workforcePoolId;
         } else {
             const args = argsOrState as WorkforcePoolProviderScimTenantArgs | undefined;
+            if (args?.claimMapping === undefined && !opts.urn) {
+                throw new Error("Missing required property 'claimMapping'");
+            }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -328,7 +331,7 @@ export interface WorkforcePoolProviderScimTenantArgs {
     /**
      * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      */
-    claimMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    claimMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

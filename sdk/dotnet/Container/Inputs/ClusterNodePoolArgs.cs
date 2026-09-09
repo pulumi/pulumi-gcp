@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }

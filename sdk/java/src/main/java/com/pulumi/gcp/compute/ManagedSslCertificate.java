@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  *             .portName("http")
  *             .protocol("HTTP")
  *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
@@ -135,6 +136,7 @@ import javax.annotation.Nullable;
  *             .name("forwarding-rule")
  *             .target(defaultTargetHttpsProxy.id())
  *             .portRange("443")
+ *             .loadBalancingScheme("EXTERNAL")
  *             .build());
  * 
  *     }

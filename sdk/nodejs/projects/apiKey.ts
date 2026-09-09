@@ -173,12 +173,17 @@ export class ApiKey extends pulumi.CustomResource {
     }
 
     /**
+     * Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+     */
+    declare public readonly checkExistingUsage: pulumi.Output<string | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to "DELETE", deleting the resource is allowed.
+     * When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+     * When set to "FORCE", deleting the resource will bypass the active traffic usage check.
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -225,6 +230,7 @@ export class ApiKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiKeyState | undefined;
+            resourceInputs["checkExistingUsage"] = state?.checkExistingUsage;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["keyString"] = state?.keyString;
@@ -235,6 +241,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as ApiKeyArgs | undefined;
+            resourceInputs["checkExistingUsage"] = args?.checkExistingUsage;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["name"] = args?.name;
@@ -256,12 +263,17 @@ export class ApiKey extends pulumi.CustomResource {
  */
 export interface ApiKeyState {
     /**
+     * Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+     */
+    checkExistingUsage?: pulumi.Input<string | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to "DELETE", deleting the resource is allowed.
+     * When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+     * When set to "FORCE", deleting the resource will bypass the active traffic usage check.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -301,12 +313,17 @@ export interface ApiKeyState {
  */
 export interface ApiKeyArgs {
     /**
+     * Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+     */
+    checkExistingUsage?: pulumi.Input<string | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to "DELETE", deleting the resource is allowed.
+     * When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+     * When set to "FORCE", deleting the resource will bypass the active traffic usage check.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

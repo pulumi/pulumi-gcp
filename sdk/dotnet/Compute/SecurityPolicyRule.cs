@@ -307,7 +307,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 SourceImage = "projects/debian-cloud/global/images/family/debian-11",
+    ///                 SourceImage = "projects/debian-cloud/global/images/family/debian-13",
     ///                 AutoDelete = true,
     ///                 Boot = true,
     ///             },

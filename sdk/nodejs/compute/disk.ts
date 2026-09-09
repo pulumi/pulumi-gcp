@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     name: "test-disk",
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
- *     image: "debian-11-bullseye-v20220719",
+ *     image: "debian-13-trixie-v20260827",
  *     labels: {
  *         environment: "dev",
  *     },

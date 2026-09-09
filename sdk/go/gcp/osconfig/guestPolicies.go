@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,8 +34,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -43,7 +43,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-11"),
+//				Family:  pulumi.StringRef("debian-13"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -183,7 +183,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

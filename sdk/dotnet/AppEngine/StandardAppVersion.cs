@@ -249,6 +249,136 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// });
     /// ```
+    /// ### App Engine Standard App Version Vpc Access
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
+    ///     {
+    ///         AccountId = "gae-sa",
+    ///         DisplayName = "Test Service Account for GAE",
+    ///     });
+    /// 
+    ///     var gaeApi = new Gcp.Projects.IAMMember("gae_api", new()
+    ///     {
+    ///         Project = serviceAccount.Project,
+    ///         Role = "roles/compute.networkUser",
+    ///         Member = serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var storageViewer = new Gcp.Projects.IAMMember("storage_viewer", new()
+    ///     {
+    ///         Project = serviceAccount.Project,
+    ///         Role = "roles/storage.objectViewer",
+    ///         Member = serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var custom = new Gcp.Compute.Network("custom", new()
+    ///     {
+    ///         Name = "custom-net-vpc-service",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var customSubnetwork = new Gcp.Compute.Subnetwork("custom", new()
+    ///     {
+    ///         Name = "custom-sub-vpc-service",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = custom.Id,
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "tf-test-gae-bkt-vpc-access",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var requirements = new Gcp.Storage.BucketObject("requirements", new()
+    ///     {
+    ///         Name = "requirements.txt",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+    ///     });
+    /// 
+    ///     var main = new Gcp.Storage.BucketObject("main", new()
+    ///     {
+    ///         Name = "main.py",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/hello-world-flask/main.py"),
+    ///     });
+    /// 
+    ///     var gae_std_app_ver_vpc_access = new Gcp.AppEngine.StandardAppVersion("gae-std-app-ver-vpc-access", new()
+    ///     {
+    ///         VersionId = "v1",
+    ///         Service = "vpc-service",
+    ///         Runtime = "python310",
+    ///         VpcAccess = new Gcp.AppEngine.Inputs.StandardAppVersionVpcAccessArgs
+    ///         {
+    ///             EgressSetting = "ALL_TRAFFIC",
+    ///             NetworkInterfaces = new[]
+    ///             {
+    ///                 new Gcp.AppEngine.Inputs.StandardAppVersionVpcAccessNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = custom.Name,
+    ///                     Subnetwork = customSubnetwork.Name,
+    ///                     Tags = new[]
+    ///                     {
+    ///                         "tag1",
+    ///                         "tag2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Files = new[]
+    ///             {
+    ///                 new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentFileArgs
+    ///                 {
+    ///                     Name = "main.py",
+    ///                     SourceUrl = Output.Tuple(bucket.Name, main.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var mainName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{mainName}";
+    ///                     }),
+    ///                 },
+    ///                 new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentFileArgs
+    ///                 {
+    ///                     Name = "requirements.txt",
+    ///                     SourceUrl = Output.Tuple(bucket.Name, requirements.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var requirementsName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{requirementsName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "gunicorn -b :$PORT main:app",
+    ///         },
+    ///         DeleteServiceOnDestroy = true,
+    ///         ServiceAccount = serviceAccount.Email,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gaeApi,
+    ///             storageViewer,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -429,6 +559,14 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Output("versionId")]
         public Output<string?> VersionId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Direct VPC Access settings for standard apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("vpcAccess")]
+        public Output<Outputs.StandardAppVersionVpcAccess?> VpcAccess { get; private set; } = null!;
 
         /// <summary>
         /// Enables VPC connectivity for standard apps.
@@ -669,6 +807,14 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Direct VPC Access settings for standard apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcAccess")]
+        public Input<Inputs.StandardAppVersionVpcAccessArgs>? VpcAccess { get; set; }
+
+        /// <summary>
         /// Enables VPC connectivity for standard apps.
         /// Structure is documented below.
         /// </summary>
@@ -873,6 +1019,14 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Direct VPC Access settings for standard apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcAccess")]
+        public Input<Inputs.StandardAppVersionVpcAccessGetArgs>? VpcAccess { get; set; }
 
         /// <summary>
         /// Enables VPC connectivity for standard apps.

@@ -155,7 +155,6 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetReservationParamResult> Params;
         public readonly string? Project;
-        public readonly int ReservationBlockCount;
         public readonly ImmutableArray<Outputs.GetReservationReservationSharingPolicyResult> ReservationSharingPolicies;
         public readonly ImmutableArray<Outputs.GetReservationResourceStatusResult> ResourceStatuses;
         public readonly bool SatisfiesPzs;
@@ -196,8 +195,6 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
-            int reservationBlockCount,
-
             ImmutableArray<Outputs.GetReservationReservationSharingPolicyResult> reservationSharingPolicies,
 
             ImmutableArray<Outputs.GetReservationResourceStatusResult> resourceStatuses,
@@ -230,7 +227,6 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             Params = @params;
             Project = project;
-            ReservationBlockCount = reservationBlockCount;
             ReservationSharingPolicies = reservationSharingPolicies;
             ResourceStatuses = resourceStatuses;
             SatisfiesPzs = satisfiesPzs;

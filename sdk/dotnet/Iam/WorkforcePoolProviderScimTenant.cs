@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Iam
         /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         /// </summary>
         [Output("claimMapping")]
-        public Output<ImmutableDictionary<string, string>?> ClaimMapping { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> ClaimMapping { get; private set; } = null!;
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.Iam
 
     public sealed class WorkforcePoolProviderScimTenantArgs : global::Pulumi.ResourceArgs
     {
-        [Input("claimMapping")]
+        [Input("claimMapping", required: true)]
         private InputMap<string>? _claimMapping;
 
         /// <summary>

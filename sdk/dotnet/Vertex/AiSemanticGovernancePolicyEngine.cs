@@ -87,6 +87,14 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Configurations for gateways. The keys are user-defined names for each gateway.
+        /// At most 5 gateway configurations are allowed.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gatewayConfigs")]
+        public Output<ImmutableArray<Outputs.AiSemanticGovernancePolicyEngineGatewayConfig>> GatewayConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address allocated for the SGPE's managed PSC endpoint.
         /// </summary>
         [Output("ipAddress")]
@@ -199,6 +207,20 @@ namespace Pulumi.Gcp.Vertex
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
+        [Input("gatewayConfigs")]
+        private InputList<Inputs.AiSemanticGovernancePolicyEngineGatewayConfigArgs>? _gatewayConfigs;
+
+        /// <summary>
+        /// Configurations for gateways. The keys are user-defined names for each gateway.
+        /// At most 5 gateway configurations are allowed.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AiSemanticGovernancePolicyEngineGatewayConfigArgs> GatewayConfigs
+        {
+            get => _gatewayConfigs ?? (_gatewayConfigs = new InputList<Inputs.AiSemanticGovernancePolicyEngineGatewayConfigArgs>());
+            set => _gatewayConfigs = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -237,6 +259,20 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        [Input("gatewayConfigs")]
+        private InputList<Inputs.AiSemanticGovernancePolicyEngineGatewayConfigGetArgs>? _gatewayConfigs;
+
+        /// <summary>
+        /// Configurations for gateways. The keys are user-defined names for each gateway.
+        /// At most 5 gateway configurations are allowed.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AiSemanticGovernancePolicyEngineGatewayConfigGetArgs> GatewayConfigs
+        {
+            get => _gatewayConfigs ?? (_gatewayConfigs = new InputList<Inputs.AiSemanticGovernancePolicyEngineGatewayConfigGetArgs>());
+            set => _gatewayConfigs = value;
+        }
 
         /// <summary>
         /// The IP address allocated for the SGPE's managed PSC endpoint.

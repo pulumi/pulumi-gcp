@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileArgs;
+import com.pulumi.gcp.ces.inputs.DeploymentInstagramCredentialsArgs;
+import com.pulumi.gcp.ces.inputs.DeploymentWhatsappCredentialsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -111,6 +113,23 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="instagramCredentials")
+    private @Nullable Output<DeploymentInstagramCredentialsArgs> instagramCredentials;
+
+    /**
+     * @return Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DeploymentInstagramCredentialsArgs>> instagramCredentials() {
+        return Optional.ofNullable(this.instagramCredentials);
+    }
+
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
@@ -142,6 +161,23 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="whatsappCredentials")
+    private @Nullable Output<DeploymentWhatsappCredentialsArgs> whatsappCredentials;
+
+    /**
+     * @return Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DeploymentWhatsappCredentialsArgs>> whatsappCredentials() {
+        return Optional.ofNullable(this.whatsappCredentials);
+    }
+
     private DeploymentArgs() {}
 
     private DeploymentArgs(DeploymentArgs $) {
@@ -150,8 +186,10 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
         this.channelProfile = $.channelProfile;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
+        this.instagramCredentials = $.instagramCredentials;
         this.location = $.location;
         this.project = $.project;
+        this.whatsappCredentials = $.whatsappCredentials;
     }
 
     public static Builder builder() {
@@ -296,6 +334,29 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param instagramCredentials Ephemeral Meta credentials required when configuring an Instagram channel profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instagramCredentials(@Nullable Output<DeploymentInstagramCredentialsArgs> instagramCredentials) {
+            $.instagramCredentials = instagramCredentials;
+            return this;
+        }
+
+        /**
+         * @param instagramCredentials Ephemeral Meta credentials required when configuring an Instagram channel profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instagramCredentials(DeploymentInstagramCredentialsArgs instagramCredentials) {
+            return instagramCredentials(Output.of(instagramCredentials));
+        }
+
+        /**
          * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
@@ -337,6 +398,29 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param whatsappCredentials Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whatsappCredentials(@Nullable Output<DeploymentWhatsappCredentialsArgs> whatsappCredentials) {
+            $.whatsappCredentials = whatsappCredentials;
+            return this;
+        }
+
+        /**
+         * @param whatsappCredentials Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whatsappCredentials(DeploymentWhatsappCredentialsArgs whatsappCredentials) {
+            return whatsappCredentials(Output.of(whatsappCredentials));
         }
 
         public DeploymentArgs build() {

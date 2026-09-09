@@ -1990,7 +1990,7 @@ class RegionBackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian_image = gcp.compute.get_image(family="debian-11",
+        debian_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         default_network = gcp.compute.Network("default",
             name="rbs-net",
@@ -2741,7 +2741,7 @@ class RegionBackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian_image = gcp.compute.get_image(family="debian-11",
+        debian_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         default_network = gcp.compute.Network("default",
             name="rbs-net",

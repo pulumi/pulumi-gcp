@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence? InspectTemplateModifiedCadence;
         /// <summary>
+        /// Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+        /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        /// </summary>
+        public readonly string? RefreshFrequency;
+        /// <summary>
         /// Governs when to update data profiles when a schema is modified
         /// Structure is documented below.
         /// </summary>
@@ -33,11 +38,14 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionDiscoveryConfigTargetBigQueryTargetCadence(
             Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence? inspectTemplateModifiedCadence,
 
+            string? refreshFrequency,
+
             Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence? schemaModifiedCadence,
 
             Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence? tableModifiedCadence)
         {
             InspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
+            RefreshFrequency = refreshFrequency;
             SchemaModifiedCadence = schemaModifiedCadence;
             TableModifiedCadence = tableModifiedCadence;
         }

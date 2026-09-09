@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const disk = new gcp.compute.Disk("disk", {
  *     name: "my-base-disk",
- *     image: "debian-cloud/debian-11",
+ *     image: "debian-cloud/debian-13",
  *     size: 50,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * const myImage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * ```

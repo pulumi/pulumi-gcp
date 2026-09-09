@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 Image = "debian-cloud/debian-11",
+    ///                 Image = "debian-cloud/debian-13",
     ///             },
     ///         },
     ///         NetworkInterfaces = new[]
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 Image = "debian-cloud/debian-11",
+    ///                 Image = "debian-cloud/debian-13",
     ///             },
     ///         },
     ///         NetworkInterfaces = new[]
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 Image = "debian-cloud/debian-11",
+    ///                 Image = "debian-cloud/debian-13",
     ///             },
     ///         },
     ///         NetworkInterfaces = new[]

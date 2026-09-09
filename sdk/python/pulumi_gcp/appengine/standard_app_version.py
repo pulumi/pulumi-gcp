@@ -43,6 +43,7 @@ class StandardAppVersionArgs:
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  threadsafe: pulumi.Input[Optional[_builtins.bool]] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_access: pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']] = None,
                  vpc_access_connector: pulumi.Input[Optional['StandardAppVersionVpcAccessConnectorArgs']] = None):
         """
         The set of arguments for constructing a StandardAppVersion resource.
@@ -92,6 +93,9 @@ class StandardAppVersionArgs:
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input['StandardAppVersionVpcAccessArgs'] vpc_access: (Optional, Beta)
+               Direct VPC Access settings for standard apps.
+               Structure is documented below.
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
@@ -135,6 +139,8 @@ class StandardAppVersionArgs:
             pulumi.set(__self__, "threadsafe", threadsafe)
         if version_id is not None:
             pulumi.set(__self__, "version_id", version_id)
+        if vpc_access is not None:
+            pulumi.set(__self__, "vpc_access", vpc_access)
         if vpc_access_connector is not None:
             pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
 
@@ -426,6 +432,20 @@ class StandardAppVersionArgs:
         pulumi.set(self, "version_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="vpcAccess")
+    def vpc_access(self) -> pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']]:
+        """
+        (Optional, Beta)
+        Direct VPC Access settings for standard apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_access")
+
+    @vpc_access.setter
+    def vpc_access(self, value: pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']]):
+        pulumi.set(self, "vpc_access", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcAccessConnector")
     def vpc_access_connector(self) -> pulumi.Input[Optional['StandardAppVersionVpcAccessConnectorArgs']]:
         """
@@ -465,6 +485,7 @@ class _StandardAppVersionState:
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  threadsafe: pulumi.Input[Optional[_builtins.bool]] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_access: pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']] = None,
                  vpc_access_connector: pulumi.Input[Optional['StandardAppVersionVpcAccessConnectorArgs']] = None):
         """
         Input properties used for looking up and filtering StandardAppVersion resources.
@@ -515,6 +536,9 @@ class _StandardAppVersionState:
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input['StandardAppVersionVpcAccessArgs'] vpc_access: (Optional, Beta)
+               Direct VPC Access settings for standard apps.
+               Structure is documented below.
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
@@ -564,6 +588,8 @@ class _StandardAppVersionState:
             pulumi.set(__self__, "threadsafe", threadsafe)
         if version_id is not None:
             pulumi.set(__self__, "version_id", version_id)
+        if vpc_access is not None:
+            pulumi.set(__self__, "vpc_access", vpc_access)
         if vpc_access_connector is not None:
             pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
 
@@ -867,6 +893,20 @@ class _StandardAppVersionState:
         pulumi.set(self, "version_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="vpcAccess")
+    def vpc_access(self) -> pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']]:
+        """
+        (Optional, Beta)
+        Direct VPC Access settings for standard apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_access")
+
+    @vpc_access.setter
+    def vpc_access(self, value: pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']]):
+        pulumi.set(self, "vpc_access", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcAccessConnector")
     def vpc_access_connector(self) -> pulumi.Input[Optional['StandardAppVersionVpcAccessConnectorArgs']]:
         """
@@ -908,6 +948,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  threadsafe: pulumi.Input[Optional[_builtins.bool]] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_access: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']]] = None,
                  vpc_access_connector: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']]] = None,
                  __props__=None):
         """
@@ -1074,6 +1115,88 @@ class StandardAppVersion(pulumi.CustomResource):
                     storage_viewer,
                 ]))
         ```
+        ### App Engine Standard App Version Vpc Access
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.serviceaccount.Account("service_account",
+            account_id="gae-sa",
+            display_name="Test Service Account for GAE")
+        gae_api = gcp.projects.IAMMember("gae_api",
+            project=service_account.project,
+            role="roles/compute.networkUser",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
+            project=service_account.project,
+            role="roles/storage.objectViewer",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        custom = gcp.compute.Network("custom",
+            name="custom-net-vpc-service",
+            auto_create_subnetworks=False)
+        custom_subnetwork = gcp.compute.Subnetwork("custom",
+            name="custom-sub-vpc-service",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=custom.id)
+        bucket = gcp.storage.Bucket("bucket",
+            name="tf-test-gae-bkt-vpc-access",
+            location="US",
+            uniform_bucket_level_access=True)
+        requirements = gcp.storage.BucketObject("requirements",
+            name="requirements.txt",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+        main = gcp.storage.BucketObject("main",
+            name="main.py",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/main.py"))
+        gae_std_app_ver_vpc_access = gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access",
+            version_id="v1",
+            service="vpc-service",
+            runtime="python310",
+            vpc_access={
+                "egress_setting": "ALL_TRAFFIC",
+                "network_interfaces": [{
+                    "network": custom.name,
+                    "subnetwork": custom_subnetwork.name,
+                    "tags": [
+                        "tag1",
+                        "tag2",
+                    ],
+                }],
+            },
+            deployment={
+                "files": [
+                    {
+                        "name": "main.py",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            mainName=main.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['mainName']}")
+        ,
+                    },
+                    {
+                        "name": "requirements.txt",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            requirementsName=requirements.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['requirementsName']}")
+        ,
+                    },
+                ],
+            },
+            entrypoint={
+                "shell": "gunicorn -b :$PORT main:app",
+            },
+            delete_service_on_destroy=True,
+            service_account=service_account.email,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    gae_api,
+                    storage_viewer,
+                ]))
+        ```
 
         ## Import
 
@@ -1139,6 +1262,9 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']] vpc_access: (Optional, Beta)
+               Direct VPC Access settings for standard apps.
+               Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
@@ -1312,6 +1438,88 @@ class StandardAppVersion(pulumi.CustomResource):
                     storage_viewer,
                 ]))
         ```
+        ### App Engine Standard App Version Vpc Access
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.serviceaccount.Account("service_account",
+            account_id="gae-sa",
+            display_name="Test Service Account for GAE")
+        gae_api = gcp.projects.IAMMember("gae_api",
+            project=service_account.project,
+            role="roles/compute.networkUser",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
+            project=service_account.project,
+            role="roles/storage.objectViewer",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        custom = gcp.compute.Network("custom",
+            name="custom-net-vpc-service",
+            auto_create_subnetworks=False)
+        custom_subnetwork = gcp.compute.Subnetwork("custom",
+            name="custom-sub-vpc-service",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=custom.id)
+        bucket = gcp.storage.Bucket("bucket",
+            name="tf-test-gae-bkt-vpc-access",
+            location="US",
+            uniform_bucket_level_access=True)
+        requirements = gcp.storage.BucketObject("requirements",
+            name="requirements.txt",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+        main = gcp.storage.BucketObject("main",
+            name="main.py",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/main.py"))
+        gae_std_app_ver_vpc_access = gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access",
+            version_id="v1",
+            service="vpc-service",
+            runtime="python310",
+            vpc_access={
+                "egress_setting": "ALL_TRAFFIC",
+                "network_interfaces": [{
+                    "network": custom.name,
+                    "subnetwork": custom_subnetwork.name,
+                    "tags": [
+                        "tag1",
+                        "tag2",
+                    ],
+                }],
+            },
+            deployment={
+                "files": [
+                    {
+                        "name": "main.py",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            mainName=main.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['mainName']}")
+        ,
+                    },
+                    {
+                        "name": "requirements.txt",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            requirementsName=requirements.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['requirementsName']}")
+        ,
+                    },
+                ],
+            },
+            entrypoint={
+                "shell": "gunicorn -b :$PORT main:app",
+            },
+            delete_service_on_destroy=True,
+            service_account=service_account.email,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    gae_api,
+                    storage_viewer,
+                ]))
+        ```
 
         ## Import
 
@@ -1367,6 +1575,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  threadsafe: pulumi.Input[Optional[_builtins.bool]] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_access: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']]] = None,
                  vpc_access_connector: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1407,6 +1616,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["threadsafe"] = threadsafe
             __props__.__dict__["version_id"] = version_id
+            __props__.__dict__["vpc_access"] = vpc_access
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
             __props__.__dict__["name"] = None
         super(StandardAppVersion, __self__).__init__(
@@ -1442,6 +1652,7 @@ class StandardAppVersion(pulumi.CustomResource):
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             threadsafe: pulumi.Input[Optional[_builtins.bool]] = None,
             version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_access: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']]] = None,
             vpc_access_connector: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']]] = None) -> 'StandardAppVersion':
         """
         Get an existing StandardAppVersion resource's state with the given name, id, and optional extra
@@ -1496,6 +1707,9 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']] vpc_access: (Optional, Beta)
+               Direct VPC Access settings for standard apps.
+               Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
@@ -1526,6 +1740,7 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["threadsafe"] = threadsafe
         __props__.__dict__["version_id"] = version_id
+        __props__.__dict__["vpc_access"] = vpc_access
         __props__.__dict__["vpc_access_connector"] = vpc_access_connector
         return StandardAppVersion(resource_name, opts=opts, __props__=__props__)
 
@@ -1735,6 +1950,16 @@ class StandardAppVersion(pulumi.CustomResource):
         Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         """
         return pulumi.get(self, "version_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcAccess")
+    def vpc_access(self) -> pulumi.Output[Optional['outputs.StandardAppVersionVpcAccess']]:
+        """
+        (Optional, Beta)
+        Direct VPC Access settings for standard apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_access")
 
     @_builtins.property
     @pulumi.getter(name="vpcAccessConnector")

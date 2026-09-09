@@ -21,6 +21,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
 
         /// <summary>
         /// (Output)
+        /// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+        /// </summary>
+        [Input("linkedPubsubSubscription")]
+        public Input<string>? LinkedPubsubSubscription { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// Output only. Listing for which linked resource is created.
         /// </summary>
         [Input("listing")]

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:chronicle/bigQueryExport:BigQueryExport":
 		r = &BigQueryExport{}
+	case "gcp:chronicle/caseCloseDefinition:CaseCloseDefinition":
+		r = &CaseCloseDefinition{}
 	case "gcp:chronicle/customList:CustomList":
 		r = &CustomList{}
 	case "gcp:chronicle/dashboardChart:DashboardChart":
@@ -83,6 +85,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/bigQueryExport",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/caseCloseDefinition",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -296,6 +296,7 @@ import * as utilities from "../utilities";
  *             disabled: true,
  *             pythonCode: `def callback(context):
  *     return {'override': False}`,
+ *             proactiveExecutionEnabled: true,
  *         },
  *     },
  * });

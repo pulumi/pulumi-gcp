@@ -7,9 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages Cloud Observability settings for a folder.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * ## Example Usage
  *
  * ### Observability Folder Settings Basic
@@ -20,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_80411",
+ *     displayName: "tf-test-_45598",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
@@ -59,7 +56,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_44263",
+ *     displayName: "tf-test-_64623",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

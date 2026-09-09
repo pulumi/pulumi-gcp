@@ -12,7 +12,6 @@ import com.pulumi.gcp.compute.inputs.ReservationResourceStatusArgs;
 import com.pulumi.gcp.compute.inputs.ReservationShareSettingsArgs;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -254,23 +253,6 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Output)
-     * The number of reservation blocks associated with this reservation.
-     * 
-     */
-    @Import(name="reservationBlockCount")
-    private @Nullable Output<Integer> reservationBlockCount;
-
-    /**
-     * @return (Output)
-     * The number of reservation blocks associated with this reservation.
-     * 
-     */
-    public Optional<Output<Integer>> reservationBlockCount() {
-        return Optional.ofNullable(this.reservationBlockCount);
-    }
-
-    /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      * 
@@ -433,7 +415,6 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.params = $.params;
         this.project = $.project;
-        this.reservationBlockCount = $.reservationBlockCount;
         this.reservationSharingPolicy = $.reservationSharingPolicy;
         this.resourceStatuses = $.resourceStatuses;
         this.satisfiesPzs = $.satisfiesPzs;
@@ -788,29 +769,6 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param reservationBlockCount (Output)
-         * The number of reservation blocks associated with this reservation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder reservationBlockCount(@Nullable Output<Integer> reservationBlockCount) {
-            $.reservationBlockCount = reservationBlockCount;
-            return this;
-        }
-
-        /**
-         * @param reservationBlockCount (Output)
-         * The number of reservation blocks associated with this reservation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder reservationBlockCount(Integer reservationBlockCount) {
-            return reservationBlockCount(Output.of(reservationBlockCount));
         }
 
         /**

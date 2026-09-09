@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.Vertex
         /// Structure is documented below.
         /// </summary>
         [Output("deployConfig")]
-        public Output<Outputs.AiEndpointWithModelGardenDeploymentDeployConfig?> DeployConfig { get; private set; } = null!;
+        public Output<Outputs.AiEndpointWithModelGardenDeploymentDeployConfig> DeployConfig { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The display name assigned to the model deployed to the endpoint.

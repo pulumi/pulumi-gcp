@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Gemini
     ///         },
     ///         EnableCustomerDataSharing = true,
     ///         WebGroundingType = "WEB_GROUNDING_FOR_ENTERPRISE",
+    ///         MutationsEnabled = true,
     ///     });
     /// 
     /// });
@@ -115,6 +116,12 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether resource mutations should be enabled.
+        /// </summary>
+        [Output("mutationsEnabled")]
+        public Output<bool?> MutationsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Identifier. Name of the resource.
@@ -256,6 +263,12 @@ namespace Pulumi.Gcp.Gemini
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Whether resource mutations should be enabled.
+        /// </summary>
+        [Input("mutationsEnabled")]
+        public Input<bool>? MutationsEnabled { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -352,6 +365,12 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Whether resource mutations should be enabled.
+        /// </summary>
+        [Input("mutationsEnabled")]
+        public Input<bool>? MutationsEnabled { get; set; }
 
         /// <summary>
         /// Identifier. Name of the resource.

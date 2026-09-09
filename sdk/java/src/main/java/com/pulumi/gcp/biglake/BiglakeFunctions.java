@@ -32,8 +32,6 @@ import java.util.concurrent.CompletableFuture;
 public final class BiglakeFunctions {
     /**
      * Retrieves the current IAM policy data for hivecatalog
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -75,8 +73,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivecatalog
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -118,8 +114,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivecatalog
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -161,8 +155,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivecatalog
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -204,8 +196,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivecatalog
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -247,8 +237,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivedatabase
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -291,8 +279,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivedatabase
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -335,8 +321,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivedatabase
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -379,8 +363,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivedatabase
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -423,8 +405,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivedatabase
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -467,8 +447,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivetable
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -512,8 +490,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivetable
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -557,8 +533,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivetable
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -602,8 +576,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivetable
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -647,8 +619,6 @@ public final class BiglakeFunctions {
     }
     /**
      * Retrieves the current IAM policy data for hivetable
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 

@@ -16,8 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineSpecSourceCodeSpec {
     /**
-     * @return (Optional, Beta)
-     * Optional. Specification for the deploying from agent config.
+     * @return Optional. Specification for the deploying from agent config.
      * Structure is documented below.
      * 
      */
@@ -49,8 +48,7 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
 
     private AiReasoningEngineSpecSourceCodeSpec() {}
     /**
-     * @return (Optional, Beta)
-     * Optional. Specification for the deploying from agent config.
+     * @return Optional. Specification for the deploying from agent config.
      * Structure is documented below.
      * 
      */

@@ -9,6 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Description
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+ * Read more about Write-only Arguments.
+ *
  * ## Example Usage
  *
  * ### Ces Deployment Basic
@@ -189,6 +192,11 @@ export class Deployment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
+     * Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     */
+    declare public readonly instagramCredentials: pulumi.Output<outputs.ces.DeploymentInstagramCredentials | undefined>;
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -207,6 +215,11 @@ export class Deployment extends pulumi.CustomResource {
      * Timestamp when this deployment was last updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     */
+    declare public readonly whatsappCredentials: pulumi.Output<outputs.ces.DeploymentWhatsappCredentials | undefined>;
 
     /**
      * Create a Deployment resource with the given unique name, arguments, and options.
@@ -228,10 +241,12 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["instagramCredentials"] = state?.instagramCredentials;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["whatsappCredentials"] = state?.whatsappCredentials;
         } else {
             const args = argsOrState as DeploymentArgs | undefined;
             if (args?.app === undefined && !opts.urn) {
@@ -254,8 +269,10 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["channelProfile"] = args?.channelProfile;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["instagramCredentials"] = args?.instagramCredentials;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["whatsappCredentials"] = args?.whatsappCredentials;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -310,6 +327,11 @@ export interface DeploymentState {
      */
     etag?: pulumi.Input<string | undefined>;
     /**
+     * Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     */
+    instagramCredentials?: pulumi.Input<inputs.ces.DeploymentInstagramCredentials | undefined>;
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string | undefined>;
@@ -328,6 +350,11 @@ export interface DeploymentState {
      * Timestamp when this deployment was last updated.
      */
     updateTime?: pulumi.Input<string | undefined>;
+    /**
+     * Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     */
+    whatsappCredentials?: pulumi.Input<inputs.ces.DeploymentWhatsappCredentials | undefined>;
 }
 
 /**
@@ -364,6 +391,11 @@ export interface DeploymentArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     */
+    instagramCredentials?: pulumi.Input<inputs.ces.DeploymentInstagramCredentials | undefined>;
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
@@ -372,4 +404,9 @@ export interface DeploymentArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     */
+    whatsappCredentials?: pulumi.Input<inputs.ces.DeploymentWhatsappCredentials | undefined>;
 }

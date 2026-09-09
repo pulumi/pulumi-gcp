@@ -21,8 +21,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineSpecDeploymentSpec {
     /**
-     * @return (Optional, Beta)
-     * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+     * @return Optional. Agent Gateway configuration for a Reasoning Engine deployment.
      * Structure is documented below.
      * 
      */
@@ -108,8 +107,7 @@ public final class AiReasoningEngineSpecDeploymentSpec {
 
     private AiReasoningEngineSpecDeploymentSpec() {}
     /**
-     * @return (Optional, Beta)
-     * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+     * @return Optional. Agent Gateway configuration for a Reasoning Engine deployment.
      * Structure is documented below.
      * 
      */

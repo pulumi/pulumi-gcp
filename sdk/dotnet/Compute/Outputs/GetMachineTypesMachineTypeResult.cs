@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMachineTypesMachineTypeAcceleratorResult> Accelerators;
         /// <summary>
+        /// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMachineTypesMachineTypeBundledLocalSsdResult> BundledLocalSsds;
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetMachineTypesMachineTypeResult(
             ImmutableArray<Outputs.GetMachineTypesMachineTypeAcceleratorResult> accelerators,
 
+            string architecture,
+
             ImmutableArray<Outputs.GetMachineTypesMachineTypeBundledLocalSsdResult> bundledLocalSsds,
 
             ImmutableArray<Outputs.GetMachineTypesMachineTypeDeprecatedResult> deprecateds,
@@ -83,6 +89,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string selfLink)
         {
             Accelerators = accelerators;
+            Architecture = architecture;
             BundledLocalSsds = bundledLocalSsds;
             Deprecateds = deprecateds;
             Description = description;
