@@ -52,19 +52,14 @@ func TestPulumiLabelsSecretGo(t *testing.T) {
 }
 
 func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	if os.Getenv("PULUMI_GO_DEP_ROOT") == "" {
-		depRoot := getCwd(t) + "/../../"
-		err := os.Setenv("PULUMI_GO_DEP_ROOT", depRoot)
-		require.NoError(t, err)
-	}
-	base := getBaseOptions(t)
-	goBase := base.With(integration.ProgramTestOptions{
+	goSdkFolder, err := filepath.Abs(filepath.Join("..", "sdk"))
+	require.NoError(t, err)
+
+	return getBaseOptions(t).With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp/sdk/v10",
+			goSdkFolder,
 		},
 	})
-
-	return goBase
 }
 
 // Regression test for issue #794.
@@ -398,7 +393,7 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 
 	baseOpts := integration.ProgramTestOptions{
 		Dependencies: []string{
-			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v10=%s", goSdkFolder),
+			goSdkFolder,
 		},
 	}
 	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
