@@ -10,7 +10,7 @@ require (
 	github.com/stretchr/testify v1.12.1
 )
 
-replace github.com/pulumi/pulumi-gcp/sdk/v9 => ../sdk
+replace github.com/pulumi/pulumi-gcp/sdk/v10 => ../sdk
 
 require (
 	cel.dev/expr v0.25.2 // indirect
