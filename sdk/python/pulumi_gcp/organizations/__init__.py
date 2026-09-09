@@ -18,6 +18,7 @@ from .get_iam_custom_role import *
 from .get_iam_custom_roles import *
 from .get_iam_policy import *
 from .get_organization import *
+from .get_organization_iam_policy import *
 from .get_project import *
 from .get_s import *
 from .iam_audit_config import *
