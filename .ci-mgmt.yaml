@@ -1,7 +1,7 @@
 provider: gcp
 gcp: true
 providerDefaultBranch: main
-major-version: 9
+major-version: 10
 parallel: 2
 providerVersion: "github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion"
 esc:
