@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	gcp "github.com/pulumi/pulumi-gcp/provider/v9"
-	"github.com/pulumi/pulumi-gcp/provider/v9/pkg/version"
+	gcp "github.com/pulumi/pulumi-gcp/provider/v10"
+	"github.com/pulumi/pulumi-gcp/provider/v10/pkg/version"
 )
 
 func init() { version.Version = "7.0.0" }

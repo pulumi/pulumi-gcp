@@ -7,7 +7,7 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.261.0
 )
 
-replace github.com/pulumi/pulumi-gcp/sdk/v9 => ../../sdk
+replace github.com/pulumi/pulumi-gcp/sdk/v10 => ../../sdk
 
 require (
 	github.com/BurntSushi/toml v1.6.0 // indirect
