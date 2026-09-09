@@ -15,7 +15,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -60,7 +60,7 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp/sdk/v9",
+			"github.com/pulumi/pulumi-gcp/sdk/v10",
 		},
 	})
 
@@ -398,7 +398,7 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 
 	baseOpts := integration.ProgramTestOptions{
 		Dependencies: []string{
-			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v9=%s", goSdkFolder),
+			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v10=%s", goSdkFolder),
 		},
 	}
 	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
