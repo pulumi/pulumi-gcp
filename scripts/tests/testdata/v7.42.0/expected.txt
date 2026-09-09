@@ -1,0 +1,33 @@
+v7.42.0 (9a80fbd7a65df87658f63bcb4273c7bc196942dc)
+  https://github.com/hashicorp/terraform-provider-google-beta/releases/tag/v7.42.0
+  CHANGELOG section: 7.42.0 (Unreleased)
+
+* New Resource: google_agent_identity_auth_provider
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12762
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18174
+    product: mmv1/products/agentidentity/product.yaml
+      name: agent_identity -> AgentIdentity
+
+* New Resource: google_apihub_runtime_project_attachment
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12764
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18360
+    product: mmv1/products/apihub/product.yaml
+      name: apihub -> Apihub
+
+* New Resource: google_chronicle_big_query_export
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12737
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18154
+    product: mmv1/products/chronicle/product.yaml
+      name: chronicle -> Chronicle
+
+* New Resource: google_vector_search_data_object
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12755
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18204
+    product: mmv1/products/vectorsearch/product.yaml
+      name: vector_search -> VectorSearch
+
+* New Resource: google_vertex_ai_persistent_resource
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12756
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18273
+    product: mmv1/products/vertexai/product.yaml
+      name: vertex_ai -> VertexAI

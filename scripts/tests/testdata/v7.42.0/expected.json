@@ -1,0 +1,72 @@
+{
+  "sha": "9a80fbd7a65df87658f63bcb4273c7bc196942dc",
+  "tag": "v7.42.0",
+  "section": "7.42.0 (Unreleased)",
+  "features": [
+    {
+      "kind": "Resource",
+      "resource": "google_agent_identity_auth_provider",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12762",
+      "products": [
+        {
+          "path": "mmv1/products/agentidentity/product.yaml",
+          "name": "AgentIdentity",
+          "snake_case": "agent_identity"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18174"
+    },
+    {
+      "kind": "Resource",
+      "resource": "google_apihub_runtime_project_attachment",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12764",
+      "products": [
+        {
+          "path": "mmv1/products/apihub/product.yaml",
+          "name": "Apihub",
+          "snake_case": "apihub"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18360"
+    },
+    {
+      "kind": "Resource",
+      "resource": "google_chronicle_big_query_export",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12737",
+      "products": [
+        {
+          "path": "mmv1/products/chronicle/product.yaml",
+          "name": "Chronicle",
+          "snake_case": "chronicle"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18154"
+    },
+    {
+      "kind": "Resource",
+      "resource": "google_vector_search_data_object",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12755",
+      "products": [
+        {
+          "path": "mmv1/products/vectorsearch/product.yaml",
+          "name": "VectorSearch",
+          "snake_case": "vector_search"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18204"
+    },
+    {
+      "kind": "Resource",
+      "resource": "google_vertex_ai_persistent_resource",
+      "tpg_pr": "https://github.com/hashicorp/terraform-provider-google-beta/pull/12756",
+      "products": [
+        {
+          "path": "mmv1/products/vertexai/product.yaml",
+          "name": "VertexAI",
+          "snake_case": "vertex_ai"
+        }
+      ],
+      "mm_pr": "https://github.com/GoogleCloudPlatform/magic-modules/pull/18273"
+    }
+  ]
+}

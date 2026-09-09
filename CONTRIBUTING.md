@@ -26,6 +26,12 @@ You must generate and check in the SDKs on each pull request containing a code c
 1. Open a pull request containing all changes
 1. *Note:* If a large number of seemingly-unrelated diffs are produced by `make build_sdks` (for example, lots of changes to comments unrelated to the change you are making), ensure that the latest dependencies for the provider are installed by running `go mod tidy` in the `provider/` directory of this repository.
 
+## Mapping new upstream resources to modules
+
+Every upstream resource is assigned to a Pulumi module by `moduleMapping` in `provider/resources.go`, keyed by the resource name with the `google_` prefix stripped. There is no default module, so a resource whose prefix is not in that map fails `make tfgen`.
+
+The keys are magic-modules product names in snake_case. To find the name for a new upstream release, run [`scripts/new_resources`](./scripts/new_resources/README.md), which walks each new resource back to the magic-modules product it came from and prints the name to add.
+
 ## Running Integration Tests
 
 The examples and integration tests in this repository will create and destroy real GCP
