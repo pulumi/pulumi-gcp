@@ -2668,6 +2668,14 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
+			// Upstream registers this data source under the same name as the
+			// resource. Auto-tokenisation computes gcp:organizations/getIamPolicy,
+			// which differs only by case from the hand-mapped
+			// gcp:organizations/getIAMPolicy above and collides during SDK emission.
+			"google_organization_iam_policy": {
+				Tok: gcpDataSource(gcpOrganization, "getOrganizationIamPolicy"),
+			},
+
 			"google_privateca_certificate_authority": {Tok: gcpDataSource(gcpCertificateAuthority, "getAuthority")},
 
 			"google_projects": {

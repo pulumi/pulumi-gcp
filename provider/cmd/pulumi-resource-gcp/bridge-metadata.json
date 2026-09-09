@@ -57272,6 +57272,10 @@
                     }
                 }
             },
+            "google_organization_iam_policy": {
+                "current": "gcp:organizations/getOrganizationIamPolicy:getOrganizationIamPolicy",
+                "majorVersion": 10
+            },
             "google_organizations": {
                 "current": "gcp:organizations/getS:getS",
                 "majorVersion": 10,
@@ -63662,6 +63666,7 @@
             "gcp:organizations/getIamCustomRole:getIamCustomRole": 0,
             "gcp:organizations/getIamCustomRoles:getIamCustomRoles": 0,
             "gcp:organizations/getOrganization:getOrganization": 0,
+            "gcp:organizations/getOrganizationIamPolicy:getOrganizationIamPolicy": 0,
             "gcp:organizations/getProject:getProject": 0,
             "gcp:organizations/getS:getS": 0,
             "gcp:parametermanager/getParameter:getParameter": 0,

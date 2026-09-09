@@ -65,6 +65,11 @@ export const getOrganization: typeof import("./getOrganization").getOrganization
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
 
+export { GetOrganizationIamPolicyArgs, GetOrganizationIamPolicyResult, GetOrganizationIamPolicyOutputArgs } from "./getOrganizationIamPolicy";
+export const getOrganizationIamPolicy: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicy = null as any;
+export const getOrganizationIamPolicyOutput: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationIamPolicy","getOrganizationIamPolicyOutput"], () => require("./getOrganizationIamPolicy"));
+
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
