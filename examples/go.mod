@@ -4,7 +4,7 @@ go 1.26.6
 
 require (
 	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-gcp/sdk/v9 v9.35.1
+	github.com/pulumi/pulumi-gcp/sdk/v10 v10.0.0-alpha.1
 	github.com/pulumi/pulumi/pkg/v3 v3.261.0
 	github.com/pulumi/pulumi/sdk/v3 v3.261.0
 	github.com/stretchr/testify v1.12.1
