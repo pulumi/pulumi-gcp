@@ -439,9 +439,6 @@ public final class Config {
     public Optional<String> migrationCenterCustomEndpoint() {
         return Codegen.stringProp("migrationCenterCustomEndpoint").config(config).get();
     }
-    public Optional<String> mlEngineCustomEndpoint() {
-        return Codegen.stringProp("mlEngineCustomEndpoint").config(config).get();
-    }
     public Optional<String> modelArmorCustomEndpoint() {
         return Codegen.stringProp("modelArmorCustomEndpoint").config(config).get();
     }
@@ -463,14 +460,14 @@ public final class Config {
     public Optional<String> networkManagementCustomEndpoint() {
         return Codegen.stringProp("networkManagementCustomEndpoint").config(config).get();
     }
+    public Optional<String> networkManagementv1CustomEndpoint() {
+        return Codegen.stringProp("networkManagementv1CustomEndpoint").config(config).get();
+    }
     public Optional<String> networkSecurityCustomEndpoint() {
         return Codegen.stringProp("networkSecurityCustomEndpoint").config(config).get();
     }
     public Optional<String> networkServicesCustomEndpoint() {
         return Codegen.stringProp("networkServicesCustomEndpoint").config(config).get();
-    }
-    public Optional<String> notebooksCustomEndpoint() {
-        return Codegen.stringProp("notebooksCustomEndpoint").config(config).get();
     }
     public Optional<String> observabilityCustomEndpoint() {
         return Codegen.stringProp("observabilityCustomEndpoint").config(config).get();
@@ -601,6 +598,9 @@ public final class Config {
     public Optional<String> serviceUsageCustomEndpoint() {
         return Codegen.stringProp("serviceUsageCustomEndpoint").config(config).get();
     }
+    public Optional<String> serviceUsageV2CustomEndpoint() {
+        return Codegen.stringProp("serviceUsageV2CustomEndpoint").config(config).get();
+    }
     public Optional<String> siteVerificationCustomEndpoint() {
         return Codegen.stringProp("siteVerificationCustomEndpoint").config(config).get();
     }
@@ -624,6 +624,9 @@ public final class Config {
     }
     public Optional<String> storageCustomEndpoint() {
         return Codegen.stringProp("storageCustomEndpoint").config(config).get();
+    }
+    public Optional<String> storageFtpCustomEndpoint() {
+        return Codegen.stringProp("storageFtpCustomEndpoint").config(config).get();
     }
     public Optional<String> storageInsightsCustomEndpoint() {
         return Codegen.stringProp("storageInsightsCustomEndpoint").config(config).get();

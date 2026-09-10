@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -268,6 +268,23 @@ import (
 //					TlsCertificate: pulumi.String(invokeFile1.Result),
 //					PrivateKey:     fakeSecretVersion.Name,
 //				},
+//				VpcScSettings: &ces.AppVpcScSettingsArgs{
+//					AllowedOrigins: pulumi.StringArray{
+//						pulumi.String("https://example.com"),
+//					},
+//				},
+//				ErrorHandlingSettings: &ces.AppErrorHandlingSettingsArgs{
+//					ErrorHandlingStrategy: pulumi.String("FALLBACK_RESPONSE"),
+//					FallbackResponseConfig: &ces.AppErrorHandlingSettingsFallbackResponseConfigArgs{
+//						CustomFallbackMessages: pulumi.StringMap{
+//							"en-US": pulumi.String("An error occurred, please try again."),
+//						},
+//						MaxFallbackAttempts: pulumi.Int(3),
+//					},
+//					EndSessionConfig: &ces.AppErrorHandlingSettingsEndSessionConfigArgs{
+//						EscalateSession: pulumi.Bool(true),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -286,7 +303,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -536,6 +553,9 @@ type App struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the app.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings AppErrorHandlingSettingsPtrOutput `pulumi:"errorHandlingSettings"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -587,6 +607,9 @@ type App struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVariableDeclarationArrayOutput `pulumi:"variableDeclarations"`
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings AppVpcScSettingsPtrOutput `pulumi:"vpcScSettings"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -661,6 +684,9 @@ type appState struct {
 	Description *string `pulumi:"description"`
 	// Display name of the app.
 	DisplayName *string `pulumi:"displayName"`
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings *AppErrorHandlingSettings `pulumi:"errorHandlingSettings"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -712,6 +738,9 @@ type appState struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations []AppVariableDeclaration `pulumi:"variableDeclarations"`
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings *AppVpcScSettings `pulumi:"vpcScSettings"`
 }
 
 type AppState struct {
@@ -748,6 +777,9 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// Display name of the app.
 	DisplayName pulumi.StringPtrInput
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings AppErrorHandlingSettingsPtrInput
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -799,6 +831,9 @@ type AppState struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVariableDeclarationArrayInput
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings AppVpcScSettingsPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -835,6 +870,9 @@ type appArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name of the app.
 	DisplayName string `pulumi:"displayName"`
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings *AppErrorHandlingSettings `pulumi:"errorHandlingSettings"`
 	// Threshold settings for metrics in an Evaluation.
 	// Structure is documented below.
 	EvaluationMetricsThresholds *AppEvaluationMetricsThresholds `pulumi:"evaluationMetricsThresholds"`
@@ -877,6 +915,9 @@ type appArgs struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations []AppVariableDeclaration `pulumi:"variableDeclarations"`
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings *AppVpcScSettings `pulumi:"vpcScSettings"`
 }
 
 // The set of arguments for constructing a App resource.
@@ -910,6 +951,9 @@ type AppArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name of the app.
 	DisplayName pulumi.StringInput
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings AppErrorHandlingSettingsPtrInput
 	// Threshold settings for metrics in an Evaluation.
 	// Structure is documented below.
 	EvaluationMetricsThresholds AppEvaluationMetricsThresholdsPtrInput
@@ -952,6 +996,9 @@ type AppArgs struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVariableDeclarationArrayInput
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings AppVpcScSettingsPtrInput
 }
 
 func (AppArgs) ElementType() reflect.Type {
@@ -1104,6 +1151,12 @@ func (o AppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Settings to describe how errors should be handled in the app.
+// Structure is documented below.
+func (o AppOutput) ErrorHandlingSettings() AppErrorHandlingSettingsPtrOutput {
+	return o.ApplyT(func(v *App) AppErrorHandlingSettingsPtrOutput { return v.ErrorHandlingSettings }).(AppErrorHandlingSettingsPtrOutput)
+}
+
 // Etag used to ensure the object hasn't changed during a read-modify-write
 // operation. If the etag is empty, the update will overwrite any concurrent
 // changes.
@@ -1204,6 +1257,12 @@ func (o AppOutput) UpdateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o AppOutput) VariableDeclarations() AppVariableDeclarationArrayOutput {
 	return o.ApplyT(func(v *App) AppVariableDeclarationArrayOutput { return v.VariableDeclarations }).(AppVariableDeclarationArrayOutput)
+}
+
+// VPC-SC settings for the app.
+// Structure is documented below.
+func (o AppOutput) VpcScSettings() AppVpcScSettingsPtrOutput {
+	return o.ApplyT(func(v *App) AppVpcScSettingsPtrOutput { return v.VpcScSettings }).(AppVpcScSettingsPtrOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

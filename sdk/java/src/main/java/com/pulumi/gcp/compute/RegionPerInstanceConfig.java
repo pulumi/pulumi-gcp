@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-11")
+ *             .family("debian-13")
  *             .project("debian-cloud")
  *             .build());
  * 
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .name("my-disk-name")
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
- *             .image("debian-11-bullseye-v20220719")
+ *             .image("debian-13-trixie-v20260827")
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 

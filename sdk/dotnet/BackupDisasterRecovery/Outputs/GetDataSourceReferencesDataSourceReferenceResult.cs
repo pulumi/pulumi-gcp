@@ -38,9 +38,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string LastSuccessfulBackupTime;
         public readonly string Name;
-        /// <summary>
-        /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `ResourceType` is deprecated and will be removed in a future major release.
-        /// </summary>
         public readonly string ResourceType;
 
         [OutputConstructor]

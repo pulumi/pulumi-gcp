@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -11132,6 +11132,418 @@ func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Min() pulumi.Float64Pt
 	}).(pulumi.Float64PtrOutput)
 }
 
+type SnoozeCriteria struct {
+	// When you define a snooze, you can also define a filter for that snooze.
+	// The filter is a string containing one or more key-value pairs. The string
+	// uses the standard https://google.aip.dev/160 filter syntax. If you define
+	// a filter for a snooze, then the snooze can only apply to one alert policy.
+	// When the snooze is active, incidents won't be created when the incident
+	// would have key-value pairs (labels) that match those specified by the
+	// filter in the snooze.
+	// Snooze filters support resource, metric, and metadata labels. If multiple
+	// labels are used, then they must be connected with an AND operator. For
+	// example, the following filter applies the snooze to incidents that have a
+	// resource label with an instance ID of 1234567890, a metric label with an
+	// instance name of test_group, a metadata user label with a key of foo and a
+	// value of bar, and a metadata system label with a key of region and a value
+	// of us-central1:
+	// "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\""
+	Filter *string `pulumi:"filter"`
+	// The specific AlertPolicy names for the alert that should be snoozed.
+	// The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+	// There is a limit of 16 policies per snooze. This limit is checked during
+	// snooze creation. Exactly 1 alert policy is required if filter is specified
+	// at the same time.
+	Policies []string `pulumi:"policies"`
+}
+
+// SnoozeCriteriaInput is an input type that accepts SnoozeCriteriaArgs and SnoozeCriteriaOutput values.
+// You can construct a concrete instance of `SnoozeCriteriaInput` via:
+//
+//	SnoozeCriteriaArgs{...}
+type SnoozeCriteriaInput interface {
+	pulumi.Input
+
+	ToSnoozeCriteriaOutput() SnoozeCriteriaOutput
+	ToSnoozeCriteriaOutputWithContext(context.Context) SnoozeCriteriaOutput
+}
+
+type SnoozeCriteriaArgs struct {
+	// When you define a snooze, you can also define a filter for that snooze.
+	// The filter is a string containing one or more key-value pairs. The string
+	// uses the standard https://google.aip.dev/160 filter syntax. If you define
+	// a filter for a snooze, then the snooze can only apply to one alert policy.
+	// When the snooze is active, incidents won't be created when the incident
+	// would have key-value pairs (labels) that match those specified by the
+	// filter in the snooze.
+	// Snooze filters support resource, metric, and metadata labels. If multiple
+	// labels are used, then they must be connected with an AND operator. For
+	// example, the following filter applies the snooze to incidents that have a
+	// resource label with an instance ID of 1234567890, a metric label with an
+	// instance name of test_group, a metadata user label with a key of foo and a
+	// value of bar, and a metadata system label with a key of region and a value
+	// of us-central1:
+	// "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\""
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The specific AlertPolicy names for the alert that should be snoozed.
+	// The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+	// There is a limit of 16 policies per snooze. This limit is checked during
+	// snooze creation. Exactly 1 alert policy is required if filter is specified
+	// at the same time.
+	Policies pulumi.StringArrayInput `pulumi:"policies"`
+}
+
+func (SnoozeCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnoozeCriteria)(nil)).Elem()
+}
+
+func (i SnoozeCriteriaArgs) ToSnoozeCriteriaOutput() SnoozeCriteriaOutput {
+	return i.ToSnoozeCriteriaOutputWithContext(context.Background())
+}
+
+func (i SnoozeCriteriaArgs) ToSnoozeCriteriaOutputWithContext(ctx context.Context) SnoozeCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnoozeCriteriaOutput)
+}
+
+func (i SnoozeCriteriaArgs) ToSnoozeCriteriaPtrOutput() SnoozeCriteriaPtrOutput {
+	return i.ToSnoozeCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i SnoozeCriteriaArgs) ToSnoozeCriteriaPtrOutputWithContext(ctx context.Context) SnoozeCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnoozeCriteriaOutput).ToSnoozeCriteriaPtrOutputWithContext(ctx)
+}
+
+// SnoozeCriteriaPtrInput is an input type that accepts SnoozeCriteriaArgs, SnoozeCriteriaPtr and SnoozeCriteriaPtrOutput values.
+// You can construct a concrete instance of `SnoozeCriteriaPtrInput` via:
+//
+//	        SnoozeCriteriaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnoozeCriteriaPtrInput interface {
+	pulumi.Input
+
+	ToSnoozeCriteriaPtrOutput() SnoozeCriteriaPtrOutput
+	ToSnoozeCriteriaPtrOutputWithContext(context.Context) SnoozeCriteriaPtrOutput
+}
+
+type snoozeCriteriaPtrType SnoozeCriteriaArgs
+
+func SnoozeCriteriaPtr(v *SnoozeCriteriaArgs) SnoozeCriteriaPtrInput {
+	return (*snoozeCriteriaPtrType)(v)
+}
+
+func (*snoozeCriteriaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnoozeCriteria)(nil)).Elem()
+}
+
+func (i *snoozeCriteriaPtrType) ToSnoozeCriteriaPtrOutput() SnoozeCriteriaPtrOutput {
+	return i.ToSnoozeCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i *snoozeCriteriaPtrType) ToSnoozeCriteriaPtrOutputWithContext(ctx context.Context) SnoozeCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnoozeCriteriaPtrOutput)
+}
+
+type SnoozeCriteriaOutput struct{ *pulumi.OutputState }
+
+func (SnoozeCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnoozeCriteria)(nil)).Elem()
+}
+
+func (o SnoozeCriteriaOutput) ToSnoozeCriteriaOutput() SnoozeCriteriaOutput {
+	return o
+}
+
+func (o SnoozeCriteriaOutput) ToSnoozeCriteriaOutputWithContext(ctx context.Context) SnoozeCriteriaOutput {
+	return o
+}
+
+func (o SnoozeCriteriaOutput) ToSnoozeCriteriaPtrOutput() SnoozeCriteriaPtrOutput {
+	return o.ToSnoozeCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (o SnoozeCriteriaOutput) ToSnoozeCriteriaPtrOutputWithContext(ctx context.Context) SnoozeCriteriaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnoozeCriteria) *SnoozeCriteria {
+		return &v
+	}).(SnoozeCriteriaPtrOutput)
+}
+
+// When you define a snooze, you can also define a filter for that snooze.
+// The filter is a string containing one or more key-value pairs. The string
+// uses the standard https://google.aip.dev/160 filter syntax. If you define
+// a filter for a snooze, then the snooze can only apply to one alert policy.
+// When the snooze is active, incidents won't be created when the incident
+// would have key-value pairs (labels) that match those specified by the
+// filter in the snooze.
+// Snooze filters support resource, metric, and metadata labels. If multiple
+// labels are used, then they must be connected with an AND operator. For
+// example, the following filter applies the snooze to incidents that have a
+// resource label with an instance ID of 1234567890, a metric label with an
+// instance name of test_group, a metadata user label with a key of foo and a
+// value of bar, and a metadata system label with a key of region and a value
+// of us-central1:
+// "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\""
+func (o SnoozeCriteriaOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnoozeCriteria) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The specific AlertPolicy names for the alert that should be snoozed.
+// The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+// There is a limit of 16 policies per snooze. This limit is checked during
+// snooze creation. Exactly 1 alert policy is required if filter is specified
+// at the same time.
+func (o SnoozeCriteriaOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SnoozeCriteria) []string { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+type SnoozeCriteriaPtrOutput struct{ *pulumi.OutputState }
+
+func (SnoozeCriteriaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnoozeCriteria)(nil)).Elem()
+}
+
+func (o SnoozeCriteriaPtrOutput) ToSnoozeCriteriaPtrOutput() SnoozeCriteriaPtrOutput {
+	return o
+}
+
+func (o SnoozeCriteriaPtrOutput) ToSnoozeCriteriaPtrOutputWithContext(ctx context.Context) SnoozeCriteriaPtrOutput {
+	return o
+}
+
+func (o SnoozeCriteriaPtrOutput) Elem() SnoozeCriteriaOutput {
+	return o.ApplyT(func(v *SnoozeCriteria) SnoozeCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret SnoozeCriteria
+		return ret
+	}).(SnoozeCriteriaOutput)
+}
+
+// When you define a snooze, you can also define a filter for that snooze.
+// The filter is a string containing one or more key-value pairs. The string
+// uses the standard https://google.aip.dev/160 filter syntax. If you define
+// a filter for a snooze, then the snooze can only apply to one alert policy.
+// When the snooze is active, incidents won't be created when the incident
+// would have key-value pairs (labels) that match those specified by the
+// filter in the snooze.
+// Snooze filters support resource, metric, and metadata labels. If multiple
+// labels are used, then they must be connected with an AND operator. For
+// example, the following filter applies the snooze to incidents that have a
+// resource label with an instance ID of 1234567890, a metric label with an
+// instance name of test_group, a metadata user label with a key of foo and a
+// value of bar, and a metadata system label with a key of region and a value
+// of us-central1:
+// "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\""
+func (o SnoozeCriteriaPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnoozeCriteria) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specific AlertPolicy names for the alert that should be snoozed.
+// The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+// There is a limit of 16 policies per snooze. This limit is checked during
+// snooze creation. Exactly 1 alert policy is required if filter is specified
+// at the same time.
+func (o SnoozeCriteriaPtrOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SnoozeCriteria) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Policies
+	}).(pulumi.StringArrayOutput)
+}
+
+type SnoozeInterval struct {
+	// The end of the time interval.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+	// "2014-10-02T15:01:23.045123456Z".
+	EndTime string `pulumi:"endTime"`
+	// The beginning of the time interval. The default value for the start time
+	// is the end time. The start time must not be later than the end time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+	// "2014-10-02T15:01:23.045123456Z".
+	StartTime *string `pulumi:"startTime"`
+}
+
+// SnoozeIntervalInput is an input type that accepts SnoozeIntervalArgs and SnoozeIntervalOutput values.
+// You can construct a concrete instance of `SnoozeIntervalInput` via:
+//
+//	SnoozeIntervalArgs{...}
+type SnoozeIntervalInput interface {
+	pulumi.Input
+
+	ToSnoozeIntervalOutput() SnoozeIntervalOutput
+	ToSnoozeIntervalOutputWithContext(context.Context) SnoozeIntervalOutput
+}
+
+type SnoozeIntervalArgs struct {
+	// The end of the time interval.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+	// "2014-10-02T15:01:23.045123456Z".
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The beginning of the time interval. The default value for the start time
+	// is the end time. The start time must not be later than the end time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+	// "2014-10-02T15:01:23.045123456Z".
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (SnoozeIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnoozeInterval)(nil)).Elem()
+}
+
+func (i SnoozeIntervalArgs) ToSnoozeIntervalOutput() SnoozeIntervalOutput {
+	return i.ToSnoozeIntervalOutputWithContext(context.Background())
+}
+
+func (i SnoozeIntervalArgs) ToSnoozeIntervalOutputWithContext(ctx context.Context) SnoozeIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnoozeIntervalOutput)
+}
+
+func (i SnoozeIntervalArgs) ToSnoozeIntervalPtrOutput() SnoozeIntervalPtrOutput {
+	return i.ToSnoozeIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i SnoozeIntervalArgs) ToSnoozeIntervalPtrOutputWithContext(ctx context.Context) SnoozeIntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnoozeIntervalOutput).ToSnoozeIntervalPtrOutputWithContext(ctx)
+}
+
+// SnoozeIntervalPtrInput is an input type that accepts SnoozeIntervalArgs, SnoozeIntervalPtr and SnoozeIntervalPtrOutput values.
+// You can construct a concrete instance of `SnoozeIntervalPtrInput` via:
+//
+//	        SnoozeIntervalArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnoozeIntervalPtrInput interface {
+	pulumi.Input
+
+	ToSnoozeIntervalPtrOutput() SnoozeIntervalPtrOutput
+	ToSnoozeIntervalPtrOutputWithContext(context.Context) SnoozeIntervalPtrOutput
+}
+
+type snoozeIntervalPtrType SnoozeIntervalArgs
+
+func SnoozeIntervalPtr(v *SnoozeIntervalArgs) SnoozeIntervalPtrInput {
+	return (*snoozeIntervalPtrType)(v)
+}
+
+func (*snoozeIntervalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnoozeInterval)(nil)).Elem()
+}
+
+func (i *snoozeIntervalPtrType) ToSnoozeIntervalPtrOutput() SnoozeIntervalPtrOutput {
+	return i.ToSnoozeIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i *snoozeIntervalPtrType) ToSnoozeIntervalPtrOutputWithContext(ctx context.Context) SnoozeIntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnoozeIntervalPtrOutput)
+}
+
+type SnoozeIntervalOutput struct{ *pulumi.OutputState }
+
+func (SnoozeIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnoozeInterval)(nil)).Elem()
+}
+
+func (o SnoozeIntervalOutput) ToSnoozeIntervalOutput() SnoozeIntervalOutput {
+	return o
+}
+
+func (o SnoozeIntervalOutput) ToSnoozeIntervalOutputWithContext(ctx context.Context) SnoozeIntervalOutput {
+	return o
+}
+
+func (o SnoozeIntervalOutput) ToSnoozeIntervalPtrOutput() SnoozeIntervalPtrOutput {
+	return o.ToSnoozeIntervalPtrOutputWithContext(context.Background())
+}
+
+func (o SnoozeIntervalOutput) ToSnoozeIntervalPtrOutputWithContext(ctx context.Context) SnoozeIntervalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnoozeInterval) *SnoozeInterval {
+		return &v
+	}).(SnoozeIntervalPtrOutput)
+}
+
+// The end of the time interval.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+// "2014-10-02T15:01:23.045123456Z".
+func (o SnoozeIntervalOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SnoozeInterval) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The beginning of the time interval. The default value for the start time
+// is the end time. The start time must not be later than the end time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+// "2014-10-02T15:01:23.045123456Z".
+func (o SnoozeIntervalOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnoozeInterval) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type SnoozeIntervalPtrOutput struct{ *pulumi.OutputState }
+
+func (SnoozeIntervalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnoozeInterval)(nil)).Elem()
+}
+
+func (o SnoozeIntervalPtrOutput) ToSnoozeIntervalPtrOutput() SnoozeIntervalPtrOutput {
+	return o
+}
+
+func (o SnoozeIntervalPtrOutput) ToSnoozeIntervalPtrOutputWithContext(ctx context.Context) SnoozeIntervalPtrOutput {
+	return o
+}
+
+func (o SnoozeIntervalPtrOutput) Elem() SnoozeIntervalOutput {
+	return o.ApplyT(func(v *SnoozeInterval) SnoozeInterval {
+		if v != nil {
+			return *v
+		}
+		var ret SnoozeInterval
+		return ret
+	}).(SnoozeIntervalOutput)
+}
+
+// The end of the time interval.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+// "2014-10-02T15:01:23.045123456Z".
+func (o SnoozeIntervalPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnoozeInterval) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The beginning of the time interval. The default value for the start time
+// is the end time. The start time must not be later than the end time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+// "2014-10-02T15:01:23.045123456Z".
+func (o SnoozeIntervalPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnoozeInterval) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type UptimeCheckConfigContentMatcher struct {
 	// String or regex content to match (max 1024 bytes)
 	Content string `pulumi:"content"`
@@ -11958,7 +12370,7 @@ type UptimeCheckConfigHttpCheckAuthInfo struct {
 	//
 	// > **Note:** One of `password` or `passwordWo` can only be set.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// The password write-only version.
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
 	Username string `pulumi:"username"`
@@ -11986,7 +12398,7 @@ type UptimeCheckConfigHttpCheckAuthInfoArgs struct {
 	//
 	// > **Note:** One of `password` or `passwordWo` can only be set.
 	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
-	// The password write-only version.
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -12085,7 +12497,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWo() pulumi.StringPtrO
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
-// The password write-only version.
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
 }
@@ -12145,7 +12557,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) PasswordWo() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The password write-only version.
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) PasswordWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
 		if v == nil {
@@ -14157,6 +14569,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SloWindowsBasedSliMetricSumInRangePtrInput)(nil)).Elem(), SloWindowsBasedSliMetricSumInRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloWindowsBasedSliMetricSumInRangeRangeInput)(nil)).Elem(), SloWindowsBasedSliMetricSumInRangeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloWindowsBasedSliMetricSumInRangeRangePtrInput)(nil)).Elem(), SloWindowsBasedSliMetricSumInRangeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnoozeCriteriaInput)(nil)).Elem(), SnoozeCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnoozeCriteriaPtrInput)(nil)).Elem(), SnoozeCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnoozeIntervalInput)(nil)).Elem(), SnoozeIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnoozeIntervalPtrInput)(nil)).Elem(), SnoozeIntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherInput)(nil)).Elem(), UptimeCheckConfigContentMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherArrayInput)(nil)).Elem(), UptimeCheckConfigContentMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherJsonPathMatcherInput)(nil)).Elem(), UptimeCheckConfigContentMatcherJsonPathMatcherArgs{})
@@ -14299,6 +14715,10 @@ func init() {
 	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangePtrOutput{})
 	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangeRangeOutput{})
 	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangeRangePtrOutput{})
+	pulumi.RegisterOutputType(SnoozeCriteriaOutput{})
+	pulumi.RegisterOutputType(SnoozeCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(SnoozeIntervalOutput{})
+	pulumi.RegisterOutputType(SnoozeIntervalPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherArrayOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherJsonPathMatcherOutput{})

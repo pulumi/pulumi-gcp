@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "GCE_VM_IP_PORTMAP",
  * });
  * const myImage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * const defaultInstance = new gcp.compute.Instance("default", {

@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *                 .value("referencelist-entry-value")
  *                 .build())
  *             .syntaxType("REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING")
- *             .scopeInfos(ReferenceListScopeInfoArgs.builder()
+ *             .scopeInfo(ReferenceListScopeInfoArgs.builder()
  *                 .referenceListScope(ReferenceListScopeInfoReferenceListScopeArgs.builder()
  *                     .scopeNames(testScope.name())
  *                     .build())
@@ -298,16 +298,16 @@ public class ReferenceList extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="scopeInfos", refs={List.class,ReferenceListScopeInfo.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ReferenceListScopeInfo>> scopeInfos;
+    @Export(name="scopeInfo", refs={ReferenceListScopeInfo.class}, tree="[0]")
+    private Output</* @Nullable */ ReferenceListScopeInfo> scopeInfo;
 
     /**
      * @return ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<List<ReferenceListScopeInfo>>> scopeInfos() {
-        return Codegen.optional(this.scopeInfos);
+    public Output<Optional<ReferenceListScopeInfo>> scopeInfo() {
+        return Codegen.optional(this.scopeInfo);
     }
     /**
      * Possible values:

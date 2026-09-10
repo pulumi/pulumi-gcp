@@ -26,6 +26,155 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Apigee Endpoint Attachment Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.gcp.apigee.EndpointAttachment;
+ * import com.pulumi.gcp.apigee.EndpointAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
+ *             .name("apigee-network")
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
+ *             .prefixLength(16)
+ *             .network(apigeeNetwork.id())
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()
+ *             .network(apigeeNetwork.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(apigeeRange.name())
+ *             .build());
+ * 
+ *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
+ *             .name("producer-service-health-check")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
+ *             .name("producer-service")
+ *             .region("us-central1")
+ *             .healthChecks(producerServiceHealthCheck.id())
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
+ *             .name("psc-ilb-network")
+ *             .autoCreateSubnetworks(false)
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
+ *             .name("psc-ilb-producer-subnetwork")
+ *             .region("us-central1")
+ *             .network(pscIlbNetwork.id())
+ *             .ipCidrRange("10.0.99.0/24")
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
+ *             .name("producer-forwarding-rule")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("INTERNAL")
+ *             .backendService(producerServiceBackend.id())
+ *             .allPorts(true)
+ *             .network(pscIlbNetwork.name())
+ *             .subnetwork(pscIlbProducerSubnetwork.name())
+ *             .project(project.get("projectId"))
+ *             .build());
+ * 
+ *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
+ *             .name("psc-ilb-nat")
+ *             .region("us-central1")
+ *             .network(pscIlbNetwork.id())
+ *             .purpose("PRIVATE_SERVICE_CONNECT")
+ *             .ipCidrRange("10.0.199.0/24")
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
+ *             .name("my-psc-ilb")
+ *             .region("us-central1")
+ *             .description("A service attachment configured with Terraform")
+ *             .enableProxyProtocol(true)
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
+ *             .natSubnets(pscIlbNat.id())
+ *             .targetService(pscIlbTargetService.id())
+ *             .project(current.project())
+ *             .build());
+ * 
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
+ *             .analyticsRegion("us-central1")
+ *             .projectId(current.project())
+ *             .authorizedNetwork(apigeeNetwork.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
+ * 
+ *         var apigeeEndpointAttachment = new EndpointAttachment("apigeeEndpointAttachment", EndpointAttachmentArgs.builder()
+ *             .orgId(apigeeOrg.id())
+ *             .endpointAttachmentId("tf-test_77884")
+ *             .location("us-central1")
+ *             .serviceAttachment(pscIlbServiceAttachment.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * EndpointAttachment can be imported using any of these accepted formats:

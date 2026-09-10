@@ -17,9 +17,6 @@ import javax.annotation.Nullable;
 /**
  * Manages Cloud Observability settings for an organization.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * ## Example Usage
  * 
  * ### Observability Organization Settings Basic

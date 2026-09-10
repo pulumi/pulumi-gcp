@@ -140,6 +140,20 @@ public class LicenseConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.freeTrial);
     }
     /**
+     * Timestamp of the most recent user-initiated update.
+     * 
+     */
+    @Export(name="lastUserUpdateTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> lastUserUpdateTime;
+
+    /**
+     * @return Timestamp of the most recent user-initiated update.
+     * 
+     */
+    public Output<Optional<String>> lastUserUpdateTime() {
+        return Codegen.optional(this.lastUserUpdateTime);
+    }
+    /**
      * The unique id of the license config.
      * 
      */

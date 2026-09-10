@@ -17,7 +17,6 @@ import com.pulumi.gcp.compute.outputs.ReservationResourceStatus;
 import com.pulumi.gcp.compute.outputs.ReservationShareSettings;
 import com.pulumi.gcp.compute.outputs.ReservationSpecificReservation;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -161,7 +160,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-11")
+ *             .family("debian-13")
  *             .project("debian-cloud")
  *             .build());
  * 
@@ -242,7 +241,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-11")
+ *             .family("debian-13")
  *             .project("debian-cloud")
  *             .build());
  * 
@@ -528,22 +527,6 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
-    }
-    /**
-     * (Output)
-     * The number of reservation blocks associated with this reservation.
-     * 
-     */
-    @Export(name="reservationBlockCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> reservationBlockCount;
-
-    /**
-     * @return (Output)
-     * The number of reservation blocks associated with this reservation.
-     * 
-     */
-    public Output<Integer> reservationBlockCount() {
-        return this.reservationBlockCount;
     }
     /**
      * Sharing policy for reservations with Google Cloud managed services.

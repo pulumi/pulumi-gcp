@@ -1843,7 +1843,7 @@ class Dataset(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultCollation")
-    def default_collation(self) -> pulumi.Output[_builtins.str]:
+    def default_collation(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Defines the default collation specification of future tables created
         in the dataset. If a table is created in this dataset without table-level

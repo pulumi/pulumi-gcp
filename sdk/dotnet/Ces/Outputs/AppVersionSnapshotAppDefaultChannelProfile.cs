@@ -54,6 +54,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig> WebWidgetConfigs;
+        /// <summary>
+        /// (Output)
+        /// Configuration specific to WhatsApp deployments.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig> WhatsappConfigs;
 
         [OutputConstructor]
         private AppVersionSnapshotAppDefaultChannelProfile(
@@ -67,7 +73,9 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             string? profileId,
 
-            ImmutableArray<Outputs.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig> webWidgetConfigs)
+            ImmutableArray<Outputs.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig> webWidgetConfigs,
+
+            ImmutableArray<Outputs.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig> whatsappConfigs)
         {
             ChannelType = channelType;
             DisableBargeInControl = disableBargeInControl;
@@ -75,6 +83,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             PersonaProperties = personaProperties;
             ProfileId = profileId;
             WebWidgetConfigs = webWidgetConfigs;
+            WhatsappConfigs = whatsappConfigs;
         }
     }
 }

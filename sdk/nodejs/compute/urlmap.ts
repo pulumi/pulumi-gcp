@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: _default.id,
  * });
  * const staticBucket = new gcp.storage.Bucket("static", {
@@ -427,6 +428,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const service_a = new gcp.compute.BackendService("service-a", {
@@ -434,6 +436,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const service_b = new gcp.compute.BackendService("service-b", {
@@ -441,6 +444,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -500,6 +504,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const service_a = new gcp.compute.BackendService("service-a", {
@@ -507,6 +512,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const service_b = new gcp.compute.BackendService("service-b", {
@@ -514,6 +520,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -1022,6 +1029,7 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: health_check.id,
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {

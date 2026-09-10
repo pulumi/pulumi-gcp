@@ -25,8 +25,7 @@ class ClientArgs:
                  cloud_kms_config: pulumi.Input[Optional['ClientCloudKmsConfigArgs']] = None,
                  create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Client resource.
 
@@ -42,10 +41,6 @@ class ClientArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] run_as_service_account: (Optional, Deprecated)
-               User input run-as service account, if empty, will bring up a new default service account.
-               
-               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         pulumi.set(__self__, "location", location)
         if cloud_kms_config is not None:
@@ -56,11 +51,6 @@ class ClientArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if run_as_service_account is not None:
-            warnings.warn("""`run_as_service_account` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""run_as_service_account is deprecated: `run_as_service_account` is deprecated and will be removed in a future major release.""")
-        if run_as_service_account is not None:
-            pulumi.set(__self__, "run_as_service_account", run_as_service_account)
 
     @_builtins.property
     @pulumi.getter
@@ -129,22 +119,6 @@ class ClientArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
-    @_builtins.property
-    @pulumi.getter(name="runAsServiceAccount")
-    @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
-    def run_as_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        (Optional, Deprecated)
-        User input run-as service account, if empty, will bring up a new default service account.
-
-        > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
-        """
-        return pulumi.get(self, "run_as_service_account")
-
-    @run_as_service_account.setter
-    def run_as_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "run_as_service_account", value)
-
 
 @pulumi.input_type
 class _ClientState:
@@ -153,8 +127,7 @@ class _ClientState:
                  create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Client resources.
 
@@ -170,10 +143,6 @@ class _ClientState:
         :param pulumi.Input[_builtins.str] location: Location in which client needs to be provisioned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] run_as_service_account: (Optional, Deprecated)
-               User input run-as service account, if empty, will bring up a new default service account.
-               
-               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         if cloud_kms_config is not None:
             pulumi.set(__self__, "cloud_kms_config", cloud_kms_config)
@@ -185,11 +154,6 @@ class _ClientState:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if run_as_service_account is not None:
-            warnings.warn("""`run_as_service_account` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""run_as_service_account is deprecated: `run_as_service_account` is deprecated and will be removed in a future major release.""")
-        if run_as_service_account is not None:
-            pulumi.set(__self__, "run_as_service_account", run_as_service_account)
 
     @_builtins.property
     @pulumi.getter(name="cloudKmsConfig")
@@ -258,22 +222,6 @@ class _ClientState:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
-    @_builtins.property
-    @pulumi.getter(name="runAsServiceAccount")
-    @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
-    def run_as_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        (Optional, Deprecated)
-        User input run-as service account, if empty, will bring up a new default service account.
-
-        > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
-        """
-        return pulumi.get(self, "run_as_service_account")
-
-    @run_as_service_account.setter
-    def run_as_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "run_as_service_account", value)
-
 
 @pulumi.type_token("gcp:applicationintegration/client:Client")
 class Client(pulumi.CustomResource):
@@ -286,7 +234,6 @@ class Client(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Application Integration Client.
@@ -364,10 +311,6 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Location in which client needs to be provisioned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] run_as_service_account: (Optional, Deprecated)
-               User input run-as service account, if empty, will bring up a new default service account.
-               
-               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         ...
     @overload
@@ -457,7 +400,6 @@ class Client(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -474,7 +416,6 @@ class Client(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
-            __props__.__dict__["run_as_service_account"] = run_as_service_account
         super(Client, __self__).__init__(
             'gcp:applicationintegration/client:Client',
             resource_name,
@@ -489,8 +430,7 @@ class Client(pulumi.CustomResource):
             create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
-            project: pulumi.Input[Optional[_builtins.str]] = None,
-            run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None) -> 'Client':
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'Client':
         """
         Get an existing Client resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -510,10 +450,6 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Location in which client needs to be provisioned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] run_as_service_account: (Optional, Deprecated)
-               User input run-as service account, if empty, will bring up a new default service account.
-               
-               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -524,7 +460,6 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["project"] = project
-        __props__.__dict__["run_as_service_account"] = run_as_service_account
         return Client(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -573,16 +508,4 @@ class Client(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    @_builtins.property
-    @pulumi.getter(name="runAsServiceAccount")
-    @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
-    def run_as_service_account(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        (Optional, Deprecated)
-        User input run-as service account, if empty, will bring up a new default service account.
-
-        > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
-        """
-        return pulumi.get(self, "run_as_service_account")
 

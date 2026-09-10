@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var disk = new Disk("disk", DiskArgs.builder()
  *             .name("my-base-disk")
- *             .image("debian-cloud/debian-11")
+ *             .image("debian-cloud/debian-13")
  *             .size(50)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-11")
+ *             .family("debian-13")
  *             .project("debian-cloud")
  *             .build());
  * 

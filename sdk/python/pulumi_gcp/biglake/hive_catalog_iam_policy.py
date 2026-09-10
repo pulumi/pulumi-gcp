@@ -178,9 +178,6 @@ class HiveCatalogIamPolicy(pulumi.CustomResource):
 
         > **Note:** `biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## biglake.HiveCatalogIamPolicy
 
         ```python
@@ -242,9 +239,6 @@ class HiveCatalogIamPolicy(pulumi.CustomResource):
         > **Note:** `biglake.HiveCatalogIamPolicy` **cannot** be used in conjunction with `biglake.HiveCatalogIamBinding` and `biglake.HiveCatalogIamMember` or they will fight over what your policy should be.
 
         > **Note:** `biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## biglake.HiveCatalogIamPolicy
 
@@ -348,9 +342,6 @@ class HiveCatalogIamPolicy(pulumi.CustomResource):
 
         > **Note:** `biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## biglake.HiveCatalogIamPolicy
 
         ```python
@@ -412,9 +403,6 @@ class HiveCatalogIamPolicy(pulumi.CustomResource):
         > **Note:** `biglake.HiveCatalogIamPolicy` **cannot** be used in conjunction with `biglake.HiveCatalogIamBinding` and `biglake.HiveCatalogIamMember` or they will fight over what your policy should be.
 
         > **Note:** `biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## biglake.HiveCatalogIamPolicy
 

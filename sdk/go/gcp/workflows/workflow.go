@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workflows"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workflows"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -104,10 +105,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workflows"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workflows"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -260,7 +261,7 @@ type Workflow struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
 	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-	SourceContents pulumi.StringPtrOutput `pulumi:"sourceContents"`
+	SourceContents pulumi.StringOutput `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition
@@ -277,9 +278,12 @@ type Workflow struct {
 func NewWorkflow(ctx *pulumi.Context,
 	name string, args *WorkflowArgs, opts ...pulumi.ResourceOption) (*Workflow, error) {
 	if args == nil {
-		args = &WorkflowArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.SourceContents == nil {
+		return nil, errors.New("invalid value for required argument 'SourceContents'")
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",
@@ -520,7 +524,7 @@ type workflowArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
 	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-	SourceContents *string `pulumi:"sourceContents"`
+	SourceContents string `pulumi:"sourceContents"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition
 	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
 	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
@@ -585,7 +589,7 @@ type WorkflowArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
 	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-	SourceContents pulumi.StringPtrInput
+	SourceContents pulumi.StringInput
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition
 	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
 	// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
@@ -793,8 +797,8 @@ func (o WorkflowOutput) ServiceAccount() pulumi.StringOutput {
 
 // Workflow code to be executed. The size limit is 128KB.
 // > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-func (o WorkflowOutput) SourceContents() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.SourceContents }).(pulumi.StringPtrOutput)
+func (o WorkflowOutput) SourceContents() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.SourceContents }).(pulumi.StringOutput)
 }
 
 // State of the workflow deployment.

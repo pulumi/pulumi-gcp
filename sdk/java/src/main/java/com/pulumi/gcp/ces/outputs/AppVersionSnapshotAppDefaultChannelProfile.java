@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppDefaultChannelProfilePersonaProperty;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig;
+import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -62,6 +63,13 @@ public final class AppVersionSnapshotAppDefaultChannelProfile {
      * 
      */
     private @Nullable List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig> webWidgetConfigs;
+    /**
+     * @return (Output)
+     * Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig> whatsappConfigs;
 
     private AppVersionSnapshotAppDefaultChannelProfile() {}
     /**
@@ -123,6 +131,15 @@ public final class AppVersionSnapshotAppDefaultChannelProfile {
     public List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig> webWidgetConfigs() {
         return this.webWidgetConfigs == null ? List.of() : this.webWidgetConfigs;
     }
+    /**
+     * @return (Output)
+     * Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig> whatsappConfigs() {
+        return this.whatsappConfigs == null ? List.of() : this.whatsappConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -139,6 +156,7 @@ public final class AppVersionSnapshotAppDefaultChannelProfile {
         private @Nullable List<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty> personaProperties;
         private @Nullable String profileId;
         private @Nullable List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig> webWidgetConfigs;
+        private @Nullable List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig> whatsappConfigs;
         public Builder() {}
         public Builder(AppVersionSnapshotAppDefaultChannelProfile defaults) {
     	      Objects.requireNonNull(defaults);
@@ -148,6 +166,7 @@ public final class AppVersionSnapshotAppDefaultChannelProfile {
     	      this.personaProperties = defaults.personaProperties;
     	      this.profileId = defaults.profileId;
     	      this.webWidgetConfigs = defaults.webWidgetConfigs;
+    	      this.whatsappConfigs = defaults.whatsappConfigs;
         }
 
         @CustomType.Setter
@@ -192,6 +211,15 @@ public final class AppVersionSnapshotAppDefaultChannelProfile {
         public Builder webWidgetConfigs(AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig... webWidgetConfigs) {
             return webWidgetConfigs(List.of(webWidgetConfigs));
         }
+        @CustomType.Setter
+        public Builder whatsappConfigs(@Nullable List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig> whatsappConfigs) {
+
+            this.whatsappConfigs = whatsappConfigs;
+            return this;
+        }
+        public Builder whatsappConfigs(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig... whatsappConfigs) {
+            return whatsappConfigs(List.of(whatsappConfigs));
+        }
         public AppVersionSnapshotAppDefaultChannelProfile build() {
             final var _resultValue = new AppVersionSnapshotAppDefaultChannelProfile();
             _resultValue.channelType = channelType;
@@ -200,6 +228,7 @@ public final class AppVersionSnapshotAppDefaultChannelProfile {
             _resultValue.personaProperties = personaProperties;
             _resultValue.profileId = profileId;
             _resultValue.webWidgetConfigs = webWidgetConfigs;
+            _resultValue.whatsappConfigs = whatsappConfigs;
             return _resultValue;
         }
     }

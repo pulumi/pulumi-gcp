@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +20,12 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence;
+    /**
+     * @return Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+     * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+     * 
+     */
+    private @Nullable String refreshFrequency;
     /**
      * @return Governs when to update data profiles when a schema is modified
      * Structure is documented below.
@@ -40,6 +47,14 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
      */
     public Optional<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence> inspectTemplateModifiedCadence() {
         return Optional.ofNullable(this.inspectTemplateModifiedCadence);
+    }
+    /**
+     * @return Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+     * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+     * 
+     */
+    public Optional<String> refreshFrequency() {
+        return Optional.ofNullable(this.refreshFrequency);
     }
     /**
      * @return Governs when to update data profiles when a schema is modified
@@ -68,12 +83,14 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence;
+        private @Nullable String refreshFrequency;
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence schemaModifiedCadence;
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence tableModifiedCadence;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTargetBigQueryTargetCadence defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.inspectTemplateModifiedCadence = defaults.inspectTemplateModifiedCadence;
+    	      this.refreshFrequency = defaults.refreshFrequency;
     	      this.schemaModifiedCadence = defaults.schemaModifiedCadence;
     	      this.tableModifiedCadence = defaults.tableModifiedCadence;
         }
@@ -82,6 +99,12 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
         public Builder inspectTemplateModifiedCadence(@Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence) {
 
             this.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder refreshFrequency(@Nullable String refreshFrequency) {
+
+            this.refreshFrequency = refreshFrequency;
             return this;
         }
         @CustomType.Setter
@@ -99,6 +122,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
         public PreventionDiscoveryConfigTargetBigQueryTargetCadence build() {
             final var _resultValue = new PreventionDiscoveryConfigTargetBigQueryTargetCadence();
             _resultValue.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
+            _resultValue.refreshFrequency = refreshFrequency;
             _resultValue.schemaModifiedCadence = schemaModifiedCadence;
             _resultValue.tableModifiedCadence = tableModifiedCadence;
             return _resultValue;

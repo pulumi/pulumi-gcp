@@ -14,9 +14,9 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// To get more information about ReasoningEngine, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+    /// * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
     /// * How-to Guides
-    ///     * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+    ///     * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
     /// 
     /// ## Example Usage
     /// 
@@ -377,17 +377,21 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var classMethods = new[]
     ///     {
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "apiMode", "async" },
-    ///             { "description", null },
-    ///             { "name", "async_query" },
-    ///             { "parameters", 
+    ///             ["apiMode"] = "async",
+    ///             ["description"] = null,
+    ///             ["name"] = "async_query",
+    ///             ["parameters"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "type", "object" },
-    ///                 { "required", new object?[] {} },
-    ///                 { "properties", null },
-    ///             } },
+    ///                 ["type"] = "object",
+    ///                 ["required"] = new[]
+    ///                 {
+    ///                 },
+    ///                 ["properties"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                 },
+    ///             },
     ///         },
     ///     };
     /// 
@@ -500,6 +504,10 @@ namespace Pulumi.Gcp.Vertex
     ///             AgentFramework = "google-adk",
     ///             ClassMethods = JsonSerializer.Serialize(classMethods),
     ///             ServiceAccount = serviceAccount.Email,
+    ///             BuildSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecBuildSpecArgs
+    ///             {
+    ///                 ServiceAccount = serviceAccount.Email,
+    ///             },
     ///             DeploymentSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecArgs
     ///             {
     ///                 MinInstances = 1,
@@ -703,6 +711,23 @@ namespace Pulumi.Gcp.Vertex
     ///                                                             Id = "exec-result-1",
     ///                                                             Outcome = "OUTCOME_OK",
     ///                                                             Output = "pizza",
+    ///                                                         },
+    ///                                                     },
+    ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+    ///                                                     {
+    ///                                                         AudioTranscription = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs
+    ///                                                         {
+    ///                                                             SpeakerLabel = "spk_1",
+    ///                                                             Text = "I like pepperoni pizza",
+    ///                                                             Words = new[]
+    ///                                                             {
+    ///                                                                 new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs
+    ///                                                                 {
+    ///                                                                     StartOffset = "0.5s",
+    ///                                                                     EndOffset = "1.5s",
+    ///                                                                     Word = "pepperoni",
+    ///                                                                 },
+    ///                                                             },
     ///                                                         },
     ///                                                     },
     ///                                                 },
@@ -948,7 +973,6 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiReasoningEngine : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Optional. Configuration for how Agent Engine sub-resources should manage context.
         /// Structure is documented below.
         /// </summary>
@@ -1121,7 +1145,6 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiReasoningEngineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Optional. Configuration for how Agent Engine sub-resources should manage context.
         /// Structure is documented below.
         /// </summary>
@@ -1216,7 +1239,6 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiReasoningEngineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Optional. Configuration for how Agent Engine sub-resources should manage context.
         /// Structure is documented below.
         /// </summary>

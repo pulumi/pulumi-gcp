@@ -220,11 +220,6 @@ export type AiReasoningEngineIamPolicy = import("./aiReasoningEngineIamPolicy").
 export const AiReasoningEngineIamPolicy: typeof import("./aiReasoningEngineIamPolicy").AiReasoningEngineIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AiReasoningEngineIamPolicy"], () => require("./aiReasoningEngineIamPolicy"));
 
-export { AiScheduleArgs, AiScheduleState } from "./aiSchedule";
-export type AiSchedule = import("./aiSchedule").AiSchedule;
-export const AiSchedule: typeof import("./aiSchedule").AiSchedule = null as any;
-utilities.lazyLoad(exports, ["AiSchedule"], () => require("./aiSchedule"));
-
 export { AiSemanticGovernancePolicyEngineArgs, AiSemanticGovernancePolicyEngineState } from "./aiSemanticGovernancePolicyEngine";
 export type AiSemanticGovernancePolicyEngine = import("./aiSemanticGovernancePolicyEngine").AiSemanticGovernancePolicyEngine;
 export const AiSemanticGovernancePolicyEngine: typeof import("./aiSemanticGovernancePolicyEngine").AiSemanticGovernancePolicyEngine = null as any;
@@ -381,8 +376,6 @@ const _module = {
                 return new AiReasoningEngineIamMember(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
                 return new AiReasoningEngineIamPolicy(name, <any>undefined, { urn })
-            case "gcp:vertex/aiSchedule:AiSchedule":
-                return new AiSchedule(name, <any>undefined, { urn })
             case "gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine":
                 return new AiSemanticGovernancePolicyEngine(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
@@ -439,7 +432,6 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamPolicy", _module)
-pulumi.runtime.registerResourceModule("gcp", "vertex/aiSchedule", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiSemanticGovernancePolicyEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardExperiment", _module)

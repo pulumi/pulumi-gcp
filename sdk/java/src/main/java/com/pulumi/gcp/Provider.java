@@ -827,12 +827,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> migrationCenterCustomEndpoint() {
         return Codegen.optional(this.migrationCenterCustomEndpoint);
     }
-    @Export(name="mlEngineCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mlEngineCustomEndpoint;
-
-    public Output<Optional<String>> mlEngineCustomEndpoint() {
-        return Codegen.optional(this.mlEngineCustomEndpoint);
-    }
     @Export(name="modelArmorCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modelArmorCustomEndpoint;
 
@@ -875,6 +869,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> networkManagementCustomEndpoint() {
         return Codegen.optional(this.networkManagementCustomEndpoint);
     }
+    @Export(name="networkManagementv1CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> networkManagementv1CustomEndpoint;
+
+    public Output<Optional<String>> networkManagementv1CustomEndpoint() {
+        return Codegen.optional(this.networkManagementv1CustomEndpoint);
+    }
     @Export(name="networkSecurityCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkSecurityCustomEndpoint;
 
@@ -886,12 +886,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> networkServicesCustomEndpoint() {
         return Codegen.optional(this.networkServicesCustomEndpoint);
-    }
-    @Export(name="notebooksCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> notebooksCustomEndpoint;
-
-    public Output<Optional<String>> notebooksCustomEndpoint() {
-        return Codegen.optional(this.notebooksCustomEndpoint);
     }
     @Export(name="observabilityCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> observabilityCustomEndpoint;
@@ -1133,6 +1127,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> serviceUsageCustomEndpoint() {
         return Codegen.optional(this.serviceUsageCustomEndpoint);
     }
+    @Export(name="serviceUsageV2CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceUsageV2CustomEndpoint;
+
+    public Output<Optional<String>> serviceUsageV2CustomEndpoint() {
+        return Codegen.optional(this.serviceUsageV2CustomEndpoint);
+    }
     @Export(name="siteVerificationCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> siteVerificationCustomEndpoint;
 
@@ -1174,6 +1174,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> storageCustomEndpoint() {
         return Codegen.optional(this.storageCustomEndpoint);
+    }
+    @Export(name="storageFtpCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageFtpCustomEndpoint;
+
+    public Output<Optional<String>> storageFtpCustomEndpoint() {
+        return Codegen.optional(this.storageFtpCustomEndpoint);
     }
     @Export(name="storageInsightsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageInsightsCustomEndpoint;

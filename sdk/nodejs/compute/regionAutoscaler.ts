@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     name: "my-instance-template",
  *     machineType: "e2-standard-4",
  *     disks: [{
- *         sourceImage: "debian-cloud/debian-11",
+ *         sourceImage: "debian-cloud/debian-13",
  *         diskSizeGb: 250,
  *     }],
  *     networkInterfaces: [{
@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const debian9 = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * ```

@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.Observability
     /// <summary>
     /// Manages Cloud Observability settings for a folder.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Observability Folder Settings Basic
@@ -30,7 +27,7 @@ namespace Pulumi.Gcp.Observability
     /// {
     ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
     ///     {
-    ///         DisplayName = "tf-test-_80411",
+    ///         DisplayName = "tf-test-_45598",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
@@ -106,7 +103,7 @@ namespace Pulumi.Gcp.Observability
     /// {
     ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
     ///     {
-    ///         DisplayName = "tf-test-_44263",
+    ///         DisplayName = "tf-test-_64623",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

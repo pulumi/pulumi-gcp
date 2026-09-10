@@ -667,8 +667,6 @@ __all__ = [
     'PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict',
     'PreventionJobTriggerInspectJobActionPubSubArgs',
     'PreventionJobTriggerInspectJobActionPubSubArgsDict',
-    'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs',
-    'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict',
     'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs',
     'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict',
     'PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs',
@@ -16051,6 +16049,11 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
     Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
     Structure is documented below.
     """
+    refresh_frequency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
     schema_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when a schema is modified
@@ -16066,11 +16069,14 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
     def __init__(__self__, *,
                  inspect_template_modified_cadence: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']] = None,
+                 refresh_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  schema_modified_cadence: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs']] = None,
                  table_modified_cadence: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs']] = None):
         """
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs'] inspect_template_modified_cadence: Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] refresh_frequency: Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs'] schema_modified_cadence: Governs when to update data profiles when a schema is modified
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs'] table_modified_cadence: Governs when to update profile when a table is modified.
@@ -16078,6 +16084,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
         """
         if inspect_template_modified_cadence is not None:
             pulumi.set(__self__, "inspect_template_modified_cadence", inspect_template_modified_cadence)
+        if refresh_frequency is not None:
+            pulumi.set(__self__, "refresh_frequency", refresh_frequency)
         if schema_modified_cadence is not None:
             pulumi.set(__self__, "schema_modified_cadence", schema_modified_cadence)
         if table_modified_cadence is not None:
@@ -16095,6 +16103,19 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
     @inspect_template_modified_cadence.setter
     def inspect_template_modified_cadence(self, value: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']]):
         pulumi.set(self, "inspect_template_modified_cadence", value)
+
+    @_builtins.property
+    @pulumi.getter(name="refreshFrequency")
+    def refresh_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "refresh_frequency")
+
+    @refresh_frequency.setter
+    def refresh_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "refresh_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaModifiedCadence")
@@ -21252,13 +21273,6 @@ class PreventionJobTriggerInspectJobActionArgsDict(TypedDict):
     Publish a message into a given Pub/Sub topic when the job completes.
     Structure is documented below.
     """
-    publish_findings_to_cloud_data_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict']]]
-    """
-    (Optional, Deprecated)
-    Publish findings of a DlpJob to Data Catalog.
-
-    > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
-    """
     publish_findings_to_dataplex_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict']]]
     """
     Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
@@ -21283,7 +21297,6 @@ class PreventionJobTriggerInspectJobActionArgs:
                  deidentify: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyArgs']] = None,
                  job_notification_emails: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs']] = None,
                  pub_sub: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPubSubArgs']] = None,
-                 publish_findings_to_cloud_data_catalog: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']] = None,
                  publish_findings_to_dataplex_catalog: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs']] = None,
                  publish_summary_to_cscc: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs']] = None,
                  publish_to_stackdriver: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishToStackdriverArgs']] = None,
@@ -21294,10 +21307,6 @@ class PreventionJobTriggerInspectJobActionArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs'] job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs'] pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
-        :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs'] publish_findings_to_cloud_data_catalog: (Optional, Deprecated)
-               Publish findings of a DlpJob to Data Catalog.
-               
-               > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs'] publish_findings_to_dataplex_catalog: Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs'] publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishToStackdriverArgs'] publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/findingCount.
@@ -21310,11 +21319,6 @@ class PreventionJobTriggerInspectJobActionArgs:
             pulumi.set(__self__, "job_notification_emails", job_notification_emails)
         if pub_sub is not None:
             pulumi.set(__self__, "pub_sub", pub_sub)
-        if publish_findings_to_cloud_data_catalog is not None:
-            warnings.warn("""`publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""", DeprecationWarning)
-            pulumi.log.warn("""publish_findings_to_cloud_data_catalog is deprecated: `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""")
-        if publish_findings_to_cloud_data_catalog is not None:
-            pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
         if publish_findings_to_dataplex_catalog is not None:
             pulumi.set(__self__, "publish_findings_to_dataplex_catalog", publish_findings_to_dataplex_catalog)
         if publish_summary_to_cscc is not None:
@@ -21361,22 +21365,6 @@ class PreventionJobTriggerInspectJobActionArgs:
     @pub_sub.setter
     def pub_sub(self, value: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPubSubArgs']]):
         pulumi.set(self, "pub_sub", value)
-
-    @_builtins.property
-    @pulumi.getter(name="publishFindingsToCloudDataCatalog")
-    @_utilities.deprecated("""`publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""")
-    def publish_findings_to_cloud_data_catalog(self) -> pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]:
-        """
-        (Optional, Deprecated)
-        Publish findings of a DlpJob to Data Catalog.
-
-        > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
-        """
-        return pulumi.get(self, "publish_findings_to_cloud_data_catalog")
-
-    @publish_findings_to_cloud_data_catalog.setter
-    def publish_findings_to_cloud_data_catalog(self, value: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]):
-        pulumi.set(self, "publish_findings_to_cloud_data_catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="publishFindingsToDataplexCatalog")
@@ -21751,15 +21739,6 @@ class PreventionJobTriggerInspectJobActionPubSubArgs:
     @topic.setter
     def topic(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "topic", value)
-
-
-class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict(TypedDict):
-    pass
-
-@pulumi.input_type
-class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs:
-    def __init__(__self__):
-        pass
 
 
 class PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict(TypedDict):

@@ -292,7 +292,7 @@ export class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
      * The deploy config to use for the deployment.
      * Structure is documented below.
      */
-    declare public readonly deployConfig: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig | undefined>;
+    declare public readonly deployConfig: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig>;
     /**
      * Output only. The display name assigned to the model deployed to the endpoint.
      * This is not required to delete the resource but is used for debug logging.

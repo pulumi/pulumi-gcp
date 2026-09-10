@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 SourceImage = "debian-cloud/debian-13",
     ///                 DiskSizeGb = 250,
     ///             },
     ///         },
@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         Family = "debian-11",
+    ///         Family = "debian-13",
     ///         Project = "debian-cloud",
     ///     });
     /// 

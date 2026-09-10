@@ -17,9 +17,6 @@ import javax.annotation.Nullable;
 /**
  * Manages Cloud Observability settings for a project.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * ## Example Usage
  * 
  * ### Observability Project Settings Basic Global
@@ -54,8 +51,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_42057")
- *             .name("tf-test_84735")
+ *             .projectId("tf-test_74065")
+ *             .name("tf-test_75303")
  *             .orgId("123456789")
  *             .deletionPolicy("DELETE")
  *             .build());

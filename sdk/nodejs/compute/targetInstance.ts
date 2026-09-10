@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vmimage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * const target_vm = new gcp.compute.Instance("target-vm", {
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  *     stackType: "IPV4_ONLY",
  * });
  * const vmimage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * const target_vm = new gcp.compute.Instance("target-vm", {

@@ -100,6 +100,40 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Subscription Pubsub
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const subscription = new gcp.bigqueryanalyticshub.DataExchange("subscription", {
+ *     location: "US",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ *     description: "example pubsub listing subscription",
+ * });
+ * const subscriptionTopic = new gcp.pubsub.Topic("subscription", {name: "my_pubsub_topic"});
+ * const subscriptionListing = new gcp.bigqueryanalyticshub.Listing("subscription", {
+ *     location: "US",
+ *     dataExchangeId: subscription.dataExchangeId,
+ *     listingId: "my_listing",
+ *     displayName: "my_listing",
+ *     description: "example pubsub listing subscription",
+ *     pubsubTopic: {
+ *         topic: subscriptionTopic.id,
+ *     },
+ * });
+ * const subscriptionListingSubscription = new gcp.bigqueryanalyticshub.ListingSubscription("subscription", {
+ *     location: "US",
+ *     dataExchangeId: subscription.dataExchangeId,
+ *     listingId: subscriptionListing.listingId,
+ *     destinationPubsubSubscription: {
+ *         pubsubSubscription: {
+ *             name: pulumi.interpolate`projects/${subscriptionTopic.project}/subscriptions/my_pubsub_subscription`,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -171,7 +205,12 @@ export class ListingSubscription extends pulumi.CustomResource {
      * The destination dataset for this subscription.
      * Structure is documented below.
      */
-    declare public readonly destinationDataset: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset>;
+    declare public readonly destinationDataset: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset | undefined>;
+    /**
+     * Destination Pub/Sub subscription to create for the subscriber.
+     * Structure is documented below.
+     */
+    declare public readonly destinationPubsubSubscription: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscription | undefined>;
     /**
      * Timestamp when the subscription was last modified.
      */
@@ -251,6 +290,7 @@ export class ListingSubscription extends pulumi.CustomResource {
             resourceInputs["dataExchangeId"] = state?.dataExchangeId;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["destinationDataset"] = state?.destinationDataset;
+            resourceInputs["destinationPubsubSubscription"] = state?.destinationPubsubSubscription;
             resourceInputs["lastModifyTime"] = state?.lastModifyTime;
             resourceInputs["linkedDatasetMaps"] = state?.linkedDatasetMaps;
             resourceInputs["linkedResources"] = state?.linkedResources;
@@ -270,9 +310,6 @@ export class ListingSubscription extends pulumi.CustomResource {
             if (args?.dataExchangeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataExchangeId'");
             }
-            if (args?.destinationDataset === undefined && !opts.urn) {
-                throw new Error("Missing required property 'destinationDataset'");
-            }
             if (args?.listingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listingId'");
             }
@@ -282,6 +319,7 @@ export class ListingSubscription extends pulumi.CustomResource {
             resourceInputs["dataExchangeId"] = args?.dataExchangeId;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["destinationDataset"] = args?.destinationDataset;
+            resourceInputs["destinationPubsubSubscription"] = args?.destinationPubsubSubscription;
             resourceInputs["listingId"] = args?.listingId;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -335,6 +373,11 @@ export interface ListingSubscriptionState {
      * Structure is documented below.
      */
     destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset | undefined>;
+    /**
+     * Destination Pub/Sub subscription to create for the subscriber.
+     * Structure is documented below.
+     */
+    destinationPubsubSubscription?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscription | undefined>;
     /**
      * Timestamp when the subscription was last modified.
      */
@@ -418,7 +461,12 @@ export interface ListingSubscriptionArgs {
      * The destination dataset for this subscription.
      * Structure is documented below.
      */
-    destinationDataset: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset>;
+    destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset | undefined>;
+    /**
+     * Destination Pub/Sub subscription to create for the subscriber.
+     * Structure is documented below.
+     */
+    destinationPubsubSubscription?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscription | undefined>;
     /**
      * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */

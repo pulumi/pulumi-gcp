@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myImage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * const _default = new gcp.compute.Network("default", {

@@ -27,7 +27,7 @@ class GetWorkerPoolResult:
     """
     A collection of values returned by getWorkerPool.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, delete_time=None, deletion_policy=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, instance_split_statuses=None, instance_splits=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, deletion_policy=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, instance_split_statuses=None, instance_splits=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -49,9 +49,6 @@ class GetWorkerPoolResult:
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
-        if custom_audiences and not isinstance(custom_audiences, list):
-            raise TypeError("Expected argument 'custom_audiences' to be a list")
-        pulumi.set(__self__, "custom_audiences", custom_audiences)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
@@ -171,11 +168,6 @@ class GetWorkerPoolResult:
     @pulumi.getter
     def creator(self) -> _builtins.str:
         return pulumi.get(self, "creator")
-
-    @_builtins.property
-    @pulumi.getter(name="customAudiences")
-    def custom_audiences(self) -> Sequence[_builtins.str]:
-        return pulumi.get(self, "custom_audiences")
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
@@ -334,7 +326,6 @@ class AwaitableGetWorkerPoolResult(GetWorkerPoolResult):
             conditions=self.conditions,
             create_time=self.create_time,
             creator=self.creator,
-            custom_audiences=self.custom_audiences,
             delete_time=self.delete_time,
             deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
@@ -407,7 +398,6 @@ def get_worker_pool(location: Optional[_builtins.str] = None,
         conditions=pulumi.get(__ret__, 'conditions'),
         create_time=pulumi.get(__ret__, 'create_time'),
         creator=pulumi.get(__ret__, 'creator'),
-        custom_audiences=pulumi.get(__ret__, 'custom_audiences'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
@@ -477,7 +467,6 @@ def get_worker_pool_output(location: pulumi.Input[Optional[Optional[_builtins.st
         conditions=pulumi.get(__response__, 'conditions'),
         create_time=pulumi.get(__response__, 'create_time'),
         creator=pulumi.get(__response__, 'creator'),
-        custom_audiences=pulumi.get(__response__, 'custom_audiences'),
         delete_time=pulumi.get(__response__, 'delete_time'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),

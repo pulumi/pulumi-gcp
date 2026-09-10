@@ -17,6 +17,7 @@ import com.pulumi.gcp.appengine.outputs.StandardAppVersionEntrypoint;
 import com.pulumi.gcp.appengine.outputs.StandardAppVersionHandler;
 import com.pulumi.gcp.appengine.outputs.StandardAppVersionLibrary;
 import com.pulumi.gcp.appengine.outputs.StandardAppVersionManualScaling;
+import com.pulumi.gcp.appengine.outputs.StandardAppVersionVpcAccess;
 import com.pulumi.gcp.appengine.outputs.StandardAppVersionVpcAccessConnector;
 import java.lang.Boolean;
 import java.lang.String;
@@ -269,6 +270,144 @@ import javax.annotation.Nullable;
  *             .appEngineBundledServices(            
  *                 "BUNDLED_SERVICE_TYPE_MAIL",
  *                 "BUNDLED_SERVICE_TYPE_DATASTORE_V3")
+ *             .deleteServiceOnDestroy(true)
+ *             .serviceAccount(serviceAccount.email())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     gaeApi,
+ *                     storageViewer)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### App Engine Standard App Version Vpc Access
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.appengine.StandardAppVersion;
+ * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionVpcAccessArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionVpcAccessNetworkInterfaceArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentFileArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
+ *             .accountId("gae-sa")
+ *             .displayName("Test Service Account for GAE")
+ *             .build());
+ * 
+ *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()
+ *             .project(serviceAccount.project())
+ *             .role("roles/compute.networkUser")
+ *             .member(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()
+ *             .project(serviceAccount.project())
+ *             .role("roles/storage.objectViewer")
+ *             .member(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var custom = new Network("custom", NetworkArgs.builder()
+ *             .name("custom-net-vpc-service")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var customSubnetwork = new Subnetwork("customSubnetwork", SubnetworkArgs.builder()
+ *             .name("custom-sub-vpc-service")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(custom.id())
+ *             .build());
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("tf-test-gae-bkt-vpc-access")
+ *             .location("US")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var requirements = new BucketObject("requirements", BucketObjectArgs.builder()
+ *             .name("requirements.txt")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+ *             .build());
+ * 
+ *         var main = new BucketObject("main", BucketObjectArgs.builder()
+ *             .name("main.py")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("./test-fixtures/hello-world-flask/main.py"))
+ *             .build());
+ * 
+ *         var gae_std_app_ver_vpc_access = new StandardAppVersion("gae-std-app-ver-vpc-access", StandardAppVersionArgs.builder()
+ *             .versionId("v1")
+ *             .service("vpc-service")
+ *             .runtime("python310")
+ *             .vpcAccess(StandardAppVersionVpcAccessArgs.builder()
+ *                 .egressSetting("ALL_TRAFFIC")
+ *                 .networkInterfaces(StandardAppVersionVpcAccessNetworkInterfaceArgs.builder()
+ *                     .network(custom.name())
+ *                     .subnetwork(customSubnetwork.name())
+ *                     .tags(                    
+ *                         "tag1",
+ *                         "tag2")
+ *                     .build())
+ *                 .build())
+ *             .deployment(StandardAppVersionDeploymentArgs.builder()
+ *                 .files(                
+ *                     StandardAppVersionDeploymentFileArgs.builder()
+ *                         .name("main.py")
+ *                         .sourceUrl(Output.tuple(bucket.name(), main.name()).applyValue(values -> {
+ *                             var bucketName = values.t1;
+ *                             var mainName = values.t2;
+ *                             return String.format("https://storage.googleapis.com/%s/%s", bucketName,mainName);
+ *                         }))
+ *                         .build(),
+ *                     StandardAppVersionDeploymentFileArgs.builder()
+ *                         .name("requirements.txt")
+ *                         .sourceUrl(Output.tuple(bucket.name(), requirements.name()).applyValue(values -> {
+ *                             var bucketName = values.t1;
+ *                             var requirementsName = values.t2;
+ *                             return String.format("https://storage.googleapis.com/%s/%s", bucketName,requirementsName);
+ *                         }))
+ *                         .build())
+ *                 .build())
+ *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
+ *                 .shell("gunicorn -b :$PORT main:app")
+ *                 .build())
  *             .deleteServiceOnDestroy(true)
  *             .serviceAccount(serviceAccount.email())
  *             .build(), CustomResourceOptions.builder()
@@ -668,6 +807,24 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> versionId() {
         return Codegen.optional(this.versionId);
+    }
+    /**
+     * (Optional, Beta)
+     * Direct VPC Access settings for standard apps.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="vpcAccess", refs={StandardAppVersionVpcAccess.class}, tree="[0]")
+    private Output</* @Nullable */ StandardAppVersionVpcAccess> vpcAccess;
+
+    /**
+     * @return (Optional, Beta)
+     * Direct VPC Access settings for standard apps.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<StandardAppVersionVpcAccess>> vpcAccess() {
+        return Codegen.optional(this.vpcAccess);
     }
     /**
      * Enables VPC connectivity for standard apps.

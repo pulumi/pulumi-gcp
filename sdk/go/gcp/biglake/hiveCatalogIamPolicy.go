@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,9 +26,6 @@ import (
 //
 // > **Note:** `biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // ## biglake.HiveCatalogIamPolicy
 //
 // ```go
@@ -36,8 +33,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,7 +75,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -109,7 +106,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -151,9 +148,6 @@ import (
 //
 // > **Note:** `biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // ## biglake.HiveCatalogIamPolicy
 //
 // ```go
@@ -161,8 +155,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -203,7 +197,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -234,7 +228,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

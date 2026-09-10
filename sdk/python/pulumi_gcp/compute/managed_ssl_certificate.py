@@ -443,6 +443,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_http_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
@@ -467,7 +468,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
         default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
             name="forwarding-rule",
             target=default_target_https_proxy.id,
-            port_range="443")
+            port_range="443",
+            load_balancing_scheme="EXTERNAL")
         ```
         ## Import
 
@@ -569,6 +571,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_http_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
@@ -593,7 +596,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
         default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
             name="forwarding-rule",
             target=default_target_https_proxy.id,
-            port_range="443")
+            port_range="443",
+            load_balancing_scheme="EXTERNAL")
         ```
         ## Import
 

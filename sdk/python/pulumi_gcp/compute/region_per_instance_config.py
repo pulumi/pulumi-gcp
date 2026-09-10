@@ -471,7 +471,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
             name="my-template",
@@ -515,7 +515,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             name="my-disk-name",
             type="pd-ssd",
             zone="us-central1-a",
-            image="debian-11-bullseye-v20220719",
+            image="debian-13-trixie-v20260827",
             physical_block_size_bytes=4096)
         with_disk = gcp.compute.RegionPerInstanceConfig("with_disk",
             region=igm["region"],
@@ -611,7 +611,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
             name="my-template",
@@ -655,7 +655,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             name="my-disk-name",
             type="pd-ssd",
             zone="us-central1-a",
-            image="debian-11-bullseye-v20220719",
+            image="debian-13-trixie-v20260827",
             physical_block_size_bytes=4096)
         with_disk = gcp.compute.RegionPerInstanceConfig("with_disk",
             region=igm["region"],

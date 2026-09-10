@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         Family = "debian-11",
+    ///         Family = "debian-13",
     ///         Project = "debian-cloud",
     ///     });
     /// 
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         Family = "debian-11",
+    ///         Family = "debian-13",
     ///         Project = "debian-cloud",
     ///     });
     /// 

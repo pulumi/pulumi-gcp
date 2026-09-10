@@ -47,37 +47,11 @@ public final class GetBackupPlanAssociationsPlainArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.project);
     }
 
-    /**
-     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-     * ***
-     * 
-     * @deprecated
-     * `resourceType` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
-    @Import(name="resourceType")
-    private @Nullable String resourceType;
-
-    /**
-     * @return The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-     * ***
-     * 
-     * @deprecated
-     * `resourceType` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
-    public Optional<String> resourceType() {
-        return Optional.ofNullable(this.resourceType);
-    }
-
     private GetBackupPlanAssociationsPlainArgs() {}
 
     private GetBackupPlanAssociationsPlainArgs(GetBackupPlanAssociationsPlainArgs $) {
         this.location = $.location;
         this.project = $.project;
-        this.resourceType = $.resourceType;
     }
 
     public static Builder builder() {
@@ -118,22 +92,6 @@ public final class GetBackupPlanAssociationsPlainArgs extends com.pulumi.resourc
          */
         public Builder project(@Nullable String project) {
             $.project = project;
-            return this;
-        }
-
-        /**
-         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-         * ***
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `resourceType` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
-        public Builder resourceType(@Nullable String resourceType) {
-            $.resourceType = resourceType;
             return this;
         }
 

@@ -125,6 +125,18 @@ __all__ = [
     'ControlProjectIntelligenceConfigTrialConfigArgsDict',
     'DefaultObjectAccessControlProjectTeamArgs',
     'DefaultObjectAccessControlProjectTeamArgsDict',
+    'FtpServerExternalConfigArgs',
+    'FtpServerExternalConfigArgsDict',
+    'FtpServerInternalConfigArgs',
+    'FtpServerInternalConfigArgsDict',
+    'FtpServerInternalConfigConsumerAcceptListArgs',
+    'FtpServerInternalConfigConsumerAcceptListArgsDict',
+    'FtpServerInternalConfigConsumerRejectListArgs',
+    'FtpServerInternalConfigConsumerRejectListArgsDict',
+    'FtpUserStorageDirectoryMappingArgs',
+    'FtpUserStorageDirectoryMappingArgsDict',
+    'FtpUserUserCredentialsArgs',
+    'FtpUserUserCredentialsArgsDict',
     'InsightsDatasetConfigExcludeCloudStorageBucketsArgs',
     'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict',
     'InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs',
@@ -3315,6 +3327,326 @@ class DefaultObjectAccessControlProjectTeamArgs:
     @team.setter
     def team(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team", value)
+
+
+class FtpServerExternalConfigArgsDict(TypedDict):
+    allowed_cidr_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+    """
+
+@pulumi.input_type
+class FtpServerExternalConfigArgs:
+    def __init__(__self__, *,
+                 allowed_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_cidr_blocks: A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+        """
+        if allowed_cidr_blocks is not None:
+            pulumi.set(__self__, "allowed_cidr_blocks", allowed_cidr_blocks)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCidrBlocks")
+    def allowed_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+        """
+        return pulumi.get(self, "allowed_cidr_blocks")
+
+    @allowed_cidr_blocks.setter
+    def allowed_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_cidr_blocks", value)
+
+
+class FtpServerInternalConfigArgsDict(TypedDict):
+    consumer_accept_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerAcceptListArgsDict']]]]]
+    """
+    A list of consumer projects that are allowed to connect to this server.
+    Structure is documented below.
+    """
+    consumer_reject_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerRejectListArgsDict']]]]]
+    """
+    A list of consumer projects that are rejected from connecting to this server.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class FtpServerInternalConfigArgs:
+    def __init__(__self__, *,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerAcceptListArgs']]]] = None,
+                 consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerRejectListArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FtpServerInternalConfigConsumerAcceptListArgs']]] consumer_accept_lists: A list of consumer projects that are allowed to connect to this server.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FtpServerInternalConfigConsumerRejectListArgs']]] consumer_reject_lists: A list of consumer projects that are rejected from connecting to this server.
+               Structure is documented below.
+        """
+        if consumer_accept_lists is not None:
+            pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
+        if consumer_reject_lists is not None:
+            pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerAcceptLists")
+    def consumer_accept_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerAcceptListArgs']]]]:
+        """
+        A list of consumer projects that are allowed to connect to this server.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "consumer_accept_lists")
+
+    @consumer_accept_lists.setter
+    def consumer_accept_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerAcceptListArgs']]]]):
+        pulumi.set(self, "consumer_accept_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerRejectLists")
+    def consumer_reject_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerRejectListArgs']]]]:
+        """
+        A list of consumer projects that are rejected from connecting to this server.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "consumer_reject_lists")
+
+    @consumer_reject_lists.setter
+    def consumer_reject_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FtpServerInternalConfigConsumerRejectListArgs']]]]):
+        pulumi.set(self, "consumer_reject_lists", value)
+
+
+class FtpServerInternalConfigConsumerAcceptListArgsDict(TypedDict):
+    connection_limit: pulumi.Input[_builtins.int]
+    """
+    The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The project that is allowed to connect, in the format `projects/{project}`.
+    """
+
+@pulumi.input_type
+class FtpServerInternalConfigConsumerAcceptListArgs:
+    def __init__(__self__, *,
+                 connection_limit: pulumi.Input[_builtins.int],
+                 project: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] connection_limit: The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+        :param pulumi.Input[_builtins.str] project: The project that is allowed to connect, in the format `projects/{project}`.
+        """
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "project", project)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> pulumi.Input[_builtins.int]:
+        """
+        The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @connection_limit.setter
+    def connection_limit(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "connection_limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[_builtins.str]:
+        """
+        The project that is allowed to connect, in the format `projects/{project}`.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project", value)
+
+
+class FtpServerInternalConfigConsumerRejectListArgsDict(TypedDict):
+    project: pulumi.Input[_builtins.str]
+    """
+    The project that is rejected from connecting, in the format `projects/{project}`.
+    """
+
+@pulumi.input_type
+class FtpServerInternalConfigConsumerRejectListArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] project: The project that is rejected from connecting, in the format `projects/{project}`.
+        """
+        pulumi.set(__self__, "project", project)
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[_builtins.str]:
+        """
+        The project that is rejected from connecting, in the format `projects/{project}`.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project", value)
+
+
+class FtpUserStorageDirectoryMappingArgsDict(TypedDict):
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Cloud Storage bucket name. Omit the gs://.
+    """
+    bucket_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The path of a folder within the bucket to set as the root directory for this directory mapping.
+    """
+    directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The directory path in the virtual file system.
+    """
+    permission: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+    Possible values are: `READ_ONLY`, `READ_WRITE`.
+    """
+
+@pulumi.input_type
+class FtpUserStorageDirectoryMappingArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] bucket: The Cloud Storage bucket name. Omit the gs://.
+        :param pulumi.Input[_builtins.str] bucket_prefix: The path of a folder within the bucket to set as the root directory for this directory mapping.
+        :param pulumi.Input[_builtins.str] directory: The directory path in the virtual file system.
+        :param pulumi.Input[_builtins.str] permission: The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+               Possible values are: `READ_ONLY`, `READ_WRITE`.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if bucket_prefix is not None:
+            pulumi.set(__self__, "bucket_prefix", bucket_prefix)
+        if directory is not None:
+            pulumi.set(__self__, "directory", directory)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cloud Storage bucket name. Omit the gs://.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPrefix")
+    def bucket_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The path of a folder within the bucket to set as the root directory for this directory mapping.
+        """
+        return pulumi.get(self, "bucket_prefix")
+
+    @bucket_prefix.setter
+    def bucket_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bucket_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def directory(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The directory path in the virtual file system.
+        """
+        return pulumi.get(self, "directory")
+
+    @directory.setter
+    def directory(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "directory", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+        Possible values are: `READ_ONLY`, `READ_WRITE`.
+        """
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "permission", value)
+
+
+class FtpUserUserCredentialsArgsDict(TypedDict):
+    credential_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the credential.
+    """
+    credential_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the credential.
+    """
+    ssh_public_key_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+    """
+
+@pulumi.input_type
+class FtpUserUserCredentialsArgs:
+    def __init__(__self__, *,
+                 credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_public_key_body: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] credential_name: The name of the credential.
+        :param pulumi.Input[_builtins.str] credential_type: The type of the credential.
+        :param pulumi.Input[_builtins.str] ssh_public_key_body: The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+        """
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+        if credential_type is not None:
+            pulumi.set(__self__, "credential_type", credential_type)
+        if ssh_public_key_body is not None:
+            pulumi.set(__self__, "ssh_public_key_body", ssh_public_key_body)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the credential.
+        """
+        return pulumi.get(self, "credential_name")
+
+    @credential_name.setter
+    def credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "credential_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the credential.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "credential_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sshPublicKeyBody")
+    def ssh_public_key_body(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+        """
+        return pulumi.get(self, "ssh_public_key_body")
+
+    @ssh_public_key_body.setter
+    def ssh_public_key_body(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssh_public_key_body", value)
 
 
 class InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict(TypedDict):

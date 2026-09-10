@@ -80,6 +80,16 @@ export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
 utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
 
+export { FtpServerArgs, FtpServerState } from "./ftpServer";
+export type FtpServer = import("./ftpServer").FtpServer;
+export const FtpServer: typeof import("./ftpServer").FtpServer = null as any;
+utilities.lazyLoad(exports, ["FtpServer"], () => require("./ftpServer"));
+
+export { FtpUserArgs, FtpUserState } from "./ftpUser";
+export type FtpUser = import("./ftpUser").FtpUser;
+export const FtpUser: typeof import("./ftpUser").FtpUser = null as any;
+utilities.lazyLoad(exports, ["FtpUser"], () => require("./ftpUser"));
+
 export { GetBucketArgs, GetBucketResult, GetBucketOutputArgs } from "./getBucket";
 export const getBucket: typeof import("./getBucket").getBucket = null as any;
 export const getBucketOutput: typeof import("./getBucket").getBucketOutput = null as any;
@@ -291,6 +301,10 @@ const _module = {
                 return new DefaultObjectAccessControl(name, <any>undefined, { urn })
             case "gcp:storage/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "gcp:storage/ftpServer:FtpServer":
+                return new FtpServer(name, <any>undefined, { urn })
+            case "gcp:storage/ftpUser:FtpUser":
+                return new FtpUser(name, <any>undefined, { urn })
             case "gcp:storage/hmacKey:HmacKey":
                 return new HmacKey(name, <any>undefined, { urn })
             case "gcp:storage/insightsDatasetConfig:InsightsDatasetConfig":
@@ -335,6 +349,8 @@ pulumi.runtime.registerResourceModule("gcp", "storage/controlProjectIntelligence
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/folder", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/ftpServer", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/ftpUser", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/hmacKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/insightsDatasetConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/insightsReportConfig", _module)

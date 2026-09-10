@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Compute
     ///     var disk = new Gcp.Compute.Disk("disk", new()
     ///     {
     ///         Name = "my-disk",
-    ///         Image = "debian-cloud/debian-11",
+    ///         Image = "debian-cloud/debian-13",
     ///         Size = 50,
     ///         Type = "pd-ssd",
     ///         Zone = "us-central1-a",

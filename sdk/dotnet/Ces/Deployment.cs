@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Ces
     /// <summary>
     /// Description
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Ces Deployment Basic
@@ -213,6 +216,13 @@ namespace Pulumi.Gcp.Ces
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("instagramCredentials")]
+        public Output<Outputs.DeploymentInstagramCredentials?> InstagramCredentials { get; private set; } = null!;
+
+        /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
@@ -238,6 +248,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("whatsappCredentials")]
+        public Output<Outputs.DeploymentWhatsappCredentials?> WhatsappCredentials { get; private set; } = null!;
 
 
         /// <summary>
@@ -325,6 +342,13 @@ namespace Pulumi.Gcp.Ces
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("instagramCredentials")]
+        public Input<Inputs.DeploymentInstagramCredentialsArgs>? InstagramCredentials { get; set; }
+
+        /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
@@ -336,6 +360,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("whatsappCredentials")]
+        public Input<Inputs.DeploymentWhatsappCredentialsArgs>? WhatsappCredentials { get; set; }
 
         public DeploymentArgs()
         {
@@ -399,6 +430,13 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? Etag { get; set; }
 
         /// <summary>
+        /// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("instagramCredentials")]
+        public Input<Inputs.DeploymentInstagramCredentialsGetArgs>? InstagramCredentials { get; set; }
+
+        /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location")]
@@ -424,6 +462,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("whatsappCredentials")]
+        public Input<Inputs.DeploymentWhatsappCredentialsGetArgs>? WhatsappCredentials { get; set; }
 
         public DeploymentState()
         {

@@ -12438,7 +12438,7 @@ class ClusterNodePool(dict):
                location.
                
                ***
-        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         :param 'ClusterNodePoolNodeConfigArgs' node_config: The node configuration of the pool. Structure is documented below.
@@ -12584,7 +12584,7 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[_builtins.str]:
         """
-        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         """
         return pulumi.get(self, "name_prefix")
 
@@ -29522,7 +29522,7 @@ class GetClusterNodePoolResult(dict):
         :param Sequence['GetClusterNodePoolManagementArgs'] managements: Node management configuration, wherein auto-repair and auto-upgrade is configured.
         :param _builtins.int max_pods_per_node: The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
         :param _builtins.str name: The name of the cluster.
-        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         :param Sequence['GetClusterNodePoolNetworkConfigArgs'] network_configs: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param Sequence['GetClusterNodePoolNodeConfigArgs'] node_configs: The configuration of the nodepool
         :param _builtins.int node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
@@ -29629,7 +29629,7 @@ class GetClusterNodePoolResult(dict):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> _builtins.str:
         """
-        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         """
         return pulumi.get(self, "name_prefix")
 

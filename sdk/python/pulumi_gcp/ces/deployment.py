@@ -27,7 +27,9 @@ class DeploymentArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 instagram_credentials: pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 whatsapp_credentials: pulumi.Input[Optional['DeploymentWhatsappCredentialsArgs']] = None):
         """
         The set of arguments for constructing a Deployment resource.
 
@@ -46,8 +48,12 @@ class DeploymentArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input['DeploymentInstagramCredentialsArgs'] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['DeploymentWhatsappCredentialsArgs'] whatsapp_credentials: Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+               Structure is documented below.
         """
         pulumi.set(__self__, "app", app)
         pulumi.set(__self__, "app_version", app_version)
@@ -56,8 +62,12 @@ class DeploymentArgs:
         pulumi.set(__self__, "location", location)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if instagram_credentials is not None:
+            pulumi.set(__self__, "instagram_credentials", instagram_credentials)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if whatsapp_credentials is not None:
+            pulumi.set(__self__, "whatsapp_credentials", whatsapp_credentials)
 
     @_builtins.property
     @pulumi.getter
@@ -141,6 +151,19 @@ class DeploymentArgs:
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="instagramCredentials")
+    def instagram_credentials(self) -> pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']]:
+        """
+        Ephemeral Meta credentials required when configuring an Instagram channel profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instagram_credentials")
+
+    @instagram_credentials.setter
+    def instagram_credentials(self, value: pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']]):
+        pulumi.set(self, "instagram_credentials", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -153,6 +176,19 @@ class DeploymentArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="whatsappCredentials")
+    def whatsapp_credentials(self) -> pulumi.Input[Optional['DeploymentWhatsappCredentialsArgs']]:
+        """
+        Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whatsapp_credentials")
+
+    @whatsapp_credentials.setter
+    def whatsapp_credentials(self, value: pulumi.Input[Optional['DeploymentWhatsappCredentialsArgs']]):
+        pulumi.set(self, "whatsapp_credentials", value)
+
 
 @pulumi.input_type
 class _DeploymentState:
@@ -164,10 +200,12 @@ class _DeploymentState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 instagram_credentials: pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 whatsapp_credentials: pulumi.Input[Optional['DeploymentWhatsappCredentialsArgs']] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
 
@@ -189,6 +227,8 @@ class _DeploymentState:
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
+        :param pulumi.Input['DeploymentInstagramCredentialsArgs'] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the deployment.
                Format:
@@ -196,6 +236,8 @@ class _DeploymentState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when this deployment was last updated.
+        :param pulumi.Input['DeploymentWhatsappCredentialsArgs'] whatsapp_credentials: Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+               Structure is documented below.
         """
         if app is not None:
             pulumi.set(__self__, "app", app)
@@ -211,6 +253,8 @@ class _DeploymentState:
             pulumi.set(__self__, "display_name", display_name)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if instagram_credentials is not None:
+            pulumi.set(__self__, "instagram_credentials", instagram_credentials)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -219,6 +263,8 @@ class _DeploymentState:
             pulumi.set(__self__, "project", project)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if whatsapp_credentials is not None:
+            pulumi.set(__self__, "whatsapp_credentials", whatsapp_credentials)
 
     @_builtins.property
     @pulumi.getter
@@ -316,6 +362,19 @@ class _DeploymentState:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="instagramCredentials")
+    def instagram_credentials(self) -> pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']]:
+        """
+        Ephemeral Meta credentials required when configuring an Instagram channel profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instagram_credentials")
+
+    @instagram_credentials.setter
+    def instagram_credentials(self, value: pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']]):
+        pulumi.set(self, "instagram_credentials", value)
+
+    @_builtins.property
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -366,6 +425,19 @@ class _DeploymentState:
     def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="whatsappCredentials")
+    def whatsapp_credentials(self) -> pulumi.Input[Optional['DeploymentWhatsappCredentialsArgs']]:
+        """
+        Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whatsapp_credentials")
+
+    @whatsapp_credentials.setter
+    def whatsapp_credentials(self, value: pulumi.Input[Optional['DeploymentWhatsappCredentialsArgs']]):
+        pulumi.set(self, "whatsapp_credentials", value)
+
 
 @pulumi.type_token("gcp:ces/deployment:Deployment")
 class Deployment(pulumi.CustomResource):
@@ -378,11 +450,16 @@ class Deployment(pulumi.CustomResource):
                  channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 whatsapp_credentials: pulumi.Input[Optional[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']]] = None,
                  __props__=None):
         """
         Description
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -507,9 +584,13 @@ class Deployment(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name of the deployment.
+        :param pulumi.Input[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']] whatsapp_credentials: Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+               Structure is documented below.
         """
         ...
     @overload
@@ -519,6 +600,9 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Description
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -647,8 +731,10 @@ class Deployment(pulumi.CustomResource):
                  channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 whatsapp_credentials: pulumi.Input[Optional[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -671,10 +757,12 @@ class Deployment(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["instagram_credentials"] = instagram_credentials
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["whatsapp_credentials"] = whatsapp_credentials
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
@@ -696,10 +784,12 @@ class Deployment(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Deployment':
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            whatsapp_credentials: pulumi.Input[Optional[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']]] = None) -> 'Deployment':
         """
         Get an existing Deployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -725,6 +815,8 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
+        :param pulumi.Input[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the deployment.
                Format:
@@ -732,6 +824,8 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when this deployment was last updated.
+        :param pulumi.Input[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']] whatsapp_credentials: Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -744,10 +838,12 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["instagram_credentials"] = instagram_credentials
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["whatsapp_credentials"] = whatsapp_credentials
         return Deployment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -818,6 +914,15 @@ class Deployment(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @_builtins.property
+    @pulumi.getter(name="instagramCredentials")
+    def instagram_credentials(self) -> pulumi.Output[Optional['outputs.DeploymentInstagramCredentials']]:
+        """
+        Ephemeral Meta credentials required when configuring an Instagram channel profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instagram_credentials")
+
+    @_builtins.property
     @pulumi.getter
     def location(self) -> pulumi.Output[_builtins.str]:
         """
@@ -851,4 +956,13 @@ class Deployment(pulumi.CustomResource):
         Timestamp when this deployment was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="whatsappCredentials")
+    def whatsapp_credentials(self) -> pulumi.Output[Optional['outputs.DeploymentWhatsappCredentials']]:
+        """
+        Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whatsapp_credentials")
 

@@ -21,9 +21,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.biglake.HiveTableIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveTableIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * ## gcp.biglake.HiveTableIamPolicy
  *
  * ```typescript
@@ -96,9 +93,6 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.biglake.HiveTableIamPolicy` **cannot** be used in conjunction with `gcp.biglake.HiveTableIamBinding` and `gcp.biglake.HiveTableIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.biglake.HiveTableIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveTableIamMember` resources **only if** they do not grant privilege to the same role.
- *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
  *
  * ## gcp.biglake.HiveTableIamPolicy
  *

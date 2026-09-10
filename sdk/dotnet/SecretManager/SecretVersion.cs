@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.SecretManager
     ///     var secret_version_basic_write_only = new Gcp.SecretManager.SecretVersion("secret-version-basic-write-only", new()
     ///     {
     ///         Secret = secret_basic_write_only.Id,
-    ///         SecretDataWoVersion = 1,
+    ///         SecretDataWoVersion = "1",
     ///         SecretDataWo = "secret-data-write-only",
     ///     });
     /// 
@@ -240,7 +240,7 @@ namespace Pulumi.Gcp.SecretManager
     ///     {
     ///         Secret = secret_basic.Id,
     ///         IsSecretDataBase64 = true,
-    ///         SecretDataWoVersion = 1,
+    ///         SecretDataWoVersion = "1",
     ///         SecretDataWo = Std.Filebase64.Invoke(new()
     ///         {
     ///             Input = "secret-data-base64-write-only.pfx",
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// (Optional, Write-Only)
-        /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// The secret data. Must be no larger than 64KiB.
         /// **Note**: This property is write-only and will not be read from the API.
         /// 
         /// &gt; **Note:** One of `SecretData` or `SecretDataWo` can only be set.
@@ -345,10 +345,10 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string?> SecretDataWo { get; private set; } = null!;
 
         /// <summary>
-        /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// Triggers update of `SecretDataWo` write-only. Increment this value when an update to `SecretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         /// </summary>
         [Output("secretDataWoVersion")]
-        public Output<int?> SecretDataWoVersion { get; private set; } = null!;
+        public Output<string?> SecretDataWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The version of the Secret.
@@ -472,7 +472,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// (Optional, Write-Only)
-        /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// The secret data. Must be no larger than 64KiB.
         /// **Note**: This property is write-only and will not be read from the API.
         /// 
         /// &gt; **Note:** One of `SecretData` or `SecretDataWo` can only be set.
@@ -488,10 +488,10 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// Triggers update of `SecretDataWo` write-only. Increment this value when an update to `SecretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         /// </summary>
         [Input("secretDataWoVersion")]
-        public Input<int>? SecretDataWoVersion { get; set; }
+        public Input<string>? SecretDataWoVersion { get; set; }
 
         public SecretVersionArgs()
         {
@@ -585,7 +585,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// (Optional, Write-Only)
-        /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// The secret data. Must be no larger than 64KiB.
         /// **Note**: This property is write-only and will not be read from the API.
         /// 
         /// &gt; **Note:** One of `SecretData` or `SecretDataWo` can only be set.
@@ -601,10 +601,10 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// Triggers update of `SecretDataWo` write-only. Increment this value when an update to `SecretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         /// </summary>
         [Input("secretDataWoVersion")]
-        public Input<int>? SecretDataWoVersion { get; set; }
+        public Input<string>? SecretDataWoVersion { get; set; }
 
         /// <summary>
         /// The version of the Secret.

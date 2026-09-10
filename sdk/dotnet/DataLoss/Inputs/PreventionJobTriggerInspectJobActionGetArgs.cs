@@ -33,15 +33,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobActionPubSubGetArgs>? PubSub { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Publish findings of a DlpJob to Data Catalog.
-        /// 
-        /// &gt; **Warning:** `PublishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `PublishFindingsToDataplexCatalog` instead.
-        /// </summary>
-        [Input("publishFindingsToCloudDataCatalog")]
-        public Input<Inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogGetArgs>? PublishFindingsToCloudDataCatalog { get; set; }
-
-        /// <summary>
         /// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
         /// </summary>
         [Input("publishFindingsToDataplexCatalog")]

@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         Family = "debian-11",
+    ///         Family = "debian-13",
     ///         Project = "debian-cloud",
     ///     });
     /// 
@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "my-disk-name",
     ///         Type = "pd-ssd",
     ///         Zone = igm.Zone,
-    ///         Image = "debian-11-bullseye-v20220719",
+    ///         Image = "debian-13-trixie-v20260827",
     ///         PhysicalBlockSizeBytes = 4096,
     ///     });
     /// 

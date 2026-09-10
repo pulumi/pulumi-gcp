@@ -349,9 +349,6 @@ class HiveTableIamBinding(pulumi.CustomResource):
 
         > **Note:** `biglake.HiveTableIamBinding` resources **can be** used in conjunction with `biglake.HiveTableIamMember` resources **only if** they do not grant privilege to the same role.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## biglake.HiveTableIamPolicy
 
         ```python
@@ -419,9 +416,6 @@ class HiveTableIamBinding(pulumi.CustomResource):
         > **Note:** `biglake.HiveTableIamPolicy` **cannot** be used in conjunction with `biglake.HiveTableIamBinding` and `biglake.HiveTableIamMember` or they will fight over what your policy should be.
 
         > **Note:** `biglake.HiveTableIamBinding` resources **can be** used in conjunction with `biglake.HiveTableIamMember` resources **only if** they do not grant privilege to the same role.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## biglake.HiveTableIamPolicy
 
@@ -547,9 +541,6 @@ class HiveTableIamBinding(pulumi.CustomResource):
 
         > **Note:** `biglake.HiveTableIamBinding` resources **can be** used in conjunction with `biglake.HiveTableIamMember` resources **only if** they do not grant privilege to the same role.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## biglake.HiveTableIamPolicy
 
         ```python
@@ -617,9 +608,6 @@ class HiveTableIamBinding(pulumi.CustomResource):
         > **Note:** `biglake.HiveTableIamPolicy` **cannot** be used in conjunction with `biglake.HiveTableIamBinding` and `biglake.HiveTableIamMember` or they will fight over what your policy should be.
 
         > **Note:** `biglake.HiveTableIamBinding` resources **can be** used in conjunction with `biglake.HiveTableIamMember` resources **only if** they do not grant privilege to the same role.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## biglake.HiveTableIamPolicy
 

@@ -211,9 +211,6 @@ class ProjectSettings(pulumi.CustomResource):
         """
         Manages Cloud Observability settings for a project.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## Example Usage
 
         ### Observability Project Settings Basic Global
@@ -224,8 +221,8 @@ class ProjectSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_42057",
-            name="tf-test_84735",
+            project_id="tf-test_74065",
+            name="tf-test_75303",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_api = gcp.projects.Service("observability_api",
@@ -276,9 +273,6 @@ class ProjectSettings(pulumi.CustomResource):
         """
         Manages Cloud Observability settings for a project.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## Example Usage
 
         ### Observability Project Settings Basic Global
@@ -289,8 +283,8 @@ class ProjectSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_42057",
-            name="tf-test_84735",
+            project_id="tf-test_74065",
+            name="tf-test_75303",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_api = gcp.projects.Service("observability_api",

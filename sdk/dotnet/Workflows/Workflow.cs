@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Workflows
         /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         /// </summary>
         [Output("sourceContents")]
-        public Output<string?> SourceContents { get; private set; } = null!;
+        public Output<string> SourceContents { get; private set; } = null!;
 
         /// <summary>
         /// State of the workflow deployment.
@@ -335,7 +335,7 @@ namespace Pulumi.Gcp.Workflows
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Workflow(string name, WorkflowArgs? args = null, CustomResourceOptions? options = null)
+        public Workflow(string name, WorkflowArgs args, CustomResourceOptions? options = null)
             : base("gcp:workflows/workflow:Workflow", name, args ?? new WorkflowArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -488,8 +488,8 @@ namespace Pulumi.Gcp.Workflows
         /// Workflow code to be executed. The size limit is 128KB.
         /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         /// </summary>
-        [Input("sourceContents")]
-        public Input<string>? SourceContents { get; set; }
+        [Input("sourceContents", required: true)]
+        public Input<string> SourceContents { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;

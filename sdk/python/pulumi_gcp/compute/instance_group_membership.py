@@ -262,7 +262,7 @@ class InstanceGroupMembership(pulumi.CustomResource):
             machine_type="e2-medium",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             },
             network_interfaces=[{
@@ -347,7 +347,7 @@ class InstanceGroupMembership(pulumi.CustomResource):
             machine_type="e2-medium",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             },
             network_interfaces=[{

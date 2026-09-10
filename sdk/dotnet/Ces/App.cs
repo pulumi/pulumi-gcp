@@ -255,6 +255,29 @@ namespace Pulumi.Gcp.Ces
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             PrivateKey = fakeSecretVersion.Name,
     ///         },
+    ///         VpcScSettings = new Gcp.Ces.Inputs.AppVpcScSettingsArgs
+    ///         {
+    ///             AllowedOrigins = new[]
+    ///             {
+    ///                 "https://example.com",
+    ///             },
+    ///         },
+    ///         ErrorHandlingSettings = new Gcp.Ces.Inputs.AppErrorHandlingSettingsArgs
+    ///         {
+    ///             ErrorHandlingStrategy = "FALLBACK_RESPONSE",
+    ///             FallbackResponseConfig = new Gcp.Ces.Inputs.AppErrorHandlingSettingsFallbackResponseConfigArgs
+    ///             {
+    ///                 CustomFallbackMessages = 
+    ///                 {
+    ///                     { "en-US", "An error occurred, please try again." },
+    ///                 },
+    ///                 MaxFallbackAttempts = 3,
+    ///             },
+    ///             EndSessionConfig = new Gcp.Ces.Inputs.AppErrorHandlingSettingsEndSessionConfigArgs
+    ///             {
+    ///                 EscalateSession = true,
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -555,6 +578,13 @@ namespace Pulumi.Gcp.Ces
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("errorHandlingSettings")]
+        public Output<Outputs.AppErrorHandlingSettings?> ErrorHandlingSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Etag used to ensure the object hasn't changed during a read-modify-write
         /// operation. If the etag is empty, the update will overwrite any concurrent
         /// changes.
@@ -673,6 +703,13 @@ namespace Pulumi.Gcp.Ces
         [Output("variableDeclarations")]
         public Output<ImmutableArray<Outputs.AppVariableDeclaration>> VariableDeclarations { get; private set; } = null!;
 
+        /// <summary>
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("vpcScSettings")]
+        public Output<Outputs.AppVpcScSettings?> VpcScSettings { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a App resource with the given unique name, arguments, and options.
@@ -779,6 +816,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("errorHandlingSettings")]
+        public Input<Inputs.AppErrorHandlingSettingsArgs>? ErrorHandlingSettings { get; set; }
 
         /// <summary>
         /// Threshold settings for metrics in an Evaluation.
@@ -896,6 +940,13 @@ namespace Pulumi.Gcp.Ces
             set => _variableDeclarations = value;
         }
 
+        /// <summary>
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcScSettings")]
+        public Input<Inputs.AppVpcScSettingsArgs>? VpcScSettings { get; set; }
+
         public AppArgs()
         {
         }
@@ -976,6 +1027,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("errorHandlingSettings")]
+        public Input<Inputs.AppErrorHandlingSettingsGetArgs>? ErrorHandlingSettings { get; set; }
 
         /// <summary>
         /// Etag used to ensure the object hasn't changed during a read-modify-write
@@ -1113,6 +1171,13 @@ namespace Pulumi.Gcp.Ces
             get => _variableDeclarations ?? (_variableDeclarations = new InputList<Inputs.AppVariableDeclarationGetArgs>());
             set => _variableDeclarations = value;
         }
+
+        /// <summary>
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcScSettings")]
+        public Input<Inputs.AppVpcScSettingsGetArgs>? VpcScSettings { get; set; }
 
         public AppState()
         {

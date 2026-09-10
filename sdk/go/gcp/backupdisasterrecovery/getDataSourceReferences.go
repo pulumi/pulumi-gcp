@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,10 +27,6 @@ type GetDataSourceReferencesArgs struct {
 	Location string `pulumi:"location"`
 	// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
-	//
-	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType *string `pulumi:"resourceType"`
 }
 
 // A collection of values returned by getDataSourceReferences.
@@ -40,8 +36,6 @@ type GetDataSourceReferencesResult struct {
 	Id       string `pulumi:"id"`
 	Location string `pulumi:"location"`
 	Project  string `pulumi:"project"`
-	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType *string `pulumi:"resourceType"`
 }
 
 func GetDataSourceReferencesOutput(ctx *pulumi.Context, args GetDataSourceReferencesOutputArgs, opts ...pulumi.InvokeOption) GetDataSourceReferencesResultOutput {
@@ -54,10 +48,6 @@ type GetDataSourceReferencesOutputArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
-	//
-	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
 func (GetDataSourceReferencesOutputArgs) ElementType() reflect.Type {
@@ -96,11 +86,6 @@ func (o GetDataSourceReferencesResultOutput) Location() pulumi.StringOutput {
 
 func (o GetDataSourceReferencesResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceReferencesResult) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-func (o GetDataSourceReferencesResultOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDataSourceReferencesResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

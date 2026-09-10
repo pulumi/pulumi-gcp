@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * });
  * const disk = new gcp.compute.Disk("disk", {
  *     name: "tpu-disk",
- *     image: "debian-cloud/debian-11",
+ *     image: "debian-cloud/debian-13",
  *     size: 10,
  *     type: "pd-ssd",
  *     zone: "us-central1-c",

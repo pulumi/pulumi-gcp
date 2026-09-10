@@ -7,9 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages Cloud Observability settings for a project.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * ## Example Usage
  *
  * ### Observability Project Settings Basic Global
@@ -20,8 +17,8 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_42057",
- *     name: "tf-test_84735",
+ *     projectId: "tf-test_74065",
+ *     name: "tf-test_75303",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });

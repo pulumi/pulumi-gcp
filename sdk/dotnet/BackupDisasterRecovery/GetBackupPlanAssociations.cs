@@ -100,13 +100,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Input("project")]
         public string? Project { get; set; }
 
-        /// <summary>
-        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `ResourceType` is deprecated and will be removed in a future major release.
-        /// - - -
-        /// </summary>
-        [Input("resourceType")]
-        public string? ResourceType { get; set; }
-
         public GetBackupPlanAssociationsArgs()
         {
         }
@@ -127,13 +120,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `ResourceType` is deprecated and will be removed in a future major release.
-        /// - - -
-        /// </summary>
-        [Input("resourceType")]
-        public Input<string>? ResourceType { get; set; }
 
         public GetBackupPlanAssociationsInvokeArgs()
         {
@@ -158,7 +144,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// The ID of the project in which the resource belongs.
         /// </summary>
         public readonly string Project;
-        public readonly string? ResourceType;
 
         [OutputConstructor]
         private GetBackupPlanAssociationsResult(
@@ -168,15 +153,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string location,
 
-            string project,
-
-            string? resourceType)
+            string project)
         {
             Associations = associations;
             Id = id;
             Location = location;
             Project = project;
-            ResourceType = resourceType;
         }
     }
 }

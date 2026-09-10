@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image("debian-cloud/debian-11")
+ *                     .image("debian-cloud/debian-13")
  *                     .build())
  *                 .build())
  *             .build());

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -7835,6 +7835,168 @@ func (o StandardAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+type StandardAppVersionVpcAccess struct {
+	// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+	EgressSetting *string `pulumi:"egressSetting"`
+	// List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+	// Structure is documented below.
+	NetworkInterfaces []StandardAppVersionVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
+}
+
+// StandardAppVersionVpcAccessInput is an input type that accepts StandardAppVersionVpcAccessArgs and StandardAppVersionVpcAccessOutput values.
+// You can construct a concrete instance of `StandardAppVersionVpcAccessInput` via:
+//
+//	StandardAppVersionVpcAccessArgs{...}
+type StandardAppVersionVpcAccessInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionVpcAccessOutput() StandardAppVersionVpcAccessOutput
+	ToStandardAppVersionVpcAccessOutputWithContext(context.Context) StandardAppVersionVpcAccessOutput
+}
+
+type StandardAppVersionVpcAccessArgs struct {
+	// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+	EgressSetting pulumi.StringPtrInput `pulumi:"egressSetting"`
+	// List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+	// Structure is documented below.
+	NetworkInterfaces StandardAppVersionVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+}
+
+func (StandardAppVersionVpcAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionVpcAccess)(nil)).Elem()
+}
+
+func (i StandardAppVersionVpcAccessArgs) ToStandardAppVersionVpcAccessOutput() StandardAppVersionVpcAccessOutput {
+	return i.ToStandardAppVersionVpcAccessOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionVpcAccessArgs) ToStandardAppVersionVpcAccessOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessOutput)
+}
+
+func (i StandardAppVersionVpcAccessArgs) ToStandardAppVersionVpcAccessPtrOutput() StandardAppVersionVpcAccessPtrOutput {
+	return i.ToStandardAppVersionVpcAccessPtrOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionVpcAccessArgs) ToStandardAppVersionVpcAccessPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessOutput).ToStandardAppVersionVpcAccessPtrOutputWithContext(ctx)
+}
+
+// StandardAppVersionVpcAccessPtrInput is an input type that accepts StandardAppVersionVpcAccessArgs, StandardAppVersionVpcAccessPtr and StandardAppVersionVpcAccessPtrOutput values.
+// You can construct a concrete instance of `StandardAppVersionVpcAccessPtrInput` via:
+//
+//	        StandardAppVersionVpcAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type StandardAppVersionVpcAccessPtrInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionVpcAccessPtrOutput() StandardAppVersionVpcAccessPtrOutput
+	ToStandardAppVersionVpcAccessPtrOutputWithContext(context.Context) StandardAppVersionVpcAccessPtrOutput
+}
+
+type standardAppVersionVpcAccessPtrType StandardAppVersionVpcAccessArgs
+
+func StandardAppVersionVpcAccessPtr(v *StandardAppVersionVpcAccessArgs) StandardAppVersionVpcAccessPtrInput {
+	return (*standardAppVersionVpcAccessPtrType)(v)
+}
+
+func (*standardAppVersionVpcAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionVpcAccess)(nil)).Elem()
+}
+
+func (i *standardAppVersionVpcAccessPtrType) ToStandardAppVersionVpcAccessPtrOutput() StandardAppVersionVpcAccessPtrOutput {
+	return i.ToStandardAppVersionVpcAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *standardAppVersionVpcAccessPtrType) ToStandardAppVersionVpcAccessPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessPtrOutput)
+}
+
+type StandardAppVersionVpcAccessOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionVpcAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionVpcAccess)(nil)).Elem()
+}
+
+func (o StandardAppVersionVpcAccessOutput) ToStandardAppVersionVpcAccessOutput() StandardAppVersionVpcAccessOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessOutput) ToStandardAppVersionVpcAccessOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessOutput) ToStandardAppVersionVpcAccessPtrOutput() StandardAppVersionVpcAccessPtrOutput {
+	return o.ToStandardAppVersionVpcAccessPtrOutputWithContext(context.Background())
+}
+
+func (o StandardAppVersionVpcAccessOutput) ToStandardAppVersionVpcAccessPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionVpcAccess) *StandardAppVersionVpcAccess {
+		return &v
+	}).(StandardAppVersionVpcAccessPtrOutput)
+}
+
+// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+func (o StandardAppVersionVpcAccessOutput) EgressSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccess) *string { return v.EgressSetting }).(pulumi.StringPtrOutput)
+}
+
+// List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+// Structure is documented below.
+func (o StandardAppVersionVpcAccessOutput) NetworkInterfaces() StandardAppVersionVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccess) []StandardAppVersionVpcAccessNetworkInterface {
+		return v.NetworkInterfaces
+	}).(StandardAppVersionVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type StandardAppVersionVpcAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionVpcAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionVpcAccess)(nil)).Elem()
+}
+
+func (o StandardAppVersionVpcAccessPtrOutput) ToStandardAppVersionVpcAccessPtrOutput() StandardAppVersionVpcAccessPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessPtrOutput) ToStandardAppVersionVpcAccessPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessPtrOutput) Elem() StandardAppVersionVpcAccessOutput {
+	return o.ApplyT(func(v *StandardAppVersionVpcAccess) StandardAppVersionVpcAccess {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionVpcAccess
+		return ret
+	}).(StandardAppVersionVpcAccessOutput)
+}
+
+// The egress setting for the VPC Access, controlling what traffic is diverted through it.
+func (o StandardAppVersionVpcAccessPtrOutput) EgressSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionVpcAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+// Structure is documented below.
+func (o StandardAppVersionVpcAccessPtrOutput) NetworkInterfaces() StandardAppVersionVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *StandardAppVersionVpcAccess) []StandardAppVersionVpcAccessNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(StandardAppVersionVpcAccessNetworkInterfaceArrayOutput)
+}
+
 type StandardAppVersionVpcAccessConnector struct {
 	// The egress setting for the connector, controlling what traffic is diverted through it.
 	EgressSetting *string `pulumi:"egressSetting"`
@@ -7991,6 +8153,121 @@ func (o StandardAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type StandardAppVersionVpcAccessNetworkInterface struct {
+	// The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+	Network *string `pulumi:"network"`
+	// The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+	Subnetwork *string `pulumi:"subnetwork"`
+	// Network tags applied to this App Engine version.
+	Tags []string `pulumi:"tags"`
+}
+
+// StandardAppVersionVpcAccessNetworkInterfaceInput is an input type that accepts StandardAppVersionVpcAccessNetworkInterfaceArgs and StandardAppVersionVpcAccessNetworkInterfaceOutput values.
+// You can construct a concrete instance of `StandardAppVersionVpcAccessNetworkInterfaceInput` via:
+//
+//	StandardAppVersionVpcAccessNetworkInterfaceArgs{...}
+type StandardAppVersionVpcAccessNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionVpcAccessNetworkInterfaceOutput() StandardAppVersionVpcAccessNetworkInterfaceOutput
+	ToStandardAppVersionVpcAccessNetworkInterfaceOutputWithContext(context.Context) StandardAppVersionVpcAccessNetworkInterfaceOutput
+}
+
+type StandardAppVersionVpcAccessNetworkInterfaceArgs struct {
+	// The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// Network tags applied to this App Engine version.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (StandardAppVersionVpcAccessNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i StandardAppVersionVpcAccessNetworkInterfaceArgs) ToStandardAppVersionVpcAccessNetworkInterfaceOutput() StandardAppVersionVpcAccessNetworkInterfaceOutput {
+	return i.ToStandardAppVersionVpcAccessNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionVpcAccessNetworkInterfaceArgs) ToStandardAppVersionVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessNetworkInterfaceOutput)
+}
+
+// StandardAppVersionVpcAccessNetworkInterfaceArrayInput is an input type that accepts StandardAppVersionVpcAccessNetworkInterfaceArray and StandardAppVersionVpcAccessNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `StandardAppVersionVpcAccessNetworkInterfaceArrayInput` via:
+//
+//	StandardAppVersionVpcAccessNetworkInterfaceArray{ StandardAppVersionVpcAccessNetworkInterfaceArgs{...} }
+type StandardAppVersionVpcAccessNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionVpcAccessNetworkInterfaceArrayOutput() StandardAppVersionVpcAccessNetworkInterfaceArrayOutput
+	ToStandardAppVersionVpcAccessNetworkInterfaceArrayOutputWithContext(context.Context) StandardAppVersionVpcAccessNetworkInterfaceArrayOutput
+}
+
+type StandardAppVersionVpcAccessNetworkInterfaceArray []StandardAppVersionVpcAccessNetworkInterfaceInput
+
+func (StandardAppVersionVpcAccessNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StandardAppVersionVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i StandardAppVersionVpcAccessNetworkInterfaceArray) ToStandardAppVersionVpcAccessNetworkInterfaceArrayOutput() StandardAppVersionVpcAccessNetworkInterfaceArrayOutput {
+	return i.ToStandardAppVersionVpcAccessNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionVpcAccessNetworkInterfaceArray) ToStandardAppVersionVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type StandardAppVersionVpcAccessNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionVpcAccessNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) ToStandardAppVersionVpcAccessNetworkInterfaceOutput() StandardAppVersionVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) ToStandardAppVersionVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+// The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccessNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccessNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// Network tags applied to this App Engine version.
+func (o StandardAppVersionVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type StandardAppVersionVpcAccessNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionVpcAccessNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StandardAppVersionVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o StandardAppVersionVpcAccessNetworkInterfaceArrayOutput) ToStandardAppVersionVpcAccessNetworkInterfaceArrayOutput() StandardAppVersionVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessNetworkInterfaceArrayOutput) ToStandardAppVersionVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) StandardAppVersionVpcAccessNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StandardAppVersionVpcAccessNetworkInterface {
+		return vs[0].([]StandardAppVersionVpcAccessNetworkInterface)[vs[1].(int)]
+	}).(StandardAppVersionVpcAccessNetworkInterfaceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFeatureSettingsInput)(nil)).Elem(), ApplicationFeatureSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFeatureSettingsPtrInput)(nil)).Elem(), ApplicationFeatureSettingsArgs{})
@@ -8080,8 +8357,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionLibraryArrayInput)(nil)).Elem(), StandardAppVersionLibraryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionManualScalingInput)(nil)).Elem(), StandardAppVersionManualScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionManualScalingPtrInput)(nil)).Elem(), StandardAppVersionManualScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionVpcAccessInput)(nil)).Elem(), StandardAppVersionVpcAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionVpcAccessPtrInput)(nil)).Elem(), StandardAppVersionVpcAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionVpcAccessConnectorInput)(nil)).Elem(), StandardAppVersionVpcAccessConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionVpcAccessConnectorPtrInput)(nil)).Elem(), StandardAppVersionVpcAccessConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionVpcAccessNetworkInterfaceInput)(nil)).Elem(), StandardAppVersionVpcAccessNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), StandardAppVersionVpcAccessNetworkInterfaceArray{})
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsOutput{})
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationIapOutput{})
@@ -8170,6 +8451,10 @@ func init() {
 	pulumi.RegisterOutputType(StandardAppVersionLibraryArrayOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionManualScalingOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionManualScalingPtrOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionVpcAccessOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionVpcAccessPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionVpcAccessConnectorOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionVpcAccessConnectorPtrOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionVpcAccessNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionVpcAccessNetworkInterfaceArrayOutput{})
 }

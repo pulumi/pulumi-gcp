@@ -13,6 +13,7 @@ import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
 import com.pulumi.gcp.appengine.inputs.StandardAppVersionHandlerArgs;
 import com.pulumi.gcp.appengine.inputs.StandardAppVersionLibraryArgs;
 import com.pulumi.gcp.appengine.inputs.StandardAppVersionManualScalingArgs;
+import com.pulumi.gcp.appengine.inputs.StandardAppVersionVpcAccessArgs;
 import com.pulumi.gcp.appengine.inputs.StandardAppVersionVpcAccessConnectorArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -404,6 +405,25 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Optional, Beta)
+     * Direct VPC Access settings for standard apps.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vpcAccess")
+    private @Nullable Output<StandardAppVersionVpcAccessArgs> vpcAccess;
+
+    /**
+     * @return (Optional, Beta)
+     * Direct VPC Access settings for standard apps.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StandardAppVersionVpcAccessArgs>> vpcAccess() {
+        return Optional.ofNullable(this.vpcAccess);
+    }
+
+    /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.
      * 
@@ -445,6 +465,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
         this.serviceAccount = $.serviceAccount;
         this.threadsafe = $.threadsafe;
         this.versionId = $.versionId;
+        this.vpcAccess = $.vpcAccess;
         this.vpcAccessConnector = $.vpcAccessConnector;
     }
 
@@ -1018,6 +1039,31 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
          */
         public Builder versionId(String versionId) {
             return versionId(Output.of(versionId));
+        }
+
+        /**
+         * @param vpcAccess (Optional, Beta)
+         * Direct VPC Access settings for standard apps.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcAccess(@Nullable Output<StandardAppVersionVpcAccessArgs> vpcAccess) {
+            $.vpcAccess = vpcAccess;
+            return this;
+        }
+
+        /**
+         * @param vpcAccess (Optional, Beta)
+         * Direct VPC Access settings for standard apps.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcAccess(StandardAppVersionVpcAccessArgs vpcAccess) {
+            return vpcAccess(Output.of(vpcAccess));
         }
 
         /**

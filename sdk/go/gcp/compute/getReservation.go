@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,7 +74,6 @@ type LookupReservationResult struct {
 	Name                        string                                   `pulumi:"name"`
 	Params                      []GetReservationParam                    `pulumi:"params"`
 	Project                     *string                                  `pulumi:"project"`
-	ReservationBlockCount       int                                      `pulumi:"reservationBlockCount"`
 	ReservationSharingPolicies  []GetReservationReservationSharingPolicy `pulumi:"reservationSharingPolicies"`
 	ResourceStatuses            []GetReservationResourceStatus           `pulumi:"resourceStatuses"`
 	SatisfiesPzs                bool                                     `pulumi:"satisfiesPzs"`
@@ -174,10 +173,6 @@ func (o LookupReservationResultOutput) Params() GetReservationParamArrayOutput {
 
 func (o LookupReservationResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReservationResult) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupReservationResultOutput) ReservationBlockCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupReservationResult) int { return v.ReservationBlockCount }).(pulumi.IntOutput)
 }
 
 func (o LookupReservationResultOutput) ReservationSharingPolicies() GetReservationReservationSharingPolicyArrayOutput {

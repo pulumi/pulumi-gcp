@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15346,6 +15346,8 @@ func (o GetInterconnectLocationsLocationArrayOutput) Index(i pulumi.IntInput) Ge
 type GetMachineTypesMachineType struct {
 	// A list of accelerator configurations assigned to this machine type. Structure is documented below.
 	Accelerators []GetMachineTypesMachineTypeAccelerator `pulumi:"accelerators"`
+	// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+	Architecture string `pulumi:"architecture"`
 	// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
 	BundledLocalSsds []GetMachineTypesMachineTypeBundledLocalSsd `pulumi:"bundledLocalSsds"`
 	// The deprecation status associated with this machine type. Structure is documented below.
@@ -15382,6 +15384,8 @@ type GetMachineTypesMachineTypeInput interface {
 type GetMachineTypesMachineTypeArgs struct {
 	// A list of accelerator configurations assigned to this machine type. Structure is documented below.
 	Accelerators GetMachineTypesMachineTypeAcceleratorArrayInput `pulumi:"accelerators"`
+	// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+	Architecture pulumi.StringInput `pulumi:"architecture"`
 	// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
 	BundledLocalSsds GetMachineTypesMachineTypeBundledLocalSsdArrayInput `pulumi:"bundledLocalSsds"`
 	// The deprecation status associated with this machine type. Structure is documented below.
@@ -15458,6 +15462,11 @@ func (o GetMachineTypesMachineTypeOutput) ToGetMachineTypesMachineTypeOutputWith
 // A list of accelerator configurations assigned to this machine type. Structure is documented below.
 func (o GetMachineTypesMachineTypeOutput) Accelerators() GetMachineTypesMachineTypeAcceleratorArrayOutput {
 	return o.ApplyT(func(v GetMachineTypesMachineType) []GetMachineTypesMachineTypeAccelerator { return v.Accelerators }).(GetMachineTypesMachineTypeAcceleratorArrayOutput)
+}
+
+// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+func (o GetMachineTypesMachineTypeOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.

@@ -463,7 +463,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             network=default.id,
             subnetwork=default_subnetwork.id,
             network_endpoint_type="GCE_VM_IP_PORTMAP")
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
@@ -608,7 +608,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             network=default.id,
             subnetwork=default_subnetwork.id,
             network_endpoint_type="GCE_VM_IP_PORTMAP")
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{

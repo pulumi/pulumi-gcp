@@ -135,15 +135,6 @@ export class Client extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
-    /**
-     * (Optional, Deprecated)
-     * User input run-as service account, if empty, will bring up a new default service account.
-     *
-     * > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     *
-     * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     */
-    declare public readonly runAsServiceAccount: pulumi.Output<string | undefined>;
 
     /**
      * Create a Client resource with the given unique name, arguments, and options.
@@ -163,7 +154,6 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["project"] = state?.project;
-            resourceInputs["runAsServiceAccount"] = state?.runAsServiceAccount;
         } else {
             const args = argsOrState as ClientArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
@@ -174,7 +164,6 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
-            resourceInputs["runAsServiceAccount"] = args?.runAsServiceAccount;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Client.__pulumiType, name, resourceInputs, opts);
@@ -212,15 +201,6 @@ export interface ClientState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
-    /**
-     * (Optional, Deprecated)
-     * User input run-as service account, if empty, will bring up a new default service account.
-     *
-     * > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     *
-     * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     */
-    runAsServiceAccount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,13 +234,4 @@ export interface ClientArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
-    /**
-     * (Optional, Deprecated)
-     * User input run-as service account, if empty, will bring up a new default service account.
-     *
-     * > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     *
-     * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     */
-    runAsServiceAccount?: pulumi.Input<string | undefined>;
 }

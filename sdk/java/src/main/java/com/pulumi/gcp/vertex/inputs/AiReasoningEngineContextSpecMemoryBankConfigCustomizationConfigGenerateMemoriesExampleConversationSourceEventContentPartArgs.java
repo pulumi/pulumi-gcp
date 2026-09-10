@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileDataArgs;
@@ -22,6 +23,23 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs Empty = new AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs();
+
+    /**
+     * Audio (input or output) transcription. This is only set when this Part contains audio data.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="audioTranscription")
+    private @Nullable Output<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs> audioTranscription;
+
+    /**
+     * @return Audio (input or output) transcription. This is only set when this Part contains audio data.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs>> audioTranscription() {
+        return Optional.ofNullable(this.audioTranscription);
+    }
 
     /**
      * Result of executing the ExecutableCode.
@@ -175,6 +193,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     private AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs() {}
 
     private AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs $) {
+        this.audioTranscription = $.audioTranscription;
         this.codeExecutionResult = $.codeExecutionResult;
         this.executableCode = $.executableCode;
         this.fileData = $.fileData;
@@ -202,6 +221,29 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
 
         public Builder(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs defaults) {
             $ = new AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param audioTranscription Audio (input or output) transcription. This is only set when this Part contains audio data.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audioTranscription(@Nullable Output<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs> audioTranscription) {
+            $.audioTranscription = audioTranscription;
+            return this;
+        }
+
+        /**
+         * @param audioTranscription Audio (input or output) transcription. This is only set when this Part contains audio data.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audioTranscription(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs audioTranscription) {
+            return audioTranscription(Output.of(audioTranscription));
         }
 
         /**

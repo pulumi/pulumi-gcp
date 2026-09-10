@@ -5,9 +5,10 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,14 +24,14 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetArgs extends c
      * 
      */
     @Import(name="httpHeaders")
-    private @Nullable Output<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs> httpHeaders;
+    private @Nullable Output<List<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs>> httpHeaders;
 
     /**
      * @return Optional. Custom headers to set in the request. HTTP allows repeated headers.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs>> httpHeaders() {
+    public Optional<Output<List<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs>>> httpHeaders() {
         return Optional.ofNullable(this.httpHeaders);
     }
 
@@ -97,7 +98,7 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetArgs extends c
          * @return builder
          * 
          */
-        public Builder httpHeaders(@Nullable Output<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs> httpHeaders) {
+        public Builder httpHeaders(@Nullable Output<List<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs>> httpHeaders) {
             $.httpHeaders = httpHeaders;
             return this;
         }
@@ -109,8 +110,19 @@ public final class WorkerPoolTemplateContainerLivenessProbeHttpGetArgs extends c
          * @return builder
          * 
          */
-        public Builder httpHeaders(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs httpHeaders) {
+        public Builder httpHeaders(List<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs> httpHeaders) {
             return httpHeaders(Output.of(httpHeaders));
+        }
+
+        /**
+         * @param httpHeaders Optional. Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpHeaders(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs... httpHeaders) {
+            return httpHeaders(List.of(httpHeaders));
         }
 
         /**

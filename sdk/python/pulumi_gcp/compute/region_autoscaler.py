@@ -389,7 +389,7 @@ class RegionAutoscaler(pulumi.CustomResource):
             name="my-instance-template",
             machine_type="e2-standard-4",
             disks=[{
-                "source_image": "debian-cloud/debian-11",
+                "source_image": "debian-cloud/debian-13",
                 "disk_size_gb": 250,
             }],
             network_interfaces=[{
@@ -432,7 +432,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                     "target": 0.5,
                 },
             })
-        debian9 = gcp.compute.get_image(family="debian-11",
+        debian9 = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         ```
 
@@ -511,7 +511,7 @@ class RegionAutoscaler(pulumi.CustomResource):
             name="my-instance-template",
             machine_type="e2-standard-4",
             disks=[{
-                "source_image": "debian-cloud/debian-11",
+                "source_image": "debian-cloud/debian-13",
                 "disk_size_gb": 250,
             }],
             network_interfaces=[{
@@ -554,7 +554,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                     "target": 0.5,
                 },
             })
-        debian9 = gcp.compute.get_image(family="debian-11",
+        debian9 = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         ```
 

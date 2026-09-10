@@ -11,7 +11,6 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretVersionState;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -122,7 +121,7 @@ import javax.annotation.Nullable;
  * 
  *         var secret_version_basic_write_only = new SecretVersion("secret-version-basic-write-only", SecretVersionArgs.builder()
  *             .secret(secret_basic_write_only.id())
- *             .secretDataWoVersion(1)
+ *             .secretDataWoVersion("1")
  *             .secretDataWo("secret-data-write-only")
  *             .build());
  * 
@@ -329,7 +328,7 @@ import javax.annotation.Nullable;
  *         var secret_version_base64_write_only = new SecretVersion("secret-version-base64-write-only", SecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .isSecretDataBase64(true)
- *             .secretDataWoVersion(1)
+ *             .secretDataWoVersion("1")
  *             .secretDataWo(StdFunctions.filebase64(Filebase64Args.builder()
  *                 .input("secret-data-base64-write-only.pfx")
  *                 .build()).result())
@@ -512,7 +511,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is write-only and will not be read from the API.
      * 
      * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
@@ -524,7 +523,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is write-only and will not be read from the API.
      * 
      * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
@@ -534,17 +533,17 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secretDataWo);
     }
     /**
-     * Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
-    @Export(name="secretDataWoVersion", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> secretDataWoVersion;
+    @Export(name="secretDataWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secretDataWoVersion;
 
     /**
-     * @return Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * @return Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
-    public Output<Optional<Integer>> secretDataWoVersion() {
+    public Output<Optional<String>> secretDataWoVersion() {
         return Codegen.optional(this.secretDataWoVersion);
     }
     /**

@@ -10,7 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiSemanticGovernancePolicyEngineArgs;
 import com.pulumi.gcp.vertex.inputs.AiSemanticGovernancePolicyEngineState;
+import com.pulumi.gcp.vertex.outputs.AiSemanticGovernancePolicyEngineGatewayConfig;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -126,6 +129,24 @@ public class AiSemanticGovernancePolicyEngine extends com.pulumi.resources.Custo
      */
     public Output<String> deletionPolicy() {
         return this.deletionPolicy;
+    }
+    /**
+     * Configurations for gateways. The keys are user-defined names for each gateway.
+     * At most 5 gateway configurations are allowed.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gatewayConfigs", refs={List.class,AiSemanticGovernancePolicyEngineGatewayConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AiSemanticGovernancePolicyEngineGatewayConfig>> gatewayConfigs;
+
+    /**
+     * @return Configurations for gateways. The keys are user-defined names for each gateway.
+     * At most 5 gateway configurations are allowed.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<AiSemanticGovernancePolicyEngineGatewayConfig>>> gatewayConfigs() {
+        return Codegen.optional(this.gatewayConfigs);
     }
     /**
      * The IP address allocated for the SGPE&#39;s managed PSC endpoint.

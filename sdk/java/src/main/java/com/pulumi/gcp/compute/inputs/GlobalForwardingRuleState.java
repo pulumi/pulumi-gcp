@@ -351,7 +351,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
@@ -362,7 +362,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * @return Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
@@ -1202,7 +1202,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * @param loadBalancingScheme Specifies the forwarding rule type.
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-         * Default value is `EXTERNAL`.
+         * Default value is `EXTERNAL_MANAGED`.
          * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
@@ -1217,7 +1217,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * @param loadBalancingScheme Specifies the forwarding rule type.
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-         * Default value is `EXTERNAL`.
+         * Default value is `EXTERNAL_MANAGED`.
          * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder

@@ -1583,7 +1583,7 @@ class DataTransferConfigSensitiveParams(dict):
     def __init__(__self__, *,
                  secret_access_key: Optional[_builtins.str] = None,
                  secret_access_key_wo: Optional[_builtins.str] = None,
-                 secret_access_key_wo_version: Optional[_builtins.int] = None):
+                 secret_access_key_wo_version: Optional[_builtins.str] = None):
         """
         :param _builtins.str secret_access_key: The Secret Access Key of the AWS account transferring data from.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1593,7 +1593,7 @@ class DataTransferConfigSensitiveParams(dict):
                **Note**: This property is write-only and will not be read from the API.
                
                > **Note:** One of `secret_access_key` or `secret_access_key_wo` can only be set.
-        :param _builtins.int secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        :param _builtins.str secret_access_key_wo_version: Triggers update of `secret_access_key_wo` write-only. Increment this value when an update to `secret_access_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
@@ -1626,9 +1626,9 @@ class DataTransferConfigSensitiveParams(dict):
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKeyWoVersion")
-    def secret_access_key_wo_version(self) -> Optional[_builtins.int]:
+    def secret_access_key_wo_version(self) -> Optional[_builtins.str]:
         """
-        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        Triggers update of `secret_access_key_wo` write-only. Increment this value when an update to `secret_access_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_access_key_wo_version")
 

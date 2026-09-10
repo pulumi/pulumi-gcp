@@ -23,7 +23,13 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
-     * management without updating or deleting the resource in the API.
+     * management without updating or deleting the resource in the API. The VPC
+     * peering created by the connection is left in place, which will block deletion
+     * of the network.
+     * When set to &#34;REMOVE_PEERING&#34;, the connection is deleted, and if the API
+     * refuses because service producer resources still use it, the VPC peering is
+     * removed from the network so that the network can be deleted. See
+     * Deleting a connection below.
      * When set to &#34;DELETE&#34; or any other value, deleting the resource is allowed.
      * 
      */
@@ -35,7 +41,13 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
-     * management without updating or deleting the resource in the API.
+     * management without updating or deleting the resource in the API. The VPC
+     * peering created by the connection is left in place, which will block deletion
+     * of the network.
+     * When set to &#34;REMOVE_PEERING&#34;, the connection is deleted, and if the API
+     * refuses because service producer resources still use it, the VPC peering is
+     * removed from the network so that the network can be deleted. See
+     * Deleting a connection below.
      * When set to &#34;DELETE&#34; or any other value, deleting the resource is allowed.
      * 
      */
@@ -144,7 +156,13 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
-         * management without updating or deleting the resource in the API.
+         * management without updating or deleting the resource in the API. The VPC
+         * peering created by the connection is left in place, which will block deletion
+         * of the network.
+         * When set to &#34;REMOVE_PEERING&#34;, the connection is deleted, and if the API
+         * refuses because service producer resources still use it, the VPC peering is
+         * removed from the network so that the network can be deleted. See
+         * Deleting a connection below.
          * When set to &#34;DELETE&#34; or any other value, deleting the resource is allowed.
          * 
          * @return builder
@@ -160,7 +178,13 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
-         * management without updating or deleting the resource in the API.
+         * management without updating or deleting the resource in the API. The VPC
+         * peering created by the connection is left in place, which will block deletion
+         * of the network.
+         * When set to &#34;REMOVE_PEERING&#34;, the connection is deleted, and if the API
+         * refuses because service producer resources still use it, the VPC peering is
+         * removed from the network so that the network can be deleted. See
+         * Deleting a connection below.
          * When set to &#34;DELETE&#34; or any other value, deleting the resource is allowed.
          * 
          * @return builder

@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myImage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * const foobar = new gcp.compute.InstanceTemplate("foobar", {
@@ -122,7 +122,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myImage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * const foobar = new gcp.compute.InstanceTemplate("foobar", {
@@ -288,11 +288,6 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * (Output)
-     * The number of reservation blocks associated with this reservation.
-     */
-    declare public /*out*/ readonly reservationBlockCount: pulumi.Output<number>;
-    /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      */
@@ -361,7 +356,6 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
-            resourceInputs["reservationBlockCount"] = state?.reservationBlockCount;
             resourceInputs["reservationSharingPolicy"] = state?.reservationSharingPolicy;
             resourceInputs["resourceStatuses"] = state?.resourceStatuses;
             resourceInputs["satisfiesPzs"] = state?.satisfiesPzs;
@@ -397,7 +391,6 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["linkedCommitments"] = undefined /*out*/;
-            resourceInputs["reservationBlockCount"] = undefined /*out*/;
             resourceInputs["resourceStatuses"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -481,11 +474,6 @@ export interface ReservationState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
-    /**
-     * (Output)
-     * The number of reservation blocks associated with this reservation.
-     */
-    reservationBlockCount?: pulumi.Input<number | undefined>;
     /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.

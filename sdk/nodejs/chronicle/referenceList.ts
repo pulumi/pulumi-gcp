@@ -41,11 +41,11 @@ import * as utilities from "../utilities";
  *         value: "referencelist-entry-value",
  *     }],
  *     syntaxType: "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
- *     scopeInfos: [{
+ *     scopeInfo: {
  *         referenceListScope: {
  *             scopeNames: [testScope.name],
  *         },
- *     }],
+ *     },
  * });
  * ```
  *
@@ -156,7 +156,7 @@ export class ReferenceList extends pulumi.CustomResource {
      * ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      */
-    declare public readonly scopeInfos: pulumi.Output<outputs.chronicle.ReferenceListScopeInfo[] | undefined>;
+    declare public readonly scopeInfo: pulumi.Output<outputs.chronicle.ReferenceListScopeInfo | undefined>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
@@ -189,7 +189,7 @@ export class ReferenceList extends pulumi.CustomResource {
             resourceInputs["revisionCreateTime"] = state?.revisionCreateTime;
             resourceInputs["ruleAssociationsCount"] = state?.ruleAssociationsCount;
             resourceInputs["rules"] = state?.rules;
-            resourceInputs["scopeInfos"] = state?.scopeInfos;
+            resourceInputs["scopeInfo"] = state?.scopeInfo;
             resourceInputs["syntaxType"] = state?.syntaxType;
         } else {
             const args = argsOrState as ReferenceListArgs | undefined;
@@ -217,7 +217,7 @@ export class ReferenceList extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["referenceListId"] = args?.referenceListId;
-            resourceInputs["scopeInfos"] = args?.scopeInfos;
+            resourceInputs["scopeInfo"] = args?.scopeInfo;
             resourceInputs["syntaxType"] = args?.syntaxType;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -297,7 +297,7 @@ export interface ReferenceListState {
      * ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      */
-    scopeInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListScopeInfo>[] | undefined>;
+    scopeInfo?: pulumi.Input<inputs.chronicle.ReferenceListScopeInfo | undefined>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
@@ -350,7 +350,7 @@ export interface ReferenceListArgs {
      * ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      */
-    scopeInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListScopeInfo>[] | undefined>;
+    scopeInfo?: pulumi.Input<inputs.chronicle.ReferenceListScopeInfo | undefined>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING

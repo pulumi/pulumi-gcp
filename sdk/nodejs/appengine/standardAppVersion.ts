@@ -169,6 +169,90 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### App Engine Standard App Version Vpc Access
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
+ *     accountId: "gae-sa",
+ *     displayName: "Test Service Account for GAE",
+ * });
+ * const gaeApi = new gcp.projects.IAMMember("gae_api", {
+ *     project: serviceAccount.project,
+ *     role: "roles/compute.networkUser",
+ *     member: pulumi.interpolate`serviceAccount:${serviceAccount.email}`,
+ * });
+ * const storageViewer = new gcp.projects.IAMMember("storage_viewer", {
+ *     project: serviceAccount.project,
+ *     role: "roles/storage.objectViewer",
+ *     member: pulumi.interpolate`serviceAccount:${serviceAccount.email}`,
+ * });
+ * const custom = new gcp.compute.Network("custom", {
+ *     name: "custom-net-vpc-service",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const customSubnetwork = new gcp.compute.Subnetwork("custom", {
+ *     name: "custom-sub-vpc-service",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: custom.id,
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "tf-test-gae-bkt-vpc-access",
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const requirements = new gcp.storage.BucketObject("requirements", {
+ *     name: "requirements.txt",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+ * });
+ * const main = new gcp.storage.BucketObject("main", {
+ *     name: "main.py",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world-flask/main.py"),
+ * });
+ * const gae_std_app_ver_vpc_access = new gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access", {
+ *     versionId: "v1",
+ *     service: "vpc-service",
+ *     runtime: "python310",
+ *     vpcAccess: {
+ *         egressSetting: "ALL_TRAFFIC",
+ *         networkInterfaces: [{
+ *             network: custom.name,
+ *             subnetwork: customSubnetwork.name,
+ *             tags: [
+ *                 "tag1",
+ *                 "tag2",
+ *             ],
+ *         }],
+ *     },
+ *     deployment: {
+ *         files: [
+ *             {
+ *                 name: "main.py",
+ *                 sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${main.name}`,
+ *             },
+ *             {
+ *                 name: "requirements.txt",
+ *                 sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${requirements.name}`,
+ *             },
+ *         ],
+ *     },
+ *     entrypoint: {
+ *         shell: "gunicorn -b :$PORT main:app",
+ *     },
+ *     deleteServiceOnDestroy: true,
+ *     serviceAccount: serviceAccount.email,
+ * }, {
+ *     dependsOn: [
+ *         gaeApi,
+ *         storageViewer,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -330,6 +414,12 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     declare public readonly versionId: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
+     * Direct VPC Access settings for standard apps.
+     * Structure is documented below.
+     */
+    declare public readonly vpcAccess: pulumi.Output<outputs.appengine.StandardAppVersionVpcAccess | undefined>;
+    /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.
      */
@@ -371,6 +461,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = state?.serviceAccount;
             resourceInputs["threadsafe"] = state?.threadsafe;
             resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["vpcAccess"] = state?.vpcAccess;
             resourceInputs["vpcAccessConnector"] = state?.vpcAccessConnector;
         } else {
             const args = argsOrState as StandardAppVersionArgs | undefined;
@@ -408,6 +499,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["threadsafe"] = args?.threadsafe;
             resourceInputs["versionId"] = args?.versionId;
+            resourceInputs["vpcAccess"] = args?.vpcAccess;
             resourceInputs["vpcAccessConnector"] = args?.vpcAccessConnector;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -536,6 +628,12 @@ export interface StandardAppVersionState {
      */
     versionId?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Beta)
+     * Direct VPC Access settings for standard apps.
+     * Structure is documented below.
+     */
+    vpcAccess?: pulumi.Input<inputs.appengine.StandardAppVersionVpcAccess | undefined>;
+    /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.
      */
@@ -657,6 +755,12 @@ export interface StandardAppVersionArgs {
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
     versionId?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Direct VPC Access settings for standard apps.
+     * Structure is documented below.
+     */
+    vpcAccess?: pulumi.Input<inputs.appengine.StandardAppVersionVpcAccess | undefined>;
     /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.

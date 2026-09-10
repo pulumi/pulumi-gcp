@@ -754,10 +754,10 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                             Port = 8080,
     ///                             HttpHeaders = new[]
     ///                             {
-    ///                                 
+    ///                                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs
     ///                                 {
-    ///                                     { "name", "TEST-HEADER" },
-    ///                                     { "value", "test-value" },
+    ///                                     Name = "TEST-HEADER",
+    ///                                     Value = "test-value",
     ///                                 },
     ///                             },
     ///                         },
@@ -849,16 +849,6 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-        /// 
-        /// &gt; **Warning:** `CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-        /// </summary>
-        [Output("customAudiences")]
-        public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
 
         /// <summary>
         /// The deletion time.
@@ -1137,23 +1127,6 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("clientVersion")]
         public Input<string>? ClientVersion { get; set; }
 
-        [Input("customAudiences")]
-        private InputList<string>? _customAudiences;
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-        /// 
-        /// &gt; **Warning:** `CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-        /// </summary>
-        [Obsolete(@"`CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.")]
-        public InputList<string> CustomAudiences
-        {
-            get => _customAudiences ?? (_customAudiences = new InputList<string>());
-            set => _customAudiences = value;
-        }
-
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -1322,23 +1295,6 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
-
-        [Input("customAudiences")]
-        private InputList<string>? _customAudiences;
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-        /// 
-        /// &gt; **Warning:** `CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-        /// </summary>
-        [Obsolete(@"`CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.")]
-        public InputList<string> CustomAudiences
-        {
-            get => _customAudiences ?? (_customAudiences = new InputList<string>());
-            set => _customAudiences = value;
-        }
 
         /// <summary>
         /// The deletion time.

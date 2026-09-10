@@ -254,7 +254,7 @@ export class Workflow extends pulumi.CustomResource {
      * Workflow code to be executed. The size limit is 128KB.
      * > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      */
-    declare public readonly sourceContents: pulumi.Output<string | undefined>;
+    declare public readonly sourceContents: pulumi.Output<string>;
     /**
      * State of the workflow deployment.
      */
@@ -281,7 +281,7 @@ export class Workflow extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: WorkflowArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: WorkflowArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkflowArgs | WorkflowState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -310,6 +310,9 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["userEnvVars"] = state?.userEnvVars;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
+            if (args?.sourceContents === undefined && !opts.urn) {
+                throw new Error("Missing required property 'sourceContents'");
+            }
             resourceInputs["callLogLevel"] = args?.callLogLevel;
             resourceInputs["cryptoKeyName"] = args?.cryptoKeyName;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
@@ -545,7 +548,7 @@ export interface WorkflowArgs {
      * Workflow code to be executed. The size limit is 128KB.
      * > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      */
-    sourceContents?: pulumi.Input<string | undefined>;
+    sourceContents: pulumi.Input<string>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition
      * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in

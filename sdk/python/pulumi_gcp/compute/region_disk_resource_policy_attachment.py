@@ -249,7 +249,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
         disk = gcp.compute.Disk("disk",
             name="my-base-disk",
-            image="debian-cloud/debian-11",
+            image="debian-cloud/debian-13",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
@@ -282,7 +282,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
             name=policy.name,
             disk=ssd.name,
             region="us-central1")
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         ```
 
@@ -342,7 +342,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
         disk = gcp.compute.Disk("disk",
             name="my-base-disk",
-            image="debian-cloud/debian-11",
+            image="debian-cloud/debian-13",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
@@ -375,7 +375,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
             name=policy.name,
             disk=ssd.name,
             region="us-central1")
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         ```
 
