@@ -45,7 +45,7 @@ import (
 //				MachineType: pulumi.String("e2-standard-4"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("debian-cloud/debian-11"),
+//						SourceImage: pulumi.String("debian-cloud/debian-13"),
 //						DiskSizeGb:  pulumi.Int(250),
 //					},
 //				},
@@ -115,7 +115,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-11"),
+//				Family:  pulumi.StringRef("debian-13"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
 //			if err != nil {

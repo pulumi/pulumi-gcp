@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *                 .network("default")
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage("debian-cloud/debian-11")
+ *                 .sourceImage("debian-cloud/debian-13")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())

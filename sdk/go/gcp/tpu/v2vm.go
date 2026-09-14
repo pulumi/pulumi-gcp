@@ -106,7 +106,7 @@ import (
 //			}
 //			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
 //				Name:  pulumi.String("tpu-disk"),
-//				Image: pulumi.String("debian-cloud/debian-11"),
+//				Image: pulumi.String("debian-cloud/debian-13"),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-c"),

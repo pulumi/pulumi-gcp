@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * 
  *         var disk = new Disk("disk", DiskArgs.builder()
  *             .name("tpu-disk")
- *             .image("debian-cloud/debian-11")
+ *             .image("debian-cloud/debian-13")
  *             .size(10)
  *             .type("pd-ssd")
  *             .zone("us-central1-c")

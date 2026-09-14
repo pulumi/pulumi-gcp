@@ -191,7 +191,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-11")
+ *             .family("debian-13")
  *             .project("debian-cloud")
  *             .build());
  * 

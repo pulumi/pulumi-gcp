@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "test-disk",
     ///         Type = "pd-ssd",
     ///         Zone = "us-central1-a",
-    ///         Image = "debian-11-bullseye-v20220719",
+    ///         Image = "debian-13-trixie-v20260827",
     ///         Labels = 
     ///         {
     ///             { "environment", "dev" },

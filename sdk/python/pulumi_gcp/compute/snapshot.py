@@ -864,7 +864,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",
@@ -887,7 +887,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",
@@ -911,7 +911,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",
@@ -938,7 +938,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",
@@ -1061,7 +1061,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",
@@ -1084,7 +1084,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",
@@ -1108,7 +1108,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",
@@ -1135,7 +1135,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-11",
+        debian = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             name="debian-disk",

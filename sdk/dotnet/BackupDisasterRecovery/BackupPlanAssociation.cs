@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 Image = "debian-cloud/debian-11",
+    ///                 Image = "debian-cloud/debian-13",
     ///                 Labels = 
     ///                 {
     ///                     { "my_label", "value" },

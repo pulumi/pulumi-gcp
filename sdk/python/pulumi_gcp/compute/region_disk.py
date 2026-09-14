@@ -1473,7 +1473,7 @@ class RegionDisk(pulumi.CustomResource):
 
         disk = gcp.compute.Disk("disk",
             name="my-disk",
-            image="debian-cloud/debian-11",
+            image="debian-cloud/debian-13",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
@@ -1730,7 +1730,7 @@ class RegionDisk(pulumi.CustomResource):
 
         disk = gcp.compute.Disk("disk",
             name="my-disk",
-            image="debian-cloud/debian-11",
+            image="debian-cloud/debian-13",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")

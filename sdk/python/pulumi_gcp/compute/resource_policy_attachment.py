@@ -259,7 +259,7 @@ class ResourcePolicyAttachment(pulumi.CustomResource):
             zone="us-central1-a",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             })
         policy = gcp.compute.ResourcePolicy("policy",
@@ -346,7 +346,7 @@ class ResourcePolicyAttachment(pulumi.CustomResource):
             zone="us-central1-a",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             })
         policy = gcp.compute.ResourcePolicy("policy",

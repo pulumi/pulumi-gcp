@@ -1489,7 +1489,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian_image = gcp.compute.get_image(family="debian-11",
+        debian_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-backend",
@@ -2027,7 +2027,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian_image = gcp.compute.get_image(family="debian-11",
+        debian_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         instance_template = gcp.compute.InstanceTemplate("instance_template",
             name="template-backend",

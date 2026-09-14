@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image("debian-cloud/debian-11")
+ *                     .image("debian-cloud/debian-13")
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()

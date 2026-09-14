@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *         network: "default",
  *     }],
  *     disks: [{
- *         sourceImage: "debian-cloud/debian-11",
+ *         sourceImage: "debian-cloud/debian-13",
  *         autoDelete: true,
  *         boot: true,
  *     }],

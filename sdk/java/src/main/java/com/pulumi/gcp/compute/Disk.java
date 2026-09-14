@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .name("test-disk")
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
- *             .image("debian-11-bullseye-v20220719")
+ *             .image("debian-13-trixie-v20260827")
  *             .labels(Map.of("environment", "dev"))
  *             .physicalBlockSizeBytes(4096)
  *             .build());

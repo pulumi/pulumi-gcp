@@ -556,7 +556,7 @@ class NetworkAttachment(pulumi.CustomResource):
             machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             },
             network_interfaces=[
@@ -685,7 +685,7 @@ class NetworkAttachment(pulumi.CustomResource):
             machine_type="e2-micro",
             boot_disk={
                 "initialize_params": {
-                    "image": "debian-cloud/debian-11",
+                    "image": "debian-cloud/debian-13",
                 },
             },
             network_interfaces=[

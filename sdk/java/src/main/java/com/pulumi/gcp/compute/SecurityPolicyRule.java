@@ -376,7 +376,7 @@ import javax.annotation.Nullable;
  *             .name("backendpolicy")
  *             .machineType("e2-micro")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage("projects/debian-cloud/global/images/family/debian-11")
+ *                 .sourceImage("projects/debian-cloud/global/images/family/debian-13")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())

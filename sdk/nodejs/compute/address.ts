@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  *
  * const static = new gcp.compute.Address("static", {name: "ipv4-address"});
  * const debianImage = gcp.compute.getImage({
- *     family: "debian-11",
+ *     family: "debian-13",
  *     project: "debian-cloud",
  * });
  * const instanceWithIp = new gcp.compute.Instance("instance_with_ip", {

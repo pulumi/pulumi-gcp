@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
- *             image: "debian-cloud/debian-11",
+ *             image: "debian-cloud/debian-13",
  *         },
  *     },
  * });

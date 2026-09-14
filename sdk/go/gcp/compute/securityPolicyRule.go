@@ -321,7 +321,7 @@ import (
 //				MachineType: pulumi.String("e2-micro"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-11"),
+//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-13"),
 //						AutoDelete:  pulumi.Bool(true),
 //						Boot:        pulumi.Bool(true),
 //					},

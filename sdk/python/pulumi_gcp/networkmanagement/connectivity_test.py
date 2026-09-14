@@ -558,7 +558,7 @@ class ConnectivityTest(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vpc = gcp.compute.Network("vpc", name="conn-test-net")
-        debian9 = gcp.compute.get_image(family="debian-11",
+        debian9 = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         source = gcp.compute.Instance("source",
             network_interfaces=[{
@@ -774,7 +774,7 @@ class ConnectivityTest(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vpc = gcp.compute.Network("vpc", name="conn-test-net")
-        debian9 = gcp.compute.get_image(family="debian-11",
+        debian9 = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         source = gcp.compute.Instance("source",
             network_interfaces=[{
