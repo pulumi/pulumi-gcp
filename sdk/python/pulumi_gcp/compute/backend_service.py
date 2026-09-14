@@ -2314,7 +2314,7 @@ class BackendService(pulumi.CustomResource):
             name="instance-template",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "debian-cloud/debian-11",
+                "source_image": "debian-cloud/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }],
@@ -3005,7 +3005,7 @@ class BackendService(pulumi.CustomResource):
             name="instance-template",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "debian-cloud/debian-11",
+                "source_image": "debian-cloud/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }],

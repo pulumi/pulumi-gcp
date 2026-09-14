@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-micro",
  *     bootDisk: {
  *         initializeParams: {
- *             image: "debian-cloud/debian-11",
+ *             image: "debian-cloud/debian-13",
  *         },
  *     },
  *     networkInterfaces: [

@@ -78,7 +78,7 @@ import (
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-11"),
+//						Image: pulumi.String("debian-cloud/debian-13"),
 //					},
 //				},
 //				Metadata: pulumi.StringMap{

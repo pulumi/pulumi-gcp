@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-11"),
+//				Family:  pulumi.StringRef("debian-13"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
 //			if err != nil {
@@ -101,7 +101,7 @@ import (
 //				Name:                   pulumi.String("my-disk-name"),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Zone:                   pulumi.String("us-central1-a"),
-//				Image:                  pulumi.String("debian-11-bullseye-v20220719"),
+//				Image:                  pulumi.String("debian-13-trixie-v20260827"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
 //			})
 //			if err != nil {

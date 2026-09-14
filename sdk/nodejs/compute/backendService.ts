@@ -326,7 +326,7 @@ import * as utilities from "../utilities";
  *     name: "instance-template",
  *     machineType: "e2-micro",
  *     disks: [{
- *         sourceImage: "debian-cloud/debian-11",
+ *         sourceImage: "debian-cloud/debian-13",
  *         autoDelete: true,
  *         boot: true,
  *     }],

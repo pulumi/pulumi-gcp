@@ -504,7 +504,7 @@ class GuestPolicies(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         foobar = gcp.compute.Instance("foobar",
             name="guest-policy-inst",
@@ -710,7 +710,7 @@ class GuestPolicies(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-11",
+        my_image = gcp.compute.get_image(family="debian-13",
             project="debian-cloud")
         foobar = gcp.compute.Instance("foobar",
             name="guest-policy-inst",

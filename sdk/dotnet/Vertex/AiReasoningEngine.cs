@@ -377,17 +377,21 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var classMethods = new[]
     ///     {
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "apiMode", "async" },
-    ///             { "description", null },
-    ///             { "name", "async_query" },
-    ///             { "parameters", 
+    ///             ["apiMode"] = "async",
+    ///             ["description"] = null,
+    ///             ["name"] = "async_query",
+    ///             ["parameters"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "type", "object" },
-    ///                 { "required", new object?[] {} },
-    ///                 { "properties", null },
-    ///             } },
+    ///                 ["type"] = "object",
+    ///                 ["required"] = new[]
+    ///                 {
+    ///                 },
+    ///                 ["properties"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                 },
+    ///             },
     ///         },
     ///     };
     /// 

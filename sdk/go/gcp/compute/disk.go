@@ -53,7 +53,7 @@ import (
 //				Name:  pulumi.String("test-disk"),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),
-//				Image: pulumi.String("debian-11-bullseye-v20220719"),
+//				Image: pulumi.String("debian-13-trixie-v20260827"),
 //				Labels: pulumi.StringMap{
 //					"environment": pulumi.String("dev"),
 //				},

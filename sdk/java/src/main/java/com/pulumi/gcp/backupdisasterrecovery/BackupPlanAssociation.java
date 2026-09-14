@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image("debian-cloud/debian-11")
+ *                     .image("debian-cloud/debian-13")
  *                     .labels(Map.of("my_label", "value"))
  *                     .build())
  *                 .build())

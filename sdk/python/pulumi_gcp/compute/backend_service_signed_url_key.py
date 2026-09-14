@@ -262,7 +262,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
                 "network": "default",
             }],
             disks=[{
-                "source_image": "debian-cloud/debian-11",
+                "source_image": "debian-cloud/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])
@@ -350,7 +350,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
                 "network": "default",
             }],
             disks=[{
-                "source_image": "debian-cloud/debian-11",
+                "source_image": "debian-cloud/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])

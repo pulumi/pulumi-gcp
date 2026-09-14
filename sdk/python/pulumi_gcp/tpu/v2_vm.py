@@ -948,7 +948,7 @@ class V2Vm(pulumi.CustomResource):
             display_name="Test TPU VM")
         disk = gcp.compute.Disk("disk",
             name="tpu-disk",
-            image="debian-cloud/debian-11",
+            image="debian-cloud/debian-13",
             size=10,
             type="pd-ssd",
             zone="us-central1-c")
@@ -1115,7 +1115,7 @@ class V2Vm(pulumi.CustomResource):
             display_name="Test TPU VM")
         disk = gcp.compute.Disk("disk",
             name="tpu-disk",
-            image="debian-cloud/debian-11",
+            image="debian-cloud/debian-13",
             size=10,
             type="pd-ssd",
             zone="us-central1-c")

@@ -42,7 +42,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-11"),
+//				Family:  pulumi.StringRef("debian-13"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
 //			if err != nil {
@@ -171,7 +171,7 @@ import (
 //				return err
 //			}
 //			vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-11"),
+//				Family:  pulumi.StringRef("debian-13"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
 //			if err != nil {

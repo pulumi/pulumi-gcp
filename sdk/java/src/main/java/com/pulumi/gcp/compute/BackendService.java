@@ -676,7 +676,7 @@ import javax.annotation.Nullable;
  *             .name("instance-template")
  *             .machineType("e2-micro")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage("debian-cloud/debian-11")
+ *                 .sourceImage("debian-cloud/debian-13")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())

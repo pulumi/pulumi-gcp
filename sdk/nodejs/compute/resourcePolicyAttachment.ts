@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  *     bootDisk: {
  *         initializeParams: {
- *             image: "debian-cloud/debian-11",
+ *             image: "debian-cloud/debian-13",
  *         },
  *     },
  * });

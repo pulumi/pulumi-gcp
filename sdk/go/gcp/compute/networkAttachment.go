@@ -144,7 +144,7 @@ import (
 //				MachineType: pulumi.String("e2-micro"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-11"),
+//						Image: pulumi.String("debian-cloud/debian-13"),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .name("my-instance-template")
  *             .machineType("e2-standard-4")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage("debian-cloud/debian-11")
+ *                 .sourceImage("debian-cloud/debian-13")
  *                 .diskSizeGb(250)
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-11")
+ *             .family("debian-13")
  *             .project("debian-cloud")
  *             .build());
  * 
