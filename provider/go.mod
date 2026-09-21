@@ -8,7 +8,7 @@ require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.3.1
 	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.1-0.20260921084200-72d55d364a42
 	github.com/pulumi/pulumi/pkg/v3 v3.263.0
 	github.com/pulumi/pulumi/sdk/v3 v3.263.0
 	github.com/stretchr/testify v1.12.1
@@ -17,12 +17,12 @@ require (
 )
 
 replace (
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20260318212141-5525259d096b
 	github.com/hashicorp/terraform-provider-google-beta => ../upstream
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.21.0
 )
 
 require (
+	bitbucket.org/creachadair/stringset v0.0.11 // indirect
 	cel.dev/expr v0.25.2 // indirect
 	cloud.google.com/go v0.123.0 // indirect
 	cloud.google.com/go/auth v0.23.0 // indirect
