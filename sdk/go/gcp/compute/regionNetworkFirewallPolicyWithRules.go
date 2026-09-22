@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,10 +23,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,14 +38,14 @@ import (
 //				return err
 //			}
 //			targetForwardingRule, err := compute.NewNetwork(ctx, "target_forwarding_rule", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-network-_87786"),
+//				Name:                  pulumi.String("tf-test-network-_2067"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			targetForwardingRuleProxySubnetwork, err := compute.NewSubnetwork(ctx, "target_forwarding_rule_proxy_subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-proxy-subnetwork-_2067"),
+//				Name:        pulumi.String("tf-test-proxy-subnetwork-_40785"),
 //				Region:      pulumi.String("us-west2"),
 //				Network:     targetForwardingRule.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.20.0.0/24"),
@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			targetForwardingRuleDefaultSubnetwork, err := compute.NewSubnetwork(ctx, "target_forwarding_rule_default_subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-default-subnetwork-_40785"),
+//				Name:        pulumi.String("tf-test-default-subnetwork-_79169"),
 //				Region:      pulumi.String("us-west2"),
 //				Network:     targetForwardingRule.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.10.0.0/24"),
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			targetForwardingRuleRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "target_forwarding_rule", &compute.RegionHealthCheckArgs{
-//				Name:   pulumi.String("tf-test-health-check-_79169"),
+//				Name:   pulumi.String("tf-test-health-check-_56529"),
 //				Region: pulumi.String("us-west2"),
 //				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 //					Port: pulumi.Int(80),
@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			targetForwardingRuleRegionBackendService, err := compute.NewRegionBackendService(ctx, "target_forwarding_rule", &compute.RegionBackendServiceArgs{
-//				Name:                pulumi.String("tf-test-backend-service-_56529"),
+//				Name:                pulumi.String("tf-test-backend-service-_75413"),
 //				Region:              pulumi.String("us-west2"),
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			targetForwardingRuleRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "target_forwarding_rule", &compute.RegionUrlMapArgs{
-//				Name:           pulumi.String("tf-test-url-map-_75413"),
+//				Name:           pulumi.String("tf-test-url-map-_55138"),
 //				Region:         pulumi.String("us-west2"),
 //				DefaultService: targetForwardingRuleRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //			})
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			targetForwardingRuleRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "target_forwarding_rule", &compute.RegionTargetHttpProxyArgs{
-//				Name:   pulumi.String("tf-test-target-http-proxy-_55138"),
+//				Name:   pulumi.String("tf-test-target-http-proxy-_37559"),
 //				Region: pulumi.String("us-west2"),
 //				UrlMap: targetForwardingRuleRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 //			})
@@ -101,7 +101,7 @@ import (
 //				return err
 //			}
 //			targetForwardingRuleForwardingRule, err := compute.NewForwardingRule(ctx, "target_forwarding_rule", &compute.ForwardingRuleArgs{
-//				Name:                pulumi.String("tf-test-forwarding-rule-_37559"),
+//				Name:                pulumi.String("tf-test-forwarding-rule-_91980"),
 //				Region:              pulumi.String("us-west2"),
 //				Network:             targetForwardingRule.ID().ToIDOutput().ToStringOutput(),
 //				Subnetwork:          targetForwardingRuleDefaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
@@ -271,7 +271,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

@@ -10,11 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ParameterManager
 {
     /// <summary>
-    /// A Parameter resource is a logical parameter.
+    /// A Parameter is a configuration value that can be stored and managed
+    /// centrally through Parameter Manager. Parameters support labels, encryption
+    /// via Cloud KMS, and resource manager tags for fine-grained access control
+    /// and organization.
     /// 
     /// To get more information about Parameter, see:
     /// 
     /// * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+    /// * How-to Guides
+    ///     * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
     /// 
     /// ## Example Usage
     /// 
@@ -94,6 +99,28 @@ namespace Pulumi.Gcp.ParameterManager
     ///     {
     ///         ParameterId = "parameter",
     ///         KmsKey = "kms-key",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Parameter With Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var parameter_with_tags = new Gcp.ParameterManager.Parameter("parameter-with-tags", new()
+    ///     {
+    ///         ParameterId = "parameter",
+    ///         Tags = 
+    ///         {
+    ///             { "tagKeys/123456", "tagValues/789012" },
+    ///             { "tagKeys/345678", "tagValues/901234" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -205,6 +232,14 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The time at which the Parameter was updated.
@@ -323,6 +358,20 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ParameterArgs()
         {
@@ -450,6 +499,20 @@ namespace Pulumi.Gcp.ParameterManager
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
         }
 
         /// <summary>

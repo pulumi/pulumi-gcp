@@ -8,12 +8,14 @@ import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppAudioProcessingConfig;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppClientCertificateSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppDataStoreSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppDefaultChannelProfile;
+import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppErrorHandlingSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppEvaluationMetricsThreshold;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLanguageSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLoggingSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppModelSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppTimeZoneSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppVariableDeclaration;
+import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppVpcScSetting;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -76,6 +78,13 @@ public final class AppVersionSnapshotApp {
      * 
      */
     private @Nullable String displayName;
+    /**
+     * @return (Output)
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppVersionSnapshotAppErrorHandlingSetting> errorHandlingSettings;
     /**
      * @return (Output)
      * ETag used to ensure the object hasn&#39;t changed during a read-modify-write
@@ -170,6 +179,13 @@ public final class AppVersionSnapshotApp {
      * 
      */
     private @Nullable List<AppVersionSnapshotAppVariableDeclaration> variableDeclarations;
+    /**
+     * @return (Output)
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppVersionSnapshotAppVpcScSetting> vpcScSettings;
 
     private AppVersionSnapshotApp() {}
     /**
@@ -239,6 +255,15 @@ public final class AppVersionSnapshotApp {
      */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+    /**
+     * @return (Output)
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppVersionSnapshotAppErrorHandlingSetting> errorHandlingSettings() {
+        return this.errorHandlingSettings == null ? List.of() : this.errorHandlingSettings;
     }
     /**
      * @return (Output)
@@ -360,6 +385,15 @@ public final class AppVersionSnapshotApp {
     public List<AppVersionSnapshotAppVariableDeclaration> variableDeclarations() {
         return this.variableDeclarations == null ? List.of() : this.variableDeclarations;
     }
+    /**
+     * @return (Output)
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppVersionSnapshotAppVpcScSetting> vpcScSettings() {
+        return this.vpcScSettings == null ? List.of() : this.vpcScSettings;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -378,6 +412,7 @@ public final class AppVersionSnapshotApp {
         private @Nullable Integer deploymentCount;
         private @Nullable String description;
         private @Nullable String displayName;
+        private @Nullable List<AppVersionSnapshotAppErrorHandlingSetting> errorHandlingSettings;
         private @Nullable String etag;
         private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThreshold> evaluationMetricsThresholds;
         private @Nullable String globalInstruction;
@@ -391,6 +426,7 @@ public final class AppVersionSnapshotApp {
         private @Nullable List<AppVersionSnapshotAppTimeZoneSetting> timeZoneSettings;
         private @Nullable String updateTime;
         private @Nullable List<AppVersionSnapshotAppVariableDeclaration> variableDeclarations;
+        private @Nullable List<AppVersionSnapshotAppVpcScSetting> vpcScSettings;
         public Builder() {}
         public Builder(AppVersionSnapshotApp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -402,6 +438,7 @@ public final class AppVersionSnapshotApp {
     	      this.deploymentCount = defaults.deploymentCount;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
+    	      this.errorHandlingSettings = defaults.errorHandlingSettings;
     	      this.etag = defaults.etag;
     	      this.evaluationMetricsThresholds = defaults.evaluationMetricsThresholds;
     	      this.globalInstruction = defaults.globalInstruction;
@@ -415,6 +452,7 @@ public final class AppVersionSnapshotApp {
     	      this.timeZoneSettings = defaults.timeZoneSettings;
     	      this.updateTime = defaults.updateTime;
     	      this.variableDeclarations = defaults.variableDeclarations;
+    	      this.vpcScSettings = defaults.vpcScSettings;
         }
 
         @CustomType.Setter
@@ -476,6 +514,15 @@ public final class AppVersionSnapshotApp {
 
             this.displayName = displayName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder errorHandlingSettings(@Nullable List<AppVersionSnapshotAppErrorHandlingSetting> errorHandlingSettings) {
+
+            this.errorHandlingSettings = errorHandlingSettings;
+            return this;
+        }
+        public Builder errorHandlingSettings(AppVersionSnapshotAppErrorHandlingSetting... errorHandlingSettings) {
+            return errorHandlingSettings(List.of(errorHandlingSettings));
         }
         @CustomType.Setter
         public Builder etag(@Nullable String etag) {
@@ -576,6 +623,15 @@ public final class AppVersionSnapshotApp {
         public Builder variableDeclarations(AppVersionSnapshotAppVariableDeclaration... variableDeclarations) {
             return variableDeclarations(List.of(variableDeclarations));
         }
+        @CustomType.Setter
+        public Builder vpcScSettings(@Nullable List<AppVersionSnapshotAppVpcScSetting> vpcScSettings) {
+
+            this.vpcScSettings = vpcScSettings;
+            return this;
+        }
+        public Builder vpcScSettings(AppVersionSnapshotAppVpcScSetting... vpcScSettings) {
+            return vpcScSettings(List.of(vpcScSettings));
+        }
         public AppVersionSnapshotApp build() {
             final var _resultValue = new AppVersionSnapshotApp();
             _resultValue.audioProcessingConfigs = audioProcessingConfigs;
@@ -586,6 +642,7 @@ public final class AppVersionSnapshotApp {
             _resultValue.deploymentCount = deploymentCount;
             _resultValue.description = description;
             _resultValue.displayName = displayName;
+            _resultValue.errorHandlingSettings = errorHandlingSettings;
             _resultValue.etag = etag;
             _resultValue.evaluationMetricsThresholds = evaluationMetricsThresholds;
             _resultValue.globalInstruction = globalInstruction;
@@ -599,6 +656,7 @@ public final class AppVersionSnapshotApp {
             _resultValue.timeZoneSettings = timeZoneSettings;
             _resultValue.updateTime = updateTime;
             _resultValue.variableDeclarations = variableDeclarations;
+            _resultValue.vpcScSettings = vpcScSettings;
             return _resultValue;
         }
     }

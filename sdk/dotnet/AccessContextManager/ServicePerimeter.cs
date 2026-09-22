@@ -367,6 +367,12 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The etag for the version of the ServicePerimeter that this request is based on.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// Resource name for the ServicePerimeter. The ShortName component must
         /// begin with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -617,6 +623,12 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The etag for the version of the ServicePerimeter that this request is based on.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// Resource name for the ServicePerimeter. The ShortName component must

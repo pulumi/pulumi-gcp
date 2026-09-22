@@ -472,7 +472,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="defaultCollation", refs={String.class}, tree="[0]")
-    private Output<String> defaultCollation;
+    private Output</* @Nullable */ String> defaultCollation;
 
     /**
      * @return Defines the default collation specification of future tables created
@@ -486,8 +486,8 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * - &#39;&#39;: empty string. Default to case-sensitive behavior.
      * 
      */
-    public Output<String> defaultCollation() {
-        return this.defaultCollation;
+    public Output<Optional<String>> defaultCollation() {
+        return Codegen.optional(this.defaultCollation);
     }
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,

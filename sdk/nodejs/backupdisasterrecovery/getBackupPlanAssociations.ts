@@ -25,7 +25,6 @@ export function getBackupPlanAssociations(args: GetBackupPlanAssociationsArgs, o
     return pulumi.runtime.invoke("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", {
         "location": args.location,
         "project": args.project,
-        "resourceType": args.resourceType,
     }, opts);
 }
 
@@ -42,13 +41,6 @@ export interface GetBackupPlanAssociationsArgs {
      * is not provided, the provider project is used.
      */
     project?: string;
-    /**
-     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-     * ***
-     *
-     * @deprecated `resourceType` is deprecated and will be removed in a future major release.
-     */
-    resourceType?: string;
 }
 
 /**
@@ -68,10 +60,6 @@ export interface GetBackupPlanAssociationsResult {
      * The ID of the project in which the resource belongs.
      */
     readonly project: string;
-    /**
-     * @deprecated `resourceType` is deprecated and will be removed in a future major release.
-     */
-    readonly resourceType?: string;
 }
 /**
  * Provides a list of Backup and DR BackupPlanAssociations.
@@ -92,7 +80,6 @@ export function getBackupPlanAssociationsOutput(args: GetBackupPlanAssociationsO
     return pulumi.runtime.invokeOutput("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", {
         "location": args.location,
         "project": args.project,
-        "resourceType": args.resourceType,
     }, opts);
 }
 
@@ -109,11 +96,4 @@ export interface GetBackupPlanAssociationsOutputArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
-    /**
-     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-     * ***
-     *
-     * @deprecated `resourceType` is deprecated and will be removed in a future major release.
-     */
-    resourceType?: pulumi.Input<string | undefined>;
 }

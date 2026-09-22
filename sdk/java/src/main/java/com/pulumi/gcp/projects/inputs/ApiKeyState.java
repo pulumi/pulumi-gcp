@@ -17,12 +17,28 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
     public static final ApiKeyState Empty = new ApiKeyState();
 
     /**
+     * Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+     * 
+     */
+    @Import(name="checkExistingUsage")
+    private @Nullable Output<String> checkExistingUsage;
+
+    /**
+     * @return Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+     * 
+     */
+    public Optional<Output<String>> checkExistingUsage() {
+        return Optional.ofNullable(this.checkExistingUsage);
+    }
+
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+     * When set to &#34;FORCE&#34;, deleting the resource will bypass the active traffic usage check.
      * 
      */
     @Import(name="deletionPolicy")
@@ -34,7 +50,8 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+     * When set to &#34;FORCE&#34;, deleting the resource will bypass the active traffic usage check.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -153,6 +170,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
     private ApiKeyState() {}
 
     private ApiKeyState(ApiKeyState $) {
+        this.checkExistingUsage = $.checkExistingUsage;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.keyString = $.keyString;
@@ -182,12 +200,34 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param checkExistingUsage Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkExistingUsage(@Nullable Output<String> checkExistingUsage) {
+            $.checkExistingUsage = checkExistingUsage;
+            return this;
+        }
+
+        /**
+         * @param checkExistingUsage Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkExistingUsage(String checkExistingUsage) {
+            return checkExistingUsage(Output.of(checkExistingUsage));
+        }
+
+        /**
          * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
          * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
-         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+         * When set to &#34;FORCE&#34;, deleting the resource will bypass the active traffic usage check.
          * 
          * @return builder
          * 
@@ -203,7 +243,8 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
-         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+         * When set to &#34;FORCE&#34;, deleting the resource will bypass the active traffic usage check.
          * 
          * @return builder
          * 

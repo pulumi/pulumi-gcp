@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// CONTACT_CENTER_AS_A_SERVICE
         /// FIVE9
         /// CONTACT_CENTER_INTEGRATION
+        /// WHATSAPP
+        /// INSTAGRAM
         /// </summary>
         [Input("channelType")]
         public Input<string>? ChannelType { get; set; }
@@ -61,6 +63,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// </summary>
         [Input("webWidgetConfig")]
         public Input<Inputs.DeploymentChannelProfileWebWidgetConfigGetArgs>? WebWidgetConfig { get; set; }
+
+        /// <summary>
+        /// Configuration specific to WhatsApp deployments.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("whatsappConfig")]
+        public Input<Inputs.DeploymentChannelProfileWhatsappConfigGetArgs>? WhatsappConfig { get; set; }
 
         public DeploymentChannelProfileGetArgs()
         {

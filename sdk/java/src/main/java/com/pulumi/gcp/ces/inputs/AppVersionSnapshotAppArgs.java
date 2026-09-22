@@ -9,12 +9,14 @@ import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppAudioProcessingConfigArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppClientCertificateSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppDataStoreSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppDefaultChannelProfileArgs;
+import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppErrorHandlingSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppEvaluationMetricsThresholdArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLanguageSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLoggingSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppModelSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppTimeZoneSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppVariableDeclarationArgs;
+import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppVpcScSettingArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -170,6 +172,25 @@ public final class AppVersionSnapshotAppArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * (Output)
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="errorHandlingSettings")
+    private @Nullable Output<List<AppVersionSnapshotAppErrorHandlingSettingArgs>> errorHandlingSettings;
+
+    /**
+     * @return (Output)
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppVersionSnapshotAppErrorHandlingSettingArgs>>> errorHandlingSettings() {
+        return Optional.ofNullable(this.errorHandlingSettings);
     }
 
     /**
@@ -425,6 +446,25 @@ public final class AppVersionSnapshotAppArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.variableDeclarations);
     }
 
+    /**
+     * (Output)
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vpcScSettings")
+    private @Nullable Output<List<AppVersionSnapshotAppVpcScSettingArgs>> vpcScSettings;
+
+    /**
+     * @return (Output)
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppVersionSnapshotAppVpcScSettingArgs>>> vpcScSettings() {
+        return Optional.ofNullable(this.vpcScSettings);
+    }
+
     private AppVersionSnapshotAppArgs() {}
 
     private AppVersionSnapshotAppArgs(AppVersionSnapshotAppArgs $) {
@@ -436,6 +476,7 @@ public final class AppVersionSnapshotAppArgs extends com.pulumi.resources.Resour
         this.deploymentCount = $.deploymentCount;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.errorHandlingSettings = $.errorHandlingSettings;
         this.etag = $.etag;
         this.evaluationMetricsThresholds = $.evaluationMetricsThresholds;
         this.globalInstruction = $.globalInstruction;
@@ -449,6 +490,7 @@ public final class AppVersionSnapshotAppArgs extends com.pulumi.resources.Resour
         this.timeZoneSettings = $.timeZoneSettings;
         this.updateTime = $.updateTime;
         this.variableDeclarations = $.variableDeclarations;
+        this.vpcScSettings = $.vpcScSettings;
     }
 
     public static Builder builder() {
@@ -709,6 +751,43 @@ public final class AppVersionSnapshotAppArgs extends com.pulumi.resources.Resour
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param errorHandlingSettings (Output)
+         * Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorHandlingSettings(@Nullable Output<List<AppVersionSnapshotAppErrorHandlingSettingArgs>> errorHandlingSettings) {
+            $.errorHandlingSettings = errorHandlingSettings;
+            return this;
+        }
+
+        /**
+         * @param errorHandlingSettings (Output)
+         * Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorHandlingSettings(List<AppVersionSnapshotAppErrorHandlingSettingArgs> errorHandlingSettings) {
+            return errorHandlingSettings(Output.of(errorHandlingSettings));
+        }
+
+        /**
+         * @param errorHandlingSettings (Output)
+         * Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorHandlingSettings(AppVersionSnapshotAppErrorHandlingSettingArgs... errorHandlingSettings) {
+            return errorHandlingSettings(List.of(errorHandlingSettings));
         }
 
         /**
@@ -1125,6 +1204,43 @@ public final class AppVersionSnapshotAppArgs extends com.pulumi.resources.Resour
          */
         public Builder variableDeclarations(AppVersionSnapshotAppVariableDeclarationArgs... variableDeclarations) {
             return variableDeclarations(List.of(variableDeclarations));
+        }
+
+        /**
+         * @param vpcScSettings (Output)
+         * VPC-SC settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScSettings(@Nullable Output<List<AppVersionSnapshotAppVpcScSettingArgs>> vpcScSettings) {
+            $.vpcScSettings = vpcScSettings;
+            return this;
+        }
+
+        /**
+         * @param vpcScSettings (Output)
+         * VPC-SC settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScSettings(List<AppVersionSnapshotAppVpcScSettingArgs> vpcScSettings) {
+            return vpcScSettings(Output.of(vpcScSettings));
+        }
+
+        /**
+         * @param vpcScSettings (Output)
+         * VPC-SC settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScSettings(AppVersionSnapshotAppVpcScSettingArgs... vpcScSettings) {
+            return vpcScSettings(List.of(vpcScSettings));
         }
 
         public AppVersionSnapshotAppArgs build() {

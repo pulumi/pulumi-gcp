@@ -6,9 +6,11 @@ package com.pulumi.gcp.chronicle;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.chronicle.inputs.EnvironmentDynamicParameterArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +33,21 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> aliasesJson() {
         return Optional.ofNullable(this.aliasesJson);
+    }
+
+    /**
+     * Environment icon.
+     * 
+     */
+    @Import(name="base64Image")
+    private @Nullable Output<String> base64Image;
+
+    /**
+     * @return Environment icon.
+     * 
+     */
+    public Optional<Output<String>> base64Image() {
+        return Optional.ofNullable(this.base64Image);
     }
 
     /**
@@ -174,6 +191,23 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional custom properties for enriching the environment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dynamicParameters")
+    private @Nullable Output<List<EnvironmentDynamicParameterArgs>> dynamicParameters;
+
+    /**
+     * @return Additional custom properties for enriching the environment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<EnvironmentDynamicParameterArgs>>> dynamicParameters() {
+        return Optional.ofNullable(this.dynamicParameters);
+    }
+
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
@@ -186,6 +220,23 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> instance() {
         return this.instance;
+    }
+
+    /**
+     * URL of the environment. Used to route UI links to the correct SIEM instance
+     * when making cross-SecOps requests from SOAR.
+     * 
+     */
+    @Import(name="instanceUri")
+    private @Nullable Output<String> instanceUri;
+
+    /**
+     * @return URL of the environment. Used to route UI links to the correct SIEM instance
+     * when making cross-SecOps requests from SOAR.
+     * 
+     */
+    public Optional<Output<String>> instanceUri() {
+        return Optional.ofNullable(this.instanceUri);
     }
 
     /**
@@ -235,10 +286,30 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         return this.retentionDuration;
     }
 
+    /**
+     * The weight of the environment, enabling customers to control distribution
+     * of resources between the separate environments in a single instance of
+     * Chronicle SOAR.
+     * 
+     */
+    @Import(name="weight")
+    private @Nullable Output<Integer> weight;
+
+    /**
+     * @return The weight of the environment, enabling customers to control distribution
+     * of resources between the separate environments in a single instance of
+     * Chronicle SOAR.
+     * 
+     */
+    public Optional<Output<Integer>> weight() {
+        return Optional.ofNullable(this.weight);
+    }
+
     private EnvironmentArgs() {}
 
     private EnvironmentArgs(EnvironmentArgs $) {
         this.aliasesJson = $.aliasesJson;
+        this.base64Image = $.base64Image;
         this.contact = $.contact;
         this.contactEmails = $.contactEmails;
         this.contactPhone = $.contactPhone;
@@ -247,10 +318,13 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.dynamicParameters = $.dynamicParameters;
         this.instance = $.instance;
+        this.instanceUri = $.instanceUri;
         this.location = $.location;
         this.project = $.project;
         this.retentionDuration = $.retentionDuration;
+        this.weight = $.weight;
     }
 
     public static Builder builder() {
@@ -290,6 +364,27 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder aliasesJson(String aliasesJson) {
             return aliasesJson(Output.of(aliasesJson));
+        }
+
+        /**
+         * @param base64Image Environment icon.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder base64Image(@Nullable Output<String> base64Image) {
+            $.base64Image = base64Image;
+            return this;
+        }
+
+        /**
+         * @param base64Image Environment icon.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder base64Image(String base64Image) {
+            return base64Image(Output.of(base64Image));
         }
 
         /**
@@ -481,6 +576,40 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dynamicParameters Additional custom properties for enriching the environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicParameters(@Nullable Output<List<EnvironmentDynamicParameterArgs>> dynamicParameters) {
+            $.dynamicParameters = dynamicParameters;
+            return this;
+        }
+
+        /**
+         * @param dynamicParameters Additional custom properties for enriching the environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicParameters(List<EnvironmentDynamicParameterArgs> dynamicParameters) {
+            return dynamicParameters(Output.of(dynamicParameters));
+        }
+
+        /**
+         * @param dynamicParameters Additional custom properties for enriching the environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicParameters(EnvironmentDynamicParameterArgs... dynamicParameters) {
+            return dynamicParameters(List.of(dynamicParameters));
+        }
+
+        /**
          * @param instance Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
@@ -499,6 +628,29 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instance(String instance) {
             return instance(Output.of(instance));
+        }
+
+        /**
+         * @param instanceUri URL of the environment. Used to route UI links to the correct SIEM instance
+         * when making cross-SecOps requests from SOAR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceUri(@Nullable Output<String> instanceUri) {
+            $.instanceUri = instanceUri;
+            return this;
+        }
+
+        /**
+         * @param instanceUri URL of the environment. Used to route UI links to the correct SIEM instance
+         * when making cross-SecOps requests from SOAR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceUri(String instanceUri) {
+            return instanceUri(Output.of(instanceUri));
         }
 
         /**
@@ -564,6 +716,31 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retentionDuration(Integer retentionDuration) {
             return retentionDuration(Output.of(retentionDuration));
+        }
+
+        /**
+         * @param weight The weight of the environment, enabling customers to control distribution
+         * of resources between the separate environments in a single instance of
+         * Chronicle SOAR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder weight(@Nullable Output<Integer> weight) {
+            $.weight = weight;
+            return this;
+        }
+
+        /**
+         * @param weight The weight of the environment, enabling customers to control distribution
+         * of resources between the separate environments in a single instance of
+         * Chronicle SOAR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder weight(Integer weight) {
+            return weight(Output.of(weight));
         }
 
         public EnvironmentArgs build() {

@@ -24,6 +24,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// CONTACT_CENTER_AS_A_SERVICE
         /// FIVE9
         /// CONTACT_CENTER_INTEGRATION
+        /// WHATSAPP
+        /// INSTAGRAM
         /// </summary>
         public readonly string? ChannelType;
         /// <summary>
@@ -51,6 +53,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeploymentChannelProfileWebWidgetConfig? WebWidgetConfig;
+        /// <summary>
+        /// Configuration specific to WhatsApp deployments.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DeploymentChannelProfileWhatsappConfig? WhatsappConfig;
 
         [OutputConstructor]
         private DeploymentChannelProfile(
@@ -64,7 +71,9 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             string? profileId,
 
-            Outputs.DeploymentChannelProfileWebWidgetConfig? webWidgetConfig)
+            Outputs.DeploymentChannelProfileWebWidgetConfig? webWidgetConfig,
+
+            Outputs.DeploymentChannelProfileWhatsappConfig? whatsappConfig)
         {
             ChannelType = channelType;
             DisableBargeInControl = disableBargeInControl;
@@ -72,6 +81,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             PersonaProperty = personaProperty;
             ProfileId = profileId;
             WebWidgetConfig = webWidgetConfig;
+            WhatsappConfig = whatsappConfig;
         }
     }
 }

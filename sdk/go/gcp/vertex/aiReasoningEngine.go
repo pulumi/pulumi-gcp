@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,9 +16,9 @@ import (
 //
 // To get more information about ReasoningEngine, see:
 //
-// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+// * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
 // * How-to Guides
-//   - [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+//   - [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 //
 // ## Example Usage
 //
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -75,8 +75,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -123,7 +123,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -169,9 +169,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -263,10 +263,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
@@ -409,12 +409,12 @@ import (
 //	"encoding/json"
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
@@ -554,6 +554,9 @@ import (
 //					AgentFramework: pulumi.String("google-adk"),
 //					ClassMethods:   pulumi.String(json0),
 //					ServiceAccount: serviceAccount.Email,
+//					BuildSpec: &vertex.AiReasoningEngineSpecBuildSpecArgs{
+//						ServiceAccount: serviceAccount.Email,
+//					},
 //					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 //						MinInstances:         pulumi.Int(1),
 //						MaxInstances:         pulumi.Int(3),
@@ -628,8 +631,8 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -788,6 +791,19 @@ import (
 //																	Output:  pulumi.String("pizza"),
 //																},
 //															},
+//															&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+//																AudioTranscription: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs{
+//																	SpeakerLabel: pulumi.String("spk_1"),
+//																	Text:         pulumi.String("I like pepperoni pizza"),
+//																	Words: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArray{
+//																		&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs{
+//																			StartOffset: pulumi.String("0.5s"),
+//																			EndOffset:   pulumi.String("1.5s"),
+//																			Word:        pulumi.String("pepperoni"),
+//																		},
+//																	},
+//																},
+//															},
 //														},
 //													},
 //												},
@@ -868,8 +884,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -919,7 +935,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -966,7 +982,6 @@ import (
 type AiReasoningEngine struct {
 	pulumi.CustomResourceState
 
-	// (Optional, Beta)
 	// Optional. Configuration for how Agent Engine sub-resources should manage context.
 	// Structure is documented below.
 	ContextSpec AiReasoningEngineContextSpecOutput `pulumi:"contextSpec"`
@@ -1064,7 +1079,6 @@ func GetAiReasoningEngine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiReasoningEngine resources.
 type aiReasoningEngineState struct {
-	// (Optional, Beta)
 	// Optional. Configuration for how Agent Engine sub-resources should manage context.
 	// Structure is documented below.
 	ContextSpec *AiReasoningEngineContextSpec `pulumi:"contextSpec"`
@@ -1125,7 +1139,6 @@ type aiReasoningEngineState struct {
 }
 
 type AiReasoningEngineState struct {
-	// (Optional, Beta)
 	// Optional. Configuration for how Agent Engine sub-resources should manage context.
 	// Structure is documented below.
 	ContextSpec AiReasoningEngineContextSpecPtrInput
@@ -1190,7 +1203,6 @@ func (AiReasoningEngineState) ElementType() reflect.Type {
 }
 
 type aiReasoningEngineArgs struct {
-	// (Optional, Beta)
 	// Optional. Configuration for how Agent Engine sub-resources should manage context.
 	// Structure is documented below.
 	ContextSpec *AiReasoningEngineContextSpec `pulumi:"contextSpec"`
@@ -1235,7 +1247,6 @@ type aiReasoningEngineArgs struct {
 
 // The set of arguments for constructing a AiReasoningEngine resource.
 type AiReasoningEngineArgs struct {
-	// (Optional, Beta)
 	// Optional. Configuration for how Agent Engine sub-resources should manage context.
 	// Structure is documented below.
 	ContextSpec AiReasoningEngineContextSpecPtrInput
@@ -1365,7 +1376,6 @@ func (o AiReasoningEngineOutput) ToAiReasoningEngineOutputWithContext(ctx contex
 	return o
 }
 
-// (Optional, Beta)
 // Optional. Configuration for how Agent Engine sub-resources should manage context.
 // Structure is documented below.
 func (o AiReasoningEngineOutput) ContextSpec() AiReasoningEngineContextSpecOutput {

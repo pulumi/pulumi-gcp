@@ -8,15 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Parameter resource is a logical parameter.
+// A Parameter is a configuration value that can be stored and managed
+// centrally through Parameter Manager. Parameters support labels, encryption
+// via Cloud KMS, and resource manager tags for fine-grained access control
+// and organization.
 //
 // To get more information about Parameter, see:
 //
 // * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+// * How-to Guides
+//   - [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 //
 // ## Example Usage
 //
@@ -27,7 +32,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -52,7 +57,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,7 +83,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -110,8 +115,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -125,6 +130,35 @@ import (
 //			_, err = parametermanager.NewParameter(ctx, "parameter-with-kms-key", &parametermanager.ParameterArgs{
 //				ParameterId: pulumi.String("parameter"),
 //				KmsKey:      pulumi.String("kms-key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Parameter With Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := parametermanager.NewParameter(ctx, "parameter-with-tags", &parametermanager.ParameterArgs{
+//				ParameterId: pulumi.String("parameter"),
+//				Tags: pulumi.StringMap{
+//					"tagKeys/123456": pulumi.String("tagValues/789012"),
+//					"tagKeys/345678": pulumi.String("tagValues/901234"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -197,6 +231,10 @@ type Parameter struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The time at which the Parameter was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -283,6 +321,10 @@ type parameterState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The time at which the Parameter was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -332,6 +374,10 @@ type ParameterState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The time at which the Parameter was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -372,6 +418,10 @@ type parameterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Parameter resource.
@@ -407,6 +457,10 @@ type ParameterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 }
 
 func (ParameterArgs) ElementType() reflect.Type {
@@ -572,6 +626,13 @@ func (o ParameterOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o ParameterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Parameter) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o ParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The time at which the Parameter was updated.

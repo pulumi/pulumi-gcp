@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds? ExpectationLevelMetricsThresholds;
         /// <summary>
+        /// The tool matching settings. An extra tool call is a tool call that is
+        /// present in the execution but does not match any tool call in the golden
+        /// expectation.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings? ToolMatchingSettings;
+        /// <summary>
         /// Turn level metrics thresholds.
         /// Structure is documented below.
         /// </summary>
@@ -28,9 +35,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         private AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds(
             Outputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds? expectationLevelMetricsThresholds,
 
+            Outputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings? toolMatchingSettings,
+
             Outputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds? turnLevelMetricsThresholds)
         {
             ExpectationLevelMetricsThresholds = expectationLevelMetricsThresholds;
+            ToolMatchingSettings = toolMatchingSettings;
             TurnLevelMetricsThresholds = turnLevelMetricsThresholds;
         }
     }

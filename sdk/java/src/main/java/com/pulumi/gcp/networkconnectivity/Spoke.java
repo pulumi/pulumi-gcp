@@ -204,19 +204,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("tf-test-network_58845")
+ *             .name("tf-test-network_9305")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_9305")
+ *             .name("tf-test-subnet_48542")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .name("tf-test-instance_48542")
+ *             .name("tf-test-instance_29506")
  *             .machineType("e2-medium")
  *             .canIpForward(true)
  *             .zone("us-central1-a")
@@ -235,13 +235,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicHub = new Hub("basicHub", HubArgs.builder()
- *             .name("tf-test-hub_29506")
+ *             .name("tf-test-hub_86474")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
  *         var primary = new Spoke("primary", SpokeArgs.builder()
- *             .name("tf-test-name_86474")
+ *             .name("tf-test-name_95761")
  *             .location("us-central1")
  *             .description("A sample spoke with a linked routher appliance instance")
  *             .labels(Map.of("label-one", "value-one"))
@@ -636,7 +636,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("tf-net")
+ *             .name("net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
@@ -650,8 +650,8 @@ import javax.annotation.Nullable;
  *             .hub(starHub.id())
  *             .autoAccept(GroupAutoAcceptArgs.builder()
  *                 .autoAcceptProjects(                
- *                     "foo_95761",
- *                     "bar_62744")
+ *                     "foo",
+ *                     "bar")
  *                 .build())
  *             .build());
  * 
@@ -767,7 +767,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_91207")
+ *             .name("tf-test-subnet_62744")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())

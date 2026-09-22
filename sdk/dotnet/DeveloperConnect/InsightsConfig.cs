@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "dci-tf-_26240",
+    ///         ProjectId = "dci-tf-_35711",
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
@@ -168,6 +168,19 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     });
     /// 
     ///     // Wait delay after enabling APIs and granting permissions
+    ///     var devconnectApphubViewer = new Gcp.Projects.IAMMember("devconnect_apphub_viewer", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Role = "roles/apphub.viewer",
+    ///         Member = project.Number.Apply(number =&gt; $"serviceAccount:service-{number}@gcp-sa-devconnect.iam.gserviceaccount.com"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             devconnectApi,
+    ///         },
+    ///     });
+    /// 
     ///     var waitForPropagation = new Time.Sleep("wait_for_propagation", new()
     ///     {
     ///         CreateDuration = "120s",
@@ -177,6 +190,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///         {
     ///             apphubPermissions,
     ///             insightsAgent,
+    ///             devconnectApphubViewer,
     ///             apphubApiService,
     ///             containeranalysisApi,
     ///             containerscanningApi,
@@ -193,7 +207,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var myApphubApplication = new Gcp.Apphub.Application("my_apphub_application", new()
     ///     {
     ///         Location = "us-central1",
-    ///         ApplicationId = "tf-test-example-application_35711",
+    ///         ApplicationId = "tf-test-example-application_85072",
     ///         Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
     ///         {
     ///             Type = "REGIONAL",
@@ -210,7 +224,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var insightsConfig = new Gcp.DeveloperConnect.InsightsConfig("insights_config", new()
     ///     {
     ///         Location = "us-central1",
-    ///         InsightsConfigId = "tf-test-ic-apphub-_85072",
+    ///         InsightsConfigId = "tf-test-ic-apphub-_35762",
     ///         Project = project.ProjectId,
     ///         Annotations = new() { },
     ///         Labels = new() { },
@@ -263,7 +277,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "dci-tf-_35762",
+    ///         ProjectId = "dci-tf-_24469",
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
@@ -428,7 +442,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var insightsConfigProjects = new Gcp.DeveloperConnect.InsightsConfig("insights_config_projects", new()
     ///     {
     ///         Location = "us-central1",
-    ///         InsightsConfigId = "tf-test-ic-projects-_24469",
+    ///         InsightsConfigId = "tf-test-ic-projects-_79580",
     ///         Project = project.ProjectId,
     ///         Annotations = new() { },
     ///         Labels = new() { },

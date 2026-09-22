@@ -19,6 +19,8 @@ __all__ = [
     'CodeToolsSettingEnabledToolArgsDict',
     'CodeToolsSettingEnabledToolConfigArgs',
     'CodeToolsSettingEnabledToolConfigArgsDict',
+    'GdaObservabilitySettingConversationalAnalyticsSettingArgs',
+    'GdaObservabilitySettingConversationalAnalyticsSettingArgsDict',
     'RepositoryGroupIamBindingConditionArgs',
     'RepositoryGroupIamBindingConditionArgsDict',
     'RepositoryGroupIamMemberConditionArgs',
@@ -185,6 +187,95 @@ class CodeToolsSettingEnabledToolConfigArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+class GdaObservabilitySettingConversationalAnalyticsSettingArgsDict(TypedDict):
+    feedback_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable feedback.
+    """
+    logging_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable logging.
+    """
+    metrics_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable metrics.
+    """
+    traces_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable traces.
+    """
+
+@pulumi.input_type
+class GdaObservabilitySettingConversationalAnalyticsSettingArgs:
+    def __init__(__self__, *,
+                 feedback_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traces_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] feedback_enabled: Whether to enable feedback.
+        :param pulumi.Input[_builtins.bool] logging_enabled: Whether to enable logging.
+        :param pulumi.Input[_builtins.bool] metrics_enabled: Whether to enable metrics.
+        :param pulumi.Input[_builtins.bool] traces_enabled: Whether to enable traces.
+        """
+        if feedback_enabled is not None:
+            pulumi.set(__self__, "feedback_enabled", feedback_enabled)
+        if logging_enabled is not None:
+            pulumi.set(__self__, "logging_enabled", logging_enabled)
+        if metrics_enabled is not None:
+            pulumi.set(__self__, "metrics_enabled", metrics_enabled)
+        if traces_enabled is not None:
+            pulumi.set(__self__, "traces_enabled", traces_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="feedbackEnabled")
+    def feedback_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable feedback.
+        """
+        return pulumi.get(self, "feedback_enabled")
+
+    @feedback_enabled.setter
+    def feedback_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "feedback_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loggingEnabled")
+    def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable logging.
+        """
+        return pulumi.get(self, "logging_enabled")
+
+    @logging_enabled.setter
+    def logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "logging_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricsEnabled")
+    def metrics_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable metrics.
+        """
+        return pulumi.get(self, "metrics_enabled")
+
+    @metrics_enabled.setter
+    def metrics_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "metrics_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tracesEnabled")
+    def traces_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable traces.
+        """
+        return pulumi.get(self, "traces_enabled")
+
+    @traces_enabled.setter
+    def traces_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "traces_enabled", value)
 
 
 class RepositoryGroupIamBindingConditionArgsDict(TypedDict):

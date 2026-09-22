@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -3900,6 +3900,10 @@ func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) TypeInferenc
 type DatascanDataDocumentationSpec struct {
 	// If set, the latest DataScan job result will be published to Knowledge Catalog.
 	CatalogPublishingEnabled *bool `pulumi:"catalogPublishingEnabled"`
+	// The SQL dialect to use in the generated SQL queries.
+	// If not specified, the default dialect is Google SQL.
+	// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+	SqlDialect *string `pulumi:"sqlDialect"`
 }
 
 // DatascanDataDocumentationSpecInput is an input type that accepts DatascanDataDocumentationSpecArgs and DatascanDataDocumentationSpecOutput values.
@@ -3916,6 +3920,10 @@ type DatascanDataDocumentationSpecInput interface {
 type DatascanDataDocumentationSpecArgs struct {
 	// If set, the latest DataScan job result will be published to Knowledge Catalog.
 	CatalogPublishingEnabled pulumi.BoolPtrInput `pulumi:"catalogPublishingEnabled"`
+	// The SQL dialect to use in the generated SQL queries.
+	// If not specified, the default dialect is Google SQL.
+	// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+	SqlDialect pulumi.StringPtrInput `pulumi:"sqlDialect"`
 }
 
 func (DatascanDataDocumentationSpecArgs) ElementType() reflect.Type {
@@ -4000,6 +4008,13 @@ func (o DatascanDataDocumentationSpecOutput) CatalogPublishingEnabled() pulumi.B
 	return o.ApplyT(func(v DatascanDataDocumentationSpec) *bool { return v.CatalogPublishingEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The SQL dialect to use in the generated SQL queries.
+// If not specified, the default dialect is Google SQL.
+// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+func (o DatascanDataDocumentationSpecOutput) SqlDialect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataDocumentationSpec) *string { return v.SqlDialect }).(pulumi.StringPtrOutput)
+}
+
 type DatascanDataDocumentationSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (DatascanDataDocumentationSpecPtrOutput) ElementType() reflect.Type {
@@ -4032,6 +4047,18 @@ func (o DatascanDataDocumentationSpecPtrOutput) CatalogPublishingEnabled() pulum
 		}
 		return v.CatalogPublishingEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The SQL dialect to use in the generated SQL queries.
+// If not specified, the default dialect is Google SQL.
+// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+func (o DatascanDataDocumentationSpecPtrOutput) SqlDialect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDocumentationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlDialect
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatascanDataProfileSpec struct {

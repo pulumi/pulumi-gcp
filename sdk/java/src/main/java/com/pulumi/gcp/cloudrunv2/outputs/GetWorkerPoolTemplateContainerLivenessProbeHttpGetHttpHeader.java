@@ -5,7 +5,6 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,11 +15,6 @@ public final class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader 
      * 
      */
     private String name;
-    /**
-     * @return Required. The header field name
-     * 
-     */
-    private Integer port;
     /**
      * @return Optional. The header field value
      * 
@@ -34,13 +28,6 @@ public final class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader 
      */
     public String name() {
         return this.name;
-    }
-    /**
-     * @return Required. The header field name
-     * 
-     */
-    public Integer port() {
-        return this.port;
     }
     /**
      * @return Optional. The header field value
@@ -60,13 +47,11 @@ public final class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader 
     @CustomType.Builder
     public static final class Builder {
         private String name;
-        private Integer port;
         private String value;
         public Builder() {}
         public Builder(GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
-    	      this.port = defaults.port;
     	      this.value = defaults.value;
         }
 
@@ -76,14 +61,6 @@ public final class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader 
               throw new MissingRequiredPropertyException("GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader", "name");
             }
             this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder port(Integer port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader", "port");
-            }
-            this.port = port;
             return this;
         }
         @CustomType.Setter
@@ -97,7 +74,6 @@ public final class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader 
         public GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader build() {
             final var _resultValue = new GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader();
             _resultValue.name = name;
-            _resultValue.port = port;
             _resultValue.value = value;
             return _resultValue;
         }

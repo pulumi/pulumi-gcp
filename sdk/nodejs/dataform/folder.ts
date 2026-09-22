@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const dataformFolderBasic = new gcp.dataform.Folder("dataform_folder_basic", {
  *     region: "us-central1",
- *     displayName: "Basic Folder-_89313",
+ *     displayName: "Basic Folder-_60646",
  * });
  * ```
  * ### Dataform Folder Full
@@ -34,11 +34,11 @@ import * as utilities from "../utilities";
  *
  * const dataformFolderRoot = new gcp.dataform.Folder("dataform_folder_root", {
  *     region: "us-central1",
- *     displayName: "Root Folder-_60646",
+ *     displayName: "Root Folder-_9394",
  * });
  * const dataformFolderFull = new gcp.dataform.Folder("dataform_folder_full", {
  *     region: "us-central1",
- *     displayName: "Nested Folder-_9394",
+ *     displayName: "Nested Folder-_11380",
  *     containingFolder: dataformFolderRoot.id,
  * });
  * ```

@@ -32,6 +32,7 @@ public final class GetRegionalParameterResult {
     private List<GetRegionalParameterPolicyMember> policyMembers;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
+    private Map<String,String> tags;
     private String updateTime;
 
     private GetRegionalParameterResult() {}
@@ -78,6 +79,9 @@ public final class GetRegionalParameterResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -104,6 +108,7 @@ public final class GetRegionalParameterResult {
         private List<GetRegionalParameterPolicyMember> policyMembers;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
+        private Map<String,String> tags;
         private String updateTime;
         public Builder() {}
         public Builder(GetRegionalParameterResult defaults) {
@@ -121,6 +126,7 @@ public final class GetRegionalParameterResult {
     	      this.policyMembers = defaults.policyMembers;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.tags = defaults.tags;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -230,6 +236,14 @@ public final class GetRegionalParameterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRegionalParameterResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetRegionalParameterResult", "updateTime");
@@ -252,6 +266,7 @@ public final class GetRegionalParameterResult {
             _resultValue.policyMembers = policyMembers;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.tags = tags;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

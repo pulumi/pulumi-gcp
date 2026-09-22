@@ -7,11 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A Parameter resource is a logical parameter.
+ * A Parameter is a configuration value that can be stored and managed
+ * centrally through Parameter Manager. Parameters support labels, encryption
+ * via Cloud KMS, and resource manager tags for fine-grained access control
+ * and organization.
  *
  * To get more information about Parameter, see:
  *
  * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+ * * How-to Guides
+ *     * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
  *
  * ## Example Usage
  *
@@ -61,6 +66,20 @@ import * as utilities from "../utilities";
  * const parameter_with_kms_key = new gcp.parametermanager.Parameter("parameter-with-kms-key", {
  *     parameterId: "parameter",
  *     kmsKey: "kms-key",
+ * });
+ * ```
+ * ### Parameter With Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const parameter_with_tags = new gcp.parametermanager.Parameter("parameter-with-tags", {
+ *     parameterId: "parameter",
+ *     tags: {
+ *         "tagKeys/123456": "tagValues/789012",
+ *         "tagKeys/345678": "tagValues/901234",
+ *     },
  * });
  * ```
  *
@@ -175,6 +194,12 @@ export class Parameter extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The time at which the Parameter was updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -203,6 +228,7 @@ export class Parameter extends pulumi.CustomResource {
             resourceInputs["policyMembers"] = state?.policyMembers;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ParameterArgs | undefined;
@@ -215,6 +241,7 @@ export class Parameter extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["parameterId"] = args?.parameterId;
             resourceInputs["project"] = args?.project;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -300,6 +327,12 @@ export interface ParameterState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The time at which the Parameter was updated.
      */
     updateTime?: pulumi.Input<string | undefined>;
@@ -352,4 +385,10 @@ export interface ParameterArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

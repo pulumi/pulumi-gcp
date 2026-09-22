@@ -71,6 +71,8 @@ __all__ = [
     'DataTransferConfigScheduleOptionsArgsDict',
     'DataTransferConfigSensitiveParamsArgs',
     'DataTransferConfigSensitiveParamsArgsDict',
+    'DataTransferDataSourceEnrollmentParameterArgs',
+    'DataTransferDataSourceEnrollmentParameterArgsDict',
     'Datapolicyv2DataPolicyDataGovernanceTagArgs',
     'Datapolicyv2DataPolicyDataGovernanceTagArgsDict',
     'Datapolicyv2DataPolicyDataMaskingPolicyArgs',
@@ -1822,9 +1824,9 @@ class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
 
     > **Note:** One of `secret_access_key` or `secret_access_key_wo` can only be set.
     """
-    secret_access_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    secret_access_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    Triggers update of `secret_access_key_wo` write-only. Increment this value when an update to `secret_access_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
 
 @pulumi.input_type
@@ -1832,7 +1834,7 @@ class DataTransferConfigSensitiveParamsArgs:
     def __init__(__self__, *,
                  secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_access_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
-                 secret_access_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
+                 secret_access_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key of the AWS account transferring data from.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1842,7 +1844,7 @@ class DataTransferConfigSensitiveParamsArgs:
                **Note**: This property is write-only and will not be read from the API.
                
                > **Note:** One of `secret_access_key` or `secret_access_key_wo` can only be set.
-        :param pulumi.Input[_builtins.int] secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        :param pulumi.Input[_builtins.str] secret_access_key_wo_version: Triggers update of `secret_access_key_wo` write-only. Increment this value when an update to `secret_access_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
@@ -1883,15 +1885,346 @@ class DataTransferConfigSensitiveParamsArgs:
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKeyWoVersion")
-    def secret_access_key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def secret_access_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        Triggers update of `secret_access_key_wo` write-only. Increment this value when an update to `secret_access_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_access_key_wo_version")
 
     @secret_access_key_wo_version.setter
-    def secret_access_key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def secret_access_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key_wo_version", value)
+
+
+class DataTransferDataSourceEnrollmentParameterArgsDict(TypedDict):
+    allowed_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    All possible values for parameters with fixed list of options.
+    """
+    deprecated: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If true, it should not be used in new transfers, and it should not be visible to users.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Parameter description.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    User friendly parameter name.
+    """
+    immutable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+    """
+    max_list_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    For list parameters, the max size of the list.
+    """
+    max_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    For integer and double values specifies maximum allowed value.
+    """
+    min_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    For integer and double values specifies minimum allowed value.
+    """
+    param_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Parameter identifier.
+    """
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Is parameter required.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Parameter type.
+    """
+    validation_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Description of the requirements for this field, in case the user input does not fulfill the regex.
+    """
+    validation_help_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    URL to a help document to further explain the naming requirements.
+    """
+    validation_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Regular expression which can be used for parameter validation.
+    """
+
+@pulumi.input_type
+class DataTransferDataSourceEnrollmentParameterArgs:
+    def __init__(__self__, *,
+                 allowed_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 param_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_help_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_regex: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_values: (Output)
+               All possible values for parameters with fixed list of options.
+        :param pulumi.Input[_builtins.bool] deprecated: (Output)
+               If true, it should not be used in new transfers, and it should not be visible to users.
+        :param pulumi.Input[_builtins.str] description: (Output)
+               Parameter description.
+        :param pulumi.Input[_builtins.str] display_name: (Output)
+               User friendly parameter name.
+        :param pulumi.Input[_builtins.bool] immutable: (Output)
+               Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+        :param pulumi.Input[_builtins.int] max_list_size: (Output)
+               For list parameters, the max size of the list.
+        :param pulumi.Input[_builtins.float] max_value: (Output)
+               For integer and double values specifies maximum allowed value.
+        :param pulumi.Input[_builtins.float] min_value: (Output)
+               For integer and double values specifies minimum allowed value.
+        :param pulumi.Input[_builtins.str] param_id: (Output)
+               Parameter identifier.
+        :param pulumi.Input[_builtins.bool] required: (Output)
+               Is parameter required.
+        :param pulumi.Input[_builtins.str] type: (Output)
+               Parameter type.
+        :param pulumi.Input[_builtins.str] validation_description: (Output)
+               Description of the requirements for this field, in case the user input does not fulfill the regex.
+        :param pulumi.Input[_builtins.str] validation_help_url: (Output)
+               URL to a help document to further explain the naming requirements.
+        :param pulumi.Input[_builtins.str] validation_regex: (Output)
+               Regular expression which can be used for parameter validation.
+        """
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+        if deprecated is not None:
+            pulumi.set(__self__, "deprecated", deprecated)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if immutable is not None:
+            pulumi.set(__self__, "immutable", immutable)
+        if max_list_size is not None:
+            pulumi.set(__self__, "max_list_size", max_list_size)
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if param_id is not None:
+            pulumi.set(__self__, "param_id", param_id)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if validation_description is not None:
+            pulumi.set(__self__, "validation_description", validation_description)
+        if validation_help_url is not None:
+            pulumi.set(__self__, "validation_help_url", validation_help_url)
+        if validation_regex is not None:
+            pulumi.set(__self__, "validation_regex", validation_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        All possible values for parameters with fixed list of options.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @allowed_values.setter
+    def allowed_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If true, it should not be used in new transfers, and it should not be visible to users.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @deprecated.setter
+    def deprecated(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "deprecated", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Parameter description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        User friendly parameter name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+        """
+        return pulumi.get(self, "immutable")
+
+    @immutable.setter
+    def immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "immutable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxListSize")
+    def max_list_size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        For list parameters, the max size of the list.
+        """
+        return pulumi.get(self, "max_list_size")
+
+    @max_list_size.setter
+    def max_list_size(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_list_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        For integer and double values specifies maximum allowed value.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "max_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        For integer and double values specifies minimum allowed value.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "min_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paramId")
+    def param_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Parameter identifier.
+        """
+        return pulumi.get(self, "param_id")
+
+    @param_id.setter
+    def param_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "param_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Is parameter required.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "required", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Parameter type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="validationDescription")
+    def validation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Description of the requirements for this field, in case the user input does not fulfill the regex.
+        """
+        return pulumi.get(self, "validation_description")
+
+    @validation_description.setter
+    def validation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "validation_description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="validationHelpUrl")
+    def validation_help_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        URL to a help document to further explain the naming requirements.
+        """
+        return pulumi.get(self, "validation_help_url")
+
+    @validation_help_url.setter
+    def validation_help_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "validation_help_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="validationRegex")
+    def validation_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Regular expression which can be used for parameter validation.
+        """
+        return pulumi.get(self, "validation_regex")
+
+    @validation_regex.setter
+    def validation_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "validation_regex", value)
 
 
 class Datapolicyv2DataPolicyDataGovernanceTagArgsDict(TypedDict):

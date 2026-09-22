@@ -5,36 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { AppConnectionArgs, AppConnectionState } from "./appConnection";
-export type AppConnection = import("./appConnection").AppConnection;
-export const AppConnection: typeof import("./appConnection").AppConnection = null as any;
-utilities.lazyLoad(exports, ["AppConnection"], () => require("./appConnection"));
-
-export { AppConnectorArgs, AppConnectorState } from "./appConnector";
-export type AppConnector = import("./appConnector").AppConnector;
-export const AppConnector: typeof import("./appConnector").AppConnector = null as any;
-utilities.lazyLoad(exports, ["AppConnector"], () => require("./appConnector"));
-
-export { AppGatewayArgs, AppGatewayState } from "./appGateway";
-export type AppGateway = import("./appGateway").AppGateway;
-export const AppGateway: typeof import("./appGateway").AppGateway = null as any;
-utilities.lazyLoad(exports, ["AppGateway"], () => require("./appGateway"));
-
-export { GetAppConnectionArgs, GetAppConnectionResult, GetAppConnectionOutputArgs } from "./getAppConnection";
-export const getAppConnection: typeof import("./getAppConnection").getAppConnection = null as any;
-export const getAppConnectionOutput: typeof import("./getAppConnection").getAppConnectionOutput = null as any;
-utilities.lazyLoad(exports, ["getAppConnection","getAppConnectionOutput"], () => require("./getAppConnection"));
-
-export { GetAppConnectorArgs, GetAppConnectorResult, GetAppConnectorOutputArgs } from "./getAppConnector";
-export const getAppConnector: typeof import("./getAppConnector").getAppConnector = null as any;
-export const getAppConnectorOutput: typeof import("./getAppConnector").getAppConnectorOutput = null as any;
-utilities.lazyLoad(exports, ["getAppConnector","getAppConnectorOutput"], () => require("./getAppConnector"));
-
-export { GetAppGatewayArgs, GetAppGatewayResult, GetAppGatewayOutputArgs } from "./getAppGateway";
-export const getAppGateway: typeof import("./getAppGateway").getAppGateway = null as any;
-export const getAppGatewayOutput: typeof import("./getAppGateway").getAppGatewayOutput = null as any;
-utilities.lazyLoad(exports, ["getAppGateway","getAppGatewayOutput"], () => require("./getAppGateway"));
-
 export { GetSecurityGatewayArgs, GetSecurityGatewayResult, GetSecurityGatewayOutputArgs } from "./getSecurityGateway";
 export const getSecurityGateway: typeof import("./getSecurityGateway").getSecurityGateway = null as any;
 export const getSecurityGatewayOutput: typeof import("./getSecurityGateway").getSecurityGatewayOutput = null as any;
@@ -95,12 +65,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp:beyondcorp/appConnection:AppConnection":
-                return new AppConnection(name, <any>undefined, { urn })
-            case "gcp:beyondcorp/appConnector:AppConnector":
-                return new AppConnector(name, <any>undefined, { urn })
-            case "gcp:beyondcorp/appGateway:AppGateway":
-                return new AppGateway(name, <any>undefined, { urn })
             case "gcp:beyondcorp/securityGateway:SecurityGateway":
                 return new SecurityGateway(name, <any>undefined, { urn })
             case "gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication":
@@ -122,9 +86,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnection", _module)
-pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnector", _module)
-pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGatewayApplication", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGatewayApplicationIamBinding", _module)

@@ -4,9 +4,10 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders;
+import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,7 +19,7 @@ public final class WorkerPoolTemplateContainerStartupProbeHttpGet {
      * Structure is documented below.
      * 
      */
-    private @Nullable WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders httpHeaders;
+    private @Nullable List<WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders;
     /**
      * @return Optional. Path to access on the HTTP server. Defaults to &#39;/&#39;.
      * 
@@ -36,8 +37,8 @@ public final class WorkerPoolTemplateContainerStartupProbeHttpGet {
      * Structure is documented below.
      * 
      */
-    public Optional<WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders> httpHeaders() {
-        return Optional.ofNullable(this.httpHeaders);
+    public List<WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders() {
+        return this.httpHeaders == null ? List.of() : this.httpHeaders;
     }
     /**
      * @return Optional. Path to access on the HTTP server. Defaults to &#39;/&#39;.
@@ -63,7 +64,7 @@ public final class WorkerPoolTemplateContainerStartupProbeHttpGet {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders httpHeaders;
+        private @Nullable List<WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders;
         private @Nullable String path;
         private @Nullable Integer port;
         public Builder() {}
@@ -75,10 +76,13 @@ public final class WorkerPoolTemplateContainerStartupProbeHttpGet {
         }
 
         @CustomType.Setter
-        public Builder httpHeaders(@Nullable WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders httpHeaders) {
+        public Builder httpHeaders(@Nullable List<WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders) {
 
             this.httpHeaders = httpHeaders;
             return this;
+        }
+        public Builder httpHeaders(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader... httpHeaders) {
+            return httpHeaders(List.of(httpHeaders));
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {

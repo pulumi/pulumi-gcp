@@ -17,11 +17,21 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// If set, the latest DataScan job result will be published to Knowledge Catalog.
         /// </summary>
         public readonly bool? CatalogPublishingEnabled;
+        /// <summary>
+        /// The SQL dialect to use in the generated SQL queries.
+        /// If not specified, the default dialect is Google SQL.
+        /// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+        /// </summary>
+        public readonly string? SqlDialect;
 
         [OutputConstructor]
-        private DatascanDataDocumentationSpec(bool? catalogPublishingEnabled)
+        private DatascanDataDocumentationSpec(
+            bool? catalogPublishingEnabled,
+
+            string? sqlDialect)
         {
             CatalogPublishingEnabled = catalogPublishingEnabled;
+            SqlDialect = sqlDialect;
         }
     }
 }

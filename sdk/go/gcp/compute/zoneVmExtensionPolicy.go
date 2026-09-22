@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewZoneVmExtensionPolicy(ctx, "ops_agent_policy", &compute.ZoneVmExtensionPolicyArgs{
-//				Name: pulumi.String("zonal-ops-agent-vme-policy-_40289"),
+//				Name: pulumi.String("zonal-ops-agent-vme-policy-_33395"),
 //				Zone: pulumi.String("us-central1-a"),
 //				ExtensionPolicies: compute.ZoneVmExtensionPolicyExtensionPolicyArray{
 //					&compute.ZoneVmExtensionPolicyExtensionPolicyArgs{

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:networkmanagement/connectivityTest:ConnectivityTest":
 		r = &ConnectivityTest{}
+	case "gcp:networkmanagement/networkMonitoringProvider:NetworkMonitoringProvider":
+		r = &NetworkMonitoringProvider{}
 	case "gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig":
 		r = &OrganizationVpcFlowLogsConfig{}
 	case "gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkmanagement/connectivityTest",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkmanagement/networkMonitoringProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

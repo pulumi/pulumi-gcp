@@ -75,6 +75,8 @@ __all__ = [
     'FleetDefaultClusterConfig',
     'FleetDefaultClusterConfigBinaryAuthorizationConfig',
     'FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding',
+    'FleetDefaultClusterConfigCompliancePostureConfig',
+    'FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard',
     'FleetDefaultClusterConfigSecurityPostureConfig',
     'FleetState',
     'MembershipAuthority',
@@ -3385,6 +3387,8 @@ class FleetDefaultClusterConfig(dict):
         suggest = None
         if key == "binaryAuthorizationConfig":
             suggest = "binary_authorization_config"
+        elif key == "compliancePostureConfig":
+            suggest = "compliance_posture_config"
         elif key == "securityPostureConfig":
             suggest = "security_posture_config"
 
@@ -3401,15 +3405,20 @@ class FleetDefaultClusterConfig(dict):
 
     def __init__(__self__, *,
                  binary_authorization_config: Optional['outputs.FleetDefaultClusterConfigBinaryAuthorizationConfig'] = None,
+                 compliance_posture_config: Optional['outputs.FleetDefaultClusterConfigCompliancePostureConfig'] = None,
                  security_posture_config: Optional['outputs.FleetDefaultClusterConfigSecurityPostureConfig'] = None):
         """
         :param 'FleetDefaultClusterConfigBinaryAuthorizationConfigArgs' binary_authorization_config: Enable/Disable binary authorization features for the cluster.
+               Structure is documented below.
+        :param 'FleetDefaultClusterConfigCompliancePostureConfigArgs' compliance_posture_config: Enable/Disable Compliance Posture features for the cluster.
                Structure is documented below.
         :param 'FleetDefaultClusterConfigSecurityPostureConfigArgs' security_posture_config: Enable/Disable Security Posture features for the cluster.
                Structure is documented below.
         """
         if binary_authorization_config is not None:
             pulumi.set(__self__, "binary_authorization_config", binary_authorization_config)
+        if compliance_posture_config is not None:
+            pulumi.set(__self__, "compliance_posture_config", compliance_posture_config)
         if security_posture_config is not None:
             pulumi.set(__self__, "security_posture_config", security_posture_config)
 
@@ -3421,6 +3430,15 @@ class FleetDefaultClusterConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization_config")
+
+    @_builtins.property
+    @pulumi.getter(name="compliancePostureConfig")
+    def compliance_posture_config(self) -> Optional['outputs.FleetDefaultClusterConfigCompliancePostureConfig']:
+        """
+        Enable/Disable Compliance Posture features for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "compliance_posture_config")
 
     @_builtins.property
     @pulumi.getter(name="securityPostureConfig")
@@ -3507,6 +3525,77 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding(dict):
         `projects/{project_number}/platforms/gke/policies/{policy_id}`.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FleetDefaultClusterConfigCompliancePostureConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceStandards":
+            suggest = "compliance_standards"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetDefaultClusterConfigCompliancePostureConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetDefaultClusterConfigCompliancePostureConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetDefaultClusterConfigCompliancePostureConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence['outputs.FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard']] = None,
+                 mode: Optional[_builtins.str] = None):
+        """
+        :param Sequence['FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs'] compliance_standards: List of enabled compliance standards.
+               Structure is documented below.
+        :param _builtins.str mode: Sets which mode to use for Compliance Posture features.
+               Possible values are: `DISABLED`, `ENABLED`.
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence['outputs.FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard']]:
+        """
+        List of enabled compliance standards.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Sets which mode to use for Compliance Posture features.
+        Possible values are: `DISABLED`, `ENABLED`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard(dict):
+    def __init__(__self__, *,
+                 standard: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str standard: Name of the compliance standard.
+        """
+        if standard is not None:
+            pulumi.set(__self__, "standard", standard)
+
+    @_builtins.property
+    @pulumi.getter
+    def standard(self) -> Optional[_builtins.str]:
+        """
+        Name of the compliance standard.
+        """
+        return pulumi.get(self, "standard")
 
 
 @pulumi.output_type

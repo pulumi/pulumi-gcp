@@ -8,15 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Regional Parameter is a logical regional parameter.
+// A Regional Parameter is a configuration value stored in a specific region
+// through Parameter Manager. Regional parameters support labels, encryption
+// via Cloud KMS, and resource manager tags for fine-grained access control,
+// organization, and regional compliance.
 //
 // To get more information about RegionalParameter, see:
 //
 // * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+// * How-to Guides
+//   - [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 //
 // ## Example Usage
 //
@@ -27,7 +32,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -53,7 +58,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,7 +85,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -113,8 +118,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -129,6 +134,35 @@ import (
 //				ParameterId: pulumi.String("regional_parameter"),
 //				Location:    pulumi.String("us-central1"),
 //				KmsKey:      pulumi.String("kms-key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Regional Parameter With Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := parametermanager.NewRegionalParameter(ctx, "regional-parameter-with-tags", &parametermanager.RegionalParameterArgs{
+//				Location:    pulumi.String("us-central1"),
+//				ParameterId: pulumi.String("regional_parameter"),
+//				Tags: pulumi.StringMap{
+//					"tagKeys/123456": pulumi.String("tagValues/789012"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -203,6 +237,10 @@ type RegionalParameter struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The time at which the regional Parameter was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -294,6 +332,10 @@ type regionalParameterState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The time at which the regional Parameter was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -345,6 +387,10 @@ type RegionalParameterState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The time at which the regional Parameter was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -387,6 +433,10 @@ type regionalParameterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RegionalParameter resource.
@@ -424,6 +474,10 @@ type RegionalParameterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 }
 
 func (RegionalParameterArgs) ElementType() reflect.Type {
@@ -594,6 +648,13 @@ func (o RegionalParameterOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o RegionalParameterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionalParameter) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o RegionalParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionalParameter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The time at which the regional Parameter was updated.

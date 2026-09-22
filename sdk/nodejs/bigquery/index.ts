@@ -45,6 +45,11 @@ export type DataTransferConfig = import("./dataTransferConfig").DataTransferConf
 export const DataTransferConfig: typeof import("./dataTransferConfig").DataTransferConfig = null as any;
 utilities.lazyLoad(exports, ["DataTransferConfig"], () => require("./dataTransferConfig"));
 
+export { DataTransferDataSourceEnrollmentArgs, DataTransferDataSourceEnrollmentState } from "./dataTransferDataSourceEnrollment";
+export type DataTransferDataSourceEnrollment = import("./dataTransferDataSourceEnrollment").DataTransferDataSourceEnrollment;
+export const DataTransferDataSourceEnrollment: typeof import("./dataTransferDataSourceEnrollment").DataTransferDataSourceEnrollment = null as any;
+utilities.lazyLoad(exports, ["DataTransferDataSourceEnrollment"], () => require("./dataTransferDataSourceEnrollment"));
+
 export { Datapolicyv2DataPolicyArgs, Datapolicyv2DataPolicyState } from "./datapolicyv2DataPolicy";
 export type Datapolicyv2DataPolicy = import("./datapolicyv2DataPolicy").Datapolicyv2DataPolicy;
 export const Datapolicyv2DataPolicy: typeof import("./datapolicyv2DataPolicy").Datapolicyv2DataPolicy = null as any;
@@ -226,6 +231,8 @@ const _module = {
                 return new ConnectionIamPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/dataTransferConfig:DataTransferConfig":
                 return new DataTransferConfig(name, <any>undefined, { urn })
+            case "gcp:bigquery/dataTransferDataSourceEnrollment:DataTransferDataSourceEnrollment":
+                return new DataTransferDataSourceEnrollment(name, <any>undefined, { urn })
             case "gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy":
                 return new Datapolicyv2DataPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding":
@@ -283,6 +290,7 @@ pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamBinding", _m
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/dataTransferConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/dataTransferDataSourceEnrollment", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/datapolicyv2DataPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/datapolicyv2DataPolicyIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/datapolicyv2DataPolicyIamMember", _module)

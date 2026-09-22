@@ -158,6 +158,13 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly ImmutableArray<Outputs.AppVersionSnapshotAgentToolset> Toolsets;
         /// <summary>
         /// (Output)
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppVersionSnapshotAgentTransferRule> TransferRules;
+        /// <summary>
+        /// (Output)
         /// Timestamp when the toolset was last updated.
         /// </summary>
         public readonly string? UpdateTime;
@@ -204,6 +211,8 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             ImmutableArray<Outputs.AppVersionSnapshotAgentToolset> toolsets,
 
+            ImmutableArray<Outputs.AppVersionSnapshotAgentTransferRule> transferRules,
+
             string? updateTime)
         {
             AfterAgentCallbacks = afterAgentCallbacks;
@@ -226,6 +235,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             RemoteDialogflowAgents = remoteDialogflowAgents;
             Tools = tools;
             Toolsets = toolsets;
+            TransferRules = transferRules;
             UpdateTime = updateTime;
         }
     }

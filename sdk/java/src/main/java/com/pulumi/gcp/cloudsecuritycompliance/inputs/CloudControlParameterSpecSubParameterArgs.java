@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubParameterDefaultValueArgs;
+import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubParameterSubParameterArgs;
 import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubParameterSubstitutionRuleArgs;
 import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecSubParameterValidationArgs;
 import java.lang.Boolean;
@@ -99,6 +100,23 @@ public final class CloudControlParameterSpecSubParameterArgs extends com.pulumi.
     }
 
     /**
+     * The parameter spec of the cloud control.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="subParameters")
+    private @Nullable Output<List<CloudControlParameterSpecSubParameterSubParameterArgs>> subParameters;
+
+    /**
+     * @return The parameter spec of the cloud control.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CloudControlParameterSpecSubParameterSubParameterArgs>>> subParameters() {
+        return Optional.ofNullable(this.subParameters);
+    }
+
+    /**
      * List of parameter substitutions.
      * Structure is documented below.
      * 
@@ -167,6 +185,7 @@ public final class CloudControlParameterSpecSubParameterArgs extends com.pulumi.
         this.displayName = $.displayName;
         this.isRequired = $.isRequired;
         this.name = $.name;
+        this.subParameters = $.subParameters;
         this.substitutionRules = $.substitutionRules;
         this.validation = $.validation;
         this.valueType = $.valueType;
@@ -295,6 +314,40 @@ public final class CloudControlParameterSpecSubParameterArgs extends com.pulumi.
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param subParameters The parameter spec of the cloud control.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subParameters(@Nullable Output<List<CloudControlParameterSpecSubParameterSubParameterArgs>> subParameters) {
+            $.subParameters = subParameters;
+            return this;
+        }
+
+        /**
+         * @param subParameters The parameter spec of the cloud control.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subParameters(List<CloudControlParameterSpecSubParameterSubParameterArgs> subParameters) {
+            return subParameters(Output.of(subParameters));
+        }
+
+        /**
+         * @param subParameters The parameter spec of the cloud control.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subParameters(CloudControlParameterSpecSubParameterSubParameterArgs... subParameters) {
+            return subParameters(List.of(subParameters));
         }
 
         /**

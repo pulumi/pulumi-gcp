@@ -20,6 +20,16 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<double>? OverallToolInvocationCorrectnessThreshold { get; set; }
 
         /// <summary>
+        /// The semantic similarity channel to use for evaluation.
+        /// Possible values:
+        /// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+        /// TEXT
+        /// AUDIO
+        /// </summary>
+        [Input("semanticSimilarityChannel")]
+        public Input<string>? SemanticSimilarityChannel { get; set; }
+
+        /// <summary>
         /// The success threshold for semantic similarity. Must be an integer
         /// between 0 and 4. Default is &gt;= 3.
         /// </summary>

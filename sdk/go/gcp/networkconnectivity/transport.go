@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -43,14 +43,14 @@ import (
 //				return err
 //			}
 //			primary_network, err := compute.NewNetwork(ctx, "primary-network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-my-vpc-network_14939"),
+//				Name:                  pulumi.String("tf-test-my-vpc-network_91207"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkconnectivity.NewTransport(ctx, "primary", &networkconnectivity.TransportArgs{
-//				Name:            pulumi.String("tf-test-basic-transport_59865"),
+//				Name:            pulumi.String("tf-test-basic-transport_14939"),
 //				Region:          pulumi.String("us-east4"),
 //				Description:     pulumi.String("A sample transport"),
 //				RemoteProfile:   pulumi.Sprintf("https://networkconnectivity.googleapis.com/v1/%v/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.Id),

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         var supportTopic = new Topic("supportTopic", TopicArgs.builder()
  *             .project("my-project-name")
- *             .name("test-topic-_88722")
+ *             .name("test-topic-_39249")
  *             .build());
  * 
  *         var supportPublisher = new TopicIAMMember("supportPublisher", TopicIAMMemberArgs.builder()
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  * 
  *         var supportTopic2 = new Topic("supportTopic2", TopicArgs.builder()
  *             .project("my-project-name")
- *             .name("test-topic-2-_39249")
+ *             .name("test-topic-2-_74391")
  *             .build());
  * 
  *         var supportPublisher2 = new TopicIAMMember("supportPublisher2", TopicIAMMemberArgs.builder()

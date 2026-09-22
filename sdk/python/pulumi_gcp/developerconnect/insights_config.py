@@ -606,7 +606,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_26240",
+            project_id="dci-tf-_35711",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -666,10 +666,16 @@ class InsightsConfig(pulumi.CustomResource):
             service="developerconnect.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[project]))
         # Wait delay after enabling APIs and granting permissions
+        devconnect_apphub_viewer = gcp.projects.IAMMember("devconnect_apphub_viewer",
+            project=project.project_id,
+            role="roles/apphub.viewer",
+            member=project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-devconnect.iam.gserviceaccount.com"),
+            opts = pulumi.ResourceOptions(depends_on=[devconnect_api]))
         wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[
                 apphub_permissions,
                 insights_agent,
+                devconnect_apphub_viewer,
                 apphub_api_service,
                 containeranalysis_api,
                 containerscanning_api,
@@ -683,7 +689,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_35711",
+            application_id="tf-test-example-application_85072",
             scope={
                 "type": "REGIONAL",
             },
@@ -691,7 +697,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic-apphub-_85072",
+            insights_config_id="tf-test-ic-apphub-_35762",
             project=project.project_id,
             annotations={},
             labels={},
@@ -721,7 +727,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_35762",
+            project_id="dci-tf-_24469",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -798,7 +804,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
             location="us-central1",
-            insights_config_id="tf-test-ic-projects-_24469",
+            insights_config_id="tf-test-ic-projects-_79580",
             project=project.project_id,
             annotations={},
             labels={},
@@ -882,7 +888,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_26240",
+            project_id="dci-tf-_35711",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -942,10 +948,16 @@ class InsightsConfig(pulumi.CustomResource):
             service="developerconnect.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[project]))
         # Wait delay after enabling APIs and granting permissions
+        devconnect_apphub_viewer = gcp.projects.IAMMember("devconnect_apphub_viewer",
+            project=project.project_id,
+            role="roles/apphub.viewer",
+            member=project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-devconnect.iam.gserviceaccount.com"),
+            opts = pulumi.ResourceOptions(depends_on=[devconnect_api]))
         wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[
                 apphub_permissions,
                 insights_agent,
+                devconnect_apphub_viewer,
                 apphub_api_service,
                 containeranalysis_api,
                 containerscanning_api,
@@ -959,7 +971,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_35711",
+            application_id="tf-test-example-application_85072",
             scope={
                 "type": "REGIONAL",
             },
@@ -967,7 +979,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic-apphub-_85072",
+            insights_config_id="tf-test-ic-apphub-_35762",
             project=project.project_id,
             annotations={},
             labels={},
@@ -997,7 +1009,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_35762",
+            project_id="dci-tf-_24469",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -1074,7 +1086,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
             location="us-central1",
-            insights_config_id="tf-test-ic-projects-_24469",
+            insights_config_id="tf-test-ic-projects-_79580",
             project=project.project_id,
             annotations={},
             labels={},

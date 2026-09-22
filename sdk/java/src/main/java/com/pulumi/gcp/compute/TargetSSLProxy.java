@@ -86,6 +86,7 @@ import javax.annotation.Nullable;
  *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .protocol("SSL")
+ *             .loadBalancingScheme("EXTERNAL")
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 

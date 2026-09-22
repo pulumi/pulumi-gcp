@@ -91,6 +91,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<bool?> FreeTrial { get; private set; } = null!;
 
         /// <summary>
+        /// Timestamp of the most recent user-initiated update.
+        /// </summary>
+        [Output("lastUserUpdateTime")]
+        public Output<string?> LastUserUpdateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The unique id of the license config.
         /// </summary>
         [Output("licenseConfigId")]
@@ -210,6 +216,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<bool>? FreeTrial { get; set; }
 
         /// <summary>
+        /// Timestamp of the most recent user-initiated update.
+        /// </summary>
+        [Input("lastUserUpdateTime")]
+        public Input<string>? LastUserUpdateTime { get; set; }
+
+        /// <summary>
         /// The unique id of the license config.
         /// </summary>
         [Input("licenseConfigId", required: true)]
@@ -282,6 +294,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("freeTrial")]
         public Input<bool>? FreeTrial { get; set; }
+
+        /// <summary>
+        /// Timestamp of the most recent user-initiated update.
+        /// </summary>
+        [Input("lastUserUpdateTime")]
+        public Input<string>? LastUserUpdateTime { get; set; }
 
         /// <summary>
         /// The unique id of the license config.

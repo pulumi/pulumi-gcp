@@ -6724,6 +6724,18 @@ export namespace appengine {
         instances: pulumi.Input<number>;
     }
 
+    export interface StandardAppVersionVpcAccess {
+        /**
+         * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+         */
+        egressSetting?: pulumi.Input<string | undefined>;
+        /**
+         * List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+         * Structure is documented below.
+         */
+        networkInterfaces?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionVpcAccessNetworkInterface>[] | undefined>;
+    }
+
     export interface StandardAppVersionVpcAccessConnector {
         /**
          * The egress setting for the connector, controlling what traffic is diverted through it.
@@ -6733,6 +6745,21 @@ export namespace appengine {
          * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionVpcAccessNetworkInterface {
+        /**
+         * The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+         */
+        network?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+         */
+        subnetwork?: pulumi.Input<string | undefined>;
+        /**
+         * Network tags applied to this App Engine version.
+         */
+        tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 }
 
@@ -8917,66 +8944,6 @@ export namespace backupdisasterrecovery {
 }
 
 export namespace beyondcorp {
-    export interface AppConnectionApplicationEndpoint {
-        /**
-         * Hostname or IP address of the remote application endpoint.
-         */
-        host: pulumi.Input<string>;
-        /**
-         * Port of the remote application endpoint.
-         */
-        port: pulumi.Input<number>;
-    }
-
-    export interface AppConnectionGateway {
-        /**
-         * AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
-         */
-        appGateway: pulumi.Input<string>;
-        /**
-         * (Output)
-         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
-         */
-        ingressPort?: pulumi.Input<number | undefined>;
-        /**
-         * The type of hosting used by the gateway. Refer to
-         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-         * for a list of possible values.
-         */
-        type?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Server-defined URI for this resource.
-         */
-        uri?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AppConnectorPrincipalInfo {
-        /**
-         * ServiceAccount represents a GCP service account.
-         * Structure is documented below.
-         */
-        serviceAccount: pulumi.Input<inputs.beyondcorp.AppConnectorPrincipalInfoServiceAccount>;
-    }
-
-    export interface AppConnectorPrincipalInfoServiceAccount {
-        /**
-         * Email address of the service account.
-         */
-        email: pulumi.Input<string>;
-    }
-
-    export interface AppGatewayAllocatedConnection {
-        /**
-         * The ingress port of an allocated connection.
-         */
-        ingressPort?: pulumi.Input<number | undefined>;
-        /**
-         * The PSC uri of an allocated connection.
-         */
-        pscUri?: pulumi.Input<string | undefined>;
-    }
-
     export interface SecurityGatewayApplicationEndpointMatcher {
         /**
          * Required. Hostname of the application.
@@ -10261,9 +10228,82 @@ export namespace bigquery {
          */
         secretAccessKeyWo?: pulumi.Input<string | undefined>;
         /**
-         * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          */
-        secretAccessKeyWoVersion?: pulumi.Input<number | undefined>;
+        secretAccessKeyWoVersion?: pulumi.Input<string | undefined>;
+    }
+
+    export interface DataTransferDataSourceEnrollmentParameter {
+        /**
+         * (Output)
+         * All possible values for parameters with fixed list of options.
+         */
+        allowedValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * (Output)
+         * If true, it should not be used in new transfers, and it should not be visible to users.
+         */
+        deprecated?: pulumi.Input<boolean | undefined>;
+        /**
+         * (Output)
+         * Parameter description.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * User friendly parameter name.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+         */
+        immutable?: pulumi.Input<boolean | undefined>;
+        /**
+         * (Output)
+         * For list parameters, the max size of the list.
+         */
+        maxListSize?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * For integer and double values specifies maximum allowed value.
+         */
+        maxValue?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * For integer and double values specifies minimum allowed value.
+         */
+        minValue?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * Parameter identifier.
+         */
+        paramId?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Is parameter required.
+         */
+        required?: pulumi.Input<boolean | undefined>;
+        /**
+         * (Output)
+         * Parameter type.
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Description of the requirements for this field, in case the user input does not fulfill the regex.
+         */
+        validationDescription?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * URL to a help document to further explain the naming requirements.
+         */
+        validationHelpUrl?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Regular expression which can be used for parameter validation.
+         */
+        validationRegex?: pulumi.Input<string | undefined>;
     }
 
     export interface Datapolicyv2DataPolicyDataGovernanceTag {
@@ -12360,12 +12400,343 @@ export namespace bigqueryanalyticshub {
         projectId: pulumi.Input<string>;
     }
 
+    export interface ListingSubscriptionDestinationPubsubSubscription {
+        /**
+         * Destination Pub/Sub subscription resource.
+         * Structure is documented below.
+         */
+        pubsubSubscription: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription {
+        /**
+         * The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+         * acknowledge receipt before resending the message. In the interval after the message is delivered
+         * and before it is acknowledged, it is considered to be outstanding. During that time period, the
+         * message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+         * used as the initial value for the ack deadline. To override this value for a given message, call
+         * `ModifyAckDeadline` with the corresponding `ackId` if using non-streaming pull or send the
+         * `ackId` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+         * deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+         * seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+         * delivery, this value is also used to set the request timeout for the call to the push endpoint.
+         * If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+         * the message.
+         */
+        ackDeadlineSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        bigqueryConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig | undefined>;
+        /**
+         * If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        cloudStorageConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig | undefined>;
+        /**
+         * A policy that specifies the conditions for dead lettering messages in this subscription. If
+         * `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+         * with this subscriptions's parent project (i.e.,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+         * Acknowledge() messages on this subscription.
+         * Structure is documented below.
+         */
+        deadLetterPolicy?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy | undefined>;
+        /**
+         * Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+         * receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+         * requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+         * to the endpoint will not be made.
+         */
+        detached?: pulumi.Input<boolean | undefined>;
+        /**
+         * If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+         * value of `messageId` on this subscription: The message sent to a subscriber is guaranteed not
+         * to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+         * not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+         * message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+         * a publisher client. These copies are considered distinct by Pub/Sub and have distinct `messageId`
+         * values.
+         */
+        enableExactlyOnceDelivery?: pulumi.Input<boolean | undefined>;
+        /**
+         * If true, messages published with the same `orderingKey` in `PubsubMessage`
+         * will be delivered to the subscribers in the order in which they are received
+         * by the Pub/Sub system. Otherwise, they may be delivered in any order.
+         */
+        enableMessageOrdering?: pulumi.Input<boolean | undefined>;
+        /**
+         * A policy that specifies the conditions for this subscription's expiration. A subscription is
+         * considered active as long as any connected subscriber is successfully consuming messages from
+         * the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+         * set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+         * `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+         * is not set, the subscription never expires.
+         * Structure is documented below.
+         */
+        expirationPolicy?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy | undefined>;
+        /**
+         * An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+         * whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+         * no messages are filtered out.
+         */
+        filter?: pulumi.Input<string | undefined>;
+        /**
+         * See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+         * message is published. If `retainAckedMessages` is true, then this also configures the retention
+         * of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+         * to 7 days. Cannot be more than 31 days or less than 10 minutes.
+         */
+        messageRetentionDuration?: pulumi.Input<string | undefined>;
+        /**
+         * Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * If push delivery is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        pushConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig | undefined>;
+        /**
+         * Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+         * the subscription's backlog, even if they are acknowledged, until they fall out of the
+         * `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+         * in the past to replay previously-acknowledged messages.
+         */
+        retainAckedMessages?: pulumi.Input<boolean | undefined>;
+        /**
+         * A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+         * the default retry policy is applied. This generally implies that messages will be retried as soon
+         * as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+         * deadline exceeded events for a given message.
+         * Structure is documented below.
+         */
+        retryPolicy?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig {
+        /**
+         * When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+         * not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+         * must be kept in sync and any messages with extra fields are not written and remain in the
+         * subscription's backlog.
+         */
+        dropUnknownFields?: pulumi.Input<boolean | undefined>;
+        /**
+         * The service account to use to write to BigQuery. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub service agent,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the table to which to write data, of the form
+         * {projectId}.{datasetId}.{tableId}
+         */
+        table?: pulumi.Input<string | undefined>;
+        /**
+         * When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+         * `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+         */
+        useTableSchema?: pulumi.Input<boolean | undefined>;
+        /**
+         * When true, use the topic's schema as the columns to write to in BigQuery,
+         * if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+         */
+        useTopicSchema?: pulumi.Input<boolean | undefined>;
+        /**
+         * When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+         * to additional columns in the table. The subscription name, message_id, and publishTime fields
+         * are put in their own columns while all other message properties (other than data) are written
+         * to a JSON object in the attributes column.
+         */
+        writeMetadata?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig {
+        /**
+         * If set, message data will be written to Cloud Storage in Avro format.
+         * Structure is documented below.
+         */
+        avroConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig | undefined>;
+        /**
+         * User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+         * The bucket name must be without any prefix like "gs://". See the
+         * [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+         */
+        bucket?: pulumi.Input<string | undefined>;
+        /**
+         * User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+         * See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+         */
+        filenameDatetimeFormat?: pulumi.Input<string | undefined>;
+        /**
+         * User-provided prefix for Cloud Storage filename. See the
+         * [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+         */
+        filenamePrefix?: pulumi.Input<string | undefined>;
+        /**
+         * User-provided suffix for Cloud Storage filename. See the
+         * [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+         * Must not end in "/".
+         */
+        filenameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+         * Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+         * than the limit.
+         */
+        maxBytes?: pulumi.Input<string | undefined>;
+        /**
+         * The maximum duration that can elapse before a new Cloud Storage file is created.
+         * Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+         * acknowledgement deadline.
+         */
+        maxDuration?: pulumi.Input<string | undefined>;
+        /**
+         * The maximum number of messages that can be written to a Cloud Storage file before a new file
+         * is created. Min 1000 messages.
+         */
+        maxMessages?: pulumi.Input<string | undefined>;
+        /**
+         * The service account to use to write to Cloud Storage. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub service agent,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig {
+        /**
+         * When true, the output Cloud Storage file will be serialized using
+         * the topic schema, if it exists.
+         */
+        useTopicSchema?: pulumi.Input<boolean | undefined>;
+        /**
+         * When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+         * as additional fields in the output. The subscription name, message_id, and publishTime fields
+         * are put in their own fields while all other message properties other than data (for example,
+         * an ordering_key, if present) are added as entries in the attributes map.
+         */
+        writeMetadata?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy {
+        /**
+         * The name of the topic to which dead letter messages should be published. Format is
+         * `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+         * subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+         * must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+         * Users should ensure that there is a subscription attached to this topic since messages published to
+         * a topic with no subscriptions are lost.
+         */
+        deadLetterTopic?: pulumi.Input<string | undefined>;
+        /**
+         * The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+         * The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+         * the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+         * ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+         * ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+         * default value of 5 is used.
+         */
+        maxDeliveryAttempts?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy {
+        /**
+         * Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+         * is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+         * associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+         * the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+         */
+        ttl?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig {
+        /**
+         * Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+         * The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+         * pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+         * the shape of the pushed message (i.e., its fields and metadata). If not present during the
+         * `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+         * If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+         * will always return a valid version, even if the subscription was created without this attribute.
+         * The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+         * defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+         */
+        attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * When set, the payload to the push endpoint is not wrapped.
+         * Structure is documented below.
+         */
+        noWrapper?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper | undefined>;
+        /**
+         * If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+         * Authorization header in the HTTP request for every pushed message.
+         * Structure is documented below.
+         */
+        oidcToken?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken | undefined>;
+        /**
+         * A URL locating the endpoint to which messages should be pushed.
+         * For example, a Webhook endpoint might use `https://example.com/push`.
+         */
+        pushEndpoint?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper {
+        /**
+         * When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+         * HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+         */
+        writeMetadata?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. The audience claim identifies the recipients
+         * that the JWT is intended for. The audience value is a single case-sensitive string. Having
+         * multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+         * token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+         * the Push endpoint URL will be used.
+         */
+        audience?: pulumi.Input<string | undefined>;
+        /**
+         * Service account email used for generating the OIDC token. For more information
+         * on setting up authentication, see Push subscriptions.
+         */
+        serviceAccountEmail?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy {
+        /**
+         * The maximum delay between consecutive deliveries of a given message.
+         * Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+         */
+        maximumBackoff?: pulumi.Input<string | undefined>;
+        /**
+         * The minimum delay between consecutive deliveries of a given message.
+         * Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+         */
+        minimumBackoff?: pulumi.Input<string | undefined>;
+    }
+
     export interface ListingSubscriptionLinkedDatasetMap {
         /**
          * (Output)
          * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
          */
         linkedDataset?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         */
+        linkedPubsubSubscription?: pulumi.Input<string | undefined>;
         /**
          * (Output)
          * Output only. Listing for which linked resource is created.
@@ -12383,6 +12754,11 @@ export namespace bigqueryanalyticshub {
          * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
          */
         linkedDataset?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         */
+        linkedPubsubSubscription?: pulumi.Input<string | undefined>;
         /**
          * (Output)
          * Output only. Listing for which linked resource is created.
@@ -15505,6 +15881,12 @@ export namespace ces {
          */
         inputVariableMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session. If unspecified, the default language code of the
+         * Dialogflow agent will be used.
+         */
+        languageCodeVariable?: pulumi.Input<string | undefined>;
+        /**
          * The mapping of the Dialogflow session parameters names to the app
          * variables names to be sent back to the CES agent after the Dialogflow
          * agent execution ends.
@@ -15527,6 +15909,76 @@ export namespace ces {
          * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
          */
         toolset: pulumi.Input<string>;
+    }
+
+    export interface AgentTransferRule {
+        /**
+         * The resource name of the child agent the rule applies to.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+         */
+        childAgent: pulumi.Input<string>;
+        /**
+         * Deterministic transfer rule. When the condition evaluates to true, the
+         * transfer occurs.
+         * Structure is documented below.
+         */
+        deterministicTransfer?: pulumi.Input<inputs.ces.AgentTransferRuleDeterministicTransfer | undefined>;
+        /**
+         * The direction of the transfer.
+         * Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+         */
+        direction: pulumi.Input<string>;
+        /**
+         * A rule that prevents the planner from transferring to the target agent.
+         * Structure is documented below.
+         */
+        disablePlannerTransfer?: pulumi.Input<inputs.ces.AgentTransferRuleDisablePlannerTransfer | undefined>;
+    }
+
+    export interface AgentTransferRuleDeterministicTransfer {
+        /**
+         * A rule that evaluates a session state condition. If the condition
+         * evaluates to true, the transfer occurs.
+         * Structure is documented below.
+         */
+        expressionCondition?: pulumi.Input<inputs.ces.AgentTransferRuleDeterministicTransferExpressionCondition | undefined>;
+        /**
+         * A rule that uses Python code block to evaluate the conditions. If the
+         * condition evaluates to true, the transfer occurs.
+         * Structure is documented below.
+         */
+        pythonCodeCondition?: pulumi.Input<inputs.ces.AgentTransferRuleDeterministicTransferPythonCodeCondition | undefined>;
+    }
+
+    export interface AgentTransferRuleDeterministicTransferExpressionCondition {
+        /**
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression: pulumi.Input<string>;
+    }
+
+    export interface AgentTransferRuleDeterministicTransferPythonCodeCondition {
+        /**
+         * The python code to execute. The function must be named
+         * `shouldTriggerTransferCallback`.
+         */
+        pythonCode: pulumi.Input<string>;
+    }
+
+    export interface AgentTransferRuleDisablePlannerTransfer {
+        /**
+         * If the condition evaluates to true, planner will not be allowed to
+         * transfer to the target agent.
+         * Structure is documented below.
+         */
+        expressionCondition: pulumi.Input<inputs.ces.AgentTransferRuleDisablePlannerTransferExpressionCondition>;
+    }
+
+    export interface AgentTransferRuleDisablePlannerTransferExpressionCondition {
+        /**
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression: pulumi.Input<string>;
     }
 
     export interface AppAudioProcessingConfig {
@@ -15701,6 +16153,11 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfig?: pulumi.Input<inputs.ces.AppDefaultChannelProfileWebWidgetConfig | undefined>;
+        /**
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfig?: pulumi.Input<inputs.ces.AppDefaultChannelProfileWhatsappConfig | undefined>;
     }
 
     export interface AppDefaultChannelProfilePersonaProperty {
@@ -15725,6 +16182,11 @@ export namespace ces {
          */
         modality?: pulumi.Input<string | undefined>;
         /**
+         * The security settings of the web widget.
+         * Structure is documented below.
+         */
+        securitySettings?: pulumi.Input<inputs.ces.AppDefaultChannelProfileWebWidgetConfigSecuritySettings | undefined>;
+        /**
          * The theme of the web widget.
          * Possible values:
          * UNKNOWN_THEME
@@ -15738,12 +16200,125 @@ export namespace ces {
         webWidgetTitle?: pulumi.Input<string | undefined>;
     }
 
+    export interface AppDefaultChannelProfileWebWidgetConfigSecuritySettings {
+        /**
+         * The origins that are allowed to host the web widget. An origin is
+         * defined by RFC 6454. If empty, all origins are allowed.
+         * A maximum of 100 origins is allowed.
+         * Example: "https://example.com"
+         */
+        allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Indicates whether origin check for the web widget is enabled.
+         * If `true`, the web widget will check the origin of the website that
+         * loads the web widget and only allow it to be loaded in the same origin
+         * or any of the allowed origins.
+         */
+        enableOriginCheck?: pulumi.Input<boolean | undefined>;
+        /**
+         * Indicates whether public access to the web widget is enabled.
+         * If `true`, the web widget will be publicly accessible.
+         * If `false`, the web widget must be integrated with your own
+         * authentication and authorization system to return valid credentials for
+         * accessing the CES agent.
+         */
+        enablePublicAccess?: pulumi.Input<boolean | undefined>;
+        /**
+         * Indicates whether reCAPTCHA verification for the web widget is enabled.
+         */
+        enableRecaptcha?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AppDefaultChannelProfileWhatsappConfig {
+        /**
+         * (Output)
+         * The description of the Meta business page or profile.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The fetched Meta business page name.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * The phone number in E.164 format.
+         */
+        phoneNumber?: pulumi.Input<string | undefined>;
+        /**
+         * The Meta phone number ID.
+         */
+        phoneNumberId: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl?: pulumi.Input<string | undefined>;
+        /**
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: pulumi.Input<string>;
+    }
+
+    export interface AppErrorHandlingSettings {
+        /**
+         * Configuration for ending the session in case of system errors (e.g. LLM
+         * errors).
+         * Structure is documented below.
+         */
+        endSessionConfig?: pulumi.Input<inputs.ces.AppErrorHandlingSettingsEndSessionConfig | undefined>;
+        /**
+         * The strategy to use for error handling.
+         * Possible values:
+         * NONE
+         * FALLBACK_RESPONSE
+         * END_SESSION
+         */
+        errorHandlingStrategy?: pulumi.Input<string | undefined>;
+        /**
+         * Configuration for handling fallback responses.
+         * Structure is documented below.
+         */
+        fallbackResponseConfig?: pulumi.Input<inputs.ces.AppErrorHandlingSettingsFallbackResponseConfig | undefined>;
+    }
+
+    export interface AppErrorHandlingSettingsEndSessionConfig {
+        /**
+         * Whether to escalate the session in EndSession. If session is escalated,
+         * metadata in EndSession will contain sessionEscalated = true.
+         */
+        escalateSession?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AppErrorHandlingSettingsFallbackResponseConfig {
+        /**
+         * The fallback messages in case of system errors (e.g. LLM errors),
+         * mapped by supported language code
+         * (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+         */
+        customFallbackMessages?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * The maximum number of fallback attempts to make before the agent
+         * emitting EndSession Signal.
+         */
+        maxFallbackAttempts?: pulumi.Input<number | undefined>;
+    }
+
     export interface AppEvaluationMetricsThresholds {
         /**
          * Settings for golden evaluations.
          * Structure is documented below.
          */
         goldenEvaluationMetricsThresholds?: pulumi.Input<inputs.ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds | undefined>;
+        /**
+         * The hallucination metric behavior for golden evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        goldenHallucinationMetricBehavior?: pulumi.Input<string | undefined>;
+        /**
+         * The hallucination metric behavior for scenario evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        scenarioHallucinationMetricBehavior?: pulumi.Input<string | undefined>;
     }
 
     export interface AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
@@ -15752,6 +16327,13 @@ export namespace ces {
          * Structure is documented below.
          */
         expectationLevelMetricsThresholds?: pulumi.Input<inputs.ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds | undefined>;
+        /**
+         * The tool matching settings. An extra tool call is a tool call that is
+         * present in the execution but does not match any tool call in the golden
+         * expectation.
+         * Structure is documented below.
+         */
+        toolMatchingSettings?: pulumi.Input<inputs.ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings | undefined>;
         /**
          * Turn level metrics thresholds.
          * Structure is documented below.
@@ -15767,12 +16349,30 @@ export namespace ces {
         toolInvocationParameterCorrectnessThreshold?: pulumi.Input<number | undefined>;
     }
 
+    export interface AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings {
+        /**
+         * Defines the behavior when an extra tool call is encountered. An extra
+         * tool call is a tool call that is present in the execution but does
+         * not match any tool call in the golden expectation.
+         * Possible values are: `FAIL`, `ALLOW`.
+         */
+        extraToolCallBehavior?: pulumi.Input<string | undefined>;
+    }
+
     export interface AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds {
         /**
          * The success threshold for overall tool invocation correctness. Must be
          * a float between 0 and 1. Default is 1.0.
          */
         overallToolInvocationCorrectnessThreshold?: pulumi.Input<number | undefined>;
+        /**
+         * The semantic similarity channel to use for evaluation.
+         * Possible values:
+         * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+         * TEXT
+         * AUDIO
+         */
+        semanticSimilarityChannel?: pulumi.Input<string | undefined>;
         /**
          * The success threshold for semantic similarity. Must be an integer
          * between 0 and 4. Default is >= 3.
@@ -15829,6 +16429,12 @@ export namespace ces {
          * Structure is documented below.
          */
         conversationLoggingSettings?: pulumi.Input<inputs.ces.AppLoggingSettingsConversationLoggingSettings | undefined>;
+        /**
+         * Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         */
+        metricAnalysisSettings?: pulumi.Input<inputs.ces.AppLoggingSettingsMetricAnalysisSettings | undefined>;
         /**
          * Configuration to instruct how sensitive data should be handled.
          * Structure is documented below.
@@ -15890,6 +16496,20 @@ export namespace ces {
          * Whether to disable conversation logging for the sessions.
          */
         disableConversationLogging?: pulumi.Input<boolean | undefined>;
+        /**
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         */
+        retentionWindow?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AppLoggingSettingsMetricAnalysisSettings {
+        /**
+         * Whether to collect conversation data for llm analysis metrics. If true,
+         * conversation data will not be collected for llm analysis metrics;
+         * otherwise, conversation data will be collected.
+         */
+        llmMetricsOptedOut?: pulumi.Input<boolean | undefined>;
     }
 
     export interface AppLoggingSettingsRedactionConfig {
@@ -16234,6 +16854,13 @@ export namespace ces {
         toolsets?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAgentToolset>[] | undefined>;
         /**
          * (Output)
+         * List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         */
+        transferRules?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAgentTransferRule>[] | undefined>;
+        /**
+         * (Output)
          * Timestamp when the toolset was last updated.
          */
         updateTime?: pulumi.Input<string | undefined>;
@@ -16389,6 +17016,12 @@ export namespace ces {
         inputVariableMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * (Output)
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session.
+         */
+        languageCodeVariable?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
          * The mapping of the Dialogflow session parameters names to the app
          * variables names to be sent back to the CES agent after the Dialogflow
          * agent execution ends.
@@ -16409,6 +17042,87 @@ export namespace ces {
          * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
          */
         toolset?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRule {
+        /**
+         * (Output)
+         * The resource name of the child agent the rule applies to.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+         */
+        childAgent?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Deterministic transfer rule. When the condition evaluates to true, the
+         * transfer occurs.
+         * Structure is documented below.
+         */
+        deterministicTransfers?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAgentTransferRuleDeterministicTransfer>[] | undefined>;
+        /**
+         * (Output)
+         * The direction of the transfer.
+         * Possible values:
+         * * PARENT_TO_CHILD
+         * * CHILD_TO_PARENT
+         */
+        direction?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * A rule that prevents the planner from transferring to the target agent.
+         * Structure is documented below.
+         */
+        disablePlannerTransfers?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer>[] | undefined>;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDeterministicTransfer {
+        /**
+         * (Output)
+         * If the condition evaluates to true, planner will not be allowed to
+         * transfer to the target agent.
+         * Structure is documented below.
+         */
+        expressionConditions?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition>[] | undefined>;
+        /**
+         * (Output)
+         * A rule that uses Python code block to evaluate the conditions. If the
+         * condition evaluates to true, the transfer occurs.
+         * Structure is documented below.
+         */
+        pythonCodeConditions?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition>[] | undefined>;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition {
+        /**
+         * (Output)
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition {
+        /**
+         * (Output)
+         * The Python code to execute for the tool.
+         */
+        pythonCode?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer {
+        /**
+         * (Output)
+         * If the condition evaluates to true, planner will not be allowed to
+         * transfer to the target agent.
+         * Structure is documented below.
+         */
+        expressionConditions?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition>[] | undefined>;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition {
+        /**
+         * (Output)
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression?: pulumi.Input<string | undefined>;
     }
 
     export interface AppVersionSnapshotApp {
@@ -16456,6 +17170,12 @@ export namespace ces {
          * The display name of the app version.
          */
         displayName?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         */
+        errorHandlingSettings?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppErrorHandlingSetting>[] | undefined>;
         /**
          * (Output)
          * ETag used to ensure the object hasn't changed during a read-modify-write
@@ -16537,6 +17257,12 @@ export namespace ces {
          * Structure is documented below.
          */
         variableDeclarations?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppVariableDeclaration>[] | undefined>;
+        /**
+         * (Output)
+         * VPC-SC settings for the app.
+         * Structure is documented below.
+         */
+        vpcScSettings?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppVpcScSetting>[] | undefined>;
     }
 
     export interface AppVersionSnapshotAppAudioProcessingConfig {
@@ -16734,6 +17460,12 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfigs?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>[] | undefined>;
+        /**
+         * (Output)
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfigs?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig>[] | undefined>;
     }
 
     export interface AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
@@ -16775,6 +17507,87 @@ export namespace ces {
         webWidgetTitle?: pulumi.Input<string | undefined>;
     }
 
+    export interface AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig {
+        /**
+         * The description of the app version.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * The display name of the app version.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The phone number in E.164 format.
+         */
+        phoneNumber?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The Meta phone number ID.
+         */
+        phoneNumberId?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The WhatsApp Business Account ID.
+         */
+        wabaId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSetting {
+        /**
+         * (Output)
+         * Configuration for ending the session in case of system errors (e.g. LLM
+         * errors).
+         * Structure is documented below.
+         */
+        endSessionConfigs?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig>[] | undefined>;
+        /**
+         * (Output)
+         * The strategy to use for error handling.
+         * Possible values:
+         * NONE
+         * FALLBACK_RESPONSE
+         * END_SESSION
+         */
+        errorHandlingStrategy?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Configuration for handling fallback responses.
+         * Structure is documented below.
+         */
+        fallbackResponseConfigs?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig>[] | undefined>;
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig {
+        /**
+         * (Output)
+         * Whether to escalate the session in EndSession. If session is escalated,
+         * metadata in EndSession will contain sessionEscalated = true.
+         */
+        escalateSession?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig {
+        /**
+         * (Output)
+         * The fallback messages in case of system errors (e.g. LLM errors),
+         * mapped by supported language code
+         * (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+         */
+        customFallbackMessages?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * (Output)
+         * The maximum number of fallback attempts to make before the agent
+         * emitting EndSession Signal.
+         */
+        maxFallbackAttempts?: pulumi.Input<number | undefined>;
+    }
+
     export interface AppVersionSnapshotAppEvaluationMetricsThreshold {
         /**
          * (Output)
@@ -16782,6 +17595,22 @@ export namespace ces {
          * Structure is documented below.
          */
         goldenEvaluationMetricsThresholds?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>[] | undefined>;
+        /**
+         * (Output)
+         * The hallucination metric behavior for golden evaluations.
+         * Possible values:
+         * DISABLED
+         * ENABLED
+         */
+        goldenHallucinationMetricBehavior?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The hallucination metric behavior for scenario evaluations.
+         * Possible values:
+         * DISABLED
+         * ENABLED
+         */
+        scenarioHallucinationMetricBehavior?: pulumi.Input<string | undefined>;
     }
 
     export interface AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold {
@@ -16791,6 +17620,14 @@ export namespace ces {
          * Structure is documented below.
          */
         expectationLevelMetricsThresholds?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>[] | undefined>;
+        /**
+         * (Output)
+         * The tool matching settings. An extra tool call is a tool call that is
+         * present in the execution but does not match any tool call in the golden
+         * expectation.
+         * Structure is documented below.
+         */
+        toolMatchingSettings?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting>[] | undefined>;
         /**
          * (Output)
          * Turn level metrics thresholds.
@@ -16808,6 +17645,19 @@ export namespace ces {
         toolInvocationParameterCorrectnessThreshold?: pulumi.Input<number | undefined>;
     }
 
+    export interface AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting {
+        /**
+         * (Output)
+         * Defines the behavior when an extra tool call is encountered. An extra
+         * tool call is a tool call that is present in the execution but does
+         * not match any tool call in the golden expectation.
+         * Possible values:
+         * FAIL
+         * ALLOW
+         */
+        extraToolCallBehavior?: pulumi.Input<string | undefined>;
+    }
+
     export interface AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold {
         /**
          * (Output)
@@ -16815,6 +17665,15 @@ export namespace ces {
          * a float between 0 and 1. Default is 1.0.
          */
         overallToolInvocationCorrectnessThreshold?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * The semantic similarity channel to use for evaluation.
+         * Possible values:
+         * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+         * TEXT
+         * AUDIO
+         */
+        semanticSimilarityChannel?: pulumi.Input<string | undefined>;
         /**
          * (Output)
          * The success threshold for semantic similarity. Must be an integer
@@ -16882,6 +17741,13 @@ export namespace ces {
         conversationLoggingSettings?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>[] | undefined>;
         /**
          * (Output)
+         * Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         */
+        metricAnalysisSettings?: pulumi.Input<pulumi.Input<inputs.ces.AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting>[] | undefined>;
+        /**
+         * (Output)
          * Configuration to instruct how sensitive data should be handled.
          * Structure is documented below.
          */
@@ -16946,6 +17812,22 @@ export namespace ces {
          * Whether to disable conversation logging for the sessions.
          */
         disableConversationLogging?: pulumi.Input<boolean | undefined>;
+        /**
+         * (Output)
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         */
+        retentionWindow?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting {
+        /**
+         * (Output)
+         * Whether to collect conversation data for llm analysis metrics. If true,
+         * conversation data will not be collected for llm analysis metrics;
+         * otherwise, conversation data will be collected.
+         */
+        llmMetricsOptedOut?: pulumi.Input<boolean | undefined>;
     }
 
     export interface AppVersionSnapshotAppLoggingSettingRedactionConfig {
@@ -17121,6 +18003,18 @@ export namespace ces {
          * Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
          */
         uniqueItems?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AppVersionSnapshotAppVpcScSetting {
+        /**
+         * (Output)
+         * The allowed HTTP(s) origins that OpenAPI tools in the App are
+         * able to directly call when VPC Service Controls are enabled. These strings
+         * must match the origin exactly, including the port if specified. For
+         * example, "https://example.com" or "https://example.com:443". This list does
+         * not yet apply to Python tools that may make direct HTTP calls.
+         */
+        allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface AppVersionSnapshotExample {
@@ -19014,6 +19908,17 @@ export namespace ces {
         displayName?: pulumi.Input<string | undefined>;
     }
 
+    export interface AppVpcScSettings {
+        /**
+         * The allowed HTTP(s) origins that OpenAPI tools in the App are
+         * able to directly call when VPC Service Controls are enabled. These strings
+         * must match the origin exactly, including the port if specified. For
+         * example, "https://example.com" or "https://example.com:443". This list does
+         * not yet apply to Python tools that may make direct HTTP calls.
+         */
+        allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
     export interface DeploymentChannelProfile {
         /**
          * The type of the channel profile.
@@ -19026,6 +19931,8 @@ export namespace ces {
          * CONTACT_CENTER_AS_A_SERVICE
          * FIVE9
          * CONTACT_CENTER_INTEGRATION
+         * WHATSAPP
+         * INSTAGRAM
          */
         channelType?: pulumi.Input<string | undefined>;
         /**
@@ -19053,6 +19960,11 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfig?: pulumi.Input<inputs.ces.DeploymentChannelProfileWebWidgetConfig | undefined>;
+        /**
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfig?: pulumi.Input<inputs.ces.DeploymentChannelProfileWhatsappConfig | undefined>;
     }
 
     export interface DeploymentChannelProfilePersonaProperty {
@@ -19113,6 +20025,116 @@ export namespace ces {
          * Indicates whether reCAPTCHA verification for the web widget is enabled.
          */
         enableRecaptcha?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface DeploymentChannelProfileWhatsappConfig {
+        /**
+         * (Output)
+         * Output only. The description of the Meta business page or profile.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Output only. The fetched Meta business page name.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * Optional. The phone number in E.164 format.
+         */
+        phoneNumber?: pulumi.Input<string | undefined>;
+        /**
+         * Required. The Meta phone number ID.
+         */
+        phoneNumberId: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl?: pulumi.Input<string | undefined>;
+        /**
+         * Required. The WhatsApp Business Account ID.
+         */
+        wabaId: pulumi.Input<string>;
+    }
+
+    export interface DeploymentInstagramCredentials {
+        /**
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        authCode?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `authCode` or `authCodeWo` can only be set.
+         */
+        authCodeWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        authCodeWoVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The Conversation Profile ID to use for the deployment.
+         */
+        conversationProfileId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface DeploymentWhatsappCredentials {
+        /**
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        authCode?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `authCode` or `authCodeWo` can only be set.
+         */
+        authCodeWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        authCodeWoVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The Business Account ID to use for the phone number.
+         */
+        businessAccountId: pulumi.Input<string>;
+        /**
+         * The Conversation Profile ID to use for the deployment.
+         */
+        conversationProfileId?: pulumi.Input<string | undefined>;
+        /**
+         * The phone number to register with WhatsApp.
+         */
+        phoneNumber: pulumi.Input<string>;
+        /**
+         * The 6-digit PIN created by the user for two-step verification.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        pin?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The 6-digit PIN created by the user for two-step verification.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `pin` or `pinWo` can only be set.
+         */
+        pinWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `pinWo` write-only. Increment this value when an update to `pinWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        pinWoVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: pulumi.Input<string>;
     }
 
     export interface EvaluationGolden {
@@ -20190,6 +21212,15 @@ export namespace ces {
          */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: pulumi.Input<boolean | undefined>;
+        /**
          * The python code to execute for the callback.
          */
         pythonCode: pulumi.Input<string>;
@@ -20205,6 +21236,15 @@ export namespace ces {
          * agent.
          */
         disabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The python code to execute for the callback.
          */
@@ -20222,6 +21262,15 @@ export namespace ces {
          */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: pulumi.Input<boolean | undefined>;
+        /**
          * The python code to execute for the callback.
          */
         pythonCode: pulumi.Input<string>;
@@ -20237,6 +21286,15 @@ export namespace ces {
          * agent.
          */
         disabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The python code to execute for the callback.
          */
@@ -21317,7 +22375,7 @@ export namespace ces {
     export interface ToolMcpTool {
         /**
          * (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          */
         apiAuthentications?: pulumi.Input<pulumi.Input<inputs.ces.ToolMcpToolApiAuthentication>[] | undefined>;
@@ -21473,7 +22531,8 @@ export namespace ces {
         oauthGrantType?: pulumi.Input<string | undefined>;
         /**
          * (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          */
         scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
@@ -21545,7 +22604,7 @@ export namespace ces {
     export interface ToolOpenApiTool {
         /**
          * (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          */
         apiAuthentications?: pulumi.Input<pulumi.Input<inputs.ces.ToolOpenApiToolApiAuthentication>[] | undefined>;
@@ -21682,7 +22741,8 @@ export namespace ces {
         oauthGrantType?: pulumi.Input<string | undefined>;
         /**
          * (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          */
         scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
@@ -21792,6 +22852,12 @@ export namespace ces {
         agentCards?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentToolAgentCard>[] | undefined>;
         /**
          * (Output)
+         * Authentication information required for calling the remote agent.
+         * Structure is documented below.
+         */
+        apiAuthentications?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentToolApiAuthentication>[] | undefined>;
+        /**
+         * (Output)
          * The description of the system tool.
          */
         description?: pulumi.Input<string | undefined>;
@@ -21898,6 +22964,133 @@ export namespace ces {
          * HTTPS URL in production.
          */
         url?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthentication {
+        /**
+         * (Output)
+         * Configurations for authentication with API key.
+         * Structure is documented below.
+         */
+        apiKeyConfigs?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentToolApiAuthenticationApiKeyConfig>[] | undefined>;
+        /**
+         * (Output)
+         * Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         */
+        bearerTokenConfigs?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentToolApiAuthenticationBearerTokenConfig>[] | undefined>;
+        /**
+         * (Output)
+         * Configurations for authentication with OAuth.
+         * Structure is documented below.
+         */
+        oauthConfigs?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentToolApiAuthenticationOauthConfig>[] | undefined>;
+        /**
+         * (Output)
+         * Configurations for authentication using a custom service account.
+         * Structure is documented below.
+         */
+        serviceAccountAuthConfigs?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig>[] | undefined>;
+        /**
+         * (Output)
+         * Configurations for authentication with [ID
+         * token](https://cloud.google.com/docs/authentication/token-types#id) generated
+         * from service agent.
+         */
+        serviceAgentIdTokenAuthConfigs?: pulumi.Input<pulumi.Input<inputs.ces.ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig>[] | undefined>;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationApiKeyConfig {
+        /**
+         * (Output)
+         * The name of the SecretManager secret version resource storing the API key.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         * Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+         * service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        apiKeySecretVersion?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The parameter name or the header name of the API key.
+         * E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+         */
+        keyName?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Key location in the request.
+         * Possible values:
+         * HEADER
+         * QUERY_STRING
+         */
+        requestLocation?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationBearerTokenConfig {
+        /**
+         * (Output)
+         * The bearer token. Must be in the format $context.variables.<name_of_variable>.
+         */
+        token?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationOauthConfig {
+        /**
+         * (Output)
+         * The client ID from the OAuth provider.
+         */
+        clientId?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The name of the SecretManager secret version resource storing the
+         * client secret.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         * Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+         * service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        clientSecretVersion?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * OAuth grant types.
+         * Possible values:
+         * CLIENT_CREDENTIAL
+         */
+        oauthGrantType?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * (Output)
+         * The token endpoint in the OAuth provider to exchange for an access token.
+         */
+        tokenEndpoint?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig {
+        /**
+         * (Output)
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * (Output)
+         * The email address of the service account used for authenticatation. CES
+         * uses this service account to exchange an access token and the access token
+         * is then sent in the `Authorization` header of the request.
+         * The service account must have the
+         * `roles/iam.serviceAccountTokenCreator` role granted to the
+         * CES service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        serviceAccount?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig {
     }
 
     export interface ToolSystemTool {
@@ -22298,6 +23491,11 @@ export namespace ces {
          * Structure is documented below.
          */
         tlsConfig?: pulumi.Input<inputs.ces.ToolsetMcpToolsetTlsConfig | undefined>;
+        /**
+         * A list of tool overrides for the toolset.
+         * Structure is documented below.
+         */
+        toolOverrides?: pulumi.Input<pulumi.Input<inputs.ces.ToolsetMcpToolsetToolOverride>[] | undefined>;
     }
 
     export interface ToolsetMcpToolsetApiAuthentication {
@@ -22450,6 +23648,21 @@ export namespace ces {
          * can be used to disambiguate the custom CA certificates.
          */
         displayName: pulumi.Input<string>;
+    }
+
+    export interface ToolsetMcpToolsetToolOverride {
+        /**
+         * The description override for the tool.
+         */
+        descriptionOverride?: pulumi.Input<string | undefined>;
+        /**
+         * The name override for the tool.
+         */
+        nameOverride?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the tool to be overridden.
+         */
+        tool: pulumi.Input<string>;
     }
 
     export interface ToolsetOpenApiToolset {
@@ -23919,6 +25132,22 @@ export namespace chronicle {
          * "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
          */
         dataAccessScopes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EnvironmentDynamicParameter {
+        /**
+         * The ID of the dynamic parameter.
+         */
+        dynamicParameterId: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The ID of the environment.
+         */
+        environmentId?: pulumi.Input<number | undefined>;
+        /**
+         * The value of the dynamic parameter.
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface FeedDetails {
@@ -34635,6 +35864,10 @@ export namespace cloudrunv2 {
          */
         resources?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerResources | undefined>;
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: pulumi.Input<boolean | undefined>;
+        /**
          * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
          * Structure is documented below.
          */
@@ -34735,7 +35968,7 @@ export namespace cloudrunv2 {
          * Optional. Custom headers to set in the request. HTTP allows repeated headers.
          * Structure is documented below.
          */
-        httpHeaders?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders | undefined>;
+        httpHeaders?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>[] | undefined>;
         /**
          * Optional. Path to access on the HTTP server. Defaults to '/'.
          */
@@ -34746,20 +35979,11 @@ export namespace cloudrunv2 {
         port?: pulumi.Input<number | undefined>;
     }
 
-    export interface WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+    export interface WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
         /**
          * Required. The header field name
          */
-        name?: pulumi.Input<string | undefined>;
-        /**
-         * (Optional, Deprecated)
-         * Required. The header field name
-         *
-         * > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         *
-         * @deprecated `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         */
-        port?: pulumi.Input<number | undefined>;
+        name: pulumi.Input<string>;
         /**
          * Optional. The header field value
          */
@@ -34830,7 +36054,7 @@ export namespace cloudrunv2 {
          * Optional. Custom headers to set in the request. HTTP allows repeated headers.
          * Structure is documented below.
          */
-        httpHeaders?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders | undefined>;
+        httpHeaders?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>[] | undefined>;
         /**
          * Optional. Path to access on the HTTP server. Defaults to '/'.
          */
@@ -34841,20 +36065,11 @@ export namespace cloudrunv2 {
         port?: pulumi.Input<number | undefined>;
     }
 
-    export interface WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+    export interface WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
         /**
          * Required. The header field name
          */
-        name?: pulumi.Input<string | undefined>;
-        /**
-         * (Optional, Deprecated)
-         * Required. The header field name
-         *
-         * > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         *
-         * @deprecated `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         */
-        port?: pulumi.Input<number | undefined>;
+        name: pulumi.Input<string>;
         /**
          * Optional. The header field value
          */
@@ -35349,6 +36564,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: pulumi.Input<number | undefined>;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue | undefined>;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -35357,6 +36577,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue | undefined>;
+    }
+
+    export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue {
@@ -35395,6 +36654,11 @@ export namespace cloudsecuritycompliance {
          * The name of the parameter.
          */
         name: pulumi.Input<string>;
+        /**
+         * The parameter spec of the cloud control.
+         * Structure is documented below.
+         */
+        subParameters?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameter>[] | undefined>;
         /**
          * List of parameter substitutions.
          * Structure is documented below.
@@ -35464,6 +36728,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: pulumi.Input<number | undefined>;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue | undefined>;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -35472,6 +36741,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue {
@@ -35486,6 +36794,264 @@ export namespace cloudsecuritycompliance {
          * The strings in the list.
          */
         values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameter {
+        /**
+         * Possible parameter value types.
+         * Structure is documented below.
+         */
+        defaultValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValue | undefined>;
+        /**
+         * The description of the parameter. The maximum length is 2000 characters.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * The display name of the parameter. The maximum length is 200 characters.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * if the parameter is required
+         */
+        isRequired: pulumi.Input<boolean>;
+        /**
+         * The name of the parameter.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * List of parameter substitutions.
+         * Structure is documented below.
+         */
+        substitutionRules?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRule>[] | undefined>;
+        /**
+         * Validation of the parameter.
+         * Structure is documented below.
+         */
+        validation?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidation | undefined>;
+        /**
+         * Parameter value type.
+         * Possible values:
+         * STRING
+         * BOOLEAN
+         * STRINGLIST
+         * NUMBER
+         * ONEOF
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValue | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterSubstitutionRule {
+        /**
+         * Attribute at the given path is substituted entirely.
+         * Structure is documented below.
+         */
+        attributeSubstitutionRule?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRule | undefined>;
+        /**
+         * Placeholder is substituted in the rendered string.
+         * Structure is documented below.
+         */
+        placeholderSubstitutionRule?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRule | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRule {
+        /**
+         * Fully qualified proto attribute path (in dot notation).
+         * Example: rules[0].cel_expression.resource_types_values
+         */
+        attribute?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRule {
+        /**
+         * Fully qualified proto attribute path (e.g., dot notation)
+         */
+        attribute?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidation {
+        /**
+         * Allowed set of values for the parameter.
+         * Structure is documented below.
+         */
+        allowedValues?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues | undefined>;
+        /**
+         * Number range for number parameters.
+         * Structure is documented below.
+         */
+        intRange?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationIntRange | undefined>;
+        /**
+         * Regular Expression Validator for parameter values.
+         * Structure is documented below.
+         */
+        regexpPattern?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationRegexpPattern | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues {
+        /**
+         * List of allowed values for the parameter.
+         * Structure is documented below.
+         */
+        values: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValue>[]>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValue | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationIntRange {
+        /**
+         * Maximum allowed value for the numeric parameter (inclusive).
+         */
+        max: pulumi.Input<string>;
+        /**
+         * Minimum allowed value for the numeric parameter (inclusive).
+         */
+        min: pulumi.Input<string>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationRegexpPattern {
+        /**
+         * Regex Pattern to match the value(s) of parameter.
+         */
+        pattern: pulumi.Input<string>;
     }
 
     export interface CloudControlParameterSpecSubParameterSubstitutionRule {
@@ -35589,6 +37155,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: pulumi.Input<number | undefined>;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue | undefined>;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -35597,6 +37168,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
@@ -35732,6 +37342,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: pulumi.Input<number | undefined>;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue | undefined>;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -35740,6 +37355,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue | undefined>;
+    }
+
+    export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: pulumi.Input<number | undefined>;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: pulumi.Input<inputs.cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue {
@@ -40916,6 +42570,8 @@ export namespace compute {
         enableUefiNetworking?: pulumi.Input<boolean | undefined>;
         /**
          * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         *
+         * > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
          */
         performanceMonitoringUnit?: pulumi.Input<string | undefined>;
         /**
@@ -43374,6 +45030,8 @@ export namespace compute {
         enableUefiNetworking?: pulumi.Input<boolean | undefined>;
         /**
          * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         *
+         * > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
          */
         performanceMonitoringUnit?: pulumi.Input<string | undefined>;
         /**
@@ -44369,15 +46027,6 @@ export namespace compute {
     }
 
     export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
-        /**
-         * (Output, Deprecated)
-         * URLs of Attachments in the given zone, to the given
-         * region, on Interconnects in the given facility and metro. Every
-         * Attachment in the AG has such an entry.
-         *
-         * @deprecated `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-         */
-        attachment?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
          * strings. Users are encouraged, but not required, to use their preferred
@@ -48283,6 +49932,8 @@ export namespace compute {
         enableUefiNetworking?: pulumi.Input<boolean | undefined>;
         /**
          * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         *
+         * > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
          */
         performanceMonitoringUnit?: pulumi.Input<string | undefined>;
         /**
@@ -62343,7 +63994,7 @@ export namespace container {
          */
         name?: pulumi.Input<string | undefined>;
         /**
-         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
          */
         namePrefix?: pulumi.Input<string | undefined>;
         /**
@@ -67235,6 +68886,704 @@ export namespace datalineage {
 }
 
 export namespace dataloss {
+    export interface PreventionContentPolicyDefaultAction {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyError {
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyErrorDetail>[] | undefined>;
+        /**
+         * (Output)
+         * Additional information about the error.
+         */
+        extraInfo?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+         */
+        timestamps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface PreventionContentPolicyErrorDetail {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyFailedToScanSupportedFileType {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInputTooLarge {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfig {
+        /**
+         * List of options defining data content to scan. If empty, text, images, and other content will be included.
+         * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+         */
+        contentOptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+         * Structure is documented below.
+         */
+        customInfoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoType>[] | undefined>;
+        /**
+         * When true, excludes type information of the findings.
+         */
+        excludeInfoTypes?: pulumi.Input<boolean | undefined>;
+        /**
+         * When true, a contextual quote from the data that triggered a finding is included in the response.
+         */
+        includeQuote?: pulumi.Input<boolean | undefined>;
+        /**
+         * Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+         * By default this may be all types, but may change over time as detectors are updated.
+         * Structure is documented below.
+         */
+        infoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigInfoType>[] | undefined>;
+        /**
+         * Configuration to control the number of findings returned.
+         * Structure is documented below.
+         */
+        limits?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigLimits | undefined>;
+        /**
+         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+         * Default value is `POSSIBLE`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        minLikelihood?: pulumi.Input<string | undefined>;
+        /**
+         * Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+         * The system only returns a finding if its likelihood is above this threshold. If this field
+         * is not set, the system uses the InspectConfig min_likelihood.
+         * Structure is documented below.
+         */
+        minLikelihoodPerInfoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType>[] | undefined>;
+        /**
+         * Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+         * other rules are executed in the order they are specified for each info type.
+         * Structure is documented below.
+         */
+        ruleSets?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSet>[] | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoType {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionary | undefined>;
+        /**
+         * If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+         * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+         */
+        exclusionType?: pulumi.Input<string | undefined>;
+        /**
+         * CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+         * infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+         * one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+         * treated as a custom info type.
+         * Structure is documented below.
+         */
+        infoType: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoType>;
+        /**
+         * Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+         * specified by the rule.
+         * Default value is `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        likelihood?: pulumi.Input<string | undefined>;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeRegex | undefined>;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore | undefined>;
+        /**
+         * A reference to a StoredInfoType to use with scanning.
+         * Structure is documented below.
+         */
+        storedType?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeStoredType | undefined>;
+        /**
+         * Message for detecting output from deidentification transformations that support reversing.
+         */
+        surrogateType?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath | undefined>;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore | undefined>;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeStoredType {
+        /**
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType {
+    }
+
+    export interface PreventionContentPolicyInspectConfigInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigInfoTypeSensitivityScore | undefined>;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimits {
+        /**
+         * Configuration of findings limit given for specified infoTypes.
+         * Structure is documented below.
+         */
+        maxFindingsPerInfoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType>[] | undefined>;
+        /**
+         * Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+         */
+        maxFindingsPerItem: pulumi.Input<number>;
+        /**
+         * Max number of findings that will be returned per request/job. The maximum returned is 2000.
+         */
+        maxFindingsPerRequest: pulumi.Input<number>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType {
+        /**
+         * Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+         * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+         * specified in another InfoTypeLimit.
+         * Structure is documented below.
+         */
+        infoType?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType | undefined>;
+        /**
+         * Max findings limit for the given infoType.
+         */
+        maxFindings: pulumi.Input<number>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore | undefined>;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType {
+        /**
+         * Type of information the likeliness threshold applies to. Only one likelihood per infoType should be provided.
+         * If InfoTypeLikelihood does not have an info_type, the configuration fails.
+         * Structure is documented below.
+         */
+        infoType?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType | undefined>;
+        /**
+         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        minLikelihood: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSet {
+        /**
+         * List of infoTypes this rule set is applied to.
+         * Structure is documented below.
+         */
+        infoTypes: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetInfoType>[]>;
+        /**
+         * Set of rules to be applied to infoTypes. The rules are applied in order.
+         * Structure is documented below.
+         */
+        rules: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRule>[]>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore | undefined>;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRule {
+        /**
+         * The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+         * Structure is documented below.
+         */
+        exclusionRule?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule | undefined>;
+        /**
+         * Hotword-based detection rule.
+         * Structure is documented below.
+         */
+        hotwordRule?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary | undefined>;
+        /**
+         * Drop if the hotword rule is contained in the proximate context.
+         * For tabular data, the context includes the column name.
+         * Structure is documented below.
+         */
+        excludeByHotword?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword | undefined>;
+        /**
+         * Set of infoTypes for which findings would affect this rule.
+         * Structure is documented below.
+         */
+        excludeInfoTypes?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes | undefined>;
+        /**
+         * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+         */
+        matchingType: pulumi.Input<string>;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath | undefined>;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex>;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+        /**
+         * Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+        /**
+         * Number of characters after the finding to consider.
+         */
+        windowAfter?: pulumi.Input<number | undefined>;
+        /**
+         * Number of characters before the finding to consider.
+         */
+        windowBefore?: pulumi.Input<number | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+        /**
+         * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * Structure is documented below.
+         */
+        infoTypes: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>[]>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore | undefined>;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex>;
+        /**
+         * Likelihood adjustment to apply to all matching findings.
+         * Structure is documented below.
+         */
+        likelihoodAdjustment: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment>;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity: pulumi.Input<inputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+        /**
+         * Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+        /**
+         * Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        fixedLikelihood?: pulumi.Input<string | undefined>;
+        /**
+         * Increase or decrease the likelihood by the specified number of levels. For example,
+         * if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+         * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+         * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+         * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+         * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+         */
+        relativeLikelihood?: pulumi.Input<number | undefined>;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity {
+        /**
+         * Number of characters after the finding to consider.
+         */
+        windowAfter?: pulumi.Input<number | undefined>;
+        /**
+         * Number of characters before the finding to consider.
+         */
+        windowBefore?: pulumi.Input<number | undefined>;
+    }
+
+    export interface PreventionContentPolicyLoggingConfig {
+        /**
+         * Log actions to BigQuery.
+         * Structure is documented below.
+         */
+        logToBigQuery?: pulumi.Input<inputs.dataloss.PreventionContentPolicyLoggingConfigLogToBigQuery | undefined>;
+    }
+
+    export interface PreventionContentPolicyLoggingConfigLogToBigQuery {
+        /**
+         * The dataset ID of the BigQuery table to log to.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The project ID of the BigQuery table to log to.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * The table ID of the BigQuery table to log to.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface PreventionContentPolicyRule {
+        /**
+         * The action to take if the rule matches.
+         * Structure is documented below.
+         */
+        action: pulumi.Input<inputs.dataloss.PreventionContentPolicyRuleAction>;
+        /**
+         * List of conditions that must be met for this rule to apply.
+         * Structure is documented below.
+         */
+        conditions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionContentPolicyRuleCondition>[] | undefined>;
+    }
+
+    export interface PreventionContentPolicyRuleAction {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionContentPolicyRuleCondition {
+        /**
+         * A condition based on info types.
+         * Structure is documented below.
+         */
+        infoTypeCondition?: pulumi.Input<inputs.dataloss.PreventionContentPolicyRuleConditionInfoTypeCondition | undefined>;
+    }
+
+    export interface PreventionContentPolicyRuleConditionInfoTypeCondition {
+        /**
+         * Match any info type.
+         */
+        anyInfoType?: pulumi.Input<inputs.dataloss.PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType | undefined>;
+        /**
+         * List of info types to match.
+         * Structure is documented below.
+         */
+        infoTypes?: pulumi.Input<inputs.dataloss.PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes | undefined>;
+        /**
+         * The minimum number of findings required for this condition to be met. Defaults to 1.
+         */
+        minCount?: pulumi.Input<number | undefined>;
+    }
+
+    export interface PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType {
+    }
+
+    export interface PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes {
+        /**
+         * List of info type names.
+         */
+        infoTypeNames: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionContentPolicyUnsupportedFileType {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: pulumi.Input<string | undefined>;
+    }
+
     export interface PreventionDeidentifyTemplateDeidentifyConfig {
         /**
          * Treat the dataset as an image and redact.
@@ -70776,6 +73125,11 @@ export namespace dataloss {
          */
         inspectTemplateModifiedCadence?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence | undefined>;
         /**
+         * Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        refreshFrequency?: pulumi.Input<string | undefined>;
+        /**
          * Governs when to update data profiles when a schema is modified
          * Structure is documented below.
          */
@@ -72019,15 +74373,6 @@ export namespace dataloss {
          */
         pubSub?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobActionPubSub | undefined>;
         /**
-         * (Optional, Deprecated)
-         * Publish findings of a DlpJob to Data Catalog.
-         *
-         * > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         *
-         * @deprecated `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         */
-        publishFindingsToCloudDataCatalog?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog | undefined>;
-        /**
          * Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
          */
         publishFindingsToDataplexCatalog?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog | undefined>;
@@ -72122,9 +74467,6 @@ export namespace dataloss {
          * Cloud Pub/Sub topic to send notifications to.
          */
         topic: pulumi.Input<string>;
-    }
-
-    export interface PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
     }
 
     export interface PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog {
@@ -73493,6 +75835,12 @@ export namespace dataplex {
          * If set, the latest DataScan job result will be published to Knowledge Catalog.
          */
         catalogPublishingEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The SQL dialect to use in the generated SQL queries.
+         * If not specified, the default dialect is Google SQL.
+         * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+         */
+        sqlDialect?: pulumi.Input<string | undefined>;
     }
 
     export interface DatascanDataProfileSpec {
@@ -77801,11 +80149,11 @@ export namespace dataproc {
 
     export interface WorkflowTemplatePlacement {
         /**
-         * A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+         * A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
          */
         clusterSelector?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementClusterSelector | undefined>;
         /**
-         * A cluster that is managed by the workflow.
+         * A cluster that is managed by the workflow. Structure is documented below.
          */
         managedCluster?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedCluster | undefined>;
     }
@@ -77827,7 +80175,7 @@ export namespace dataproc {
          */
         clusterName: pulumi.Input<string>;
         /**
-         * Required. The cluster configuration.
+         * Required. The cluster configuration. Structure is documented below.
          */
         config: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfig>;
         /**
@@ -77866,7 +80214,7 @@ export namespace dataproc {
          */
         lifecycleConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig | undefined>;
         /**
-         * The Compute Engine config settings for additional worker instances in a cluster.
+         * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          */
         masterConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfig | undefined>;
         /**
@@ -77874,7 +80222,7 @@ export namespace dataproc {
          */
         metastoreConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig | undefined>;
         /**
-         * The Compute Engine config settings for additional worker instances in a cluster.
+         * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          */
         secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig | undefined>;
         /**
@@ -77894,7 +80242,7 @@ export namespace dataproc {
          */
         tempBucket?: pulumi.Input<string | undefined>;
         /**
-         * The Compute Engine config settings for additional worker instances in a cluster.
+         * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          *
          * ***
          */
@@ -78076,6 +80424,10 @@ export namespace dataproc {
          */
         image?: pulumi.Input<string | undefined>;
         /**
+         * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+         */
+        instanceFlexibilityPolicy?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy | undefined>;
+        /**
          * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          */
         instanceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -78131,6 +80483,62 @@ export namespace dataproc {
         numLocalSsds?: pulumi.Input<number | undefined>;
     }
 
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy {
+        /**
+         * Output only. A map of instance names to their machine types.
+         */
+        instanceMachineTypes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+         */
+        instanceSelectionLists?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList>[] | undefined>;
+        /**
+         * Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+         */
+        instanceSelectionResults?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult>[] | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+        /**
+         * Disk option for the instance group. Structure is documented above.
+         */
+        diskConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig | undefined>;
+        /**
+         * Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         */
+        rank?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+        /**
+         * Size in GB of the boot disk (default is 500GB).
+         */
+        bootDiskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+         */
+        bootDiskType?: pulumi.Input<string | undefined>;
+        /**
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         */
+        numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+        /**
+         * Output only. Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineType?: pulumi.Input<string | undefined>;
+        /**
+         * Output only. Number of VM provisioned with the corresponding machine_type.
+         */
+        vmCount?: pulumi.Input<number | undefined>;
+    }
+
     export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
         /**
          * Output only. The name of the Instance Group Manager for this group.
@@ -78151,19 +80559,23 @@ export namespace dataproc {
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
         /**
-         * Optional. The Compute Engine accelerator configuration for these instances.
+         * The Compute Engine accelerator configuration for these instances. Structure is documented below.
          */
         accelerators?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator>[] | undefined>;
         /**
-         * Optional. Disk option config settings.
+         * Disk option config settings. Structure is documented below.
          */
         diskConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig | undefined>;
         /**
-         * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+         * The Compute Engine image resource used for cluster instances.
          */
         image?: pulumi.Input<string | undefined>;
         /**
-         * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+         * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+         */
+        instanceFlexibilityPolicy?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy | undefined>;
+        /**
+         * Output only. The list of instance names.
          */
         instanceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
@@ -78171,23 +80583,23 @@ export namespace dataproc {
          */
         isPreemptible?: pulumi.Input<boolean | undefined>;
         /**
-         * Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+         * The Compute Engine machine type used for cluster instances.
          */
         machineType?: pulumi.Input<string | undefined>;
         /**
-         * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+         * Output only. The config for Compute Engine Instance Group Manager that manages this group.
          */
         managedGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig>[] | undefined>;
         /**
-         * Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * The minimum CPU platform and architecture for the cluster.
          */
         minCpuPlatform?: pulumi.Input<string | undefined>;
         /**
-         * Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+         * The number of worker instances in the cluster.
          */
         numInstances?: pulumi.Input<number | undefined>;
         /**
-         * Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+         * Specifies the preemptibility of the secondary worker group.
          */
         preemptibility?: pulumi.Input<string | undefined>;
     }
@@ -78216,6 +80628,77 @@ export namespace dataproc {
          * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy {
+        /**
+         * Output only. A map of instance names to their machine types.
+         */
+        instanceMachineTypes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+         */
+        instanceSelectionLists?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>[] | undefined>;
+        /**
+         * Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+         */
+        instanceSelectionResults?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>[] | undefined>;
+        /**
+         * Strategy for provisioning model mix for secondary worker instances. Supported only for `secondaryWorkerConfig`. Structure is documented below.
+         */
+        provisioningModelMix?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+        /**
+         * Disk option for the instance group. Structure is documented above.
+         */
+        diskConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig | undefined>;
+        /**
+         * Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         */
+        rank?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+        /**
+         * Size in GB of the boot disk (default is 500GB).
+         */
+        bootDiskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+         */
+        bootDiskType?: pulumi.Input<string | undefined>;
+        /**
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         */
+        numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+        /**
+         * Output only. Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineType?: pulumi.Input<string | undefined>;
+        /**
+         * Output only. Number of VM provisioned with the corresponding machine_type.
+         */
+        vmCount?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+        /**
+         * The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+         */
+        standardCapacityBase?: pulumi.Input<number | undefined>;
+        /**
+         * The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+         */
+        standardCapacityPercentAboveBase?: pulumi.Input<number | undefined>;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
@@ -78330,19 +80813,23 @@ export namespace dataproc {
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
         /**
-         * Optional. The Compute Engine accelerator configuration for these instances.
+         * The Compute Engine accelerator configuration for these instances. Structure is documented below.
          */
         accelerators?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator>[] | undefined>;
         /**
-         * Optional. Disk option config settings.
+         * Disk option config settings. Structure is documented below.
          */
         diskConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig | undefined>;
         /**
-         * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+         * The Compute Engine image resource used for cluster instances.
          */
         image?: pulumi.Input<string | undefined>;
         /**
-         * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+         * Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+         */
+        instanceFlexibilityPolicy?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy | undefined>;
+        /**
+         * Output only. The list of instance names.
          */
         instanceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
@@ -78350,19 +80837,19 @@ export namespace dataproc {
          */
         isPreemptible?: pulumi.Input<boolean | undefined>;
         /**
-         * Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+         * The Compute Engine machine type used for cluster instances.
          */
         machineType?: pulumi.Input<string | undefined>;
         /**
-         * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+         * Output only. The config for Compute Engine Instance Group Manager that manages this group.
          */
         managedGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig>[] | undefined>;
         /**
-         * Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * The minimum CPU platform and architecture for the cluster.
          */
         minCpuPlatform?: pulumi.Input<string | undefined>;
         /**
-         * Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+         * The number of worker instances in the cluster.
          */
         numInstances?: pulumi.Input<number | undefined>;
         /**
@@ -78395,6 +80882,62 @@ export namespace dataproc {
          * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+        /**
+         * Output only. A map of instance names to their machine types.
+         */
+        instanceMachineTypes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+         */
+        instanceSelectionLists?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>[] | undefined>;
+        /**
+         * Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+         */
+        instanceSelectionResults?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>[] | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+        /**
+         * Disk option for the instance group. Structure is documented above.
+         */
+        diskConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig | undefined>;
+        /**
+         * Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         */
+        rank?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+        /**
+         * Size in GB of the boot disk (default is 500GB).
+         */
+        bootDiskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+         */
+        bootDiskType?: pulumi.Input<string | undefined>;
+        /**
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         */
+        numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+        /**
+         * Output only. Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineType?: pulumi.Input<string | undefined>;
+        /**
+         * Output only. Number of VM provisioned with the corresponding machine_type.
+         */
+        vmCount?: pulumi.Input<number | undefined>;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
@@ -89318,6 +91861,18 @@ export namespace eventarc {
         schemaDefinition?: pulumi.Input<string | undefined>;
     }
 
+    export interface PipelineIamBindingCondition {
+        description?: pulumi.Input<string | undefined>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface PipelineIamMemberCondition {
+        description?: pulumi.Input<string | undefined>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface PipelineInputPayloadFormat {
         /**
          * The format of an AVRO message payload.
@@ -91515,6 +94070,25 @@ export namespace gemini {
         value: pulumi.Input<string>;
     }
 
+    export interface GdaObservabilitySettingConversationalAnalyticsSetting {
+        /**
+         * Whether to enable feedback.
+         */
+        feedbackEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to enable logging.
+         */
+        loggingEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to enable metrics.
+         */
+        metricsEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to enable traces.
+         */
+        tracesEnabled?: pulumi.Input<boolean | undefined>;
+    }
+
     export interface RepositoryGroupIamBindingCondition {
         description?: pulumi.Input<string | undefined>;
         expression: pulumi.Input<string>;
@@ -93074,6 +95648,11 @@ export namespace gkehub {
          */
         binaryAuthorizationConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfigBinaryAuthorizationConfig | undefined>;
         /**
+         * Enable/Disable Compliance Posture features for the cluster.
+         * Structure is documented below.
+         */
+        compliancePostureConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfigCompliancePostureConfig | undefined>;
+        /**
          * Enable/Disable Security Posture features for the cluster.
          * Structure is documented below.
          */
@@ -93100,6 +95679,26 @@ export namespace gkehub {
          * `projects/{project_number}/platforms/gke/policies/{policy_id}`.
          */
         name?: pulumi.Input<string | undefined>;
+    }
+
+    export interface FleetDefaultClusterConfigCompliancePostureConfig {
+        /**
+         * List of enabled compliance standards.
+         * Structure is documented below.
+         */
+        complianceStandards?: pulumi.Input<pulumi.Input<inputs.gkehub.FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard>[] | undefined>;
+        /**
+         * Sets which mode to use for Compliance Posture features.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        mode?: pulumi.Input<string | undefined>;
+    }
+
+    export interface FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard {
+        /**
+         * Name of the compliance standard.
+         */
+        standard?: pulumi.Input<string | undefined>;
     }
 
     export interface FleetDefaultClusterConfigSecurityPostureConfig {
@@ -101764,6 +104363,11 @@ export namespace managedkafka {
          * Structure is documented below.
          */
         networkConfigs: pulumi.Input<pulumi.Input<inputs.managedkafka.ClusterGcpConfigAccessConfigNetworkConfig>[]>;
+        /**
+         * Public connection configuration for the Kafka cluster.
+         * Structure is documented below.
+         */
+        publicClusterConfig?: pulumi.Input<inputs.managedkafka.ClusterGcpConfigAccessConfigPublicClusterConfig | undefined>;
     }
 
     export interface ClusterGcpConfigAccessConfigNetworkConfig {
@@ -101771,6 +104375,26 @@ export namespace managedkafka {
          * Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
          */
         subnet: pulumi.Input<string>;
+    }
+
+    export interface ClusterGcpConfigAccessConfigPublicClusterConfig {
+        /**
+         * A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+         */
+        allowedSourceIpRanges: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterPublicClusterDetail {
+        /**
+         * (Output)
+         * DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+         */
+        discoveryDnsRecords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * (Output)
+         * All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+         */
+        externalIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface ClusterRebalanceConfig {
@@ -104520,15 +107144,6 @@ export namespace migrationcenter {
     }
 }
 
-export namespace ml {
-    export interface EngineModelDefaultVersion {
-        /**
-         * The name specified for the version when it was created.
-         */
-        name: pulumi.Input<string>;
-    }
-}
-
 export namespace modelarmor {
     export interface FloorsettingAiPlatformFloorSetting {
         /**
@@ -106381,6 +108996,53 @@ export namespace monitoring {
         min?: pulumi.Input<number | undefined>;
     }
 
+    export interface SnoozeCriteria {
+        /**
+         * When you define a snooze, you can also define a filter for that snooze.
+         * The filter is a string containing one or more key-value pairs. The string
+         * uses the standard https://google.aip.dev/160 filter syntax. If you define
+         * a filter for a snooze, then the snooze can only apply to one alert policy.
+         * When the snooze is active, incidents won't be created when the incident
+         * would have key-value pairs (labels) that match those specified by the
+         * filter in the snooze.
+         * Snooze filters support resource, metric, and metadata labels. If multiple
+         * labels are used, then they must be connected with an AND operator. For
+         * example, the following filter applies the snooze to incidents that have a
+         * resource label with an instance ID of 1234567890, a metric label with an
+         * instance name of test_group, a metadata user label with a key of foo and a
+         * value of bar, and a metadata system label with a key of region and a value
+         * of us-central1:
+         * "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\""
+         */
+        filter?: pulumi.Input<string | undefined>;
+        /**
+         * The specific AlertPolicy names for the alert that should be snoozed.
+         * The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+         * There is a limit of 16 policies per snooze. This limit is checked during
+         * snooze creation. Exactly 1 alert policy is required if filter is specified
+         * at the same time.
+         */
+        policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface SnoozeInterval {
+        /**
+         * The end of the time interval.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+         * "2014-10-02T15:01:23.045123456Z".
+         */
+        endTime: pulumi.Input<string>;
+        /**
+         * The beginning of the time interval. The default value for the start time
+         * is the end time. The start time must not be later than the end time.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+         * "2014-10-02T15:01:23.045123456Z".
+         */
+        startTime?: pulumi.Input<string | undefined>;
+    }
+
     export interface UptimeCheckConfigContentMatcher {
         /**
          * String or regex content to match (max 1024 bytes)
@@ -106506,7 +109168,7 @@ export namespace monitoring {
          */
         passwordWo?: pulumi.Input<string | undefined>;
         /**
-         * The password write-only version.
+         * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          */
         passwordWoVersion?: pulumi.Input<string | undefined>;
         /**
@@ -111397,543 +114059,22 @@ export namespace networkservices {
     }
 }
 
-export namespace notebooks {
-    export interface EnvironmentContainerImage {
+export namespace observability {
+    export interface BucketCmekSettings {
         /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: pulumi.Input<string>;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: pulumi.Input<string | undefined>;
-    }
-
-    export interface EnvironmentVmImage {
-        /**
-         * Use this VM image family to find the image; the newest image in this family will be used.
-         */
-        imageFamily?: pulumi.Input<string | undefined>;
-        /**
-         * Use VM image name to find the image.
-         */
-        imageName?: pulumi.Input<string | undefined>;
-        /**
-         * The name of the Google Cloud project that this VM image belongs to.
-         * Format: projects/{project_id}
-         */
-        project: pulumi.Input<string>;
-    }
-
-    export interface InstanceAcceleratorConfig {
-        /**
-         * Count of cores of this accelerator.
-         */
-        coreCount: pulumi.Input<number>;
-        /**
-         * Type of this accelerator.
-         * Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface InstanceContainerImage {
-        /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: pulumi.Input<string>;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: pulumi.Input<string | undefined>;
-    }
-
-    export interface InstanceIamBindingCondition {
-        description?: pulumi.Input<string | undefined>;
-        expression: pulumi.Input<string>;
-        title: pulumi.Input<string>;
-    }
-
-    export interface InstanceIamMemberCondition {
-        description?: pulumi.Input<string | undefined>;
-        expression: pulumi.Input<string>;
-        title: pulumi.Input<string>;
-    }
-
-    export interface InstanceReservationAffinity {
-        /**
-         * The type of Compute Reservation.
-         * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
-         */
-        consumeReservationType: pulumi.Input<string>;
-        /**
-         * Corresponds to the label key of reservation resource.
-         */
-        key?: pulumi.Input<string | undefined>;
-        /**
-         * Corresponds to the label values of reservation resource.
-         */
-        values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    }
-
-    export interface InstanceShieldedInstanceConfig {
-        /**
-         * Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
-         * boot integrity of the instance. The attestation is performed against the integrity policy baseline.
-         * This baseline is initially derived from the implicitly trusted boot image when the instance is created.
-         * Enabled by default.
-         */
-        enableIntegrityMonitoring?: pulumi.Input<boolean | undefined>;
-        /**
-         * Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
-         * authentic software by verifying the digital signature of all boot components, and halting the boot process
-         * if signature verification fails.
-         * Disabled by default.
-         */
-        enableSecureBoot?: pulumi.Input<boolean | undefined>;
-        /**
-         * Defines whether the instance has the vTPM enabled.
-         * Enabled by default.
-         */
-        enableVtpm?: pulumi.Input<boolean | undefined>;
-    }
-
-    export interface InstanceVmImage {
-        /**
-         * Use this VM image family to find the image; the newest image in this family will be used.
-         */
-        imageFamily?: pulumi.Input<string | undefined>;
-        /**
-         * Use VM image name to find the image.
-         */
-        imageName?: pulumi.Input<string | undefined>;
-        /**
-         * The name of the Google Cloud project that this VM image belongs to.
-         * Format: projects/{project_id}
-         */
-        project: pulumi.Input<string>;
-    }
-
-    export interface RuntimeAccessConfig {
-        /**
-         * The type of access mode this instance. For valid values, see
-         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-         * rest/v1/projects.locations.runtimes#RuntimeAccessType`.
-         */
-        accessType?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * The proxy endpoint that is used to access the runtime.
-         */
-        proxyUri?: pulumi.Input<string | undefined>;
-        /**
-         * The owner of this runtime after creation. Format: `alias@example.com`.
-         * Currently supports one owner only.
-         */
-        runtimeOwner?: pulumi.Input<string | undefined>;
-    }
-
-    export interface RuntimeIamBindingCondition {
-        description?: pulumi.Input<string | undefined>;
-        expression: pulumi.Input<string>;
-        title: pulumi.Input<string>;
-    }
-
-    export interface RuntimeIamMemberCondition {
-        description?: pulumi.Input<string | undefined>;
-        expression: pulumi.Input<string>;
-        title: pulumi.Input<string>;
-    }
-
-    export interface RuntimeMetric {
-        /**
-         * (Output)
-         * Contains runtime daemon metrics, such as OS and kernels and
-         * sessions stats.
-         */
-        systemMetrics?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    }
-
-    export interface RuntimeSoftwareConfig {
-        /**
-         * Specify a custom Cloud Storage path where the GPU driver is stored.
-         * If not specified, we'll automatically choose from official GPU drivers.
-         */
-        customGpuDriverPath?: pulumi.Input<string | undefined>;
-        /**
-         * Verifies core internal services are running. Default: True.
-         */
-        enableHealthMonitoring?: pulumi.Input<boolean | undefined>;
-        /**
-         * Runtime will automatically shutdown after idle_shutdown_time.
-         * Default: True
-         */
-        idleShutdown?: pulumi.Input<boolean | undefined>;
-        /**
-         * Time in minutes to wait before shuting down runtime.
-         * Default: 180 minutes
-         */
-        idleShutdownTimeout?: pulumi.Input<number | undefined>;
-        /**
-         * Install Nvidia Driver automatically.
-         */
-        installGpuDriver?: pulumi.Input<boolean | undefined>;
-        /**
-         * Use a list of container images to use as Kernels in the notebook instance.
-         * Structure is documented below.
-         */
-        kernels?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeSoftwareConfigKernel>[] | undefined>;
-        /**
-         * Cron expression in UTC timezone for schedule instance auto upgrade.
-         * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
-         */
-        notebookUpgradeSchedule?: pulumi.Input<string | undefined>;
-        /**
-         * Path to a Bash script that automatically runs after a notebook instance
-         * fully boots up. The path must be a URL or
-         * Cloud Storage path (gs://path-to-file/file-name).
-         */
-        postStartupScript?: pulumi.Input<string | undefined>;
-        /**
-         * Behavior for the post startup script.
-         * Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-         */
-        postStartupScriptBehavior?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Bool indicating whether an newer image is available in an image family.
-         */
-        upgradeable?: pulumi.Input<boolean | undefined>;
-    }
-
-    export interface RuntimeSoftwareConfigKernel {
-        /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: pulumi.Input<string>;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: pulumi.Input<string | undefined>;
-    }
-
-    export interface RuntimeVirtualMachine {
-        /**
-         * (Output)
-         * The unique identifier of the Managed Compute Engine instance.
-         */
-        instanceId?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * The user-friendly name of the Managed Compute Engine instance.
-         */
-        instanceName?: pulumi.Input<string | undefined>;
-        /**
-         * Virtual Machine configuration settings.
-         * Structure is documented below.
-         */
-        virtualMachineConfig?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfig | undefined>;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfig {
-        /**
-         * The Compute Engine accelerator configuration for this runtime.
-         * Structure is documented below.
-         */
-        acceleratorConfig?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig | undefined>;
-        /**
-         * Use a list of container images to start the notebook instance.
-         * Structure is documented below.
-         */
-        containerImages?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImage>[] | undefined>;
-        /**
-         * Data disk option configuration settings.
-         * Structure is documented below.
-         */
-        dataDisk: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDisk>;
-        /**
-         * Encryption settings for virtual machine data disk.
-         * Structure is documented below.
-         */
-        encryptionConfig?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig | undefined>;
-        /**
-         * (Output)
-         * The Compute Engine guest attributes. (see [Project and instance
-         * guest attributes](https://cloud.google.com/compute/docs/
-         * storing-retrieving-metadata#guest_attributes)).
-         */
-        guestAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-        /**
-         * If true, runtime will only have internal IP addresses. By default,
-         * runtimes are not restricted to internal IP addresses, and will
-         * have ephemeral external IP addresses assigned to each vm. This
-         * `internalIpOnly` restriction can only be enabled for subnetwork
-         * enabled networks, and all dependencies must be configured to be
-         * accessible without external IP addresses.
-         */
-        internalIpOnly?: pulumi.Input<boolean | undefined>;
-        /**
-         * The labels to associate with this runtime. Label **keys** must
-         * contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
-         * empty, but, if present, must contain 1 to 63 characters, and must
-         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
-         * more than 32 labels can be associated with a cluster.
-         */
-        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-        /**
-         * The Compute Engine machine type used for runtimes.
-         */
-        machineType: pulumi.Input<string>;
-        /**
-         * The Compute Engine metadata entries to add to virtual machine.
-         * (see [Project and instance metadata](https://cloud.google.com
-         * /compute/docs/storing-retrieving-metadata#project_and_instance
-         * _metadata)).
-         */
-        metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-        /**
-         * The Compute Engine network to be used for machine communications.
-         * Cannot be specified with subnetwork. If neither `network` nor
-         * `subnet` is specified, the "default" network of the project is
-         * used, if it exists. A full URL or partial URI. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-         *   regions/global/default`
-         * * `projects/[projectId]/regions/global/default`
-         *   Runtimes are managed resources inside Google Infrastructure.
-         *   Runtimes support the following network configurations:
-         * * Google Managed Network (Network & subnet are empty)
-         * * Consumer Project VPC (network & subnet are required). Requires
-         *   configuring Private Service Access.
-         * * Shared VPC (network & subnet are required). Requires
-         *   configuring Private Service Access.
-         */
-        network?: pulumi.Input<string | undefined>;
-        /**
-         * The type of vNIC to be used on this interface. This may be gVNIC
-         * or VirtioNet.
-         * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
-         */
-        nicType?: pulumi.Input<string | undefined>;
-        /**
-         * Reserved IP Range name is used for VPC Peering. The
-         * subnetwork allocation will use the range *name* if it's assigned.
-         */
-        reservedIpRange?: pulumi.Input<string | undefined>;
-        /**
-         * Shielded VM Instance configuration settings.
-         * Structure is documented below.
-         */
-        shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig | undefined>;
-        /**
-         * The Compute Engine subnetwork to be used for machine
-         * communications. Cannot be specified with network. A full URL or
-         * partial URI are valid. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-         *   regions/us-east1/subnetworks/sub0`
-         * * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
-         */
-        subnet?: pulumi.Input<string | undefined>;
-        /**
-         * The Compute Engine tags to add to runtime (see [Tagging instances]
-         * (https://cloud.google.com/compute/docs/
-         * label-or-tag-resources#tags)).
-         */
-        tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-        /**
-         * (Output)
-         * The zone where the virtual machine is located.
-         */
-        zone?: pulumi.Input<string | undefined>;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
-        /**
-         * Count of cores of this accelerator.
-         */
-        coreCount?: pulumi.Input<number | undefined>;
-        /**
-         * Accelerator model. For valid values, see
-         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-         * rest/v1/projects.locations.runtimes#AcceleratorType`
-         */
-        type?: pulumi.Input<string | undefined>;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigContainerImage {
-        /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: pulumi.Input<string>;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: pulumi.Input<string | undefined>;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigDataDisk {
-        /**
-         * (Output)
-         * Optional. Specifies whether the disk will be auto-deleted
-         * when the instance is deleted (but not when the disk is
-         * detached from the instance).
-         */
-        autoDelete?: pulumi.Input<boolean | undefined>;
-        /**
-         * (Output)
-         * Optional. Indicates that this is a boot disk. The virtual
-         * machine will use the first partition of the disk for its
-         * root filesystem.
-         */
-        boot?: pulumi.Input<boolean | undefined>;
-        /**
-         * (Output)
-         * Optional. Specifies a unique device name of your choice
-         * that is reflected into the /dev/disk/by-id/google-* tree
-         * of a Linux operating system running within the instance.
-         * This name can be used to reference the device for mounting,
-         * resizing, and so on, from within the instance.
-         * If not specified, the server chooses a default device name
-         * to apply to this disk, in the form persistent-disk-x, where
-         * x is a number assigned by Google Compute Engine. This field
-         * is only applicable for persistent disks.
-         */
-        deviceName?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Indicates a list of features to enable on the guest operating
-         * system. Applicable only for bootable images. To see a list of
-         * available features, read `https://cloud.google.com/compute/docs/
-         * images/create-delete-deprecate-private-images#guest-os-features`
-         * options. ``
-         */
-        guestOsFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-        /**
-         * (Output)
-         * Output only. A zero-based index to this disk, where 0 is
-         * reserved for the boot disk. If you have many disks attached
-         * to an instance, each disk would have a unique index number.
-         */
-        index?: pulumi.Input<number | undefined>;
-        /**
-         * Input only. Specifies the parameters for a new disk that will
-         * be created alongside the new instance. Use initialization
-         * parameters to create boot disks or local SSDs attached to the
-         * new instance. This property is mutually exclusive with the
-         * source property; you can only define one or the other, but not
-         * both.
-         * Structure is documented below.
-         */
-        initializeParams?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams | undefined>;
-        /**
-         * "Specifies the disk interface to use for attaching this disk,
-         * which is either SCSI or NVME. The default is SCSI. Persistent
-         * disks must always use SCSI and the request will fail if you attempt
-         * to attach a persistent disk in any other format than SCSI. Local SSDs
-         * can use either NVME or SCSI. For performance characteristics of SCSI
-         * over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
-         */
-        interface?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Type of the resource. Always compute#attachedDisk for attached
-         * disks.
-         */
-        kind?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Output only. Any valid publicly visible licenses.
-         */
-        licenses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-        /**
-         * The mode in which to attach this disk, either READ_WRITE
-         * or READ_ONLY. If not specified, the default is to attach
-         * the disk in READ_WRITE mode.
-         */
-        mode?: pulumi.Input<string | undefined>;
-        /**
-         * Specifies a valid partial or full URL to an existing
-         * Persistent Disk resource.
-         */
-        source?: pulumi.Input<string | undefined>;
-        /**
-         * Specifies the type of the disk, either SCRATCH or PERSISTENT.
-         * If not specified, the default is PERSISTENT.
-         */
-        type?: pulumi.Input<string | undefined>;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
-        /**
-         * Provide this property when creating the disk.
-         */
-        description?: pulumi.Input<string | undefined>;
-        /**
-         * Specifies the disk name. If not specified, the default is
-         * to use the name of the instance. If the disk with the
-         * instance name exists already in the given zone/region, a
-         * new name will be automatically generated.
-         */
-        diskName?: pulumi.Input<string | undefined>;
-        /**
-         * Specifies the size of the disk in base-2 GB. If not
-         * specified, the disk will be the same size as the image
-         * (usually 10GB). If specified, the size must be equal to
-         * or larger than 10GB. Default 100 GB.
-         */
-        diskSizeGb?: pulumi.Input<number | undefined>;
-        /**
-         * The type of the boot disk attached to this runtime,
-         * defaults to standard persistent disk. For valid values,
-         * see `https://cloud.google.com/vertex-ai/docs/workbench/
-         * reference/rest/v1/projects.locations.runtimes#disktype`
-         */
-        diskType?: pulumi.Input<string | undefined>;
-        /**
-         * Labels to apply to this disk. These can be later modified
-         * by the disks.setLabels method. This field is only
-         * applicable for persistent disks.
-         */
-        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
-        /**
-         * The Cloud KMS resource identifier of the customer-managed
-         * encryption key used to protect a resource, such as a disks.
-         * It has the following format:
-         * `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
-         * {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+         * The resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]
          */
         kmsKey?: pulumi.Input<string | undefined>;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
         /**
-         * Defines whether the instance has integrity monitoring enabled.
-         * Enables monitoring and attestation of the boot integrity of
-         * the instance. The attestation is performed against the
-         * integrity policy baseline. This baseline is initially derived
-         * from the implicitly trusted boot image when the instance is
-         * created. Enabled by default.
+         * (Output)
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]
          */
-        enableIntegrityMonitoring?: pulumi.Input<boolean | undefined>;
+        kmsKeyVersion?: pulumi.Input<string | undefined>;
         /**
-         * Defines whether the instance has Secure Boot enabled.Secure
-         * Boot helps ensure that the system only runs authentic software
-         * by verifying the digital signature of all boot components, and
-         * halting the boot process if signature verification fails.
-         * Disabled by default.
+         * (Output)
+         * The service account used to access the key.
          */
-        enableSecureBoot?: pulumi.Input<boolean | undefined>;
-        /**
-         * Defines whether the instance has the vTPM enabled. Enabled by
-         * default.
-         */
-        enableVtpm?: pulumi.Input<boolean | undefined>;
+        serviceAccountId?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -126191,6 +128332,15 @@ export namespace servicedirectory {
     }
 }
 
+export namespace serviceusage {
+    export interface V2ConsumerPolicyEnableRule {
+        /**
+         * (Optional): List of service names to be enabled in the format of services/<service_name>
+         */
+        services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+}
+
 export namespace siteverification {
     export interface WebResourceSite {
         /**
@@ -128223,6 +130373,79 @@ export namespace storage {
          * Possible values are: `editors`, `owners`, `viewers`.
          */
         team?: pulumi.Input<string | undefined>;
+    }
+
+    export interface FtpServerExternalConfig {
+        /**
+         * A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+         */
+        allowedCidrBlocks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface FtpServerInternalConfig {
+        /**
+         * A list of consumer projects that are allowed to connect to this server.
+         * Structure is documented below.
+         */
+        consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.storage.FtpServerInternalConfigConsumerAcceptList>[] | undefined>;
+        /**
+         * A list of consumer projects that are rejected from connecting to this server.
+         * Structure is documented below.
+         */
+        consumerRejectLists?: pulumi.Input<pulumi.Input<inputs.storage.FtpServerInternalConfigConsumerRejectList>[] | undefined>;
+    }
+
+    export interface FtpServerInternalConfigConsumerAcceptList {
+        /**
+         * The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+         */
+        connectionLimit: pulumi.Input<number>;
+        /**
+         * The project that is allowed to connect, in the format `projects/{project}`.
+         */
+        project: pulumi.Input<string>;
+    }
+
+    export interface FtpServerInternalConfigConsumerRejectList {
+        /**
+         * The project that is rejected from connecting, in the format `projects/{project}`.
+         */
+        project: pulumi.Input<string>;
+    }
+
+    export interface FtpUserStorageDirectoryMapping {
+        /**
+         * The Cloud Storage bucket name. Omit the gs://.
+         */
+        bucket?: pulumi.Input<string | undefined>;
+        /**
+         * The path of a folder within the bucket to set as the root directory for this directory mapping.
+         */
+        bucketPrefix?: pulumi.Input<string | undefined>;
+        /**
+         * The directory path in the virtual file system.
+         */
+        directory?: pulumi.Input<string | undefined>;
+        /**
+         * The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
+         */
+        permission?: pulumi.Input<string | undefined>;
+    }
+
+    export interface FtpUserUserCredentials {
+        /**
+         * The name of the credential.
+         */
+        credentialName?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the credential.
+         */
+        credentialType?: pulumi.Input<string | undefined>;
+        /**
+         * The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+         */
+        sshPublicKeyBody?: pulumi.Input<string | undefined>;
     }
 
     export interface InsightsDatasetConfigExcludeCloudStorageBuckets {
@@ -132418,6 +134641,96 @@ export namespace vertex {
         enableCustomServiceAccount: pulumi.Input<boolean>;
     }
 
+    export interface AiRagCorpusCorpusStatus {
+        /**
+         * (Output)
+         * Output only. Only populated when the state is ERROR.
+         */
+        errorStatus?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Output only. RagCorpus life state.
+         */
+        state?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiRagCorpusEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed
+         * encryption key used to protect the resource. Has the form:
+         * projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+         * The key needs to be in the same region as where the resource is
+         * created.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface AiRagCorpusVectorDbConfig {
+        /**
+         * Optional. Immutable. The embedding model config of the Vector DB.
+         * Structure is documented below.
+         */
+        ragEmbeddingModelConfig?: pulumi.Input<inputs.vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfig | undefined>;
+        /**
+         * The config for the default RAG-managed Vector DB.
+         * Structure is documented below.
+         */
+        ragManagedDb?: pulumi.Input<inputs.vertex.AiRagCorpusVectorDbConfigRagManagedDb | undefined>;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagEmbeddingModelConfig {
+        /**
+         * The Vertex AI Prediction Endpoint used for dense vector search.
+         * Structure is documented below.
+         */
+        vertexPredictionEndpoint?: pulumi.Input<inputs.vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpoint | undefined>;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpoint {
+        /**
+         * Required. The endpoint resource name. Format:
+         * projects/{project}/locations/{location}/publishers/{publisher}/models/{model}
+         * or projects/{project}/locations/{location}/endpoints/{endpoint}.
+         */
+        endpoint: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The resource name of the model that is deployed on the endpoint.
+         */
+        model?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Output only. Version ID of the model that is deployed on the endpoint.
+         */
+        modelVersionId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagManagedDb {
+        /**
+         * Performs an ANN search on RagCorpus.
+         * Structure is documented below.
+         */
+        ann?: pulumi.Input<inputs.vertex.AiRagCorpusVectorDbConfigRagManagedDbAnn | undefined>;
+        /**
+         * Performs a KNN search on RagCorpus. This is the default choice if not specified.
+         */
+        knn?: pulumi.Input<inputs.vertex.AiRagCorpusVectorDbConfigRagManagedDbKnn | undefined>;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagManagedDbAnn {
+        /**
+         * Number of leaf nodes in the tree-based structure. Default value is 500.
+         */
+        leafCount?: pulumi.Input<number | undefined>;
+        /**
+         * The depth of the tree-based structure. Only depth values of 2 and 3 are supported. Default value is 2.
+         */
+        treeDepth?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagManagedDbKnn {
+    }
+
     export interface AiRagEngineConfigRagManagedDbConfig {
         /**
          * Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
@@ -132585,6 +134898,11 @@ export namespace vertex {
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart {
         /**
+         * Audio (input or output) transcription. This is only set when this Part contains audio data.
+         * Structure is documented below.
+         */
+        audioTranscription?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription | undefined>;
+        /**
          * Result of executing the ExecutableCode.
          * Structure is documented below.
          */
@@ -132627,6 +134945,37 @@ export namespace vertex {
          * Structure is documented below.
          */
         videoMetadata?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription {
+        /**
+         * A label identifying the speaker of this audio segment (e.g. spk_1, spk_2). Present when diarization is set.
+         */
+        speakerLabel?: pulumi.Input<string | undefined>;
+        /**
+         * The transcription text of this audio segment.
+         */
+        text: pulumi.Input<string>;
+        /**
+         * Detailed word-level transcriptions and timing details. Present when wordTimestamp is set.
+         * Structure is documented below.
+         */
+        words?: pulumi.Input<pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWord>[] | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWord {
+        /**
+         * End offset in time of the word relative to the start of the audio.
+         */
+        endOffset?: pulumi.Input<string | undefined>;
+        /**
+         * Start offset in time of the word relative to the start of the audio.
+         */
+        startOffset?: pulumi.Input<string | undefined>;
+        /**
+         * Transcript of the word.
+         */
+        word: pulumi.Input<string>;
     }
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult {
@@ -132975,6 +135324,10 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecBuildSpec {
         /**
+         * Optional. The service account that the Cloud Build builder runs as.
+         */
+        serviceAccount?: pulumi.Input<string | undefined>;
+        /**
          * Optional. The resource name of the Cloud Build WorkerPool to use for the build.
          */
         workerPool?: pulumi.Input<string | undefined>;
@@ -132995,7 +135348,6 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecDeploymentSpec {
         /**
-         * (Optional, Beta)
          * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
          * Structure is documented below.
          */
@@ -133231,7 +135583,6 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecSourceCodeSpec {
         /**
-         * (Optional, Beta)
          * Optional. Specification for the deploying from agent config.
          * Structure is documented below.
          */
@@ -133387,425 +135738,71 @@ export namespace vertex {
         runtimeRevisionName: pulumi.Input<string>;
     }
 
-    export interface AiScheduleCreateNotebookExecutionJobRequest {
+    export interface AiSemanticGovernancePolicyEngineGatewayConfig {
         /**
-         * NotebookExecutionJob represents an instance of a notebook execution.
-         * Structure is documented below.
+         * Additional consumer projects permitted to attach their own PSC endpoint
+         * to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+         * the customer creates the PSC endpoint in a project other than this
+         * gateway's network project. Each listed project is VPC-SC enforced: it
+         * must be within the caller's service perimeter. The owning
+         * SemanticGovernancePolicyEngine's own project is always permitted
+         * implicitly and need not be listed. Format: projects/{project} (ID or number).
          */
-        notebookExecutionJob: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob>;
-        /**
-         * User specified ID for the NotebookExecutionJob.
-         */
-        notebookExecutionJobId?: pulumi.Input<string | undefined>;
-        /**
-         * The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
-         */
-        parent: pulumi.Input<string>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+        allowedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * (Output)
-         * Timestamp when this NotebookExecutionJob was created.
+         * The fully qualified record name of the A-record the backend writes into
+         * `dnsZoneName` for this gateway. Populated after the gateway reaches
+         * `ACTIVE`; empty until then.
          */
-        createTime?: pulumi.Input<string | undefined>;
+        dnsRecord?: pulumi.Input<string | undefined>;
         /**
-         * Compute configuration to use for an execution job.
-         * Structure is documented below.
+         * The name of the private Cloud DNS managed zone in which the backend
+         * creates the DNS record set for this gateway's PSC endpoint. This is the
+         * managed-zone resource name, not a fully-qualified domain name. The zone
+         * must already exist and be attached to the gateway's VPC at provision
+         * time. The name must match `^[a-z0-9.-]{1,63}$`. Must be set together
+         * with `network` and `subnetwork` (all three or none).
          */
-        customEnvironmentSpec?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec | undefined>;
-        /**
-         * The Dataform Repository containing the input notebook.
-         * Structure is documented below.
-         */
-        dataformRepositorySource?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource | undefined>;
-        /**
-         * The content of the input notebook in ipynb format.
-         * Structure is documented below.
-         */
-        directNotebookSource?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource | undefined>;
-        /**
-         * The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-         */
-        displayName?: pulumi.Input<string | undefined>;
-        /**
-         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
-         * Structure is documented below.
-         */
-        encryptionSpec?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec | undefined>;
-        /**
-         * Max running time of the execution job in seconds (default 86400s / 24 hrs).
-         */
-        executionTimeout?: pulumi.Input<string | undefined>;
-        /**
-         * The user email to run the execution as. Only supported by Colab runtimes.
-         */
-        executionUser?: pulumi.Input<string | undefined>;
-        /**
-         * The Cloud Storage uri for the input notebook.
-         * Structure is documented below.
-         */
-        gcsNotebookSource?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource | undefined>;
-        /**
-         * The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
-         */
-        gcsOutputUri?: pulumi.Input<string | undefined>;
+        dnsZoneName?: pulumi.Input<string | undefined>;
         /**
          * (Output)
-         * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+         * The private IP address of the PSC endpoint. This field is currently
+         * always empty and is slated for deprecation; do not depend on it.
          */
-        jobState?: pulumi.Input<string | undefined>;
+        ipAddress?: pulumi.Input<string | undefined>;
         /**
-         * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+         * The identifier for this object. Format specified above.
          */
-        kernelName?: pulumi.Input<string | undefined>;
+        name: pulumi.Input<string>;
         /**
-         * The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-         */
-        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-        /**
-         * (Output)
-         * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
-         */
-        name?: pulumi.Input<string | undefined>;
-        /**
-         * The NotebookRuntimeTemplate to source compute configuration from.
-         */
-        notebookRuntimeTemplateResourceName?: pulumi.Input<string | undefined>;
-        /**
-         * The user-defined parameters to use during notebook execution.
-         */
-        parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-        /**
-         * (Output)
-         * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-         */
-        scheduleResourceName?: pulumi.Input<string | undefined>;
-        /**
-         * The service account to run the execution as.
-         */
-        serviceAccount?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Timestamp when this NotebookExecutionJob was most recently updated.
-         */
-        updateTime?: pulumi.Input<string | undefined>;
-        /**
-         * Configuration for a Workbench Instances-based environment.
-         */
-        workbenchRuntime?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
-        /**
-         * Specification of a single machine.
-         * Structure is documented below.
-         */
-        machineSpec?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec | undefined>;
-        /**
-         * Network spec.
-         * Structure is documented below.
-         */
-        networkSpec?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec | undefined>;
-        /**
-         * Represents the spec of persistent disk options.
-         * Structure is documented below.
-         */
-        persistentDiskSpec?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
-        /**
-         * The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
-         */
-        acceleratorCount?: pulumi.Input<number | undefined>;
-        /**
-         * Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
-         */
-        acceleratorType?: pulumi.Input<string | undefined>;
-        /**
-         * The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
-         */
-        gpuPartitionSize?: pulumi.Input<string | undefined>;
-        /**
-         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
-         */
-        machineType?: pulumi.Input<string | undefined>;
-        /**
-         * A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
-         * Structure is documented below.
-         */
-        reservationAffinity?: pulumi.Input<inputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity | undefined>;
-        /**
-         * The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
-         */
-        tpuTopology?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
-        /**
-         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
-         */
-        key?: pulumi.Input<string | undefined>;
-        /**
-         * Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
-         */
-        reservationAffinityType: pulumi.Input<string>;
-        /**
-         * When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
-         */
-        useReservationPool?: pulumi.Input<boolean | undefined>;
-        /**
-         * Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
-         */
-        values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
-        /**
-         * Whether to enable public internet access. Default false.
-         */
-        enableInternetAccess?: pulumi.Input<boolean | undefined>;
-        /**
-         * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+         * The URI of the network resource where the gateway's PSC endpoint is
+         * provisioned. Format: projects/{project}/global/networks/{network}.
+         * `network`, `subnetwork`, and `dnsZoneName` must all be set together
+         * or all omitted; setting only some is rejected by the API.
          */
         network?: pulumi.Input<string | undefined>;
         /**
-         * The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+         * (Output)
+         * The self-link or name of the Private Service Connect endpoint forwarding
+         * rule.
          */
-        subnetwork?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
-        /**
-         * Size in GB of the disk (default is 100GB).
-         */
-        diskSizeGb?: pulumi.Input<string | undefined>;
-        /**
-         * Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
-         */
-        diskType?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
-        /**
-         * The commit SHA to read repository with. If unset, the file will be read at HEAD.
-         */
-        commitSha?: pulumi.Input<string | undefined>;
-        /**
-         * The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
-         */
-        dataformRepositoryResourceName?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource {
-        /**
-         * The base64-encoded contents of the input notebook file.
-         */
-        content?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
-        /**
-         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-         */
-        kmsKeyName: pulumi.Input<string>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
-        /**
-         * The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-         */
-        generation?: pulumi.Input<string | undefined>;
-        /**
-         * The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
-         */
-        uri?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
-    }
-
-    export interface AiScheduleCreatePipelineJobRequest {
-        /**
-         * The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
-         */
-        parent: pulumi.Input<string>;
-        /**
-         * An instance of a machine learning PipelineJob.
-         * Structure is documented below.
-         */
-        pipelineJob: pulumi.Input<inputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJob>;
-        /**
-         * The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
-         */
-        pipelineJobId?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJob {
+        pscEndpoint?: pulumi.Input<string | undefined>;
         /**
          * (Output)
-         * Pipeline creation time.
-         */
-        createTime?: pulumi.Input<string | undefined>;
-        /**
-         * The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-         */
-        displayName?: pulumi.Input<string | undefined>;
-        /**
-         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
-         * Structure is documented below.
-         */
-        encryptionSpec?: pulumi.Input<inputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec | undefined>;
-        /**
-         * (Output)
-         * Pipeline end time.
-         */
-        endTime?: pulumi.Input<string | undefined>;
-        /**
-         * The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
-         */
-        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-        /**
-         * (Output)
-         * The resource name of the PipelineJob.
-         */
-        name?: pulumi.Input<string | undefined>;
-        /**
-         * The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
-         */
-        network?: pulumi.Input<string | undefined>;
-        /**
-         * A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
-         */
-        pipelineSpec?: pulumi.Input<string | undefined>;
-        /**
-         * Whether to do component level validations before job creation.
-         */
-        preflightValidations?: pulumi.Input<boolean | undefined>;
-        /**
-         * Configuration for PSC-I.
-         * Structure is documented below.
-         */
-        pscInterfaceConfig?: pulumi.Input<inputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig | undefined>;
-        /**
-         * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
-         */
-        reservedIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-        /**
-         * The runtime config of a PipelineJob.
-         * Structure is documented below.
-         */
-        runtimeConfig?: pulumi.Input<inputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig | undefined>;
-        /**
-         * (Output)
-         * The schedule resource name. Only returned if the Pipeline is created by Schedule API.
-         */
-        scheduleName?: pulumi.Input<string | undefined>;
-        /**
-         * The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
-         */
-        serviceAccount?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Pipeline start time.
-         */
-        startTime?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+         * The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+         * PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED. A `FAILED`
+         * gateway is surfaced here without a provider error; the engine as a
+         * whole may still be `ACTIVE`.
          */
         state?: pulumi.Input<string | undefined>;
         /**
-         * (Output)
-         * Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
-         * Structure is documented below.
+         * The URI of the subnetwork resource where the gateway's PSC endpoint is
+         * provisioned. Format:
+         * projects/{project}/regions/{region}/subnetworks/{subnetwork}. Must be
+         * set together with `network` and `dnsZoneName` (all three or none).
          */
-        templateMetadatas?: pulumi.Input<pulumi.Input<inputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata>[] | undefined>;
-        /**
-         * A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
-         */
-        templateUri?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * Timestamp when this PipelineJob was most recently updated.
-         */
-        updateTime?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
-        /**
-         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-         */
-        kmsKeyName: pulumi.Input<string>;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
-        /**
-         * DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
-         * Structure is documented below.
-         */
-        dnsPeeringConfigs?: pulumi.Input<pulumi.Input<inputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig>[] | undefined>;
-        /**
-         * The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
-         */
-        networkAttachment?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig {
-        /**
-         * The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
-         */
-        domain: pulumi.Input<string>;
-        /**
-         * The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
-         */
-        targetNetwork: pulumi.Input<string>;
-        /**
-         * The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
-         */
-        targetProject: pulumi.Input<string>;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
-        /**
-         * Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
-         */
-        failurePolicy?: pulumi.Input<string | undefined>;
-        /**
-         * A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
-         */
-        gcsOutputDirectory: pulumi.Input<string>;
-        /**
-         * The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-         */
-        inputArtifacts?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-        /**
-         * The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-         *
-         * <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
-         */
-        parameterValues?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata {
-        /**
-         * The versionName in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
-         */
-        version?: pulumi.Input<string | undefined>;
-    }
-
-    export interface AiScheduleLastScheduledRunResponse {
-        /**
-         * (Output)
-         * The response of the scheduled run.
-         */
-        runResponse?: pulumi.Input<string | undefined>;
-        /**
-         * (Output)
-         * The scheduled run time based on the user-specified schedule.
-         */
-        scheduledRunTime?: pulumi.Input<string | undefined>;
+        subnetwork?: pulumi.Input<string | undefined>;
     }
 
     export interface AiTensorboardEncryptionSpec {
@@ -134763,8 +136760,10 @@ export namespace workstations {
          */
         code?: pulumi.Input<number | undefined>;
         /**
-         * (Output)
+         * (Output, Deprecated)
          * A list of messages that carry the error details.
+         *
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          */
         details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
         /**
@@ -134825,8 +136824,10 @@ export namespace workstations {
          */
         code?: pulumi.Input<number | undefined>;
         /**
-         * (Output)
+         * (Output, Deprecated)
          * A list of messages that carry the error details.
+         *
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          */
         details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
         /**

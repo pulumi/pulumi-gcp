@@ -15,6 +15,11 @@ export type Enrollment = import("./enrollment").Enrollment;
 export const Enrollment: typeof import("./enrollment").Enrollment = null as any;
 utilities.lazyLoad(exports, ["Enrollment"], () => require("./enrollment"));
 
+export { GetPipelineIamPolicyArgs, GetPipelineIamPolicyResult, GetPipelineIamPolicyOutputArgs } from "./getPipelineIamPolicy";
+export const getPipelineIamPolicy: typeof import("./getPipelineIamPolicy").getPipelineIamPolicy = null as any;
+export const getPipelineIamPolicyOutput: typeof import("./getPipelineIamPolicy").getPipelineIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineIamPolicy","getPipelineIamPolicyOutput"], () => require("./getPipelineIamPolicy"));
+
 export { GoogleApiSourceArgs, GoogleApiSourceState } from "./googleApiSource";
 export type GoogleApiSource = import("./googleApiSource").GoogleApiSource;
 export const GoogleApiSource: typeof import("./googleApiSource").GoogleApiSource = null as any;
@@ -34,6 +39,21 @@ export { PipelineArgs, PipelineState } from "./pipeline";
 export type Pipeline = import("./pipeline").Pipeline;
 export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
 utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
+
+export { PipelineIamBindingArgs, PipelineIamBindingState } from "./pipelineIamBinding";
+export type PipelineIamBinding = import("./pipelineIamBinding").PipelineIamBinding;
+export const PipelineIamBinding: typeof import("./pipelineIamBinding").PipelineIamBinding = null as any;
+utilities.lazyLoad(exports, ["PipelineIamBinding"], () => require("./pipelineIamBinding"));
+
+export { PipelineIamMemberArgs, PipelineIamMemberState } from "./pipelineIamMember";
+export type PipelineIamMember = import("./pipelineIamMember").PipelineIamMember;
+export const PipelineIamMember: typeof import("./pipelineIamMember").PipelineIamMember = null as any;
+utilities.lazyLoad(exports, ["PipelineIamMember"], () => require("./pipelineIamMember"));
+
+export { PipelineIamPolicyArgs, PipelineIamPolicyState } from "./pipelineIamPolicy";
+export type PipelineIamPolicy = import("./pipelineIamPolicy").PipelineIamPolicy;
+export const PipelineIamPolicy: typeof import("./pipelineIamPolicy").PipelineIamPolicy = null as any;
+utilities.lazyLoad(exports, ["PipelineIamPolicy"], () => require("./pipelineIamPolicy"));
 
 export { TriggerArgs, TriggerState } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
@@ -57,6 +77,12 @@ const _module = {
                 return new MessageBus(name, <any>undefined, { urn })
             case "gcp:eventarc/pipeline:Pipeline":
                 return new Pipeline(name, <any>undefined, { urn })
+            case "gcp:eventarc/pipelineIamBinding:PipelineIamBinding":
+                return new PipelineIamBinding(name, <any>undefined, { urn })
+            case "gcp:eventarc/pipelineIamMember:PipelineIamMember":
+                return new PipelineIamMember(name, <any>undefined, { urn })
+            case "gcp:eventarc/pipelineIamPolicy:PipelineIamPolicy":
+                return new PipelineIamPolicy(name, <any>undefined, { urn })
             case "gcp:eventarc/trigger:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
             default:
@@ -70,4 +96,7 @@ pulumi.runtime.registerResourceModule("gcp", "eventarc/googleApiSource", _module
 pulumi.runtime.registerResourceModule("gcp", "eventarc/googleChannelConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/messageBus", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/pipeline", _module)
+pulumi.runtime.registerResourceModule("gcp", "eventarc/pipelineIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "eventarc/pipelineIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "eventarc/pipelineIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/trigger", _module)

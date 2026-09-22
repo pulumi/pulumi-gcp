@@ -11,11 +11,17 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.ces.DeploymentArgs;
 import com.pulumi.gcp.ces.inputs.DeploymentState;
 import com.pulumi.gcp.ces.outputs.DeploymentChannelProfile;
+import com.pulumi.gcp.ces.outputs.DeploymentInstagramCredentials;
+import com.pulumi.gcp.ces.outputs.DeploymentWhatsappCredentials;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Description
+ * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+ * Read more about Write-only Arguments.
  * 
  * ## Example Usage
  * 
@@ -176,6 +182,74 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Deployment Whatsapp
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.AppVersion;
+ * import com.pulumi.gcp.ces.AppVersionArgs;
+ * import com.pulumi.gcp.ces.Deployment;
+ * import com.pulumi.gcp.ces.DeploymentArgs;
+ * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileArgs;
+ * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileWhatsappConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_app = new App("my-app", AppArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app")
+ *             .appId("app-id")
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_app_version = new AppVersion("my-app-version", AppVersionArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app-version")
+ *             .app(my_app.name())
+ *             .appVersionId("app-version-id")
+ *             .description("example-app-version")
+ *             .build());
+ * 
+ *         var my_deployment = new Deployment("my-deployment", DeploymentArgs.builder()
+ *             .location("us")
+ *             .displayName("my-deployment")
+ *             .app(my_app.name())
+ *             .appVersion(my_app_version.id())
+ *             .channelProfile(DeploymentChannelProfileArgs.builder()
+ *                 .channelType("API")
+ *                 .profileId("temp_profile_id")
+ *                 .whatsappConfig(DeploymentChannelProfileWhatsappConfigArgs.builder()
+ *                     .phoneNumber("+15551234567")
+ *                     .phoneNumberId("1234567890")
+ *                     .wabaId("9876543210")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -317,6 +391,22 @@ public class Deployment extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
+     * Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="instagramCredentials", refs={DeploymentInstagramCredentials.class}, tree="[0]")
+    private Output</* @Nullable */ DeploymentInstagramCredentials> instagramCredentials;
+
+    /**
+     * @return Ephemeral Meta credentials required when configuring an Instagram channel profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DeploymentInstagramCredentials>> instagramCredentials() {
+        return Codegen.optional(this.instagramCredentials);
+    }
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
@@ -377,6 +467,22 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="whatsappCredentials", refs={DeploymentWhatsappCredentials.class}, tree="[0]")
+    private Output</* @Nullable */ DeploymentWhatsappCredentials> whatsappCredentials;
+
+    /**
+     * @return Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DeploymentWhatsappCredentials>> whatsappCredentials() {
+        return Codegen.optional(this.whatsappCredentials);
     }
 
     /**

@@ -667,6 +667,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetToolOverrideArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -718,6 +719,11 @@ import javax.annotation.Nullable;
  *                 .apiAuthentication(ToolsetMcpToolsetApiAuthenticationArgs.builder()
  *                     .serviceAgentIdTokenAuthConfig(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs.builder()
  *                         .build())
+ *                     .build())
+ *                 .toolOverrides(ToolsetMcpToolsetToolOverrideArgs.builder()
+ *                     .tool("my-tool")
+ *                     .nameOverride("my_tool_override")
+ *                     .descriptionOverride("A tool description override")
  *                     .build())
  *                 .build())
  *             .build());

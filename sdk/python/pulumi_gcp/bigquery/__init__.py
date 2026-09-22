@@ -14,6 +14,7 @@ from .connection_iam_binding import *
 from .connection_iam_member import *
 from .connection_iam_policy import *
 from .data_transfer_config import *
+from .data_transfer_data_source_enrollment import *
 from .datapolicyv2_data_policy import *
 from .datapolicyv2_data_policy_iam_binding import *
 from .datapolicyv2_data_policy_iam_member import *

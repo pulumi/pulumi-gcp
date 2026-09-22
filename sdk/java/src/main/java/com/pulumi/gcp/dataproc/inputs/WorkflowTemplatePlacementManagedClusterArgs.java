@@ -34,14 +34,14 @@ public final class WorkflowTemplatePlacementManagedClusterArgs extends com.pulum
     }
 
     /**
-     * Required. The cluster configuration.
+     * Required. The cluster configuration. Structure is documented below.
      * 
      */
     @Import(name="config", required=true)
     private Output<WorkflowTemplatePlacementManagedClusterConfigArgs> config;
 
     /**
-     * @return Required. The cluster configuration.
+     * @return Required. The cluster configuration. Structure is documented below.
      * 
      */
     public Output<WorkflowTemplatePlacementManagedClusterConfigArgs> config() {
@@ -111,7 +111,7 @@ public final class WorkflowTemplatePlacementManagedClusterArgs extends com.pulum
         }
 
         /**
-         * @param config Required. The cluster configuration.
+         * @param config Required. The cluster configuration. Structure is documented below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class WorkflowTemplatePlacementManagedClusterArgs extends com.pulum
         }
 
         /**
-         * @param config Required. The cluster configuration.
+         * @param config Required. The cluster configuration. Structure is documented below.
          * 
          * @return builder
          * 

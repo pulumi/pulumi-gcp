@@ -15995,6 +15995,8 @@ class InstanceAdvancedMachineFeaturesArgsDict(TypedDict):
     performance_monitoring_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+    > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
     """
     threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -16022,6 +16024,8 @@ class InstanceAdvancedMachineFeaturesArgs:
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[_builtins.str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[_builtins.str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[_builtins.int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -16068,6 +16072,8 @@ class InstanceAdvancedMachineFeaturesArgs:
     def performance_monitoring_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -27186,6 +27192,8 @@ class InstanceTemplateAdvancedMachineFeaturesArgsDict(TypedDict):
     performance_monitoring_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+    > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
     """
     threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -27213,6 +27221,8 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[_builtins.str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[_builtins.str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[_builtins.int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -27259,6 +27269,8 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
     def performance_monitoring_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -31451,13 +31463,6 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs:
 
 
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict(TypedDict):
-    attachment: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    """
-    (Output, Deprecated)
-    URLs of Attachments in the given zone, to the given
-    region, on Interconnects in the given facility and metro. Every
-    Attachment in the AG has such an entry.
-    """
     attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Attachments in the AttachmentGroup. Keys are arbitrary user-specified
@@ -31478,14 +31483,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict
 @pulumi.input_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
     def __init__(__self__, *,
-                 attachment: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachment: (Output, Deprecated)
-               URLs of Attachments in the given zone, to the given
-               region, on Interconnects in the given facility and metro. Every
-               Attachment in the AG has such an entry.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -31497,31 +31497,10 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
-        if attachment is not None:
-            warnings.warn("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""", DeprecationWarning)
-            pulumi.log.warn("""attachment is deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-        if attachment is not None:
-            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-    def attachment(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        (Output, Deprecated)
-        URLs of Attachments in the given zone, to the given
-        region, on Interconnects in the given facility and metro. Every
-        Attachment in the AG has such an entry.
-        """
-        return pulumi.get(self, "attachment")
-
-    @attachment.setter
-    def attachment(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter
@@ -47782,6 +47761,8 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgsDict(TypedDict):
     performance_monitoring_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+    > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
     """
     threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -47809,6 +47790,8 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[_builtins.str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[_builtins.str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[_builtins.int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -47855,6 +47838,8 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
     def performance_monitoring_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 

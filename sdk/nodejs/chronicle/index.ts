@@ -10,6 +10,21 @@ export type BigQueryExport = import("./bigQueryExport").BigQueryExport;
 export const BigQueryExport: typeof import("./bigQueryExport").BigQueryExport = null as any;
 utilities.lazyLoad(exports, ["BigQueryExport"], () => require("./bigQueryExport"));
 
+export { CaseCloseDefinitionArgs, CaseCloseDefinitionState } from "./caseCloseDefinition";
+export type CaseCloseDefinition = import("./caseCloseDefinition").CaseCloseDefinition;
+export const CaseCloseDefinition: typeof import("./caseCloseDefinition").CaseCloseDefinition = null as any;
+utilities.lazyLoad(exports, ["CaseCloseDefinition"], () => require("./caseCloseDefinition"));
+
+export { CaseStageDefinitionArgs, CaseStageDefinitionState } from "./caseStageDefinition";
+export type CaseStageDefinition = import("./caseStageDefinition").CaseStageDefinition;
+export const CaseStageDefinition: typeof import("./caseStageDefinition").CaseStageDefinition = null as any;
+utilities.lazyLoad(exports, ["CaseStageDefinition"], () => require("./caseStageDefinition"));
+
+export { CaseTagDefinitionArgs, CaseTagDefinitionState } from "./caseTagDefinition";
+export type CaseTagDefinition = import("./caseTagDefinition").CaseTagDefinition;
+export const CaseTagDefinition: typeof import("./caseTagDefinition").CaseTagDefinition = null as any;
+utilities.lazyLoad(exports, ["CaseTagDefinition"], () => require("./caseTagDefinition"));
+
 export { CustomListArgs, CustomListState } from "./customList";
 export type CustomList = import("./customList").CustomList;
 export const CustomList: typeof import("./customList").CustomList = null as any;
@@ -127,6 +142,12 @@ const _module = {
         switch (type) {
             case "gcp:chronicle/bigQueryExport:BigQueryExport":
                 return new BigQueryExport(name, <any>undefined, { urn })
+            case "gcp:chronicle/caseCloseDefinition:CaseCloseDefinition":
+                return new CaseCloseDefinition(name, <any>undefined, { urn })
+            case "gcp:chronicle/caseStageDefinition:CaseStageDefinition":
+                return new CaseStageDefinition(name, <any>undefined, { urn })
+            case "gcp:chronicle/caseTagDefinition:CaseTagDefinition":
+                return new CaseTagDefinition(name, <any>undefined, { urn })
             case "gcp:chronicle/customList:CustomList":
                 return new CustomList(name, <any>undefined, { urn })
             case "gcp:chronicle/dashboardChart:DashboardChart":
@@ -177,6 +198,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "chronicle/bigQueryExport", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/caseCloseDefinition", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/caseStageDefinition", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/caseTagDefinition", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/customList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dashboardChart", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)

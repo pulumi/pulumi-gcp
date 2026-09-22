@@ -587,7 +587,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const sourcebucket = new gcp.storage.Bucket("sourcebucket", {
- *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_75125`),
+ *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_88722`),
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });

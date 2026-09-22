@@ -36,18 +36,26 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
     }
 
     /**
-     * (Output)
+     * (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
+     * @deprecated
+     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * 
      */
+    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
     @Import(name="details")
     private @Nullable Output<List<Map<String,String>>> details;
 
     /**
-     * @return (Output)
+     * @return (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
+     * @deprecated
+     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * 
      */
+    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
     public Optional<Output<List<Map<String,String>>>> details() {
         return Optional.ofNullable(this.details);
     }
@@ -119,35 +127,47 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param details (Output)
+         * @param details (Output, Deprecated)
          * A list of messages that carry the error details.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+         * 
          */
+        @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
         public Builder details(@Nullable Output<List<Map<String,String>>> details) {
             $.details = details;
             return this;
         }
 
         /**
-         * @param details (Output)
+         * @param details (Output, Deprecated)
          * A list of messages that carry the error details.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+         * 
          */
+        @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
         public Builder details(List<Map<String,String>> details) {
             return details(Output.of(details));
         }
 
         /**
-         * @param details (Output)
+         * @param details (Output, Deprecated)
          * A list of messages that carry the error details.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+         * 
          */
+        @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
         public Builder details(Map<String,String>... details) {
             return details(List.of(details));
         }

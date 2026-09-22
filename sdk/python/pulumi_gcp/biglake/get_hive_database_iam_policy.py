@@ -107,8 +107,6 @@ def get_hive_database_iam_policy(catalog: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHiveDatabaseIamPolicyResult:
     """
     Retrieves the current IAM policy data for hivedatabase
-    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
 
     ## Example Usage
 
@@ -148,8 +146,6 @@ def get_hive_database_iam_policy_output(catalog: pulumi.Input[Optional[_builtins
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHiveDatabaseIamPolicyResult]:
     """
     Retrieves the current IAM policy data for hivedatabase
-    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
 
     ## Example Usage
 

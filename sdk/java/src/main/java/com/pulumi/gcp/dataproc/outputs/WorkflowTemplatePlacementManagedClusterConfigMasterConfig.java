@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -32,6 +33,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      * 
      */
     private @Nullable String image;
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+     * 
+     */
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
     /**
      * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
      * 
@@ -89,6 +95,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
+    }
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+     * 
+     */
+    public Optional<WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
     /**
      * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
@@ -152,6 +165,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator> accelerators;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig diskConfig;
         private @Nullable String image;
+        private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
         private @Nullable List<String> instanceNames;
         private @Nullable Boolean isPreemptible;
         private @Nullable String machineType;
@@ -165,6 +179,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
     	      this.accelerators = defaults.accelerators;
     	      this.diskConfig = defaults.diskConfig;
     	      this.image = defaults.image;
+    	      this.instanceFlexibilityPolicy = defaults.instanceFlexibilityPolicy;
     	      this.instanceNames = defaults.instanceNames;
     	      this.isPreemptible = defaults.isPreemptible;
     	      this.machineType = defaults.machineType;
@@ -193,6 +208,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         public Builder image(@Nullable String image) {
 
             this.image = image;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceFlexibilityPolicy(@Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy) {
+
+            this.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             return this;
         }
         @CustomType.Setter
@@ -248,6 +269,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
             _resultValue.accelerators = accelerators;
             _resultValue.diskConfig = diskConfig;
             _resultValue.image = image;
+            _resultValue.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             _resultValue.instanceNames = instanceNames;
             _resultValue.isPreemptible = isPreemptible;
             _resultValue.machineType = machineType;

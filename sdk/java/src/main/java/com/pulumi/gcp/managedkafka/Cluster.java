@@ -13,6 +13,7 @@ import com.pulumi.gcp.managedkafka.inputs.ClusterState;
 import com.pulumi.gcp.managedkafka.outputs.ClusterBrokerCapacityConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterCapacityConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterGcpConfig;
+import com.pulumi.gcp.managedkafka.outputs.ClusterPublicClusterDetail;
 import com.pulumi.gcp.managedkafka.outputs.ClusterRebalanceConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterTlsConfig;
 import java.lang.String;
@@ -222,6 +223,67 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Managedkafka Cluster Public
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.managedkafka.Cluster;
+ * import com.pulumi.gcp.managedkafka.ClusterArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigPublicClusterConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterRebalanceConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example = new Cluster("example", ClusterArgs.builder()
+ *             .clusterId("my-cluster")
+ *             .location("us-central1")
+ *             .capacityConfig(ClusterCapacityConfigArgs.builder()
+ *                 .vcpuCount("3")
+ *                 .memoryBytes("3221225472")
+ *                 .build())
+ *             .gcpConfig(ClusterGcpConfigArgs.builder()
+ *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
+ *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
+ *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.number()))
+ *                         .build())
+ *                     .publicClusterConfig(ClusterGcpConfigAccessConfigPublicClusterConfigArgs.builder()
+ *                         .allowedSourceIpRanges("192.168.1.0/24")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .rebalanceConfig(ClusterRebalanceConfigArgs.builder()
+ *                 .mode("AUTO_REBALANCE_ON_SCALE_UP")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -242,6 +304,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:managedkafka/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
+    /**
+     * The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+     * 
+     */
+    @Export(name="bootstrapAddress", refs={String.class}, tree="[0]")
+    private Output<String> bootstrapAddress;
+
+    /**
+     * @return The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+     * 
+     */
+    public Output<String> bootstrapAddress() {
+        return this.bootstrapAddress;
+    }
     /**
      * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
      * Structure is documented below.
@@ -417,6 +493,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Details of the public cluster feature for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="publicClusterDetails", refs={List.class,ClusterPublicClusterDetail.class}, tree="[0,1]")
+    private Output<List<ClusterPublicClusterDetail>> publicClusterDetails;
+
+    /**
+     * @return Details of the public cluster feature for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ClusterPublicClusterDetail>> publicClusterDetails() {
+        return this.publicClusterDetails;
     }
     /**
      * The combination of labels configured directly on the resource

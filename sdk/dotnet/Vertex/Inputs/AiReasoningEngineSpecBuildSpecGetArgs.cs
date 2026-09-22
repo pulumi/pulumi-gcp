@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecBuildSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The service account that the Cloud Build builder runs as.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
         /// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
         /// </summary>
         [Input("workerPool")]

@@ -8,10 +8,14 @@ import typing
 # Export this package's modules as members:
 from .channel import *
 from .enrollment import *
+from .get_pipeline_iam_policy import *
 from .google_api_source import *
 from .google_channel_config import *
 from .message_bus import *
 from .pipeline import *
+from .pipeline_iam_binding import *
+from .pipeline_iam_member import *
+from .pipeline_iam_policy import *
 from .trigger import *
 from ._inputs import *
 from . import outputs

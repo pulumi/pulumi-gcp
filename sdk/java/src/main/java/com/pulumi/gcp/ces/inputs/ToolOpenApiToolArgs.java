@@ -22,7 +22,7 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * (Output)
-     * Authentication information required for API calls.
+     * Authentication information required for calling the remote agent.
      * Structure is documented below.
      * 
      */
@@ -31,7 +31,7 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return (Output)
-     * Authentication information required for API calls.
+     * Authentication information required for calling the remote agent.
      * Structure is documented below.
      * 
      */
@@ -197,7 +197,7 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param apiAuthentications (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          * 
          * @return builder
@@ -210,7 +210,7 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param apiAuthentications (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          * 
          * @return builder
@@ -222,7 +222,7 @@ public final class ToolOpenApiToolArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param apiAuthentications (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          * 
          * @return builder

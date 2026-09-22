@@ -14,12 +14,14 @@ import com.pulumi.gcp.ces.outputs.AppAudioProcessingConfig;
 import com.pulumi.gcp.ces.outputs.AppClientCertificateSettings;
 import com.pulumi.gcp.ces.outputs.AppDataStoreSettings;
 import com.pulumi.gcp.ces.outputs.AppDefaultChannelProfile;
+import com.pulumi.gcp.ces.outputs.AppErrorHandlingSettings;
 import com.pulumi.gcp.ces.outputs.AppEvaluationMetricsThresholds;
 import com.pulumi.gcp.ces.outputs.AppLanguageSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettings;
 import com.pulumi.gcp.ces.outputs.AppModelSettings;
 import com.pulumi.gcp.ces.outputs.AppTimeZoneSettings;
 import com.pulumi.gcp.ces.outputs.AppVariableDeclaration;
+import com.pulumi.gcp.ces.outputs.AppVpcScSettings;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -71,18 +73,25 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.AppLoggingSettingsBigqueryExportSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppLoggingSettingsCloudLoggingSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppLoggingSettingsConversationLoggingSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLoggingSettingsMetricAnalysisSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppModelSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsArgs;
  * import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs;
  * import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs;
  * import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppVariableDeclarationArgs;
  * import com.pulumi.gcp.ces.inputs.AppVariableDeclarationSchemaArgs;
  * import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileArgs;
  * import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfilePersonaPropertyArgs;
  * import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppVpcScSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsFallbackResponseConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsEndSessionConfigArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -178,6 +187,9 @@ import javax.annotation.Nullable;
  *                 .conversationLoggingSettings(AppLoggingSettingsConversationLoggingSettingsArgs.builder()
  *                     .disableConversationLogging(true)
  *                     .build())
+ *                 .metricAnalysisSettings(AppLoggingSettingsMetricAnalysisSettingsArgs.builder()
+ *                     .llmMetricsOptedOut(false)
+ *                     .build())
  *                 .build())
  *             .modelSettings(AppModelSettingsArgs.builder()
  *                 .model("gemini-3.0-flash-001")
@@ -188,11 +200,17 @@ import javax.annotation.Nullable;
  *                     .turnLevelMetricsThresholds(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs.builder()
  *                         .semanticSimilaritySuccessThreshold(3)
  *                         .overallToolInvocationCorrectnessThreshold(1.0)
+ *                         .semanticSimilarityChannel("TEXT")
  *                         .build())
  *                     .expectationLevelMetricsThresholds(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs.builder()
  *                         .toolInvocationParameterCorrectnessThreshold(1.0)
  *                         .build())
+ *                     .toolMatchingSettings(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs.builder()
+ *                         .extraToolCallBehavior("ALLOW")
+ *                         .build())
  *                     .build())
+ *                 .goldenHallucinationMetricBehavior("ENABLED")
+ *                 .scenarioHallucinationMetricBehavior("ENABLED")
  *                 .build())
  *             .variableDeclarations(AppVariableDeclarationArgs.builder()
  *                 .name("test")
@@ -259,6 +277,12 @@ import javax.annotation.Nullable;
  *                     .modality("CHAT_ONLY")
  *                     .theme("LIGHT")
  *                     .webWidgetTitle("Help Assistant")
+ *                     .securitySettings(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs.builder()
+ *                         .enablePublicAccess(true)
+ *                         .enableOriginCheck(false)
+ *                         .enableRecaptcha(false)
+ *                         .allowedOrigins("https://example.com")
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .metadata(Map.of("deployment_env", "test"))
@@ -270,6 +294,19 @@ import javax.annotation.Nullable;
  *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .privateKey(fakeSecretVersion.name())
+ *                 .build())
+ *             .vpcScSettings(AppVpcScSettingsArgs.builder()
+ *                 .allowedOrigins("https://example.com")
+ *                 .build())
+ *             .errorHandlingSettings(AppErrorHandlingSettingsArgs.builder()
+ *                 .errorHandlingStrategy("FALLBACK_RESPONSE")
+ *                 .fallbackResponseConfig(AppErrorHandlingSettingsFallbackResponseConfigArgs.builder()
+ *                     .customFallbackMessages(Map.of("en-US", "An error occurred, please try again."))
+ *                     .maxFallbackAttempts(3)
+ *                     .build())
+ *                 .endSessionConfig(AppErrorHandlingSettingsEndSessionConfigArgs.builder()
+ *                     .escalateSession(true)
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -658,6 +695,22 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="errorHandlingSettings", refs={AppErrorHandlingSettings.class}, tree="[0]")
+    private Output</* @Nullable */ AppErrorHandlingSettings> errorHandlingSettings;
+
+    /**
+     * @return Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AppErrorHandlingSettings>> errorHandlingSettings() {
+        return Codegen.optional(this.errorHandlingSettings);
+    }
+    /**
      * Etag used to ensure the object hasn&#39;t changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
@@ -756,6 +809,22 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Indicates whether the app is locked for changes. If the app is locked,
+     * modifications to the app resources will be rejected.
+     * 
+     */
+    @Export(name="locked", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> locked;
+
+    /**
+     * @return Indicates whether the app is locked for changes. If the app is locked,
+     * modifications to the app resources will be rejected.
+     * 
+     */
+    public Output<Optional<Boolean>> locked() {
+        return Codegen.optional(this.locked);
     }
     /**
      * Settings to describe the logging behaviors for the app.
@@ -928,6 +997,22 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AppVariableDeclaration>>> variableDeclarations() {
         return Codegen.optional(this.variableDeclarations);
+    }
+    /**
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="vpcScSettings", refs={AppVpcScSettings.class}, tree="[0]")
+    private Output</* @Nullable */ AppVpcScSettings> vpcScSettings;
+
+    /**
+     * @return VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AppVpcScSettings>> vpcScSettings() {
+        return Codegen.optional(this.vpcScSettings);
     }
 
     /**

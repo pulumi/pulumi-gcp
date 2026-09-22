@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -9423,6 +9423,9 @@ type FleetDefaultClusterConfig struct {
 	// Enable/Disable binary authorization features for the cluster.
 	// Structure is documented below.
 	BinaryAuthorizationConfig *FleetDefaultClusterConfigBinaryAuthorizationConfig `pulumi:"binaryAuthorizationConfig"`
+	// Enable/Disable Compliance Posture features for the cluster.
+	// Structure is documented below.
+	CompliancePostureConfig *FleetDefaultClusterConfigCompliancePostureConfig `pulumi:"compliancePostureConfig"`
 	// Enable/Disable Security Posture features for the cluster.
 	// Structure is documented below.
 	SecurityPostureConfig *FleetDefaultClusterConfigSecurityPostureConfig `pulumi:"securityPostureConfig"`
@@ -9443,6 +9446,9 @@ type FleetDefaultClusterConfigArgs struct {
 	// Enable/Disable binary authorization features for the cluster.
 	// Structure is documented below.
 	BinaryAuthorizationConfig FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput `pulumi:"binaryAuthorizationConfig"`
+	// Enable/Disable Compliance Posture features for the cluster.
+	// Structure is documented below.
+	CompliancePostureConfig FleetDefaultClusterConfigCompliancePostureConfigPtrInput `pulumi:"compliancePostureConfig"`
 	// Enable/Disable Security Posture features for the cluster.
 	// Structure is documented below.
 	SecurityPostureConfig FleetDefaultClusterConfigSecurityPostureConfigPtrInput `pulumi:"securityPostureConfig"`
@@ -9533,6 +9539,14 @@ func (o FleetDefaultClusterConfigOutput) BinaryAuthorizationConfig() FleetDefaul
 	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput)
 }
 
+// Enable/Disable Compliance Posture features for the cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigOutput) CompliancePostureConfig() FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfig) *FleetDefaultClusterConfigCompliancePostureConfig {
+		return v.CompliancePostureConfig
+	}).(FleetDefaultClusterConfigCompliancePostureConfigPtrOutput)
+}
+
 // Enable/Disable Security Posture features for the cluster.
 // Structure is documented below.
 func (o FleetDefaultClusterConfigOutput) SecurityPostureConfig() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
@@ -9574,6 +9588,17 @@ func (o FleetDefaultClusterConfigPtrOutput) BinaryAuthorizationConfig() FleetDef
 		}
 		return v.BinaryAuthorizationConfig
 	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput)
+}
+
+// Enable/Disable Compliance Posture features for the cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigPtrOutput) CompliancePostureConfig() FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfig) *FleetDefaultClusterConfigCompliancePostureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CompliancePostureConfig
+	}).(FleetDefaultClusterConfigCompliancePostureConfigPtrOutput)
 }
 
 // Enable/Disable Security Posture features for the cluster.
@@ -9854,6 +9879,269 @@ func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
 		return vs[0].([]FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding)[vs[1].(int)]
 	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput)
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfig struct {
+	// List of enabled compliance standards.
+	// Structure is documented below.
+	ComplianceStandards []FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard `pulumi:"complianceStandards"`
+	// Sets which mode to use for Compliance Posture features.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	Mode *string `pulumi:"mode"`
+}
+
+// FleetDefaultClusterConfigCompliancePostureConfigInput is an input type that accepts FleetDefaultClusterConfigCompliancePostureConfigArgs and FleetDefaultClusterConfigCompliancePostureConfigOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigCompliancePostureConfigInput` via:
+//
+//	FleetDefaultClusterConfigCompliancePostureConfigArgs{...}
+type FleetDefaultClusterConfigCompliancePostureConfigInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigCompliancePostureConfigOutput() FleetDefaultClusterConfigCompliancePostureConfigOutput
+	ToFleetDefaultClusterConfigCompliancePostureConfigOutputWithContext(context.Context) FleetDefaultClusterConfigCompliancePostureConfigOutput
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigArgs struct {
+	// List of enabled compliance standards.
+	// Structure is documented below.
+	ComplianceStandards FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayInput `pulumi:"complianceStandards"`
+	// Sets which mode to use for Compliance Posture features.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (FleetDefaultClusterConfigCompliancePostureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfig)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigArgs) ToFleetDefaultClusterConfigCompliancePostureConfigOutput() FleetDefaultClusterConfigCompliancePostureConfigOutput {
+	return i.ToFleetDefaultClusterConfigCompliancePostureConfigOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigArgs) ToFleetDefaultClusterConfigCompliancePostureConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigCompliancePostureConfigOutput)
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigArgs) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutput() FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigArgs) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigCompliancePostureConfigOutput).ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(ctx)
+}
+
+// FleetDefaultClusterConfigCompliancePostureConfigPtrInput is an input type that accepts FleetDefaultClusterConfigCompliancePostureConfigArgs, FleetDefaultClusterConfigCompliancePostureConfigPtr and FleetDefaultClusterConfigCompliancePostureConfigPtrOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigCompliancePostureConfigPtrInput` via:
+//
+//	        FleetDefaultClusterConfigCompliancePostureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetDefaultClusterConfigCompliancePostureConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutput() FleetDefaultClusterConfigCompliancePostureConfigPtrOutput
+	ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(context.Context) FleetDefaultClusterConfigCompliancePostureConfigPtrOutput
+}
+
+type fleetDefaultClusterConfigCompliancePostureConfigPtrType FleetDefaultClusterConfigCompliancePostureConfigArgs
+
+func FleetDefaultClusterConfigCompliancePostureConfigPtr(v *FleetDefaultClusterConfigCompliancePostureConfigArgs) FleetDefaultClusterConfigCompliancePostureConfigPtrInput {
+	return (*fleetDefaultClusterConfigCompliancePostureConfigPtrType)(v)
+}
+
+func (*fleetDefaultClusterConfigCompliancePostureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfigCompliancePostureConfig)(nil)).Elem()
+}
+
+func (i *fleetDefaultClusterConfigCompliancePostureConfigPtrType) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutput() FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetDefaultClusterConfigCompliancePostureConfigPtrType) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigCompliancePostureConfigPtrOutput)
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigCompliancePostureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigOutput) ToFleetDefaultClusterConfigCompliancePostureConfigOutput() FleetDefaultClusterConfigCompliancePostureConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigOutput) ToFleetDefaultClusterConfigCompliancePostureConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigOutput) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutput() FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return o.ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigOutput) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetDefaultClusterConfigCompliancePostureConfig) *FleetDefaultClusterConfigCompliancePostureConfig {
+		return &v
+	}).(FleetDefaultClusterConfigCompliancePostureConfigPtrOutput)
+}
+
+// List of enabled compliance standards.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigCompliancePostureConfigOutput) ComplianceStandards() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigCompliancePostureConfig) []FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard {
+		return v.ComplianceStandards
+	}).(FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput)
+}
+
+// Sets which mode to use for Compliance Posture features.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o FleetDefaultClusterConfigCompliancePostureConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigCompliancePostureConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigCompliancePostureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfigCompliancePostureConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigPtrOutput) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutput() FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigPtrOutput) ToFleetDefaultClusterConfigCompliancePostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigPtrOutput) Elem() FleetDefaultClusterConfigCompliancePostureConfigOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigCompliancePostureConfig) FleetDefaultClusterConfigCompliancePostureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetDefaultClusterConfigCompliancePostureConfig
+		return ret
+	}).(FleetDefaultClusterConfigCompliancePostureConfigOutput)
+}
+
+// List of enabled compliance standards.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigCompliancePostureConfigPtrOutput) ComplianceStandards() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigCompliancePostureConfig) []FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard {
+		if v == nil {
+			return nil
+		}
+		return v.ComplianceStandards
+	}).(FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput)
+}
+
+// Sets which mode to use for Compliance Posture features.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o FleetDefaultClusterConfigCompliancePostureConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigCompliancePostureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard struct {
+	// Name of the compliance standard.
+	Standard *string `pulumi:"standard"`
+}
+
+// FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardInput is an input type that accepts FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs and FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardInput` via:
+//
+//	FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs{...}
+type FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput
+	ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutputWithContext(context.Context) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs struct {
+	// Name of the compliance standard.
+	Standard pulumi.StringPtrInput `pulumi:"standard"`
+}
+
+func (FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput {
+	return i.ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput)
+}
+
+// FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayInput is an input type that accepts FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArray and FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayInput` via:
+//
+//	FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArray{ FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs{...} }
+type FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput
+	ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutputWithContext(context.Context) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArray []FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardInput
+
+func (FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArray) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput {
+	return i.ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArray) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput)
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput {
+	return o
+}
+
+// Name of the compliance standard.
+func (o FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput) Standard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard) *string { return v.Standard }).(pulumi.StringPtrOutput)
+}
+
+type FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput() FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput) ToFleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutputWithContext(ctx context.Context) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput) Index(i pulumi.IntInput) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard {
+		return vs[0].([]FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard)[vs[1].(int)]
+	}).(FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput)
 }
 
 type FleetDefaultClusterConfigSecurityPostureConfig struct {
@@ -17137,6 +17425,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput)(nil)).Elem(), FleetDefaultClusterConfigBinaryAuthorizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingInput)(nil)).Elem(), FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayInput)(nil)).Elem(), FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfigInput)(nil)).Elem(), FleetDefaultClusterConfigCompliancePostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfigPtrInput)(nil)).Elem(), FleetDefaultClusterConfigCompliancePostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardInput)(nil)).Elem(), FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayInput)(nil)).Elem(), FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigSecurityPostureConfigInput)(nil)).Elem(), FleetDefaultClusterConfigSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigSecurityPostureConfigPtrInput)(nil)).Elem(), FleetDefaultClusterConfigSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetStateTypeInput)(nil)).Elem(), FleetStateTypeArgs{})
@@ -17371,6 +17663,10 @@ func init() {
 	pulumi.RegisterOutputType(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput{})
 	pulumi.RegisterOutputType(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigCompliancePostureConfigOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigCompliancePostureConfigPtrOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArrayOutput{})
 	pulumi.RegisterOutputType(FleetDefaultClusterConfigSecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(FleetDefaultClusterConfigSecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(FleetStateTypeOutput{})

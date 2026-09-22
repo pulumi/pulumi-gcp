@@ -123,14 +123,14 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="artifactsGcsBucket", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> artifactsGcsBucket;
+    private Output<String> artifactsGcsBucket;
 
     /**
      * @return Location for Cloud Build logs and artifacts.
      * 
      */
-    public Output<Optional<String>> artifactsGcsBucket() {
-        return Codegen.optional(this.artifactsGcsBucket);
+    public Output<String> artifactsGcsBucket() {
+        return this.artifactsGcsBucket;
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -11,6 +11,8 @@ from .code_tools_setting import *
 from .code_tools_setting_binding import *
 from .data_sharing_with_google_setting import *
 from .data_sharing_with_google_setting_binding import *
+from .gda_observability_setting import *
+from .gda_observability_setting_binding import *
 from .gemini_gcp_enablement_setting import *
 from .gemini_gcp_enablement_setting_binding import *
 from .get_repository_group_iam_policy import *

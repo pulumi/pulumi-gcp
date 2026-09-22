@@ -98,7 +98,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Location for Cloud Build logs and artifacts.
      */
-    declare public readonly artifactsGcsBucket: pulumi.Output<string | undefined>;
+    declare public readonly artifactsGcsBucket: pulumi.Output<string>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

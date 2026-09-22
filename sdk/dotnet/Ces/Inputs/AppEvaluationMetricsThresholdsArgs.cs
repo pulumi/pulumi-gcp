@@ -19,6 +19,20 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("goldenEvaluationMetricsThresholds")]
         public Input<Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs>? GoldenEvaluationMetricsThresholds { get; set; }
 
+        /// <summary>
+        /// The hallucination metric behavior for golden evaluations.
+        /// Possible values are: `DISABLED`, `ENABLED`.
+        /// </summary>
+        [Input("goldenHallucinationMetricBehavior")]
+        public Input<string>? GoldenHallucinationMetricBehavior { get; set; }
+
+        /// <summary>
+        /// The hallucination metric behavior for scenario evaluations.
+        /// Possible values are: `DISABLED`, `ENABLED`.
+        /// </summary>
+        [Input("scenarioHallucinationMetricBehavior")]
+        public Input<string>? ScenarioHallucinationMetricBehavior { get; set; }
+
         public AppEvaluationMetricsThresholdsArgs()
         {
         }

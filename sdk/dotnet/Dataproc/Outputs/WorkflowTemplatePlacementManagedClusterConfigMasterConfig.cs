@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? Image;
         /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `MasterConfig`, `WorkerConfig`, and `SecondaryWorkerConfig` (provisioning models are supported exclusively on `SecondaryWorkerConfig`). Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy? InstanceFlexibilityPolicy;
+        /// <summary>
         /// Output only. The list of instance names. Dataproc derives the names from `ClusterName`, `NumInstances`, and the instance group.
         /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? image,
 
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy? instanceFlexibilityPolicy,
+
             ImmutableArray<string> instanceNames,
 
             bool? isPreemptible,
@@ -79,6 +85,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Accelerators = accelerators;
             DiskConfig = diskConfig;
             Image = image;
+            InstanceFlexibilityPolicy = instanceFlexibilityPolicy;
             InstanceNames = instanceNames;
             IsPreemptible = isPreemptible;
             MachineType = machineType;

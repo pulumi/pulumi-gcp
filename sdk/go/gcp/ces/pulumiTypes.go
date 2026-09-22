@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1025,6 +1025,10 @@ type AgentRemoteDialogflowAgent struct {
 	// The mapping of the app variables names to the Dialogflow session
 	// parameters names to be sent to the Dialogflow agent as input.
 	InputVariableMapping map[string]string `pulumi:"inputVariableMapping"`
+	// The name of the variable that contains the language code to be used for
+	// the Dialogflow session. If unspecified, the default language code of the
+	// Dialogflow agent will be used.
+	LanguageCodeVariable *string `pulumi:"languageCodeVariable"`
 	// The mapping of the Dialogflow session parameters names to the app
 	// variables names to be sent back to the CES agent after the Dialogflow
 	// agent execution ends.
@@ -1058,6 +1062,10 @@ type AgentRemoteDialogflowAgentArgs struct {
 	// The mapping of the app variables names to the Dialogflow session
 	// parameters names to be sent to the Dialogflow agent as input.
 	InputVariableMapping pulumi.StringMapInput `pulumi:"inputVariableMapping"`
+	// The name of the variable that contains the language code to be used for
+	// the Dialogflow session. If unspecified, the default language code of the
+	// Dialogflow agent will be used.
+	LanguageCodeVariable pulumi.StringPtrInput `pulumi:"languageCodeVariable"`
 	// The mapping of the Dialogflow session parameters names to the app
 	// variables names to be sent back to the CES agent after the Dialogflow
 	// agent execution ends.
@@ -1168,6 +1176,13 @@ func (o AgentRemoteDialogflowAgentOutput) InputVariableMapping() pulumi.StringMa
 	return o.ApplyT(func(v AgentRemoteDialogflowAgent) map[string]string { return v.InputVariableMapping }).(pulumi.StringMapOutput)
 }
 
+// The name of the variable that contains the language code to be used for
+// the Dialogflow session. If unspecified, the default language code of the
+// Dialogflow agent will be used.
+func (o AgentRemoteDialogflowAgentOutput) LanguageCodeVariable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentRemoteDialogflowAgent) *string { return v.LanguageCodeVariable }).(pulumi.StringPtrOutput)
+}
+
 // The mapping of the Dialogflow session parameters names to the app
 // variables names to be sent back to the CES agent after the Dialogflow
 // agent execution ends.
@@ -1247,6 +1262,18 @@ func (o AgentRemoteDialogflowAgentPtrOutput) InputVariableMapping() pulumi.Strin
 		}
 		return v.InputVariableMapping
 	}).(pulumi.StringMapOutput)
+}
+
+// The name of the variable that contains the language code to be used for
+// the Dialogflow session. If unspecified, the default language code of the
+// Dialogflow agent will be used.
+func (o AgentRemoteDialogflowAgentPtrOutput) LanguageCodeVariable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCodeVariable
+	}).(pulumi.StringPtrOutput)
 }
 
 // The mapping of the Dialogflow session parameters names to the app
@@ -1381,6 +1408,883 @@ func (o AgentToolsetArrayOutput) Index(i pulumi.IntInput) AgentToolsetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentToolset {
 		return vs[0].([]AgentToolset)[vs[1].(int)]
 	}).(AgentToolsetOutput)
+}
+
+type AgentTransferRule struct {
+	// The resource name of the child agent the rule applies to.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	ChildAgent string `pulumi:"childAgent"`
+	// Deterministic transfer rule. When the condition evaluates to true, the
+	// transfer occurs.
+	// Structure is documented below.
+	DeterministicTransfer *AgentTransferRuleDeterministicTransfer `pulumi:"deterministicTransfer"`
+	// The direction of the transfer.
+	// Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+	Direction string `pulumi:"direction"`
+	// A rule that prevents the planner from transferring to the target agent.
+	// Structure is documented below.
+	DisablePlannerTransfer *AgentTransferRuleDisablePlannerTransfer `pulumi:"disablePlannerTransfer"`
+}
+
+// AgentTransferRuleInput is an input type that accepts AgentTransferRuleArgs and AgentTransferRuleOutput values.
+// You can construct a concrete instance of `AgentTransferRuleInput` via:
+//
+//	AgentTransferRuleArgs{...}
+type AgentTransferRuleInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleOutput() AgentTransferRuleOutput
+	ToAgentTransferRuleOutputWithContext(context.Context) AgentTransferRuleOutput
+}
+
+type AgentTransferRuleArgs struct {
+	// The resource name of the child agent the rule applies to.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	ChildAgent pulumi.StringInput `pulumi:"childAgent"`
+	// Deterministic transfer rule. When the condition evaluates to true, the
+	// transfer occurs.
+	// Structure is documented below.
+	DeterministicTransfer AgentTransferRuleDeterministicTransferPtrInput `pulumi:"deterministicTransfer"`
+	// The direction of the transfer.
+	// Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// A rule that prevents the planner from transferring to the target agent.
+	// Structure is documented below.
+	DisablePlannerTransfer AgentTransferRuleDisablePlannerTransferPtrInput `pulumi:"disablePlannerTransfer"`
+}
+
+func (AgentTransferRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRule)(nil)).Elem()
+}
+
+func (i AgentTransferRuleArgs) ToAgentTransferRuleOutput() AgentTransferRuleOutput {
+	return i.ToAgentTransferRuleOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleArgs) ToAgentTransferRuleOutputWithContext(ctx context.Context) AgentTransferRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleOutput)
+}
+
+// AgentTransferRuleArrayInput is an input type that accepts AgentTransferRuleArray and AgentTransferRuleArrayOutput values.
+// You can construct a concrete instance of `AgentTransferRuleArrayInput` via:
+//
+//	AgentTransferRuleArray{ AgentTransferRuleArgs{...} }
+type AgentTransferRuleArrayInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleArrayOutput() AgentTransferRuleArrayOutput
+	ToAgentTransferRuleArrayOutputWithContext(context.Context) AgentTransferRuleArrayOutput
+}
+
+type AgentTransferRuleArray []AgentTransferRuleInput
+
+func (AgentTransferRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentTransferRule)(nil)).Elem()
+}
+
+func (i AgentTransferRuleArray) ToAgentTransferRuleArrayOutput() AgentTransferRuleArrayOutput {
+	return i.ToAgentTransferRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleArray) ToAgentTransferRuleArrayOutputWithContext(ctx context.Context) AgentTransferRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleArrayOutput)
+}
+
+type AgentTransferRuleOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRule)(nil)).Elem()
+}
+
+func (o AgentTransferRuleOutput) ToAgentTransferRuleOutput() AgentTransferRuleOutput {
+	return o
+}
+
+func (o AgentTransferRuleOutput) ToAgentTransferRuleOutputWithContext(ctx context.Context) AgentTransferRuleOutput {
+	return o
+}
+
+// The resource name of the child agent the rule applies to.
+// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+func (o AgentTransferRuleOutput) ChildAgent() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentTransferRule) string { return v.ChildAgent }).(pulumi.StringOutput)
+}
+
+// Deterministic transfer rule. When the condition evaluates to true, the
+// transfer occurs.
+// Structure is documented below.
+func (o AgentTransferRuleOutput) DeterministicTransfer() AgentTransferRuleDeterministicTransferPtrOutput {
+	return o.ApplyT(func(v AgentTransferRule) *AgentTransferRuleDeterministicTransfer { return v.DeterministicTransfer }).(AgentTransferRuleDeterministicTransferPtrOutput)
+}
+
+// The direction of the transfer.
+// Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+func (o AgentTransferRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentTransferRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// A rule that prevents the planner from transferring to the target agent.
+// Structure is documented below.
+func (o AgentTransferRuleOutput) DisablePlannerTransfer() AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return o.ApplyT(func(v AgentTransferRule) *AgentTransferRuleDisablePlannerTransfer { return v.DisablePlannerTransfer }).(AgentTransferRuleDisablePlannerTransferPtrOutput)
+}
+
+type AgentTransferRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentTransferRule)(nil)).Elem()
+}
+
+func (o AgentTransferRuleArrayOutput) ToAgentTransferRuleArrayOutput() AgentTransferRuleArrayOutput {
+	return o
+}
+
+func (o AgentTransferRuleArrayOutput) ToAgentTransferRuleArrayOutputWithContext(ctx context.Context) AgentTransferRuleArrayOutput {
+	return o
+}
+
+func (o AgentTransferRuleArrayOutput) Index(i pulumi.IntInput) AgentTransferRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentTransferRule {
+		return vs[0].([]AgentTransferRule)[vs[1].(int)]
+	}).(AgentTransferRuleOutput)
+}
+
+type AgentTransferRuleDeterministicTransfer struct {
+	// A rule that evaluates a session state condition. If the condition
+	// evaluates to true, the transfer occurs.
+	// Structure is documented below.
+	ExpressionCondition *AgentTransferRuleDeterministicTransferExpressionCondition `pulumi:"expressionCondition"`
+	// A rule that uses Python code block to evaluate the conditions. If the
+	// condition evaluates to true, the transfer occurs.
+	// Structure is documented below.
+	PythonCodeCondition *AgentTransferRuleDeterministicTransferPythonCodeCondition `pulumi:"pythonCodeCondition"`
+}
+
+// AgentTransferRuleDeterministicTransferInput is an input type that accepts AgentTransferRuleDeterministicTransferArgs and AgentTransferRuleDeterministicTransferOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDeterministicTransferInput` via:
+//
+//	AgentTransferRuleDeterministicTransferArgs{...}
+type AgentTransferRuleDeterministicTransferInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDeterministicTransferOutput() AgentTransferRuleDeterministicTransferOutput
+	ToAgentTransferRuleDeterministicTransferOutputWithContext(context.Context) AgentTransferRuleDeterministicTransferOutput
+}
+
+type AgentTransferRuleDeterministicTransferArgs struct {
+	// A rule that evaluates a session state condition. If the condition
+	// evaluates to true, the transfer occurs.
+	// Structure is documented below.
+	ExpressionCondition AgentTransferRuleDeterministicTransferExpressionConditionPtrInput `pulumi:"expressionCondition"`
+	// A rule that uses Python code block to evaluate the conditions. If the
+	// condition evaluates to true, the transfer occurs.
+	// Structure is documented below.
+	PythonCodeCondition AgentTransferRuleDeterministicTransferPythonCodeConditionPtrInput `pulumi:"pythonCodeCondition"`
+}
+
+func (AgentTransferRuleDeterministicTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (i AgentTransferRuleDeterministicTransferArgs) ToAgentTransferRuleDeterministicTransferOutput() AgentTransferRuleDeterministicTransferOutput {
+	return i.ToAgentTransferRuleDeterministicTransferOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDeterministicTransferArgs) ToAgentTransferRuleDeterministicTransferOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferOutput)
+}
+
+func (i AgentTransferRuleDeterministicTransferArgs) ToAgentTransferRuleDeterministicTransferPtrOutput() AgentTransferRuleDeterministicTransferPtrOutput {
+	return i.ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDeterministicTransferArgs) ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferOutput).ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(ctx)
+}
+
+// AgentTransferRuleDeterministicTransferPtrInput is an input type that accepts AgentTransferRuleDeterministicTransferArgs, AgentTransferRuleDeterministicTransferPtr and AgentTransferRuleDeterministicTransferPtrOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDeterministicTransferPtrInput` via:
+//
+//	        AgentTransferRuleDeterministicTransferArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentTransferRuleDeterministicTransferPtrInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDeterministicTransferPtrOutput() AgentTransferRuleDeterministicTransferPtrOutput
+	ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(context.Context) AgentTransferRuleDeterministicTransferPtrOutput
+}
+
+type agentTransferRuleDeterministicTransferPtrType AgentTransferRuleDeterministicTransferArgs
+
+func AgentTransferRuleDeterministicTransferPtr(v *AgentTransferRuleDeterministicTransferArgs) AgentTransferRuleDeterministicTransferPtrInput {
+	return (*agentTransferRuleDeterministicTransferPtrType)(v)
+}
+
+func (*agentTransferRuleDeterministicTransferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (i *agentTransferRuleDeterministicTransferPtrType) ToAgentTransferRuleDeterministicTransferPtrOutput() AgentTransferRuleDeterministicTransferPtrOutput {
+	return i.ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(context.Background())
+}
+
+func (i *agentTransferRuleDeterministicTransferPtrType) ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferPtrOutput)
+}
+
+type AgentTransferRuleDeterministicTransferOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDeterministicTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDeterministicTransferOutput) ToAgentTransferRuleDeterministicTransferOutput() AgentTransferRuleDeterministicTransferOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferOutput) ToAgentTransferRuleDeterministicTransferOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferOutput) ToAgentTransferRuleDeterministicTransferPtrOutput() AgentTransferRuleDeterministicTransferPtrOutput {
+	return o.ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(context.Background())
+}
+
+func (o AgentTransferRuleDeterministicTransferOutput) ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentTransferRuleDeterministicTransfer) *AgentTransferRuleDeterministicTransfer {
+		return &v
+	}).(AgentTransferRuleDeterministicTransferPtrOutput)
+}
+
+// A rule that evaluates a session state condition. If the condition
+// evaluates to true, the transfer occurs.
+// Structure is documented below.
+func (o AgentTransferRuleDeterministicTransferOutput) ExpressionCondition() AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return o.ApplyT(func(v AgentTransferRuleDeterministicTransfer) *AgentTransferRuleDeterministicTransferExpressionCondition {
+		return v.ExpressionCondition
+	}).(AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput)
+}
+
+// A rule that uses Python code block to evaluate the conditions. If the
+// condition evaluates to true, the transfer occurs.
+// Structure is documented below.
+func (o AgentTransferRuleDeterministicTransferOutput) PythonCodeCondition() AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return o.ApplyT(func(v AgentTransferRuleDeterministicTransfer) *AgentTransferRuleDeterministicTransferPythonCodeCondition {
+		return v.PythonCodeCondition
+	}).(AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput)
+}
+
+type AgentTransferRuleDeterministicTransferPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDeterministicTransferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDeterministicTransferPtrOutput) ToAgentTransferRuleDeterministicTransferPtrOutput() AgentTransferRuleDeterministicTransferPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferPtrOutput) ToAgentTransferRuleDeterministicTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferPtrOutput) Elem() AgentTransferRuleDeterministicTransferOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDeterministicTransfer) AgentTransferRuleDeterministicTransfer {
+		if v != nil {
+			return *v
+		}
+		var ret AgentTransferRuleDeterministicTransfer
+		return ret
+	}).(AgentTransferRuleDeterministicTransferOutput)
+}
+
+// A rule that evaluates a session state condition. If the condition
+// evaluates to true, the transfer occurs.
+// Structure is documented below.
+func (o AgentTransferRuleDeterministicTransferPtrOutput) ExpressionCondition() AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDeterministicTransfer) *AgentTransferRuleDeterministicTransferExpressionCondition {
+		if v == nil {
+			return nil
+		}
+		return v.ExpressionCondition
+	}).(AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput)
+}
+
+// A rule that uses Python code block to evaluate the conditions. If the
+// condition evaluates to true, the transfer occurs.
+// Structure is documented below.
+func (o AgentTransferRuleDeterministicTransferPtrOutput) PythonCodeCondition() AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDeterministicTransfer) *AgentTransferRuleDeterministicTransferPythonCodeCondition {
+		if v == nil {
+			return nil
+		}
+		return v.PythonCodeCondition
+	}).(AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput)
+}
+
+type AgentTransferRuleDeterministicTransferExpressionCondition struct {
+	// The string representation of cloud.api.Expression condition.
+	Expression string `pulumi:"expression"`
+}
+
+// AgentTransferRuleDeterministicTransferExpressionConditionInput is an input type that accepts AgentTransferRuleDeterministicTransferExpressionConditionArgs and AgentTransferRuleDeterministicTransferExpressionConditionOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDeterministicTransferExpressionConditionInput` via:
+//
+//	AgentTransferRuleDeterministicTransferExpressionConditionArgs{...}
+type AgentTransferRuleDeterministicTransferExpressionConditionInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDeterministicTransferExpressionConditionOutput() AgentTransferRuleDeterministicTransferExpressionConditionOutput
+	ToAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(context.Context) AgentTransferRuleDeterministicTransferExpressionConditionOutput
+}
+
+type AgentTransferRuleDeterministicTransferExpressionConditionArgs struct {
+	// The string representation of cloud.api.Expression condition.
+	Expression pulumi.StringInput `pulumi:"expression"`
+}
+
+func (AgentTransferRuleDeterministicTransferExpressionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i AgentTransferRuleDeterministicTransferExpressionConditionArgs) ToAgentTransferRuleDeterministicTransferExpressionConditionOutput() AgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return i.ToAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDeterministicTransferExpressionConditionArgs) ToAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferExpressionConditionOutput)
+}
+
+func (i AgentTransferRuleDeterministicTransferExpressionConditionArgs) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutput() AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return i.ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDeterministicTransferExpressionConditionArgs) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferExpressionConditionOutput).ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(ctx)
+}
+
+// AgentTransferRuleDeterministicTransferExpressionConditionPtrInput is an input type that accepts AgentTransferRuleDeterministicTransferExpressionConditionArgs, AgentTransferRuleDeterministicTransferExpressionConditionPtr and AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDeterministicTransferExpressionConditionPtrInput` via:
+//
+//	        AgentTransferRuleDeterministicTransferExpressionConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentTransferRuleDeterministicTransferExpressionConditionPtrInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutput() AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput
+	ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(context.Context) AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput
+}
+
+type agentTransferRuleDeterministicTransferExpressionConditionPtrType AgentTransferRuleDeterministicTransferExpressionConditionArgs
+
+func AgentTransferRuleDeterministicTransferExpressionConditionPtr(v *AgentTransferRuleDeterministicTransferExpressionConditionArgs) AgentTransferRuleDeterministicTransferExpressionConditionPtrInput {
+	return (*agentTransferRuleDeterministicTransferExpressionConditionPtrType)(v)
+}
+
+func (*agentTransferRuleDeterministicTransferExpressionConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i *agentTransferRuleDeterministicTransferExpressionConditionPtrType) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutput() AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return i.ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *agentTransferRuleDeterministicTransferExpressionConditionPtrType) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput)
+}
+
+type AgentTransferRuleDeterministicTransferExpressionConditionOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDeterministicTransferExpressionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDeterministicTransferExpressionConditionOutput) ToAgentTransferRuleDeterministicTransferExpressionConditionOutput() AgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferExpressionConditionOutput) ToAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferExpressionConditionOutput) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutput() AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return o.ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AgentTransferRuleDeterministicTransferExpressionConditionOutput) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentTransferRuleDeterministicTransferExpressionCondition) *AgentTransferRuleDeterministicTransferExpressionCondition {
+		return &v
+	}).(AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput)
+}
+
+// The string representation of cloud.api.Expression condition.
+func (o AgentTransferRuleDeterministicTransferExpressionConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentTransferRuleDeterministicTransferExpressionCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+type AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutput() AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput) ToAgentTransferRuleDeterministicTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput) Elem() AgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDeterministicTransferExpressionCondition) AgentTransferRuleDeterministicTransferExpressionCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AgentTransferRuleDeterministicTransferExpressionCondition
+		return ret
+	}).(AgentTransferRuleDeterministicTransferExpressionConditionOutput)
+}
+
+// The string representation of cloud.api.Expression condition.
+func (o AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDeterministicTransferExpressionCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentTransferRuleDeterministicTransferPythonCodeCondition struct {
+	// The python code to execute. The function must be named
+	// `shouldTriggerTransferCallback`.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// AgentTransferRuleDeterministicTransferPythonCodeConditionInput is an input type that accepts AgentTransferRuleDeterministicTransferPythonCodeConditionArgs and AgentTransferRuleDeterministicTransferPythonCodeConditionOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDeterministicTransferPythonCodeConditionInput` via:
+//
+//	AgentTransferRuleDeterministicTransferPythonCodeConditionArgs{...}
+type AgentTransferRuleDeterministicTransferPythonCodeConditionInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDeterministicTransferPythonCodeConditionOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionOutput
+	ToAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionOutput
+}
+
+type AgentTransferRuleDeterministicTransferPythonCodeConditionArgs struct {
+	// The python code to execute. The function must be named
+	// `shouldTriggerTransferCallback`.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (AgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (i AgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ToAgentTransferRuleDeterministicTransferPythonCodeConditionOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return i.ToAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ToAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferPythonCodeConditionOutput)
+}
+
+func (i AgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return i.ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferPythonCodeConditionOutput).ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(ctx)
+}
+
+// AgentTransferRuleDeterministicTransferPythonCodeConditionPtrInput is an input type that accepts AgentTransferRuleDeterministicTransferPythonCodeConditionArgs, AgentTransferRuleDeterministicTransferPythonCodeConditionPtr and AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDeterministicTransferPythonCodeConditionPtrInput` via:
+//
+//	        AgentTransferRuleDeterministicTransferPythonCodeConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentTransferRuleDeterministicTransferPythonCodeConditionPtrInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput
+	ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput
+}
+
+type agentTransferRuleDeterministicTransferPythonCodeConditionPtrType AgentTransferRuleDeterministicTransferPythonCodeConditionArgs
+
+func AgentTransferRuleDeterministicTransferPythonCodeConditionPtr(v *AgentTransferRuleDeterministicTransferPythonCodeConditionArgs) AgentTransferRuleDeterministicTransferPythonCodeConditionPtrInput {
+	return (*agentTransferRuleDeterministicTransferPythonCodeConditionPtrType)(v)
+}
+
+func (*agentTransferRuleDeterministicTransferPythonCodeConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (i *agentTransferRuleDeterministicTransferPythonCodeConditionPtrType) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return i.ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *agentTransferRuleDeterministicTransferPythonCodeConditionPtrType) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput)
+}
+
+type AgentTransferRuleDeterministicTransferPythonCodeConditionOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ToAgentTransferRuleDeterministicTransferPythonCodeConditionOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ToAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return o.ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentTransferRuleDeterministicTransferPythonCodeCondition) *AgentTransferRuleDeterministicTransferPythonCodeCondition {
+		return &v
+	}).(AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput)
+}
+
+// The python code to execute. The function must be named
+// `shouldTriggerTransferCallback`.
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentTransferRuleDeterministicTransferPythonCodeCondition) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput() AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput) ToAgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput) Elem() AgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDeterministicTransferPythonCodeCondition) AgentTransferRuleDeterministicTransferPythonCodeCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AgentTransferRuleDeterministicTransferPythonCodeCondition
+		return ret
+	}).(AgentTransferRuleDeterministicTransferPythonCodeConditionOutput)
+}
+
+// The python code to execute. The function must be named
+// `shouldTriggerTransferCallback`.
+func (o AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDeterministicTransferPythonCodeCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentTransferRuleDisablePlannerTransfer struct {
+	// If the condition evaluates to true, planner will not be allowed to
+	// transfer to the target agent.
+	// Structure is documented below.
+	ExpressionCondition AgentTransferRuleDisablePlannerTransferExpressionCondition `pulumi:"expressionCondition"`
+}
+
+// AgentTransferRuleDisablePlannerTransferInput is an input type that accepts AgentTransferRuleDisablePlannerTransferArgs and AgentTransferRuleDisablePlannerTransferOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDisablePlannerTransferInput` via:
+//
+//	AgentTransferRuleDisablePlannerTransferArgs{...}
+type AgentTransferRuleDisablePlannerTransferInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDisablePlannerTransferOutput() AgentTransferRuleDisablePlannerTransferOutput
+	ToAgentTransferRuleDisablePlannerTransferOutputWithContext(context.Context) AgentTransferRuleDisablePlannerTransferOutput
+}
+
+type AgentTransferRuleDisablePlannerTransferArgs struct {
+	// If the condition evaluates to true, planner will not be allowed to
+	// transfer to the target agent.
+	// Structure is documented below.
+	ExpressionCondition AgentTransferRuleDisablePlannerTransferExpressionConditionInput `pulumi:"expressionCondition"`
+}
+
+func (AgentTransferRuleDisablePlannerTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (i AgentTransferRuleDisablePlannerTransferArgs) ToAgentTransferRuleDisablePlannerTransferOutput() AgentTransferRuleDisablePlannerTransferOutput {
+	return i.ToAgentTransferRuleDisablePlannerTransferOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDisablePlannerTransferArgs) ToAgentTransferRuleDisablePlannerTransferOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDisablePlannerTransferOutput)
+}
+
+func (i AgentTransferRuleDisablePlannerTransferArgs) ToAgentTransferRuleDisablePlannerTransferPtrOutput() AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return i.ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDisablePlannerTransferArgs) ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDisablePlannerTransferOutput).ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(ctx)
+}
+
+// AgentTransferRuleDisablePlannerTransferPtrInput is an input type that accepts AgentTransferRuleDisablePlannerTransferArgs, AgentTransferRuleDisablePlannerTransferPtr and AgentTransferRuleDisablePlannerTransferPtrOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDisablePlannerTransferPtrInput` via:
+//
+//	        AgentTransferRuleDisablePlannerTransferArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentTransferRuleDisablePlannerTransferPtrInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDisablePlannerTransferPtrOutput() AgentTransferRuleDisablePlannerTransferPtrOutput
+	ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(context.Context) AgentTransferRuleDisablePlannerTransferPtrOutput
+}
+
+type agentTransferRuleDisablePlannerTransferPtrType AgentTransferRuleDisablePlannerTransferArgs
+
+func AgentTransferRuleDisablePlannerTransferPtr(v *AgentTransferRuleDisablePlannerTransferArgs) AgentTransferRuleDisablePlannerTransferPtrInput {
+	return (*agentTransferRuleDisablePlannerTransferPtrType)(v)
+}
+
+func (*agentTransferRuleDisablePlannerTransferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (i *agentTransferRuleDisablePlannerTransferPtrType) ToAgentTransferRuleDisablePlannerTransferPtrOutput() AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return i.ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(context.Background())
+}
+
+func (i *agentTransferRuleDisablePlannerTransferPtrType) ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDisablePlannerTransferPtrOutput)
+}
+
+type AgentTransferRuleDisablePlannerTransferOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDisablePlannerTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDisablePlannerTransferOutput) ToAgentTransferRuleDisablePlannerTransferOutput() AgentTransferRuleDisablePlannerTransferOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferOutput) ToAgentTransferRuleDisablePlannerTransferOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferOutput) ToAgentTransferRuleDisablePlannerTransferPtrOutput() AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return o.ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(context.Background())
+}
+
+func (o AgentTransferRuleDisablePlannerTransferOutput) ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentTransferRuleDisablePlannerTransfer) *AgentTransferRuleDisablePlannerTransfer {
+		return &v
+	}).(AgentTransferRuleDisablePlannerTransferPtrOutput)
+}
+
+// If the condition evaluates to true, planner will not be allowed to
+// transfer to the target agent.
+// Structure is documented below.
+func (o AgentTransferRuleDisablePlannerTransferOutput) ExpressionCondition() AgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return o.ApplyT(func(v AgentTransferRuleDisablePlannerTransfer) AgentTransferRuleDisablePlannerTransferExpressionCondition {
+		return v.ExpressionCondition
+	}).(AgentTransferRuleDisablePlannerTransferExpressionConditionOutput)
+}
+
+type AgentTransferRuleDisablePlannerTransferPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDisablePlannerTransferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDisablePlannerTransferPtrOutput) ToAgentTransferRuleDisablePlannerTransferPtrOutput() AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferPtrOutput) ToAgentTransferRuleDisablePlannerTransferPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferPtrOutput) Elem() AgentTransferRuleDisablePlannerTransferOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDisablePlannerTransfer) AgentTransferRuleDisablePlannerTransfer {
+		if v != nil {
+			return *v
+		}
+		var ret AgentTransferRuleDisablePlannerTransfer
+		return ret
+	}).(AgentTransferRuleDisablePlannerTransferOutput)
+}
+
+// If the condition evaluates to true, planner will not be allowed to
+// transfer to the target agent.
+// Structure is documented below.
+func (o AgentTransferRuleDisablePlannerTransferPtrOutput) ExpressionCondition() AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDisablePlannerTransfer) *AgentTransferRuleDisablePlannerTransferExpressionCondition {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpressionCondition
+	}).(AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput)
+}
+
+type AgentTransferRuleDisablePlannerTransferExpressionCondition struct {
+	// The string representation of cloud.api.Expression condition.
+	Expression string `pulumi:"expression"`
+}
+
+// AgentTransferRuleDisablePlannerTransferExpressionConditionInput is an input type that accepts AgentTransferRuleDisablePlannerTransferExpressionConditionArgs and AgentTransferRuleDisablePlannerTransferExpressionConditionOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDisablePlannerTransferExpressionConditionInput` via:
+//
+//	AgentTransferRuleDisablePlannerTransferExpressionConditionArgs{...}
+type AgentTransferRuleDisablePlannerTransferExpressionConditionInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDisablePlannerTransferExpressionConditionOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionOutput
+	ToAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionOutput
+}
+
+type AgentTransferRuleDisablePlannerTransferExpressionConditionArgs struct {
+	// The string representation of cloud.api.Expression condition.
+	Expression pulumi.StringInput `pulumi:"expression"`
+}
+
+func (AgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i AgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ToAgentTransferRuleDisablePlannerTransferExpressionConditionOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return i.ToAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ToAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDisablePlannerTransferExpressionConditionOutput)
+}
+
+func (i AgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return i.ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDisablePlannerTransferExpressionConditionOutput).ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(ctx)
+}
+
+// AgentTransferRuleDisablePlannerTransferExpressionConditionPtrInput is an input type that accepts AgentTransferRuleDisablePlannerTransferExpressionConditionArgs, AgentTransferRuleDisablePlannerTransferExpressionConditionPtr and AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput values.
+// You can construct a concrete instance of `AgentTransferRuleDisablePlannerTransferExpressionConditionPtrInput` via:
+//
+//	        AgentTransferRuleDisablePlannerTransferExpressionConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentTransferRuleDisablePlannerTransferExpressionConditionPtrInput interface {
+	pulumi.Input
+
+	ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput
+	ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput
+}
+
+type agentTransferRuleDisablePlannerTransferExpressionConditionPtrType AgentTransferRuleDisablePlannerTransferExpressionConditionArgs
+
+func AgentTransferRuleDisablePlannerTransferExpressionConditionPtr(v *AgentTransferRuleDisablePlannerTransferExpressionConditionArgs) AgentTransferRuleDisablePlannerTransferExpressionConditionPtrInput {
+	return (*agentTransferRuleDisablePlannerTransferExpressionConditionPtrType)(v)
+}
+
+func (*agentTransferRuleDisablePlannerTransferExpressionConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i *agentTransferRuleDisablePlannerTransferExpressionConditionPtrType) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return i.ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *agentTransferRuleDisablePlannerTransferExpressionConditionPtrType) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput)
+}
+
+type AgentTransferRuleDisablePlannerTransferExpressionConditionOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ToAgentTransferRuleDisablePlannerTransferExpressionConditionOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ToAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return o.ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentTransferRuleDisablePlannerTransferExpressionCondition) *AgentTransferRuleDisablePlannerTransferExpressionCondition {
+		return &v
+	}).(AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput)
+}
+
+// The string representation of cloud.api.Expression condition.
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentTransferRuleDisablePlannerTransferExpressionCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+type AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput() AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput) ToAgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutputWithContext(ctx context.Context) AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput {
+	return o
+}
+
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput) Elem() AgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDisablePlannerTransferExpressionCondition) AgentTransferRuleDisablePlannerTransferExpressionCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AgentTransferRuleDisablePlannerTransferExpressionCondition
+		return ret
+	}).(AgentTransferRuleDisablePlannerTransferExpressionConditionOutput)
+}
+
+// The string representation of cloud.api.Expression condition.
+func (o AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentTransferRuleDisablePlannerTransferExpressionCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppAudioProcessingConfig struct {
@@ -2629,6 +3533,9 @@ type AppDefaultChannelProfile struct {
 	// Message for configuration for the web widget.
 	// Structure is documented below.
 	WebWidgetConfig *AppDefaultChannelProfileWebWidgetConfig `pulumi:"webWidgetConfig"`
+	// Configuration specific to WhatsApp deployments.
+	// Structure is documented below.
+	WhatsappConfig *AppDefaultChannelProfileWhatsappConfig `pulumi:"whatsappConfig"`
 }
 
 // AppDefaultChannelProfileInput is an input type that accepts AppDefaultChannelProfileArgs and AppDefaultChannelProfileOutput values.
@@ -2666,6 +3573,9 @@ type AppDefaultChannelProfileArgs struct {
 	// Message for configuration for the web widget.
 	// Structure is documented below.
 	WebWidgetConfig AppDefaultChannelProfileWebWidgetConfigPtrInput `pulumi:"webWidgetConfig"`
+	// Configuration specific to WhatsApp deployments.
+	// Structure is documented below.
+	WhatsappConfig AppDefaultChannelProfileWhatsappConfigPtrInput `pulumi:"whatsappConfig"`
 }
 
 func (AppDefaultChannelProfileArgs) ElementType() reflect.Type {
@@ -2786,6 +3696,12 @@ func (o AppDefaultChannelProfileOutput) WebWidgetConfig() AppDefaultChannelProfi
 	return o.ApplyT(func(v AppDefaultChannelProfile) *AppDefaultChannelProfileWebWidgetConfig { return v.WebWidgetConfig }).(AppDefaultChannelProfileWebWidgetConfigPtrOutput)
 }
 
+// Configuration specific to WhatsApp deployments.
+// Structure is documented below.
+func (o AppDefaultChannelProfileOutput) WhatsappConfig() AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfile) *AppDefaultChannelProfileWhatsappConfig { return v.WhatsappConfig }).(AppDefaultChannelProfileWhatsappConfigPtrOutput)
+}
+
 type AppDefaultChannelProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (AppDefaultChannelProfilePtrOutput) ElementType() reflect.Type {
@@ -2879,6 +3795,17 @@ func (o AppDefaultChannelProfilePtrOutput) WebWidgetConfig() AppDefaultChannelPr
 		}
 		return v.WebWidgetConfig
 	}).(AppDefaultChannelProfileWebWidgetConfigPtrOutput)
+}
+
+// Configuration specific to WhatsApp deployments.
+// Structure is documented below.
+func (o AppDefaultChannelProfilePtrOutput) WhatsappConfig() AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfile) *AppDefaultChannelProfileWhatsappConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WhatsappConfig
+	}).(AppDefaultChannelProfileWhatsappConfigPtrOutput)
 }
 
 type AppDefaultChannelProfilePersonaProperty struct {
@@ -3042,6 +3969,9 @@ type AppDefaultChannelProfileWebWidgetConfig struct {
 	// VOICE_ONLY
 	// CHAT_ONLY
 	Modality *string `pulumi:"modality"`
+	// The security settings of the web widget.
+	// Structure is documented below.
+	SecuritySettings *AppDefaultChannelProfileWebWidgetConfigSecuritySettings `pulumi:"securitySettings"`
 	// The theme of the web widget.
 	// Possible values:
 	// UNKNOWN_THEME
@@ -3071,6 +4001,9 @@ type AppDefaultChannelProfileWebWidgetConfigArgs struct {
 	// VOICE_ONLY
 	// CHAT_ONLY
 	Modality pulumi.StringPtrInput `pulumi:"modality"`
+	// The security settings of the web widget.
+	// Structure is documented below.
+	SecuritySettings AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrInput `pulumi:"securitySettings"`
 	// The theme of the web widget.
 	// Possible values:
 	// UNKNOWN_THEME
@@ -3168,6 +4101,14 @@ func (o AppDefaultChannelProfileWebWidgetConfigOutput) Modality() pulumi.StringP
 	return o.ApplyT(func(v AppDefaultChannelProfileWebWidgetConfig) *string { return v.Modality }).(pulumi.StringPtrOutput)
 }
 
+// The security settings of the web widget.
+// Structure is documented below.
+func (o AppDefaultChannelProfileWebWidgetConfigOutput) SecuritySettings() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWebWidgetConfig) *AppDefaultChannelProfileWebWidgetConfigSecuritySettings {
+		return v.SecuritySettings
+	}).(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput)
+}
+
 // The theme of the web widget.
 // Possible values:
 // UNKNOWN_THEME
@@ -3221,6 +4162,17 @@ func (o AppDefaultChannelProfileWebWidgetConfigPtrOutput) Modality() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The security settings of the web widget.
+// Structure is documented below.
+func (o AppDefaultChannelProfileWebWidgetConfigPtrOutput) SecuritySettings() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWebWidgetConfig) *AppDefaultChannelProfileWebWidgetConfigSecuritySettings {
+		if v == nil {
+			return nil
+		}
+		return v.SecuritySettings
+	}).(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput)
+}
+
 // The theme of the web widget.
 // Possible values:
 // UNKNOWN_THEME
@@ -3245,10 +4197,1010 @@ func (o AppDefaultChannelProfileWebWidgetConfigPtrOutput) WebWidgetTitle() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppDefaultChannelProfileWebWidgetConfigSecuritySettings struct {
+	// The origins that are allowed to host the web widget. An origin is
+	// defined by RFC 6454. If empty, all origins are allowed.
+	// A maximum of 100 origins is allowed.
+	// Example: "https://example.com"
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Indicates whether origin check for the web widget is enabled.
+	// If `true`, the web widget will check the origin of the website that
+	// loads the web widget and only allow it to be loaded in the same origin
+	// or any of the allowed origins.
+	EnableOriginCheck *bool `pulumi:"enableOriginCheck"`
+	// Indicates whether public access to the web widget is enabled.
+	// If `true`, the web widget will be publicly accessible.
+	// If `false`, the web widget must be integrated with your own
+	// authentication and authorization system to return valid credentials for
+	// accessing the CES agent.
+	EnablePublicAccess *bool `pulumi:"enablePublicAccess"`
+	// Indicates whether reCAPTCHA verification for the web widget is enabled.
+	EnableRecaptcha *bool `pulumi:"enableRecaptcha"`
+}
+
+// AppDefaultChannelProfileWebWidgetConfigSecuritySettingsInput is an input type that accepts AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs and AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput values.
+// You can construct a concrete instance of `AppDefaultChannelProfileWebWidgetConfigSecuritySettingsInput` via:
+//
+//	AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs{...}
+type AppDefaultChannelProfileWebWidgetConfigSecuritySettingsInput interface {
+	pulumi.Input
+
+	ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput
+	ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutputWithContext(context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput
+}
+
+type AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs struct {
+	// The origins that are allowed to host the web widget. An origin is
+	// defined by RFC 6454. If empty, all origins are allowed.
+	// A maximum of 100 origins is allowed.
+	// Example: "https://example.com"
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// Indicates whether origin check for the web widget is enabled.
+	// If `true`, the web widget will check the origin of the website that
+	// loads the web widget and only allow it to be loaded in the same origin
+	// or any of the allowed origins.
+	EnableOriginCheck pulumi.BoolPtrInput `pulumi:"enableOriginCheck"`
+	// Indicates whether public access to the web widget is enabled.
+	// If `true`, the web widget will be publicly accessible.
+	// If `false`, the web widget must be integrated with your own
+	// authentication and authorization system to return valid credentials for
+	// accessing the CES agent.
+	EnablePublicAccess pulumi.BoolPtrInput `pulumi:"enablePublicAccess"`
+	// Indicates whether reCAPTCHA verification for the web widget is enabled.
+	EnableRecaptcha pulumi.BoolPtrInput `pulumi:"enableRecaptcha"`
+}
+
+func (AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDefaultChannelProfileWebWidgetConfigSecuritySettings)(nil)).Elem()
+}
+
+func (i AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput {
+	return i.ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutputWithContext(context.Background())
+}
+
+func (i AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutputWithContext(ctx context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput)
+}
+
+func (i AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return i.ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput).ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(ctx)
+}
+
+// AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrInput is an input type that accepts AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs, AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtr and AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput values.
+// You can construct a concrete instance of `AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrInput` via:
+//
+//	        AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrInput interface {
+	pulumi.Input
+
+	ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput
+	ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput
+}
+
+type appDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrType AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs
+
+func AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtr(v *AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrInput {
+	return (*appDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrType)(v)
+}
+
+func (*appDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDefaultChannelProfileWebWidgetConfigSecuritySettings)(nil)).Elem()
+}
+
+func (i *appDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrType) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return i.ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *appDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrType) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput)
+}
+
+type AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput struct{ *pulumi.OutputState }
+
+func (AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDefaultChannelProfileWebWidgetConfigSecuritySettings)(nil)).Elem()
+}
+
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutputWithContext(ctx context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return o.ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDefaultChannelProfileWebWidgetConfigSecuritySettings) *AppDefaultChannelProfileWebWidgetConfigSecuritySettings {
+		return &v
+	}).(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput)
+}
+
+// The origins that are allowed to host the web widget. An origin is
+// defined by RFC 6454. If empty, all origins are allowed.
+// A maximum of 100 origins is allowed.
+// Example: "https://example.com"
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWebWidgetConfigSecuritySettings) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether origin check for the web widget is enabled.
+// If `true`, the web widget will check the origin of the website that
+// loads the web widget and only allow it to be loaded in the same origin
+// or any of the allowed origins.
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) EnableOriginCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWebWidgetConfigSecuritySettings) *bool { return v.EnableOriginCheck }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether public access to the web widget is enabled.
+// If `true`, the web widget will be publicly accessible.
+// If `false`, the web widget must be integrated with your own
+// authentication and authorization system to return valid credentials for
+// accessing the CES agent.
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) EnablePublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWebWidgetConfigSecuritySettings) *bool { return v.EnablePublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether reCAPTCHA verification for the web widget is enabled.
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput) EnableRecaptcha() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWebWidgetConfigSecuritySettings) *bool { return v.EnableRecaptcha }).(pulumi.BoolPtrOutput)
+}
+
+type AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDefaultChannelProfileWebWidgetConfigSecuritySettings)(nil)).Elem()
+}
+
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) ToAppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) Elem() AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWebWidgetConfigSecuritySettings) AppDefaultChannelProfileWebWidgetConfigSecuritySettings {
+		if v != nil {
+			return *v
+		}
+		var ret AppDefaultChannelProfileWebWidgetConfigSecuritySettings
+		return ret
+	}).(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput)
+}
+
+// The origins that are allowed to host the web widget. An origin is
+// defined by RFC 6454. If empty, all origins are allowed.
+// A maximum of 100 origins is allowed.
+// Example: "https://example.com"
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWebWidgetConfigSecuritySettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether origin check for the web widget is enabled.
+// If `true`, the web widget will check the origin of the website that
+// loads the web widget and only allow it to be loaded in the same origin
+// or any of the allowed origins.
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) EnableOriginCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWebWidgetConfigSecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOriginCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether public access to the web widget is enabled.
+// If `true`, the web widget will be publicly accessible.
+// If `false`, the web widget must be integrated with your own
+// authentication and authorization system to return valid credentials for
+// accessing the CES agent.
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) EnablePublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWebWidgetConfigSecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePublicAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether reCAPTCHA verification for the web widget is enabled.
+func (o AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) EnableRecaptcha() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWebWidgetConfigSecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRecaptcha
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AppDefaultChannelProfileWhatsappConfig struct {
+	// (Output)
+	// The description of the Meta business page or profile.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// The fetched Meta business page name.
+	DisplayName *string `pulumi:"displayName"`
+	// The phone number in E.164 format.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// The Meta phone number ID.
+	PhoneNumberId string `pulumi:"phoneNumberId"`
+	// (Output)
+	// The fetched Meta business profile thumbnail URL.
+	ThumbnailUrl *string `pulumi:"thumbnailUrl"`
+	// The WhatsApp Business Account ID.
+	WabaId string `pulumi:"wabaId"`
+}
+
+// AppDefaultChannelProfileWhatsappConfigInput is an input type that accepts AppDefaultChannelProfileWhatsappConfigArgs and AppDefaultChannelProfileWhatsappConfigOutput values.
+// You can construct a concrete instance of `AppDefaultChannelProfileWhatsappConfigInput` via:
+//
+//	AppDefaultChannelProfileWhatsappConfigArgs{...}
+type AppDefaultChannelProfileWhatsappConfigInput interface {
+	pulumi.Input
+
+	ToAppDefaultChannelProfileWhatsappConfigOutput() AppDefaultChannelProfileWhatsappConfigOutput
+	ToAppDefaultChannelProfileWhatsappConfigOutputWithContext(context.Context) AppDefaultChannelProfileWhatsappConfigOutput
+}
+
+type AppDefaultChannelProfileWhatsappConfigArgs struct {
+	// (Output)
+	// The description of the Meta business page or profile.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// The fetched Meta business page name.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The phone number in E.164 format.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+	// The Meta phone number ID.
+	PhoneNumberId pulumi.StringInput `pulumi:"phoneNumberId"`
+	// (Output)
+	// The fetched Meta business profile thumbnail URL.
+	ThumbnailUrl pulumi.StringPtrInput `pulumi:"thumbnailUrl"`
+	// The WhatsApp Business Account ID.
+	WabaId pulumi.StringInput `pulumi:"wabaId"`
+}
+
+func (AppDefaultChannelProfileWhatsappConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (i AppDefaultChannelProfileWhatsappConfigArgs) ToAppDefaultChannelProfileWhatsappConfigOutput() AppDefaultChannelProfileWhatsappConfigOutput {
+	return i.ToAppDefaultChannelProfileWhatsappConfigOutputWithContext(context.Background())
+}
+
+func (i AppDefaultChannelProfileWhatsappConfigArgs) ToAppDefaultChannelProfileWhatsappConfigOutputWithContext(ctx context.Context) AppDefaultChannelProfileWhatsappConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDefaultChannelProfileWhatsappConfigOutput)
+}
+
+func (i AppDefaultChannelProfileWhatsappConfigArgs) ToAppDefaultChannelProfileWhatsappConfigPtrOutput() AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return i.ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AppDefaultChannelProfileWhatsappConfigArgs) ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDefaultChannelProfileWhatsappConfigOutput).ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(ctx)
+}
+
+// AppDefaultChannelProfileWhatsappConfigPtrInput is an input type that accepts AppDefaultChannelProfileWhatsappConfigArgs, AppDefaultChannelProfileWhatsappConfigPtr and AppDefaultChannelProfileWhatsappConfigPtrOutput values.
+// You can construct a concrete instance of `AppDefaultChannelProfileWhatsappConfigPtrInput` via:
+//
+//	        AppDefaultChannelProfileWhatsappConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppDefaultChannelProfileWhatsappConfigPtrInput interface {
+	pulumi.Input
+
+	ToAppDefaultChannelProfileWhatsappConfigPtrOutput() AppDefaultChannelProfileWhatsappConfigPtrOutput
+	ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(context.Context) AppDefaultChannelProfileWhatsappConfigPtrOutput
+}
+
+type appDefaultChannelProfileWhatsappConfigPtrType AppDefaultChannelProfileWhatsappConfigArgs
+
+func AppDefaultChannelProfileWhatsappConfigPtr(v *AppDefaultChannelProfileWhatsappConfigArgs) AppDefaultChannelProfileWhatsappConfigPtrInput {
+	return (*appDefaultChannelProfileWhatsappConfigPtrType)(v)
+}
+
+func (*appDefaultChannelProfileWhatsappConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (i *appDefaultChannelProfileWhatsappConfigPtrType) ToAppDefaultChannelProfileWhatsappConfigPtrOutput() AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return i.ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *appDefaultChannelProfileWhatsappConfigPtrType) ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDefaultChannelProfileWhatsappConfigPtrOutput)
+}
+
+type AppDefaultChannelProfileWhatsappConfigOutput struct{ *pulumi.OutputState }
+
+func (AppDefaultChannelProfileWhatsappConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (o AppDefaultChannelProfileWhatsappConfigOutput) ToAppDefaultChannelProfileWhatsappConfigOutput() AppDefaultChannelProfileWhatsappConfigOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWhatsappConfigOutput) ToAppDefaultChannelProfileWhatsappConfigOutputWithContext(ctx context.Context) AppDefaultChannelProfileWhatsappConfigOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWhatsappConfigOutput) ToAppDefaultChannelProfileWhatsappConfigPtrOutput() AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return o.ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AppDefaultChannelProfileWhatsappConfigOutput) ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDefaultChannelProfileWhatsappConfig) *AppDefaultChannelProfileWhatsappConfig {
+		return &v
+	}).(AppDefaultChannelProfileWhatsappConfigPtrOutput)
+}
+
+// (Output)
+// The description of the Meta business page or profile.
+func (o AppDefaultChannelProfileWhatsappConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWhatsappConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The fetched Meta business page name.
+func (o AppDefaultChannelProfileWhatsappConfigOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWhatsappConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The phone number in E.164 format.
+func (o AppDefaultChannelProfileWhatsappConfigOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWhatsappConfig) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// The Meta phone number ID.
+func (o AppDefaultChannelProfileWhatsappConfigOutput) PhoneNumberId() pulumi.StringOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWhatsappConfig) string { return v.PhoneNumberId }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The fetched Meta business profile thumbnail URL.
+func (o AppDefaultChannelProfileWhatsappConfigOutput) ThumbnailUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWhatsappConfig) *string { return v.ThumbnailUrl }).(pulumi.StringPtrOutput)
+}
+
+// The WhatsApp Business Account ID.
+func (o AppDefaultChannelProfileWhatsappConfigOutput) WabaId() pulumi.StringOutput {
+	return o.ApplyT(func(v AppDefaultChannelProfileWhatsappConfig) string { return v.WabaId }).(pulumi.StringOutput)
+}
+
+type AppDefaultChannelProfileWhatsappConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AppDefaultChannelProfileWhatsappConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) ToAppDefaultChannelProfileWhatsappConfigPtrOutput() AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) ToAppDefaultChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) AppDefaultChannelProfileWhatsappConfigPtrOutput {
+	return o
+}
+
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) Elem() AppDefaultChannelProfileWhatsappConfigOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWhatsappConfig) AppDefaultChannelProfileWhatsappConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AppDefaultChannelProfileWhatsappConfig
+		return ret
+	}).(AppDefaultChannelProfileWhatsappConfigOutput)
+}
+
+// (Output)
+// The description of the Meta business page or profile.
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The fetched Meta business page name.
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The phone number in E.164 format.
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Meta phone number ID.
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) PhoneNumberId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumberId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The fetched Meta business profile thumbnail URL.
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) ThumbnailUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThumbnailUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The WhatsApp Business Account ID.
+func (o AppDefaultChannelProfileWhatsappConfigPtrOutput) WabaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDefaultChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WabaId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppErrorHandlingSettings struct {
+	// Configuration for ending the session in case of system errors (e.g. LLM
+	// errors).
+	// Structure is documented below.
+	EndSessionConfig *AppErrorHandlingSettingsEndSessionConfig `pulumi:"endSessionConfig"`
+	// The strategy to use for error handling.
+	// Possible values:
+	// NONE
+	// FALLBACK_RESPONSE
+	// END_SESSION
+	ErrorHandlingStrategy *string `pulumi:"errorHandlingStrategy"`
+	// Configuration for handling fallback responses.
+	// Structure is documented below.
+	FallbackResponseConfig *AppErrorHandlingSettingsFallbackResponseConfig `pulumi:"fallbackResponseConfig"`
+}
+
+// AppErrorHandlingSettingsInput is an input type that accepts AppErrorHandlingSettingsArgs and AppErrorHandlingSettingsOutput values.
+// You can construct a concrete instance of `AppErrorHandlingSettingsInput` via:
+//
+//	AppErrorHandlingSettingsArgs{...}
+type AppErrorHandlingSettingsInput interface {
+	pulumi.Input
+
+	ToAppErrorHandlingSettingsOutput() AppErrorHandlingSettingsOutput
+	ToAppErrorHandlingSettingsOutputWithContext(context.Context) AppErrorHandlingSettingsOutput
+}
+
+type AppErrorHandlingSettingsArgs struct {
+	// Configuration for ending the session in case of system errors (e.g. LLM
+	// errors).
+	// Structure is documented below.
+	EndSessionConfig AppErrorHandlingSettingsEndSessionConfigPtrInput `pulumi:"endSessionConfig"`
+	// The strategy to use for error handling.
+	// Possible values:
+	// NONE
+	// FALLBACK_RESPONSE
+	// END_SESSION
+	ErrorHandlingStrategy pulumi.StringPtrInput `pulumi:"errorHandlingStrategy"`
+	// Configuration for handling fallback responses.
+	// Structure is documented below.
+	FallbackResponseConfig AppErrorHandlingSettingsFallbackResponseConfigPtrInput `pulumi:"fallbackResponseConfig"`
+}
+
+func (AppErrorHandlingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppErrorHandlingSettings)(nil)).Elem()
+}
+
+func (i AppErrorHandlingSettingsArgs) ToAppErrorHandlingSettingsOutput() AppErrorHandlingSettingsOutput {
+	return i.ToAppErrorHandlingSettingsOutputWithContext(context.Background())
+}
+
+func (i AppErrorHandlingSettingsArgs) ToAppErrorHandlingSettingsOutputWithContext(ctx context.Context) AppErrorHandlingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsOutput)
+}
+
+func (i AppErrorHandlingSettingsArgs) ToAppErrorHandlingSettingsPtrOutput() AppErrorHandlingSettingsPtrOutput {
+	return i.ToAppErrorHandlingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AppErrorHandlingSettingsArgs) ToAppErrorHandlingSettingsPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsOutput).ToAppErrorHandlingSettingsPtrOutputWithContext(ctx)
+}
+
+// AppErrorHandlingSettingsPtrInput is an input type that accepts AppErrorHandlingSettingsArgs, AppErrorHandlingSettingsPtr and AppErrorHandlingSettingsPtrOutput values.
+// You can construct a concrete instance of `AppErrorHandlingSettingsPtrInput` via:
+//
+//	        AppErrorHandlingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppErrorHandlingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAppErrorHandlingSettingsPtrOutput() AppErrorHandlingSettingsPtrOutput
+	ToAppErrorHandlingSettingsPtrOutputWithContext(context.Context) AppErrorHandlingSettingsPtrOutput
+}
+
+type appErrorHandlingSettingsPtrType AppErrorHandlingSettingsArgs
+
+func AppErrorHandlingSettingsPtr(v *AppErrorHandlingSettingsArgs) AppErrorHandlingSettingsPtrInput {
+	return (*appErrorHandlingSettingsPtrType)(v)
+}
+
+func (*appErrorHandlingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppErrorHandlingSettings)(nil)).Elem()
+}
+
+func (i *appErrorHandlingSettingsPtrType) ToAppErrorHandlingSettingsPtrOutput() AppErrorHandlingSettingsPtrOutput {
+	return i.ToAppErrorHandlingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *appErrorHandlingSettingsPtrType) ToAppErrorHandlingSettingsPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsPtrOutput)
+}
+
+type AppErrorHandlingSettingsOutput struct{ *pulumi.OutputState }
+
+func (AppErrorHandlingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppErrorHandlingSettings)(nil)).Elem()
+}
+
+func (o AppErrorHandlingSettingsOutput) ToAppErrorHandlingSettingsOutput() AppErrorHandlingSettingsOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsOutput) ToAppErrorHandlingSettingsOutputWithContext(ctx context.Context) AppErrorHandlingSettingsOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsOutput) ToAppErrorHandlingSettingsPtrOutput() AppErrorHandlingSettingsPtrOutput {
+	return o.ToAppErrorHandlingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AppErrorHandlingSettingsOutput) ToAppErrorHandlingSettingsPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppErrorHandlingSettings) *AppErrorHandlingSettings {
+		return &v
+	}).(AppErrorHandlingSettingsPtrOutput)
+}
+
+// Configuration for ending the session in case of system errors (e.g. LLM
+// errors).
+// Structure is documented below.
+func (o AppErrorHandlingSettingsOutput) EndSessionConfig() AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return o.ApplyT(func(v AppErrorHandlingSettings) *AppErrorHandlingSettingsEndSessionConfig { return v.EndSessionConfig }).(AppErrorHandlingSettingsEndSessionConfigPtrOutput)
+}
+
+// The strategy to use for error handling.
+// Possible values:
+// NONE
+// FALLBACK_RESPONSE
+// END_SESSION
+func (o AppErrorHandlingSettingsOutput) ErrorHandlingStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppErrorHandlingSettings) *string { return v.ErrorHandlingStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for handling fallback responses.
+// Structure is documented below.
+func (o AppErrorHandlingSettingsOutput) FallbackResponseConfig() AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return o.ApplyT(func(v AppErrorHandlingSettings) *AppErrorHandlingSettingsFallbackResponseConfig {
+		return v.FallbackResponseConfig
+	}).(AppErrorHandlingSettingsFallbackResponseConfigPtrOutput)
+}
+
+type AppErrorHandlingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppErrorHandlingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppErrorHandlingSettings)(nil)).Elem()
+}
+
+func (o AppErrorHandlingSettingsPtrOutput) ToAppErrorHandlingSettingsPtrOutput() AppErrorHandlingSettingsPtrOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsPtrOutput) ToAppErrorHandlingSettingsPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsPtrOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsPtrOutput) Elem() AppErrorHandlingSettingsOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettings) AppErrorHandlingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AppErrorHandlingSettings
+		return ret
+	}).(AppErrorHandlingSettingsOutput)
+}
+
+// Configuration for ending the session in case of system errors (e.g. LLM
+// errors).
+// Structure is documented below.
+func (o AppErrorHandlingSettingsPtrOutput) EndSessionConfig() AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettings) *AppErrorHandlingSettingsEndSessionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EndSessionConfig
+	}).(AppErrorHandlingSettingsEndSessionConfigPtrOutput)
+}
+
+// The strategy to use for error handling.
+// Possible values:
+// NONE
+// FALLBACK_RESPONSE
+// END_SESSION
+func (o AppErrorHandlingSettingsPtrOutput) ErrorHandlingStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorHandlingStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for handling fallback responses.
+// Structure is documented below.
+func (o AppErrorHandlingSettingsPtrOutput) FallbackResponseConfig() AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettings) *AppErrorHandlingSettingsFallbackResponseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FallbackResponseConfig
+	}).(AppErrorHandlingSettingsFallbackResponseConfigPtrOutput)
+}
+
+type AppErrorHandlingSettingsEndSessionConfig struct {
+	// Whether to escalate the session in EndSession. If session is escalated,
+	// metadata in EndSession will contain sessionEscalated = true.
+	EscalateSession *bool `pulumi:"escalateSession"`
+}
+
+// AppErrorHandlingSettingsEndSessionConfigInput is an input type that accepts AppErrorHandlingSettingsEndSessionConfigArgs and AppErrorHandlingSettingsEndSessionConfigOutput values.
+// You can construct a concrete instance of `AppErrorHandlingSettingsEndSessionConfigInput` via:
+//
+//	AppErrorHandlingSettingsEndSessionConfigArgs{...}
+type AppErrorHandlingSettingsEndSessionConfigInput interface {
+	pulumi.Input
+
+	ToAppErrorHandlingSettingsEndSessionConfigOutput() AppErrorHandlingSettingsEndSessionConfigOutput
+	ToAppErrorHandlingSettingsEndSessionConfigOutputWithContext(context.Context) AppErrorHandlingSettingsEndSessionConfigOutput
+}
+
+type AppErrorHandlingSettingsEndSessionConfigArgs struct {
+	// Whether to escalate the session in EndSession. If session is escalated,
+	// metadata in EndSession will contain sessionEscalated = true.
+	EscalateSession pulumi.BoolPtrInput `pulumi:"escalateSession"`
+}
+
+func (AppErrorHandlingSettingsEndSessionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppErrorHandlingSettingsEndSessionConfig)(nil)).Elem()
+}
+
+func (i AppErrorHandlingSettingsEndSessionConfigArgs) ToAppErrorHandlingSettingsEndSessionConfigOutput() AppErrorHandlingSettingsEndSessionConfigOutput {
+	return i.ToAppErrorHandlingSettingsEndSessionConfigOutputWithContext(context.Background())
+}
+
+func (i AppErrorHandlingSettingsEndSessionConfigArgs) ToAppErrorHandlingSettingsEndSessionConfigOutputWithContext(ctx context.Context) AppErrorHandlingSettingsEndSessionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsEndSessionConfigOutput)
+}
+
+func (i AppErrorHandlingSettingsEndSessionConfigArgs) ToAppErrorHandlingSettingsEndSessionConfigPtrOutput() AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return i.ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AppErrorHandlingSettingsEndSessionConfigArgs) ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsEndSessionConfigOutput).ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(ctx)
+}
+
+// AppErrorHandlingSettingsEndSessionConfigPtrInput is an input type that accepts AppErrorHandlingSettingsEndSessionConfigArgs, AppErrorHandlingSettingsEndSessionConfigPtr and AppErrorHandlingSettingsEndSessionConfigPtrOutput values.
+// You can construct a concrete instance of `AppErrorHandlingSettingsEndSessionConfigPtrInput` via:
+//
+//	        AppErrorHandlingSettingsEndSessionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppErrorHandlingSettingsEndSessionConfigPtrInput interface {
+	pulumi.Input
+
+	ToAppErrorHandlingSettingsEndSessionConfigPtrOutput() AppErrorHandlingSettingsEndSessionConfigPtrOutput
+	ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(context.Context) AppErrorHandlingSettingsEndSessionConfigPtrOutput
+}
+
+type appErrorHandlingSettingsEndSessionConfigPtrType AppErrorHandlingSettingsEndSessionConfigArgs
+
+func AppErrorHandlingSettingsEndSessionConfigPtr(v *AppErrorHandlingSettingsEndSessionConfigArgs) AppErrorHandlingSettingsEndSessionConfigPtrInput {
+	return (*appErrorHandlingSettingsEndSessionConfigPtrType)(v)
+}
+
+func (*appErrorHandlingSettingsEndSessionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppErrorHandlingSettingsEndSessionConfig)(nil)).Elem()
+}
+
+func (i *appErrorHandlingSettingsEndSessionConfigPtrType) ToAppErrorHandlingSettingsEndSessionConfigPtrOutput() AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return i.ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *appErrorHandlingSettingsEndSessionConfigPtrType) ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsEndSessionConfigPtrOutput)
+}
+
+type AppErrorHandlingSettingsEndSessionConfigOutput struct{ *pulumi.OutputState }
+
+func (AppErrorHandlingSettingsEndSessionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppErrorHandlingSettingsEndSessionConfig)(nil)).Elem()
+}
+
+func (o AppErrorHandlingSettingsEndSessionConfigOutput) ToAppErrorHandlingSettingsEndSessionConfigOutput() AppErrorHandlingSettingsEndSessionConfigOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsEndSessionConfigOutput) ToAppErrorHandlingSettingsEndSessionConfigOutputWithContext(ctx context.Context) AppErrorHandlingSettingsEndSessionConfigOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsEndSessionConfigOutput) ToAppErrorHandlingSettingsEndSessionConfigPtrOutput() AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return o.ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AppErrorHandlingSettingsEndSessionConfigOutput) ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppErrorHandlingSettingsEndSessionConfig) *AppErrorHandlingSettingsEndSessionConfig {
+		return &v
+	}).(AppErrorHandlingSettingsEndSessionConfigPtrOutput)
+}
+
+// Whether to escalate the session in EndSession. If session is escalated,
+// metadata in EndSession will contain sessionEscalated = true.
+func (o AppErrorHandlingSettingsEndSessionConfigOutput) EscalateSession() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppErrorHandlingSettingsEndSessionConfig) *bool { return v.EscalateSession }).(pulumi.BoolPtrOutput)
+}
+
+type AppErrorHandlingSettingsEndSessionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AppErrorHandlingSettingsEndSessionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppErrorHandlingSettingsEndSessionConfig)(nil)).Elem()
+}
+
+func (o AppErrorHandlingSettingsEndSessionConfigPtrOutput) ToAppErrorHandlingSettingsEndSessionConfigPtrOutput() AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsEndSessionConfigPtrOutput) ToAppErrorHandlingSettingsEndSessionConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsEndSessionConfigPtrOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsEndSessionConfigPtrOutput) Elem() AppErrorHandlingSettingsEndSessionConfigOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettingsEndSessionConfig) AppErrorHandlingSettingsEndSessionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AppErrorHandlingSettingsEndSessionConfig
+		return ret
+	}).(AppErrorHandlingSettingsEndSessionConfigOutput)
+}
+
+// Whether to escalate the session in EndSession. If session is escalated,
+// metadata in EndSession will contain sessionEscalated = true.
+func (o AppErrorHandlingSettingsEndSessionConfigPtrOutput) EscalateSession() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettingsEndSessionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EscalateSession
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AppErrorHandlingSettingsFallbackResponseConfig struct {
+	// The fallback messages in case of system errors (e.g. LLM errors),
+	// mapped by supported language code
+	// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+	CustomFallbackMessages map[string]string `pulumi:"customFallbackMessages"`
+	// The maximum number of fallback attempts to make before the agent
+	// emitting EndSession Signal.
+	MaxFallbackAttempts *int `pulumi:"maxFallbackAttempts"`
+}
+
+// AppErrorHandlingSettingsFallbackResponseConfigInput is an input type that accepts AppErrorHandlingSettingsFallbackResponseConfigArgs and AppErrorHandlingSettingsFallbackResponseConfigOutput values.
+// You can construct a concrete instance of `AppErrorHandlingSettingsFallbackResponseConfigInput` via:
+//
+//	AppErrorHandlingSettingsFallbackResponseConfigArgs{...}
+type AppErrorHandlingSettingsFallbackResponseConfigInput interface {
+	pulumi.Input
+
+	ToAppErrorHandlingSettingsFallbackResponseConfigOutput() AppErrorHandlingSettingsFallbackResponseConfigOutput
+	ToAppErrorHandlingSettingsFallbackResponseConfigOutputWithContext(context.Context) AppErrorHandlingSettingsFallbackResponseConfigOutput
+}
+
+type AppErrorHandlingSettingsFallbackResponseConfigArgs struct {
+	// The fallback messages in case of system errors (e.g. LLM errors),
+	// mapped by supported language code
+	// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+	CustomFallbackMessages pulumi.StringMapInput `pulumi:"customFallbackMessages"`
+	// The maximum number of fallback attempts to make before the agent
+	// emitting EndSession Signal.
+	MaxFallbackAttempts pulumi.IntPtrInput `pulumi:"maxFallbackAttempts"`
+}
+
+func (AppErrorHandlingSettingsFallbackResponseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppErrorHandlingSettingsFallbackResponseConfig)(nil)).Elem()
+}
+
+func (i AppErrorHandlingSettingsFallbackResponseConfigArgs) ToAppErrorHandlingSettingsFallbackResponseConfigOutput() AppErrorHandlingSettingsFallbackResponseConfigOutput {
+	return i.ToAppErrorHandlingSettingsFallbackResponseConfigOutputWithContext(context.Background())
+}
+
+func (i AppErrorHandlingSettingsFallbackResponseConfigArgs) ToAppErrorHandlingSettingsFallbackResponseConfigOutputWithContext(ctx context.Context) AppErrorHandlingSettingsFallbackResponseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsFallbackResponseConfigOutput)
+}
+
+func (i AppErrorHandlingSettingsFallbackResponseConfigArgs) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutput() AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return i.ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AppErrorHandlingSettingsFallbackResponseConfigArgs) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsFallbackResponseConfigOutput).ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(ctx)
+}
+
+// AppErrorHandlingSettingsFallbackResponseConfigPtrInput is an input type that accepts AppErrorHandlingSettingsFallbackResponseConfigArgs, AppErrorHandlingSettingsFallbackResponseConfigPtr and AppErrorHandlingSettingsFallbackResponseConfigPtrOutput values.
+// You can construct a concrete instance of `AppErrorHandlingSettingsFallbackResponseConfigPtrInput` via:
+//
+//	        AppErrorHandlingSettingsFallbackResponseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppErrorHandlingSettingsFallbackResponseConfigPtrInput interface {
+	pulumi.Input
+
+	ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutput() AppErrorHandlingSettingsFallbackResponseConfigPtrOutput
+	ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(context.Context) AppErrorHandlingSettingsFallbackResponseConfigPtrOutput
+}
+
+type appErrorHandlingSettingsFallbackResponseConfigPtrType AppErrorHandlingSettingsFallbackResponseConfigArgs
+
+func AppErrorHandlingSettingsFallbackResponseConfigPtr(v *AppErrorHandlingSettingsFallbackResponseConfigArgs) AppErrorHandlingSettingsFallbackResponseConfigPtrInput {
+	return (*appErrorHandlingSettingsFallbackResponseConfigPtrType)(v)
+}
+
+func (*appErrorHandlingSettingsFallbackResponseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppErrorHandlingSettingsFallbackResponseConfig)(nil)).Elem()
+}
+
+func (i *appErrorHandlingSettingsFallbackResponseConfigPtrType) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutput() AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return i.ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *appErrorHandlingSettingsFallbackResponseConfigPtrType) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppErrorHandlingSettingsFallbackResponseConfigPtrOutput)
+}
+
+type AppErrorHandlingSettingsFallbackResponseConfigOutput struct{ *pulumi.OutputState }
+
+func (AppErrorHandlingSettingsFallbackResponseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppErrorHandlingSettingsFallbackResponseConfig)(nil)).Elem()
+}
+
+func (o AppErrorHandlingSettingsFallbackResponseConfigOutput) ToAppErrorHandlingSettingsFallbackResponseConfigOutput() AppErrorHandlingSettingsFallbackResponseConfigOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsFallbackResponseConfigOutput) ToAppErrorHandlingSettingsFallbackResponseConfigOutputWithContext(ctx context.Context) AppErrorHandlingSettingsFallbackResponseConfigOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsFallbackResponseConfigOutput) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutput() AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return o.ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AppErrorHandlingSettingsFallbackResponseConfigOutput) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppErrorHandlingSettingsFallbackResponseConfig) *AppErrorHandlingSettingsFallbackResponseConfig {
+		return &v
+	}).(AppErrorHandlingSettingsFallbackResponseConfigPtrOutput)
+}
+
+// The fallback messages in case of system errors (e.g. LLM errors),
+// mapped by supported language code
+// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+func (o AppErrorHandlingSettingsFallbackResponseConfigOutput) CustomFallbackMessages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AppErrorHandlingSettingsFallbackResponseConfig) map[string]string {
+		return v.CustomFallbackMessages
+	}).(pulumi.StringMapOutput)
+}
+
+// The maximum number of fallback attempts to make before the agent
+// emitting EndSession Signal.
+func (o AppErrorHandlingSettingsFallbackResponseConfigOutput) MaxFallbackAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppErrorHandlingSettingsFallbackResponseConfig) *int { return v.MaxFallbackAttempts }).(pulumi.IntPtrOutput)
+}
+
+type AppErrorHandlingSettingsFallbackResponseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AppErrorHandlingSettingsFallbackResponseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppErrorHandlingSettingsFallbackResponseConfig)(nil)).Elem()
+}
+
+func (o AppErrorHandlingSettingsFallbackResponseConfigPtrOutput) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutput() AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsFallbackResponseConfigPtrOutput) ToAppErrorHandlingSettingsFallbackResponseConfigPtrOutputWithContext(ctx context.Context) AppErrorHandlingSettingsFallbackResponseConfigPtrOutput {
+	return o
+}
+
+func (o AppErrorHandlingSettingsFallbackResponseConfigPtrOutput) Elem() AppErrorHandlingSettingsFallbackResponseConfigOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettingsFallbackResponseConfig) AppErrorHandlingSettingsFallbackResponseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AppErrorHandlingSettingsFallbackResponseConfig
+		return ret
+	}).(AppErrorHandlingSettingsFallbackResponseConfigOutput)
+}
+
+// The fallback messages in case of system errors (e.g. LLM errors),
+// mapped by supported language code
+// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+func (o AppErrorHandlingSettingsFallbackResponseConfigPtrOutput) CustomFallbackMessages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettingsFallbackResponseConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFallbackMessages
+	}).(pulumi.StringMapOutput)
+}
+
+// The maximum number of fallback attempts to make before the agent
+// emitting EndSession Signal.
+func (o AppErrorHandlingSettingsFallbackResponseConfigPtrOutput) MaxFallbackAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppErrorHandlingSettingsFallbackResponseConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFallbackAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
 type AppEvaluationMetricsThresholds struct {
 	// Settings for golden evaluations.
 	// Structure is documented below.
 	GoldenEvaluationMetricsThresholds *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds `pulumi:"goldenEvaluationMetricsThresholds"`
+	// The hallucination metric behavior for golden evaluations.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	GoldenHallucinationMetricBehavior *string `pulumi:"goldenHallucinationMetricBehavior"`
+	// The hallucination metric behavior for scenario evaluations.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	ScenarioHallucinationMetricBehavior *string `pulumi:"scenarioHallucinationMetricBehavior"`
 }
 
 // AppEvaluationMetricsThresholdsInput is an input type that accepts AppEvaluationMetricsThresholdsArgs and AppEvaluationMetricsThresholdsOutput values.
@@ -3266,6 +5218,12 @@ type AppEvaluationMetricsThresholdsArgs struct {
 	// Settings for golden evaluations.
 	// Structure is documented below.
 	GoldenEvaluationMetricsThresholds AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsPtrInput `pulumi:"goldenEvaluationMetricsThresholds"`
+	// The hallucination metric behavior for golden evaluations.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	GoldenHallucinationMetricBehavior pulumi.StringPtrInput `pulumi:"goldenHallucinationMetricBehavior"`
+	// The hallucination metric behavior for scenario evaluations.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	ScenarioHallucinationMetricBehavior pulumi.StringPtrInput `pulumi:"scenarioHallucinationMetricBehavior"`
 }
 
 func (AppEvaluationMetricsThresholdsArgs) ElementType() reflect.Type {
@@ -3353,6 +5311,18 @@ func (o AppEvaluationMetricsThresholdsOutput) GoldenEvaluationMetricsThresholds(
 	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsPtrOutput)
 }
 
+// The hallucination metric behavior for golden evaluations.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o AppEvaluationMetricsThresholdsOutput) GoldenHallucinationMetricBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppEvaluationMetricsThresholds) *string { return v.GoldenHallucinationMetricBehavior }).(pulumi.StringPtrOutput)
+}
+
+// The hallucination metric behavior for scenario evaluations.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o AppEvaluationMetricsThresholdsOutput) ScenarioHallucinationMetricBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppEvaluationMetricsThresholds) *string { return v.ScenarioHallucinationMetricBehavior }).(pulumi.StringPtrOutput)
+}
+
 type AppEvaluationMetricsThresholdsPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEvaluationMetricsThresholdsPtrOutput) ElementType() reflect.Type {
@@ -3388,10 +5358,37 @@ func (o AppEvaluationMetricsThresholdsPtrOutput) GoldenEvaluationMetricsThreshol
 	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsPtrOutput)
 }
 
+// The hallucination metric behavior for golden evaluations.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o AppEvaluationMetricsThresholdsPtrOutput) GoldenHallucinationMetricBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEvaluationMetricsThresholds) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoldenHallucinationMetricBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hallucination metric behavior for scenario evaluations.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o AppEvaluationMetricsThresholdsPtrOutput) ScenarioHallucinationMetricBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEvaluationMetricsThresholds) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScenarioHallucinationMetricBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds struct {
 	// Expectation level metrics thresholds.
 	// Structure is documented below.
 	ExpectationLevelMetricsThresholds *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds `pulumi:"expectationLevelMetricsThresholds"`
+	// The tool matching settings. An extra tool call is a tool call that is
+	// present in the execution but does not match any tool call in the golden
+	// expectation.
+	// Structure is documented below.
+	ToolMatchingSettings *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings `pulumi:"toolMatchingSettings"`
 	// Turn level metrics thresholds.
 	// Structure is documented below.
 	TurnLevelMetricsThresholds *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds `pulumi:"turnLevelMetricsThresholds"`
@@ -3412,6 +5409,11 @@ type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs struct 
 	// Expectation level metrics thresholds.
 	// Structure is documented below.
 	ExpectationLevelMetricsThresholds AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsPtrInput `pulumi:"expectationLevelMetricsThresholds"`
+	// The tool matching settings. An extra tool call is a tool call that is
+	// present in the execution but does not match any tool call in the golden
+	// expectation.
+	// Structure is documented below.
+	ToolMatchingSettings AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrInput `pulumi:"toolMatchingSettings"`
 	// Turn level metrics thresholds.
 	// Structure is documented below.
 	TurnLevelMetricsThresholds AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsPtrInput `pulumi:"turnLevelMetricsThresholds"`
@@ -3502,6 +5504,16 @@ func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsOutput) E
 	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsPtrOutput)
 }
 
+// The tool matching settings. An extra tool call is a tool call that is
+// present in the execution but does not match any tool call in the golden
+// expectation.
+// Structure is documented below.
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsOutput) ToolMatchingSettings() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return o.ApplyT(func(v AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds) *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings {
+		return v.ToolMatchingSettings
+	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput)
+}
+
 // Turn level metrics thresholds.
 // Structure is documented below.
 func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsOutput) TurnLevelMetricsThresholds() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsPtrOutput {
@@ -3543,6 +5555,19 @@ func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsPtrOutput
 		}
 		return v.ExpectationLevelMetricsThresholds
 	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsPtrOutput)
+}
+
+// The tool matching settings. An extra tool call is a tool call that is
+// present in the execution but does not match any tool call in the golden
+// expectation.
+// Structure is documented below.
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsPtrOutput) ToolMatchingSettings() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return o.ApplyT(func(v *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds) *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ToolMatchingSettings
+	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput)
 }
 
 // Turn level metrics thresholds.
@@ -3699,10 +5724,167 @@ func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectati
 	}).(pulumi.Float64PtrOutput)
 }
 
+type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings struct {
+	// Defines the behavior when an extra tool call is encountered. An extra
+	// tool call is a tool call that is present in the execution but does
+	// not match any tool call in the golden expectation.
+	// Possible values are: `FAIL`, `ALLOW`.
+	ExtraToolCallBehavior *string `pulumi:"extraToolCallBehavior"`
+}
+
+// AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsInput is an input type that accepts AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs and AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput values.
+// You can construct a concrete instance of `AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsInput` via:
+//
+//	AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs{...}
+type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsInput interface {
+	pulumi.Input
+
+	ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput
+	ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutputWithContext(context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput
+}
+
+type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs struct {
+	// Defines the behavior when an extra tool call is encountered. An extra
+	// tool call is a tool call that is present in the execution but does
+	// not match any tool call in the golden expectation.
+	// Possible values are: `FAIL`, `ALLOW`.
+	ExtraToolCallBehavior pulumi.StringPtrInput `pulumi:"extraToolCallBehavior"`
+}
+
+func (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings)(nil)).Elem()
+}
+
+func (i AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput {
+	return i.ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutputWithContext(context.Background())
+}
+
+func (i AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutputWithContext(ctx context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput)
+}
+
+func (i AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return i.ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(ctx context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput).ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(ctx)
+}
+
+// AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrInput is an input type that accepts AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs, AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtr and AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput values.
+// You can construct a concrete instance of `AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrInput` via:
+//
+//	        AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput
+	ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput
+}
+
+type appEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrType AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs
+
+func AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtr(v *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrInput {
+	return (*appEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrType)(v)
+}
+
+func (*appEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings)(nil)).Elem()
+}
+
+func (i *appEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrType) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return i.ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *appEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrType) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(ctx context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput)
+}
+
+type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput struct{ *pulumi.OutputState }
+
+func (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings)(nil)).Elem()
+}
+
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput {
+	return o
+}
+
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutputWithContext(ctx context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput {
+	return o
+}
+
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return o.ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(ctx context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings) *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings {
+		return &v
+	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput)
+}
+
+// Defines the behavior when an extra tool call is encountered. An extra
+// tool call is a tool call that is present in the execution but does
+// not match any tool call in the golden expectation.
+// Possible values are: `FAIL`, `ALLOW`.
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput) ExtraToolCallBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings) *string {
+		return v.ExtraToolCallBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings)(nil)).Elem()
+}
+
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return o
+}
+
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput) ToAppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutputWithContext(ctx context.Context) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput {
+	return o
+}
+
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput) Elem() AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput {
+	return o.ApplyT(func(v *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings) AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings
+		return ret
+	}).(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput)
+}
+
+// Defines the behavior when an extra tool call is encountered. An extra
+// tool call is a tool call that is present in the execution but does
+// not match any tool call in the golden expectation.
+// Possible values are: `FAIL`, `ALLOW`.
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput) ExtraToolCallBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraToolCallBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds struct {
 	// The success threshold for overall tool invocation correctness. Must be
 	// a float between 0 and 1. Default is 1.0.
 	OverallToolInvocationCorrectnessThreshold *float64 `pulumi:"overallToolInvocationCorrectnessThreshold"`
+	// The semantic similarity channel to use for evaluation.
+	// Possible values:
+	// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+	// TEXT
+	// AUDIO
+	SemanticSimilarityChannel *string `pulumi:"semanticSimilarityChannel"`
 	// The success threshold for semantic similarity. Must be an integer
 	// between 0 and 4. Default is >= 3.
 	SemanticSimilaritySuccessThreshold *int `pulumi:"semanticSimilaritySuccessThreshold"`
@@ -3723,6 +5905,12 @@ type AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMet
 	// The success threshold for overall tool invocation correctness. Must be
 	// a float between 0 and 1. Default is 1.0.
 	OverallToolInvocationCorrectnessThreshold pulumi.Float64PtrInput `pulumi:"overallToolInvocationCorrectnessThreshold"`
+	// The semantic similarity channel to use for evaluation.
+	// Possible values:
+	// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+	// TEXT
+	// AUDIO
+	SemanticSimilarityChannel pulumi.StringPtrInput `pulumi:"semanticSimilarityChannel"`
 	// The success threshold for semantic similarity. Must be an integer
 	// between 0 and 4. Default is >= 3.
 	SemanticSimilaritySuccessThreshold pulumi.IntPtrInput `pulumi:"semanticSimilaritySuccessThreshold"`
@@ -3813,6 +6001,17 @@ func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevel
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The semantic similarity channel to use for evaluation.
+// Possible values:
+// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+// TEXT
+// AUDIO
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsOutput) SemanticSimilarityChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds) *string {
+		return v.SemanticSimilarityChannel
+	}).(pulumi.StringPtrOutput)
+}
+
 // The success threshold for semantic similarity. Must be an integer
 // between 0 and 4. Default is >= 3.
 func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsOutput) SemanticSimilaritySuccessThreshold() pulumi.IntPtrOutput {
@@ -3854,6 +6053,20 @@ func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevel
 		}
 		return v.OverallToolInvocationCorrectnessThreshold
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The semantic similarity channel to use for evaluation.
+// Possible values:
+// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+// TEXT
+// AUDIO
+func (o AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsPtrOutput) SemanticSimilarityChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SemanticSimilarityChannel
+	}).(pulumi.StringPtrOutput)
 }
 
 // The success threshold for semantic similarity. Must be an integer
@@ -4110,6 +6323,10 @@ type AppLoggingSettings struct {
 	// Settings to describe the conversation logging behaviors for the app.
 	// Structure is documented below.
 	ConversationLoggingSettings *AppLoggingSettingsConversationLoggingSettings `pulumi:"conversationLoggingSettings"`
+	// Settings to describe the conversation data collection behaviors for the LLM
+	// analysis pipeline for the app.
+	// Structure is documented below.
+	MetricAnalysisSettings *AppLoggingSettingsMetricAnalysisSettings `pulumi:"metricAnalysisSettings"`
 	// Configuration to instruct how sensitive data should be handled.
 	// Structure is documented below.
 	RedactionConfig *AppLoggingSettingsRedactionConfig `pulumi:"redactionConfig"`
@@ -4139,6 +6356,10 @@ type AppLoggingSettingsArgs struct {
 	// Settings to describe the conversation logging behaviors for the app.
 	// Structure is documented below.
 	ConversationLoggingSettings AppLoggingSettingsConversationLoggingSettingsPtrInput `pulumi:"conversationLoggingSettings"`
+	// Settings to describe the conversation data collection behaviors for the LLM
+	// analysis pipeline for the app.
+	// Structure is documented below.
+	MetricAnalysisSettings AppLoggingSettingsMetricAnalysisSettingsPtrInput `pulumi:"metricAnalysisSettings"`
 	// Configuration to instruct how sensitive data should be handled.
 	// Structure is documented below.
 	RedactionConfig AppLoggingSettingsRedactionConfigPtrInput `pulumi:"redactionConfig"`
@@ -4247,6 +6468,13 @@ func (o AppLoggingSettingsOutput) ConversationLoggingSettings() AppLoggingSettin
 	}).(AppLoggingSettingsConversationLoggingSettingsPtrOutput)
 }
 
+// Settings to describe the conversation data collection behaviors for the LLM
+// analysis pipeline for the app.
+// Structure is documented below.
+func (o AppLoggingSettingsOutput) MetricAnalysisSettings() AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return o.ApplyT(func(v AppLoggingSettings) *AppLoggingSettingsMetricAnalysisSettings { return v.MetricAnalysisSettings }).(AppLoggingSettingsMetricAnalysisSettingsPtrOutput)
+}
+
 // Configuration to instruct how sensitive data should be handled.
 // Structure is documented below.
 func (o AppLoggingSettingsOutput) RedactionConfig() AppLoggingSettingsRedactionConfigPtrOutput {
@@ -4319,6 +6547,18 @@ func (o AppLoggingSettingsPtrOutput) ConversationLoggingSettings() AppLoggingSet
 		}
 		return v.ConversationLoggingSettings
 	}).(AppLoggingSettingsConversationLoggingSettingsPtrOutput)
+}
+
+// Settings to describe the conversation data collection behaviors for the LLM
+// analysis pipeline for the app.
+// Structure is documented below.
+func (o AppLoggingSettingsPtrOutput) MetricAnalysisSettings() AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return o.ApplyT(func(v *AppLoggingSettings) *AppLoggingSettingsMetricAnalysisSettings {
+		if v == nil {
+			return nil
+		}
+		return v.MetricAnalysisSettings
+	}).(AppLoggingSettingsMetricAnalysisSettingsPtrOutput)
 }
 
 // Configuration to instruct how sensitive data should be handled.
@@ -4867,6 +7107,9 @@ func (o AppLoggingSettingsCloudLoggingSettingsPtrOutput) EnableCloudLogging() pu
 type AppLoggingSettingsConversationLoggingSettings struct {
 	// Whether to disable conversation logging for the sessions.
 	DisableConversationLogging *bool `pulumi:"disableConversationLogging"`
+	// Controls the retention window for the conversation.
+	// If not set, the conversation will be retained for 365 days.
+	RetentionWindow *string `pulumi:"retentionWindow"`
 }
 
 // AppLoggingSettingsConversationLoggingSettingsInput is an input type that accepts AppLoggingSettingsConversationLoggingSettingsArgs and AppLoggingSettingsConversationLoggingSettingsOutput values.
@@ -4883,6 +7126,9 @@ type AppLoggingSettingsConversationLoggingSettingsInput interface {
 type AppLoggingSettingsConversationLoggingSettingsArgs struct {
 	// Whether to disable conversation logging for the sessions.
 	DisableConversationLogging pulumi.BoolPtrInput `pulumi:"disableConversationLogging"`
+	// Controls the retention window for the conversation.
+	// If not set, the conversation will be retained for 365 days.
+	RetentionWindow pulumi.StringPtrInput `pulumi:"retentionWindow"`
 }
 
 func (AppLoggingSettingsConversationLoggingSettingsArgs) ElementType() reflect.Type {
@@ -4967,6 +7213,12 @@ func (o AppLoggingSettingsConversationLoggingSettingsOutput) DisableConversation
 	return o.ApplyT(func(v AppLoggingSettingsConversationLoggingSettings) *bool { return v.DisableConversationLogging }).(pulumi.BoolPtrOutput)
 }
 
+// Controls the retention window for the conversation.
+// If not set, the conversation will be retained for 365 days.
+func (o AppLoggingSettingsConversationLoggingSettingsOutput) RetentionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppLoggingSettingsConversationLoggingSettings) *string { return v.RetentionWindow }).(pulumi.StringPtrOutput)
+}
+
 type AppLoggingSettingsConversationLoggingSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (AppLoggingSettingsConversationLoggingSettingsPtrOutput) ElementType() reflect.Type {
@@ -4998,6 +7250,162 @@ func (o AppLoggingSettingsConversationLoggingSettingsPtrOutput) DisableConversat
 			return nil
 		}
 		return v.DisableConversationLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Controls the retention window for the conversation.
+// If not set, the conversation will be retained for 365 days.
+func (o AppLoggingSettingsConversationLoggingSettingsPtrOutput) RetentionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppLoggingSettingsConversationLoggingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppLoggingSettingsMetricAnalysisSettings struct {
+	// Whether to collect conversation data for llm analysis metrics. If true,
+	// conversation data will not be collected for llm analysis metrics;
+	// otherwise, conversation data will be collected.
+	LlmMetricsOptedOut *bool `pulumi:"llmMetricsOptedOut"`
+}
+
+// AppLoggingSettingsMetricAnalysisSettingsInput is an input type that accepts AppLoggingSettingsMetricAnalysisSettingsArgs and AppLoggingSettingsMetricAnalysisSettingsOutput values.
+// You can construct a concrete instance of `AppLoggingSettingsMetricAnalysisSettingsInput` via:
+//
+//	AppLoggingSettingsMetricAnalysisSettingsArgs{...}
+type AppLoggingSettingsMetricAnalysisSettingsInput interface {
+	pulumi.Input
+
+	ToAppLoggingSettingsMetricAnalysisSettingsOutput() AppLoggingSettingsMetricAnalysisSettingsOutput
+	ToAppLoggingSettingsMetricAnalysisSettingsOutputWithContext(context.Context) AppLoggingSettingsMetricAnalysisSettingsOutput
+}
+
+type AppLoggingSettingsMetricAnalysisSettingsArgs struct {
+	// Whether to collect conversation data for llm analysis metrics. If true,
+	// conversation data will not be collected for llm analysis metrics;
+	// otherwise, conversation data will be collected.
+	LlmMetricsOptedOut pulumi.BoolPtrInput `pulumi:"llmMetricsOptedOut"`
+}
+
+func (AppLoggingSettingsMetricAnalysisSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppLoggingSettingsMetricAnalysisSettings)(nil)).Elem()
+}
+
+func (i AppLoggingSettingsMetricAnalysisSettingsArgs) ToAppLoggingSettingsMetricAnalysisSettingsOutput() AppLoggingSettingsMetricAnalysisSettingsOutput {
+	return i.ToAppLoggingSettingsMetricAnalysisSettingsOutputWithContext(context.Background())
+}
+
+func (i AppLoggingSettingsMetricAnalysisSettingsArgs) ToAppLoggingSettingsMetricAnalysisSettingsOutputWithContext(ctx context.Context) AppLoggingSettingsMetricAnalysisSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppLoggingSettingsMetricAnalysisSettingsOutput)
+}
+
+func (i AppLoggingSettingsMetricAnalysisSettingsArgs) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutput() AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return i.ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AppLoggingSettingsMetricAnalysisSettingsArgs) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(ctx context.Context) AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppLoggingSettingsMetricAnalysisSettingsOutput).ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(ctx)
+}
+
+// AppLoggingSettingsMetricAnalysisSettingsPtrInput is an input type that accepts AppLoggingSettingsMetricAnalysisSettingsArgs, AppLoggingSettingsMetricAnalysisSettingsPtr and AppLoggingSettingsMetricAnalysisSettingsPtrOutput values.
+// You can construct a concrete instance of `AppLoggingSettingsMetricAnalysisSettingsPtrInput` via:
+//
+//	        AppLoggingSettingsMetricAnalysisSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppLoggingSettingsMetricAnalysisSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAppLoggingSettingsMetricAnalysisSettingsPtrOutput() AppLoggingSettingsMetricAnalysisSettingsPtrOutput
+	ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(context.Context) AppLoggingSettingsMetricAnalysisSettingsPtrOutput
+}
+
+type appLoggingSettingsMetricAnalysisSettingsPtrType AppLoggingSettingsMetricAnalysisSettingsArgs
+
+func AppLoggingSettingsMetricAnalysisSettingsPtr(v *AppLoggingSettingsMetricAnalysisSettingsArgs) AppLoggingSettingsMetricAnalysisSettingsPtrInput {
+	return (*appLoggingSettingsMetricAnalysisSettingsPtrType)(v)
+}
+
+func (*appLoggingSettingsMetricAnalysisSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppLoggingSettingsMetricAnalysisSettings)(nil)).Elem()
+}
+
+func (i *appLoggingSettingsMetricAnalysisSettingsPtrType) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutput() AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return i.ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *appLoggingSettingsMetricAnalysisSettingsPtrType) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(ctx context.Context) AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppLoggingSettingsMetricAnalysisSettingsPtrOutput)
+}
+
+type AppLoggingSettingsMetricAnalysisSettingsOutput struct{ *pulumi.OutputState }
+
+func (AppLoggingSettingsMetricAnalysisSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppLoggingSettingsMetricAnalysisSettings)(nil)).Elem()
+}
+
+func (o AppLoggingSettingsMetricAnalysisSettingsOutput) ToAppLoggingSettingsMetricAnalysisSettingsOutput() AppLoggingSettingsMetricAnalysisSettingsOutput {
+	return o
+}
+
+func (o AppLoggingSettingsMetricAnalysisSettingsOutput) ToAppLoggingSettingsMetricAnalysisSettingsOutputWithContext(ctx context.Context) AppLoggingSettingsMetricAnalysisSettingsOutput {
+	return o
+}
+
+func (o AppLoggingSettingsMetricAnalysisSettingsOutput) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutput() AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return o.ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AppLoggingSettingsMetricAnalysisSettingsOutput) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(ctx context.Context) AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppLoggingSettingsMetricAnalysisSettings) *AppLoggingSettingsMetricAnalysisSettings {
+		return &v
+	}).(AppLoggingSettingsMetricAnalysisSettingsPtrOutput)
+}
+
+// Whether to collect conversation data for llm analysis metrics. If true,
+// conversation data will not be collected for llm analysis metrics;
+// otherwise, conversation data will be collected.
+func (o AppLoggingSettingsMetricAnalysisSettingsOutput) LlmMetricsOptedOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppLoggingSettingsMetricAnalysisSettings) *bool { return v.LlmMetricsOptedOut }).(pulumi.BoolPtrOutput)
+}
+
+type AppLoggingSettingsMetricAnalysisSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppLoggingSettingsMetricAnalysisSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppLoggingSettingsMetricAnalysisSettings)(nil)).Elem()
+}
+
+func (o AppLoggingSettingsMetricAnalysisSettingsPtrOutput) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutput() AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return o
+}
+
+func (o AppLoggingSettingsMetricAnalysisSettingsPtrOutput) ToAppLoggingSettingsMetricAnalysisSettingsPtrOutputWithContext(ctx context.Context) AppLoggingSettingsMetricAnalysisSettingsPtrOutput {
+	return o
+}
+
+func (o AppLoggingSettingsMetricAnalysisSettingsPtrOutput) Elem() AppLoggingSettingsMetricAnalysisSettingsOutput {
+	return o.ApplyT(func(v *AppLoggingSettingsMetricAnalysisSettings) AppLoggingSettingsMetricAnalysisSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AppLoggingSettingsMetricAnalysisSettings
+		return ret
+	}).(AppLoggingSettingsMetricAnalysisSettingsOutput)
+}
+
+// Whether to collect conversation data for llm analysis metrics. If true,
+// conversation data will not be collected for llm analysis metrics;
+// otherwise, conversation data will be collected.
+func (o AppLoggingSettingsMetricAnalysisSettingsPtrOutput) LlmMetricsOptedOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppLoggingSettingsMetricAnalysisSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LlmMetricsOptedOut
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -6194,6 +8602,11 @@ type AppVersionSnapshotAgent struct {
 	// Structure is documented below.
 	Toolsets []AppVersionSnapshotAgentToolset `pulumi:"toolsets"`
 	// (Output)
+	// List of transfer rules for the agent.
+	// If multiple rules match, the first one in the list will be used.
+	// Structure is documented below.
+	TransferRules []AppVersionSnapshotAgentTransferRule `pulumi:"transferRules"`
+	// (Output)
 	// Timestamp when the toolset was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -6313,6 +8726,11 @@ type AppVersionSnapshotAgentArgs struct {
 	// List of toolsets for the agent.
 	// Structure is documented below.
 	Toolsets AppVersionSnapshotAgentToolsetArrayInput `pulumi:"toolsets"`
+	// (Output)
+	// List of transfer rules for the agent.
+	// If multiple rules match, the first one in the list will be used.
+	// Structure is documented below.
+	TransferRules AppVersionSnapshotAgentTransferRuleArrayInput `pulumi:"transferRules"`
 	// (Output)
 	// Timestamp when the toolset was last updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
@@ -6544,6 +8962,14 @@ func (o AppVersionSnapshotAgentOutput) Tools() pulumi.StringArrayOutput {
 // Structure is documented below.
 func (o AppVersionSnapshotAgentOutput) Toolsets() AppVersionSnapshotAgentToolsetArrayOutput {
 	return o.ApplyT(func(v AppVersionSnapshotAgent) []AppVersionSnapshotAgentToolset { return v.Toolsets }).(AppVersionSnapshotAgentToolsetArrayOutput)
+}
+
+// (Output)
+// List of transfer rules for the agent.
+// If multiple rules match, the first one in the list will be used.
+// Structure is documented below.
+func (o AppVersionSnapshotAgentOutput) TransferRules() AppVersionSnapshotAgentTransferRuleArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgent) []AppVersionSnapshotAgentTransferRule { return v.TransferRules }).(AppVersionSnapshotAgentTransferRuleArrayOutput)
 }
 
 // (Output)
@@ -7529,6 +9955,10 @@ type AppVersionSnapshotAgentRemoteDialogflowAgent struct {
 	// parameters names to be sent to the Dialogflow agent as input.
 	InputVariableMapping map[string]string `pulumi:"inputVariableMapping"`
 	// (Output)
+	// The name of the variable that contains the language code to be used for
+	// the Dialogflow session.
+	LanguageCodeVariable *string `pulumi:"languageCodeVariable"`
+	// (Output)
 	// The mapping of the Dialogflow session parameters names to the app
 	// variables names to be sent back to the CES agent after the Dialogflow
 	// agent execution ends.
@@ -7564,6 +9994,10 @@ type AppVersionSnapshotAgentRemoteDialogflowAgentArgs struct {
 	// The mapping of the app variables names to the Dialogflow session
 	// parameters names to be sent to the Dialogflow agent as input.
 	InputVariableMapping pulumi.StringMapInput `pulumi:"inputVariableMapping"`
+	// (Output)
+	// The name of the variable that contains the language code to be used for
+	// the Dialogflow session.
+	LanguageCodeVariable pulumi.StringPtrInput `pulumi:"languageCodeVariable"`
 	// (Output)
 	// The mapping of the Dialogflow session parameters names to the app
 	// variables names to be sent back to the CES agent after the Dialogflow
@@ -7649,6 +10083,13 @@ func (o AppVersionSnapshotAgentRemoteDialogflowAgentOutput) FlowId() pulumi.Stri
 // parameters names to be sent to the Dialogflow agent as input.
 func (o AppVersionSnapshotAgentRemoteDialogflowAgentOutput) InputVariableMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AppVersionSnapshotAgentRemoteDialogflowAgent) map[string]string { return v.InputVariableMapping }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The name of the variable that contains the language code to be used for
+// the Dialogflow session.
+func (o AppVersionSnapshotAgentRemoteDialogflowAgentOutput) LanguageCodeVariable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentRemoteDialogflowAgent) *string { return v.LanguageCodeVariable }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -7797,6 +10238,709 @@ func (o AppVersionSnapshotAgentToolsetArrayOutput) Index(i pulumi.IntInput) AppV
 	}).(AppVersionSnapshotAgentToolsetOutput)
 }
 
+type AppVersionSnapshotAgentTransferRule struct {
+	// (Output)
+	// The resource name of the child agent the rule applies to.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	ChildAgent *string `pulumi:"childAgent"`
+	// (Output)
+	// Deterministic transfer rule. When the condition evaluates to true, the
+	// transfer occurs.
+	// Structure is documented below.
+	DeterministicTransfers []AppVersionSnapshotAgentTransferRuleDeterministicTransfer `pulumi:"deterministicTransfers"`
+	// (Output)
+	// The direction of the transfer.
+	// Possible values:
+	// * PARENT_TO_CHILD
+	// * CHILD_TO_PARENT
+	Direction *string `pulumi:"direction"`
+	// (Output)
+	// A rule that prevents the planner from transferring to the target agent.
+	// Structure is documented below.
+	DisablePlannerTransfers []AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer `pulumi:"disablePlannerTransfers"`
+}
+
+// AppVersionSnapshotAgentTransferRuleInput is an input type that accepts AppVersionSnapshotAgentTransferRuleArgs and AppVersionSnapshotAgentTransferRuleOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleArgs{...}
+type AppVersionSnapshotAgentTransferRuleInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleOutput() AppVersionSnapshotAgentTransferRuleOutput
+	ToAppVersionSnapshotAgentTransferRuleOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleArgs struct {
+	// (Output)
+	// The resource name of the child agent the rule applies to.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	ChildAgent pulumi.StringPtrInput `pulumi:"childAgent"`
+	// (Output)
+	// Deterministic transfer rule. When the condition evaluates to true, the
+	// transfer occurs.
+	// Structure is documented below.
+	DeterministicTransfers AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayInput `pulumi:"deterministicTransfers"`
+	// (Output)
+	// The direction of the transfer.
+	// Possible values:
+	// * PARENT_TO_CHILD
+	// * CHILD_TO_PARENT
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// (Output)
+	// A rule that prevents the planner from transferring to the target agent.
+	// Structure is documented below.
+	DisablePlannerTransfers AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayInput `pulumi:"disablePlannerTransfers"`
+}
+
+func (AppVersionSnapshotAgentTransferRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRule)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleArgs) ToAppVersionSnapshotAgentTransferRuleOutput() AppVersionSnapshotAgentTransferRuleOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleArgs) ToAppVersionSnapshotAgentTransferRuleOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleOutput)
+}
+
+// AppVersionSnapshotAgentTransferRuleArrayInput is an input type that accepts AppVersionSnapshotAgentTransferRuleArray and AppVersionSnapshotAgentTransferRuleArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleArrayInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleArray{ AppVersionSnapshotAgentTransferRuleArgs{...} }
+type AppVersionSnapshotAgentTransferRuleArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleArrayOutput() AppVersionSnapshotAgentTransferRuleArrayOutput
+	ToAppVersionSnapshotAgentTransferRuleArrayOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleArrayOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleArray []AppVersionSnapshotAgentTransferRuleInput
+
+func (AppVersionSnapshotAgentTransferRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRule)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleArray) ToAppVersionSnapshotAgentTransferRuleArrayOutput() AppVersionSnapshotAgentTransferRuleArrayOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleArray) ToAppVersionSnapshotAgentTransferRuleArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRule)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleOutput) ToAppVersionSnapshotAgentTransferRuleOutput() AppVersionSnapshotAgentTransferRuleOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleOutput) ToAppVersionSnapshotAgentTransferRuleOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleOutput {
+	return o
+}
+
+// (Output)
+// The resource name of the child agent the rule applies to.
+// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+func (o AppVersionSnapshotAgentTransferRuleOutput) ChildAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRule) *string { return v.ChildAgent }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Deterministic transfer rule. When the condition evaluates to true, the
+// transfer occurs.
+// Structure is documented below.
+func (o AppVersionSnapshotAgentTransferRuleOutput) DeterministicTransfers() AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRule) []AppVersionSnapshotAgentTransferRuleDeterministicTransfer {
+		return v.DeterministicTransfers
+	}).(AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput)
+}
+
+// (Output)
+// The direction of the transfer.
+// Possible values:
+// * PARENT_TO_CHILD
+// * CHILD_TO_PARENT
+func (o AppVersionSnapshotAgentTransferRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRule) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A rule that prevents the planner from transferring to the target agent.
+// Structure is documented below.
+func (o AppVersionSnapshotAgentTransferRuleOutput) DisablePlannerTransfers() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRule) []AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer {
+		return v.DisablePlannerTransfers
+	}).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRule)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleArrayOutput) ToAppVersionSnapshotAgentTransferRuleArrayOutput() AppVersionSnapshotAgentTransferRuleArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleArrayOutput) ToAppVersionSnapshotAgentTransferRuleArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAgentTransferRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAgentTransferRule {
+		return vs[0].([]AppVersionSnapshotAgentTransferRule)[vs[1].(int)]
+	}).(AppVersionSnapshotAgentTransferRuleOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransfer struct {
+	// (Output)
+	// If the condition evaluates to true, planner will not be allowed to
+	// transfer to the target agent.
+	// Structure is documented below.
+	ExpressionConditions []AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition `pulumi:"expressionConditions"`
+	// (Output)
+	// A rule that uses Python code block to evaluate the conditions. If the
+	// condition evaluates to true, the transfer occurs.
+	// Structure is documented below.
+	PythonCodeConditions []AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition `pulumi:"pythonCodeConditions"`
+}
+
+// AppVersionSnapshotAgentTransferRuleDeterministicTransferInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs and AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDeterministicTransferInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs{...}
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs struct {
+	// (Output)
+	// If the condition evaluates to true, planner will not be allowed to
+	// transfer to the target agent.
+	// Structure is documented below.
+	ExpressionConditions AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayInput `pulumi:"expressionConditions"`
+	// (Output)
+	// A rule that uses Python code block to evaluate the conditions. If the
+	// condition evaluates to true, the transfer occurs.
+	// Structure is documented below.
+	PythonCodeConditions AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayInput `pulumi:"pythonCodeConditions"`
+}
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDeterministicTransferOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput)
+}
+
+// AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDeterministicTransferArray and AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDeterministicTransferArray{ AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs{...} }
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferArray []AppVersionSnapshotAgentTransferRuleDeterministicTransferInput
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferArray) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferArray) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput {
+	return o
+}
+
+// (Output)
+// If the condition evaluates to true, planner will not be allowed to
+// transfer to the target agent.
+// Structure is documented below.
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput) ExpressionConditions() AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRuleDeterministicTransfer) []AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition {
+		return v.ExpressionConditions
+	}).(AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput)
+}
+
+// (Output)
+// A rule that uses Python code block to evaluate the conditions. If the
+// condition evaluates to true, the transfer occurs.
+// Structure is documented below.
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput) PythonCodeConditions() AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRuleDeterministicTransfer) []AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition {
+		return v.PythonCodeConditions
+	}).(AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDeterministicTransfer)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAgentTransferRuleDeterministicTransfer {
+		return vs[0].([]AppVersionSnapshotAgentTransferRuleDeterministicTransfer)[vs[1].(int)]
+	}).(AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition struct {
+	// (Output)
+	// The string representation of cloud.api.Expression condition.
+	Expression *string `pulumi:"expression"`
+}
+
+// AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs and AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs{...}
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs struct {
+	// (Output)
+	// The string representation of cloud.api.Expression condition.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+}
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput)
+}
+
+// AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArray and AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArray{ AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs{...} }
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArray []AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionInput
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArray) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArray) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return o
+}
+
+// (Output)
+// The string representation of cloud.api.Expression condition.
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition) *string {
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition {
+		return vs[0].([]AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition)[vs[1].(int)]
+	}).(AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition struct {
+	// (Output)
+	// The Python code to execute for the tool.
+	PythonCode *string `pulumi:"pythonCode"`
+}
+
+// AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs and AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs{...}
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs struct {
+	// (Output)
+	// The Python code to execute for the tool.
+	PythonCode pulumi.StringPtrInput `pulumi:"pythonCode"`
+}
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput)
+}
+
+// AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArray and AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArray{ AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs{...} }
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput
+	ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArray []AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionInput
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArray) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArray) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return o
+}
+
+// (Output)
+// The Python code to execute for the tool.
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition) *string {
+		return v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput) ToAppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition {
+		return vs[0].([]AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition)[vs[1].(int)]
+	}).(AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer struct {
+	// (Output)
+	// If the condition evaluates to true, planner will not be allowed to
+	// transfer to the target agent.
+	// Structure is documented below.
+	ExpressionConditions []AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition `pulumi:"expressionConditions"`
+}
+
+// AppVersionSnapshotAgentTransferRuleDisablePlannerTransferInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs and AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDisablePlannerTransferInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs{...}
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs struct {
+	// (Output)
+	// If the condition evaluates to true, planner will not be allowed to
+	// transfer to the target agent.
+	// Structure is documented below.
+	ExpressionConditions AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayInput `pulumi:"expressionConditions"`
+}
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput)
+}
+
+// AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArray and AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArray{ AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs{...} }
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArray []AppVersionSnapshotAgentTransferRuleDisablePlannerTransferInput
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArray) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArray) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput {
+	return o
+}
+
+// (Output)
+// If the condition evaluates to true, planner will not be allowed to
+// transfer to the target agent.
+// Structure is documented below.
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput) ExpressionConditions() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer) []AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition {
+		return v.ExpressionConditions
+	}).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer {
+		return vs[0].([]AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer)[vs[1].(int)]
+	}).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition struct {
+	// (Output)
+	// The string representation of cloud.api.Expression condition.
+	Expression *string `pulumi:"expression"`
+}
+
+// AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs and AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs{...}
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs struct {
+	// (Output)
+	// The string representation of cloud.api.Expression condition.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+}
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput)
+}
+
+// AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayInput is an input type that accepts AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArray and AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayInput` via:
+//
+//	AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArray{ AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs{...} }
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput
+	ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutputWithContext(context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArray []AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionInput
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArray) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput {
+	return i.ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArray) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return o
+}
+
+// (Output)
+// The string representation of cloud.api.Expression condition.
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition) *string {
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput() AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput) ToAppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition {
+		return vs[0].([]AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition)[vs[1].(int)]
+	}).(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput)
+}
+
 type AppVersionSnapshotApp struct {
 	// (Output)
 	// Configuration for how the input and output audio should be processed and
@@ -7826,6 +10970,10 @@ type AppVersionSnapshotApp struct {
 	Description *string `pulumi:"description"`
 	// The display name of the app version.
 	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings []AppVersionSnapshotAppErrorHandlingSetting `pulumi:"errorHandlingSettings"`
 	// (Output)
 	// ETag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
@@ -7881,6 +11029,10 @@ type AppVersionSnapshotApp struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations []AppVersionSnapshotAppVariableDeclaration `pulumi:"variableDeclarations"`
+	// (Output)
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings []AppVersionSnapshotAppVpcScSetting `pulumi:"vpcScSettings"`
 }
 
 // AppVersionSnapshotAppInput is an input type that accepts AppVersionSnapshotAppArgs and AppVersionSnapshotAppOutput values.
@@ -7923,6 +11075,10 @@ type AppVersionSnapshotAppArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The display name of the app version.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings AppVersionSnapshotAppErrorHandlingSettingArrayInput `pulumi:"errorHandlingSettings"`
 	// (Output)
 	// ETag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
@@ -7978,6 +11134,10 @@ type AppVersionSnapshotAppArgs struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVersionSnapshotAppVariableDeclarationArrayInput `pulumi:"variableDeclarations"`
+	// (Output)
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings AppVersionSnapshotAppVpcScSettingArrayInput `pulumi:"vpcScSettings"`
 }
 
 func (AppVersionSnapshotAppArgs) ElementType() reflect.Type {
@@ -8090,6 +11250,15 @@ func (o AppVersionSnapshotAppOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // (Output)
+// Settings to describe how errors should be handled in the app.
+// Structure is documented below.
+func (o AppVersionSnapshotAppOutput) ErrorHandlingSettings() AppVersionSnapshotAppErrorHandlingSettingArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotApp) []AppVersionSnapshotAppErrorHandlingSetting {
+		return v.ErrorHandlingSettings
+	}).(AppVersionSnapshotAppErrorHandlingSettingArrayOutput)
+}
+
+// (Output)
 // ETag used to ensure the object hasn't changed during a read-modify-write
 // operation. If the etag is empty, the update will overwrite any concurrent
 // changes.
@@ -8185,6 +11354,13 @@ func (o AppVersionSnapshotAppOutput) VariableDeclarations() AppVersionSnapshotAp
 	return o.ApplyT(func(v AppVersionSnapshotApp) []AppVersionSnapshotAppVariableDeclaration {
 		return v.VariableDeclarations
 	}).(AppVersionSnapshotAppVariableDeclarationArrayOutput)
+}
+
+// (Output)
+// VPC-SC settings for the app.
+// Structure is documented below.
+func (o AppVersionSnapshotAppOutput) VpcScSettings() AppVersionSnapshotAppVpcScSettingArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotApp) []AppVersionSnapshotAppVpcScSetting { return v.VpcScSettings }).(AppVersionSnapshotAppVpcScSettingArrayOutput)
 }
 
 type AppVersionSnapshotAppArrayOutput struct{ *pulumi.OutputState }
@@ -9210,6 +12386,10 @@ type AppVersionSnapshotAppDefaultChannelProfile struct {
 	// Message for configuration for the web widget.
 	// Structure is documented below.
 	WebWidgetConfigs []AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig `pulumi:"webWidgetConfigs"`
+	// (Output)
+	// Configuration specific to WhatsApp deployments.
+	// Structure is documented below.
+	WhatsappConfigs []AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig `pulumi:"whatsappConfigs"`
 }
 
 // AppVersionSnapshotAppDefaultChannelProfileInput is an input type that accepts AppVersionSnapshotAppDefaultChannelProfileArgs and AppVersionSnapshotAppDefaultChannelProfileOutput values.
@@ -9253,6 +12433,10 @@ type AppVersionSnapshotAppDefaultChannelProfileArgs struct {
 	// Message for configuration for the web widget.
 	// Structure is documented below.
 	WebWidgetConfigs AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArrayInput `pulumi:"webWidgetConfigs"`
+	// (Output)
+	// Configuration specific to WhatsApp deployments.
+	// Structure is documented below.
+	WhatsappConfigs AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayInput `pulumi:"whatsappConfigs"`
 }
 
 func (AppVersionSnapshotAppDefaultChannelProfileArgs) ElementType() reflect.Type {
@@ -9355,6 +12539,15 @@ func (o AppVersionSnapshotAppDefaultChannelProfileOutput) WebWidgetConfigs() App
 	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfile) []AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
 		return v.WebWidgetConfigs
 	}).(AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArrayOutput)
+}
+
+// (Output)
+// Configuration specific to WhatsApp deployments.
+// Structure is documented below.
+func (o AppVersionSnapshotAppDefaultChannelProfileOutput) WhatsappConfigs() AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfile) []AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig {
+		return v.WhatsappConfigs
+	}).(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput)
 }
 
 type AppVersionSnapshotAppDefaultChannelProfileArrayOutput struct{ *pulumi.OutputState }
@@ -9640,11 +12833,554 @@ func (o AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArrayOutput) In
 	}).(AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigOutput)
 }
 
+type AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig struct {
+	// The description of the app version.
+	Description *string `pulumi:"description"`
+	// The display name of the app version.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// The phone number in E.164 format.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// (Output)
+	// The Meta phone number ID.
+	PhoneNumberId *string `pulumi:"phoneNumberId"`
+	// (Output)
+	// The fetched Meta business profile thumbnail URL.
+	ThumbnailUrl *string `pulumi:"thumbnailUrl"`
+	// (Output)
+	// The WhatsApp Business Account ID.
+	WabaId *string `pulumi:"wabaId"`
+}
+
+// AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigInput is an input type that accepts AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs and AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigInput` via:
+//
+//	AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs{...}
+type AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput() AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput
+	ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutputWithContext(context.Context) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput
+}
+
+type AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs struct {
+	// The description of the app version.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The display name of the app version.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// The phone number in E.164 format.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+	// (Output)
+	// The Meta phone number ID.
+	PhoneNumberId pulumi.StringPtrInput `pulumi:"phoneNumberId"`
+	// (Output)
+	// The fetched Meta business profile thumbnail URL.
+	ThumbnailUrl pulumi.StringPtrInput `pulumi:"thumbnailUrl"`
+	// (Output)
+	// The WhatsApp Business Account ID.
+	WabaId pulumi.StringPtrInput `pulumi:"wabaId"`
+}
+
+func (AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput() AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput {
+	return i.ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutputWithContext(ctx context.Context) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput)
+}
+
+// AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayInput is an input type that accepts AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArray and AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayInput` via:
+//
+//	AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArray{ AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs{...} }
+type AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput() AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput
+	ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutputWithContext(context.Context) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput
+}
+
+type AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArray []AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigInput
+
+func (AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArray) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput() AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput {
+	return i.ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArray) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput)
+}
+
+type AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput() AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutputWithContext(ctx context.Context) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput {
+	return o
+}
+
+// The description of the app version.
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the app version.
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The phone number in E.164 format.
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Meta phone number ID.
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) PhoneNumberId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig) *string { return v.PhoneNumberId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The fetched Meta business profile thumbnail URL.
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) ThumbnailUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig) *string { return v.ThumbnailUrl }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The WhatsApp Business Account ID.
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput) WabaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig) *string { return v.WabaId }).(pulumi.StringPtrOutput)
+}
+
+type AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput() AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput) ToAppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig {
+		return vs[0].([]AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig)[vs[1].(int)]
+	}).(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSetting struct {
+	// (Output)
+	// Configuration for ending the session in case of system errors (e.g. LLM
+	// errors).
+	// Structure is documented below.
+	EndSessionConfigs []AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig `pulumi:"endSessionConfigs"`
+	// (Output)
+	// The strategy to use for error handling.
+	// Possible values:
+	// NONE
+	// FALLBACK_RESPONSE
+	// END_SESSION
+	ErrorHandlingStrategy *string `pulumi:"errorHandlingStrategy"`
+	// (Output)
+	// Configuration for handling fallback responses.
+	// Structure is documented below.
+	FallbackResponseConfigs []AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig `pulumi:"fallbackResponseConfigs"`
+}
+
+// AppVersionSnapshotAppErrorHandlingSettingInput is an input type that accepts AppVersionSnapshotAppErrorHandlingSettingArgs and AppVersionSnapshotAppErrorHandlingSettingOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppErrorHandlingSettingInput` via:
+//
+//	AppVersionSnapshotAppErrorHandlingSettingArgs{...}
+type AppVersionSnapshotAppErrorHandlingSettingInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppErrorHandlingSettingOutput() AppVersionSnapshotAppErrorHandlingSettingOutput
+	ToAppVersionSnapshotAppErrorHandlingSettingOutputWithContext(context.Context) AppVersionSnapshotAppErrorHandlingSettingOutput
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingArgs struct {
+	// (Output)
+	// Configuration for ending the session in case of system errors (e.g. LLM
+	// errors).
+	// Structure is documented below.
+	EndSessionConfigs AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayInput `pulumi:"endSessionConfigs"`
+	// (Output)
+	// The strategy to use for error handling.
+	// Possible values:
+	// NONE
+	// FALLBACK_RESPONSE
+	// END_SESSION
+	ErrorHandlingStrategy pulumi.StringPtrInput `pulumi:"errorHandlingStrategy"`
+	// (Output)
+	// Configuration for handling fallback responses.
+	// Structure is documented below.
+	FallbackResponseConfigs AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayInput `pulumi:"fallbackResponseConfigs"`
+}
+
+func (AppVersionSnapshotAppErrorHandlingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingArgs) ToAppVersionSnapshotAppErrorHandlingSettingOutput() AppVersionSnapshotAppErrorHandlingSettingOutput {
+	return i.ToAppVersionSnapshotAppErrorHandlingSettingOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingArgs) ToAppVersionSnapshotAppErrorHandlingSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppErrorHandlingSettingOutput)
+}
+
+// AppVersionSnapshotAppErrorHandlingSettingArrayInput is an input type that accepts AppVersionSnapshotAppErrorHandlingSettingArray and AppVersionSnapshotAppErrorHandlingSettingArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppErrorHandlingSettingArrayInput` via:
+//
+//	AppVersionSnapshotAppErrorHandlingSettingArray{ AppVersionSnapshotAppErrorHandlingSettingArgs{...} }
+type AppVersionSnapshotAppErrorHandlingSettingArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppErrorHandlingSettingArrayOutput() AppVersionSnapshotAppErrorHandlingSettingArrayOutput
+	ToAppVersionSnapshotAppErrorHandlingSettingArrayOutputWithContext(context.Context) AppVersionSnapshotAppErrorHandlingSettingArrayOutput
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingArray []AppVersionSnapshotAppErrorHandlingSettingInput
+
+func (AppVersionSnapshotAppErrorHandlingSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppErrorHandlingSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingArray) ToAppVersionSnapshotAppErrorHandlingSettingArrayOutput() AppVersionSnapshotAppErrorHandlingSettingArrayOutput {
+	return i.ToAppVersionSnapshotAppErrorHandlingSettingArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingArray) ToAppVersionSnapshotAppErrorHandlingSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppErrorHandlingSettingArrayOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppErrorHandlingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingOutput) ToAppVersionSnapshotAppErrorHandlingSettingOutput() AppVersionSnapshotAppErrorHandlingSettingOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingOutput) ToAppVersionSnapshotAppErrorHandlingSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingOutput {
+	return o
+}
+
+// (Output)
+// Configuration for ending the session in case of system errors (e.g. LLM
+// errors).
+// Structure is documented below.
+func (o AppVersionSnapshotAppErrorHandlingSettingOutput) EndSessionConfigs() AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppErrorHandlingSetting) []AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig {
+		return v.EndSessionConfigs
+	}).(AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput)
+}
+
+// (Output)
+// The strategy to use for error handling.
+// Possible values:
+// NONE
+// FALLBACK_RESPONSE
+// END_SESSION
+func (o AppVersionSnapshotAppErrorHandlingSettingOutput) ErrorHandlingStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppErrorHandlingSetting) *string { return v.ErrorHandlingStrategy }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Configuration for handling fallback responses.
+// Structure is documented below.
+func (o AppVersionSnapshotAppErrorHandlingSettingOutput) FallbackResponseConfigs() AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppErrorHandlingSetting) []AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig {
+		return v.FallbackResponseConfigs
+	}).(AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppErrorHandlingSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppErrorHandlingSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingArrayOutput) ToAppVersionSnapshotAppErrorHandlingSettingArrayOutput() AppVersionSnapshotAppErrorHandlingSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingArrayOutput) ToAppVersionSnapshotAppErrorHandlingSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAppErrorHandlingSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppErrorHandlingSetting {
+		return vs[0].([]AppVersionSnapshotAppErrorHandlingSetting)[vs[1].(int)]
+	}).(AppVersionSnapshotAppErrorHandlingSettingOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig struct {
+	// (Output)
+	// Whether to escalate the session in EndSession. If session is escalated,
+	// metadata in EndSession will contain sessionEscalated = true.
+	EscalateSession *bool `pulumi:"escalateSession"`
+}
+
+// AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigInput is an input type that accepts AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs and AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigInput` via:
+//
+//	AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs{...}
+type AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput() AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput
+	ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutputWithContext(context.Context) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs struct {
+	// (Output)
+	// Whether to escalate the session in EndSession. If session is escalated,
+	// metadata in EndSession will contain sessionEscalated = true.
+	EscalateSession pulumi.BoolPtrInput `pulumi:"escalateSession"`
+}
+
+func (AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput() AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput {
+	return i.ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput)
+}
+
+// AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayInput is an input type that accepts AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArray and AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayInput` via:
+//
+//	AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArray{ AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs{...} }
+type AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput() AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput
+	ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutputWithContext(context.Context) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArray []AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigInput
+
+func (AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArray) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput() AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput {
+	return i.ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArray) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput() AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput {
+	return o
+}
+
+// (Output)
+// Whether to escalate the session in EndSession. If session is escalated,
+// metadata in EndSession will contain sessionEscalated = true.
+func (o AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput) EscalateSession() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig) *bool { return v.EscalateSession }).(pulumi.BoolPtrOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput() AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput) ToAppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig {
+		return vs[0].([]AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig)[vs[1].(int)]
+	}).(AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig struct {
+	// (Output)
+	// The fallback messages in case of system errors (e.g. LLM errors),
+	// mapped by supported language code
+	// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+	CustomFallbackMessages map[string]string `pulumi:"customFallbackMessages"`
+	// (Output)
+	// The maximum number of fallback attempts to make before the agent
+	// emitting EndSession Signal.
+	MaxFallbackAttempts *int `pulumi:"maxFallbackAttempts"`
+}
+
+// AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigInput is an input type that accepts AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs and AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigInput` via:
+//
+//	AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs{...}
+type AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput() AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput
+	ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutputWithContext(context.Context) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs struct {
+	// (Output)
+	// The fallback messages in case of system errors (e.g. LLM errors),
+	// mapped by supported language code
+	// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+	CustomFallbackMessages pulumi.StringMapInput `pulumi:"customFallbackMessages"`
+	// (Output)
+	// The maximum number of fallback attempts to make before the agent
+	// emitting EndSession Signal.
+	MaxFallbackAttempts pulumi.IntPtrInput `pulumi:"maxFallbackAttempts"`
+}
+
+func (AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput() AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput {
+	return i.ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput)
+}
+
+// AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayInput is an input type that accepts AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArray and AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayInput` via:
+//
+//	AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArray{ AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs{...} }
+type AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput() AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput
+	ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutputWithContext(context.Context) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArray []AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigInput
+
+func (AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArray) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput() AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput {
+	return i.ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArray) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput() AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput {
+	return o
+}
+
+// (Output)
+// The fallback messages in case of system errors (e.g. LLM errors),
+// mapped by supported language code
+// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+func (o AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput) CustomFallbackMessages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig) map[string]string {
+		return v.CustomFallbackMessages
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The maximum number of fallback attempts to make before the agent
+// emitting EndSession Signal.
+func (o AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput) MaxFallbackAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig) *int {
+		return v.MaxFallbackAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+type AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput() AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput) ToAppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig {
+		return vs[0].([]AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig)[vs[1].(int)]
+	}).(AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput)
+}
+
 type AppVersionSnapshotAppEvaluationMetricsThreshold struct {
 	// (Output)
 	// Settings for golden evaluations.
 	// Structure is documented below.
 	GoldenEvaluationMetricsThresholds []AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold `pulumi:"goldenEvaluationMetricsThresholds"`
+	// (Output)
+	// The hallucination metric behavior for golden evaluations.
+	// Possible values:
+	// DISABLED
+	// ENABLED
+	GoldenHallucinationMetricBehavior *string `pulumi:"goldenHallucinationMetricBehavior"`
+	// (Output)
+	// The hallucination metric behavior for scenario evaluations.
+	// Possible values:
+	// DISABLED
+	// ENABLED
+	ScenarioHallucinationMetricBehavior *string `pulumi:"scenarioHallucinationMetricBehavior"`
 }
 
 // AppVersionSnapshotAppEvaluationMetricsThresholdInput is an input type that accepts AppVersionSnapshotAppEvaluationMetricsThresholdArgs and AppVersionSnapshotAppEvaluationMetricsThresholdOutput values.
@@ -9663,6 +13399,18 @@ type AppVersionSnapshotAppEvaluationMetricsThresholdArgs struct {
 	// Settings for golden evaluations.
 	// Structure is documented below.
 	GoldenEvaluationMetricsThresholds AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArrayInput `pulumi:"goldenEvaluationMetricsThresholds"`
+	// (Output)
+	// The hallucination metric behavior for golden evaluations.
+	// Possible values:
+	// DISABLED
+	// ENABLED
+	GoldenHallucinationMetricBehavior pulumi.StringPtrInput `pulumi:"goldenHallucinationMetricBehavior"`
+	// (Output)
+	// The hallucination metric behavior for scenario evaluations.
+	// Possible values:
+	// DISABLED
+	// ENABLED
+	ScenarioHallucinationMetricBehavior pulumi.StringPtrInput `pulumi:"scenarioHallucinationMetricBehavior"`
 }
 
 func (AppVersionSnapshotAppEvaluationMetricsThresholdArgs) ElementType() reflect.Type {
@@ -9725,6 +13473,28 @@ func (o AppVersionSnapshotAppEvaluationMetricsThresholdOutput) GoldenEvaluationM
 	}).(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArrayOutput)
 }
 
+// (Output)
+// The hallucination metric behavior for golden evaluations.
+// Possible values:
+// DISABLED
+// ENABLED
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdOutput) GoldenHallucinationMetricBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppEvaluationMetricsThreshold) *string {
+		return v.GoldenHallucinationMetricBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The hallucination metric behavior for scenario evaluations.
+// Possible values:
+// DISABLED
+// ENABLED
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdOutput) ScenarioHallucinationMetricBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppEvaluationMetricsThreshold) *string {
+		return v.ScenarioHallucinationMetricBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppVersionSnapshotAppEvaluationMetricsThresholdArrayOutput struct{ *pulumi.OutputState }
 
 func (AppVersionSnapshotAppEvaluationMetricsThresholdArrayOutput) ElementType() reflect.Type {
@@ -9751,6 +13521,12 @@ type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThres
 	// Structure is documented below.
 	ExpectationLevelMetricsThresholds []AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold `pulumi:"expectationLevelMetricsThresholds"`
 	// (Output)
+	// The tool matching settings. An extra tool call is a tool call that is
+	// present in the execution but does not match any tool call in the golden
+	// expectation.
+	// Structure is documented below.
+	ToolMatchingSettings []AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting `pulumi:"toolMatchingSettings"`
+	// (Output)
 	// Turn level metrics thresholds.
 	// Structure is documented below.
 	TurnLevelMetricsThresholds []AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold `pulumi:"turnLevelMetricsThresholds"`
@@ -9772,6 +13548,12 @@ type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThres
 	// Expectation level metrics thresholds.
 	// Structure is documented below.
 	ExpectationLevelMetricsThresholds AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArrayInput `pulumi:"expectationLevelMetricsThresholds"`
+	// (Output)
+	// The tool matching settings. An extra tool call is a tool call that is
+	// present in the execution but does not match any tool call in the golden
+	// expectation.
+	// Structure is documented below.
+	ToolMatchingSettings AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayInput `pulumi:"toolMatchingSettings"`
 	// (Output)
 	// Turn level metrics thresholds.
 	// Structure is documented below.
@@ -9836,6 +13618,17 @@ func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsTh
 	return o.ApplyT(func(v AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold) []AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold {
 		return v.ExpectationLevelMetricsThresholds
 	}).(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArrayOutput)
+}
+
+// (Output)
+// The tool matching settings. An extra tool call is a tool call that is
+// present in the execution but does not match any tool call in the golden
+// expectation.
+// Structure is documented below.
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdOutput) ToolMatchingSettings() AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold) []AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting {
+		return v.ToolMatchingSettings
+	}).(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput)
 }
 
 // (Output)
@@ -9972,11 +13765,135 @@ func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsTh
 	}).(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdOutput)
 }
 
+type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting struct {
+	// (Output)
+	// Defines the behavior when an extra tool call is encountered. An extra
+	// tool call is a tool call that is present in the execution but does
+	// not match any tool call in the golden expectation.
+	// Possible values:
+	// FAIL
+	// ALLOW
+	ExtraToolCallBehavior *string `pulumi:"extraToolCallBehavior"`
+}
+
+// AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingInput is an input type that accepts AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs and AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingInput` via:
+//
+//	AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs{...}
+type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput() AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput
+	ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutputWithContext(context.Context) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput
+}
+
+type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs struct {
+	// (Output)
+	// Defines the behavior when an extra tool call is encountered. An extra
+	// tool call is a tool call that is present in the execution but does
+	// not match any tool call in the golden expectation.
+	// Possible values:
+	// FAIL
+	// ALLOW
+	ExtraToolCallBehavior pulumi.StringPtrInput `pulumi:"extraToolCallBehavior"`
+}
+
+func (AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput() AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput {
+	return i.ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput)
+}
+
+// AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayInput is an input type that accepts AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArray and AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayInput` via:
+//
+//	AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArray{ AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs{...} }
+type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput() AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput
+	ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutputWithContext(context.Context) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput
+}
+
+type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArray []AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingInput
+
+func (AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArray) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput() AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput {
+	return i.ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArray) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput)
+}
+
+type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput() AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput {
+	return o
+}
+
+// (Output)
+// Defines the behavior when an extra tool call is encountered. An extra
+// tool call is a tool call that is present in the execution but does
+// not match any tool call in the golden expectation.
+// Possible values:
+// FAIL
+// ALLOW
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput) ExtraToolCallBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting) *string {
+		return v.ExtraToolCallBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput() AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput) ToAppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting {
+		return vs[0].([]AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting)[vs[1].(int)]
+	}).(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput)
+}
+
 type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold struct {
 	// (Output)
 	// The success threshold for overall tool invocation correctness. Must be
 	// a float between 0 and 1. Default is 1.0.
 	OverallToolInvocationCorrectnessThreshold *float64 `pulumi:"overallToolInvocationCorrectnessThreshold"`
+	// (Output)
+	// The semantic similarity channel to use for evaluation.
+	// Possible values:
+	// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+	// TEXT
+	// AUDIO
+	SemanticSimilarityChannel *string `pulumi:"semanticSimilarityChannel"`
 	// (Output)
 	// The success threshold for semantic similarity. Must be an integer
 	// between 0 and 4. Default is >= 3.
@@ -9999,6 +13916,13 @@ type AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThres
 	// The success threshold for overall tool invocation correctness. Must be
 	// a float between 0 and 1. Default is 1.0.
 	OverallToolInvocationCorrectnessThreshold pulumi.Float64PtrInput `pulumi:"overallToolInvocationCorrectnessThreshold"`
+	// (Output)
+	// The semantic similarity channel to use for evaluation.
+	// Possible values:
+	// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+	// TEXT
+	// AUDIO
+	SemanticSimilarityChannel pulumi.StringPtrInput `pulumi:"semanticSimilarityChannel"`
 	// (Output)
 	// The success threshold for semantic similarity. Must be an integer
 	// between 0 and 4. Default is >= 3.
@@ -10063,6 +13987,18 @@ func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsTh
 	return o.ApplyT(func(v AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold) *float64 {
 		return v.OverallToolInvocationCorrectnessThreshold
 	}).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// The semantic similarity channel to use for evaluation.
+// Possible values:
+// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+// TEXT
+// AUDIO
+func (o AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdOutput) SemanticSimilarityChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold) *string {
+		return v.SemanticSimilarityChannel
+	}).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -10275,6 +14211,11 @@ type AppVersionSnapshotAppLoggingSetting struct {
 	// Structure is documented below.
 	ConversationLoggingSettings []AppVersionSnapshotAppLoggingSettingConversationLoggingSetting `pulumi:"conversationLoggingSettings"`
 	// (Output)
+	// Settings to describe the conversation data collection behaviors for the LLM
+	// analysis pipeline for the app.
+	// Structure is documented below.
+	MetricAnalysisSettings []AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting `pulumi:"metricAnalysisSettings"`
+	// (Output)
 	// Configuration to instruct how sensitive data should be handled.
 	// Structure is documented below.
 	RedactionConfigs []AppVersionSnapshotAppLoggingSettingRedactionConfig `pulumi:"redactionConfigs"`
@@ -10308,6 +14249,11 @@ type AppVersionSnapshotAppLoggingSettingArgs struct {
 	// Settings to describe the conversation logging behaviors for the app.
 	// Structure is documented below.
 	ConversationLoggingSettings AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArrayInput `pulumi:"conversationLoggingSettings"`
+	// (Output)
+	// Settings to describe the conversation data collection behaviors for the LLM
+	// analysis pipeline for the app.
+	// Structure is documented below.
+	MetricAnalysisSettings AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayInput `pulumi:"metricAnalysisSettings"`
 	// (Output)
 	// Configuration to instruct how sensitive data should be handled.
 	// Structure is documented below.
@@ -10399,6 +14345,16 @@ func (o AppVersionSnapshotAppLoggingSettingOutput) ConversationLoggingSettings()
 	return o.ApplyT(func(v AppVersionSnapshotAppLoggingSetting) []AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
 		return v.ConversationLoggingSettings
 	}).(AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArrayOutput)
+}
+
+// (Output)
+// Settings to describe the conversation data collection behaviors for the LLM
+// analysis pipeline for the app.
+// Structure is documented below.
+func (o AppVersionSnapshotAppLoggingSettingOutput) MetricAnalysisSettings() AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppLoggingSetting) []AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting {
+		return v.MetricAnalysisSettings
+	}).(AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput)
 }
 
 // (Output)
@@ -10809,6 +14765,10 @@ type AppVersionSnapshotAppLoggingSettingConversationLoggingSetting struct {
 	// (Output)
 	// Whether to disable conversation logging for the sessions.
 	DisableConversationLogging *bool `pulumi:"disableConversationLogging"`
+	// (Output)
+	// Controls the retention window for the conversation.
+	// If not set, the conversation will be retained for 365 days.
+	RetentionWindow *string `pulumi:"retentionWindow"`
 }
 
 // AppVersionSnapshotAppLoggingSettingConversationLoggingSettingInput is an input type that accepts AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs and AppVersionSnapshotAppLoggingSettingConversationLoggingSettingOutput values.
@@ -10826,6 +14786,10 @@ type AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs struct {
 	// (Output)
 	// Whether to disable conversation logging for the sessions.
 	DisableConversationLogging pulumi.BoolPtrInput `pulumi:"disableConversationLogging"`
+	// (Output)
+	// Controls the retention window for the conversation.
+	// If not set, the conversation will be retained for 365 days.
+	RetentionWindow pulumi.StringPtrInput `pulumi:"retentionWindow"`
 }
 
 func (AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs) ElementType() reflect.Type {
@@ -10887,6 +14851,15 @@ func (o AppVersionSnapshotAppLoggingSettingConversationLoggingSettingOutput) Dis
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Controls the retention window for the conversation.
+// If not set, the conversation will be retained for 365 days.
+func (o AppVersionSnapshotAppLoggingSettingConversationLoggingSettingOutput) RetentionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppLoggingSettingConversationLoggingSetting) *string {
+		return v.RetentionWindow
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArrayOutput struct{ *pulumi.OutputState }
 
 func (AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArrayOutput) ElementType() reflect.Type {
@@ -10905,6 +14878,112 @@ func (o AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArrayOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
 		return vs[0].([]AppVersionSnapshotAppLoggingSettingConversationLoggingSetting)[vs[1].(int)]
 	}).(AppVersionSnapshotAppLoggingSettingConversationLoggingSettingOutput)
+}
+
+type AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting struct {
+	// (Output)
+	// Whether to collect conversation data for llm analysis metrics. If true,
+	// conversation data will not be collected for llm analysis metrics;
+	// otherwise, conversation data will be collected.
+	LlmMetricsOptedOut *bool `pulumi:"llmMetricsOptedOut"`
+}
+
+// AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingInput is an input type that accepts AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs and AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingInput` via:
+//
+//	AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs{...}
+type AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput() AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput
+	ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutputWithContext(context.Context) AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput
+}
+
+type AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs struct {
+	// (Output)
+	// Whether to collect conversation data for llm analysis metrics. If true,
+	// conversation data will not be collected for llm analysis metrics;
+	// otherwise, conversation data will be collected.
+	LlmMetricsOptedOut pulumi.BoolPtrInput `pulumi:"llmMetricsOptedOut"`
+}
+
+func (AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput() AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput {
+	return i.ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput)
+}
+
+// AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayInput is an input type that accepts AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArray and AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayInput` via:
+//
+//	AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArray{ AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs{...} }
+type AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput() AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput
+	ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutputWithContext(context.Context) AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput
+}
+
+type AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArray []AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingInput
+
+func (AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArray) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput() AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput {
+	return i.ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArray) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput)
+}
+
+type AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput() AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput {
+	return o
+}
+
+// (Output)
+// Whether to collect conversation data for llm analysis metrics. If true,
+// conversation data will not be collected for llm analysis metrics;
+// otherwise, conversation data will be collected.
+func (o AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput) LlmMetricsOptedOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting) *bool { return v.LlmMetricsOptedOut }).(pulumi.BoolPtrOutput)
+}
+
+type AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput() AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput) ToAppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting {
+		return vs[0].([]AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting)[vs[1].(int)]
+	}).(AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput)
 }
 
 type AppVersionSnapshotAppLoggingSettingRedactionConfig struct {
@@ -11758,6 +15837,118 @@ func (o AppVersionSnapshotAppVariableDeclarationSchemaArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppVariableDeclarationSchema {
 		return vs[0].([]AppVersionSnapshotAppVariableDeclarationSchema)[vs[1].(int)]
 	}).(AppVersionSnapshotAppVariableDeclarationSchemaOutput)
+}
+
+type AppVersionSnapshotAppVpcScSetting struct {
+	// (Output)
+	// The allowed HTTP(s) origins that OpenAPI tools in the App are
+	// able to directly call when VPC Service Controls are enabled. These strings
+	// must match the origin exactly, including the port if specified. For
+	// example, "https://example.com" or "https://example.com:443". This list does
+	// not yet apply to Python tools that may make direct HTTP calls.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+}
+
+// AppVersionSnapshotAppVpcScSettingInput is an input type that accepts AppVersionSnapshotAppVpcScSettingArgs and AppVersionSnapshotAppVpcScSettingOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppVpcScSettingInput` via:
+//
+//	AppVersionSnapshotAppVpcScSettingArgs{...}
+type AppVersionSnapshotAppVpcScSettingInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppVpcScSettingOutput() AppVersionSnapshotAppVpcScSettingOutput
+	ToAppVersionSnapshotAppVpcScSettingOutputWithContext(context.Context) AppVersionSnapshotAppVpcScSettingOutput
+}
+
+type AppVersionSnapshotAppVpcScSettingArgs struct {
+	// (Output)
+	// The allowed HTTP(s) origins that OpenAPI tools in the App are
+	// able to directly call when VPC Service Controls are enabled. These strings
+	// must match the origin exactly, including the port if specified. For
+	// example, "https://example.com" or "https://example.com:443". This list does
+	// not yet apply to Python tools that may make direct HTTP calls.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+}
+
+func (AppVersionSnapshotAppVpcScSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppVpcScSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppVpcScSettingArgs) ToAppVersionSnapshotAppVpcScSettingOutput() AppVersionSnapshotAppVpcScSettingOutput {
+	return i.ToAppVersionSnapshotAppVpcScSettingOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppVpcScSettingArgs) ToAppVersionSnapshotAppVpcScSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppVpcScSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppVpcScSettingOutput)
+}
+
+// AppVersionSnapshotAppVpcScSettingArrayInput is an input type that accepts AppVersionSnapshotAppVpcScSettingArray and AppVersionSnapshotAppVpcScSettingArrayOutput values.
+// You can construct a concrete instance of `AppVersionSnapshotAppVpcScSettingArrayInput` via:
+//
+//	AppVersionSnapshotAppVpcScSettingArray{ AppVersionSnapshotAppVpcScSettingArgs{...} }
+type AppVersionSnapshotAppVpcScSettingArrayInput interface {
+	pulumi.Input
+
+	ToAppVersionSnapshotAppVpcScSettingArrayOutput() AppVersionSnapshotAppVpcScSettingArrayOutput
+	ToAppVersionSnapshotAppVpcScSettingArrayOutputWithContext(context.Context) AppVersionSnapshotAppVpcScSettingArrayOutput
+}
+
+type AppVersionSnapshotAppVpcScSettingArray []AppVersionSnapshotAppVpcScSettingInput
+
+func (AppVersionSnapshotAppVpcScSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppVpcScSetting)(nil)).Elem()
+}
+
+func (i AppVersionSnapshotAppVpcScSettingArray) ToAppVersionSnapshotAppVpcScSettingArrayOutput() AppVersionSnapshotAppVpcScSettingArrayOutput {
+	return i.ToAppVersionSnapshotAppVpcScSettingArrayOutputWithContext(context.Background())
+}
+
+func (i AppVersionSnapshotAppVpcScSettingArray) ToAppVersionSnapshotAppVpcScSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppVpcScSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVersionSnapshotAppVpcScSettingArrayOutput)
+}
+
+type AppVersionSnapshotAppVpcScSettingOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppVpcScSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVersionSnapshotAppVpcScSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppVpcScSettingOutput) ToAppVersionSnapshotAppVpcScSettingOutput() AppVersionSnapshotAppVpcScSettingOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppVpcScSettingOutput) ToAppVersionSnapshotAppVpcScSettingOutputWithContext(ctx context.Context) AppVersionSnapshotAppVpcScSettingOutput {
+	return o
+}
+
+// (Output)
+// The allowed HTTP(s) origins that OpenAPI tools in the App are
+// able to directly call when VPC Service Controls are enabled. These strings
+// must match the origin exactly, including the port if specified. For
+// example, "https://example.com" or "https://example.com:443". This list does
+// not yet apply to Python tools that may make direct HTTP calls.
+func (o AppVersionSnapshotAppVpcScSettingOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppVersionSnapshotAppVpcScSetting) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+type AppVersionSnapshotAppVpcScSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (AppVersionSnapshotAppVpcScSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppVersionSnapshotAppVpcScSetting)(nil)).Elem()
+}
+
+func (o AppVersionSnapshotAppVpcScSettingArrayOutput) ToAppVersionSnapshotAppVpcScSettingArrayOutput() AppVersionSnapshotAppVpcScSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppVpcScSettingArrayOutput) ToAppVersionSnapshotAppVpcScSettingArrayOutputWithContext(ctx context.Context) AppVersionSnapshotAppVpcScSettingArrayOutput {
+	return o
+}
+
+func (o AppVersionSnapshotAppVpcScSettingArrayOutput) Index(i pulumi.IntInput) AppVersionSnapshotAppVpcScSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppVersionSnapshotAppVpcScSetting {
+		return vs[0].([]AppVersionSnapshotAppVpcScSetting)[vs[1].(int)]
+	}).(AppVersionSnapshotAppVpcScSettingOutput)
 }
 
 type AppVersionSnapshotExample struct {
@@ -22520,6 +26711,159 @@ func (o AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArrayOutput) Index
 	}).(AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertOutput)
 }
 
+type AppVpcScSettings struct {
+	// The allowed HTTP(s) origins that OpenAPI tools in the App are
+	// able to directly call when VPC Service Controls are enabled. These strings
+	// must match the origin exactly, including the port if specified. For
+	// example, "https://example.com" or "https://example.com:443". This list does
+	// not yet apply to Python tools that may make direct HTTP calls.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+}
+
+// AppVpcScSettingsInput is an input type that accepts AppVpcScSettingsArgs and AppVpcScSettingsOutput values.
+// You can construct a concrete instance of `AppVpcScSettingsInput` via:
+//
+//	AppVpcScSettingsArgs{...}
+type AppVpcScSettingsInput interface {
+	pulumi.Input
+
+	ToAppVpcScSettingsOutput() AppVpcScSettingsOutput
+	ToAppVpcScSettingsOutputWithContext(context.Context) AppVpcScSettingsOutput
+}
+
+type AppVpcScSettingsArgs struct {
+	// The allowed HTTP(s) origins that OpenAPI tools in the App are
+	// able to directly call when VPC Service Controls are enabled. These strings
+	// must match the origin exactly, including the port if specified. For
+	// example, "https://example.com" or "https://example.com:443". This list does
+	// not yet apply to Python tools that may make direct HTTP calls.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+}
+
+func (AppVpcScSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVpcScSettings)(nil)).Elem()
+}
+
+func (i AppVpcScSettingsArgs) ToAppVpcScSettingsOutput() AppVpcScSettingsOutput {
+	return i.ToAppVpcScSettingsOutputWithContext(context.Background())
+}
+
+func (i AppVpcScSettingsArgs) ToAppVpcScSettingsOutputWithContext(ctx context.Context) AppVpcScSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVpcScSettingsOutput)
+}
+
+func (i AppVpcScSettingsArgs) ToAppVpcScSettingsPtrOutput() AppVpcScSettingsPtrOutput {
+	return i.ToAppVpcScSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AppVpcScSettingsArgs) ToAppVpcScSettingsPtrOutputWithContext(ctx context.Context) AppVpcScSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVpcScSettingsOutput).ToAppVpcScSettingsPtrOutputWithContext(ctx)
+}
+
+// AppVpcScSettingsPtrInput is an input type that accepts AppVpcScSettingsArgs, AppVpcScSettingsPtr and AppVpcScSettingsPtrOutput values.
+// You can construct a concrete instance of `AppVpcScSettingsPtrInput` via:
+//
+//	        AppVpcScSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppVpcScSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAppVpcScSettingsPtrOutput() AppVpcScSettingsPtrOutput
+	ToAppVpcScSettingsPtrOutputWithContext(context.Context) AppVpcScSettingsPtrOutput
+}
+
+type appVpcScSettingsPtrType AppVpcScSettingsArgs
+
+func AppVpcScSettingsPtr(v *AppVpcScSettingsArgs) AppVpcScSettingsPtrInput {
+	return (*appVpcScSettingsPtrType)(v)
+}
+
+func (*appVpcScSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppVpcScSettings)(nil)).Elem()
+}
+
+func (i *appVpcScSettingsPtrType) ToAppVpcScSettingsPtrOutput() AppVpcScSettingsPtrOutput {
+	return i.ToAppVpcScSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *appVpcScSettingsPtrType) ToAppVpcScSettingsPtrOutputWithContext(ctx context.Context) AppVpcScSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppVpcScSettingsPtrOutput)
+}
+
+type AppVpcScSettingsOutput struct{ *pulumi.OutputState }
+
+func (AppVpcScSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppVpcScSettings)(nil)).Elem()
+}
+
+func (o AppVpcScSettingsOutput) ToAppVpcScSettingsOutput() AppVpcScSettingsOutput {
+	return o
+}
+
+func (o AppVpcScSettingsOutput) ToAppVpcScSettingsOutputWithContext(ctx context.Context) AppVpcScSettingsOutput {
+	return o
+}
+
+func (o AppVpcScSettingsOutput) ToAppVpcScSettingsPtrOutput() AppVpcScSettingsPtrOutput {
+	return o.ToAppVpcScSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AppVpcScSettingsOutput) ToAppVpcScSettingsPtrOutputWithContext(ctx context.Context) AppVpcScSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppVpcScSettings) *AppVpcScSettings {
+		return &v
+	}).(AppVpcScSettingsPtrOutput)
+}
+
+// The allowed HTTP(s) origins that OpenAPI tools in the App are
+// able to directly call when VPC Service Controls are enabled. These strings
+// must match the origin exactly, including the port if specified. For
+// example, "https://example.com" or "https://example.com:443". This list does
+// not yet apply to Python tools that may make direct HTTP calls.
+func (o AppVpcScSettingsOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppVpcScSettings) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+type AppVpcScSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppVpcScSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppVpcScSettings)(nil)).Elem()
+}
+
+func (o AppVpcScSettingsPtrOutput) ToAppVpcScSettingsPtrOutput() AppVpcScSettingsPtrOutput {
+	return o
+}
+
+func (o AppVpcScSettingsPtrOutput) ToAppVpcScSettingsPtrOutputWithContext(ctx context.Context) AppVpcScSettingsPtrOutput {
+	return o
+}
+
+func (o AppVpcScSettingsPtrOutput) Elem() AppVpcScSettingsOutput {
+	return o.ApplyT(func(v *AppVpcScSettings) AppVpcScSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AppVpcScSettings
+		return ret
+	}).(AppVpcScSettingsOutput)
+}
+
+// The allowed HTTP(s) origins that OpenAPI tools in the App are
+// able to directly call when VPC Service Controls are enabled. These strings
+// must match the origin exactly, including the port if specified. For
+// example, "https://example.com" or "https://example.com:443". This list does
+// not yet apply to Python tools that may make direct HTTP calls.
+func (o AppVpcScSettingsPtrOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppVpcScSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
 type DeploymentChannelProfile struct {
 	// The type of the channel profile.
 	// Possible values:
@@ -22531,6 +26875,8 @@ type DeploymentChannelProfile struct {
 	// CONTACT_CENTER_AS_A_SERVICE
 	// FIVE9
 	// CONTACT_CENTER_INTEGRATION
+	// WHATSAPP
+	// INSTAGRAM
 	ChannelType *string `pulumi:"channelType"`
 	// Whether to disable user barge-in control in the conversation.
 	// - **true**: User interruptions are disabled while the agent is speaking.
@@ -22547,6 +26893,9 @@ type DeploymentChannelProfile struct {
 	// Message for configuration for the web widget.
 	// Structure is documented below.
 	WebWidgetConfig *DeploymentChannelProfileWebWidgetConfig `pulumi:"webWidgetConfig"`
+	// Configuration specific to WhatsApp deployments.
+	// Structure is documented below.
+	WhatsappConfig *DeploymentChannelProfileWhatsappConfig `pulumi:"whatsappConfig"`
 }
 
 // DeploymentChannelProfileInput is an input type that accepts DeploymentChannelProfileArgs and DeploymentChannelProfileOutput values.
@@ -22571,6 +26920,8 @@ type DeploymentChannelProfileArgs struct {
 	// CONTACT_CENTER_AS_A_SERVICE
 	// FIVE9
 	// CONTACT_CENTER_INTEGRATION
+	// WHATSAPP
+	// INSTAGRAM
 	ChannelType pulumi.StringPtrInput `pulumi:"channelType"`
 	// Whether to disable user barge-in control in the conversation.
 	// - **true**: User interruptions are disabled while the agent is speaking.
@@ -22587,6 +26938,9 @@ type DeploymentChannelProfileArgs struct {
 	// Message for configuration for the web widget.
 	// Structure is documented below.
 	WebWidgetConfig DeploymentChannelProfileWebWidgetConfigPtrInput `pulumi:"webWidgetConfig"`
+	// Configuration specific to WhatsApp deployments.
+	// Structure is documented below.
+	WhatsappConfig DeploymentChannelProfileWhatsappConfigPtrInput `pulumi:"whatsappConfig"`
 }
 
 func (DeploymentChannelProfileArgs) ElementType() reflect.Type {
@@ -22676,6 +27030,8 @@ func (o DeploymentChannelProfileOutput) ToDeploymentChannelProfilePtrOutputWithC
 // CONTACT_CENTER_AS_A_SERVICE
 // FIVE9
 // CONTACT_CENTER_INTEGRATION
+// WHATSAPP
+// INSTAGRAM
 func (o DeploymentChannelProfileOutput) ChannelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentChannelProfile) *string { return v.ChannelType }).(pulumi.StringPtrOutput)
 }
@@ -22708,6 +27064,12 @@ func (o DeploymentChannelProfileOutput) ProfileId() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o DeploymentChannelProfileOutput) WebWidgetConfig() DeploymentChannelProfileWebWidgetConfigPtrOutput {
 	return o.ApplyT(func(v DeploymentChannelProfile) *DeploymentChannelProfileWebWidgetConfig { return v.WebWidgetConfig }).(DeploymentChannelProfileWebWidgetConfigPtrOutput)
+}
+
+// Configuration specific to WhatsApp deployments.
+// Structure is documented below.
+func (o DeploymentChannelProfileOutput) WhatsappConfig() DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return o.ApplyT(func(v DeploymentChannelProfile) *DeploymentChannelProfileWhatsappConfig { return v.WhatsappConfig }).(DeploymentChannelProfileWhatsappConfigPtrOutput)
 }
 
 type DeploymentChannelProfilePtrOutput struct{ *pulumi.OutputState }
@@ -22744,6 +27106,8 @@ func (o DeploymentChannelProfilePtrOutput) Elem() DeploymentChannelProfileOutput
 // CONTACT_CENTER_AS_A_SERVICE
 // FIVE9
 // CONTACT_CENTER_INTEGRATION
+// WHATSAPP
+// INSTAGRAM
 func (o DeploymentChannelProfilePtrOutput) ChannelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentChannelProfile) *string {
 		if v == nil {
@@ -22806,6 +27170,17 @@ func (o DeploymentChannelProfilePtrOutput) WebWidgetConfig() DeploymentChannelPr
 		}
 		return v.WebWidgetConfig
 	}).(DeploymentChannelProfileWebWidgetConfigPtrOutput)
+}
+
+// Configuration specific to WhatsApp deployments.
+// Structure is documented below.
+func (o DeploymentChannelProfilePtrOutput) WhatsappConfig() DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfile) *DeploymentChannelProfileWhatsappConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WhatsappConfig
+	}).(DeploymentChannelProfileWhatsappConfigPtrOutput)
 }
 
 type DeploymentChannelProfilePersonaProperty struct {
@@ -23393,6 +27768,824 @@ func (o DeploymentChannelProfileWebWidgetConfigSecuritySettingsPtrOutput) Enable
 		}
 		return v.EnableRecaptcha
 	}).(pulumi.BoolPtrOutput)
+}
+
+type DeploymentChannelProfileWhatsappConfig struct {
+	// (Output)
+	// Output only. The description of the Meta business page or profile.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// Output only. The fetched Meta business page name.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. The phone number in E.164 format.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Required. The Meta phone number ID.
+	PhoneNumberId string `pulumi:"phoneNumberId"`
+	// (Output)
+	// Output only. The fetched Meta business profile thumbnail URL.
+	ThumbnailUrl *string `pulumi:"thumbnailUrl"`
+	// Required. The WhatsApp Business Account ID.
+	WabaId string `pulumi:"wabaId"`
+}
+
+// DeploymentChannelProfileWhatsappConfigInput is an input type that accepts DeploymentChannelProfileWhatsappConfigArgs and DeploymentChannelProfileWhatsappConfigOutput values.
+// You can construct a concrete instance of `DeploymentChannelProfileWhatsappConfigInput` via:
+//
+//	DeploymentChannelProfileWhatsappConfigArgs{...}
+type DeploymentChannelProfileWhatsappConfigInput interface {
+	pulumi.Input
+
+	ToDeploymentChannelProfileWhatsappConfigOutput() DeploymentChannelProfileWhatsappConfigOutput
+	ToDeploymentChannelProfileWhatsappConfigOutputWithContext(context.Context) DeploymentChannelProfileWhatsappConfigOutput
+}
+
+type DeploymentChannelProfileWhatsappConfigArgs struct {
+	// (Output)
+	// Output only. The description of the Meta business page or profile.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// Output only. The fetched Meta business page name.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. The phone number in E.164 format.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+	// Required. The Meta phone number ID.
+	PhoneNumberId pulumi.StringInput `pulumi:"phoneNumberId"`
+	// (Output)
+	// Output only. The fetched Meta business profile thumbnail URL.
+	ThumbnailUrl pulumi.StringPtrInput `pulumi:"thumbnailUrl"`
+	// Required. The WhatsApp Business Account ID.
+	WabaId pulumi.StringInput `pulumi:"wabaId"`
+}
+
+func (DeploymentChannelProfileWhatsappConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (i DeploymentChannelProfileWhatsappConfigArgs) ToDeploymentChannelProfileWhatsappConfigOutput() DeploymentChannelProfileWhatsappConfigOutput {
+	return i.ToDeploymentChannelProfileWhatsappConfigOutputWithContext(context.Background())
+}
+
+func (i DeploymentChannelProfileWhatsappConfigArgs) ToDeploymentChannelProfileWhatsappConfigOutputWithContext(ctx context.Context) DeploymentChannelProfileWhatsappConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentChannelProfileWhatsappConfigOutput)
+}
+
+func (i DeploymentChannelProfileWhatsappConfigArgs) ToDeploymentChannelProfileWhatsappConfigPtrOutput() DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return i.ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentChannelProfileWhatsappConfigArgs) ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentChannelProfileWhatsappConfigOutput).ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(ctx)
+}
+
+// DeploymentChannelProfileWhatsappConfigPtrInput is an input type that accepts DeploymentChannelProfileWhatsappConfigArgs, DeploymentChannelProfileWhatsappConfigPtr and DeploymentChannelProfileWhatsappConfigPtrOutput values.
+// You can construct a concrete instance of `DeploymentChannelProfileWhatsappConfigPtrInput` via:
+//
+//	        DeploymentChannelProfileWhatsappConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentChannelProfileWhatsappConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentChannelProfileWhatsappConfigPtrOutput() DeploymentChannelProfileWhatsappConfigPtrOutput
+	ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(context.Context) DeploymentChannelProfileWhatsappConfigPtrOutput
+}
+
+type deploymentChannelProfileWhatsappConfigPtrType DeploymentChannelProfileWhatsappConfigArgs
+
+func DeploymentChannelProfileWhatsappConfigPtr(v *DeploymentChannelProfileWhatsappConfigArgs) DeploymentChannelProfileWhatsappConfigPtrInput {
+	return (*deploymentChannelProfileWhatsappConfigPtrType)(v)
+}
+
+func (*deploymentChannelProfileWhatsappConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (i *deploymentChannelProfileWhatsappConfigPtrType) ToDeploymentChannelProfileWhatsappConfigPtrOutput() DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return i.ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentChannelProfileWhatsappConfigPtrType) ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentChannelProfileWhatsappConfigPtrOutput)
+}
+
+type DeploymentChannelProfileWhatsappConfigOutput struct{ *pulumi.OutputState }
+
+func (DeploymentChannelProfileWhatsappConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (o DeploymentChannelProfileWhatsappConfigOutput) ToDeploymentChannelProfileWhatsappConfigOutput() DeploymentChannelProfileWhatsappConfigOutput {
+	return o
+}
+
+func (o DeploymentChannelProfileWhatsappConfigOutput) ToDeploymentChannelProfileWhatsappConfigOutputWithContext(ctx context.Context) DeploymentChannelProfileWhatsappConfigOutput {
+	return o
+}
+
+func (o DeploymentChannelProfileWhatsappConfigOutput) ToDeploymentChannelProfileWhatsappConfigPtrOutput() DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return o.ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentChannelProfileWhatsappConfigOutput) ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentChannelProfileWhatsappConfig) *DeploymentChannelProfileWhatsappConfig {
+		return &v
+	}).(DeploymentChannelProfileWhatsappConfigPtrOutput)
+}
+
+// (Output)
+// Output only. The description of the Meta business page or profile.
+func (o DeploymentChannelProfileWhatsappConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentChannelProfileWhatsappConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The fetched Meta business page name.
+func (o DeploymentChannelProfileWhatsappConfigOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentChannelProfileWhatsappConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The phone number in E.164 format.
+func (o DeploymentChannelProfileWhatsappConfigOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentChannelProfileWhatsappConfig) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Required. The Meta phone number ID.
+func (o DeploymentChannelProfileWhatsappConfigOutput) PhoneNumberId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentChannelProfileWhatsappConfig) string { return v.PhoneNumberId }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The fetched Meta business profile thumbnail URL.
+func (o DeploymentChannelProfileWhatsappConfigOutput) ThumbnailUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentChannelProfileWhatsappConfig) *string { return v.ThumbnailUrl }).(pulumi.StringPtrOutput)
+}
+
+// Required. The WhatsApp Business Account ID.
+func (o DeploymentChannelProfileWhatsappConfigOutput) WabaId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentChannelProfileWhatsappConfig) string { return v.WabaId }).(pulumi.StringOutput)
+}
+
+type DeploymentChannelProfileWhatsappConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentChannelProfileWhatsappConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentChannelProfileWhatsappConfig)(nil)).Elem()
+}
+
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) ToDeploymentChannelProfileWhatsappConfigPtrOutput() DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return o
+}
+
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) ToDeploymentChannelProfileWhatsappConfigPtrOutputWithContext(ctx context.Context) DeploymentChannelProfileWhatsappConfigPtrOutput {
+	return o
+}
+
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) Elem() DeploymentChannelProfileWhatsappConfigOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfileWhatsappConfig) DeploymentChannelProfileWhatsappConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentChannelProfileWhatsappConfig
+		return ret
+	}).(DeploymentChannelProfileWhatsappConfigOutput)
+}
+
+// (Output)
+// Output only. The description of the Meta business page or profile.
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The fetched Meta business page name.
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The phone number in E.164 format.
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The Meta phone number ID.
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) PhoneNumberId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumberId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The fetched Meta business profile thumbnail URL.
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) ThumbnailUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThumbnailUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The WhatsApp Business Account ID.
+func (o DeploymentChannelProfileWhatsappConfigPtrOutput) WabaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentChannelProfileWhatsappConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WabaId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentInstagramCredentials struct {
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	AuthCode *string `pulumi:"authCode"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+	AuthCodeWo *string `pulumi:"authCodeWo"`
+	// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthCodeWoVersion *string `pulumi:"authCodeWoVersion"`
+	// The Conversation Profile ID to use for the deployment.
+	ConversationProfileId *string `pulumi:"conversationProfileId"`
+}
+
+// DeploymentInstagramCredentialsInput is an input type that accepts DeploymentInstagramCredentialsArgs and DeploymentInstagramCredentialsOutput values.
+// You can construct a concrete instance of `DeploymentInstagramCredentialsInput` via:
+//
+//	DeploymentInstagramCredentialsArgs{...}
+type DeploymentInstagramCredentialsInput interface {
+	pulumi.Input
+
+	ToDeploymentInstagramCredentialsOutput() DeploymentInstagramCredentialsOutput
+	ToDeploymentInstagramCredentialsOutputWithContext(context.Context) DeploymentInstagramCredentialsOutput
+}
+
+type DeploymentInstagramCredentialsArgs struct {
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	AuthCode pulumi.StringPtrInput `pulumi:"authCode"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+	AuthCodeWo pulumi.StringPtrInput `pulumi:"authCodeWo"`
+	// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthCodeWoVersion pulumi.StringPtrInput `pulumi:"authCodeWoVersion"`
+	// The Conversation Profile ID to use for the deployment.
+	ConversationProfileId pulumi.StringPtrInput `pulumi:"conversationProfileId"`
+}
+
+func (DeploymentInstagramCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentInstagramCredentials)(nil)).Elem()
+}
+
+func (i DeploymentInstagramCredentialsArgs) ToDeploymentInstagramCredentialsOutput() DeploymentInstagramCredentialsOutput {
+	return i.ToDeploymentInstagramCredentialsOutputWithContext(context.Background())
+}
+
+func (i DeploymentInstagramCredentialsArgs) ToDeploymentInstagramCredentialsOutputWithContext(ctx context.Context) DeploymentInstagramCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInstagramCredentialsOutput)
+}
+
+func (i DeploymentInstagramCredentialsArgs) ToDeploymentInstagramCredentialsPtrOutput() DeploymentInstagramCredentialsPtrOutput {
+	return i.ToDeploymentInstagramCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentInstagramCredentialsArgs) ToDeploymentInstagramCredentialsPtrOutputWithContext(ctx context.Context) DeploymentInstagramCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInstagramCredentialsOutput).ToDeploymentInstagramCredentialsPtrOutputWithContext(ctx)
+}
+
+// DeploymentInstagramCredentialsPtrInput is an input type that accepts DeploymentInstagramCredentialsArgs, DeploymentInstagramCredentialsPtr and DeploymentInstagramCredentialsPtrOutput values.
+// You can construct a concrete instance of `DeploymentInstagramCredentialsPtrInput` via:
+//
+//	        DeploymentInstagramCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentInstagramCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentInstagramCredentialsPtrOutput() DeploymentInstagramCredentialsPtrOutput
+	ToDeploymentInstagramCredentialsPtrOutputWithContext(context.Context) DeploymentInstagramCredentialsPtrOutput
+}
+
+type deploymentInstagramCredentialsPtrType DeploymentInstagramCredentialsArgs
+
+func DeploymentInstagramCredentialsPtr(v *DeploymentInstagramCredentialsArgs) DeploymentInstagramCredentialsPtrInput {
+	return (*deploymentInstagramCredentialsPtrType)(v)
+}
+
+func (*deploymentInstagramCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentInstagramCredentials)(nil)).Elem()
+}
+
+func (i *deploymentInstagramCredentialsPtrType) ToDeploymentInstagramCredentialsPtrOutput() DeploymentInstagramCredentialsPtrOutput {
+	return i.ToDeploymentInstagramCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentInstagramCredentialsPtrType) ToDeploymentInstagramCredentialsPtrOutputWithContext(ctx context.Context) DeploymentInstagramCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInstagramCredentialsPtrOutput)
+}
+
+type DeploymentInstagramCredentialsOutput struct{ *pulumi.OutputState }
+
+func (DeploymentInstagramCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentInstagramCredentials)(nil)).Elem()
+}
+
+func (o DeploymentInstagramCredentialsOutput) ToDeploymentInstagramCredentialsOutput() DeploymentInstagramCredentialsOutput {
+	return o
+}
+
+func (o DeploymentInstagramCredentialsOutput) ToDeploymentInstagramCredentialsOutputWithContext(ctx context.Context) DeploymentInstagramCredentialsOutput {
+	return o
+}
+
+func (o DeploymentInstagramCredentialsOutput) ToDeploymentInstagramCredentialsPtrOutput() DeploymentInstagramCredentialsPtrOutput {
+	return o.ToDeploymentInstagramCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentInstagramCredentialsOutput) ToDeploymentInstagramCredentialsPtrOutputWithContext(ctx context.Context) DeploymentInstagramCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentInstagramCredentials) *DeploymentInstagramCredentials {
+		return &v
+	}).(DeploymentInstagramCredentialsPtrOutput)
+}
+
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeploymentInstagramCredentialsOutput) AuthCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInstagramCredentials) *string { return v.AuthCode }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+func (o DeploymentInstagramCredentialsOutput) AuthCodeWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInstagramCredentials) *string { return v.AuthCodeWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DeploymentInstagramCredentialsOutput) AuthCodeWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInstagramCredentials) *string { return v.AuthCodeWoVersion }).(pulumi.StringPtrOutput)
+}
+
+// The Conversation Profile ID to use for the deployment.
+func (o DeploymentInstagramCredentialsOutput) ConversationProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentInstagramCredentials) *string { return v.ConversationProfileId }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentInstagramCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentInstagramCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentInstagramCredentials)(nil)).Elem()
+}
+
+func (o DeploymentInstagramCredentialsPtrOutput) ToDeploymentInstagramCredentialsPtrOutput() DeploymentInstagramCredentialsPtrOutput {
+	return o
+}
+
+func (o DeploymentInstagramCredentialsPtrOutput) ToDeploymentInstagramCredentialsPtrOutputWithContext(ctx context.Context) DeploymentInstagramCredentialsPtrOutput {
+	return o
+}
+
+func (o DeploymentInstagramCredentialsPtrOutput) Elem() DeploymentInstagramCredentialsOutput {
+	return o.ApplyT(func(v *DeploymentInstagramCredentials) DeploymentInstagramCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentInstagramCredentials
+		return ret
+	}).(DeploymentInstagramCredentialsOutput)
+}
+
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeploymentInstagramCredentialsPtrOutput) AuthCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInstagramCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+func (o DeploymentInstagramCredentialsPtrOutput) AuthCodeWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInstagramCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthCodeWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DeploymentInstagramCredentialsPtrOutput) AuthCodeWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInstagramCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthCodeWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Conversation Profile ID to use for the deployment.
+func (o DeploymentInstagramCredentialsPtrOutput) ConversationProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentInstagramCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConversationProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentWhatsappCredentials struct {
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	AuthCode *string `pulumi:"authCode"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+	AuthCodeWo *string `pulumi:"authCodeWo"`
+	// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthCodeWoVersion *string `pulumi:"authCodeWoVersion"`
+	// The Business Account ID to use for the phone number.
+	BusinessAccountId string `pulumi:"businessAccountId"`
+	// The Conversation Profile ID to use for the deployment.
+	ConversationProfileId *string `pulumi:"conversationProfileId"`
+	// The phone number to register with WhatsApp.
+	PhoneNumber string `pulumi:"phoneNumber"`
+	// The 6-digit PIN created by the user for two-step verification.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Pin *string `pulumi:"pin"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The 6-digit PIN created by the user for two-step verification.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `pin` or `pinWo` can only be set.
+	PinWo *string `pulumi:"pinWo"`
+	// Triggers update of `pinWo` write-only. Increment this value when an update to `pinWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PinWoVersion *string `pulumi:"pinWoVersion"`
+	// The WhatsApp Business Account ID.
+	WabaId string `pulumi:"wabaId"`
+}
+
+// DeploymentWhatsappCredentialsInput is an input type that accepts DeploymentWhatsappCredentialsArgs and DeploymentWhatsappCredentialsOutput values.
+// You can construct a concrete instance of `DeploymentWhatsappCredentialsInput` via:
+//
+//	DeploymentWhatsappCredentialsArgs{...}
+type DeploymentWhatsappCredentialsInput interface {
+	pulumi.Input
+
+	ToDeploymentWhatsappCredentialsOutput() DeploymentWhatsappCredentialsOutput
+	ToDeploymentWhatsappCredentialsOutputWithContext(context.Context) DeploymentWhatsappCredentialsOutput
+}
+
+type DeploymentWhatsappCredentialsArgs struct {
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	AuthCode pulumi.StringPtrInput `pulumi:"authCode"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The Meta auth code provided by the embedded signup flow.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+	AuthCodeWo pulumi.StringPtrInput `pulumi:"authCodeWo"`
+	// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthCodeWoVersion pulumi.StringPtrInput `pulumi:"authCodeWoVersion"`
+	// The Business Account ID to use for the phone number.
+	BusinessAccountId pulumi.StringInput `pulumi:"businessAccountId"`
+	// The Conversation Profile ID to use for the deployment.
+	ConversationProfileId pulumi.StringPtrInput `pulumi:"conversationProfileId"`
+	// The phone number to register with WhatsApp.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+	// The 6-digit PIN created by the user for two-step verification.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Pin pulumi.StringPtrInput `pulumi:"pin"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The 6-digit PIN created by the user for two-step verification.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `pin` or `pinWo` can only be set.
+	PinWo pulumi.StringPtrInput `pulumi:"pinWo"`
+	// Triggers update of `pinWo` write-only. Increment this value when an update to `pinWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PinWoVersion pulumi.StringPtrInput `pulumi:"pinWoVersion"`
+	// The WhatsApp Business Account ID.
+	WabaId pulumi.StringInput `pulumi:"wabaId"`
+}
+
+func (DeploymentWhatsappCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWhatsappCredentials)(nil)).Elem()
+}
+
+func (i DeploymentWhatsappCredentialsArgs) ToDeploymentWhatsappCredentialsOutput() DeploymentWhatsappCredentialsOutput {
+	return i.ToDeploymentWhatsappCredentialsOutputWithContext(context.Background())
+}
+
+func (i DeploymentWhatsappCredentialsArgs) ToDeploymentWhatsappCredentialsOutputWithContext(ctx context.Context) DeploymentWhatsappCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWhatsappCredentialsOutput)
+}
+
+func (i DeploymentWhatsappCredentialsArgs) ToDeploymentWhatsappCredentialsPtrOutput() DeploymentWhatsappCredentialsPtrOutput {
+	return i.ToDeploymentWhatsappCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentWhatsappCredentialsArgs) ToDeploymentWhatsappCredentialsPtrOutputWithContext(ctx context.Context) DeploymentWhatsappCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWhatsappCredentialsOutput).ToDeploymentWhatsappCredentialsPtrOutputWithContext(ctx)
+}
+
+// DeploymentWhatsappCredentialsPtrInput is an input type that accepts DeploymentWhatsappCredentialsArgs, DeploymentWhatsappCredentialsPtr and DeploymentWhatsappCredentialsPtrOutput values.
+// You can construct a concrete instance of `DeploymentWhatsappCredentialsPtrInput` via:
+//
+//	        DeploymentWhatsappCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentWhatsappCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentWhatsappCredentialsPtrOutput() DeploymentWhatsappCredentialsPtrOutput
+	ToDeploymentWhatsappCredentialsPtrOutputWithContext(context.Context) DeploymentWhatsappCredentialsPtrOutput
+}
+
+type deploymentWhatsappCredentialsPtrType DeploymentWhatsappCredentialsArgs
+
+func DeploymentWhatsappCredentialsPtr(v *DeploymentWhatsappCredentialsArgs) DeploymentWhatsappCredentialsPtrInput {
+	return (*deploymentWhatsappCredentialsPtrType)(v)
+}
+
+func (*deploymentWhatsappCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentWhatsappCredentials)(nil)).Elem()
+}
+
+func (i *deploymentWhatsappCredentialsPtrType) ToDeploymentWhatsappCredentialsPtrOutput() DeploymentWhatsappCredentialsPtrOutput {
+	return i.ToDeploymentWhatsappCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentWhatsappCredentialsPtrType) ToDeploymentWhatsappCredentialsPtrOutputWithContext(ctx context.Context) DeploymentWhatsappCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWhatsappCredentialsPtrOutput)
+}
+
+type DeploymentWhatsappCredentialsOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWhatsappCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWhatsappCredentials)(nil)).Elem()
+}
+
+func (o DeploymentWhatsappCredentialsOutput) ToDeploymentWhatsappCredentialsOutput() DeploymentWhatsappCredentialsOutput {
+	return o
+}
+
+func (o DeploymentWhatsappCredentialsOutput) ToDeploymentWhatsappCredentialsOutputWithContext(ctx context.Context) DeploymentWhatsappCredentialsOutput {
+	return o
+}
+
+func (o DeploymentWhatsappCredentialsOutput) ToDeploymentWhatsappCredentialsPtrOutput() DeploymentWhatsappCredentialsPtrOutput {
+	return o.ToDeploymentWhatsappCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentWhatsappCredentialsOutput) ToDeploymentWhatsappCredentialsPtrOutputWithContext(ctx context.Context) DeploymentWhatsappCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentWhatsappCredentials) *DeploymentWhatsappCredentials {
+		return &v
+	}).(DeploymentWhatsappCredentialsPtrOutput)
+}
+
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeploymentWhatsappCredentialsOutput) AuthCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) *string { return v.AuthCode }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+func (o DeploymentWhatsappCredentialsOutput) AuthCodeWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) *string { return v.AuthCodeWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DeploymentWhatsappCredentialsOutput) AuthCodeWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) *string { return v.AuthCodeWoVersion }).(pulumi.StringPtrOutput)
+}
+
+// The Business Account ID to use for the phone number.
+func (o DeploymentWhatsappCredentialsOutput) BusinessAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) string { return v.BusinessAccountId }).(pulumi.StringOutput)
+}
+
+// The Conversation Profile ID to use for the deployment.
+func (o DeploymentWhatsappCredentialsOutput) ConversationProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) *string { return v.ConversationProfileId }).(pulumi.StringPtrOutput)
+}
+
+// The phone number to register with WhatsApp.
+func (o DeploymentWhatsappCredentialsOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) string { return v.PhoneNumber }).(pulumi.StringOutput)
+}
+
+// The 6-digit PIN created by the user for two-step verification.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeploymentWhatsappCredentialsOutput) Pin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) *string { return v.Pin }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The 6-digit PIN created by the user for two-step verification.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `pin` or `pinWo` can only be set.
+func (o DeploymentWhatsappCredentialsOutput) PinWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) *string { return v.PinWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `pinWo` write-only. Increment this value when an update to `pinWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DeploymentWhatsappCredentialsOutput) PinWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) *string { return v.PinWoVersion }).(pulumi.StringPtrOutput)
+}
+
+// The WhatsApp Business Account ID.
+func (o DeploymentWhatsappCredentialsOutput) WabaId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentWhatsappCredentials) string { return v.WabaId }).(pulumi.StringOutput)
+}
+
+type DeploymentWhatsappCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWhatsappCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentWhatsappCredentials)(nil)).Elem()
+}
+
+func (o DeploymentWhatsappCredentialsPtrOutput) ToDeploymentWhatsappCredentialsPtrOutput() DeploymentWhatsappCredentialsPtrOutput {
+	return o
+}
+
+func (o DeploymentWhatsappCredentialsPtrOutput) ToDeploymentWhatsappCredentialsPtrOutputWithContext(ctx context.Context) DeploymentWhatsappCredentialsPtrOutput {
+	return o
+}
+
+func (o DeploymentWhatsappCredentialsPtrOutput) Elem() DeploymentWhatsappCredentialsOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) DeploymentWhatsappCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentWhatsappCredentials
+		return ret
+	}).(DeploymentWhatsappCredentialsOutput)
+}
+
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeploymentWhatsappCredentialsPtrOutput) AuthCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The Meta auth code provided by the embedded signup flow.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `authCode` or `authCodeWo` can only be set.
+func (o DeploymentWhatsappCredentialsPtrOutput) AuthCodeWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthCodeWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DeploymentWhatsappCredentialsPtrOutput) AuthCodeWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthCodeWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Business Account ID to use for the phone number.
+func (o DeploymentWhatsappCredentialsPtrOutput) BusinessAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BusinessAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Conversation Profile ID to use for the deployment.
+func (o DeploymentWhatsappCredentialsPtrOutput) ConversationProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConversationProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The phone number to register with WhatsApp.
+func (o DeploymentWhatsappCredentialsPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The 6-digit PIN created by the user for two-step verification.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeploymentWhatsappCredentialsPtrOutput) Pin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pin
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The 6-digit PIN created by the user for two-step verification.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `pin` or `pinWo` can only be set.
+func (o DeploymentWhatsappCredentialsPtrOutput) PinWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PinWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `pinWo` write-only. Increment this value when an update to `pinWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DeploymentWhatsappCredentialsPtrOutput) PinWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PinWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The WhatsApp Business Account ID.
+func (o DeploymentWhatsappCredentialsPtrOutput) WabaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentWhatsappCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WabaId
+	}).(pulumi.StringPtrOutput)
 }
 
 type EvaluationGolden struct {
@@ -34029,6 +39222,13 @@ type GuardrailCodeCallbackAfterAgentCallback struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled *bool `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled *bool `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode string `pulumi:"pythonCode"`
 }
@@ -34050,6 +39250,13 @@ type GuardrailCodeCallbackAfterAgentCallbackArgs struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled pulumi.BoolPtrInput `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
 }
@@ -34142,6 +39349,16 @@ func (o GuardrailCodeCallbackAfterAgentCallbackOutput) Disabled() pulumi.BoolPtr
 	return o.ApplyT(func(v GuardrailCodeCallbackAfterAgentCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterAgentCallback) *bool { return v.ProactiveExecutionEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The python code to execute for the callback.
 func (o GuardrailCodeCallbackAfterAgentCallbackOutput) PythonCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardrailCodeCallbackAfterAgentCallback) string { return v.PythonCode }).(pulumi.StringOutput)
@@ -34192,6 +39409,21 @@ func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) Disabled() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterAgentCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProactiveExecutionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The python code to execute for the callback.
 func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) PythonCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardrailCodeCallbackAfterAgentCallback) *string {
@@ -34208,6 +39440,13 @@ type GuardrailCodeCallbackAfterModelCallback struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled *bool `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled *bool `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode string `pulumi:"pythonCode"`
 }
@@ -34229,6 +39468,13 @@ type GuardrailCodeCallbackAfterModelCallbackArgs struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled pulumi.BoolPtrInput `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
 }
@@ -34321,6 +39567,16 @@ func (o GuardrailCodeCallbackAfterModelCallbackOutput) Disabled() pulumi.BoolPtr
 	return o.ApplyT(func(v GuardrailCodeCallbackAfterModelCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterModelCallback) *bool { return v.ProactiveExecutionEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The python code to execute for the callback.
 func (o GuardrailCodeCallbackAfterModelCallbackOutput) PythonCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardrailCodeCallbackAfterModelCallback) string { return v.PythonCode }).(pulumi.StringOutput)
@@ -34371,6 +39627,21 @@ func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) Disabled() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterModelCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProactiveExecutionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The python code to execute for the callback.
 func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) PythonCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardrailCodeCallbackAfterModelCallback) *string {
@@ -34387,6 +39658,13 @@ type GuardrailCodeCallbackBeforeAgentCallback struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled *bool `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled *bool `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode string `pulumi:"pythonCode"`
 }
@@ -34408,6 +39686,13 @@ type GuardrailCodeCallbackBeforeAgentCallbackArgs struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled pulumi.BoolPtrInput `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
 }
@@ -34500,6 +39785,16 @@ func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) Disabled() pulumi.BoolPt
 	return o.ApplyT(func(v GuardrailCodeCallbackBeforeAgentCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeAgentCallback) *bool { return v.ProactiveExecutionEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The python code to execute for the callback.
 func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) PythonCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardrailCodeCallbackBeforeAgentCallback) string { return v.PythonCode }).(pulumi.StringOutput)
@@ -34550,6 +39845,21 @@ func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) Disabled() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeAgentCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProactiveExecutionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The python code to execute for the callback.
 func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) PythonCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeAgentCallback) *string {
@@ -34566,6 +39876,13 @@ type GuardrailCodeCallbackBeforeModelCallback struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled *bool `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled *bool `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode string `pulumi:"pythonCode"`
 }
@@ -34587,6 +39904,13 @@ type GuardrailCodeCallbackBeforeModelCallbackArgs struct {
 	// Whether the callback is disabled. Disabled callbacks are ignored by the
 	// agent.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// If enabled, the callback will also be executed on intermediate model
+	// outputs. This setting only affects after model callback.
+	// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+	// executed after receiving all model responses. Enabling proactive execution
+	// may have negative implication on the execution cost and latency, and
+	// should only be enabled in rare situations.
+	ProactiveExecutionEnabled pulumi.BoolPtrInput `pulumi:"proactiveExecutionEnabled"`
 	// The python code to execute for the callback.
 	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
 }
@@ -34679,6 +40003,16 @@ func (o GuardrailCodeCallbackBeforeModelCallbackOutput) Disabled() pulumi.BoolPt
 	return o.ApplyT(func(v GuardrailCodeCallbackBeforeModelCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeModelCallback) *bool { return v.ProactiveExecutionEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The python code to execute for the callback.
 func (o GuardrailCodeCallbackBeforeModelCallbackOutput) PythonCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardrailCodeCallbackBeforeModelCallback) string { return v.PythonCode }).(pulumi.StringOutput)
@@ -34726,6 +40060,21 @@ func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) Disabled() pulumi.Boo
 			return nil
 		}
 		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, the callback will also be executed on intermediate model
+// outputs. This setting only affects after model callback.
+// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+// executed after receiving all model responses. Enabling proactive execution
+// may have negative implication on the execution cost and latency, and
+// should only be enabled in rare situations.
+func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) ProactiveExecutionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeModelCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProactiveExecutionEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -43027,7 +48376,7 @@ func (o ToolGoogleSearchToolPromptConfigPtrOutput) VoicePrompt() pulumi.StringPt
 
 type ToolMcpTool struct {
 	// (Output)
-	// Authentication information required for API calls.
+	// Authentication information required for calling the remote agent.
 	// Structure is documented below.
 	ApiAuthentications []ToolMcpToolApiAuthentication `pulumi:"apiAuthentications"`
 	// (Output)
@@ -43082,7 +48431,7 @@ type ToolMcpToolInput interface {
 
 type ToolMcpToolArgs struct {
 	// (Output)
-	// Authentication information required for API calls.
+	// Authentication information required for calling the remote agent.
 	// Structure is documented below.
 	ApiAuthentications ToolMcpToolApiAuthenticationArrayInput `pulumi:"apiAuthentications"`
 	// (Output)
@@ -43176,7 +48525,7 @@ func (o ToolMcpToolOutput) ToToolMcpToolOutputWithContext(ctx context.Context) T
 }
 
 // (Output)
-// Authentication information required for API calls.
+// Authentication information required for calling the remote agent.
 // Structure is documented below.
 func (o ToolMcpToolOutput) ApiAuthentications() ToolMcpToolApiAuthenticationArrayOutput {
 	return o.ApplyT(func(v ToolMcpTool) []ToolMcpToolApiAuthentication { return v.ApiAuthentications }).(ToolMcpToolApiAuthenticationArrayOutput)
@@ -43709,7 +49058,8 @@ type ToolMcpToolApiAuthenticationOauthConfig struct {
 	// CLIENT_CREDENTIAL
 	OauthGrantType *string `pulumi:"oauthGrantType"`
 	// (Output)
-	// The OAuth scopes to grant.
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
 	Scopes []string `pulumi:"scopes"`
 	// (Output)
 	// The token endpoint in the OAuth provider to exchange for an access token.
@@ -43745,7 +49095,8 @@ type ToolMcpToolApiAuthenticationOauthConfigArgs struct {
 	// CLIENT_CREDENTIAL
 	OauthGrantType pulumi.StringPtrInput `pulumi:"oauthGrantType"`
 	// (Output)
-	// The OAuth scopes to grant.
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// (Output)
 	// The token endpoint in the OAuth provider to exchange for an access token.
@@ -43829,7 +49180,8 @@ func (o ToolMcpToolApiAuthenticationOauthConfigOutput) OauthGrantType() pulumi.S
 }
 
 // (Output)
-// The OAuth scopes to grant.
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
 func (o ToolMcpToolApiAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ToolMcpToolApiAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -44419,7 +49771,7 @@ func (o ToolMcpToolTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) ToolMcpT
 
 type ToolOpenApiTool struct {
 	// (Output)
-	// Authentication information required for API calls.
+	// Authentication information required for calling the remote agent.
 	// Structure is documented below.
 	ApiAuthentications []ToolOpenApiToolApiAuthentication `pulumi:"apiAuthentications"`
 	// (Output)
@@ -44461,7 +49813,7 @@ type ToolOpenApiToolInput interface {
 
 type ToolOpenApiToolArgs struct {
 	// (Output)
-	// Authentication information required for API calls.
+	// Authentication information required for calling the remote agent.
 	// Structure is documented below.
 	ApiAuthentications ToolOpenApiToolApiAuthenticationArrayInput `pulumi:"apiAuthentications"`
 	// (Output)
@@ -44542,7 +49894,7 @@ func (o ToolOpenApiToolOutput) ToToolOpenApiToolOutputWithContext(ctx context.Co
 }
 
 // (Output)
-// Authentication information required for API calls.
+// Authentication information required for calling the remote agent.
 // Structure is documented below.
 func (o ToolOpenApiToolOutput) ApiAuthentications() ToolOpenApiToolApiAuthenticationArrayOutput {
 	return o.ApplyT(func(v ToolOpenApiTool) []ToolOpenApiToolApiAuthentication { return v.ApiAuthentications }).(ToolOpenApiToolApiAuthenticationArrayOutput)
@@ -45055,7 +50407,8 @@ type ToolOpenApiToolApiAuthenticationOauthConfig struct {
 	// CLIENT_CREDENTIAL
 	OauthGrantType *string `pulumi:"oauthGrantType"`
 	// (Output)
-	// The OAuth scopes to grant.
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
 	Scopes []string `pulumi:"scopes"`
 	// (Output)
 	// The token endpoint in the OAuth provider to exchange for an access token.
@@ -45091,7 +50444,8 @@ type ToolOpenApiToolApiAuthenticationOauthConfigArgs struct {
 	// CLIENT_CREDENTIAL
 	OauthGrantType pulumi.StringPtrInput `pulumi:"oauthGrantType"`
 	// (Output)
-	// The OAuth scopes to grant.
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// (Output)
 	// The token endpoint in the OAuth provider to exchange for an access token.
@@ -45175,7 +50529,8 @@ func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) OauthGrantType() pulu
 }
 
 // (Output)
-// The OAuth scopes to grant.
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
 func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -46124,6 +51479,10 @@ type ToolRemoteAgentTool struct {
 	// Structure is documented below.
 	AgentCards []ToolRemoteAgentToolAgentCard `pulumi:"agentCards"`
 	// (Output)
+	// Authentication information required for calling the remote agent.
+	// Structure is documented below.
+	ApiAuthentications []ToolRemoteAgentToolApiAuthentication `pulumi:"apiAuthentications"`
+	// (Output)
 	// The description of the system tool.
 	Description *string `pulumi:"description"`
 	// (Output)
@@ -46147,6 +51506,10 @@ type ToolRemoteAgentToolArgs struct {
 	// The agent card of the remote agent that this tool invokes.
 	// Structure is documented below.
 	AgentCards ToolRemoteAgentToolAgentCardArrayInput `pulumi:"agentCards"`
+	// (Output)
+	// Authentication information required for calling the remote agent.
+	// Structure is documented below.
+	ApiAuthentications ToolRemoteAgentToolApiAuthenticationArrayInput `pulumi:"apiAuthentications"`
 	// (Output)
 	// The description of the system tool.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -46211,6 +51574,13 @@ func (o ToolRemoteAgentToolOutput) ToToolRemoteAgentToolOutputWithContext(ctx co
 // Structure is documented below.
 func (o ToolRemoteAgentToolOutput) AgentCards() ToolRemoteAgentToolAgentCardArrayOutput {
 	return o.ApplyT(func(v ToolRemoteAgentTool) []ToolRemoteAgentToolAgentCard { return v.AgentCards }).(ToolRemoteAgentToolAgentCardArrayOutput)
+}
+
+// (Output)
+// Authentication information required for calling the remote agent.
+// Structure is documented below.
+func (o ToolRemoteAgentToolOutput) ApiAuthentications() ToolRemoteAgentToolApiAuthenticationArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentTool) []ToolRemoteAgentToolApiAuthentication { return v.ApiAuthentications }).(ToolRemoteAgentToolApiAuthenticationArrayOutput)
 }
 
 // (Output)
@@ -46728,6 +52098,823 @@ func (o ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolAgentCardSupportedInterface {
 		return vs[0].([]ToolRemoteAgentToolAgentCardSupportedInterface)[vs[1].(int)]
 	}).(ToolRemoteAgentToolAgentCardSupportedInterfaceOutput)
+}
+
+type ToolRemoteAgentToolApiAuthentication struct {
+	// (Output)
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfigs []ToolRemoteAgentToolApiAuthenticationApiKeyConfig `pulumi:"apiKeyConfigs"`
+	// (Output)
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfigs []ToolRemoteAgentToolApiAuthenticationBearerTokenConfig `pulumi:"bearerTokenConfigs"`
+	// (Output)
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfigs []ToolRemoteAgentToolApiAuthenticationOauthConfig `pulumi:"oauthConfigs"`
+	// (Output)
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfigs []ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig `pulumi:"serviceAccountAuthConfigs"`
+	// (Output)
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfigs []ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig `pulumi:"serviceAgentIdTokenAuthConfigs"`
+}
+
+// ToolRemoteAgentToolApiAuthenticationInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationArgs and ToolRemoteAgentToolApiAuthenticationOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationArgs{...}
+type ToolRemoteAgentToolApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationOutput() ToolRemoteAgentToolApiAuthenticationOutput
+	ToToolRemoteAgentToolApiAuthenticationOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationArgs struct {
+	// (Output)
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfigs ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayInput `pulumi:"apiKeyConfigs"`
+	// (Output)
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfigs ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayInput `pulumi:"bearerTokenConfigs"`
+	// (Output)
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfigs ToolRemoteAgentToolApiAuthenticationOauthConfigArrayInput `pulumi:"oauthConfigs"`
+	// (Output)
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfigs ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayInput `pulumi:"serviceAccountAuthConfigs"`
+	// (Output)
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfigs ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput `pulumi:"serviceAgentIdTokenAuthConfigs"`
+}
+
+func (ToolRemoteAgentToolApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthentication)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationArgs) ToToolRemoteAgentToolApiAuthenticationOutput() ToolRemoteAgentToolApiAuthenticationOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationArgs) ToToolRemoteAgentToolApiAuthenticationOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationOutput)
+}
+
+// ToolRemoteAgentToolApiAuthenticationArrayInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationArray and ToolRemoteAgentToolApiAuthenticationArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationArrayInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationArray{ ToolRemoteAgentToolApiAuthenticationArgs{...} }
+type ToolRemoteAgentToolApiAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationArrayOutput() ToolRemoteAgentToolApiAuthenticationArrayOutput
+	ToToolRemoteAgentToolApiAuthenticationArrayOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationArrayOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationArray []ToolRemoteAgentToolApiAuthenticationInput
+
+func (ToolRemoteAgentToolApiAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthentication)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationArray) ToToolRemoteAgentToolApiAuthenticationArrayOutput() ToolRemoteAgentToolApiAuthenticationArrayOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationArray) ToToolRemoteAgentToolApiAuthenticationArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationArrayOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationOutput) ToToolRemoteAgentToolApiAuthenticationOutput() ToolRemoteAgentToolApiAuthenticationOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationOutput) ToToolRemoteAgentToolApiAuthenticationOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationOutput {
+	return o
+}
+
+// (Output)
+// Configurations for authentication with API key.
+// Structure is documented below.
+func (o ToolRemoteAgentToolApiAuthenticationOutput) ApiKeyConfigs() ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthentication) []ToolRemoteAgentToolApiAuthenticationApiKeyConfig {
+		return v.ApiKeyConfigs
+	}).(ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with a bearer token.
+// Structure is documented below.
+func (o ToolRemoteAgentToolApiAuthenticationOutput) BearerTokenConfigs() ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthentication) []ToolRemoteAgentToolApiAuthenticationBearerTokenConfig {
+		return v.BearerTokenConfigs
+	}).(ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with OAuth.
+// Structure is documented below.
+func (o ToolRemoteAgentToolApiAuthenticationOutput) OauthConfigs() ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthentication) []ToolRemoteAgentToolApiAuthenticationOauthConfig {
+		return v.OauthConfigs
+	}).(ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication using a custom service account.
+// Structure is documented below.
+func (o ToolRemoteAgentToolApiAuthenticationOutput) ServiceAccountAuthConfigs() ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthentication) []ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig {
+		return v.ServiceAccountAuthConfigs
+	}).(ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with [ID
+// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+// from service agent.
+func (o ToolRemoteAgentToolApiAuthenticationOutput) ServiceAgentIdTokenAuthConfigs() ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthentication) []ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return v.ServiceAgentIdTokenAuthConfigs
+	}).(ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationArrayOutput) ToToolRemoteAgentToolApiAuthenticationArrayOutput() ToolRemoteAgentToolApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationArrayOutput) ToToolRemoteAgentToolApiAuthenticationArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolApiAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolApiAuthentication {
+		return vs[0].([]ToolRemoteAgentToolApiAuthentication)[vs[1].(int)]
+	}).(ToolRemoteAgentToolApiAuthenticationOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationApiKeyConfig struct {
+	// (Output)
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion *string `pulumi:"apiKeySecretVersion"`
+	// (Output)
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName *string `pulumi:"keyName"`
+	// (Output)
+	// Key location in the request.
+	// Possible values:
+	// HEADER
+	// QUERY_STRING
+	RequestLocation *string `pulumi:"requestLocation"`
+}
+
+// ToolRemoteAgentToolApiAuthenticationApiKeyConfigInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs and ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationApiKeyConfigInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs{...}
+type ToolRemoteAgentToolApiAuthenticationApiKeyConfigInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput() ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput
+	ToToolRemoteAgentToolApiAuthenticationApiKeyConfigOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs struct {
+	// (Output)
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion pulumi.StringPtrInput `pulumi:"apiKeySecretVersion"`
+	// (Output)
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
+	// (Output)
+	// Key location in the request.
+	// Possible values:
+	// HEADER
+	// QUERY_STRING
+	RequestLocation pulumi.StringPtrInput `pulumi:"requestLocation"`
+}
+
+func (ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput() ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationApiKeyConfigOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput)
+}
+
+// ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationApiKeyConfigArray and ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationApiKeyConfigArray{ ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs{...} }
+type ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput
+	ToToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationApiKeyConfigArray []ToolRemoteAgentToolApiAuthenticationApiKeyConfigInput
+
+func (ToolRemoteAgentToolApiAuthenticationApiKeyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationApiKeyConfigArray) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationApiKeyConfigArray) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput() ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+// (Output)
+// The name of the SecretManager secret version resource storing the API key.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput) ApiKeySecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationApiKeyConfig) *string { return v.ApiKeySecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationApiKeyConfig) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Key location in the request.
+// Possible values:
+// HEADER
+// QUERY_STRING
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput) RequestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationApiKeyConfig) *string { return v.RequestLocation }).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolApiAuthenticationApiKeyConfig {
+		return vs[0].([]ToolRemoteAgentToolApiAuthenticationApiKeyConfig)[vs[1].(int)]
+	}).(ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationBearerTokenConfig struct {
+	// (Output)
+	// The bearer token. Must be in the format $context.variables.<name_of_variable>.
+	Token *string `pulumi:"token"`
+}
+
+// ToolRemoteAgentToolApiAuthenticationBearerTokenConfigInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs and ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationBearerTokenConfigInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs{...}
+type ToolRemoteAgentToolApiAuthenticationBearerTokenConfigInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput() ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput
+	ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs struct {
+	// (Output)
+	// The bearer token. Must be in the format $context.variables.<name_of_variable>.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput() ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput)
+}
+
+// ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArray and ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArray{ ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs{...} }
+type ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput
+	ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArray []ToolRemoteAgentToolApiAuthenticationBearerTokenConfigInput
+
+func (ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArray) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArray) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput() ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+// (Output)
+// The bearer token. Must be in the format $context.variables.<name_of_variable>.
+func (o ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationBearerTokenConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolApiAuthenticationBearerTokenConfig {
+		return vs[0].([]ToolRemoteAgentToolApiAuthenticationBearerTokenConfig)[vs[1].(int)]
+	}).(ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationOauthConfig struct {
+	// (Output)
+	// The client ID from the OAuth provider.
+	ClientId *string `pulumi:"clientId"`
+	// (Output)
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion *string `pulumi:"clientSecretVersion"`
+	// (Output)
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType *string `pulumi:"oauthGrantType"`
+	// (Output)
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes []string `pulumi:"scopes"`
+	// (Output)
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+}
+
+// ToolRemoteAgentToolApiAuthenticationOauthConfigInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationOauthConfigArgs and ToolRemoteAgentToolApiAuthenticationOauthConfigOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationOauthConfigInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationOauthConfigArgs{...}
+type ToolRemoteAgentToolApiAuthenticationOauthConfigInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationOauthConfigOutput() ToolRemoteAgentToolApiAuthenticationOauthConfigOutput
+	ToToolRemoteAgentToolApiAuthenticationOauthConfigOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationOauthConfigOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationOauthConfigArgs struct {
+	// (Output)
+	// The client ID from the OAuth provider.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// (Output)
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion pulumi.StringPtrInput `pulumi:"clientSecretVersion"`
+	// (Output)
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType pulumi.StringPtrInput `pulumi:"oauthGrantType"`
+	// (Output)
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// (Output)
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
+}
+
+func (ToolRemoteAgentToolApiAuthenticationOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationOauthConfigArgs) ToToolRemoteAgentToolApiAuthenticationOauthConfigOutput() ToolRemoteAgentToolApiAuthenticationOauthConfigOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationOauthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationOauthConfigArgs) ToToolRemoteAgentToolApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationOauthConfigOutput)
+}
+
+// ToolRemoteAgentToolApiAuthenticationOauthConfigArrayInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationOauthConfigArray and ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationOauthConfigArrayInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationOauthConfigArray{ ToolRemoteAgentToolApiAuthenticationOauthConfigArgs{...} }
+type ToolRemoteAgentToolApiAuthenticationOauthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput
+	ToToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationOauthConfigArray []ToolRemoteAgentToolApiAuthenticationOauthConfigInput
+
+func (ToolRemoteAgentToolApiAuthenticationOauthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationOauthConfigArray) ToToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationOauthConfigArray) ToToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) ToToolRemoteAgentToolApiAuthenticationOauthConfigOutput() ToolRemoteAgentToolApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) ToToolRemoteAgentToolApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+// (Output)
+// The client ID from the OAuth provider.
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationOauthConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the SecretManager secret version resource storing the
+// client secret.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) ClientSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationOauthConfig) *string { return v.ClientSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// OAuth grant types.
+// Possible values:
+// CLIENT_CREDENTIAL
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) OauthGrantType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationOauthConfig) *string { return v.OauthGrantType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationOauthConfig) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolApiAuthenticationOauthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolApiAuthenticationOauthConfig {
+		return vs[0].([]ToolRemoteAgentToolApiAuthenticationOauthConfig)[vs[1].(int)]
+	}).(ToolRemoteAgentToolApiAuthenticationOauthConfigOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig struct {
+	// (Output)
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes []string `pulumi:"scopes"`
+	// (Output)
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs and ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs{...}
+type ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput() ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput
+	ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs struct {
+	// (Output)
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// (Output)
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput() ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+// ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArray and ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArray{ ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs{...} }
+type ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput
+	ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArray []ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigInput
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArray) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArray) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput() ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+// (Output)
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
+func (o ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The email address of the service account used for authenticatation. CES
+// uses this service account to exchange an access token and the access token
+// is then sent in the `Authorization` header of the request.
+// The service account must have the
+// `roles/iam.serviceAccountTokenCreator` role granted to the
+// CES service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig {
+		return vs[0].([]ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig)[vs[1].(int)]
+	}).(ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig struct {
+}
+
+// ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs and ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...}
+type ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+	ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs struct {
+}
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
+}
+
+// ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput is an input type that accepts ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArray and ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput` via:
+//
+//	ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArray{ ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...} }
+type ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput
+	ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(context.Context) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArray []ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigInput
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return i.ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput)
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+type ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ToToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(ctx context.Context) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) Index(i pulumi.IntInput) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return vs[0].([]ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig)[vs[1].(int)]
+	}).(ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
 }
 
 type ToolSystemTool struct {
@@ -49739,6 +55926,9 @@ type ToolsetMcpToolset struct {
 	// client should trust.
 	// Structure is documented below.
 	TlsConfig *ToolsetMcpToolsetTlsConfig `pulumi:"tlsConfig"`
+	// A list of tool overrides for the toolset.
+	// Structure is documented below.
+	ToolOverrides []ToolsetMcpToolsetToolOverride `pulumi:"toolOverrides"`
 }
 
 // ToolsetMcpToolsetInput is an input type that accepts ToolsetMcpToolsetArgs and ToolsetMcpToolsetOutput values.
@@ -49778,6 +55968,9 @@ type ToolsetMcpToolsetArgs struct {
 	// client should trust.
 	// Structure is documented below.
 	TlsConfig ToolsetMcpToolsetTlsConfigPtrInput `pulumi:"tlsConfig"`
+	// A list of tool overrides for the toolset.
+	// Structure is documented below.
+	ToolOverrides ToolsetMcpToolsetToolOverrideArrayInput `pulumi:"toolOverrides"`
 }
 
 func (ToolsetMcpToolsetArgs) ElementType() reflect.Type {
@@ -49897,6 +56090,12 @@ func (o ToolsetMcpToolsetOutput) TlsConfig() ToolsetMcpToolsetTlsConfigPtrOutput
 	return o.ApplyT(func(v ToolsetMcpToolset) *ToolsetMcpToolsetTlsConfig { return v.TlsConfig }).(ToolsetMcpToolsetTlsConfigPtrOutput)
 }
 
+// A list of tool overrides for the toolset.
+// Structure is documented below.
+func (o ToolsetMcpToolsetOutput) ToolOverrides() ToolsetMcpToolsetToolOverrideArrayOutput {
+	return o.ApplyT(func(v ToolsetMcpToolset) []ToolsetMcpToolsetToolOverride { return v.ToolOverrides }).(ToolsetMcpToolsetToolOverrideArrayOutput)
+}
+
 type ToolsetMcpToolsetPtrOutput struct{ *pulumi.OutputState }
 
 func (ToolsetMcpToolsetPtrOutput) ElementType() reflect.Type {
@@ -49984,6 +56183,17 @@ func (o ToolsetMcpToolsetPtrOutput) TlsConfig() ToolsetMcpToolsetTlsConfigPtrOut
 		}
 		return v.TlsConfig
 	}).(ToolsetMcpToolsetTlsConfigPtrOutput)
+}
+
+// A list of tool overrides for the toolset.
+// Structure is documented below.
+func (o ToolsetMcpToolsetPtrOutput) ToolOverrides() ToolsetMcpToolsetToolOverrideArrayOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolset) []ToolsetMcpToolsetToolOverride {
+		if v == nil {
+			return nil
+		}
+		return v.ToolOverrides
+	}).(ToolsetMcpToolsetToolOverrideArrayOutput)
 }
 
 type ToolsetMcpToolsetApiAuthentication struct {
@@ -51556,6 +57766,121 @@ func (o ToolsetMcpToolsetTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) To
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolsetMcpToolsetTlsConfigCaCert {
 		return vs[0].([]ToolsetMcpToolsetTlsConfigCaCert)[vs[1].(int)]
 	}).(ToolsetMcpToolsetTlsConfigCaCertOutput)
+}
+
+type ToolsetMcpToolsetToolOverride struct {
+	// The description override for the tool.
+	DescriptionOverride *string `pulumi:"descriptionOverride"`
+	// The name override for the tool.
+	NameOverride *string `pulumi:"nameOverride"`
+	// The name of the tool to be overridden.
+	Tool string `pulumi:"tool"`
+}
+
+// ToolsetMcpToolsetToolOverrideInput is an input type that accepts ToolsetMcpToolsetToolOverrideArgs and ToolsetMcpToolsetToolOverrideOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetToolOverrideInput` via:
+//
+//	ToolsetMcpToolsetToolOverrideArgs{...}
+type ToolsetMcpToolsetToolOverrideInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetToolOverrideOutput() ToolsetMcpToolsetToolOverrideOutput
+	ToToolsetMcpToolsetToolOverrideOutputWithContext(context.Context) ToolsetMcpToolsetToolOverrideOutput
+}
+
+type ToolsetMcpToolsetToolOverrideArgs struct {
+	// The description override for the tool.
+	DescriptionOverride pulumi.StringPtrInput `pulumi:"descriptionOverride"`
+	// The name override for the tool.
+	NameOverride pulumi.StringPtrInput `pulumi:"nameOverride"`
+	// The name of the tool to be overridden.
+	Tool pulumi.StringInput `pulumi:"tool"`
+}
+
+func (ToolsetMcpToolsetToolOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetToolOverride)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetToolOverrideArgs) ToToolsetMcpToolsetToolOverrideOutput() ToolsetMcpToolsetToolOverrideOutput {
+	return i.ToToolsetMcpToolsetToolOverrideOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetToolOverrideArgs) ToToolsetMcpToolsetToolOverrideOutputWithContext(ctx context.Context) ToolsetMcpToolsetToolOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetToolOverrideOutput)
+}
+
+// ToolsetMcpToolsetToolOverrideArrayInput is an input type that accepts ToolsetMcpToolsetToolOverrideArray and ToolsetMcpToolsetToolOverrideArrayOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetToolOverrideArrayInput` via:
+//
+//	ToolsetMcpToolsetToolOverrideArray{ ToolsetMcpToolsetToolOverrideArgs{...} }
+type ToolsetMcpToolsetToolOverrideArrayInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetToolOverrideArrayOutput() ToolsetMcpToolsetToolOverrideArrayOutput
+	ToToolsetMcpToolsetToolOverrideArrayOutputWithContext(context.Context) ToolsetMcpToolsetToolOverrideArrayOutput
+}
+
+type ToolsetMcpToolsetToolOverrideArray []ToolsetMcpToolsetToolOverrideInput
+
+func (ToolsetMcpToolsetToolOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolsetMcpToolsetToolOverride)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetToolOverrideArray) ToToolsetMcpToolsetToolOverrideArrayOutput() ToolsetMcpToolsetToolOverrideArrayOutput {
+	return i.ToToolsetMcpToolsetToolOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetToolOverrideArray) ToToolsetMcpToolsetToolOverrideArrayOutputWithContext(ctx context.Context) ToolsetMcpToolsetToolOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetToolOverrideArrayOutput)
+}
+
+type ToolsetMcpToolsetToolOverrideOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetToolOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetToolOverride)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetToolOverrideOutput) ToToolsetMcpToolsetToolOverrideOutput() ToolsetMcpToolsetToolOverrideOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetToolOverrideOutput) ToToolsetMcpToolsetToolOverrideOutputWithContext(ctx context.Context) ToolsetMcpToolsetToolOverrideOutput {
+	return o
+}
+
+// The description override for the tool.
+func (o ToolsetMcpToolsetToolOverrideOutput) DescriptionOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetToolOverride) *string { return v.DescriptionOverride }).(pulumi.StringPtrOutput)
+}
+
+// The name override for the tool.
+func (o ToolsetMcpToolsetToolOverrideOutput) NameOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetToolOverride) *string { return v.NameOverride }).(pulumi.StringPtrOutput)
+}
+
+// The name of the tool to be overridden.
+func (o ToolsetMcpToolsetToolOverrideOutput) Tool() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetToolOverride) string { return v.Tool }).(pulumi.StringOutput)
+}
+
+type ToolsetMcpToolsetToolOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetToolOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolsetMcpToolsetToolOverride)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetToolOverrideArrayOutput) ToToolsetMcpToolsetToolOverrideArrayOutput() ToolsetMcpToolsetToolOverrideArrayOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetToolOverrideArrayOutput) ToToolsetMcpToolsetToolOverrideArrayOutputWithContext(ctx context.Context) ToolsetMcpToolsetToolOverrideArrayOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetToolOverrideArrayOutput) Index(i pulumi.IntInput) ToolsetMcpToolsetToolOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolsetMcpToolsetToolOverride {
+		return vs[0].([]ToolsetMcpToolsetToolOverride)[vs[1].(int)]
+	}).(ToolsetMcpToolsetToolOverrideOutput)
 }
 
 type ToolsetOpenApiToolset struct {
@@ -53722,6 +60047,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentRemoteDialogflowAgentPtrInput)(nil)).Elem(), AgentRemoteDialogflowAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentToolsetInput)(nil)).Elem(), AgentToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentToolsetArrayInput)(nil)).Elem(), AgentToolsetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleInput)(nil)).Elem(), AgentTransferRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleArrayInput)(nil)).Elem(), AgentTransferRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDeterministicTransferInput)(nil)).Elem(), AgentTransferRuleDeterministicTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDeterministicTransferPtrInput)(nil)).Elem(), AgentTransferRuleDeterministicTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDeterministicTransferExpressionConditionInput)(nil)).Elem(), AgentTransferRuleDeterministicTransferExpressionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDeterministicTransferExpressionConditionPtrInput)(nil)).Elem(), AgentTransferRuleDeterministicTransferExpressionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDeterministicTransferPythonCodeConditionInput)(nil)).Elem(), AgentTransferRuleDeterministicTransferPythonCodeConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDeterministicTransferPythonCodeConditionPtrInput)(nil)).Elem(), AgentTransferRuleDeterministicTransferPythonCodeConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDisablePlannerTransferInput)(nil)).Elem(), AgentTransferRuleDisablePlannerTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDisablePlannerTransferPtrInput)(nil)).Elem(), AgentTransferRuleDisablePlannerTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDisablePlannerTransferExpressionConditionInput)(nil)).Elem(), AgentTransferRuleDisablePlannerTransferExpressionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentTransferRuleDisablePlannerTransferExpressionConditionPtrInput)(nil)).Elem(), AgentTransferRuleDisablePlannerTransferExpressionConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigInput)(nil)).Elem(), AppAudioProcessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigPtrInput)(nil)).Elem(), AppAudioProcessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigAmbientSoundConfigInput)(nil)).Elem(), AppAudioProcessingConfigAmbientSoundConfigArgs{})
@@ -53742,12 +60079,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDefaultChannelProfilePersonaPropertyPtrInput)(nil)).Elem(), AppDefaultChannelProfilePersonaPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDefaultChannelProfileWebWidgetConfigInput)(nil)).Elem(), AppDefaultChannelProfileWebWidgetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDefaultChannelProfileWebWidgetConfigPtrInput)(nil)).Elem(), AppDefaultChannelProfileWebWidgetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDefaultChannelProfileWebWidgetConfigSecuritySettingsInput)(nil)).Elem(), AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrInput)(nil)).Elem(), AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDefaultChannelProfileWhatsappConfigInput)(nil)).Elem(), AppDefaultChannelProfileWhatsappConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDefaultChannelProfileWhatsappConfigPtrInput)(nil)).Elem(), AppDefaultChannelProfileWhatsappConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppErrorHandlingSettingsInput)(nil)).Elem(), AppErrorHandlingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppErrorHandlingSettingsPtrInput)(nil)).Elem(), AppErrorHandlingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppErrorHandlingSettingsEndSessionConfigInput)(nil)).Elem(), AppErrorHandlingSettingsEndSessionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppErrorHandlingSettingsEndSessionConfigPtrInput)(nil)).Elem(), AppErrorHandlingSettingsEndSessionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppErrorHandlingSettingsFallbackResponseConfigInput)(nil)).Elem(), AppErrorHandlingSettingsFallbackResponseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppErrorHandlingSettingsFallbackResponseConfigPtrInput)(nil)).Elem(), AppErrorHandlingSettingsFallbackResponseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsInput)(nil)).Elem(), AppEvaluationMetricsThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsPtrInput)(nil)).Elem(), AppEvaluationMetricsThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsPtrInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsPtrInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsPtrInput)(nil)).Elem(), AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppLanguageSettingsInput)(nil)).Elem(), AppLanguageSettingsArgs{})
@@ -53762,6 +60111,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppLoggingSettingsCloudLoggingSettingsPtrInput)(nil)).Elem(), AppLoggingSettingsCloudLoggingSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppLoggingSettingsConversationLoggingSettingsInput)(nil)).Elem(), AppLoggingSettingsConversationLoggingSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppLoggingSettingsConversationLoggingSettingsPtrInput)(nil)).Elem(), AppLoggingSettingsConversationLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppLoggingSettingsMetricAnalysisSettingsInput)(nil)).Elem(), AppLoggingSettingsMetricAnalysisSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppLoggingSettingsMetricAnalysisSettingsPtrInput)(nil)).Elem(), AppLoggingSettingsMetricAnalysisSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppLoggingSettingsRedactionConfigInput)(nil)).Elem(), AppLoggingSettingsRedactionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppLoggingSettingsRedactionConfigPtrInput)(nil)).Elem(), AppLoggingSettingsRedactionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppModelSettingsInput)(nil)).Elem(), AppModelSettingsArgs{})
@@ -53795,6 +60146,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentRemoteDialogflowAgentArrayInput)(nil)).Elem(), AppVersionSnapshotAgentRemoteDialogflowAgentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentToolsetInput)(nil)).Elem(), AppVersionSnapshotAgentToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentToolsetArrayInput)(nil)).Elem(), AppVersionSnapshotAgentToolsetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleArrayInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDeterministicTransferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransferInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayInput)(nil)).Elem(), AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppInput)(nil)).Elem(), AppVersionSnapshotAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppArrayInput)(nil)).Elem(), AppVersionSnapshotAppArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppAudioProcessingConfigInput)(nil)).Elem(), AppVersionSnapshotAppAudioProcessingConfigArgs{})
@@ -53817,12 +60180,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArrayInput)(nil)).Elem(), AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigInput)(nil)).Elem(), AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArrayInput)(nil)).Elem(), AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigInput)(nil)).Elem(), AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayInput)(nil)).Elem(), AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingInput)(nil)).Elem(), AppVersionSnapshotAppErrorHandlingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingArrayInput)(nil)).Elem(), AppVersionSnapshotAppErrorHandlingSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigInput)(nil)).Elem(), AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayInput)(nil)).Elem(), AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigInput)(nil)).Elem(), AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayInput)(nil)).Elem(), AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdArrayInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArrayInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArrayInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArrayInput)(nil)).Elem(), AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLanguageSettingInput)(nil)).Elem(), AppVersionSnapshotAppLanguageSettingArgs{})
@@ -53837,6 +60210,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArrayInput)(nil)).Elem(), AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingConversationLoggingSettingInput)(nil)).Elem(), AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArrayInput)(nil)).Elem(), AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingInput)(nil)).Elem(), AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayInput)(nil)).Elem(), AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingRedactionConfigInput)(nil)).Elem(), AppVersionSnapshotAppLoggingSettingRedactionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppLoggingSettingRedactionConfigArrayInput)(nil)).Elem(), AppVersionSnapshotAppLoggingSettingRedactionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppModelSettingInput)(nil)).Elem(), AppVersionSnapshotAppModelSettingArgs{})
@@ -53847,6 +60222,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppVariableDeclarationArrayInput)(nil)).Elem(), AppVersionSnapshotAppVariableDeclarationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppVariableDeclarationSchemaInput)(nil)).Elem(), AppVersionSnapshotAppVariableDeclarationSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppVariableDeclarationSchemaArrayInput)(nil)).Elem(), AppVersionSnapshotAppVariableDeclarationSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppVpcScSettingInput)(nil)).Elem(), AppVersionSnapshotAppVpcScSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotAppVpcScSettingArrayInput)(nil)).Elem(), AppVersionSnapshotAppVpcScSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotExampleInput)(nil)).Elem(), AppVersionSnapshotExampleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotExampleArrayInput)(nil)).Elem(), AppVersionSnapshotExampleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotExampleMessageInput)(nil)).Elem(), AppVersionSnapshotExampleMessageArgs{})
@@ -53991,6 +60368,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArrayInput)(nil)).Elem(), AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertInput)(nil)).Elem(), AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArrayInput)(nil)).Elem(), AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVpcScSettingsInput)(nil)).Elem(), AppVpcScSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppVpcScSettingsPtrInput)(nil)).Elem(), AppVpcScSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileInput)(nil)).Elem(), DeploymentChannelProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfilePtrInput)(nil)).Elem(), DeploymentChannelProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfilePersonaPropertyInput)(nil)).Elem(), DeploymentChannelProfilePersonaPropertyArgs{})
@@ -53999,6 +60378,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWebWidgetConfigPtrInput)(nil)).Elem(), DeploymentChannelProfileWebWidgetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWebWidgetConfigSecuritySettingsInput)(nil)).Elem(), DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWebWidgetConfigSecuritySettingsPtrInput)(nil)).Elem(), DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWhatsappConfigInput)(nil)).Elem(), DeploymentChannelProfileWhatsappConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWhatsappConfigPtrInput)(nil)).Elem(), DeploymentChannelProfileWhatsappConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentInstagramCredentialsInput)(nil)).Elem(), DeploymentInstagramCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentInstagramCredentialsPtrInput)(nil)).Elem(), DeploymentInstagramCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentWhatsappCredentialsInput)(nil)).Elem(), DeploymentWhatsappCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentWhatsappCredentialsPtrInput)(nil)).Elem(), DeploymentWhatsappCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenInput)(nil)).Elem(), EvaluationGoldenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenPtrInput)(nil)).Elem(), EvaluationGoldenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnInput)(nil)).Elem(), EvaluationGoldenTurnArgs{})
@@ -54261,6 +60646,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSkillArrayInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSkillArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSupportedInterfaceInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSupportedInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardSupportedInterfaceArrayInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardSupportedInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationArrayInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationApiKeyConfigInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationApiKeyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationBearerTokenConfigInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationOauthConfigInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationOauthConfigArrayInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationOauthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput)(nil)).Elem(), ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolInput)(nil)).Elem(), ToolSystemToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolArrayInput)(nil)).Elem(), ToolSystemToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolToolFakeConfigInput)(nil)).Elem(), ToolToolFakeConfigArgs{})
@@ -54309,6 +60706,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetTlsConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetTlsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetTlsConfigCaCertInput)(nil)).Elem(), ToolsetMcpToolsetTlsConfigCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetTlsConfigCaCertArrayInput)(nil)).Elem(), ToolsetMcpToolsetTlsConfigCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetToolOverrideInput)(nil)).Elem(), ToolsetMcpToolsetToolOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetToolOverrideArrayInput)(nil)).Elem(), ToolsetMcpToolsetToolOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetInput)(nil)).Elem(), ToolsetOpenApiToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationArgs{})
@@ -54353,6 +60752,18 @@ func init() {
 	pulumi.RegisterOutputType(AgentRemoteDialogflowAgentPtrOutput{})
 	pulumi.RegisterOutputType(AgentToolsetOutput{})
 	pulumi.RegisterOutputType(AgentToolsetArrayOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleArrayOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDeterministicTransferOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDeterministicTransferPtrOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDeterministicTransferExpressionConditionOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDeterministicTransferExpressionConditionPtrOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDeterministicTransferPythonCodeConditionOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDeterministicTransferPythonCodeConditionPtrOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDisablePlannerTransferOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDisablePlannerTransferPtrOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDisablePlannerTransferExpressionConditionOutput{})
+	pulumi.RegisterOutputType(AgentTransferRuleDisablePlannerTransferExpressionConditionPtrOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigPtrOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigAmbientSoundConfigOutput{})
@@ -54373,12 +60784,24 @@ func init() {
 	pulumi.RegisterOutputType(AppDefaultChannelProfilePersonaPropertyPtrOutput{})
 	pulumi.RegisterOutputType(AppDefaultChannelProfileWebWidgetConfigOutput{})
 	pulumi.RegisterOutputType(AppDefaultChannelProfileWebWidgetConfigPtrOutput{})
+	pulumi.RegisterOutputType(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsOutput{})
+	pulumi.RegisterOutputType(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsPtrOutput{})
+	pulumi.RegisterOutputType(AppDefaultChannelProfileWhatsappConfigOutput{})
+	pulumi.RegisterOutputType(AppDefaultChannelProfileWhatsappConfigPtrOutput{})
+	pulumi.RegisterOutputType(AppErrorHandlingSettingsOutput{})
+	pulumi.RegisterOutputType(AppErrorHandlingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AppErrorHandlingSettingsEndSessionConfigOutput{})
+	pulumi.RegisterOutputType(AppErrorHandlingSettingsEndSessionConfigPtrOutput{})
+	pulumi.RegisterOutputType(AppErrorHandlingSettingsFallbackResponseConfigOutput{})
+	pulumi.RegisterOutputType(AppErrorHandlingSettingsFallbackResponseConfigPtrOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsPtrOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsPtrOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsPtrOutput{})
+	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsOutput{})
+	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsOutput{})
 	pulumi.RegisterOutputType(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsPtrOutput{})
 	pulumi.RegisterOutputType(AppLanguageSettingsOutput{})
@@ -54393,6 +60816,8 @@ func init() {
 	pulumi.RegisterOutputType(AppLoggingSettingsCloudLoggingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AppLoggingSettingsConversationLoggingSettingsOutput{})
 	pulumi.RegisterOutputType(AppLoggingSettingsConversationLoggingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AppLoggingSettingsMetricAnalysisSettingsOutput{})
+	pulumi.RegisterOutputType(AppLoggingSettingsMetricAnalysisSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AppLoggingSettingsRedactionConfigOutput{})
 	pulumi.RegisterOutputType(AppLoggingSettingsRedactionConfigPtrOutput{})
 	pulumi.RegisterOutputType(AppModelSettingsOutput{})
@@ -54426,6 +60851,18 @@ func init() {
 	pulumi.RegisterOutputType(AppVersionSnapshotAgentRemoteDialogflowAgentArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAgentToolsetOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAgentToolsetArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDeterministicTransferOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDeterministicTransferArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppAudioProcessingConfigOutput{})
@@ -54448,12 +60885,22 @@ func init() {
 	pulumi.RegisterOutputType(AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppErrorHandlingSettingOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppErrorHandlingSettingArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppLanguageSettingOutput{})
@@ -54468,6 +60915,8 @@ func init() {
 	pulumi.RegisterOutputType(AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppLoggingSettingConversationLoggingSettingOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppLoggingSettingRedactionConfigOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppLoggingSettingRedactionConfigArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppModelSettingOutput{})
@@ -54478,6 +60927,8 @@ func init() {
 	pulumi.RegisterOutputType(AppVersionSnapshotAppVariableDeclarationArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppVariableDeclarationSchemaOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotAppVariableDeclarationSchemaArrayOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppVpcScSettingOutput{})
+	pulumi.RegisterOutputType(AppVersionSnapshotAppVpcScSettingArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotExampleOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotExampleArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotExampleMessageOutput{})
@@ -54622,6 +61073,8 @@ func init() {
 	pulumi.RegisterOutputType(AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArrayOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertOutput{})
 	pulumi.RegisterOutputType(AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArrayOutput{})
+	pulumi.RegisterOutputType(AppVpcScSettingsOutput{})
+	pulumi.RegisterOutputType(AppVpcScSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentChannelProfileOutput{})
 	pulumi.RegisterOutputType(DeploymentChannelProfilePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentChannelProfilePersonaPropertyOutput{})
@@ -54630,6 +61083,12 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentChannelProfileWebWidgetConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentChannelProfileWebWidgetConfigSecuritySettingsOutput{})
 	pulumi.RegisterOutputType(DeploymentChannelProfileWebWidgetConfigSecuritySettingsPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentChannelProfileWhatsappConfigOutput{})
+	pulumi.RegisterOutputType(DeploymentChannelProfileWhatsappConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentInstagramCredentialsOutput{})
+	pulumi.RegisterOutputType(DeploymentInstagramCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentWhatsappCredentialsOutput{})
+	pulumi.RegisterOutputType(DeploymentWhatsappCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(EvaluationGoldenOutput{})
 	pulumi.RegisterOutputType(EvaluationGoldenPtrOutput{})
 	pulumi.RegisterOutputType(EvaluationGoldenTurnOutput{})
@@ -54892,6 +61351,18 @@ func init() {
 	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSkillArrayOutput{})
 	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSupportedInterfaceOutput{})
 	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardSupportedInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationApiKeyConfigOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationApiKeyConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationBearerTokenConfigOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationOauthConfigOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationOauthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolArrayOutput{})
 	pulumi.RegisterOutputType(ToolToolFakeConfigOutput{})
@@ -54940,6 +61411,8 @@ func init() {
 	pulumi.RegisterOutputType(ToolsetMcpToolsetTlsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetTlsConfigCaCertOutput{})
 	pulumi.RegisterOutputType(ToolsetMcpToolsetTlsConfigCaCertArrayOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetToolOverrideOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetToolOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationOutput{})

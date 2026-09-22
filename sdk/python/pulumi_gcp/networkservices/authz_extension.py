@@ -26,6 +26,7 @@ class AuthzExtensionArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -56,6 +57,12 @@ class AuthzExtensionArgs:
                When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
                * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
                * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_attributes: List of the Envoy attributes to forward to the extension server. The attributes
+               provided here are included as part of the `ProcessingRequest.attributes` field
+               (of type `map`), where the keys are the attribute names. Refer to the
+               [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+               for the names of attributes that can be forwarded. If omitted, no attributes
+               are sent. Each element is a string indicating the attribute name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_headers: List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
                
@@ -99,6 +106,8 @@ class AuthzExtensionArgs:
             pulumi.set(__self__, "description", description)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
+        if forward_attributes is not None:
+            pulumi.set(__self__, "forward_attributes", forward_attributes)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
         if labels is not None:
@@ -210,6 +219,23 @@ class AuthzExtensionArgs:
     @fail_open.setter
     def fail_open(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fail_open", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardAttributes")
+    def forward_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of the Envoy attributes to forward to the extension server. The attributes
+        provided here are included as part of the `ProcessingRequest.attributes` field
+        (of type `map`), where the keys are the attribute names. Refer to the
+        [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+        for the names of attributes that can be forwarded. If omitted, no attributes
+        are sent. Each element is a string indicating the attribute name.
+        """
+        return pulumi.get(self, "forward_attributes")
+
+    @forward_attributes.setter
+    def forward_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "forward_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")
@@ -329,6 +355,7 @@ class _AuthzExtensionState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -358,6 +385,12 @@ class _AuthzExtensionState:
                When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
                * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
                * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_attributes: List of the Envoy attributes to forward to the extension server. The attributes
+               provided here are included as part of the `ProcessingRequest.attributes` field
+               (of type `map`), where the keys are the attribute names. Refer to the
+               [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+               for the names of attributes that can be forwarded. If omitted, no attributes
+               are sent. Each element is a string indicating the attribute name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_headers: List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
                
@@ -413,6 +446,8 @@ class _AuthzExtensionState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
+        if forward_attributes is not None:
+            pulumi.set(__self__, "forward_attributes", forward_attributes)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
         if labels is not None:
@@ -517,6 +552,23 @@ class _AuthzExtensionState:
     @fail_open.setter
     def fail_open(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fail_open", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardAttributes")
+    def forward_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of the Envoy attributes to forward to the extension server. The attributes
+        provided here are included as part of the `ProcessingRequest.attributes` field
+        (of type `map`), where the keys are the attribute names. Refer to the
+        [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+        for the names of attributes that can be forwarded. If omitted, no attributes
+        are sent. Each element is a string indicating the attribute name.
+        """
+        return pulumi.get(self, "forward_attributes")
+
+    @forward_attributes.setter
+    def forward_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "forward_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")
@@ -703,6 +755,7 @@ class AuthzExtension(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -823,6 +876,12 @@ class AuthzExtension(pulumi.CustomResource):
                When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
                * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
                * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_attributes: List of the Envoy attributes to forward to the extension server. The attributes
+               provided here are included as part of the `ProcessingRequest.attributes` field
+               (of type `map`), where the keys are the attribute names. Refer to the
+               [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+               for the names of attributes that can be forwarded. If omitted, no attributes
+               are sent. Each element is a string indicating the attribute name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_headers: List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
                
@@ -983,6 +1042,7 @@ class AuthzExtension(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1006,6 +1066,7 @@ class AuthzExtension(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["fail_open"] = fail_open
+            __props__.__dict__["forward_attributes"] = forward_attributes
             __props__.__dict__["forward_headers"] = forward_headers
             __props__.__dict__["labels"] = labels
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
@@ -1044,6 +1105,7 @@ class AuthzExtension(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+            forward_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1077,6 +1139,12 @@ class AuthzExtension(pulumi.CustomResource):
                When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
                * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
                * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_attributes: List of the Envoy attributes to forward to the extension server. The attributes
+               provided here are included as part of the `ProcessingRequest.attributes` field
+               (of type `map`), where the keys are the attribute names. Refer to the
+               [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+               for the names of attributes that can be forwarded. If omitted, no attributes
+               are sent. Each element is a string indicating the attribute name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_headers: List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
                
@@ -1130,6 +1198,7 @@ class AuthzExtension(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["fail_open"] = fail_open
+        __props__.__dict__["forward_attributes"] = forward_attributes
         __props__.__dict__["forward_headers"] = forward_headers
         __props__.__dict__["labels"] = labels
         __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
@@ -1199,6 +1268,19 @@ class AuthzExtension(pulumi.CustomResource):
         * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
         """
         return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardAttributes")
+    def forward_attributes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        List of the Envoy attributes to forward to the extension server. The attributes
+        provided here are included as part of the `ProcessingRequest.attributes` field
+        (of type `map`), where the keys are the attribute names. Refer to the
+        [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+        for the names of attributes that can be forwarded. If omitted, no attributes
+        are sent. Each element is a string indicating the attribute name.
+        """
+        return pulumi.get(self, "forward_attributes")
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")

@@ -26,6 +26,22 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _expectationLevelMetricsThresholds = value;
         }
 
+        [Input("toolMatchingSettings")]
+        private InputList<Inputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingGetArgs>? _toolMatchingSettings;
+
+        /// <summary>
+        /// (Output)
+        /// The tool matching settings. An extra tool call is a tool call that is
+        /// present in the execution but does not match any tool call in the golden
+        /// expectation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingGetArgs> ToolMatchingSettings
+        {
+            get => _toolMatchingSettings ?? (_toolMatchingSettings = new InputList<Inputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingGetArgs>());
+            set => _toolMatchingSettings = value;
+        }
+
         [Input("turnLevelMetricsThresholds")]
         private InputList<Inputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdGetArgs>? _turnLevelMetricsThresholds;
 

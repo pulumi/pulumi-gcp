@@ -19,11 +19,34 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold> GoldenEvaluationMetricsThresholds;
+        /// <summary>
+        /// (Output)
+        /// The hallucination metric behavior for golden evaluations.
+        /// Possible values:
+        /// DISABLED
+        /// ENABLED
+        /// </summary>
+        public readonly string? GoldenHallucinationMetricBehavior;
+        /// <summary>
+        /// (Output)
+        /// The hallucination metric behavior for scenario evaluations.
+        /// Possible values:
+        /// DISABLED
+        /// ENABLED
+        /// </summary>
+        public readonly string? ScenarioHallucinationMetricBehavior;
 
         [OutputConstructor]
-        private AppVersionSnapshotAppEvaluationMetricsThreshold(ImmutableArray<Outputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold> goldenEvaluationMetricsThresholds)
+        private AppVersionSnapshotAppEvaluationMetricsThreshold(
+            ImmutableArray<Outputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold> goldenEvaluationMetricsThresholds,
+
+            string? goldenHallucinationMetricBehavior,
+
+            string? scenarioHallucinationMetricBehavior)
         {
             GoldenEvaluationMetricsThresholds = goldenEvaluationMetricsThresholds;
+            GoldenHallucinationMetricBehavior = goldenHallucinationMetricBehavior;
+            ScenarioHallucinationMetricBehavior = scenarioHallucinationMetricBehavior;
         }
     }
 }

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['EnvironmentArgs', 'Environment']
 
@@ -28,10 +30,14 @@ class EnvironmentArgs:
                  location: pulumi.Input[_builtins.str],
                  retention_duration: pulumi.Input[_builtins.int],
                  aliases_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 base64_image: pulumi.Input[Optional[_builtins.str]] = None,
                  data_access_scopes_json: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 dynamic_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]]] = None,
+                 instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -49,6 +55,7 @@ class EnvironmentArgs:
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.int] retention_duration: Environment data retention in months.
         :param pulumi.Input[_builtins.str] aliases_json: Environment nicknames.
+        :param pulumi.Input[_builtins.str] base64_image: Environment icon.
         :param pulumi.Input[_builtins.str] data_access_scopes_json: data access scopes.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -57,8 +64,15 @@ class EnvironmentArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the environment. Deleting an environment will remove all its data and all playbooks, environments, integrations instances, reports and agents related to the environment. Once you delete an environment, it cannot be reversed. Deleting environments via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]] dynamic_parameters: Additional custom properties for enriching the environment.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] instance_uri: URL of the environment. Used to route UI links to the correct SIEM instance
+               when making cross-SecOps requests from SOAR.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.int] weight: The weight of the environment, enabling customers to control distribution
+               of resources between the separate environments in a single instance of
+               Chronicle SOAR.
         """
         pulumi.set(__self__, "contact", contact)
         pulumi.set(__self__, "contact_emails", contact_emails)
@@ -70,14 +84,22 @@ class EnvironmentArgs:
         pulumi.set(__self__, "retention_duration", retention_duration)
         if aliases_json is not None:
             pulumi.set(__self__, "aliases_json", aliases_json)
+        if base64_image is not None:
+            pulumi.set(__self__, "base64_image", base64_image)
         if data_access_scopes_json is not None:
             pulumi.set(__self__, "data_access_scopes_json", data_access_scopes_json)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if dynamic_parameters is not None:
+            pulumi.set(__self__, "dynamic_parameters", dynamic_parameters)
+        if instance_uri is not None:
+            pulumi.set(__self__, "instance_uri", instance_uri)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
 
     @_builtins.property
     @pulumi.getter
@@ -193,6 +215,18 @@ class EnvironmentArgs:
         pulumi.set(self, "aliases_json", value)
 
     @_builtins.property
+    @pulumi.getter(name="base64Image")
+    def base64_image(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Environment icon.
+        """
+        return pulumi.get(self, "base64_image")
+
+    @base64_image.setter
+    def base64_image(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "base64_image", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataAccessScopesJson")
     def data_access_scopes_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -234,6 +268,32 @@ class EnvironmentArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamicParameters")
+    def dynamic_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]]]:
+        """
+        Additional custom properties for enriching the environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_parameters")
+
+    @dynamic_parameters.setter
+    def dynamic_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]]]):
+        pulumi.set(self, "dynamic_parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceUri")
+    def instance_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL of the environment. Used to route UI links to the correct SIEM instance
+        when making cross-SecOps requests from SOAR.
+        """
+        return pulumi.get(self, "instance_uri")
+
+    @instance_uri.setter
+    def instance_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_uri", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -246,11 +306,26 @@ class EnvironmentArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The weight of the environment, enabling customers to control distribution
+        of resources between the separate environments in a single instance of
+        Chronicle SOAR.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "weight", value)
+
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
                  aliases_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 base64_image: pulumi.Input[Optional[_builtins.str]] = None,
                  contact: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_emails: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_phone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -259,16 +334,20 @@ class _EnvironmentState:
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]]] = None,
                  environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 retention_duration: pulumi.Input[Optional[_builtins.int]] = None):
+                 retention_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
         :param pulumi.Input[_builtins.str] aliases_json: Environment nicknames.
+        :param pulumi.Input[_builtins.str] base64_image: Environment icon.
         :param pulumi.Input[_builtins.str] contact: MAX_NAME_LENGTH = 256
                Name of the contact for the environment.
         :param pulumi.Input[_builtins.str] contact_emails: MAX_NAME_LENGTH = 256
@@ -287,8 +366,12 @@ class _EnvironmentState:
                Description of the environment.
         :param pulumi.Input[_builtins.str] display_name: Name of the environment
                MAX_NAME_LENGTH = 256
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]] dynamic_parameters: Additional custom properties for enriching the environment.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] environment_id: Id of the environment record.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] instance_uri: URL of the environment. Used to route UI links to the correct SIEM instance
+               when making cross-SecOps requests from SOAR.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique name(ID) of the Environment.
                Format:
@@ -296,9 +379,14 @@ class _EnvironmentState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] retention_duration: Environment data retention in months.
+        :param pulumi.Input[_builtins.int] weight: The weight of the environment, enabling customers to control distribution
+               of resources between the separate environments in a single instance of
+               Chronicle SOAR.
         """
         if aliases_json is not None:
             pulumi.set(__self__, "aliases_json", aliases_json)
+        if base64_image is not None:
+            pulumi.set(__self__, "base64_image", base64_image)
         if contact is not None:
             pulumi.set(__self__, "contact", contact)
         if contact_emails is not None:
@@ -315,10 +403,14 @@ class _EnvironmentState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if dynamic_parameters is not None:
+            pulumi.set(__self__, "dynamic_parameters", dynamic_parameters)
         if environment_id is not None:
             pulumi.set(__self__, "environment_id", environment_id)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
+        if instance_uri is not None:
+            pulumi.set(__self__, "instance_uri", instance_uri)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -327,6 +419,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "project", project)
         if retention_duration is not None:
             pulumi.set(__self__, "retention_duration", retention_duration)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
 
     @_builtins.property
     @pulumi.getter(name="aliasesJson")
@@ -339,6 +433,18 @@ class _EnvironmentState:
     @aliases_json.setter
     def aliases_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliases_json", value)
+
+    @_builtins.property
+    @pulumi.getter(name="base64Image")
+    def base64_image(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Environment icon.
+        """
+        return pulumi.get(self, "base64_image")
+
+    @base64_image.setter
+    def base64_image(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "base64_image", value)
 
     @_builtins.property
     @pulumi.getter
@@ -447,6 +553,19 @@ class _EnvironmentState:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamicParameters")
+    def dynamic_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]]]:
+        """
+        Additional custom properties for enriching the environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_parameters")
+
+    @dynamic_parameters.setter
+    def dynamic_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentDynamicParameterArgs']]]]):
+        pulumi.set(self, "dynamic_parameters", value)
+
+    @_builtins.property
     @pulumi.getter(name="environmentId")
     def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -469,6 +588,19 @@ class _EnvironmentState:
     @instance.setter
     def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceUri")
+    def instance_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL of the environment. Used to route UI links to the correct SIEM instance
+        when making cross-SecOps requests from SOAR.
+        """
+        return pulumi.get(self, "instance_uri")
+
+    @instance_uri.setter
+    def instance_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_uri", value)
 
     @_builtins.property
     @pulumi.getter
@@ -521,6 +653,20 @@ class _EnvironmentState:
     def retention_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_duration", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The weight of the environment, enabling customers to control distribution
+        of resources between the separate environments in a single instance of
+        Chronicle SOAR.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "weight", value)
+
 
 @pulumi.type_token("gcp:chronicle/environment:Environment")
 class Environment(pulumi.CustomResource):
@@ -529,6 +675,7 @@ class Environment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliases_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 base64_image: pulumi.Input[Optional[_builtins.str]] = None,
                  contact: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_emails: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_phone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -537,10 +684,13 @@ class Environment(pulumi.CustomResource):
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentDynamicParameterArgs', 'EnvironmentDynamicParameterArgsDict', 'outputs.EnvironmentDynamicParameter']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         An environment is logical container for different networks or customers that are managed by the SOC or MSSP. This is useful for SOCs who provide services to several different networks, customers or business units within the organization. The Platform comes with a predefined environment named Default Environment.
@@ -571,6 +721,13 @@ class Environment(pulumi.CustomResource):
             aliases_json=json.dumps([]),
             data_access_scopes_json=json.dumps([]),
             retention_duration=3,
+            base64_image="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=",
+            dynamic_parameters=[{
+                "dynamic_parameter_id": 123,
+                "value": "value1",
+            }],
+            instance_uri="https://test.backstory.chronicle.security?foo=bar",
+            weight=1,
             deletion_protection=False)
         ```
 
@@ -594,6 +751,7 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aliases_json: Environment nicknames.
+        :param pulumi.Input[_builtins.str] base64_image: Environment icon.
         :param pulumi.Input[_builtins.str] contact: MAX_NAME_LENGTH = 256
                Name of the contact for the environment.
         :param pulumi.Input[_builtins.str] contact_emails: MAX_NAME_LENGTH = 256
@@ -612,11 +770,18 @@ class Environment(pulumi.CustomResource):
                Description of the environment.
         :param pulumi.Input[_builtins.str] display_name: Name of the environment
                MAX_NAME_LENGTH = 256
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentDynamicParameterArgs', 'EnvironmentDynamicParameterArgsDict', 'outputs.EnvironmentDynamicParameter']]]] dynamic_parameters: Additional custom properties for enriching the environment.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] instance_uri: URL of the environment. Used to route UI links to the correct SIEM instance
+               when making cross-SecOps requests from SOAR.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] retention_duration: Environment data retention in months.
+        :param pulumi.Input[_builtins.int] weight: The weight of the environment, enabling customers to control distribution
+               of resources between the separate environments in a single instance of
+               Chronicle SOAR.
         """
         ...
     @overload
@@ -653,6 +818,13 @@ class Environment(pulumi.CustomResource):
             aliases_json=json.dumps([]),
             data_access_scopes_json=json.dumps([]),
             retention_duration=3,
+            base64_image="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=",
+            dynamic_parameters=[{
+                "dynamic_parameter_id": 123,
+                "value": "value1",
+            }],
+            instance_uri="https://test.backstory.chronicle.security?foo=bar",
+            weight=1,
             deletion_protection=False)
         ```
 
@@ -689,6 +861,7 @@ class Environment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliases_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 base64_image: pulumi.Input[Optional[_builtins.str]] = None,
                  contact: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_emails: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_phone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -697,10 +870,13 @@ class Environment(pulumi.CustomResource):
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentDynamicParameterArgs', 'EnvironmentDynamicParameterArgsDict', 'outputs.EnvironmentDynamicParameter']]]]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -711,6 +887,7 @@ class Environment(pulumi.CustomResource):
             __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
             __props__.__dict__["aliases_json"] = aliases_json
+            __props__.__dict__["base64_image"] = base64_image
             if contact is None and not opts.urn:
                 raise TypeError("Missing required property 'contact'")
             __props__.__dict__["contact"] = contact
@@ -729,9 +906,11 @@ class Environment(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["dynamic_parameters"] = dynamic_parameters
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
+            __props__.__dict__["instance_uri"] = instance_uri
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -739,6 +918,7 @@ class Environment(pulumi.CustomResource):
             if retention_duration is None and not opts.urn:
                 raise TypeError("Missing required property 'retention_duration'")
             __props__.__dict__["retention_duration"] = retention_duration
+            __props__.__dict__["weight"] = weight
             __props__.__dict__["environment_id"] = None
             __props__.__dict__["name"] = None
         super(Environment, __self__).__init__(
@@ -752,6 +932,7 @@ class Environment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aliases_json: pulumi.Input[Optional[_builtins.str]] = None,
+            base64_image: pulumi.Input[Optional[_builtins.str]] = None,
             contact: pulumi.Input[Optional[_builtins.str]] = None,
             contact_emails: pulumi.Input[Optional[_builtins.str]] = None,
             contact_phone: pulumi.Input[Optional[_builtins.str]] = None,
@@ -760,12 +941,15 @@ class Environment(pulumi.CustomResource):
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentDynamicParameterArgs', 'EnvironmentDynamicParameterArgsDict', 'outputs.EnvironmentDynamicParameter']]]]] = None,
             environment_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_uri: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            retention_duration: pulumi.Input[Optional[_builtins.int]] = None) -> 'Environment':
+            retention_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -774,6 +958,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aliases_json: Environment nicknames.
+        :param pulumi.Input[_builtins.str] base64_image: Environment icon.
         :param pulumi.Input[_builtins.str] contact: MAX_NAME_LENGTH = 256
                Name of the contact for the environment.
         :param pulumi.Input[_builtins.str] contact_emails: MAX_NAME_LENGTH = 256
@@ -792,8 +977,12 @@ class Environment(pulumi.CustomResource):
                Description of the environment.
         :param pulumi.Input[_builtins.str] display_name: Name of the environment
                MAX_NAME_LENGTH = 256
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentDynamicParameterArgs', 'EnvironmentDynamicParameterArgsDict', 'outputs.EnvironmentDynamicParameter']]]] dynamic_parameters: Additional custom properties for enriching the environment.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] environment_id: Id of the environment record.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] instance_uri: URL of the environment. Used to route UI links to the correct SIEM instance
+               when making cross-SecOps requests from SOAR.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique name(ID) of the Environment.
                Format:
@@ -801,12 +990,16 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] retention_duration: Environment data retention in months.
+        :param pulumi.Input[_builtins.int] weight: The weight of the environment, enabling customers to control distribution
+               of resources between the separate environments in a single instance of
+               Chronicle SOAR.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _EnvironmentState.__new__(_EnvironmentState)
 
         __props__.__dict__["aliases_json"] = aliases_json
+        __props__.__dict__["base64_image"] = base64_image
         __props__.__dict__["contact"] = contact
         __props__.__dict__["contact_emails"] = contact_emails
         __props__.__dict__["contact_phone"] = contact_phone
@@ -815,12 +1008,15 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["dynamic_parameters"] = dynamic_parameters
         __props__.__dict__["environment_id"] = environment_id
         __props__.__dict__["instance"] = instance
+        __props__.__dict__["instance_uri"] = instance_uri
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["retention_duration"] = retention_duration
+        __props__.__dict__["weight"] = weight
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -830,6 +1026,14 @@ class Environment(pulumi.CustomResource):
         Environment nicknames.
         """
         return pulumi.get(self, "aliases_json")
+
+    @_builtins.property
+    @pulumi.getter(name="base64Image")
+    def base64_image(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Environment icon.
+        """
+        return pulumi.get(self, "base64_image")
 
     @_builtins.property
     @pulumi.getter
@@ -906,6 +1110,15 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @_builtins.property
+    @pulumi.getter(name="dynamicParameters")
+    def dynamic_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.EnvironmentDynamicParameter']]]:
+        """
+        Additional custom properties for enriching the environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_parameters")
+
+    @_builtins.property
     @pulumi.getter(name="environmentId")
     def environment_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -920,6 +1133,15 @@ class Environment(pulumi.CustomResource):
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "instance")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceUri")
+    def instance_uri(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        URL of the environment. Used to route UI links to the correct SIEM instance
+        when making cross-SecOps requests from SOAR.
+        """
+        return pulumi.get(self, "instance_uri")
 
     @_builtins.property
     @pulumi.getter
@@ -955,4 +1177,14 @@ class Environment(pulumi.CustomResource):
         Environment data retention in months.
         """
         return pulumi.get(self, "retention_duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The weight of the environment, enabling customers to control distribution
+        of resources between the separate environments in a single instance of
+        Chronicle SOAR.
+        """
+        return pulumi.get(self, "weight")
 

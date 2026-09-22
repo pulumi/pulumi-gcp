@@ -76,6 +76,21 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The etag for the version of the ServicePerimeter that this request is based on.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return The etag for the version of the ServicePerimeter that this request is based on.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -267,6 +282,7 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
+        this.etag = $.etag;
         this.name = $.name;
         this.parent = $.parent;
         this.perimeterType = $.perimeterType;
@@ -368,6 +384,27 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param etag The etag for the version of the ServicePerimeter that this request is based on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag The etag for the version of the ServicePerimeter that this request is based on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
         }
 
         /**

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -32,6 +34,13 @@ import * as utilities from "../utilities";
  *     aliasesJson: JSON.stringify([]),
  *     dataAccessScopesJson: JSON.stringify([]),
  *     retentionDuration: 3,
+ *     base64Image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=",
+ *     dynamicParameters: [{
+ *         dynamicParameterId: 123,
+ *         value: "value1",
+ *     }],
+ *     instanceUri: "https://test.backstory.chronicle.security?foo=bar",
+ *     weight: 1,
  *     deletionProtection: false,
  * });
  * ```
@@ -85,6 +94,10 @@ export class Environment extends pulumi.CustomResource {
      */
     declare public readonly aliasesJson: pulumi.Output<string | undefined>;
     /**
+     * Environment icon.
+     */
+    declare public readonly base64Image: pulumi.Output<string | undefined>;
+    /**
      * MAX_NAME_LENGTH = 256
      * Name of the contact for the environment.
      */
@@ -127,6 +140,11 @@ export class Environment extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
+     * Additional custom properties for enriching the environment.
+     * Structure is documented below.
+     */
+    declare public readonly dynamicParameters: pulumi.Output<outputs.chronicle.EnvironmentDynamicParameter[] | undefined>;
+    /**
      * Id of the environment record.
      */
     declare public /*out*/ readonly environmentId: pulumi.Output<string>;
@@ -134,6 +152,11 @@ export class Environment extends pulumi.CustomResource {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     declare public readonly instance: pulumi.Output<string>;
+    /**
+     * URL of the environment. Used to route UI links to the correct SIEM instance
+     * when making cross-SecOps requests from SOAR.
+     */
+    declare public readonly instanceUri: pulumi.Output<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -153,6 +176,12 @@ export class Environment extends pulumi.CustomResource {
      * Environment data retention in months.
      */
     declare public readonly retentionDuration: pulumi.Output<number>;
+    /**
+     * The weight of the environment, enabling customers to control distribution
+     * of resources between the separate environments in a single instance of
+     * Chronicle SOAR.
+     */
+    declare public readonly weight: pulumi.Output<number | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -168,6 +197,7 @@ export class Environment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
             resourceInputs["aliasesJson"] = state?.aliasesJson;
+            resourceInputs["base64Image"] = state?.base64Image;
             resourceInputs["contact"] = state?.contact;
             resourceInputs["contactEmails"] = state?.contactEmails;
             resourceInputs["contactPhone"] = state?.contactPhone;
@@ -176,12 +206,15 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["dynamicParameters"] = state?.dynamicParameters;
             resourceInputs["environmentId"] = state?.environmentId;
             resourceInputs["instance"] = state?.instance;
+            resourceInputs["instanceUri"] = state?.instanceUri;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["retentionDuration"] = state?.retentionDuration;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
             if (args?.contact === undefined && !opts.urn) {
@@ -209,6 +242,7 @@ export class Environment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'retentionDuration'");
             }
             resourceInputs["aliasesJson"] = args?.aliasesJson;
+            resourceInputs["base64Image"] = args?.base64Image;
             resourceInputs["contact"] = args?.contact;
             resourceInputs["contactEmails"] = args?.contactEmails;
             resourceInputs["contactPhone"] = args?.contactPhone;
@@ -217,10 +251,13 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["dynamicParameters"] = args?.dynamicParameters;
             resourceInputs["instance"] = args?.instance;
+            resourceInputs["instanceUri"] = args?.instanceUri;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["retentionDuration"] = args?.retentionDuration;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -237,6 +274,10 @@ export interface EnvironmentState {
      * Environment nicknames.
      */
     aliasesJson?: pulumi.Input<string | undefined>;
+    /**
+     * Environment icon.
+     */
+    base64Image?: pulumi.Input<string | undefined>;
     /**
      * MAX_NAME_LENGTH = 256
      * Name of the contact for the environment.
@@ -280,6 +321,11 @@ export interface EnvironmentState {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
+     * Additional custom properties for enriching the environment.
+     * Structure is documented below.
+     */
+    dynamicParameters?: pulumi.Input<pulumi.Input<inputs.chronicle.EnvironmentDynamicParameter>[] | undefined>;
+    /**
      * Id of the environment record.
      */
     environmentId?: pulumi.Input<string | undefined>;
@@ -287,6 +333,11 @@ export interface EnvironmentState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     instance?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the environment. Used to route UI links to the correct SIEM instance
+     * when making cross-SecOps requests from SOAR.
+     */
+    instanceUri?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -306,6 +357,12 @@ export interface EnvironmentState {
      * Environment data retention in months.
      */
     retentionDuration?: pulumi.Input<number | undefined>;
+    /**
+     * The weight of the environment, enabling customers to control distribution
+     * of resources between the separate environments in a single instance of
+     * Chronicle SOAR.
+     */
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -316,6 +373,10 @@ export interface EnvironmentArgs {
      * Environment nicknames.
      */
     aliasesJson?: pulumi.Input<string | undefined>;
+    /**
+     * Environment icon.
+     */
+    base64Image?: pulumi.Input<string | undefined>;
     /**
      * MAX_NAME_LENGTH = 256
      * Name of the contact for the environment.
@@ -359,9 +420,19 @@ export interface EnvironmentArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * Additional custom properties for enriching the environment.
+     * Structure is documented below.
+     */
+    dynamicParameters?: pulumi.Input<pulumi.Input<inputs.chronicle.EnvironmentDynamicParameter>[] | undefined>;
+    /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     instance: pulumi.Input<string>;
+    /**
+     * URL of the environment. Used to route UI links to the correct SIEM instance
+     * when making cross-SecOps requests from SOAR.
+     */
+    instanceUri?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -375,4 +446,10 @@ export interface EnvironmentArgs {
      * Environment data retention in months.
      */
     retentionDuration: pulumi.Input<number>;
+    /**
+     * The weight of the environment, enabling customers to control distribution
+     * of resources between the separate environments in a single instance of
+     * Chronicle SOAR.
+     */
+    weight?: pulumi.Input<number | undefined>;
 }

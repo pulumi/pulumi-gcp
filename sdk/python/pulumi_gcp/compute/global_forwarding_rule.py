@@ -131,7 +131,7 @@ class GlobalForwardingRuleArgs:
         :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
@@ -450,7 +450,7 @@ class GlobalForwardingRuleArgs:
         Specifies the forwarding rule type.
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-        Default value is `EXTERNAL`.
+        Default value is `EXTERNAL_MANAGED`.
         Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
@@ -760,7 +760,7 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
@@ -1139,7 +1139,7 @@ class _GlobalForwardingRuleState:
         Specifies the forwarding rule type.
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-        Default value is `EXTERNAL`.
+        Default value is `EXTERNAL_MANAGED`.
         Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
@@ -1447,17 +1447,20 @@ class GlobalForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="check-backend",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=default_http_health_check.id)
+            health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map-target-proxy",
             description="a description",
@@ -1876,7 +1879,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict', 'outputs.GlobalForwardingRuleMetadataFilter']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
@@ -1985,17 +1988,20 @@ class GlobalForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="check-backend",
-            request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "request_path": "/",
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=default_http_health_check.id)
+            health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
             name="url-map-target-proxy",
             description="a description",
@@ -2541,7 +2547,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-               Default value is `EXTERNAL`.
+               Default value is `EXTERNAL_MANAGED`.
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict', 'outputs.GlobalForwardingRuleMetadataFilter']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
@@ -2844,7 +2850,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         Specifies the forwarding rule type.
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-        Default value is `EXTERNAL`.
+        Default value is `EXTERNAL_MANAGED`.
         Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")

@@ -26,6 +26,26 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _goldenEvaluationMetricsThresholds = value;
         }
 
+        /// <summary>
+        /// (Output)
+        /// The hallucination metric behavior for golden evaluations.
+        /// Possible values:
+        /// DISABLED
+        /// ENABLED
+        /// </summary>
+        [Input("goldenHallucinationMetricBehavior")]
+        public Input<string>? GoldenHallucinationMetricBehavior { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// The hallucination metric behavior for scenario evaluations.
+        /// Possible values:
+        /// DISABLED
+        /// ENABLED
+        /// </summary>
+        [Input("scenarioHallucinationMetricBehavior")]
+        public Input<string>? ScenarioHallucinationMetricBehavior { get; set; }
+
         public AppVersionSnapshotAppEvaluationMetricsThresholdArgs()
         {
         }

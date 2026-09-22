@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.ConfigDeployment
         /// Location for Cloud Build logs and artifacts.
         /// </summary>
         [Output("artifactsGcsBucket")]
-        public Output<string?> ArtifactsGcsBucket { get; private set; } = null!;
+        public Output<string> ArtifactsGcsBucket { get; private set; } = null!;
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The cluster configuration.
+        /// Required. The cluster configuration. Structure is documented below.
         /// </summary>
         [Input("config", required: true)]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigArgs> Config { get; set; } = null!;

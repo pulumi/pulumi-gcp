@@ -8,14 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Hive Tables in BigLake Metastore that exist within a Hive Catalog and Database.
-//
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
 //
 // ## Example Usage
 //
@@ -28,8 +25,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -149,14 +146,14 @@ import (
 //
 // HiveTable can be imported using any of these accepted formats:
 //
-// * `hive/v1beta/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}`
+// * `hive/v1/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}`
 // * `{{project}}/{{catalog}}/{{database}}/{{name}}`
 // * `{{catalog}}/{{database}}/{{name}}`
 //
 // When using the `pulumi import` command, HiveTable can be imported using one of the formats above. For example:
 //
 // ```sh
-// $ pulumi import gcp:biglake/hiveTable:HiveTable default hive/v1beta/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}
+// $ pulumi import gcp:biglake/hiveTable:HiveTable default hive/v1/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}
 // $ pulumi import gcp:biglake/hiveTable:HiveTable default {{project}}/{{catalog}}/{{database}}/{{name}}
 // $ pulumi import gcp:biglake/hiveTable:HiveTable default {{catalog}}/{{database}}/{{name}}
 // ```

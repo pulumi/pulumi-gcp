@@ -14,19 +14,23 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig
     {
         /// <summary>
-        /// Optional. The Compute Engine accelerator configuration for these instances.
+        /// The Compute Engine accelerator configuration for these instances. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator> Accelerators;
         /// <summary>
-        /// Optional. Disk option config settings.
+        /// Disk option config settings. Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig? DiskConfig;
         /// <summary>
-        /// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[ProjectId]/global/images/[image-id]` * `projects/[ProjectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[ProjectId]/global/images/family/[custom-image-family-name]` * `projects/[ProjectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        /// The Compute Engine image resource used for cluster instances.
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Output only. The list of instance names. Dataproc derives the names from `ClusterName`, `NumInstances`, and the instance group.
+        /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy? InstanceFlexibilityPolicy;
+        /// <summary>
+        /// Output only. The list of instance names.
         /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
@@ -34,23 +38,23 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly bool? IsPreemptible;
         /// <summary>
-        /// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[ProjectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[ProjectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        /// The Compute Engine machine type used for cluster instances.
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
-        /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        /// Output only. The config for Compute Engine Instance Group Manager that manages this group.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> ManagedGroupConfigs;
         /// <summary>
-        /// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc &gt; Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        /// The minimum CPU platform and architecture for the cluster.
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
-        /// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) MasterConfig groups, **must be set to 3**. For standard cluster MasterConfig groups, **must be set to 1**.
+        /// The number of worker instances in the cluster.
         /// </summary>
         public readonly int? NumInstances;
         /// <summary>
-        /// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        /// Specifies the preemptibility of the secondary worker group.
         /// </summary>
         public readonly string? Preemptibility;
 
@@ -61,6 +65,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig? diskConfig,
 
             string? image,
+
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy? instanceFlexibilityPolicy,
 
             ImmutableArray<string> instanceNames,
 
@@ -79,6 +85,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Accelerators = accelerators;
             DiskConfig = diskConfig;
             Image = image;
+            InstanceFlexibilityPolicy = instanceFlexibilityPolicy;
             InstanceNames = instanceNames;
             IsPreemptible = isPreemptible;
             MachineType = machineType;

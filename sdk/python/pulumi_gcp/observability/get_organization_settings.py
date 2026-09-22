@@ -115,9 +115,6 @@ def get_organization_settings(location: Optional[_builtins.str] = None,
     * How-to Guides
         * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
 
-    > **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
-
     ## Example Usage
 
     ### Observability Organization Settings Basic
@@ -159,9 +156,6 @@ def get_organization_settings_output(location: pulumi.Input[Optional[_builtins.s
     * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
     * How-to Guides
         * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-
-    > **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
 
     ## Example Usage
 

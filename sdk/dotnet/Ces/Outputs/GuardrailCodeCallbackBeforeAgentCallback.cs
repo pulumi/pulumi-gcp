@@ -23,6 +23,15 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
+        /// If enabled, the callback will also be executed on intermediate model
+        /// outputs. This setting only affects after model callback.
+        /// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        /// executed after receiving all model responses. Enabling proactive execution
+        /// may have negative implication on the execution cost and latency, and
+        /// should only be enabled in rare situations.
+        /// </summary>
+        public readonly bool? ProactiveExecutionEnabled;
+        /// <summary>
         /// The python code to execute for the callback.
         /// </summary>
         public readonly string PythonCode;
@@ -33,10 +42,13 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             bool? disabled,
 
+            bool? proactiveExecutionEnabled,
+
             string pythonCode)
         {
             Description = description;
             Disabled = disabled;
+            ProactiveExecutionEnabled = proactiveExecutionEnabled;
             PythonCode = pythonCode;
         }
     }

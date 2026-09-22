@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,8 +36,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -47,7 +47,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_35305"),
+//				DataProductId: pulumi.String("tf-test-dp-_62793"),
 //				DisplayName:   pulumi.String("Parent Data Product"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -58,7 +58,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_62793@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_55438@example.com"),
 //						},
 //					},
 //				},
@@ -68,7 +68,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__55438"),
+//				DatasetId: pulumi.String("tf_test_dataset__32706"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -102,8 +102,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -113,7 +113,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_32706"),
+//				DataProductId: pulumi.String("tf-test-dp-_49082"),
 //				DisplayName:   pulumi.String("Full Example Parent DP"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -142,7 +142,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__49082"),
+//				DatasetId: pulumi.String("tf_test_dataset__60365"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {

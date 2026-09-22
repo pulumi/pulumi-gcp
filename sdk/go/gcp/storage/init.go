@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +51,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultObjectAccessControl{}
 	case "gcp:storage/folder:Folder":
 		r = &Folder{}
+	case "gcp:storage/ftpServer:FtpServer":
+		r = &FtpServer{}
+	case "gcp:storage/ftpUser:FtpUser":
+		r = &FtpUser{}
 	case "gcp:storage/hmacKey:HmacKey":
 		r = &HmacKey{}
 	case "gcp:storage/insightsDatasetConfig:InsightsDatasetConfig":
@@ -161,6 +165,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/folder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/ftpServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/ftpUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

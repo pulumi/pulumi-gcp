@@ -4705,7 +4705,6 @@ class GetDataSourceReferencesDataSourceReferenceResult(dict):
         :param _builtins.str gcp_resource_name: The GCP resource name for the data source.
         :param _builtins.str last_backup_state: The state of the last backup.
         :param _builtins.str last_successful_backup_time: The last time a successful backup was made.
-        :param _builtins.str resource_type: The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
         """
         pulumi.set(__self__, "backup_config_state", backup_config_state)
         pulumi.set(__self__, "backup_count", backup_count)
@@ -4772,9 +4771,6 @@ class GetDataSourceReferencesDataSourceReferenceResult(dict):
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> _builtins.str:
-        """
-        The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
-        """
         return pulumi.get(self, "resource_type")
 
 

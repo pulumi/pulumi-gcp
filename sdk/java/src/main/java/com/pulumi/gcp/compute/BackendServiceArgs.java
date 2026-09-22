@@ -446,7 +446,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
@@ -458,7 +458,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
@@ -1567,7 +1567,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          * external load balancing. A backend service created for one type of
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-         * Default value is `EXTERNAL`.
+         * Default value is `EXTERNAL_MANAGED`.
          * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
          * 
          * @return builder
@@ -1583,7 +1583,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          * external load balancing. A backend service created for one type of
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-         * Default value is `EXTERNAL`.
+         * Default value is `EXTERNAL_MANAGED`.
          * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
          * 
          * @return builder

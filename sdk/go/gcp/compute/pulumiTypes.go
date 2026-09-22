@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27268,6 +27268,8 @@ type InstanceAdvancedMachineFeatures struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
@@ -27294,6 +27296,8 @@ type InstanceAdvancedMachineFeaturesArgs struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
@@ -27391,6 +27395,8 @@ func (o InstanceAdvancedMachineFeaturesOutput) EnableUefiNetworking() pulumi.Boo
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -27455,6 +27461,8 @@ func (o InstanceAdvancedMachineFeaturesPtrOutput) EnableUefiNetworking() pulumi.
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceAdvancedMachineFeatures) *string {
 		if v == nil {
@@ -47706,6 +47714,8 @@ type InstanceTemplateAdvancedMachineFeatures struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
@@ -47732,6 +47742,8 @@ type InstanceTemplateAdvancedMachineFeaturesArgs struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
@@ -47829,6 +47841,8 @@ func (o InstanceTemplateAdvancedMachineFeaturesOutput) EnableUefiNetworking() pu
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceTemplateAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -47893,6 +47907,8 @@ func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) EnableUefiNetworking()
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplateAdvancedMachineFeatures) *string {
 		if v == nil {
@@ -55599,13 +55615,6 @@ func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArrayOutpu
 }
 
 type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone struct {
-	// (Output, Deprecated)
-	// URLs of Attachments in the given zone, to the given
-	// region, on Interconnects in the given facility and metro. Every
-	// Attachment in the AG has such an entry.
-	//
-	// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-	Attachment []string `pulumi:"attachment"`
 	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
 	// strings. Users are encouraged, but not required, to use their preferred
 	// format for resource links as keys.
@@ -55632,13 +55641,6 @@ type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneInput int
 }
 
 type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs struct {
-	// (Output, Deprecated)
-	// URLs of Attachments in the given zone, to the given
-	// region, on Interconnects in the given facility and metro. Every
-	// Attachment in the AG has such an entry.
-	//
-	// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-	Attachment pulumi.StringArrayInput `pulumi:"attachment"`
 	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
 	// strings. Users are encouraged, but not required, to use their preferred
 	// format for resource links as keys.
@@ -55702,18 +55704,6 @@ func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput
 
 func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput) ToInterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutputWithContext(ctx context.Context) InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput {
 	return o
-}
-
-// (Output, Deprecated)
-// URLs of Attachments in the given zone, to the given
-// region, on Interconnects in the given facility and metro. Every
-// Attachment in the AG has such an entry.
-//
-// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput) Attachment() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone) []string {
-		return v.Attachment
-	}).(pulumi.StringArrayOutput)
 }
 
 // Attachments in the AttachmentGroup. Keys are arbitrary user-specified
@@ -86922,6 +86912,8 @@ type RegionInstanceTemplateAdvancedMachineFeatures struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
@@ -86948,6 +86940,8 @@ type RegionInstanceTemplateAdvancedMachineFeaturesArgs struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
@@ -87045,6 +87039,8 @@ func (o RegionInstanceTemplateAdvancedMachineFeaturesOutput) EnableUefiNetworkin
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o RegionInstanceTemplateAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -87109,6 +87105,8 @@ func (o RegionInstanceTemplateAdvancedMachineFeaturesPtrOutput) EnableUefiNetwor
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o RegionInstanceTemplateAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateAdvancedMachineFeatures) *string {
 		if v == nil {

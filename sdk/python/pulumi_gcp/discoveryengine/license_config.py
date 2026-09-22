@@ -30,6 +30,7 @@ class LicenseConfigArgs:
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  end_date: pulumi.Input[Optional['LicenseConfigEndDateArgs']] = None,
                  free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_user_update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LicenseConfig resource.
@@ -48,6 +49,7 @@ class LicenseConfigArgs:
         :param pulumi.Input['LicenseConfigEndDateArgs'] end_date: The planned end date.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] free_trial: Whether the license config is for free trial.
+        :param pulumi.Input[_builtins.str] last_user_update_time: Timestamp of the most recent user-initiated update.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -63,6 +65,8 @@ class LicenseConfigArgs:
             pulumi.set(__self__, "end_date", end_date)
         if free_trial is not None:
             pulumi.set(__self__, "free_trial", free_trial)
+        if last_user_update_time is not None:
+            pulumi.set(__self__, "last_user_update_time", last_user_update_time)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -180,6 +184,18 @@ class LicenseConfigArgs:
         pulumi.set(self, "free_trial", value)
 
     @_builtins.property
+    @pulumi.getter(name="lastUserUpdateTime")
+    def last_user_update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp of the most recent user-initiated update.
+        """
+        return pulumi.get(self, "last_user_update_time")
+
+    @last_user_update_time.setter
+    def last_user_update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "last_user_update_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -199,6 +215,7 @@ class _LicenseConfigState:
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  end_date: pulumi.Input[Optional['LicenseConfigEndDateArgs']] = None,
                  free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_user_update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  license_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -214,6 +231,7 @@ class _LicenseConfigState:
         :param pulumi.Input['LicenseConfigEndDateArgs'] end_date: The planned end date.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] free_trial: Whether the license config is for free trial.
+        :param pulumi.Input[_builtins.str] last_user_update_time: Timestamp of the most recent user-initiated update.
         :param pulumi.Input[_builtins.str] license_config_id: The unique id of the license config.
         :param pulumi.Input[_builtins.int] license_count: Number of licenses purchased.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -235,6 +253,8 @@ class _LicenseConfigState:
             pulumi.set(__self__, "end_date", end_date)
         if free_trial is not None:
             pulumi.set(__self__, "free_trial", free_trial)
+        if last_user_update_time is not None:
+            pulumi.set(__self__, "last_user_update_time", last_user_update_time)
         if license_config_id is not None:
             pulumi.set(__self__, "license_config_id", license_config_id)
         if license_count is not None:
@@ -288,6 +308,18 @@ class _LicenseConfigState:
     @free_trial.setter
     def free_trial(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "free_trial", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastUserUpdateTime")
+    def last_user_update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp of the most recent user-initiated update.
+        """
+        return pulumi.get(self, "last_user_update_time")
+
+    @last_user_update_time.setter
+    def last_user_update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "last_user_update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseConfigId")
@@ -401,6 +433,7 @@ class LicenseConfig(pulumi.CustomResource):
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']]] = None,
                  free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_user_update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  license_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -465,6 +498,7 @@ class LicenseConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']] end_date: The planned end date.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] free_trial: Whether the license config is for free trial.
+        :param pulumi.Input[_builtins.str] last_user_update_time: Timestamp of the most recent user-initiated update.
         :param pulumi.Input[_builtins.str] license_config_id: The unique id of the license config.
         :param pulumi.Input[_builtins.int] license_count: Number of licenses purchased.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -552,6 +586,7 @@ class LicenseConfig(pulumi.CustomResource):
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']]] = None,
                  free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_user_update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  license_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -571,6 +606,7 @@ class LicenseConfig(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["end_date"] = end_date
             __props__.__dict__["free_trial"] = free_trial
+            __props__.__dict__["last_user_update_time"] = last_user_update_time
             if license_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'license_config_id'")
             __props__.__dict__["license_config_id"] = license_config_id
@@ -604,6 +640,7 @@ class LicenseConfig(pulumi.CustomResource):
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']]] = None,
             free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_user_update_time: pulumi.Input[Optional[_builtins.str]] = None,
             license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
             license_count: pulumi.Input[Optional[_builtins.int]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -623,6 +660,7 @@ class LicenseConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict', 'outputs.LicenseConfigEndDate']] end_date: The planned end date.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] free_trial: Whether the license config is for free trial.
+        :param pulumi.Input[_builtins.str] last_user_update_time: Timestamp of the most recent user-initiated update.
         :param pulumi.Input[_builtins.str] license_config_id: The unique id of the license config.
         :param pulumi.Input[_builtins.int] license_count: Number of licenses purchased.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -645,6 +683,7 @@ class LicenseConfig(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["end_date"] = end_date
         __props__.__dict__["free_trial"] = free_trial
+        __props__.__dict__["last_user_update_time"] = last_user_update_time
         __props__.__dict__["license_config_id"] = license_config_id
         __props__.__dict__["license_count"] = license_count
         __props__.__dict__["location"] = location
@@ -679,6 +718,14 @@ class LicenseConfig(pulumi.CustomResource):
         Whether the license config is for free trial.
         """
         return pulumi.get(self, "free_trial")
+
+    @_builtins.property
+    @pulumi.getter(name="lastUserUpdateTime")
+    def last_user_update_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Timestamp of the most recent user-initiated update.
+        """
+        return pulumi.get(self, "last_user_update_time")
 
     @_builtins.property
     @pulumi.getter(name="licenseConfigId")

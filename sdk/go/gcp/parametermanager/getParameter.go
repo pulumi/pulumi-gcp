@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,6 +71,7 @@ type LookupParameterResult struct {
 	PolicyMembers []GetParameterPolicyMember `pulumi:"policyMembers"`
 	Project       *string                    `pulumi:"project"`
 	PulumiLabels  map[string]string          `pulumi:"pulumiLabels"`
+	Tags          map[string]string          `pulumi:"tags"`
 	UpdateTime    string                     `pulumi:"updateTime"`
 }
 
@@ -153,6 +154,10 @@ func (o LookupParameterResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupParameterResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupParameterResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupParameterResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupParameterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupParameterResultOutput) UpdateTime() pulumi.StringOutput {

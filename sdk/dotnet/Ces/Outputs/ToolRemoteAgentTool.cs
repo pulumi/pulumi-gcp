@@ -21,6 +21,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly ImmutableArray<Outputs.ToolRemoteAgentToolAgentCard> AgentCards;
         /// <summary>
         /// (Output)
+        /// Authentication information required for calling the remote agent.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ToolRemoteAgentToolApiAuthentication> ApiAuthentications;
+        /// <summary>
+        /// (Output)
         /// The description of the system tool.
         /// </summary>
         public readonly string? Description;
@@ -34,11 +40,14 @@ namespace Pulumi.Gcp.Ces.Outputs
         private ToolRemoteAgentTool(
             ImmutableArray<Outputs.ToolRemoteAgentToolAgentCard> agentCards,
 
+            ImmutableArray<Outputs.ToolRemoteAgentToolApiAuthentication> apiAuthentications,
+
             string? description,
 
             string? name)
         {
             AgentCards = agentCards;
+            ApiAuthentications = apiAuthentications;
             Description = description;
             Name = name;
         }

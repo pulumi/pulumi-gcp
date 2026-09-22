@@ -21,6 +21,15 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly double? OverallToolInvocationCorrectnessThreshold;
         /// <summary>
         /// (Output)
+        /// The semantic similarity channel to use for evaluation.
+        /// Possible values:
+        /// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+        /// TEXT
+        /// AUDIO
+        /// </summary>
+        public readonly string? SemanticSimilarityChannel;
+        /// <summary>
+        /// (Output)
         /// The success threshold for semantic similarity. Must be an integer
         /// between 0 and 4. Default is &gt;= 3.
         /// </summary>
@@ -30,9 +39,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         private AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold(
             double? overallToolInvocationCorrectnessThreshold,
 
+            string? semanticSimilarityChannel,
+
             int? semanticSimilaritySuccessThreshold)
         {
             OverallToolInvocationCorrectnessThreshold = overallToolInvocationCorrectnessThreshold;
+            SemanticSimilarityChannel = semanticSimilarityChannel;
             SemanticSimilaritySuccessThreshold = semanticSimilaritySuccessThreshold;
         }
     }

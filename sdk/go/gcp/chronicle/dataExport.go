@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,9 +31,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_56730"),
+//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_95154"),
 //				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("us"),
 //				ForceDestroy: pulumi.Bool(true),
@@ -81,9 +81,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_95154"),
+//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_64336"),
 //				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("us"),
 //				ForceDestroy: pulumi.Bool(true),

@@ -4,7 +4,6 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,10 +28,10 @@ public final class DataTransferConfigSensitiveParams {
      */
     private @Nullable String secretAccessKeyWo;
     /**
-     * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * @return Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
-    private @Nullable Integer secretAccessKeyWoVersion;
+    private @Nullable String secretAccessKeyWoVersion;
 
     private DataTransferConfigSensitiveParams() {}
     /**
@@ -56,10 +55,10 @@ public final class DataTransferConfigSensitiveParams {
         return Optional.ofNullable(this.secretAccessKeyWo);
     }
     /**
-     * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * @return Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
-    public Optional<Integer> secretAccessKeyWoVersion() {
+    public Optional<String> secretAccessKeyWoVersion() {
         return Optional.ofNullable(this.secretAccessKeyWoVersion);
     }
 
@@ -74,7 +73,7 @@ public final class DataTransferConfigSensitiveParams {
     public static final class Builder {
         private @Nullable String secretAccessKey;
         private @Nullable String secretAccessKeyWo;
-        private @Nullable Integer secretAccessKeyWoVersion;
+        private @Nullable String secretAccessKeyWoVersion;
         public Builder() {}
         public Builder(DataTransferConfigSensitiveParams defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,7 +95,7 @@ public final class DataTransferConfigSensitiveParams {
             return this;
         }
         @CustomType.Setter
-        public Builder secretAccessKeyWoVersion(@Nullable Integer secretAccessKeyWoVersion) {
+        public Builder secretAccessKeyWoVersion(@Nullable String secretAccessKeyWoVersion) {
 
             this.secretAccessKeyWoVersion = secretAccessKeyWoVersion;
             return this;

@@ -45,7 +45,8 @@ namespace Pulumi.Gcp.Ces.Inputs
 
         /// <summary>
         /// (Output)
-        /// The OAuth scopes to grant.
+        /// The OAuth scopes to grant. If not specified, the default scope
+        /// `https://www.googleapis.com/auth/cloud-platform` is used.
         /// </summary>
         public InputList<string> Scopes
         {

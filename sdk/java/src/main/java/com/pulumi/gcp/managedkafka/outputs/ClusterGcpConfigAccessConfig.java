@@ -6,8 +6,11 @@ package com.pulumi.gcp.managedkafka.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.managedkafka.outputs.ClusterGcpConfigAccessConfigNetworkConfig;
+import com.pulumi.gcp.managedkafka.outputs.ClusterGcpConfigAccessConfigPublicClusterConfig;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterGcpConfigAccessConfig {
@@ -17,6 +20,12 @@ public final class ClusterGcpConfigAccessConfig {
      * 
      */
     private List<ClusterGcpConfigAccessConfigNetworkConfig> networkConfigs;
+    /**
+     * @return Public connection configuration for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterGcpConfigAccessConfigPublicClusterConfig publicClusterConfig;
 
     private ClusterGcpConfigAccessConfig() {}
     /**
@@ -26,6 +35,14 @@ public final class ClusterGcpConfigAccessConfig {
      */
     public List<ClusterGcpConfigAccessConfigNetworkConfig> networkConfigs() {
         return this.networkConfigs;
+    }
+    /**
+     * @return Public connection configuration for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ClusterGcpConfigAccessConfigPublicClusterConfig> publicClusterConfig() {
+        return Optional.ofNullable(this.publicClusterConfig);
     }
 
     public static Builder builder() {
@@ -38,10 +55,12 @@ public final class ClusterGcpConfigAccessConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<ClusterGcpConfigAccessConfigNetworkConfig> networkConfigs;
+        private @Nullable ClusterGcpConfigAccessConfigPublicClusterConfig publicClusterConfig;
         public Builder() {}
         public Builder(ClusterGcpConfigAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networkConfigs = defaults.networkConfigs;
+    	      this.publicClusterConfig = defaults.publicClusterConfig;
         }
 
         @CustomType.Setter
@@ -55,9 +74,16 @@ public final class ClusterGcpConfigAccessConfig {
         public Builder networkConfigs(ClusterGcpConfigAccessConfigNetworkConfig... networkConfigs) {
             return networkConfigs(List.of(networkConfigs));
         }
+        @CustomType.Setter
+        public Builder publicClusterConfig(@Nullable ClusterGcpConfigAccessConfigPublicClusterConfig publicClusterConfig) {
+
+            this.publicClusterConfig = publicClusterConfig;
+            return this;
+        }
         public ClusterGcpConfigAccessConfig build() {
             final var _resultValue = new ClusterGcpConfigAccessConfig();
             _resultValue.networkConfigs = networkConfigs;
+            _resultValue.publicClusterConfig = publicClusterConfig;
             return _resultValue;
         }
     }

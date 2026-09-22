@@ -195,6 +195,11 @@ export type AiPersistentResource = import("./aiPersistentResource").AiPersistent
 export const AiPersistentResource: typeof import("./aiPersistentResource").AiPersistentResource = null as any;
 utilities.lazyLoad(exports, ["AiPersistentResource"], () => require("./aiPersistentResource"));
 
+export { AiRagCorpusArgs, AiRagCorpusState } from "./aiRagCorpus";
+export type AiRagCorpus = import("./aiRagCorpus").AiRagCorpus;
+export const AiRagCorpus: typeof import("./aiRagCorpus").AiRagCorpus = null as any;
+utilities.lazyLoad(exports, ["AiRagCorpus"], () => require("./aiRagCorpus"));
+
 export { AiRagEngineConfigArgs, AiRagEngineConfigState } from "./aiRagEngineConfig";
 export type AiRagEngineConfig = import("./aiRagEngineConfig").AiRagEngineConfig;
 export const AiRagEngineConfig: typeof import("./aiRagEngineConfig").AiRagEngineConfig = null as any;
@@ -219,11 +224,6 @@ export { AiReasoningEngineIamPolicyArgs, AiReasoningEngineIamPolicyState } from 
 export type AiReasoningEngineIamPolicy = import("./aiReasoningEngineIamPolicy").AiReasoningEngineIamPolicy;
 export const AiReasoningEngineIamPolicy: typeof import("./aiReasoningEngineIamPolicy").AiReasoningEngineIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AiReasoningEngineIamPolicy"], () => require("./aiReasoningEngineIamPolicy"));
-
-export { AiScheduleArgs, AiScheduleState } from "./aiSchedule";
-export type AiSchedule = import("./aiSchedule").AiSchedule;
-export const AiSchedule: typeof import("./aiSchedule").AiSchedule = null as any;
-utilities.lazyLoad(exports, ["AiSchedule"], () => require("./aiSchedule"));
 
 export { AiSemanticGovernancePolicyEngineArgs, AiSemanticGovernancePolicyEngineState } from "./aiSemanticGovernancePolicyEngine";
 export type AiSemanticGovernancePolicyEngine = import("./aiSemanticGovernancePolicyEngine").AiSemanticGovernancePolicyEngine;
@@ -371,6 +371,8 @@ const _module = {
                 return new AiModelGardenEnableModel(name, <any>undefined, { urn })
             case "gcp:vertex/aiPersistentResource:AiPersistentResource":
                 return new AiPersistentResource(name, <any>undefined, { urn })
+            case "gcp:vertex/aiRagCorpus:AiRagCorpus":
+                return new AiRagCorpus(name, <any>undefined, { urn })
             case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
                 return new AiRagEngineConfig(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
@@ -381,8 +383,6 @@ const _module = {
                 return new AiReasoningEngineIamMember(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
                 return new AiReasoningEngineIamPolicy(name, <any>undefined, { urn })
-            case "gcp:vertex/aiSchedule:AiSchedule":
-                return new AiSchedule(name, <any>undefined, { urn })
             case "gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine":
                 return new AiSemanticGovernancePolicyEngine(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
@@ -434,12 +434,12 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedInde
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiModelGardenEnableModel", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiPersistentResource", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagCorpus", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagEngineConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamPolicy", _module)
-pulumi.runtime.registerResourceModule("gcp", "vertex/aiSchedule", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiSemanticGovernancePolicyEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardExperiment", _module)

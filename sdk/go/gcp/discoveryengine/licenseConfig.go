@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -85,6 +85,8 @@ type LicenseConfig struct {
 	EndDate LicenseConfigEndDatePtrOutput `pulumi:"endDate"`
 	// Whether the license config is for free trial.
 	FreeTrial pulumi.BoolPtrOutput `pulumi:"freeTrial"`
+	// Timestamp of the most recent user-initiated update.
+	LastUserUpdateTime pulumi.StringPtrOutput `pulumi:"lastUserUpdateTime"`
 	// The unique id of the license config.
 	LicenseConfigId pulumi.StringOutput `pulumi:"licenseConfigId"`
 	// Number of licenses purchased.
@@ -164,6 +166,8 @@ type licenseConfigState struct {
 	EndDate *LicenseConfigEndDate `pulumi:"endDate"`
 	// Whether the license config is for free trial.
 	FreeTrial *bool `pulumi:"freeTrial"`
+	// Timestamp of the most recent user-initiated update.
+	LastUserUpdateTime *string `pulumi:"lastUserUpdateTime"`
 	// The unique id of the license config.
 	LicenseConfigId *string `pulumi:"licenseConfigId"`
 	// Number of licenses purchased.
@@ -196,6 +200,8 @@ type LicenseConfigState struct {
 	EndDate LicenseConfigEndDatePtrInput
 	// Whether the license config is for free trial.
 	FreeTrial pulumi.BoolPtrInput
+	// Timestamp of the most recent user-initiated update.
+	LastUserUpdateTime pulumi.StringPtrInput
 	// The unique id of the license config.
 	LicenseConfigId pulumi.StringPtrInput
 	// Number of licenses purchased.
@@ -232,6 +238,8 @@ type licenseConfigArgs struct {
 	EndDate *LicenseConfigEndDate `pulumi:"endDate"`
 	// Whether the license config is for free trial.
 	FreeTrial *bool `pulumi:"freeTrial"`
+	// Timestamp of the most recent user-initiated update.
+	LastUserUpdateTime *string `pulumi:"lastUserUpdateTime"`
 	// The unique id of the license config.
 	LicenseConfigId string `pulumi:"licenseConfigId"`
 	// Number of licenses purchased.
@@ -262,6 +270,8 @@ type LicenseConfigArgs struct {
 	EndDate LicenseConfigEndDatePtrInput
 	// Whether the license config is for free trial.
 	FreeTrial pulumi.BoolPtrInput
+	// Timestamp of the most recent user-initiated update.
+	LastUserUpdateTime pulumi.StringPtrInput
 	// The unique id of the license config.
 	LicenseConfigId pulumi.StringInput
 	// Number of licenses purchased.
@@ -384,6 +394,11 @@ func (o LicenseConfigOutput) EndDate() LicenseConfigEndDatePtrOutput {
 // Whether the license config is for free trial.
 func (o LicenseConfigOutput) FreeTrial() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LicenseConfig) pulumi.BoolPtrOutput { return v.FreeTrial }).(pulumi.BoolPtrOutput)
+}
+
+// Timestamp of the most recent user-initiated update.
+func (o LicenseConfigOutput) LastUserUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseConfig) pulumi.StringPtrOutput { return v.LastUserUpdateTime }).(pulumi.StringPtrOutput)
 }
 
 // The unique id of the license config.

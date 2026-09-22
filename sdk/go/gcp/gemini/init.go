@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataSharingWithGoogleSetting{}
 	case "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding":
 		r = &DataSharingWithGoogleSettingBinding{}
+	case "gcp:gemini/gdaObservabilitySetting:GdaObservabilitySetting":
+		r = &GdaObservabilitySetting{}
+	case "gcp:gemini/gdaObservabilitySettingBinding:GdaObservabilitySettingBinding":
+		r = &GdaObservabilitySettingBinding{}
 	case "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting":
 		r = &GeminiGcpEnablementSetting{}
 	case "gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding":
@@ -87,6 +91,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gemini/dataSharingWithGoogleSettingBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/gdaObservabilitySetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/gdaObservabilitySettingBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

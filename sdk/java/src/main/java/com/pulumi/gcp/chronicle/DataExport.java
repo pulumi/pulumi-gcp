@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testBucket = new Bucket("testBucket", BucketArgs.builder()
- *             .name("chronicle-test-bucket-my-project-name-_56730")
+ *             .name("chronicle-test-bucket-my-project-name-_95154")
  *             .project("my-project-name")
  *             .location("us")
  *             .forceDestroy(true)
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testBucket = new Bucket("testBucket", BucketArgs.builder()
- *             .name("chronicle-test-bucket-my-project-name-_95154")
+ *             .name("chronicle-test-bucket-my-project-name-_64336")
  *             .project("my-project-name")
  *             .location("us")
  *             .forceDestroy(true)

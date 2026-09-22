@@ -30,6 +30,16 @@ export type DataSharingWithGoogleSettingBinding = import("./dataSharingWithGoogl
 export const DataSharingWithGoogleSettingBinding: typeof import("./dataSharingWithGoogleSettingBinding").DataSharingWithGoogleSettingBinding = null as any;
 utilities.lazyLoad(exports, ["DataSharingWithGoogleSettingBinding"], () => require("./dataSharingWithGoogleSettingBinding"));
 
+export { GdaObservabilitySettingArgs, GdaObservabilitySettingState } from "./gdaObservabilitySetting";
+export type GdaObservabilitySetting = import("./gdaObservabilitySetting").GdaObservabilitySetting;
+export const GdaObservabilitySetting: typeof import("./gdaObservabilitySetting").GdaObservabilitySetting = null as any;
+utilities.lazyLoad(exports, ["GdaObservabilitySetting"], () => require("./gdaObservabilitySetting"));
+
+export { GdaObservabilitySettingBindingArgs, GdaObservabilitySettingBindingState } from "./gdaObservabilitySettingBinding";
+export type GdaObservabilitySettingBinding = import("./gdaObservabilitySettingBinding").GdaObservabilitySettingBinding;
+export const GdaObservabilitySettingBinding: typeof import("./gdaObservabilitySettingBinding").GdaObservabilitySettingBinding = null as any;
+utilities.lazyLoad(exports, ["GdaObservabilitySettingBinding"], () => require("./gdaObservabilitySettingBinding"));
+
 export { GeminiGcpEnablementSettingArgs, GeminiGcpEnablementSettingState } from "./geminiGcpEnablementSetting";
 export type GeminiGcpEnablementSetting = import("./geminiGcpEnablementSetting").GeminiGcpEnablementSetting;
 export const GeminiGcpEnablementSetting: typeof import("./geminiGcpEnablementSetting").GeminiGcpEnablementSetting = null as any;
@@ -100,6 +110,10 @@ const _module = {
                 return new DataSharingWithGoogleSetting(name, <any>undefined, { urn })
             case "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding":
                 return new DataSharingWithGoogleSettingBinding(name, <any>undefined, { urn })
+            case "gcp:gemini/gdaObservabilitySetting:GdaObservabilitySetting":
+                return new GdaObservabilitySetting(name, <any>undefined, { urn })
+            case "gcp:gemini/gdaObservabilitySettingBinding:GdaObservabilitySettingBinding":
+                return new GdaObservabilitySettingBinding(name, <any>undefined, { urn })
             case "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting":
                 return new GeminiGcpEnablementSetting(name, <any>undefined, { urn })
             case "gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding":
@@ -130,6 +144,8 @@ pulumi.runtime.registerResourceModule("gcp", "gemini/codeToolsSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeToolsSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSettingBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/gdaObservabilitySetting", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/gdaObservabilitySettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/geminiGcpEnablementSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/geminiGcpEnablementSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/loggingSetting", _module)

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Audio (input or output) transcription. This is only set when this Part contains audio data.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("audioTranscription")]
+        public Input<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionGetArgs>? AudioTranscription { get; set; }
+
+        /// <summary>
         /// Result of executing the ExecutableCode.
         /// Structure is documented below.
         /// </summary>

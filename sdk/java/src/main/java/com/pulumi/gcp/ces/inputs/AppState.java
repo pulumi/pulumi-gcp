@@ -9,12 +9,14 @@ import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigArgs;
 import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppDataStoreSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileArgs;
+import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsArgs;
 import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppModelSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppVariableDeclarationArgs;
+import com.pulumi.gcp.ces.inputs.AppVpcScSettingsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -206,6 +208,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="errorHandlingSettings")
+    private @Nullable Output<AppErrorHandlingSettingsArgs> errorHandlingSettings;
+
+    /**
+     * @return Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppErrorHandlingSettingsArgs>> errorHandlingSettings() {
+        return Optional.ofNullable(this.errorHandlingSettings);
+    }
+
+    /**
      * Etag used to ensure the object hasn&#39;t changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
@@ -309,6 +328,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * Indicates whether the app is locked for changes. If the app is locked,
+     * modifications to the app resources will be rejected.
+     * 
+     */
+    @Import(name="locked")
+    private @Nullable Output<Boolean> locked;
+
+    /**
+     * @return Indicates whether the app is locked for changes. If the app is locked,
+     * modifications to the app resources will be rejected.
+     * 
+     */
+    public Optional<Output<Boolean>> locked() {
+        return Optional.ofNullable(this.locked);
     }
 
     /**
@@ -494,6 +530,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.variableDeclarations);
     }
 
+    /**
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vpcScSettings")
+    private @Nullable Output<AppVpcScSettingsArgs> vpcScSettings;
+
+    /**
+     * @return VPC-SC settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppVpcScSettingsArgs>> vpcScSettings() {
+        return Optional.ofNullable(this.vpcScSettings);
+    }
+
     private AppState() {}
 
     private AppState(AppState $) {
@@ -507,12 +560,14 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.deploymentCount = $.deploymentCount;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.errorHandlingSettings = $.errorHandlingSettings;
         this.etag = $.etag;
         this.evaluationMetricsThresholds = $.evaluationMetricsThresholds;
         this.globalInstruction = $.globalInstruction;
         this.guardrails = $.guardrails;
         this.languageSettings = $.languageSettings;
         this.location = $.location;
+        this.locked = $.locked;
         this.loggingSettings = $.loggingSettings;
         this.metadata = $.metadata;
         this.modelSettings = $.modelSettings;
@@ -524,6 +579,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.toolExecutionMode = $.toolExecutionMode;
         this.updateTime = $.updateTime;
         this.variableDeclarations = $.variableDeclarations;
+        this.vpcScSettings = $.vpcScSettings;
     }
 
     public static Builder builder() {
@@ -781,6 +837,29 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param errorHandlingSettings Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorHandlingSettings(@Nullable Output<AppErrorHandlingSettingsArgs> errorHandlingSettings) {
+            $.errorHandlingSettings = errorHandlingSettings;
+            return this;
+        }
+
+        /**
+         * @param errorHandlingSettings Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorHandlingSettings(AppErrorHandlingSettingsArgs errorHandlingSettings) {
+            return errorHandlingSettings(Output.of(errorHandlingSettings));
+        }
+
+        /**
          * @param etag Etag used to ensure the object hasn&#39;t changed during a read-modify-write
          * operation. If the etag is empty, the update will overwrite any concurrent
          * changes.
@@ -932,6 +1011,29 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param locked Indicates whether the app is locked for changes. If the app is locked,
+         * modifications to the app resources will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locked(@Nullable Output<Boolean> locked) {
+            $.locked = locked;
+            return this;
+        }
+
+        /**
+         * @param locked Indicates whether the app is locked for changes. If the app is locked,
+         * modifications to the app resources will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locked(Boolean locked) {
+            return locked(Output.of(locked));
         }
 
         /**
@@ -1192,6 +1294,29 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder variableDeclarations(AppVariableDeclarationArgs... variableDeclarations) {
             return variableDeclarations(List.of(variableDeclarations));
+        }
+
+        /**
+         * @param vpcScSettings VPC-SC settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScSettings(@Nullable Output<AppVpcScSettingsArgs> vpcScSettings) {
+            $.vpcScSettings = vpcScSettings;
+            return this;
+        }
+
+        /**
+         * @param vpcScSettings VPC-SC settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScSettings(AppVpcScSettingsArgs vpcScSettings) {
+            return vpcScSettings(Output.of(vpcScSettings));
         }
 
         public AppState build() {

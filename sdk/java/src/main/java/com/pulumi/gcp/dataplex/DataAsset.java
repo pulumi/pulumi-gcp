@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_35305")
+ *             .dataProductId("tf-test-dp-_62793")
  *             .displayName("Parent Data Product")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(DataProductAccessGroupArgs.builder()
@@ -74,14 +74,14 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_62793}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_55438}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__55438")
+ *             .datasetId("tf_test_dataset__32706")
  *             .location("us-central1")
  *             .build());
  * 
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_32706")
+ *             .dataProductId("tf-test-dp-_49082")
  *             .displayName("Full Example Parent DP")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(            
@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__49082")
+ *             .datasetId("tf_test_dataset__60365")
  *             .location("us-central1")
  *             .build());
  * 

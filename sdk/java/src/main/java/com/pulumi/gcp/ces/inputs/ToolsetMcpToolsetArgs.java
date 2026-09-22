@@ -9,7 +9,9 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetToolOverrideArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -125,6 +127,23 @@ public final class ToolsetMcpToolsetArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tlsConfig);
     }
 
+    /**
+     * A list of tool overrides for the toolset.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="toolOverrides")
+    private @Nullable Output<List<ToolsetMcpToolsetToolOverrideArgs>> toolOverrides;
+
+    /**
+     * @return A list of tool overrides for the toolset.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ToolsetMcpToolsetToolOverrideArgs>>> toolOverrides() {
+        return Optional.ofNullable(this.toolOverrides);
+    }
+
     private ToolsetMcpToolsetArgs() {}
 
     private ToolsetMcpToolsetArgs(ToolsetMcpToolsetArgs $) {
@@ -133,6 +152,7 @@ public final class ToolsetMcpToolsetArgs extends com.pulumi.resources.ResourceAr
         this.serverAddress = $.serverAddress;
         this.serviceDirectoryConfig = $.serviceDirectoryConfig;
         this.tlsConfig = $.tlsConfig;
+        this.toolOverrides = $.toolOverrides;
     }
 
     public static Builder builder() {
@@ -286,6 +306,40 @@ public final class ToolsetMcpToolsetArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder tlsConfig(ToolsetMcpToolsetTlsConfigArgs tlsConfig) {
             return tlsConfig(Output.of(tlsConfig));
+        }
+
+        /**
+         * @param toolOverrides A list of tool overrides for the toolset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolOverrides(@Nullable Output<List<ToolsetMcpToolsetToolOverrideArgs>> toolOverrides) {
+            $.toolOverrides = toolOverrides;
+            return this;
+        }
+
+        /**
+         * @param toolOverrides A list of tool overrides for the toolset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolOverrides(List<ToolsetMcpToolsetToolOverrideArgs> toolOverrides) {
+            return toolOverrides(Output.of(toolOverrides));
+        }
+
+        /**
+         * @param toolOverrides A list of tool overrides for the toolset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolOverrides(ToolsetMcpToolsetToolOverrideArgs... toolOverrides) {
+            return toolOverrides(List.of(toolOverrides));
         }
 
         public ToolsetMcpToolsetArgs build() {

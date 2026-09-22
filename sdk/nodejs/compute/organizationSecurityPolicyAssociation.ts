@@ -44,12 +44,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const securityPolicyTarget = new gcp.organizations.Folder("security_policy_target", {
- *     displayName: "tf-test-secpol-_75223",
+ *     displayName: "tf-test-secpol-_41819",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_41819",
+ *     shortName: "tf-test_75092",
  *     parent: securityPolicyTarget.name,
  *     type: "CLOUD_ARMOR",
  * });

@@ -138,6 +138,54 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Dataproc Workflow Template Instance Flexibility Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const template = new gcp.dataproc.WorkflowTemplate("template", {
+ *     name: "template-flexible-vms",
+ *     location: "us-central1",
+ *     placement: {
+ *         managedCluster: {
+ *             clusterName: "my-flexible-cluster",
+ *             config: {
+ *                 softwareConfig: {
+ *                     imageVersion: "2.0.35-debian10",
+ *                 },
+ *                 masterConfig: {
+ *                     numInstances: 1,
+ *                     machineType: "e2-standard-2",
+ *                 },
+ *                 workerConfig: {
+ *                     numInstances: 2,
+ *                     instanceFlexibilityPolicy: {
+ *                         instanceSelectionLists: [{
+ *                             machineTypes: ["e2-standard-2"],
+ *                             rank: 1,
+ *                         }],
+ *                     },
+ *                 },
+ *                 secondaryWorkerConfig: {
+ *                     numInstances: 2,
+ *                     instanceFlexibilityPolicy: {
+ *                         instanceSelectionLists: [{
+ *                             machineTypes: ["n1-standard-2"],
+ *                             rank: 1,
+ *                         }],
+ *                         provisioningModelMix: {
+ *                             standardCapacityBase: 1,
+ *                             standardCapacityPercentAboveBase: 50,
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * WorkflowTemplate can be imported using any of these accepted formats:
@@ -231,7 +279,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     declare public readonly parameters: pulumi.Output<outputs.dataproc.WorkflowTemplateParameter[] | undefined>;
     /**
-     * (Required) WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information. Structure is documented below.
      */
     declare public readonly placement: pulumi.Output<outputs.dataproc.WorkflowTemplatePlacement>;
     /**
@@ -368,7 +416,7 @@ export interface WorkflowTemplateState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[] | undefined>;
     /**
-     * (Required) WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information. Structure is documented below.
      */
     placement?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement | undefined>;
     /**
@@ -436,7 +484,7 @@ export interface WorkflowTemplateArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[] | undefined>;
     /**
-     * (Required) WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information. Structure is documented below.
      */
     placement: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
     /**

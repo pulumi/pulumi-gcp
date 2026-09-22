@@ -7,11 +7,7784 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type PreventionContentPolicyDefaultAction struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict *string `pulumi:"returnVerdict"`
+}
+
+// PreventionContentPolicyDefaultActionInput is an input type that accepts PreventionContentPolicyDefaultActionArgs and PreventionContentPolicyDefaultActionOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyDefaultActionInput` via:
+//
+//	PreventionContentPolicyDefaultActionArgs{...}
+type PreventionContentPolicyDefaultActionInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyDefaultActionOutput() PreventionContentPolicyDefaultActionOutput
+	ToPreventionContentPolicyDefaultActionOutputWithContext(context.Context) PreventionContentPolicyDefaultActionOutput
+}
+
+type PreventionContentPolicyDefaultActionArgs struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict pulumi.StringPtrInput `pulumi:"returnVerdict"`
+}
+
+func (PreventionContentPolicyDefaultActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyDefaultAction)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyDefaultActionArgs) ToPreventionContentPolicyDefaultActionOutput() PreventionContentPolicyDefaultActionOutput {
+	return i.ToPreventionContentPolicyDefaultActionOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyDefaultActionArgs) ToPreventionContentPolicyDefaultActionOutputWithContext(ctx context.Context) PreventionContentPolicyDefaultActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyDefaultActionOutput)
+}
+
+func (i PreventionContentPolicyDefaultActionArgs) ToPreventionContentPolicyDefaultActionPtrOutput() PreventionContentPolicyDefaultActionPtrOutput {
+	return i.ToPreventionContentPolicyDefaultActionPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyDefaultActionArgs) ToPreventionContentPolicyDefaultActionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyDefaultActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyDefaultActionOutput).ToPreventionContentPolicyDefaultActionPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyDefaultActionPtrInput is an input type that accepts PreventionContentPolicyDefaultActionArgs, PreventionContentPolicyDefaultActionPtr and PreventionContentPolicyDefaultActionPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyDefaultActionPtrInput` via:
+//
+//	        PreventionContentPolicyDefaultActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyDefaultActionPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyDefaultActionPtrOutput() PreventionContentPolicyDefaultActionPtrOutput
+	ToPreventionContentPolicyDefaultActionPtrOutputWithContext(context.Context) PreventionContentPolicyDefaultActionPtrOutput
+}
+
+type preventionContentPolicyDefaultActionPtrType PreventionContentPolicyDefaultActionArgs
+
+func PreventionContentPolicyDefaultActionPtr(v *PreventionContentPolicyDefaultActionArgs) PreventionContentPolicyDefaultActionPtrInput {
+	return (*preventionContentPolicyDefaultActionPtrType)(v)
+}
+
+func (*preventionContentPolicyDefaultActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyDefaultAction)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyDefaultActionPtrType) ToPreventionContentPolicyDefaultActionPtrOutput() PreventionContentPolicyDefaultActionPtrOutput {
+	return i.ToPreventionContentPolicyDefaultActionPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyDefaultActionPtrType) ToPreventionContentPolicyDefaultActionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyDefaultActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyDefaultActionPtrOutput)
+}
+
+type PreventionContentPolicyDefaultActionOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyDefaultActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyDefaultAction)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyDefaultActionOutput) ToPreventionContentPolicyDefaultActionOutput() PreventionContentPolicyDefaultActionOutput {
+	return o
+}
+
+func (o PreventionContentPolicyDefaultActionOutput) ToPreventionContentPolicyDefaultActionOutputWithContext(ctx context.Context) PreventionContentPolicyDefaultActionOutput {
+	return o
+}
+
+func (o PreventionContentPolicyDefaultActionOutput) ToPreventionContentPolicyDefaultActionPtrOutput() PreventionContentPolicyDefaultActionPtrOutput {
+	return o.ToPreventionContentPolicyDefaultActionPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyDefaultActionOutput) ToPreventionContentPolicyDefaultActionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyDefaultActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyDefaultAction) *PreventionContentPolicyDefaultAction {
+		return &v
+	}).(PreventionContentPolicyDefaultActionPtrOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyDefaultActionOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyDefaultAction) *string { return v.ReturnVerdict }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyDefaultActionPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyDefaultActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyDefaultAction)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyDefaultActionPtrOutput) ToPreventionContentPolicyDefaultActionPtrOutput() PreventionContentPolicyDefaultActionPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyDefaultActionPtrOutput) ToPreventionContentPolicyDefaultActionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyDefaultActionPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyDefaultActionPtrOutput) Elem() PreventionContentPolicyDefaultActionOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyDefaultAction) PreventionContentPolicyDefaultAction {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyDefaultAction
+		return ret
+	}).(PreventionContentPolicyDefaultActionOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyDefaultActionPtrOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyDefaultAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnVerdict
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyError struct {
+	// (Output)
+	// A list of messages that carry the error details.
+	Details []PreventionContentPolicyErrorDetail `pulumi:"details"`
+	// (Output)
+	// Additional information about the error.
+	ExtraInfo *string `pulumi:"extraInfo"`
+	// (Output)
+	// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+	Timestamps []string `pulumi:"timestamps"`
+}
+
+// PreventionContentPolicyErrorInput is an input type that accepts PreventionContentPolicyErrorArgs and PreventionContentPolicyErrorOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyErrorInput` via:
+//
+//	PreventionContentPolicyErrorArgs{...}
+type PreventionContentPolicyErrorInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyErrorOutput() PreventionContentPolicyErrorOutput
+	ToPreventionContentPolicyErrorOutputWithContext(context.Context) PreventionContentPolicyErrorOutput
+}
+
+type PreventionContentPolicyErrorArgs struct {
+	// (Output)
+	// A list of messages that carry the error details.
+	Details PreventionContentPolicyErrorDetailArrayInput `pulumi:"details"`
+	// (Output)
+	// Additional information about the error.
+	ExtraInfo pulumi.StringPtrInput `pulumi:"extraInfo"`
+	// (Output)
+	// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+	Timestamps pulumi.StringArrayInput `pulumi:"timestamps"`
+}
+
+func (PreventionContentPolicyErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyError)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyErrorArgs) ToPreventionContentPolicyErrorOutput() PreventionContentPolicyErrorOutput {
+	return i.ToPreventionContentPolicyErrorOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyErrorArgs) ToPreventionContentPolicyErrorOutputWithContext(ctx context.Context) PreventionContentPolicyErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyErrorOutput)
+}
+
+// PreventionContentPolicyErrorArrayInput is an input type that accepts PreventionContentPolicyErrorArray and PreventionContentPolicyErrorArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyErrorArrayInput` via:
+//
+//	PreventionContentPolicyErrorArray{ PreventionContentPolicyErrorArgs{...} }
+type PreventionContentPolicyErrorArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyErrorArrayOutput() PreventionContentPolicyErrorArrayOutput
+	ToPreventionContentPolicyErrorArrayOutputWithContext(context.Context) PreventionContentPolicyErrorArrayOutput
+}
+
+type PreventionContentPolicyErrorArray []PreventionContentPolicyErrorInput
+
+func (PreventionContentPolicyErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyError)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyErrorArray) ToPreventionContentPolicyErrorArrayOutput() PreventionContentPolicyErrorArrayOutput {
+	return i.ToPreventionContentPolicyErrorArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyErrorArray) ToPreventionContentPolicyErrorArrayOutputWithContext(ctx context.Context) PreventionContentPolicyErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyErrorArrayOutput)
+}
+
+type PreventionContentPolicyErrorOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyError)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyErrorOutput) ToPreventionContentPolicyErrorOutput() PreventionContentPolicyErrorOutput {
+	return o
+}
+
+func (o PreventionContentPolicyErrorOutput) ToPreventionContentPolicyErrorOutputWithContext(ctx context.Context) PreventionContentPolicyErrorOutput {
+	return o
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o PreventionContentPolicyErrorOutput) Details() PreventionContentPolicyErrorDetailArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyError) []PreventionContentPolicyErrorDetail { return v.Details }).(PreventionContentPolicyErrorDetailArrayOutput)
+}
+
+// (Output)
+// Additional information about the error.
+func (o PreventionContentPolicyErrorOutput) ExtraInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyError) *string { return v.ExtraInfo }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+func (o PreventionContentPolicyErrorOutput) Timestamps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyError) []string { return v.Timestamps }).(pulumi.StringArrayOutput)
+}
+
+type PreventionContentPolicyErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyError)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyErrorArrayOutput) ToPreventionContentPolicyErrorArrayOutput() PreventionContentPolicyErrorArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyErrorArrayOutput) ToPreventionContentPolicyErrorArrayOutputWithContext(ctx context.Context) PreventionContentPolicyErrorArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyErrorArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyError {
+		return vs[0].([]PreventionContentPolicyError)[vs[1].(int)]
+	}).(PreventionContentPolicyErrorOutput)
+}
+
+type PreventionContentPolicyErrorDetail struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// PreventionContentPolicyErrorDetailInput is an input type that accepts PreventionContentPolicyErrorDetailArgs and PreventionContentPolicyErrorDetailOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyErrorDetailInput` via:
+//
+//	PreventionContentPolicyErrorDetailArgs{...}
+type PreventionContentPolicyErrorDetailInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyErrorDetailOutput() PreventionContentPolicyErrorDetailOutput
+	ToPreventionContentPolicyErrorDetailOutputWithContext(context.Context) PreventionContentPolicyErrorDetailOutput
+}
+
+type PreventionContentPolicyErrorDetailArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (PreventionContentPolicyErrorDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyErrorDetail)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyErrorDetailArgs) ToPreventionContentPolicyErrorDetailOutput() PreventionContentPolicyErrorDetailOutput {
+	return i.ToPreventionContentPolicyErrorDetailOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyErrorDetailArgs) ToPreventionContentPolicyErrorDetailOutputWithContext(ctx context.Context) PreventionContentPolicyErrorDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyErrorDetailOutput)
+}
+
+// PreventionContentPolicyErrorDetailArrayInput is an input type that accepts PreventionContentPolicyErrorDetailArray and PreventionContentPolicyErrorDetailArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyErrorDetailArrayInput` via:
+//
+//	PreventionContentPolicyErrorDetailArray{ PreventionContentPolicyErrorDetailArgs{...} }
+type PreventionContentPolicyErrorDetailArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyErrorDetailArrayOutput() PreventionContentPolicyErrorDetailArrayOutput
+	ToPreventionContentPolicyErrorDetailArrayOutputWithContext(context.Context) PreventionContentPolicyErrorDetailArrayOutput
+}
+
+type PreventionContentPolicyErrorDetailArray []PreventionContentPolicyErrorDetailInput
+
+func (PreventionContentPolicyErrorDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyErrorDetail)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyErrorDetailArray) ToPreventionContentPolicyErrorDetailArrayOutput() PreventionContentPolicyErrorDetailArrayOutput {
+	return i.ToPreventionContentPolicyErrorDetailArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyErrorDetailArray) ToPreventionContentPolicyErrorDetailArrayOutputWithContext(ctx context.Context) PreventionContentPolicyErrorDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyErrorDetailArrayOutput)
+}
+
+type PreventionContentPolicyErrorDetailOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyErrorDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyErrorDetail)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyErrorDetailOutput) ToPreventionContentPolicyErrorDetailOutput() PreventionContentPolicyErrorDetailOutput {
+	return o
+}
+
+func (o PreventionContentPolicyErrorDetailOutput) ToPreventionContentPolicyErrorDetailOutputWithContext(ctx context.Context) PreventionContentPolicyErrorDetailOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o PreventionContentPolicyErrorDetailOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyErrorDetail) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o PreventionContentPolicyErrorDetailOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyErrorDetail) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English.
+func (o PreventionContentPolicyErrorDetailOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyErrorDetail) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyErrorDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyErrorDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyErrorDetail)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyErrorDetailArrayOutput) ToPreventionContentPolicyErrorDetailArrayOutput() PreventionContentPolicyErrorDetailArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyErrorDetailArrayOutput) ToPreventionContentPolicyErrorDetailArrayOutputWithContext(ctx context.Context) PreventionContentPolicyErrorDetailArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyErrorDetailArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyErrorDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyErrorDetail {
+		return vs[0].([]PreventionContentPolicyErrorDetail)[vs[1].(int)]
+	}).(PreventionContentPolicyErrorDetailOutput)
+}
+
+type PreventionContentPolicyFailedToScanSupportedFileType struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict *string `pulumi:"returnVerdict"`
+}
+
+// PreventionContentPolicyFailedToScanSupportedFileTypeInput is an input type that accepts PreventionContentPolicyFailedToScanSupportedFileTypeArgs and PreventionContentPolicyFailedToScanSupportedFileTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyFailedToScanSupportedFileTypeInput` via:
+//
+//	PreventionContentPolicyFailedToScanSupportedFileTypeArgs{...}
+type PreventionContentPolicyFailedToScanSupportedFileTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyFailedToScanSupportedFileTypeOutput() PreventionContentPolicyFailedToScanSupportedFileTypeOutput
+	ToPreventionContentPolicyFailedToScanSupportedFileTypeOutputWithContext(context.Context) PreventionContentPolicyFailedToScanSupportedFileTypeOutput
+}
+
+type PreventionContentPolicyFailedToScanSupportedFileTypeArgs struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict pulumi.StringPtrInput `pulumi:"returnVerdict"`
+}
+
+func (PreventionContentPolicyFailedToScanSupportedFileTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyFailedToScanSupportedFileType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyFailedToScanSupportedFileTypeArgs) ToPreventionContentPolicyFailedToScanSupportedFileTypeOutput() PreventionContentPolicyFailedToScanSupportedFileTypeOutput {
+	return i.ToPreventionContentPolicyFailedToScanSupportedFileTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyFailedToScanSupportedFileTypeArgs) ToPreventionContentPolicyFailedToScanSupportedFileTypeOutputWithContext(ctx context.Context) PreventionContentPolicyFailedToScanSupportedFileTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyFailedToScanSupportedFileTypeOutput)
+}
+
+func (i PreventionContentPolicyFailedToScanSupportedFileTypeArgs) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutput() PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return i.ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyFailedToScanSupportedFileTypeArgs) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyFailedToScanSupportedFileTypeOutput).ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyFailedToScanSupportedFileTypePtrInput is an input type that accepts PreventionContentPolicyFailedToScanSupportedFileTypeArgs, PreventionContentPolicyFailedToScanSupportedFileTypePtr and PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyFailedToScanSupportedFileTypePtrInput` via:
+//
+//	        PreventionContentPolicyFailedToScanSupportedFileTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyFailedToScanSupportedFileTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutput() PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput
+	ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(context.Context) PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput
+}
+
+type preventionContentPolicyFailedToScanSupportedFileTypePtrType PreventionContentPolicyFailedToScanSupportedFileTypeArgs
+
+func PreventionContentPolicyFailedToScanSupportedFileTypePtr(v *PreventionContentPolicyFailedToScanSupportedFileTypeArgs) PreventionContentPolicyFailedToScanSupportedFileTypePtrInput {
+	return (*preventionContentPolicyFailedToScanSupportedFileTypePtrType)(v)
+}
+
+func (*preventionContentPolicyFailedToScanSupportedFileTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyFailedToScanSupportedFileType)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyFailedToScanSupportedFileTypePtrType) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutput() PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return i.ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyFailedToScanSupportedFileTypePtrType) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput)
+}
+
+type PreventionContentPolicyFailedToScanSupportedFileTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyFailedToScanSupportedFileTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyFailedToScanSupportedFileType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyFailedToScanSupportedFileTypeOutput) ToPreventionContentPolicyFailedToScanSupportedFileTypeOutput() PreventionContentPolicyFailedToScanSupportedFileTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyFailedToScanSupportedFileTypeOutput) ToPreventionContentPolicyFailedToScanSupportedFileTypeOutputWithContext(ctx context.Context) PreventionContentPolicyFailedToScanSupportedFileTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyFailedToScanSupportedFileTypeOutput) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutput() PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return o.ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyFailedToScanSupportedFileTypeOutput) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyFailedToScanSupportedFileType) *PreventionContentPolicyFailedToScanSupportedFileType {
+		return &v
+	}).(PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyFailedToScanSupportedFileTypeOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyFailedToScanSupportedFileType) *string { return v.ReturnVerdict }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyFailedToScanSupportedFileType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutput() PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput) ToPreventionContentPolicyFailedToScanSupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput) Elem() PreventionContentPolicyFailedToScanSupportedFileTypeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyFailedToScanSupportedFileType) PreventionContentPolicyFailedToScanSupportedFileType {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyFailedToScanSupportedFileType
+		return ret
+	}).(PreventionContentPolicyFailedToScanSupportedFileTypeOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyFailedToScanSupportedFileType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnVerdict
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInputTooLarge struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict *string `pulumi:"returnVerdict"`
+}
+
+// PreventionContentPolicyInputTooLargeInput is an input type that accepts PreventionContentPolicyInputTooLargeArgs and PreventionContentPolicyInputTooLargeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInputTooLargeInput` via:
+//
+//	PreventionContentPolicyInputTooLargeArgs{...}
+type PreventionContentPolicyInputTooLargeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInputTooLargeOutput() PreventionContentPolicyInputTooLargeOutput
+	ToPreventionContentPolicyInputTooLargeOutputWithContext(context.Context) PreventionContentPolicyInputTooLargeOutput
+}
+
+type PreventionContentPolicyInputTooLargeArgs struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict pulumi.StringPtrInput `pulumi:"returnVerdict"`
+}
+
+func (PreventionContentPolicyInputTooLargeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInputTooLarge)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInputTooLargeArgs) ToPreventionContentPolicyInputTooLargeOutput() PreventionContentPolicyInputTooLargeOutput {
+	return i.ToPreventionContentPolicyInputTooLargeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInputTooLargeArgs) ToPreventionContentPolicyInputTooLargeOutputWithContext(ctx context.Context) PreventionContentPolicyInputTooLargeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInputTooLargeOutput)
+}
+
+func (i PreventionContentPolicyInputTooLargeArgs) ToPreventionContentPolicyInputTooLargePtrOutput() PreventionContentPolicyInputTooLargePtrOutput {
+	return i.ToPreventionContentPolicyInputTooLargePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInputTooLargeArgs) ToPreventionContentPolicyInputTooLargePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInputTooLargePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInputTooLargeOutput).ToPreventionContentPolicyInputTooLargePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInputTooLargePtrInput is an input type that accepts PreventionContentPolicyInputTooLargeArgs, PreventionContentPolicyInputTooLargePtr and PreventionContentPolicyInputTooLargePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInputTooLargePtrInput` via:
+//
+//	        PreventionContentPolicyInputTooLargeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInputTooLargePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInputTooLargePtrOutput() PreventionContentPolicyInputTooLargePtrOutput
+	ToPreventionContentPolicyInputTooLargePtrOutputWithContext(context.Context) PreventionContentPolicyInputTooLargePtrOutput
+}
+
+type preventionContentPolicyInputTooLargePtrType PreventionContentPolicyInputTooLargeArgs
+
+func PreventionContentPolicyInputTooLargePtr(v *PreventionContentPolicyInputTooLargeArgs) PreventionContentPolicyInputTooLargePtrInput {
+	return (*preventionContentPolicyInputTooLargePtrType)(v)
+}
+
+func (*preventionContentPolicyInputTooLargePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInputTooLarge)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInputTooLargePtrType) ToPreventionContentPolicyInputTooLargePtrOutput() PreventionContentPolicyInputTooLargePtrOutput {
+	return i.ToPreventionContentPolicyInputTooLargePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInputTooLargePtrType) ToPreventionContentPolicyInputTooLargePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInputTooLargePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInputTooLargePtrOutput)
+}
+
+type PreventionContentPolicyInputTooLargeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInputTooLargeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInputTooLarge)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInputTooLargeOutput) ToPreventionContentPolicyInputTooLargeOutput() PreventionContentPolicyInputTooLargeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInputTooLargeOutput) ToPreventionContentPolicyInputTooLargeOutputWithContext(ctx context.Context) PreventionContentPolicyInputTooLargeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInputTooLargeOutput) ToPreventionContentPolicyInputTooLargePtrOutput() PreventionContentPolicyInputTooLargePtrOutput {
+	return o.ToPreventionContentPolicyInputTooLargePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInputTooLargeOutput) ToPreventionContentPolicyInputTooLargePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInputTooLargePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInputTooLarge) *PreventionContentPolicyInputTooLarge {
+		return &v
+	}).(PreventionContentPolicyInputTooLargePtrOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyInputTooLargeOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInputTooLarge) *string { return v.ReturnVerdict }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInputTooLargePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInputTooLargePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInputTooLarge)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInputTooLargePtrOutput) ToPreventionContentPolicyInputTooLargePtrOutput() PreventionContentPolicyInputTooLargePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInputTooLargePtrOutput) ToPreventionContentPolicyInputTooLargePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInputTooLargePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInputTooLargePtrOutput) Elem() PreventionContentPolicyInputTooLargeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInputTooLarge) PreventionContentPolicyInputTooLarge {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInputTooLarge
+		return ret
+	}).(PreventionContentPolicyInputTooLargeOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyInputTooLargePtrOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInputTooLarge) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnVerdict
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfig struct {
+	// List of options defining data content to scan. If empty, text, images, and other content will be included.
+	// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+	ContentOptions []string `pulumi:"contentOptions"`
+	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+	// Structure is documented below.
+	CustomInfoTypes []PreventionContentPolicyInspectConfigCustomInfoType `pulumi:"customInfoTypes"`
+	// When true, excludes type information of the findings.
+	ExcludeInfoTypes *bool `pulumi:"excludeInfoTypes"`
+	// When true, a contextual quote from the data that triggered a finding is included in the response.
+	IncludeQuote *bool `pulumi:"includeQuote"`
+	// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+	// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+	// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+	// By default this may be all types, but may change over time as detectors are updated.
+	// Structure is documented below.
+	InfoTypes []PreventionContentPolicyInspectConfigInfoType `pulumi:"infoTypes"`
+	// Configuration to control the number of findings returned.
+	// Structure is documented below.
+	Limits *PreventionContentPolicyInspectConfigLimits `pulumi:"limits"`
+	// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+	// Default value is `POSSIBLE`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	MinLikelihood *string `pulumi:"minLikelihood"`
+	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+	// The system only returns a finding if its likelihood is above this threshold. If this field
+	// is not set, the system uses the InspectConfig min_likelihood.
+	// Structure is documented below.
+	MinLikelihoodPerInfoTypes []PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType `pulumi:"minLikelihoodPerInfoTypes"`
+	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+	// other rules are executed in the order they are specified for each info type.
+	// Structure is documented below.
+	RuleSets []PreventionContentPolicyInspectConfigRuleSet `pulumi:"ruleSets"`
+}
+
+// PreventionContentPolicyInspectConfigInput is an input type that accepts PreventionContentPolicyInspectConfigArgs and PreventionContentPolicyInspectConfigOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigInput` via:
+//
+//	PreventionContentPolicyInspectConfigArgs{...}
+type PreventionContentPolicyInspectConfigInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigOutput() PreventionContentPolicyInspectConfigOutput
+	ToPreventionContentPolicyInspectConfigOutputWithContext(context.Context) PreventionContentPolicyInspectConfigOutput
+}
+
+type PreventionContentPolicyInspectConfigArgs struct {
+	// List of options defining data content to scan. If empty, text, images, and other content will be included.
+	// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+	ContentOptions pulumi.StringArrayInput `pulumi:"contentOptions"`
+	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+	// Structure is documented below.
+	CustomInfoTypes PreventionContentPolicyInspectConfigCustomInfoTypeArrayInput `pulumi:"customInfoTypes"`
+	// When true, excludes type information of the findings.
+	ExcludeInfoTypes pulumi.BoolPtrInput `pulumi:"excludeInfoTypes"`
+	// When true, a contextual quote from the data that triggered a finding is included in the response.
+	IncludeQuote pulumi.BoolPtrInput `pulumi:"includeQuote"`
+	// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+	// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+	// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+	// By default this may be all types, but may change over time as detectors are updated.
+	// Structure is documented below.
+	InfoTypes PreventionContentPolicyInspectConfigInfoTypeArrayInput `pulumi:"infoTypes"`
+	// Configuration to control the number of findings returned.
+	// Structure is documented below.
+	Limits PreventionContentPolicyInspectConfigLimitsPtrInput `pulumi:"limits"`
+	// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+	// Default value is `POSSIBLE`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	MinLikelihood pulumi.StringPtrInput `pulumi:"minLikelihood"`
+	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+	// The system only returns a finding if its likelihood is above this threshold. If this field
+	// is not set, the system uses the InspectConfig min_likelihood.
+	// Structure is documented below.
+	MinLikelihoodPerInfoTypes PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayInput `pulumi:"minLikelihoodPerInfoTypes"`
+	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+	// other rules are executed in the order they are specified for each info type.
+	// Structure is documented below.
+	RuleSets PreventionContentPolicyInspectConfigRuleSetArrayInput `pulumi:"ruleSets"`
+}
+
+func (PreventionContentPolicyInspectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfig)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigArgs) ToPreventionContentPolicyInspectConfigOutput() PreventionContentPolicyInspectConfigOutput {
+	return i.ToPreventionContentPolicyInspectConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigArgs) ToPreventionContentPolicyInspectConfigOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigArgs) ToPreventionContentPolicyInspectConfigPtrOutput() PreventionContentPolicyInspectConfigPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigArgs) ToPreventionContentPolicyInspectConfigPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigOutput).ToPreventionContentPolicyInspectConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigPtrInput is an input type that accepts PreventionContentPolicyInspectConfigArgs, PreventionContentPolicyInspectConfigPtr and PreventionContentPolicyInspectConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigPtrOutput() PreventionContentPolicyInspectConfigPtrOutput
+	ToPreventionContentPolicyInspectConfigPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigPtrOutput
+}
+
+type preventionContentPolicyInspectConfigPtrType PreventionContentPolicyInspectConfigArgs
+
+func PreventionContentPolicyInspectConfigPtr(v *PreventionContentPolicyInspectConfigArgs) PreventionContentPolicyInspectConfigPtrInput {
+	return (*preventionContentPolicyInspectConfigPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfig)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigPtrType) ToPreventionContentPolicyInspectConfigPtrOutput() PreventionContentPolicyInspectConfigPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigPtrType) ToPreventionContentPolicyInspectConfigPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfig)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigOutput) ToPreventionContentPolicyInspectConfigOutput() PreventionContentPolicyInspectConfigOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigOutput) ToPreventionContentPolicyInspectConfigOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigOutput) ToPreventionContentPolicyInspectConfigPtrOutput() PreventionContentPolicyInspectConfigPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigOutput) ToPreventionContentPolicyInspectConfigPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfig) *PreventionContentPolicyInspectConfig {
+		return &v
+	}).(PreventionContentPolicyInspectConfigPtrOutput)
+}
+
+// List of options defining data content to scan. If empty, text, images, and other content will be included.
+// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+func (o PreventionContentPolicyInspectConfigOutput) ContentOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) []string { return v.ContentOptions }).(pulumi.StringArrayOutput)
+}
+
+// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigOutput) CustomInfoTypes() PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigCustomInfoType {
+		return v.CustomInfoTypes
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput)
+}
+
+// When true, excludes type information of the findings.
+func (o PreventionContentPolicyInspectConfigOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) *bool { return v.ExcludeInfoTypes }).(pulumi.BoolPtrOutput)
+}
+
+// When true, a contextual quote from the data that triggered a finding is included in the response.
+func (o PreventionContentPolicyInspectConfigOutput) IncludeQuote() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) *bool { return v.IncludeQuote }).(pulumi.BoolPtrOutput)
+}
+
+// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+// By default this may be all types, but may change over time as detectors are updated.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigOutput) InfoTypes() PreventionContentPolicyInspectConfigInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigInfoType {
+		return v.InfoTypes
+	}).(PreventionContentPolicyInspectConfigInfoTypeArrayOutput)
+}
+
+// Configuration to control the number of findings returned.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigOutput) Limits() PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) *PreventionContentPolicyInspectConfigLimits {
+		return v.Limits
+	}).(PreventionContentPolicyInspectConfigLimitsPtrOutput)
+}
+
+// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+// Default value is `POSSIBLE`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+func (o PreventionContentPolicyInspectConfigOutput) MinLikelihood() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) *string { return v.MinLikelihood }).(pulumi.StringPtrOutput)
+}
+
+// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+// The system only returns a finding if its likelihood is above this threshold. If this field
+// is not set, the system uses the InspectConfig min_likelihood.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigOutput) MinLikelihoodPerInfoTypes() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType {
+		return v.MinLikelihoodPerInfoTypes
+	}).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput)
+}
+
+// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+// other rules are executed in the order they are specified for each info type.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigOutput) RuleSets() PreventionContentPolicyInspectConfigRuleSetArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigRuleSet {
+		return v.RuleSets
+	}).(PreventionContentPolicyInspectConfigRuleSetArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfig)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigPtrOutput) ToPreventionContentPolicyInspectConfigPtrOutput() PreventionContentPolicyInspectConfigPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigPtrOutput) ToPreventionContentPolicyInspectConfigPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigPtrOutput) Elem() PreventionContentPolicyInspectConfigOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) PreventionContentPolicyInspectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfig
+		return ret
+	}).(PreventionContentPolicyInspectConfigOutput)
+}
+
+// List of options defining data content to scan. If empty, text, images, and other content will be included.
+// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+func (o PreventionContentPolicyInspectConfigPtrOutput) ContentOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigPtrOutput) CustomInfoTypes() PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigCustomInfoType {
+		if v == nil {
+			return nil
+		}
+		return v.CustomInfoTypes
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput)
+}
+
+// When true, excludes type information of the findings.
+func (o PreventionContentPolicyInspectConfigPtrOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeInfoTypes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, a contextual quote from the data that triggered a finding is included in the response.
+func (o PreventionContentPolicyInspectConfigPtrOutput) IncludeQuote() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeQuote
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+// By default this may be all types, but may change over time as detectors are updated.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigPtrOutput) InfoTypes() PreventionContentPolicyInspectConfigInfoTypeArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigInfoType {
+		if v == nil {
+			return nil
+		}
+		return v.InfoTypes
+	}).(PreventionContentPolicyInspectConfigInfoTypeArrayOutput)
+}
+
+// Configuration to control the number of findings returned.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigPtrOutput) Limits() PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) *PreventionContentPolicyInspectConfigLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(PreventionContentPolicyInspectConfigLimitsPtrOutput)
+}
+
+// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+// Default value is `POSSIBLE`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+func (o PreventionContentPolicyInspectConfigPtrOutput) MinLikelihood() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinLikelihood
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+// The system only returns a finding if its likelihood is above this threshold. If this field
+// is not set, the system uses the InspectConfig min_likelihood.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigPtrOutput) MinLikelihoodPerInfoTypes() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType {
+		if v == nil {
+			return nil
+		}
+		return v.MinLikelihoodPerInfoTypes
+	}).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput)
+}
+
+// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+// other rules are executed in the order they are specified for each info type.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigPtrOutput) RuleSets() PreventionContentPolicyInspectConfigRuleSetArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfig) []PreventionContentPolicyInspectConfigRuleSet {
+		if v == nil {
+			return nil
+		}
+		return v.RuleSets
+	}).(PreventionContentPolicyInspectConfigRuleSetArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoType struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary *PreventionContentPolicyInspectConfigCustomInfoTypeDictionary `pulumi:"dictionary"`
+	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+	// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+	ExclusionType *string `pulumi:"exclusionType"`
+	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+	// treated as a custom info type.
+	// Structure is documented below.
+	InfoType PreventionContentPolicyInspectConfigCustomInfoTypeInfoType `pulumi:"infoType"`
+	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+	// specified by the rule.
+	// Default value is `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	Likelihood *string `pulumi:"likelihood"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex *PreventionContentPolicyInspectConfigCustomInfoTypeRegex `pulumi:"regex"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore *PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore `pulumi:"sensitivityScore"`
+	// A reference to a StoredInfoType to use with scanning.
+	// Structure is documented below.
+	StoredType *PreventionContentPolicyInspectConfigCustomInfoTypeStoredType `pulumi:"storedType"`
+	// Message for detecting output from deidentification transformations that support reversing.
+	SurrogateType *PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType `pulumi:"surrogateType"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeArgs and PreventionContentPolicyInspectConfigCustomInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeArgs struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrInput `pulumi:"dictionary"`
+	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+	// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+	ExclusionType pulumi.StringPtrInput `pulumi:"exclusionType"`
+	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+	// treated as a custom info type.
+	// Structure is documented below.
+	InfoType PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeInput `pulumi:"infoType"`
+	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+	// specified by the rule.
+	// Default value is `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	Likelihood pulumi.StringPtrInput `pulumi:"likelihood"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrInput `pulumi:"regex"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrInput `pulumi:"sensitivityScore"`
+	// A reference to a StoredInfoType to use with scanning.
+	// Structure is documented below.
+	StoredType PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrInput `pulumi:"storedType"`
+	// Message for detecting output from deidentification transformations that support reversing.
+	SurrogateType PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrInput `pulumi:"surrogateType"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeOutput)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeArrayInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeArray and PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeArray{ PreventionContentPolicyInspectConfigCustomInfoTypeArgs{...} }
+type PreventionContentPolicyInspectConfigCustomInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput() PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeArray []PreventionContentPolicyInspectConfigCustomInfoTypeInput
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeArray) ToPreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput() PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeArray) ToPreventionContentPolicyInspectConfigCustomInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeOutput {
+	return o
+}
+
+// Dictionary which defines the rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) Dictionary() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionary {
+		return v.Dictionary
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput)
+}
+
+// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) ExclusionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) *string { return v.ExclusionType }).(pulumi.StringPtrOutput)
+}
+
+// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+// treated as a custom info type.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) InfoType() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) PreventionContentPolicyInspectConfigCustomInfoTypeInfoType {
+		return v.InfoType
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput)
+}
+
+// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+// specified by the rule.
+// Default value is `VERY_LIKELY`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) Likelihood() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) *string { return v.Likelihood }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression which defines the rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) Regex() PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) *PreventionContentPolicyInspectConfigCustomInfoTypeRegex {
+		return v.Regex
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) SensitivityScore() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) *PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore {
+		return v.SensitivityScore
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput)
+}
+
+// A reference to a StoredInfoType to use with scanning.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) StoredType() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) *PreventionContentPolicyInspectConfigCustomInfoTypeStoredType {
+		return v.StoredType
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput)
+}
+
+// Message for detecting output from deidentification transformations that support reversing.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeOutput) SurrogateType() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoType) *PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType {
+		return v.SurrogateType
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput() PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigCustomInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigCustomInfoType {
+		return vs[0].([]PreventionContentPolicyInspectConfigCustomInfoType)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionary struct {
+	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+	// Structure is documented below.
+	CloudStoragePath *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath `pulumi:"cloudStoragePath"`
+	// List of words or phrases to search for.
+	// Structure is documented below.
+	WordList *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList `pulumi:"wordList"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs and PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs struct {
+	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+	// Structure is documented below.
+	CloudStoragePath PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput `pulumi:"cloudStoragePath"`
+	// List of words or phrases to search for.
+	// Structure is documented below.
+	WordList PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrInput `pulumi:"wordList"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs, PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtr and PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrType PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeDictionary) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionary {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput)
+}
+
+// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput) CloudStoragePath() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeDictionary) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		return v.CloudStoragePath
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+// List of words or phrases to search for.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput) WordList() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeDictionary) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList {
+		return v.WordList
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionary) PreventionContentPolicyInspectConfigCustomInfoTypeDictionary {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeDictionary
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput)
+}
+
+// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput) CloudStoragePath() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionary) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStoragePath
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+// List of words or phrases to search for.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput) WordList() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionary) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList {
+		if v == nil {
+			return nil
+		}
+		return v.WordList
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath struct {
+	// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+	Path string `pulumi:"path"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs and PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs struct {
+	// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs, PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtr and PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath) string {
+		return v.Path
+	}).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput)
+}
+
+// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at least one
+	// phrase and every phrase must contain at least 2 characters that are letters or digits.
+	Words []string `pulumi:"words"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs and PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at least one
+	// phrase and every phrase must contain at least 2 characters that are letters or digits.
+	Words pulumi.StringArrayInput `pulumi:"words"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs, PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtr and PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrType PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList) *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at least one
+// phrase and every phrase must contain at least 2 characters that are letters or digits.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList) []string { return v.Words }).(pulumi.StringArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList) PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at least one
+// phrase and every phrase must contain at least 2 characters that are letters or digits.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Words
+	}).(pulumi.StringArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoType struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name string `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore *PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version *string `pulumi:"version"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs and PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrInput `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput {
+	return o
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeInfoType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput) SensitivityScore() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeInfoType) *PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore {
+		return v.SensitivityScore
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeInfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score string `pulumi:"score"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs and PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score pulumi.StringInput `pulumi:"score"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs, PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtr and PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrType PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore) *PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput) Score() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore) string {
+		return v.Score
+	}).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore) PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput) Score() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Score
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeRegex struct {
+	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	GroupIndexes []int `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression.
+	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern string `pulumi:"pattern"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeRegexInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs and PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeRegexInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeRegexInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs struct {
+	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	GroupIndexes pulumi.IntArrayInput `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression.
+	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs, PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtr and PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeRegexPtrType PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs) PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeRegexPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeRegexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeRegexPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeRegexPtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeRegex) *PreventionContentPolicyInspectConfigCustomInfoTypeRegex {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeRegex) []int { return v.GroupIndexes }).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression.
+// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeRegex) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeRegex) PreventionContentPolicyInspectConfigCustomInfoTypeRegex {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeRegex
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeRegex) []int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIndexes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression.
+// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeRegex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score string `pulumi:"score"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs and PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score pulumi.StringInput `pulumi:"score"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs, PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtr and PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrType PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore) *PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput) Score() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore) string { return v.Score }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore) PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput) Score() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Score
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeStoredType struct {
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	Name string `pulumi:"name"`
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs and PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs struct {
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs, PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtr and PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrType PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeStoredType) *PreventionContentPolicyInspectConfigCustomInfoTypeStoredType {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput)
+}
+
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigCustomInfoTypeStoredType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeStoredType) PreventionContentPolicyInspectConfigCustomInfoTypeStoredType {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeStoredType
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput)
+}
+
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeStoredType) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType struct {
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs and PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs{...}
+type PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs struct {
+}
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput).ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrInput is an input type that accepts PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs, PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtr and PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput
+	ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput
+}
+
+type preventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrType PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs
+
+func PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtr(v *PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrInput {
+	return (*preventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrType) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType) *PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType {
+		return &v
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput) ToPreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput) Elem() PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType) PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType
+		return ret
+	}).(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigInfoType struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name string `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore *PreventionContentPolicyInspectConfigInfoTypeSensitivityScore `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version *string `pulumi:"version"`
+}
+
+// PreventionContentPolicyInspectConfigInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigInfoTypeArgs and PreventionContentPolicyInspectConfigInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigInfoTypeOutput() PreventionContentPolicyInspectConfigInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeArgs struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrInput `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PreventionContentPolicyInspectConfigInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeArgs) ToPreventionContentPolicyInspectConfigInfoTypeOutput() PreventionContentPolicyInspectConfigInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeArgs) ToPreventionContentPolicyInspectConfigInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigInfoTypeOutput)
+}
+
+// PreventionContentPolicyInspectConfigInfoTypeArrayInput is an input type that accepts PreventionContentPolicyInspectConfigInfoTypeArray and PreventionContentPolicyInspectConfigInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigInfoTypeArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigInfoTypeArray{ PreventionContentPolicyInspectConfigInfoTypeArgs{...} }
+type PreventionContentPolicyInspectConfigInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigInfoTypeArrayOutput() PreventionContentPolicyInspectConfigInfoTypeArrayOutput
+	ToPreventionContentPolicyInspectConfigInfoTypeArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigInfoTypeArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeArray []PreventionContentPolicyInspectConfigInfoTypeInput
+
+func (PreventionContentPolicyInspectConfigInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeArray) ToPreventionContentPolicyInspectConfigInfoTypeArrayOutput() PreventionContentPolicyInspectConfigInfoTypeArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeArray) ToPreventionContentPolicyInspectConfigInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeOutput) ToPreventionContentPolicyInspectConfigInfoTypeOutput() PreventionContentPolicyInspectConfigInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeOutput) ToPreventionContentPolicyInspectConfigInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeOutput {
+	return o
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigInfoType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigInfoTypeOutput) SensitivityScore() PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigInfoType) *PreventionContentPolicyInspectConfigInfoTypeSensitivityScore {
+		return v.SensitivityScore
+	}).(PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigInfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigInfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigInfoTypeArrayOutput() PreventionContentPolicyInspectConfigInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigInfoType {
+		return vs[0].([]PreventionContentPolicyInspectConfigInfoType)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigInfoTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeSensitivityScore struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score string `pulumi:"score"`
+}
+
+// PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreInput is an input type that accepts PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs and PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreInput` via:
+//
+//	PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs{...}
+type PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput
+	ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutputWithContext(context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score pulumi.StringInput `pulumi:"score"`
+}
+
+func (PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput {
+	return i.ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput).ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrInput is an input type that accepts PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs, PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtr and PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput
+	ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput
+}
+
+type preventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrType PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs
+
+func PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtr(v *PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs) PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrInput {
+	return (*preventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigInfoTypeSensitivityScore) *PreventionContentPolicyInspectConfigInfoTypeSensitivityScore {
+		return &v
+	}).(PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput) Score() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigInfoTypeSensitivityScore) string { return v.Score }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput) Elem() PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigInfoTypeSensitivityScore) PreventionContentPolicyInspectConfigInfoTypeSensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigInfoTypeSensitivityScore
+		return ret
+	}).(PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput) Score() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigInfoTypeSensitivityScore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Score
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimits struct {
+	// Configuration of findings limit given for specified infoTypes.
+	// Structure is documented below.
+	MaxFindingsPerInfoTypes []PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType `pulumi:"maxFindingsPerInfoTypes"`
+	// Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+	MaxFindingsPerItem int `pulumi:"maxFindingsPerItem"`
+	// Max number of findings that will be returned per request/job. The maximum returned is 2000.
+	MaxFindingsPerRequest int `pulumi:"maxFindingsPerRequest"`
+}
+
+// PreventionContentPolicyInspectConfigLimitsInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsArgs and PreventionContentPolicyInspectConfigLimitsOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsInput` via:
+//
+//	PreventionContentPolicyInspectConfigLimitsArgs{...}
+type PreventionContentPolicyInspectConfigLimitsInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsOutput() PreventionContentPolicyInspectConfigLimitsOutput
+	ToPreventionContentPolicyInspectConfigLimitsOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsOutput
+}
+
+type PreventionContentPolicyInspectConfigLimitsArgs struct {
+	// Configuration of findings limit given for specified infoTypes.
+	// Structure is documented below.
+	MaxFindingsPerInfoTypes PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput `pulumi:"maxFindingsPerInfoTypes"`
+	// Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+	MaxFindingsPerItem pulumi.IntInput `pulumi:"maxFindingsPerItem"`
+	// Max number of findings that will be returned per request/job. The maximum returned is 2000.
+	MaxFindingsPerRequest pulumi.IntInput `pulumi:"maxFindingsPerRequest"`
+}
+
+func (PreventionContentPolicyInspectConfigLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimits)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsArgs) ToPreventionContentPolicyInspectConfigLimitsOutput() PreventionContentPolicyInspectConfigLimitsOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsArgs) ToPreventionContentPolicyInspectConfigLimitsOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsArgs) ToPreventionContentPolicyInspectConfigLimitsPtrOutput() PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsArgs) ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsOutput).ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigLimitsPtrInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsArgs, PreventionContentPolicyInspectConfigLimitsPtr and PreventionContentPolicyInspectConfigLimitsPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigLimitsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsPtrOutput() PreventionContentPolicyInspectConfigLimitsPtrOutput
+	ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsPtrOutput
+}
+
+type preventionContentPolicyInspectConfigLimitsPtrType PreventionContentPolicyInspectConfigLimitsArgs
+
+func PreventionContentPolicyInspectConfigLimitsPtr(v *PreventionContentPolicyInspectConfigLimitsArgs) PreventionContentPolicyInspectConfigLimitsPtrInput {
+	return (*preventionContentPolicyInspectConfigLimitsPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigLimits)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigLimitsPtrType) ToPreventionContentPolicyInspectConfigLimitsPtrOutput() PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigLimitsPtrType) ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimits)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsOutput) ToPreventionContentPolicyInspectConfigLimitsOutput() PreventionContentPolicyInspectConfigLimitsOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsOutput) ToPreventionContentPolicyInspectConfigLimitsOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsOutput) ToPreventionContentPolicyInspectConfigLimitsPtrOutput() PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsOutput) ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigLimits) *PreventionContentPolicyInspectConfigLimits {
+		return &v
+	}).(PreventionContentPolicyInspectConfigLimitsPtrOutput)
+}
+
+// Configuration of findings limit given for specified infoTypes.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigLimitsOutput) MaxFindingsPerInfoTypes() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimits) []PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType {
+		return v.MaxFindingsPerInfoTypes
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput)
+}
+
+// Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+func (o PreventionContentPolicyInspectConfigLimitsOutput) MaxFindingsPerItem() pulumi.IntOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimits) int { return v.MaxFindingsPerItem }).(pulumi.IntOutput)
+}
+
+// Max number of findings that will be returned per request/job. The maximum returned is 2000.
+func (o PreventionContentPolicyInspectConfigLimitsOutput) MaxFindingsPerRequest() pulumi.IntOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimits) int { return v.MaxFindingsPerRequest }).(pulumi.IntOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigLimits)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsPtrOutput) ToPreventionContentPolicyInspectConfigLimitsPtrOutput() PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsPtrOutput) ToPreventionContentPolicyInspectConfigLimitsPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsPtrOutput) Elem() PreventionContentPolicyInspectConfigLimitsOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimits) PreventionContentPolicyInspectConfigLimits {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigLimits
+		return ret
+	}).(PreventionContentPolicyInspectConfigLimitsOutput)
+}
+
+// Configuration of findings limit given for specified infoTypes.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigLimitsPtrOutput) MaxFindingsPerInfoTypes() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimits) []PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFindingsPerInfoTypes
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput)
+}
+
+// Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+func (o PreventionContentPolicyInspectConfigLimitsPtrOutput) MaxFindingsPerItem() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxFindingsPerItem
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max number of findings that will be returned per request/job. The maximum returned is 2000.
+func (o PreventionContentPolicyInspectConfigLimitsPtrOutput) MaxFindingsPerRequest() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxFindingsPerRequest
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType struct {
+	// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+	// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+	// specified in another InfoTypeLimit.
+	// Structure is documented below.
+	InfoType *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType `pulumi:"infoType"`
+	// Max findings limit for the given infoType.
+	MaxFindings int `pulumi:"maxFindings"`
+}
+
+// PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs and PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs struct {
+	// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+	// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+	// specified in another InfoTypeLimit.
+	// Structure is documented below.
+	InfoType PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrInput `pulumi:"infoType"`
+	// Max findings limit for the given infoType.
+	MaxFindings pulumi.IntInput `pulumi:"maxFindings"`
+}
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput)
+}
+
+// PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArray and PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArray{ PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs{...} }
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArray []PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInput
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArray) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArray) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput {
+	return o
+}
+
+// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+// specified in another InfoTypeLimit.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput) InfoType() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType) *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
+		return v.InfoType
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput)
+}
+
+// Max findings limit for the given infoType.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput) MaxFindings() pulumi.IntOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType) int { return v.MaxFindings }).(pulumi.IntOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType {
+		return vs[0].([]PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name string `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version *string `pulumi:"version"`
+}
+
+// PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs and PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrInput `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput).ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs, PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtr and PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput
+}
+
+type preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrType PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs
+
+func PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtr(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrInput {
+	return (*preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrType) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrType) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
+		return &v
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput)
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) SensitivityScore() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore {
+		return v.SensitivityScore
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) *string {
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput) Elem() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
+		return ret
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput)
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput) SensitivityScore() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore {
+		if v == nil {
+			return nil
+		}
+		return v.SensitivityScore
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score string `pulumi:"score"`
+}
+
+// PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs and PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreInput` via:
+//
+//	PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs{...}
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score pulumi.StringInput `pulumi:"score"`
+}
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput).ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrInput is an input type that accepts PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs, PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtr and PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput
+	ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput
+}
+
+type preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrType PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs
+
+func PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtr(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrInput {
+	return (*preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore) *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore {
+		return &v
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput) Score() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore) string {
+		return v.Score
+	}).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput) Elem() PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore) PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore
+		return ret
+	}).(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput) Score() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Score
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType struct {
+	// Type of information the likeliness threshold applies to. Only one likelihood per infoType should be provided.
+	// If InfoTypeLikelihood does not have an info_type, the configuration fails.
+	// Structure is documented below.
+	InfoType *PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType `pulumi:"infoType"`
+	// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	MinLikelihood string `pulumi:"minLikelihood"`
+}
+
+// PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs and PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs struct {
+	// Type of information the likeliness threshold applies to. Only one likelihood per infoType should be provided.
+	// If InfoTypeLikelihood does not have an info_type, the configuration fails.
+	// Structure is documented below.
+	InfoType PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrInput `pulumi:"infoType"`
+	// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	MinLikelihood pulumi.StringInput `pulumi:"minLikelihood"`
+}
+
+func (PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput)
+}
+
+// PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayInput is an input type that accepts PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArray and PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArray{ PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs{...} }
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArray []PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInput
+
+func (PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArray) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArray) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput {
+	return o
+}
+
+// Type of information the likeliness threshold applies to. Only one likelihood per infoType should be provided.
+// If InfoTypeLikelihood does not have an info_type, the configuration fails.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput) InfoType() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType) *PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType {
+		return v.InfoType
+	}).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput)
+}
+
+// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput) MinLikelihood() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType) string { return v.MinLikelihood }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType {
+		return vs[0].([]PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name string `pulumi:"name"`
+	// Version name for this InfoType.
+	Version *string `pulumi:"version"`
+}
+
+// PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs and PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput).ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrInput is an input type that accepts PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs, PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtr and PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput
+	ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput
+}
+
+type preventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrType PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs
+
+func PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtr(v *PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrInput {
+	return (*preventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrType) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrType) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType) *PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType {
+		return &v
+	}).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput)
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput) ToPreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput) Elem() PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType) PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType
+		return ret
+	}).(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput)
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSet struct {
+	// List of infoTypes this rule set is applied to.
+	// Structure is documented below.
+	InfoTypes []PreventionContentPolicyInspectConfigRuleSetInfoType `pulumi:"infoTypes"`
+	// Set of rules to be applied to infoTypes. The rules are applied in order.
+	// Structure is documented below.
+	Rules []PreventionContentPolicyInspectConfigRuleSetRule `pulumi:"rules"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetArgs and PreventionContentPolicyInspectConfigRuleSetOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetOutput() PreventionContentPolicyInspectConfigRuleSetOutput
+	ToPreventionContentPolicyInspectConfigRuleSetOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetArgs struct {
+	// List of infoTypes this rule set is applied to.
+	// Structure is documented below.
+	InfoTypes PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayInput `pulumi:"infoTypes"`
+	// Set of rules to be applied to infoTypes. The rules are applied in order.
+	// Structure is documented below.
+	Rules PreventionContentPolicyInspectConfigRuleSetRuleArrayInput `pulumi:"rules"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSet)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetArgs) ToPreventionContentPolicyInspectConfigRuleSetOutput() PreventionContentPolicyInspectConfigRuleSetOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetArgs) ToPreventionContentPolicyInspectConfigRuleSetOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetOutput)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetArrayInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetArray and PreventionContentPolicyInspectConfigRuleSetArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetArray{ PreventionContentPolicyInspectConfigRuleSetArgs{...} }
+type PreventionContentPolicyInspectConfigRuleSetArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetArrayOutput() PreventionContentPolicyInspectConfigRuleSetArrayOutput
+	ToPreventionContentPolicyInspectConfigRuleSetArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetArray []PreventionContentPolicyInspectConfigRuleSetInput
+
+func (PreventionContentPolicyInspectConfigRuleSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSet)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetArray) ToPreventionContentPolicyInspectConfigRuleSetArrayOutput() PreventionContentPolicyInspectConfigRuleSetArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetArray) ToPreventionContentPolicyInspectConfigRuleSetArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSet)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetOutput) ToPreventionContentPolicyInspectConfigRuleSetOutput() PreventionContentPolicyInspectConfigRuleSetOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetOutput) ToPreventionContentPolicyInspectConfigRuleSetOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetOutput {
+	return o
+}
+
+// List of infoTypes this rule set is applied to.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetOutput) InfoTypes() PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSet) []PreventionContentPolicyInspectConfigRuleSetInfoType {
+		return v.InfoTypes
+	}).(PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput)
+}
+
+// Set of rules to be applied to infoTypes. The rules are applied in order.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetOutput) Rules() PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSet) []PreventionContentPolicyInspectConfigRuleSetRule {
+		return v.Rules
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSet)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetArrayOutput() PreventionContentPolicyInspectConfigRuleSetArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigRuleSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigRuleSet {
+		return vs[0].([]PreventionContentPolicyInspectConfigRuleSet)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigRuleSetOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoType struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name string `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore *PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version *string `pulumi:"version"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs and PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrInput `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetInfoTypeArray and PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetInfoTypeArray{ PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs{...} }
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeArray []PreventionContentPolicyInspectConfigRuleSetInfoTypeInput
+
+func (PreventionContentPolicyInspectConfigRuleSetInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSetInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeArray) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeArray) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput {
+	return o
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetInfoType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput) SensitivityScore() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetInfoType) *PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore {
+		return v.SensitivityScore
+	}).(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetInfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSetInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigRuleSetInfoType {
+		return vs[0].([]PreventionContentPolicyInspectConfigRuleSetInfoType)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score string `pulumi:"score"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs and PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score pulumi.StringInput `pulumi:"score"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput).ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs, PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtr and PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrType PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs
+
+func PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtr(v *PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore) *PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput) Score() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore) string { return v.Score }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore) PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput) Score() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Score
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRule struct {
+	// The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+	// Structure is documented below.
+	ExclusionRule *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule `pulumi:"exclusionRule"`
+	// Hotword-based detection rule.
+	// Structure is documented below.
+	HotwordRule *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule `pulumi:"hotwordRule"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleArgs and PreventionContentPolicyInspectConfigRuleSetRuleOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleArgs struct {
+	// The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+	// Structure is documented below.
+	ExclusionRule PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrInput `pulumi:"exclusionRule"`
+	// Hotword-based detection rule.
+	// Structure is documented below.
+	HotwordRule PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrInput `pulumi:"hotwordRule"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRule)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleOutput)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleArrayInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleArray and PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleArray{ PreventionContentPolicyInspectConfigRuleSetRuleArgs{...} }
+type PreventionContentPolicyInspectConfigRuleSetRuleArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleArrayOutput() PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleArray []PreventionContentPolicyInspectConfigRuleSetRuleInput
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSetRule)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleArray) ToPreventionContentPolicyInspectConfigRuleSetRuleArrayOutput() PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleArray) ToPreventionContentPolicyInspectConfigRuleSetRuleArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleOutput {
+	return o
+}
+
+// The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleOutput) ExclusionRule() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule {
+		return v.ExclusionRule
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput)
+}
+
+// Hotword-based detection rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleOutput) HotwordRule() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRule) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule {
+		return v.HotwordRule
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSetRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleArrayOutput() PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigRuleSetRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigRuleSetRule {
+		return vs[0].([]PreventionContentPolicyInspectConfigRuleSetRule)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary `pulumi:"dictionary"`
+	// Drop if the hotword rule is contained in the proximate context.
+	// For tabular data, the context includes the column name.
+	// Structure is documented below.
+	ExcludeByHotword *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword `pulumi:"excludeByHotword"`
+	// Set of infoTypes for which findings would affect this rule.
+	// Structure is documented below.
+	ExcludeInfoTypes *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes `pulumi:"excludeInfoTypes"`
+	// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+	// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+	MatchingType string `pulumi:"matchingType"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex `pulumi:"regex"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput `pulumi:"dictionary"`
+	// Drop if the hotword rule is contained in the proximate context.
+	// For tabular data, the context includes the column name.
+	// Structure is documented below.
+	ExcludeByHotword PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrInput `pulumi:"excludeByHotword"`
+	// Set of infoTypes for which findings would affect this rule.
+	// Structure is documented below.
+	ExcludeInfoTypes PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput `pulumi:"excludeInfoTypes"`
+	// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+	// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+	MatchingType pulumi.StringInput `pulumi:"matchingType"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrInput `pulumi:"regex"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput)
+}
+
+// Dictionary which defines the rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) Dictionary() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary {
+		return v.Dictionary
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+// Drop if the hotword rule is contained in the proximate context.
+// For tabular data, the context includes the column name.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) ExcludeByHotword() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+		return v.ExcludeByHotword
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput)
+}
+
+// Set of infoTypes for which findings would affect this rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) ExcludeInfoTypes() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+		return v.ExcludeInfoTypes
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput)
+}
+
+// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) MatchingType() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) string { return v.MatchingType }).(pulumi.StringOutput)
+}
+
+// Regular expression which defines the rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput) Regex() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex {
+		return v.Regex
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput)
+}
+
+// Dictionary which defines the rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) Dictionary() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary {
+		if v == nil {
+			return nil
+		}
+		return v.Dictionary
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+// Drop if the hotword rule is contained in the proximate context.
+// For tabular data, the context includes the column name.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) ExcludeByHotword() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeByHotword
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput)
+}
+
+// Set of infoTypes for which findings would affect this rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) ExcludeInfoTypes() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeInfoTypes
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput)
+}
+
+// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) MatchingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MatchingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Regular expression which defines the rule.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput) Regex() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary struct {
+	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+	// Structure is documented below.
+	CloudStoragePath *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath `pulumi:"cloudStoragePath"`
+	// List of words or phrases to search for.
+	// Structure is documented below.
+	WordList *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList `pulumi:"wordList"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs struct {
+	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+	// Structure is documented below.
+	CloudStoragePath PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput `pulumi:"cloudStoragePath"`
+	// List of words or phrases to search for.
+	// Structure is documented below.
+	WordList PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput `pulumi:"wordList"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput)
+}
+
+// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput) CloudStoragePath() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+		return v.CloudStoragePath
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput)
+}
+
+// List of words or phrases to search for.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput) WordList() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+		return v.WordList
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput)
+}
+
+// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput) CloudStoragePath() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStoragePath
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput)
+}
+
+// List of words or phrases to search for.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput) WordList() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+		if v == nil {
+			return nil
+		}
+		return v.WordList
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath struct {
+	// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+	Path string `pulumi:"path"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs struct {
+	// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput)
+}
+
+// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath) string {
+		return v.Path
+	}).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput)
+}
+
+// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at least one
+	// phrase and every phrase must contain at least 2 characters that are letters or digits.
+	Words []string `pulumi:"words"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at least one
+	// phrase and every phrase must contain at least 2 characters that are letters or digits.
+	Words pulumi.StringArrayInput `pulumi:"words"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at least one
+// phrase and every phrase must contain at least 2 characters that are letters or digits.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList) []string {
+		return v.Words
+	}).(pulumi.StringArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at least one
+// phrase and every phrase must contain at least 2 characters that are letters or digits.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Words
+	}).(pulumi.StringArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword struct {
+	// Regular expression pattern defining what qualifies as a hotword.
+	// Structure is documented below.
+	HotwordRegex PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex `pulumi:"hotwordRegex"`
+	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+	// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+	// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+	// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+	// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+	// Structure is documented below.
+	Proximity PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity `pulumi:"proximity"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs struct {
+	// Regular expression pattern defining what qualifies as a hotword.
+	// Structure is documented below.
+	HotwordRegex PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexInput `pulumi:"hotwordRegex"`
+	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+	// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+	// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+	// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+	// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+	// Structure is documented below.
+	Proximity PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityInput `pulumi:"proximity"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput)
+}
+
+// Regular expression pattern defining what qualifies as a hotword.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput) HotwordRegex() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+		return v.HotwordRegex
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput)
+}
+
+// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput) Proximity() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+		return v.Proximity
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput)
+}
+
+// Regular expression pattern defining what qualifies as a hotword.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput) HotwordRegex() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+		if v == nil {
+			return nil
+		}
+		return &v.HotwordRegex
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput)
+}
+
+// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput) Proximity() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+		if v == nil {
+			return nil
+		}
+		return &v.Proximity
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex struct {
+	// The index of the submatch to extract as findings. When not specified,
+	// the entire match is returned. No more than 3 may be included.
+	GroupIndexes []int `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression. Its syntax
+	// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern string `pulumi:"pattern"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs struct {
+	// The index of the submatch to extract as findings. When not specified,
+	// the entire match is returned. No more than 3 may be included.
+	GroupIndexes pulumi.IntArrayInput `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression. Its syntax
+	// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified,
+// the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex) []int {
+		return v.GroupIndexes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression. Its syntax
+// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex) string {
+		return v.Pattern
+	}).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified,
+// the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex) []int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIndexes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression. Its syntax
+// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity struct {
+	// Number of characters after the finding to consider.
+	WindowAfter *int `pulumi:"windowAfter"`
+	// Number of characters before the finding to consider.
+	WindowBefore *int `pulumi:"windowBefore"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs struct {
+	// Number of characters after the finding to consider.
+	WindowAfter pulumi.IntPtrInput `pulumi:"windowAfter"`
+	// Number of characters before the finding to consider.
+	WindowBefore pulumi.IntPtrInput `pulumi:"windowBefore"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput)
+}
+
+// Number of characters after the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput) WindowAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity) *int {
+		return v.WindowAfter
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of characters before the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput) WindowBefore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity) *int {
+		return v.WindowBefore
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput)
+}
+
+// Number of characters after the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput) WindowAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WindowAfter
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of characters before the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput) WindowBefore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WindowBefore
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes struct {
+	// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+	// Structure is documented below.
+	InfoTypes []PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType `pulumi:"infoTypes"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs struct {
+	// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+	// Structure is documented below.
+	InfoTypes PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput `pulumi:"infoTypes"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput)
+}
+
+// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput) InfoTypes() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes) []PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
+		return v.InfoTypes
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput)
+}
+
+// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput) InfoTypes() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes) []PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
+		if v == nil {
+			return nil
+		}
+		return v.InfoTypes
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name string `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version *string `pulumi:"version"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs struct {
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	// Structure is documented below.
+	SensitivityScore PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrInput `pulumi:"sensitivityScore"`
+	// Version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray{ PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs{...} }
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray []PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput {
+	return o
+}
+
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) SensitivityScore() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore {
+		return v.SensitivityScore
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput)
+}
+
+// Version name for this InfoType.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType) *string {
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
+		return vs[0].([]PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType)[vs[1].(int)]
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score string `pulumi:"score"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs struct {
+	// The sensitivity score applied to the resource.
+	// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+	Score pulumi.StringInput `pulumi:"score"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput) Score() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore) string {
+		return v.Score
+	}).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput)
+}
+
+// The sensitivity score applied to the resource.
+// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput) Score() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Score
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex struct {
+	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	GroupIndexes []int `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression.
+	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern string `pulumi:"pattern"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs struct {
+	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	GroupIndexes pulumi.IntArrayInput `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression.
+	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs, PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtr and PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrType PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex) *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex) []int { return v.GroupIndexes }).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression.
+// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex) PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex) []int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIndexes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression.
+// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule struct {
+	// Regular expression pattern defining what qualifies as a hotword.
+	// Structure is documented below.
+	HotwordRegex PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex `pulumi:"hotwordRegex"`
+	// Likelihood adjustment to apply to all matching findings.
+	// Structure is documented below.
+	LikelihoodAdjustment PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment `pulumi:"likelihoodAdjustment"`
+	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+	// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+	// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+	// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+	// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+	// Structure is documented below.
+	Proximity PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity `pulumi:"proximity"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs struct {
+	// Regular expression pattern defining what qualifies as a hotword.
+	// Structure is documented below.
+	HotwordRegex PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput `pulumi:"hotwordRegex"`
+	// Likelihood adjustment to apply to all matching findings.
+	// Structure is documented below.
+	LikelihoodAdjustment PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput `pulumi:"likelihoodAdjustment"`
+	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+	// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+	// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+	// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+	// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+	// Structure is documented below.
+	Proximity PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityInput `pulumi:"proximity"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs, PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtr and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrType PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtr(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput)
+}
+
+// Regular expression pattern defining what qualifies as a hotword.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) HotwordRegex() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+		return v.HotwordRegex
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput)
+}
+
+// Likelihood adjustment to apply to all matching findings.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) LikelihoodAdjustment() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+		return v.LikelihoodAdjustment
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput)
+}
+
+// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput) Proximity() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity {
+		return v.Proximity
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput)
+}
+
+// Regular expression pattern defining what qualifies as a hotword.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput) HotwordRegex() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+		if v == nil {
+			return nil
+		}
+		return &v.HotwordRegex
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput)
+}
+
+// Likelihood adjustment to apply to all matching findings.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput) LikelihoodAdjustment() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+		if v == nil {
+			return nil
+		}
+		return &v.LikelihoodAdjustment
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput)
+}
+
+// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+// used to match substrings of the finding itself. For example, the certainty of a phone number regex
+// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+// Structure is documented below.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput) Proximity() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity {
+		if v == nil {
+			return nil
+		}
+		return &v.Proximity
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex struct {
+	// The index of the submatch to extract as findings. When not specified,
+	// the entire match is returned. No more than 3 may be included.
+	GroupIndexes []int `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression. Its syntax
+	// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern string `pulumi:"pattern"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs struct {
+	// The index of the submatch to extract as findings. When not specified,
+	// the entire match is returned. No more than 3 may be included.
+	GroupIndexes pulumi.IntArrayInput `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression. Its syntax
+	// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs, PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtr and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrType PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified,
+// the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex) []int {
+		return v.GroupIndexes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression. Its syntax
+// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex) string {
+		return v.Pattern
+	}).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified,
+// the entire match is returned. No more than 3 may be included.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex) []int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIndexes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression. Its syntax
+// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment struct {
+	// Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	FixedLikelihood *string `pulumi:"fixedLikelihood"`
+	// Increase or decrease the likelihood by the specified number of levels. For example,
+	// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+	// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+	// Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+	// adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+	// will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+	RelativeLikelihood *int `pulumi:"relativeLikelihood"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs struct {
+	// Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+	FixedLikelihood pulumi.StringPtrInput `pulumi:"fixedLikelihood"`
+	// Increase or decrease the likelihood by the specified number of levels. For example,
+	// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+	// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+	// Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+	// adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+	// will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+	RelativeLikelihood pulumi.IntPtrInput `pulumi:"relativeLikelihood"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs, PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtr and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrType PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput)
+}
+
+// Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) FixedLikelihood() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) *string {
+		return v.FixedLikelihood
+	}).(pulumi.StringPtrOutput)
+}
+
+// Increase or decrease the likelihood by the specified number of levels. For example,
+// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+// Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+// adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+// will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) RelativeLikelihood() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) *int {
+		return v.RelativeLikelihood
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput)
+}
+
+// Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput) FixedLikelihood() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FixedLikelihood
+	}).(pulumi.StringPtrOutput)
+}
+
+// Increase or decrease the likelihood by the specified number of levels. For example,
+// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+// Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+// adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+// will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput) RelativeLikelihood() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeLikelihood
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity struct {
+	// Number of characters after the finding to consider.
+	WindowAfter *int `pulumi:"windowAfter"`
+	// Number of characters before the finding to consider.
+	WindowBefore *int `pulumi:"windowBefore"`
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityInput` via:
+//
+//	PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs{...}
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs struct {
+	// Number of characters after the finding to consider.
+	WindowAfter pulumi.IntPtrInput `pulumi:"windowAfter"`
+	// Number of characters before the finding to consider.
+	WindowBefore pulumi.IntPtrInput `pulumi:"windowBefore"`
+}
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput)
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput).ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrInput is an input type that accepts PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs, PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtr and PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrInput` via:
+//
+//	        PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput
+	ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput
+}
+
+type preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrType PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs
+
+func PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtr(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrInput {
+	return (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrType)(v)
+}
+
+func (*preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return i.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrType) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return o.ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity) *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity {
+		return &v
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput)
+}
+
+// Number of characters after the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput) WindowAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity) *int { return v.WindowAfter }).(pulumi.IntPtrOutput)
+}
+
+// Number of characters before the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput) WindowBefore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity) *int {
+		return v.WindowBefore
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput) ToPreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutputWithContext(ctx context.Context) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput) Elem() PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity) PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity
+		return ret
+	}).(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput)
+}
+
+// Number of characters after the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput) WindowAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WindowAfter
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of characters before the finding to consider.
+func (o PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput) WindowBefore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WindowBefore
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyLoggingConfig struct {
+	// Log actions to BigQuery.
+	// Structure is documented below.
+	LogToBigQuery *PreventionContentPolicyLoggingConfigLogToBigQuery `pulumi:"logToBigQuery"`
+}
+
+// PreventionContentPolicyLoggingConfigInput is an input type that accepts PreventionContentPolicyLoggingConfigArgs and PreventionContentPolicyLoggingConfigOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyLoggingConfigInput` via:
+//
+//	PreventionContentPolicyLoggingConfigArgs{...}
+type PreventionContentPolicyLoggingConfigInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyLoggingConfigOutput() PreventionContentPolicyLoggingConfigOutput
+	ToPreventionContentPolicyLoggingConfigOutputWithContext(context.Context) PreventionContentPolicyLoggingConfigOutput
+}
+
+type PreventionContentPolicyLoggingConfigArgs struct {
+	// Log actions to BigQuery.
+	// Structure is documented below.
+	LogToBigQuery PreventionContentPolicyLoggingConfigLogToBigQueryPtrInput `pulumi:"logToBigQuery"`
+}
+
+func (PreventionContentPolicyLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyLoggingConfig)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyLoggingConfigArgs) ToPreventionContentPolicyLoggingConfigOutput() PreventionContentPolicyLoggingConfigOutput {
+	return i.ToPreventionContentPolicyLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyLoggingConfigArgs) ToPreventionContentPolicyLoggingConfigOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyLoggingConfigOutput)
+}
+
+// PreventionContentPolicyLoggingConfigArrayInput is an input type that accepts PreventionContentPolicyLoggingConfigArray and PreventionContentPolicyLoggingConfigArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyLoggingConfigArrayInput` via:
+//
+//	PreventionContentPolicyLoggingConfigArray{ PreventionContentPolicyLoggingConfigArgs{...} }
+type PreventionContentPolicyLoggingConfigArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyLoggingConfigArrayOutput() PreventionContentPolicyLoggingConfigArrayOutput
+	ToPreventionContentPolicyLoggingConfigArrayOutputWithContext(context.Context) PreventionContentPolicyLoggingConfigArrayOutput
+}
+
+type PreventionContentPolicyLoggingConfigArray []PreventionContentPolicyLoggingConfigInput
+
+func (PreventionContentPolicyLoggingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyLoggingConfig)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyLoggingConfigArray) ToPreventionContentPolicyLoggingConfigArrayOutput() PreventionContentPolicyLoggingConfigArrayOutput {
+	return i.ToPreventionContentPolicyLoggingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyLoggingConfigArray) ToPreventionContentPolicyLoggingConfigArrayOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyLoggingConfigArrayOutput)
+}
+
+type PreventionContentPolicyLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyLoggingConfig)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyLoggingConfigOutput) ToPreventionContentPolicyLoggingConfigOutput() PreventionContentPolicyLoggingConfigOutput {
+	return o
+}
+
+func (o PreventionContentPolicyLoggingConfigOutput) ToPreventionContentPolicyLoggingConfigOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigOutput {
+	return o
+}
+
+// Log actions to BigQuery.
+// Structure is documented below.
+func (o PreventionContentPolicyLoggingConfigOutput) LogToBigQuery() PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyLoggingConfig) *PreventionContentPolicyLoggingConfigLogToBigQuery {
+		return v.LogToBigQuery
+	}).(PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput)
+}
+
+type PreventionContentPolicyLoggingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyLoggingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyLoggingConfig)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyLoggingConfigArrayOutput) ToPreventionContentPolicyLoggingConfigArrayOutput() PreventionContentPolicyLoggingConfigArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyLoggingConfigArrayOutput) ToPreventionContentPolicyLoggingConfigArrayOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyLoggingConfigArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyLoggingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyLoggingConfig {
+		return vs[0].([]PreventionContentPolicyLoggingConfig)[vs[1].(int)]
+	}).(PreventionContentPolicyLoggingConfigOutput)
+}
+
+type PreventionContentPolicyLoggingConfigLogToBigQuery struct {
+	// The dataset ID of the BigQuery table to log to.
+	DatasetId string `pulumi:"datasetId"`
+	// The project ID of the BigQuery table to log to.
+	ProjectId string `pulumi:"projectId"`
+	// The table ID of the BigQuery table to log to.
+	TableId string `pulumi:"tableId"`
+}
+
+// PreventionContentPolicyLoggingConfigLogToBigQueryInput is an input type that accepts PreventionContentPolicyLoggingConfigLogToBigQueryArgs and PreventionContentPolicyLoggingConfigLogToBigQueryOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyLoggingConfigLogToBigQueryInput` via:
+//
+//	PreventionContentPolicyLoggingConfigLogToBigQueryArgs{...}
+type PreventionContentPolicyLoggingConfigLogToBigQueryInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyLoggingConfigLogToBigQueryOutput() PreventionContentPolicyLoggingConfigLogToBigQueryOutput
+	ToPreventionContentPolicyLoggingConfigLogToBigQueryOutputWithContext(context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryOutput
+}
+
+type PreventionContentPolicyLoggingConfigLogToBigQueryArgs struct {
+	// The dataset ID of the BigQuery table to log to.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The project ID of the BigQuery table to log to.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The table ID of the BigQuery table to log to.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (PreventionContentPolicyLoggingConfigLogToBigQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyLoggingConfigLogToBigQuery)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyLoggingConfigLogToBigQueryArgs) ToPreventionContentPolicyLoggingConfigLogToBigQueryOutput() PreventionContentPolicyLoggingConfigLogToBigQueryOutput {
+	return i.ToPreventionContentPolicyLoggingConfigLogToBigQueryOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyLoggingConfigLogToBigQueryArgs) ToPreventionContentPolicyLoggingConfigLogToBigQueryOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyLoggingConfigLogToBigQueryOutput)
+}
+
+func (i PreventionContentPolicyLoggingConfigLogToBigQueryArgs) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput() PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return i.ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyLoggingConfigLogToBigQueryArgs) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyLoggingConfigLogToBigQueryOutput).ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyLoggingConfigLogToBigQueryPtrInput is an input type that accepts PreventionContentPolicyLoggingConfigLogToBigQueryArgs, PreventionContentPolicyLoggingConfigLogToBigQueryPtr and PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyLoggingConfigLogToBigQueryPtrInput` via:
+//
+//	        PreventionContentPolicyLoggingConfigLogToBigQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyLoggingConfigLogToBigQueryPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput() PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput
+	ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput
+}
+
+type preventionContentPolicyLoggingConfigLogToBigQueryPtrType PreventionContentPolicyLoggingConfigLogToBigQueryArgs
+
+func PreventionContentPolicyLoggingConfigLogToBigQueryPtr(v *PreventionContentPolicyLoggingConfigLogToBigQueryArgs) PreventionContentPolicyLoggingConfigLogToBigQueryPtrInput {
+	return (*preventionContentPolicyLoggingConfigLogToBigQueryPtrType)(v)
+}
+
+func (*preventionContentPolicyLoggingConfigLogToBigQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyLoggingConfigLogToBigQuery)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyLoggingConfigLogToBigQueryPtrType) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput() PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return i.ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyLoggingConfigLogToBigQueryPtrType) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput)
+}
+
+type PreventionContentPolicyLoggingConfigLogToBigQueryOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyLoggingConfigLogToBigQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyLoggingConfigLogToBigQuery)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryOutput) ToPreventionContentPolicyLoggingConfigLogToBigQueryOutput() PreventionContentPolicyLoggingConfigLogToBigQueryOutput {
+	return o
+}
+
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryOutput) ToPreventionContentPolicyLoggingConfigLogToBigQueryOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryOutput {
+	return o
+}
+
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryOutput) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput() PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return o.ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryOutput) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyLoggingConfigLogToBigQuery) *PreventionContentPolicyLoggingConfigLogToBigQuery {
+		return &v
+	}).(PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput)
+}
+
+// The dataset ID of the BigQuery table to log to.
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyLoggingConfigLogToBigQuery) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The project ID of the BigQuery table to log to.
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyLoggingConfigLogToBigQuery) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The table ID of the BigQuery table to log to.
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionContentPolicyLoggingConfigLogToBigQuery) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyLoggingConfigLogToBigQuery)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput() PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput) ToPreventionContentPolicyLoggingConfigLogToBigQueryPtrOutputWithContext(ctx context.Context) PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput) Elem() PreventionContentPolicyLoggingConfigLogToBigQueryOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyLoggingConfigLogToBigQuery) PreventionContentPolicyLoggingConfigLogToBigQuery {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyLoggingConfigLogToBigQuery
+		return ret
+	}).(PreventionContentPolicyLoggingConfigLogToBigQueryOutput)
+}
+
+// The dataset ID of the BigQuery table to log to.
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyLoggingConfigLogToBigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project ID of the BigQuery table to log to.
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyLoggingConfigLogToBigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table ID of the BigQuery table to log to.
+func (o PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyLoggingConfigLogToBigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyRule struct {
+	// The action to take if the rule matches.
+	// Structure is documented below.
+	Action PreventionContentPolicyRuleAction `pulumi:"action"`
+	// List of conditions that must be met for this rule to apply.
+	// Structure is documented below.
+	Conditions []PreventionContentPolicyRuleCondition `pulumi:"conditions"`
+}
+
+// PreventionContentPolicyRuleInput is an input type that accepts PreventionContentPolicyRuleArgs and PreventionContentPolicyRuleOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleInput` via:
+//
+//	PreventionContentPolicyRuleArgs{...}
+type PreventionContentPolicyRuleInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleOutput() PreventionContentPolicyRuleOutput
+	ToPreventionContentPolicyRuleOutputWithContext(context.Context) PreventionContentPolicyRuleOutput
+}
+
+type PreventionContentPolicyRuleArgs struct {
+	// The action to take if the rule matches.
+	// Structure is documented below.
+	Action PreventionContentPolicyRuleActionInput `pulumi:"action"`
+	// List of conditions that must be met for this rule to apply.
+	// Structure is documented below.
+	Conditions PreventionContentPolicyRuleConditionArrayInput `pulumi:"conditions"`
+}
+
+func (PreventionContentPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRule)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleArgs) ToPreventionContentPolicyRuleOutput() PreventionContentPolicyRuleOutput {
+	return i.ToPreventionContentPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleArgs) ToPreventionContentPolicyRuleOutputWithContext(ctx context.Context) PreventionContentPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleOutput)
+}
+
+// PreventionContentPolicyRuleArrayInput is an input type that accepts PreventionContentPolicyRuleArray and PreventionContentPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleArrayInput` via:
+//
+//	PreventionContentPolicyRuleArray{ PreventionContentPolicyRuleArgs{...} }
+type PreventionContentPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleArrayOutput() PreventionContentPolicyRuleArrayOutput
+	ToPreventionContentPolicyRuleArrayOutputWithContext(context.Context) PreventionContentPolicyRuleArrayOutput
+}
+
+type PreventionContentPolicyRuleArray []PreventionContentPolicyRuleInput
+
+func (PreventionContentPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyRule)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleArray) ToPreventionContentPolicyRuleArrayOutput() PreventionContentPolicyRuleArrayOutput {
+	return i.ToPreventionContentPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleArray) ToPreventionContentPolicyRuleArrayOutputWithContext(ctx context.Context) PreventionContentPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleArrayOutput)
+}
+
+type PreventionContentPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleOutput) ToPreventionContentPolicyRuleOutput() PreventionContentPolicyRuleOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleOutput) ToPreventionContentPolicyRuleOutputWithContext(ctx context.Context) PreventionContentPolicyRuleOutput {
+	return o
+}
+
+// The action to take if the rule matches.
+// Structure is documented below.
+func (o PreventionContentPolicyRuleOutput) Action() PreventionContentPolicyRuleActionOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRule) PreventionContentPolicyRuleAction { return v.Action }).(PreventionContentPolicyRuleActionOutput)
+}
+
+// List of conditions that must be met for this rule to apply.
+// Structure is documented below.
+func (o PreventionContentPolicyRuleOutput) Conditions() PreventionContentPolicyRuleConditionArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRule) []PreventionContentPolicyRuleCondition { return v.Conditions }).(PreventionContentPolicyRuleConditionArrayOutput)
+}
+
+type PreventionContentPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyRule)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleArrayOutput) ToPreventionContentPolicyRuleArrayOutput() PreventionContentPolicyRuleArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleArrayOutput) ToPreventionContentPolicyRuleArrayOutputWithContext(ctx context.Context) PreventionContentPolicyRuleArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyRule {
+		return vs[0].([]PreventionContentPolicyRule)[vs[1].(int)]
+	}).(PreventionContentPolicyRuleOutput)
+}
+
+type PreventionContentPolicyRuleAction struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict *string `pulumi:"returnVerdict"`
+}
+
+// PreventionContentPolicyRuleActionInput is an input type that accepts PreventionContentPolicyRuleActionArgs and PreventionContentPolicyRuleActionOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleActionInput` via:
+//
+//	PreventionContentPolicyRuleActionArgs{...}
+type PreventionContentPolicyRuleActionInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleActionOutput() PreventionContentPolicyRuleActionOutput
+	ToPreventionContentPolicyRuleActionOutputWithContext(context.Context) PreventionContentPolicyRuleActionOutput
+}
+
+type PreventionContentPolicyRuleActionArgs struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict pulumi.StringPtrInput `pulumi:"returnVerdict"`
+}
+
+func (PreventionContentPolicyRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleAction)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleActionArgs) ToPreventionContentPolicyRuleActionOutput() PreventionContentPolicyRuleActionOutput {
+	return i.ToPreventionContentPolicyRuleActionOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleActionArgs) ToPreventionContentPolicyRuleActionOutputWithContext(ctx context.Context) PreventionContentPolicyRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleActionOutput)
+}
+
+type PreventionContentPolicyRuleActionOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleAction)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleActionOutput) ToPreventionContentPolicyRuleActionOutput() PreventionContentPolicyRuleActionOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleActionOutput) ToPreventionContentPolicyRuleActionOutputWithContext(ctx context.Context) PreventionContentPolicyRuleActionOutput {
+	return o
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyRuleActionOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRuleAction) *string { return v.ReturnVerdict }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyRuleCondition struct {
+	// A condition based on info types.
+	// Structure is documented below.
+	InfoTypeCondition *PreventionContentPolicyRuleConditionInfoTypeCondition `pulumi:"infoTypeCondition"`
+}
+
+// PreventionContentPolicyRuleConditionInput is an input type that accepts PreventionContentPolicyRuleConditionArgs and PreventionContentPolicyRuleConditionOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionInput` via:
+//
+//	PreventionContentPolicyRuleConditionArgs{...}
+type PreventionContentPolicyRuleConditionInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionOutput() PreventionContentPolicyRuleConditionOutput
+	ToPreventionContentPolicyRuleConditionOutputWithContext(context.Context) PreventionContentPolicyRuleConditionOutput
+}
+
+type PreventionContentPolicyRuleConditionArgs struct {
+	// A condition based on info types.
+	// Structure is documented below.
+	InfoTypeCondition PreventionContentPolicyRuleConditionInfoTypeConditionPtrInput `pulumi:"infoTypeCondition"`
+}
+
+func (PreventionContentPolicyRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleCondition)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleConditionArgs) ToPreventionContentPolicyRuleConditionOutput() PreventionContentPolicyRuleConditionOutput {
+	return i.ToPreventionContentPolicyRuleConditionOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionArgs) ToPreventionContentPolicyRuleConditionOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionOutput)
+}
+
+// PreventionContentPolicyRuleConditionArrayInput is an input type that accepts PreventionContentPolicyRuleConditionArray and PreventionContentPolicyRuleConditionArrayOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionArrayInput` via:
+//
+//	PreventionContentPolicyRuleConditionArray{ PreventionContentPolicyRuleConditionArgs{...} }
+type PreventionContentPolicyRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionArrayOutput() PreventionContentPolicyRuleConditionArrayOutput
+	ToPreventionContentPolicyRuleConditionArrayOutputWithContext(context.Context) PreventionContentPolicyRuleConditionArrayOutput
+}
+
+type PreventionContentPolicyRuleConditionArray []PreventionContentPolicyRuleConditionInput
+
+func (PreventionContentPolicyRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyRuleCondition)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleConditionArray) ToPreventionContentPolicyRuleConditionArrayOutput() PreventionContentPolicyRuleConditionArrayOutput {
+	return i.ToPreventionContentPolicyRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionArray) ToPreventionContentPolicyRuleConditionArrayOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionArrayOutput)
+}
+
+type PreventionContentPolicyRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleCondition)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionOutput) ToPreventionContentPolicyRuleConditionOutput() PreventionContentPolicyRuleConditionOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionOutput) ToPreventionContentPolicyRuleConditionOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionOutput {
+	return o
+}
+
+// A condition based on info types.
+// Structure is documented below.
+func (o PreventionContentPolicyRuleConditionOutput) InfoTypeCondition() PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRuleCondition) *PreventionContentPolicyRuleConditionInfoTypeCondition {
+		return v.InfoTypeCondition
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput)
+}
+
+type PreventionContentPolicyRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionContentPolicyRuleCondition)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionArrayOutput) ToPreventionContentPolicyRuleConditionArrayOutput() PreventionContentPolicyRuleConditionArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionArrayOutput) ToPreventionContentPolicyRuleConditionArrayOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionArrayOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionArrayOutput) Index(i pulumi.IntInput) PreventionContentPolicyRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionContentPolicyRuleCondition {
+		return vs[0].([]PreventionContentPolicyRuleCondition)[vs[1].(int)]
+	}).(PreventionContentPolicyRuleConditionOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeCondition struct {
+	// Match any info type.
+	AnyInfoType *PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType `pulumi:"anyInfoType"`
+	// List of info types to match.
+	// Structure is documented below.
+	InfoTypes *PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes `pulumi:"infoTypes"`
+	// The minimum number of findings required for this condition to be met. Defaults to 1.
+	MinCount *int `pulumi:"minCount"`
+}
+
+// PreventionContentPolicyRuleConditionInfoTypeConditionInput is an input type that accepts PreventionContentPolicyRuleConditionInfoTypeConditionArgs and PreventionContentPolicyRuleConditionInfoTypeConditionOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionInfoTypeConditionInput` via:
+//
+//	PreventionContentPolicyRuleConditionInfoTypeConditionArgs{...}
+type PreventionContentPolicyRuleConditionInfoTypeConditionInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionOutput() PreventionContentPolicyRuleConditionInfoTypeConditionOutput
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionOutputWithContext(context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionOutput
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionArgs struct {
+	// Match any info type.
+	AnyInfoType PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrInput `pulumi:"anyInfoType"`
+	// List of info types to match.
+	// Structure is documented below.
+	InfoTypes PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrInput `pulumi:"infoTypes"`
+	// The minimum number of findings required for this condition to be met. Defaults to 1.
+	MinCount pulumi.IntPtrInput `pulumi:"minCount"`
+}
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeCondition)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionOutput() PreventionContentPolicyRuleConditionInfoTypeConditionOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionOutput)
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionOutput).ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyRuleConditionInfoTypeConditionPtrInput is an input type that accepts PreventionContentPolicyRuleConditionInfoTypeConditionArgs, PreventionContentPolicyRuleConditionInfoTypeConditionPtr and PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionInfoTypeConditionPtrInput` via:
+//
+//	        PreventionContentPolicyRuleConditionInfoTypeConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyRuleConditionInfoTypeConditionPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput
+}
+
+type preventionContentPolicyRuleConditionInfoTypeConditionPtrType PreventionContentPolicyRuleConditionInfoTypeConditionArgs
+
+func PreventionContentPolicyRuleConditionInfoTypeConditionPtr(v *PreventionContentPolicyRuleConditionInfoTypeConditionArgs) PreventionContentPolicyRuleConditionInfoTypeConditionPtrInput {
+	return (*preventionContentPolicyRuleConditionInfoTypeConditionPtrType)(v)
+}
+
+func (*preventionContentPolicyRuleConditionInfoTypeConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyRuleConditionInfoTypeCondition)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyRuleConditionInfoTypeConditionPtrType) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyRuleConditionInfoTypeConditionPtrType) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeCondition)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionOutput() PreventionContentPolicyRuleConditionInfoTypeConditionOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return o.ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyRuleConditionInfoTypeCondition) *PreventionContentPolicyRuleConditionInfoTypeCondition {
+		return &v
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput)
+}
+
+// Match any info type.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionOutput) AnyInfoType() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRuleConditionInfoTypeCondition) *PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType {
+		return v.AnyInfoType
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput)
+}
+
+// List of info types to match.
+// Structure is documented below.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionOutput) InfoTypes() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRuleConditionInfoTypeCondition) *PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes {
+		return v.InfoTypes
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput)
+}
+
+// The minimum number of findings required for this condition to be met. Defaults to 1.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionOutput) MinCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRuleConditionInfoTypeCondition) *int { return v.MinCount }).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyRuleConditionInfoTypeCondition)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput) Elem() PreventionContentPolicyRuleConditionInfoTypeConditionOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyRuleConditionInfoTypeCondition) PreventionContentPolicyRuleConditionInfoTypeCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyRuleConditionInfoTypeCondition
+		return ret
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionOutput)
+}
+
+// Match any info type.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput) AnyInfoType() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyRuleConditionInfoTypeCondition) *PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType {
+		if v == nil {
+			return nil
+		}
+		return v.AnyInfoType
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput)
+}
+
+// List of info types to match.
+// Structure is documented below.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput) InfoTypes() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyRuleConditionInfoTypeCondition) *PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes {
+		if v == nil {
+			return nil
+		}
+		return v.InfoTypes
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput)
+}
+
+// The minimum number of findings required for this condition to be met. Defaults to 1.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput) MinCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyRuleConditionInfoTypeCondition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType struct {
+}
+
+// PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeInput is an input type that accepts PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs and PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeInput` via:
+//
+//	PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs{...}
+type PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutputWithContext(context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs struct {
+}
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput)
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput).ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrInput is an input type that accepts PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs, PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtr and PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrInput` via:
+//
+//	        PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput
+}
+
+type preventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrType PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs
+
+func PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtr(v *PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrInput {
+	return (*preventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrType)(v)
+}
+
+func (*preventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrType) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrType) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return o.ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType) *PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType {
+		return &v
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput) Elem() PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType) PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType
+		return ret
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes struct {
+	// List of info type names.
+	InfoTypeNames []string `pulumi:"infoTypeNames"`
+}
+
+// PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesInput is an input type that accepts PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs and PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesInput` via:
+//
+//	PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs{...}
+type PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutputWithContext(context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs struct {
+	// List of info type names.
+	InfoTypeNames pulumi.StringArrayInput `pulumi:"infoTypeNames"`
+}
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput)
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput).ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrInput is an input type that accepts PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs, PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtr and PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrInput` via:
+//
+//	        PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput
+	ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput
+}
+
+type preventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrType PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs
+
+func PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtr(v *PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrInput {
+	return (*preventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrType)(v)
+}
+
+func (*preventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrType) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return i.ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrType) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return o.ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes) *PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes {
+		return &v
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput)
+}
+
+// List of info type names.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput) InfoTypeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes) []string {
+		return v.InfoTypeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput) ToPreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutputWithContext(ctx context.Context) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput) Elem() PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes) PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes
+		return ret
+	}).(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput)
+}
+
+// List of info type names.
+func (o PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput) InfoTypeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InfoTypeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type PreventionContentPolicyUnsupportedFileType struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict *string `pulumi:"returnVerdict"`
+}
+
+// PreventionContentPolicyUnsupportedFileTypeInput is an input type that accepts PreventionContentPolicyUnsupportedFileTypeArgs and PreventionContentPolicyUnsupportedFileTypeOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyUnsupportedFileTypeInput` via:
+//
+//	PreventionContentPolicyUnsupportedFileTypeArgs{...}
+type PreventionContentPolicyUnsupportedFileTypeInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyUnsupportedFileTypeOutput() PreventionContentPolicyUnsupportedFileTypeOutput
+	ToPreventionContentPolicyUnsupportedFileTypeOutputWithContext(context.Context) PreventionContentPolicyUnsupportedFileTypeOutput
+}
+
+type PreventionContentPolicyUnsupportedFileTypeArgs struct {
+	// If set, the verdict will be returned to the user.
+	// Possible values: ["ALLOW", "BLOCK"]
+	// Possible values are: `ALLOW`, `BLOCK`.
+	ReturnVerdict pulumi.StringPtrInput `pulumi:"returnVerdict"`
+}
+
+func (PreventionContentPolicyUnsupportedFileTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyUnsupportedFileType)(nil)).Elem()
+}
+
+func (i PreventionContentPolicyUnsupportedFileTypeArgs) ToPreventionContentPolicyUnsupportedFileTypeOutput() PreventionContentPolicyUnsupportedFileTypeOutput {
+	return i.ToPreventionContentPolicyUnsupportedFileTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyUnsupportedFileTypeArgs) ToPreventionContentPolicyUnsupportedFileTypeOutputWithContext(ctx context.Context) PreventionContentPolicyUnsupportedFileTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyUnsupportedFileTypeOutput)
+}
+
+func (i PreventionContentPolicyUnsupportedFileTypeArgs) ToPreventionContentPolicyUnsupportedFileTypePtrOutput() PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return i.ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionContentPolicyUnsupportedFileTypeArgs) ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyUnsupportedFileTypeOutput).ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(ctx)
+}
+
+// PreventionContentPolicyUnsupportedFileTypePtrInput is an input type that accepts PreventionContentPolicyUnsupportedFileTypeArgs, PreventionContentPolicyUnsupportedFileTypePtr and PreventionContentPolicyUnsupportedFileTypePtrOutput values.
+// You can construct a concrete instance of `PreventionContentPolicyUnsupportedFileTypePtrInput` via:
+//
+//	        PreventionContentPolicyUnsupportedFileTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionContentPolicyUnsupportedFileTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionContentPolicyUnsupportedFileTypePtrOutput() PreventionContentPolicyUnsupportedFileTypePtrOutput
+	ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(context.Context) PreventionContentPolicyUnsupportedFileTypePtrOutput
+}
+
+type preventionContentPolicyUnsupportedFileTypePtrType PreventionContentPolicyUnsupportedFileTypeArgs
+
+func PreventionContentPolicyUnsupportedFileTypePtr(v *PreventionContentPolicyUnsupportedFileTypeArgs) PreventionContentPolicyUnsupportedFileTypePtrInput {
+	return (*preventionContentPolicyUnsupportedFileTypePtrType)(v)
+}
+
+func (*preventionContentPolicyUnsupportedFileTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyUnsupportedFileType)(nil)).Elem()
+}
+
+func (i *preventionContentPolicyUnsupportedFileTypePtrType) ToPreventionContentPolicyUnsupportedFileTypePtrOutput() PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return i.ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionContentPolicyUnsupportedFileTypePtrType) ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionContentPolicyUnsupportedFileTypePtrOutput)
+}
+
+type PreventionContentPolicyUnsupportedFileTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyUnsupportedFileTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionContentPolicyUnsupportedFileType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyUnsupportedFileTypeOutput) ToPreventionContentPolicyUnsupportedFileTypeOutput() PreventionContentPolicyUnsupportedFileTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyUnsupportedFileTypeOutput) ToPreventionContentPolicyUnsupportedFileTypeOutputWithContext(ctx context.Context) PreventionContentPolicyUnsupportedFileTypeOutput {
+	return o
+}
+
+func (o PreventionContentPolicyUnsupportedFileTypeOutput) ToPreventionContentPolicyUnsupportedFileTypePtrOutput() PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return o.ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionContentPolicyUnsupportedFileTypeOutput) ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionContentPolicyUnsupportedFileType) *PreventionContentPolicyUnsupportedFileType {
+		return &v
+	}).(PreventionContentPolicyUnsupportedFileTypePtrOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyUnsupportedFileTypeOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionContentPolicyUnsupportedFileType) *string { return v.ReturnVerdict }).(pulumi.StringPtrOutput)
+}
+
+type PreventionContentPolicyUnsupportedFileTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionContentPolicyUnsupportedFileTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionContentPolicyUnsupportedFileType)(nil)).Elem()
+}
+
+func (o PreventionContentPolicyUnsupportedFileTypePtrOutput) ToPreventionContentPolicyUnsupportedFileTypePtrOutput() PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyUnsupportedFileTypePtrOutput) ToPreventionContentPolicyUnsupportedFileTypePtrOutputWithContext(ctx context.Context) PreventionContentPolicyUnsupportedFileTypePtrOutput {
+	return o
+}
+
+func (o PreventionContentPolicyUnsupportedFileTypePtrOutput) Elem() PreventionContentPolicyUnsupportedFileTypeOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyUnsupportedFileType) PreventionContentPolicyUnsupportedFileType {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionContentPolicyUnsupportedFileType
+		return ret
+	}).(PreventionContentPolicyUnsupportedFileTypeOutput)
+}
+
+// If set, the verdict will be returned to the user.
+// Possible values: ["ALLOW", "BLOCK"]
+// Possible values are: `ALLOW`, `BLOCK`.
+func (o PreventionContentPolicyUnsupportedFileTypePtrOutput) ReturnVerdict() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionContentPolicyUnsupportedFileType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnVerdict
+	}).(pulumi.StringPtrOutput)
+}
 
 type PreventionDeidentifyTemplateDeidentifyConfig struct {
 	// Treat the dataset as an image and redact.
@@ -38106,6 +45879,9 @@ type PreventionDiscoveryConfigTargetBigQueryTargetCadence struct {
 	// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
 	// Structure is documented below.
 	InspectTemplateModifiedCadence *PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence `pulumi:"inspectTemplateModifiedCadence"`
+	// Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+	// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+	RefreshFrequency *string `pulumi:"refreshFrequency"`
 	// Governs when to update data profiles when a schema is modified
 	// Structure is documented below.
 	SchemaModifiedCadence *PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence `pulumi:"schemaModifiedCadence"`
@@ -38129,6 +45905,9 @@ type PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs struct {
 	// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
 	// Structure is documented below.
 	InspectTemplateModifiedCadence PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadencePtrInput `pulumi:"inspectTemplateModifiedCadence"`
+	// Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+	// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+	RefreshFrequency pulumi.StringPtrInput `pulumi:"refreshFrequency"`
 	// Governs when to update data profiles when a schema is modified
 	// Structure is documented below.
 	SchemaModifiedCadence PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadencePtrInput `pulumi:"schemaModifiedCadence"`
@@ -38222,6 +46001,12 @@ func (o PreventionDiscoveryConfigTargetBigQueryTargetCadenceOutput) InspectTempl
 	}).(PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadencePtrOutput)
 }
 
+// Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+func (o PreventionDiscoveryConfigTargetBigQueryTargetCadenceOutput) RefreshFrequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDiscoveryConfigTargetBigQueryTargetCadence) *string { return v.RefreshFrequency }).(pulumi.StringPtrOutput)
+}
+
 // Governs when to update data profiles when a schema is modified
 // Structure is documented below.
 func (o PreventionDiscoveryConfigTargetBigQueryTargetCadenceOutput) SchemaModifiedCadence() PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadencePtrOutput {
@@ -38271,6 +46056,17 @@ func (o PreventionDiscoveryConfigTargetBigQueryTargetCadencePtrOutput) InspectTe
 		}
 		return v.InspectTemplateModifiedCadence
 	}).(PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadencePtrOutput)
+}
+
+// Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+func (o PreventionDiscoveryConfigTargetBigQueryTargetCadencePtrOutput) RefreshFrequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDiscoveryConfigTargetBigQueryTargetCadence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshFrequency
+	}).(pulumi.StringPtrOutput)
 }
 
 // Governs when to update data profiles when a schema is modified
@@ -53419,13 +61215,6 @@ type PreventionJobTriggerInspectJobAction struct {
 	// Publish a message into a given Pub/Sub topic when the job completes.
 	// Structure is documented below.
 	PubSub *PreventionJobTriggerInspectJobActionPubSub `pulumi:"pubSub"`
-	// (Optional, Deprecated)
-	// Publish findings of a DlpJob to Data Catalog.
-	//
-	// > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	//
-	// Deprecated: `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	PublishFindingsToCloudDataCatalog *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog `pulumi:"publishFindingsToCloudDataCatalog"`
 	// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
 	PublishFindingsToDataplexCatalog *PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog `pulumi:"publishFindingsToDataplexCatalog"`
 	// Publish the result summary of a DlpJob to the Cloud Security Command Center.
@@ -53457,13 +61246,6 @@ type PreventionJobTriggerInspectJobActionArgs struct {
 	// Publish a message into a given Pub/Sub topic when the job completes.
 	// Structure is documented below.
 	PubSub PreventionJobTriggerInspectJobActionPubSubPtrInput `pulumi:"pubSub"`
-	// (Optional, Deprecated)
-	// Publish findings of a DlpJob to Data Catalog.
-	//
-	// > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	//
-	// Deprecated: `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-	PublishFindingsToCloudDataCatalog PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput `pulumi:"publishFindingsToCloudDataCatalog"`
 	// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
 	PublishFindingsToDataplexCatalog PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogPtrInput `pulumi:"publishFindingsToDataplexCatalog"`
 	// Publish the result summary of a DlpJob to the Cloud Security Command Center.
@@ -53547,18 +61329,6 @@ func (o PreventionJobTriggerInspectJobActionOutput) PubSub() PreventionJobTrigge
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionPubSub {
 		return v.PubSub
 	}).(PreventionJobTriggerInspectJobActionPubSubPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Publish findings of a DlpJob to Data Catalog.
-//
-// > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-//
-// Deprecated: `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-func (o PreventionJobTriggerInspectJobActionOutput) PublishFindingsToCloudDataCatalog() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
-		return v.PublishFindingsToCloudDataCatalog
-	}).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput)
 }
 
 // Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
@@ -54610,124 +62380,6 @@ func (o PreventionJobTriggerInspectJobActionPubSubPtrOutput) Topic() pulumi.Stri
 		}
 		return &v.Topic
 	}).(pulumi.StringPtrOutput)
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog struct {
-}
-
-// PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput is an input type that accepts PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs and PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput values.
-// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput` via:
-//
-//	PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{...}
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput interface {
-	pulumi.Input
-
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs struct {
-}
-
-func (PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return i.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(context.Background())
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput)
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return i.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Background())
-}
-
-func (i PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput).ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx)
-}
-
-// PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs, PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtr and PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput values.
-// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput` via:
-//
-//	        PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{...}
-//
-//	or:
-//
-//	        nil
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput interface {
-	pulumi.Input
-
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput
-	ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput
-}
-
-type preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs
-
-func PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtr(v *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput {
-	return (*preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType)(v)
-}
-
-func (*preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (i *preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return i.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Background())
-}
-
-func (i *preventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrType) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput)
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput struct{ *pulumi.OutputState }
-
-func (PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o.ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(context.Background())
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog) *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
-		return &v
-	}).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput)
-}
-
-type PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput struct{ *pulumi.OutputState }
-
-func (PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog)(nil)).Elem()
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) ToPreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput {
-	return o
-}
-
-func (o PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput) Elem() PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput {
-	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog) PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
-		if v != nil {
-			return *v
-		}
-		var ret PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog
-		return ret
-	}).(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput)
 }
 
 type PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog struct {
@@ -66389,6 +74041,108 @@ func (o PreventionStoredInfoTypeRegexPtrOutput) Pattern() pulumi.StringPtrOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyDefaultActionInput)(nil)).Elem(), PreventionContentPolicyDefaultActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyDefaultActionPtrInput)(nil)).Elem(), PreventionContentPolicyDefaultActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyErrorInput)(nil)).Elem(), PreventionContentPolicyErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyErrorArrayInput)(nil)).Elem(), PreventionContentPolicyErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyErrorDetailInput)(nil)).Elem(), PreventionContentPolicyErrorDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyErrorDetailArrayInput)(nil)).Elem(), PreventionContentPolicyErrorDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyFailedToScanSupportedFileTypeInput)(nil)).Elem(), PreventionContentPolicyFailedToScanSupportedFileTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyFailedToScanSupportedFileTypePtrInput)(nil)).Elem(), PreventionContentPolicyFailedToScanSupportedFileTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInputTooLargeInput)(nil)).Elem(), PreventionContentPolicyInputTooLargeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInputTooLargePtrInput)(nil)).Elem(), PreventionContentPolicyInputTooLargeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigInput)(nil)).Elem(), PreventionContentPolicyInspectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeRegexInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoTypeArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreInput)(nil)).Elem(), PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrInput)(nil)).Elem(), PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyLoggingConfigInput)(nil)).Elem(), PreventionContentPolicyLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyLoggingConfigArrayInput)(nil)).Elem(), PreventionContentPolicyLoggingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyLoggingConfigLogToBigQueryInput)(nil)).Elem(), PreventionContentPolicyLoggingConfigLogToBigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyLoggingConfigLogToBigQueryPtrInput)(nil)).Elem(), PreventionContentPolicyLoggingConfigLogToBigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleInput)(nil)).Elem(), PreventionContentPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleArrayInput)(nil)).Elem(), PreventionContentPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleActionInput)(nil)).Elem(), PreventionContentPolicyRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionInput)(nil)).Elem(), PreventionContentPolicyRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionArrayInput)(nil)).Elem(), PreventionContentPolicyRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionInput)(nil)).Elem(), PreventionContentPolicyRuleConditionInfoTypeConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionPtrInput)(nil)).Elem(), PreventionContentPolicyRuleConditionInfoTypeConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeInput)(nil)).Elem(), PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrInput)(nil)).Elem(), PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesInput)(nil)).Elem(), PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrInput)(nil)).Elem(), PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyUnsupportedFileTypeInput)(nil)).Elem(), PreventionContentPolicyUnsupportedFileTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionContentPolicyUnsupportedFileTypePtrInput)(nil)).Elem(), PreventionContentPolicyUnsupportedFileTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs{})
@@ -67033,8 +74787,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishSummaryToCsccInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs{})
@@ -67180,6 +74932,108 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeLargeCustomDictionaryOutputPathPtrInput)(nil)).Elem(), PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeRegexInput)(nil)).Elem(), PreventionStoredInfoTypeRegexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeRegexPtrInput)(nil)).Elem(), PreventionStoredInfoTypeRegexArgs{})
+	pulumi.RegisterOutputType(PreventionContentPolicyDefaultActionOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyDefaultActionPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyErrorOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyErrorArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyErrorDetailOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyErrorDetailArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyFailedToScanSupportedFileTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyFailedToScanSupportedFileTypePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInputTooLargeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInputTooLargePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeRegexOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeRegexPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigInfoTypeSensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRulePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRulePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyLoggingConfigOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyLoggingConfigArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyLoggingConfigLogToBigQueryOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyLoggingConfigLogToBigQueryPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleActionOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionInfoTypeConditionOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionInfoTypeConditionPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypePtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesPtrOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyUnsupportedFileTypeOutput{})
+	pulumi.RegisterOutputType(PreventionContentPolicyUnsupportedFileTypePtrOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsOutput{})
@@ -67824,8 +75678,6 @@ func init() {
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubPtrOutput{})
-	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput{})
-	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishSummaryToCsccOutput{})

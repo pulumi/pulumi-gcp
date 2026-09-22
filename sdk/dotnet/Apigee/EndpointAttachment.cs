@@ -22,6 +22,141 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// ## Example Usage
     /// 
+    /// ### Apigee Endpoint Attachment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+    /// 
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
+    ///     {
+    ///         Name = "apigee-network",
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
+    ///     {
+    ///         Name = "apigee-range",
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = apigeeNetwork.Id,
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-central1",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var pscIlbNetwork = new Gcp.Compute.Network("psc_ilb_network", new()
+    ///     {
+    ///         Name = "psc-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var pscIlbProducerSubnetwork = new Gcp.Compute.Subnetwork("psc_ilb_producer_subnetwork", new()
+    ///     {
+    ///         Name = "psc-ilb-producer-subnetwork",
+    ///         Region = "us-central1",
+    ///         Network = pscIlbNetwork.Id,
+    ///         IpCidrRange = "10.0.99.0/24",
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var pscIlbTargetService = new Gcp.Compute.ForwardingRule("psc_ilb_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = pscIlbNetwork.Name,
+    ///         Subnetwork = pscIlbProducerSubnetwork.Name,
+    ///         Project = project.ProjectId,
+    ///     });
+    /// 
+    ///     var pscIlbNat = new Gcp.Compute.Subnetwork("psc_ilb_nat", new()
+    ///     {
+    ///         Name = "psc-ilb-nat",
+    ///         Region = "us-central1",
+    ///         Network = pscIlbNetwork.Id,
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         IpCidrRange = "10.0.199.0/24",
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+    ///     {
+    ///         Name = "my-psc-ilb",
+    ///         Region = "us-central1",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         EnableProxyProtocol = true,
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscIlbNat.Id,
+    ///         },
+    ///         TargetService = pscIlbTargetService.Id,
+    ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///     });
+    /// 
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeEndpointAttachment = new Gcp.Apigee.EndpointAttachment("apigee_endpoint_attachment", new()
+    ///     {
+    ///         OrgId = apigeeOrg.Id,
+    ///         EndpointAttachmentId = "tf-test_77884",
+    ///         Location = "us-central1",
+    ///         ServiceAttachment = pscIlbServiceAttachment.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// EndpointAttachment can be imported using any of these accepted formats:

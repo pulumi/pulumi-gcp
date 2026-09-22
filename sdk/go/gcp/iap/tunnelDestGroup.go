@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelDestGroup(ctx, "dest_group", &iap.TunnelDestGroupArgs{
 //				Region:    pulumi.String("us-central1"),
-//				GroupName: pulumi.String("testgroup_34534"),
+//				GroupName: pulumi.String("testgroup_87829"),
 //				Cidrs: pulumi.StringArray{
 //					pulumi.String("10.1.0.0/16"),
 //					pulumi.String("192.168.10.0/24"),

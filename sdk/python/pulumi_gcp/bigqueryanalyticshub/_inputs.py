@@ -63,6 +63,28 @@ __all__ = [
     'ListingSubscriptionDestinationDatasetArgsDict',
     'ListingSubscriptionDestinationDatasetDatasetReferenceArgs',
     'ListingSubscriptionDestinationDatasetDatasetReferenceArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgsDict',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs',
+    'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgsDict',
     'ListingSubscriptionLinkedDatasetMapArgs',
     'ListingSubscriptionLinkedDatasetMapArgsDict',
     'ListingSubscriptionLinkedResourceArgs',
@@ -1421,6 +1443,1342 @@ class ListingSubscriptionDestinationDatasetDatasetReferenceArgs:
         pulumi.set(self, "project_id", value)
 
 
+class ListingSubscriptionDestinationPubsubSubscriptionArgsDict(TypedDict):
+    pubsub_subscription: pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgsDict']
+    """
+    Destination Pub/Sub subscription resource.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionArgs:
+    def __init__(__self__, *,
+                 pubsub_subscription: pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs']):
+        """
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs'] pubsub_subscription: Destination Pub/Sub subscription resource.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "pubsub_subscription", pubsub_subscription)
+
+    @_builtins.property
+    @pulumi.getter(name="pubsubSubscription")
+    def pubsub_subscription(self) -> pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs']:
+        """
+        Destination Pub/Sub subscription resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pubsub_subscription")
+
+    @pubsub_subscription.setter
+    def pubsub_subscription(self, value: pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs']):
+        pulumi.set(self, "pubsub_subscription", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+    """
+    ack_deadline_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+    acknowledge receipt before resending the message. In the interval after the message is delivered
+    and before it is acknowledged, it is considered to be outstanding. During that time period, the
+    message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+    used as the initial value for the ack deadline. To override this value for a given message, call
+    `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the
+    `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+    deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+    seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+    delivery, this value is also used to set the request timeout for the call to the push endpoint.
+    If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+    the message.
+    """
+    bigquery_config: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgsDict']]]
+    """
+    If delivery to BigQuery is used with this subscription, this field is used to configure it.
+    Structure is documented below.
+    """
+    cloud_storage_config: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgsDict']]]
+    """
+    If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+    Structure is documented below.
+    """
+    dead_letter_policy: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgsDict']]]
+    """
+    A policy that specifies the conditions for dead lettering messages in this subscription. If
+    `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+    with this subscriptions's parent project (i.e.,
+    service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+    Acknowledge() messages on this subscription.
+    Structure is documented below.
+    """
+    detached: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+    receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+    requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+    to the endpoint will not be made.
+    """
+    enable_exactly_once_delivery: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+    value of `message_id` on this subscription: The message sent to a subscriber is guaranteed not
+    to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+    not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+    message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+    a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id`
+    values.
+    """
+    enable_message_ordering: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, messages published with the same `ordering_key` in `PubsubMessage`
+    will be delivered to the subscribers in the order in which they are received
+    by the Pub/Sub system. Otherwise, they may be delivered in any order.
+    """
+    expiration_policy: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgsDict']]]
+    """
+    A policy that specifies the conditions for this subscription's expiration. A subscription is
+    considered active as long as any connected subscriber is successfully consuming messages from
+    the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+    set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+    `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+    is not set, the subscription never expires.
+    Structure is documented below.
+    """
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+    whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+    no messages are filtered out.
+    """
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+    """
+    message_retention_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+    message is published. If `retainAckedMessages` is true, then this also configures the retention
+    of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+    to 7 days. Cannot be more than 31 days or less than 10 minutes.
+    """
+    push_config: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgsDict']]]
+    """
+    If push delivery is used with this subscription, this field is used to configure it.
+    Structure is documented below.
+    """
+    retain_acked_messages: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+    the subscription's backlog, even if they are acknowledged, until they fall out of the
+    `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+    in the past to replay previously-acknowledged messages.
+    """
+    retry_policy: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgsDict']]]
+    """
+    A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+    the default retry policy is applied. This generally implies that messages will be retried as soon
+    as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+    deadline exceeded events for a given message.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 bigquery_config: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs']] = None,
+                 cloud_storage_config: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs']] = None,
+                 dead_letter_policy: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs']] = None,
+                 detached: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration_policy: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs']] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_config: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs']] = None,
+                 retain_acked_messages: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retry_policy: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+        :param pulumi.Input[_builtins.int] ack_deadline_seconds: The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+               acknowledge receipt before resending the message. In the interval after the message is delivered
+               and before it is acknowledged, it is considered to be outstanding. During that time period, the
+               message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+               used as the initial value for the ack deadline. To override this value for a given message, call
+               `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the
+               `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+               deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+               seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+               delivery, this value is also used to set the request timeout for the call to the push endpoint.
+               If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+               the message.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
+               Structure is documented below.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs'] cloud_storage_config: If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+               Structure is documented below.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If
+               `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+               with this subscriptions's parent project (i.e.,
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+               Acknowledge() messages on this subscription.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] detached: Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+               receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+               requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+               to the endpoint will not be made.
+        :param pulumi.Input[_builtins.bool] enable_exactly_once_delivery: If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+               value of `message_id` on this subscription: The message sent to a subscriber is guaranteed not
+               to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+               not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+               message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+               a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id`
+               values.
+        :param pulumi.Input[_builtins.bool] enable_message_ordering: If true, messages published with the same `ordering_key` in `PubsubMessage`
+               will be delivered to the subscribers in the order in which they are received
+               by the Pub/Sub system. Otherwise, they may be delivered in any order.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is
+               considered active as long as any connected subscriber is successfully consuming messages from
+               the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+               set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+               `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+               is not set, the subscription never expires.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] filter: An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+               whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+               no messages are filtered out.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+        :param pulumi.Input[_builtins.str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+               message is published. If `retainAckedMessages` is true, then this also configures the retention
+               of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+               to 7 days. Cannot be more than 31 days or less than 10 minutes.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+               the subscription's backlog, even if they are acknowledged, until they fall out of the
+               `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+               in the past to replay previously-acknowledged messages.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+               the default retry policy is applied. This generally implies that messages will be retried as soon
+               as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+               deadline exceeded events for a given message.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if ack_deadline_seconds is not None:
+            pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
+        if bigquery_config is not None:
+            pulumi.set(__self__, "bigquery_config", bigquery_config)
+        if cloud_storage_config is not None:
+            pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
+        if dead_letter_policy is not None:
+            pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if detached is not None:
+            pulumi.set(__self__, "detached", detached)
+        if enable_exactly_once_delivery is not None:
+            pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
+        if enable_message_ordering is not None:
+            pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
+        if expiration_policy is not None:
+            pulumi.set(__self__, "expiration_policy", expiration_policy)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if message_retention_duration is not None:
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
+        if push_config is not None:
+            pulumi.set(__self__, "push_config", push_config)
+        if retain_acked_messages is not None:
+            pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ackDeadlineSeconds")
+    def ack_deadline_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+        acknowledge receipt before resending the message. In the interval after the message is delivered
+        and before it is acknowledged, it is considered to be outstanding. During that time period, the
+        message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+        used as the initial value for the ack deadline. To override this value for a given message, call
+        `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the
+        `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+        deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+        seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+        delivery, this value is also used to set the request timeout for the call to the push endpoint.
+        If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+        the message.
+        """
+        return pulumi.get(self, "ack_deadline_seconds")
+
+    @ack_deadline_seconds.setter
+    def ack_deadline_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "ack_deadline_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bigqueryConfig")
+    def bigquery_config(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs']]:
+        """
+        If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_config")
+
+    @bigquery_config.setter
+    def bigquery_config(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs']]):
+        pulumi.set(self, "bigquery_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageConfig")
+    def cloud_storage_config(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs']]:
+        """
+        If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_config")
+
+    @cloud_storage_config.setter
+    def cloud_storage_config(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs']]):
+        pulumi.set(self, "cloud_storage_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deadLetterPolicy")
+    def dead_letter_policy(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs']]:
+        """
+        A policy that specifies the conditions for dead lettering messages in this subscription. If
+        `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+        with this subscriptions's parent project (i.e.,
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+        Acknowledge() messages on this subscription.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dead_letter_policy")
+
+    @dead_letter_policy.setter
+    def dead_letter_policy(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs']]):
+        pulumi.set(self, "dead_letter_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def detached(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+        receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+        requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+        to the endpoint will not be made.
+        """
+        return pulumi.get(self, "detached")
+
+    @detached.setter
+    def detached(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "detached", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableExactlyOnceDelivery")
+    def enable_exactly_once_delivery(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+        value of `message_id` on this subscription: The message sent to a subscriber is guaranteed not
+        to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+        not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+        message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+        a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id`
+        values.
+        """
+        return pulumi.get(self, "enable_exactly_once_delivery")
+
+    @enable_exactly_once_delivery.setter
+    def enable_exactly_once_delivery(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_exactly_once_delivery", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableMessageOrdering")
+    def enable_message_ordering(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, messages published with the same `ordering_key` in `PubsubMessage`
+        will be delivered to the subscribers in the order in which they are received
+        by the Pub/Sub system. Otherwise, they may be delivered in any order.
+        """
+        return pulumi.get(self, "enable_message_ordering")
+
+    @enable_message_ordering.setter
+    def enable_message_ordering(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_message_ordering", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationPolicy")
+    def expiration_policy(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs']]:
+        """
+        A policy that specifies the conditions for this subscription's expiration. A subscription is
+        considered active as long as any connected subscriber is successfully consuming messages from
+        the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+        set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+        `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+        is not set, the subscription never expires.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expiration_policy")
+
+    @expiration_policy.setter
+    def expiration_policy(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs']]):
+        pulumi.set(self, "expiration_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+        whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+        no messages are filtered out.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="messageRetentionDuration")
+    def message_retention_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+        message is published. If `retainAckedMessages` is true, then this also configures the retention
+        of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+        to 7 days. Cannot be more than 31 days or less than 10 minutes.
+        """
+        return pulumi.get(self, "message_retention_duration")
+
+    @message_retention_duration.setter
+    def message_retention_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_retention_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pushConfig")
+    def push_config(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs']]:
+        """
+        If push delivery is used with this subscription, this field is used to configure it.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "push_config")
+
+    @push_config.setter
+    def push_config(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs']]):
+        pulumi.set(self, "push_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retainAckedMessages")
+    def retain_acked_messages(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+        the subscription's backlog, even if they are acknowledged, until they fall out of the
+        `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+        in the past to replay previously-acknowledged messages.
+        """
+        return pulumi.get(self, "retain_acked_messages")
+
+    @retain_acked_messages.setter
+    def retain_acked_messages(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "retain_acked_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs']]:
+        """
+        A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+        the default retry policy is applied. This generally implies that messages will be retried as soon
+        as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+        deadline exceeded events for a given message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgsDict(TypedDict):
+    drop_unknown_fields: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+    not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+    must be kept in sync and any messages with extra fields are not written and remain in the
+    subscription's backlog.
+    """
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The service account to use to write to BigQuery. The subscription creator or updater that
+    specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+    If not specified, the Pub/Sub service agent,
+    service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+    """
+    table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the table to which to write data, of the form
+    {projectId}.{datasetId}.{tableId}
+    """
+    use_table_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+    `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+    """
+    use_topic_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, use the topic's schema as the columns to write to in BigQuery,
+    if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+    """
+    write_metadata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+    to additional columns in the table. The subscription name, message_id, and publish_time fields
+    are put in their own columns while all other message properties (other than data) are written
+    to a JSON object in the attributes column.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs:
+    def __init__(__self__, *,
+                 drop_unknown_fields: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_table_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_topic_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 write_metadata: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] drop_unknown_fields: When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+               not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+               must be kept in sync and any messages with extra fields are not written and remain in the
+               subscription's backlog.
+        :param pulumi.Input[_builtins.str] service_account_email: The service account to use to write to BigQuery. The subscription creator or updater that
+               specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+               If not specified, the Pub/Sub service agent,
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        :param pulumi.Input[_builtins.str] table: The name of the table to which to write data, of the form
+               {projectId}.{datasetId}.{tableId}
+        :param pulumi.Input[_builtins.bool] use_table_schema: When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+               `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+        :param pulumi.Input[_builtins.bool] use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery,
+               if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+        :param pulumi.Input[_builtins.bool] write_metadata: When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+               to additional columns in the table. The subscription name, message_id, and publish_time fields
+               are put in their own columns while all other message properties (other than data) are written
+               to a JSON object in the attributes column.
+        """
+        if drop_unknown_fields is not None:
+            pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+        if use_table_schema is not None:
+            pulumi.set(__self__, "use_table_schema", use_table_schema)
+        if use_topic_schema is not None:
+            pulumi.set(__self__, "use_topic_schema", use_topic_schema)
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @_builtins.property
+    @pulumi.getter(name="dropUnknownFields")
+    def drop_unknown_fields(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+        not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+        must be kept in sync and any messages with extra fields are not written and remain in the
+        subscription's backlog.
+        """
+        return pulumi.get(self, "drop_unknown_fields")
+
+    @drop_unknown_fields.setter
+    def drop_unknown_fields(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "drop_unknown_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The service account to use to write to BigQuery. The subscription creator or updater that
+        specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+        If not specified, the Pub/Sub service agent,
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the table to which to write data, of the form
+        {projectId}.{datasetId}.{tableId}
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "table", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useTableSchema")
+    def use_table_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+        `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+        """
+        return pulumi.get(self, "use_table_schema")
+
+    @use_table_schema.setter
+    def use_table_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_table_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, use the topic's schema as the columns to write to in BigQuery,
+        if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+        """
+        return pulumi.get(self, "use_topic_schema")
+
+    @use_topic_schema.setter
+    def use_topic_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_topic_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+        to additional columns in the table. The subscription name, message_id, and publish_time fields
+        are put in their own columns while all other message properties (other than data) are written
+        to a JSON object in the attributes column.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "write_metadata", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgsDict(TypedDict):
+    avro_config: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgsDict']]]
+    """
+    If set, message data will be written to Cloud Storage in Avro format.
+    Structure is documented below.
+    """
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+    The bucket name must be without any prefix like "gs://". See the
+    [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+    """
+    filename_datetime_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+    See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+    """
+    filename_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-provided prefix for Cloud Storage filename. See the
+    [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+    """
+    filename_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-provided suffix for Cloud Storage filename. See the
+    [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+    Must not end in "/".
+    """
+    max_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+    Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+    than the limit.
+    """
+    max_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum duration that can elapse before a new Cloud Storage file is created.
+    Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+    acknowledgement deadline.
+    """
+    max_messages: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum number of messages that can be written to a Cloud Storage file before a new file
+    is created. Min 1000 messages.
+    """
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The service account to use to write to Cloud Storage. The subscription creator or updater that
+    specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+    If not specified, the Pub/Sub service agent,
+    service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs:
+    def __init__(__self__, *,
+                 avro_config: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs']] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename_datetime_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_messages: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+               The bucket name must be without any prefix like "gs://". See the
+               [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+        :param pulumi.Input[_builtins.str] filename_datetime_format: User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+               See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+        :param pulumi.Input[_builtins.str] filename_prefix: User-provided prefix for Cloud Storage filename. See the
+               [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        :param pulumi.Input[_builtins.str] filename_suffix: User-provided suffix for Cloud Storage filename. See the
+               [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+               Must not end in "/".
+        :param pulumi.Input[_builtins.str] max_bytes: The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+               Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+               than the limit.
+        :param pulumi.Input[_builtins.str] max_duration: The maximum duration that can elapse before a new Cloud Storage file is created.
+               Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+               acknowledgement deadline.
+        :param pulumi.Input[_builtins.str] max_messages: The maximum number of messages that can be written to a Cloud Storage file before a new file
+               is created. Min 1000 messages.
+        :param pulumi.Input[_builtins.str] service_account_email: The service account to use to write to Cloud Storage. The subscription creator or updater that
+               specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+               If not specified, the Pub/Sub service agent,
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        if avro_config is not None:
+            pulumi.set(__self__, "avro_config", avro_config)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if filename_datetime_format is not None:
+            pulumi.set(__self__, "filename_datetime_format", filename_datetime_format)
+        if filename_prefix is not None:
+            pulumi.set(__self__, "filename_prefix", filename_prefix)
+        if filename_suffix is not None:
+            pulumi.set(__self__, "filename_suffix", filename_suffix)
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+        if max_messages is not None:
+            pulumi.set(__self__, "max_messages", max_messages)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @_builtins.property
+    @pulumi.getter(name="avroConfig")
+    def avro_config(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs']]:
+        """
+        If set, message data will be written to Cloud Storage in Avro format.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "avro_config")
+
+    @avro_config.setter
+    def avro_config(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs']]):
+        pulumi.set(self, "avro_config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+        The bucket name must be without any prefix like "gs://". See the
+        [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filenameDatetimeFormat")
+    def filename_datetime_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+        See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+        """
+        return pulumi.get(self, "filename_datetime_format")
+
+    @filename_datetime_format.setter
+    def filename_datetime_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filename_datetime_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filenamePrefix")
+    def filename_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-provided prefix for Cloud Storage filename. See the
+        [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        """
+        return pulumi.get(self, "filename_prefix")
+
+    @filename_prefix.setter
+    def filename_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filename_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filenameSuffix")
+    def filename_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-provided suffix for Cloud Storage filename. See the
+        [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        Must not end in "/".
+        """
+        return pulumi.get(self, "filename_suffix")
+
+    @filename_suffix.setter
+    def filename_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filename_suffix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+        Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+        than the limit.
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @max_bytes.setter
+    def max_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum duration that can elapse before a new Cloud Storage file is created.
+        Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+        acknowledgement deadline.
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxMessages")
+    def max_messages(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum number of messages that can be written to a Cloud Storage file before a new file
+        is created. Min 1000 messages.
+        """
+        return pulumi.get(self, "max_messages")
+
+    @max_messages.setter
+    def max_messages(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The service account to use to write to Cloud Storage. The subscription creator or updater that
+        specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+        If not specified, the Pub/Sub service agent,
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account_email", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgsDict(TypedDict):
+    use_topic_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, the output Cloud Storage file will be serialized using
+    the topic schema, if it exists.
+    """
+    write_metadata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+    as additional fields in the output. The subscription name, message_id, and publish_time fields
+    are put in their own fields while all other message properties other than data (for example,
+    an ordering_key, if present) are added as entries in the attributes map.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs:
+    def __init__(__self__, *,
+                 use_topic_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 write_metadata: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] use_topic_schema: When true, the output Cloud Storage file will be serialized using
+               the topic schema, if it exists.
+        :param pulumi.Input[_builtins.bool] write_metadata: When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+               as additional fields in the output. The subscription name, message_id, and publish_time fields
+               are put in their own fields while all other message properties other than data (for example,
+               an ordering_key, if present) are added as entries in the attributes map.
+        """
+        if use_topic_schema is not None:
+            pulumi.set(__self__, "use_topic_schema", use_topic_schema)
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @_builtins.property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, the output Cloud Storage file will be serialized using
+        the topic schema, if it exists.
+        """
+        return pulumi.get(self, "use_topic_schema")
+
+    @use_topic_schema.setter
+    def use_topic_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_topic_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+        as additional fields in the output. The subscription name, message_id, and publish_time fields
+        are put in their own fields while all other message properties other than data (for example,
+        an ordering_key, if present) are added as entries in the attributes map.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "write_metadata", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgsDict(TypedDict):
+    dead_letter_topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the topic to which dead letter messages should be published. Format is
+    `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+    subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+    must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+    Users should ensure that there is a subscription attached to this topic since messages published to
+    a topic with no subscriptions are lost.
+    """
+    max_delivery_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+    The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+    the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+    ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+    ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+    default value of 5 is used.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs:
+    def __init__(__self__, *,
+                 dead_letter_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_delivery_attempts: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dead_letter_topic: The name of the topic to which dead letter messages should be published. Format is
+               `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+               subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+               must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+               Users should ensure that there is a subscription attached to this topic since messages published to
+               a topic with no subscriptions are lost.
+        :param pulumi.Input[_builtins.int] max_delivery_attempts: The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+               The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+               the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+               ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+               ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+               default value of 5 is used.
+        """
+        if dead_letter_topic is not None:
+            pulumi.set(__self__, "dead_letter_topic", dead_letter_topic)
+        if max_delivery_attempts is not None:
+            pulumi.set(__self__, "max_delivery_attempts", max_delivery_attempts)
+
+    @_builtins.property
+    @pulumi.getter(name="deadLetterTopic")
+    def dead_letter_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the topic to which dead letter messages should be published. Format is
+        `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+        subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+        must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+        Users should ensure that there is a subscription attached to this topic since messages published to
+        a topic with no subscriptions are lost.
+        """
+        return pulumi.get(self, "dead_letter_topic")
+
+    @dead_letter_topic.setter
+    def dead_letter_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dead_letter_topic", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxDeliveryAttempts")
+    def max_delivery_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+        The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+        the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+        ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+        ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+        default value of 5 is used.
+        """
+        return pulumi.get(self, "max_delivery_attempts")
+
+    @max_delivery_attempts.setter
+    def max_delivery_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_delivery_attempts", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgsDict(TypedDict):
+    ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+    is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+    associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+    the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs:
+    def __init__(__self__, *,
+                 ttl: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ttl: Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+               is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+               associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+               the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+        """
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+        is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+        associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+        the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ttl", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgsDict(TypedDict):
+    attributes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+    The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+    pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+    the shape of the pushed message (i.e., its fields and metadata). If not present during the
+    `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+    If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+    will always return a valid version, even if the subscription was created without this attribute.
+    The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+    defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+    """
+    no_wrapper: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgsDict']]]
+    """
+    When set, the payload to the push endpoint is not wrapped.
+    Structure is documented below.
+    """
+    oidc_token: NotRequired[pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgsDict']]]
+    """
+    If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+    Authorization header in the HTTP request for every pushed message.
+    Structure is documented below.
+    """
+    push_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A URL locating the endpoint to which messages should be pushed.
+    For example, a Webhook endpoint might use `https://example.com/push`.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs:
+    def __init__(__self__, *,
+                 attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 no_wrapper: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs']] = None,
+                 oidc_token: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs']] = None,
+                 push_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] attributes: Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+               The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+               pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+               the shape of the pushed message (i.e., its fields and metadata). If not present during the
+               `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+               If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+               will always return a valid version, even if the subscription was created without this attribute.
+               The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+               defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs'] no_wrapper: When set, the payload to the push endpoint is not wrapped.
+               Structure is documented below.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs'] oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+               Authorization header in the HTTP request for every pushed message.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] push_endpoint: A URL locating the endpoint to which messages should be pushed.
+               For example, a Webhook endpoint might use `https://example.com/push`.
+        """
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if no_wrapper is not None:
+            pulumi.set(__self__, "no_wrapper", no_wrapper)
+        if oidc_token is not None:
+            pulumi.set(__self__, "oidc_token", oidc_token)
+        if push_endpoint is not None:
+            pulumi.set(__self__, "push_endpoint", push_endpoint)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+        The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+        pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+        the shape of the pushed message (i.e., its fields and metadata). If not present during the
+        `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+        If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+        will always return a valid version, even if the subscription was created without this attribute.
+        The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+        defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "attributes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noWrapper")
+    def no_wrapper(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs']]:
+        """
+        When set, the payload to the push endpoint is not wrapped.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "no_wrapper")
+
+    @no_wrapper.setter
+    def no_wrapper(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs']]):
+        pulumi.set(self, "no_wrapper", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs']]:
+        """
+        If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+        Authorization header in the HTTP request for every pushed message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oidc_token")
+
+    @oidc_token.setter
+    def oidc_token(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs']]):
+        pulumi.set(self, "oidc_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pushEndpoint")
+    def push_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A URL locating the endpoint to which messages should be pushed.
+        For example, a Webhook endpoint might use `https://example.com/push`.
+        """
+        return pulumi.get(self, "push_endpoint")
+
+    @push_endpoint.setter
+    def push_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "push_endpoint", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgsDict(TypedDict):
+    write_metadata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+    HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs:
+    def __init__(__self__, *,
+                 write_metadata: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] write_metadata: When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+               HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+        """
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @_builtins.property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+        HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "write_metadata", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgsDict(TypedDict):
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Audience to be used when generating OIDC token. The audience claim identifies the recipients
+    that the JWT is intended for. The audience value is a single case-sensitive string. Having
+    multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+    token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+    the Push endpoint URL will be used.
+    """
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Service account email used for generating the OIDC token. For more information
+    on setting up authentication, see Push subscriptions.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs:
+    def __init__(__self__, *,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients
+               that the JWT is intended for. The audience value is a single case-sensitive string. Having
+               multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+               token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+               the Push endpoint URL will be used.
+        :param pulumi.Input[_builtins.str] service_account_email: Service account email used for generating the OIDC token. For more information
+               on setting up authentication, see Push subscriptions.
+        """
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @_builtins.property
+    @pulumi.getter
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Audience to be used when generating OIDC token. The audience claim identifies the recipients
+        that the JWT is intended for. The audience value is a single case-sensitive string. Having
+        multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+        token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+        the Push endpoint URL will be used.
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "audience", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Service account email used for generating the OIDC token. For more information
+        on setting up authentication, see Push subscriptions.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account_email", value)
+
+
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgsDict(TypedDict):
+    maximum_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum delay between consecutive deliveries of a given message.
+    Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+    """
+    minimum_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The minimum delay between consecutive deliveries of a given message.
+    Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+    """
+
+@pulumi.input_type
+class ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs:
+    def __init__(__self__, *,
+                 maximum_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_backoff: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] maximum_backoff: The maximum delay between consecutive deliveries of a given message.
+               Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+        :param pulumi.Input[_builtins.str] minimum_backoff: The minimum delay between consecutive deliveries of a given message.
+               Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+        """
+        if maximum_backoff is not None:
+            pulumi.set(__self__, "maximum_backoff", maximum_backoff)
+        if minimum_backoff is not None:
+            pulumi.set(__self__, "minimum_backoff", minimum_backoff)
+
+    @_builtins.property
+    @pulumi.getter(name="maximumBackoff")
+    def maximum_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum delay between consecutive deliveries of a given message.
+        Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+        """
+        return pulumi.get(self, "maximum_backoff")
+
+    @maximum_backoff.setter
+    def maximum_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "maximum_backoff", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minimumBackoff")
+    def minimum_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The minimum delay between consecutive deliveries of a given message.
+        Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+        """
+        return pulumi.get(self, "minimum_backoff")
+
+    @minimum_backoff.setter
+    def minimum_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "minimum_backoff", value)
+
+
 class ListingSubscriptionLinkedDatasetMapArgsDict(TypedDict):
     resource_name: pulumi.Input[_builtins.str]
     """
@@ -1430,6 +2788,11 @@ class ListingSubscriptionLinkedDatasetMapArgsDict(TypedDict):
     """
     (Output)
     Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+    """
+    linked_pubsub_subscription: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
     """
     listing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1442,17 +2805,22 @@ class ListingSubscriptionLinkedDatasetMapArgs:
     def __init__(__self__, *,
                  resource_name: pulumi.Input[_builtins.str],
                  linked_dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_pubsub_subscription: pulumi.Input[Optional[_builtins.str]] = None,
                  listing: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_name: (Required) The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] linked_dataset: (Output)
                Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        :param pulumi.Input[_builtins.str] linked_pubsub_subscription: (Output)
+               Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
         :param pulumi.Input[_builtins.str] listing: (Output)
                Output only. Listing for which linked resource is created.
         """
         pulumi.set(__self__, "resource_name", resource_name)
         if linked_dataset is not None:
             pulumi.set(__self__, "linked_dataset", linked_dataset)
+        if linked_pubsub_subscription is not None:
+            pulumi.set(__self__, "linked_pubsub_subscription", linked_pubsub_subscription)
         if listing is not None:
             pulumi.set(__self__, "listing", listing)
 
@@ -1482,6 +2850,19 @@ class ListingSubscriptionLinkedDatasetMapArgs:
         pulumi.set(self, "linked_dataset", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedPubsubSubscription")
+    def linked_pubsub_subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+        """
+        return pulumi.get(self, "linked_pubsub_subscription")
+
+    @linked_pubsub_subscription.setter
+    def linked_pubsub_subscription(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "linked_pubsub_subscription", value)
+
+    @_builtins.property
     @pulumi.getter
     def listing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1501,6 +2882,11 @@ class ListingSubscriptionLinkedResourceArgsDict(TypedDict):
     (Output)
     Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
     """
+    linked_pubsub_subscription: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+    """
     listing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -1511,15 +2897,20 @@ class ListingSubscriptionLinkedResourceArgsDict(TypedDict):
 class ListingSubscriptionLinkedResourceArgs:
     def __init__(__self__, *,
                  linked_dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_pubsub_subscription: pulumi.Input[Optional[_builtins.str]] = None,
                  listing: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] linked_dataset: (Output)
                Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        :param pulumi.Input[_builtins.str] linked_pubsub_subscription: (Output)
+               Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
         :param pulumi.Input[_builtins.str] listing: (Output)
                Output only. Listing for which linked resource is created.
         """
         if linked_dataset is not None:
             pulumi.set(__self__, "linked_dataset", linked_dataset)
+        if linked_pubsub_subscription is not None:
+            pulumi.set(__self__, "linked_pubsub_subscription", linked_pubsub_subscription)
         if listing is not None:
             pulumi.set(__self__, "listing", listing)
 
@@ -1535,6 +2926,19 @@ class ListingSubscriptionLinkedResourceArgs:
     @linked_dataset.setter
     def linked_dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_dataset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="linkedPubsubSubscription")
+    def linked_pubsub_subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+        """
+        return pulumi.get(self, "linked_pubsub_subscription")
+
+    @linked_pubsub_subscription.setter
+    def linked_pubsub_subscription(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "linked_pubsub_subscription", value)
 
     @_builtins.property
     @pulumi.getter

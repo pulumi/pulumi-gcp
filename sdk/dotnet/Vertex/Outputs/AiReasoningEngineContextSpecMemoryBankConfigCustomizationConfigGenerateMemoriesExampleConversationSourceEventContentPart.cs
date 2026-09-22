@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart
     {
         /// <summary>
+        /// Audio (input or output) transcription. This is only set when this Part contains audio data.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription? AudioTranscription;
+        /// <summary>
         /// Result of executing the ExecutableCode.
         /// Structure is documented below.
         /// </summary>
@@ -59,6 +64,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
         [OutputConstructor]
         private AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart(
+            Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription? audioTranscription,
+
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult? codeExecutionResult,
 
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode? executableCode,
@@ -77,6 +84,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata? videoMetadata)
         {
+            AudioTranscription = audioTranscription;
             CodeExecutionResult = codeExecutionResult;
             ExecutableCode = executableCode;
             FileData = fileData;

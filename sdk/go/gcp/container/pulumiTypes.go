@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34920,7 +34920,7 @@ type ClusterNodePool struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Configuration for
 	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -34992,7 +34992,7 @@ type ClusterNodePoolArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Configuration for
 	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -35130,7 +35130,7 @@ func (o ClusterNodePoolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }

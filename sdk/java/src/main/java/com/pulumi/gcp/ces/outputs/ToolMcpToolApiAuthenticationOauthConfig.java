@@ -39,7 +39,8 @@ public final class ToolMcpToolApiAuthenticationOauthConfig {
     private @Nullable String oauthGrantType;
     /**
      * @return (Output)
-     * The OAuth scopes to grant.
+     * The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
      * 
      */
     private @Nullable List<String> scopes;
@@ -84,7 +85,8 @@ public final class ToolMcpToolApiAuthenticationOauthConfig {
     }
     /**
      * @return (Output)
-     * The OAuth scopes to grant.
+     * The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
      * 
      */
     public List<String> scopes() {

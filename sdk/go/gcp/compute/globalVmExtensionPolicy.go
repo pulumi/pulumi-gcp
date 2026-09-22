@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewGlobalVmExtensionPolicy(ctx, "ops_agent_policy", &compute.GlobalVmExtensionPolicyArgs{
-//				Name:        pulumi.String("global-ops-agent-vme-policy-_74391"),
+//				Name:        pulumi.String("global-ops-agent-vme-policy-_16511"),
 //				Description: pulumi.String("A basic global VM extension policy"),
 //				Priority:    pulumi.Int(10),
 //				ExtensionPolicies: compute.GlobalVmExtensionPolicyExtensionPolicyArray{
@@ -70,7 +70,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,7 +78,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewGlobalVmExtensionPolicy(ctx, "ops_agent_policy", &compute.GlobalVmExtensionPolicyArgs{
-//				Name:        pulumi.String("global-ops-agent-vme-policy-_16511"),
+//				Name:        pulumi.String("global-ops-agent-vme-policy-_8493"),
 //				Description: pulumi.String("A basic global VM extension policy"),
 //				Priority:    pulumi.Int(10),
 //				ExtensionPolicies: compute.GlobalVmExtensionPolicyExtensionPolicyArray{
@@ -119,8 +119,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -132,7 +132,7 @@ import (
 //				return err
 //			}
 //			customRollout, err := compute.NewRolloutPlan(ctx, "custom_rollout", &compute.RolloutPlanArgs{
-//				Name:          pulumi.String("custom-rollout-plan-_9106"),
+//				Name:          pulumi.String("custom-rollout-plan-_27169"),
 //				LocationScope: pulumi.String("ZONAL"),
 //				Waves: compute.RolloutPlanWaveArray{
 //					&compute.RolloutPlanWaveArgs{
@@ -164,7 +164,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewGlobalVmExtensionPolicy(ctx, "ops_agent_policy", &compute.GlobalVmExtensionPolicyArgs{
-//				Name:        pulumi.String("global-ops-agent-vme-policy-_8493"),
+//				Name:        pulumi.String("global-ops-agent-vme-policy-_9106"),
 //				Description: pulumi.String("A global VM extension policy with a custom rollout plan"),
 //				Priority:    pulumi.Int(10),
 //				ExtensionPolicies: compute.GlobalVmExtensionPolicyExtensionPolicyArray{

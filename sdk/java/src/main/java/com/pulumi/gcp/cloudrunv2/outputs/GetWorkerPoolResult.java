@@ -29,7 +29,6 @@ public final class GetWorkerPoolResult {
     private List<GetWorkerPoolCondition> conditions;
     private String createTime;
     private String creator;
-    private List<String> customAudiences;
     private String deleteTime;
     private String deletionPolicy;
     private Boolean deletionProtection;
@@ -84,9 +83,6 @@ public final class GetWorkerPoolResult {
     }
     public String creator() {
         return this.creator;
-    }
-    public List<String> customAudiences() {
-        return this.customAudiences;
     }
     public String deleteTime() {
         return this.deleteTime;
@@ -193,7 +189,6 @@ public final class GetWorkerPoolResult {
         private List<GetWorkerPoolCondition> conditions;
         private String createTime;
         private String creator;
-        private List<String> customAudiences;
         private String deleteTime;
         private String deletionPolicy;
         private Boolean deletionProtection;
@@ -232,7 +227,6 @@ public final class GetWorkerPoolResult {
     	      this.conditions = defaults.conditions;
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
-    	      this.customAudiences = defaults.customAudiences;
     	      this.deleteTime = defaults.deleteTime;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
@@ -324,17 +318,6 @@ public final class GetWorkerPoolResult {
             }
             this.creator = creator;
             return this;
-        }
-        @CustomType.Setter
-        public Builder customAudiences(List<String> customAudiences) {
-            if (customAudiences == null) {
-              throw new MissingRequiredPropertyException("GetWorkerPoolResult", "customAudiences");
-            }
-            this.customAudiences = customAudiences;
-            return this;
-        }
-        public Builder customAudiences(String... customAudiences) {
-            return customAudiences(List.of(customAudiences));
         }
         @CustomType.Setter
         public Builder deleteTime(String deleteTime) {
@@ -580,7 +563,6 @@ public final class GetWorkerPoolResult {
             _resultValue.conditions = conditions;
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
-            _resultValue.customAudiences = customAudiences;
             _resultValue.deleteTime = deleteTime;
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;

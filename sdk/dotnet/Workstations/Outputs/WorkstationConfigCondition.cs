@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly int? Code;
         /// <summary>
-        /// (Output)
+        /// (Output, Deprecated)
         /// A list of messages that carry the error details.
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Details;

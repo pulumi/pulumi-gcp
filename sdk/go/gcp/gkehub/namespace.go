@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_25601"),
+//				ScopeId: pulumi.String("tf-test-scope_17228"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewNamespace(ctx, "namespace", &gkehub.NamespaceArgs{
-//				ScopeNamespaceId: pulumi.String("tf-test-namespace_17228"),
+//				ScopeNamespaceId: pulumi.String("tf-test-namespace_89239"),
 //				ScopeId:          scope.ScopeId,
 //				Scope:            scope.Name,
 //				NamespaceLabels: pulumi.StringMap{

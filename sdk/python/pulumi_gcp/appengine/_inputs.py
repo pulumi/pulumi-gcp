@@ -103,8 +103,12 @@ __all__ = [
     'StandardAppVersionLibraryArgsDict',
     'StandardAppVersionManualScalingArgs',
     'StandardAppVersionManualScalingArgsDict',
+    'StandardAppVersionVpcAccessArgs',
+    'StandardAppVersionVpcAccessArgsDict',
     'StandardAppVersionVpcAccessConnectorArgs',
     'StandardAppVersionVpcAccessConnectorArgsDict',
+    'StandardAppVersionVpcAccessNetworkInterfaceArgs',
+    'StandardAppVersionVpcAccessNetworkInterfaceArgsDict',
 ]
 
 class ApplicationFeatureSettingsArgsDict(TypedDict):
@@ -3744,6 +3748,58 @@ class StandardAppVersionManualScalingArgs:
         pulumi.set(self, "instances", value)
 
 
+class StandardAppVersionVpcAccessArgsDict(TypedDict):
+    egress_setting: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The egress setting for the VPC Access, controlling what traffic is diverted through it.
+    """
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionVpcAccessNetworkInterfaceArgsDict']]]]]
+    """
+    List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class StandardAppVersionVpcAccessArgs:
+    def __init__(__self__, *,
+                 egress_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionVpcAccessNetworkInterfaceArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] egress_setting: The egress setting for the VPC Access, controlling what traffic is diverted through it.
+        :param pulumi.Input[Sequence[pulumi.Input['StandardAppVersionVpcAccessNetworkInterfaceArgs']]] network_interfaces: List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+               Structure is documented below.
+        """
+        if egress_setting is not None:
+            pulumi.set(__self__, "egress_setting", egress_setting)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+
+    @_builtins.property
+    @pulumi.getter(name="egressSetting")
+    def egress_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The egress setting for the VPC Access, controlling what traffic is diverted through it.
+        """
+        return pulumi.get(self, "egress_setting")
+
+    @egress_setting.setter
+    def egress_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "egress_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionVpcAccessNetworkInterfaceArgs']]]]:
+        """
+        List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionVpcAccessNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+
 class StandardAppVersionVpcAccessConnectorArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     """
@@ -3790,5 +3846,74 @@ class StandardAppVersionVpcAccessConnectorArgs:
     @egress_setting.setter
     def egress_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress_setting", value)
+
+
+class StandardAppVersionVpcAccessNetworkInterfaceArgsDict(TypedDict):
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+    """
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Network tags applied to this App Engine version.
+    """
+
+@pulumi.input_type
+class StandardAppVersionVpcAccessNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] network: The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+        :param pulumi.Input[_builtins.str] subnetwork: The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Network tags applied to this App Engine version.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Network tags applied to this App Engine version.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 

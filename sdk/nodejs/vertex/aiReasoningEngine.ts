@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about ReasoningEngine, see:
  *
- * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+ * * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
  * * How-to Guides
- *     * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+ *     * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
  *
  * ## Example Usage
  *
@@ -328,6 +328,9 @@ import * as utilities from "../utilities";
  *         agentFramework: "google-adk",
  *         classMethods: JSON.stringify(classMethods),
  *         serviceAccount: serviceAccount.email,
+ *         buildSpec: {
+ *             serviceAccount: serviceAccount.email,
+ *         },
  *         deploymentSpec: {
  *             minInstances: 1,
  *             maxInstances: 3,
@@ -454,6 +457,17 @@ import * as utilities from "../utilities";
  *                                                 id: "exec-result-1",
  *                                                 outcome: "OUTCOME_OK",
  *                                                 output: "pizza",
+ *                                             },
+ *                                         },
+ *                                         {
+ *                                             audioTranscription: {
+ *                                                 speakerLabel: "spk_1",
+ *                                                 text: "I like pepperoni pizza",
+ *                                                 words: [{
+ *                                                     startOffset: "0.5s",
+ *                                                     endOffset: "1.5s",
+ *                                                     word: "pepperoni",
+ *                                                 }],
  *                                             },
  *                                         },
  *                                     ],
@@ -653,7 +667,6 @@ export class AiReasoningEngine extends pulumi.CustomResource {
     }
 
     /**
-     * (Optional, Beta)
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      */
@@ -806,7 +819,6 @@ export class AiReasoningEngine extends pulumi.CustomResource {
  */
 export interface AiReasoningEngineState {
     /**
-     * (Optional, Beta)
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      */
@@ -902,7 +914,6 @@ export interface AiReasoningEngineState {
  */
 export interface AiReasoningEngineArgs {
     /**
-     * (Optional, Beta)
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      */

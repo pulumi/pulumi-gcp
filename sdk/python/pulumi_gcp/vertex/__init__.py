@@ -44,12 +44,12 @@ from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
 from .ai_model_garden_enable_model import *
 from .ai_persistent_resource import *
+from .ai_rag_corpus import *
 from .ai_rag_engine_config import *
 from .ai_reasoning_engine import *
 from .ai_reasoning_engine_iam_binding import *
 from .ai_reasoning_engine_iam_member import *
 from .ai_reasoning_engine_iam_policy import *
-from .ai_schedule import *
 from .ai_semantic_governance_policy_engine import *
 from .ai_tensorboard import *
 from .ai_tensorboard_experiment import *

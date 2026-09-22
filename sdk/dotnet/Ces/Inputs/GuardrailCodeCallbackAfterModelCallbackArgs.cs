@@ -26,6 +26,17 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
+        /// If enabled, the callback will also be executed on intermediate model
+        /// outputs. This setting only affects after model callback.
+        /// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        /// executed after receiving all model responses. Enabling proactive execution
+        /// may have negative implication on the execution cost and latency, and
+        /// should only be enabled in rare situations.
+        /// </summary>
+        [Input("proactiveExecutionEnabled")]
+        public Input<bool>? ProactiveExecutionEnabled { get; set; }
+
+        /// <summary>
         /// The python code to execute for the callback.
         /// </summary>
         [Input("pythonCode", required: true)]

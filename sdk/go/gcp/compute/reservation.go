@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,7 +36,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -69,7 +69,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -104,7 +104,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -182,7 +182,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -320,9 +320,6 @@ type Reservation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// (Output)
-	// The number of reservation blocks associated with this reservation.
-	ReservationBlockCount pulumi.IntOutput `pulumi:"reservationBlockCount"`
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
 	ReservationSharingPolicy ReservationReservationSharingPolicyOutput `pulumi:"reservationSharingPolicy"`
@@ -428,9 +425,6 @@ type reservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// (Output)
-	// The number of reservation blocks associated with this reservation.
-	ReservationBlockCount *int `pulumi:"reservationBlockCount"`
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
 	ReservationSharingPolicy *ReservationReservationSharingPolicy `pulumi:"reservationSharingPolicy"`
@@ -501,9 +495,6 @@ type ReservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// (Output)
-	// The number of reservation blocks associated with this reservation.
-	ReservationBlockCount pulumi.IntPtrInput
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
 	ReservationSharingPolicy ReservationReservationSharingPolicyPtrInput
@@ -802,12 +793,6 @@ func (o ReservationOutput) Params() ReservationParamsPtrOutput {
 // If it is not provided, the provider project is used.
 func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
-}
-
-// (Output)
-// The number of reservation blocks associated with this reservation.
-func (o ReservationOutput) ReservationBlockCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *Reservation) pulumi.IntOutput { return v.ReservationBlockCount }).(pulumi.IntOutput)
 }
 
 // Sharing policy for reservations with Google Cloud managed services.

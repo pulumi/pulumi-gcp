@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -603,6 +603,9 @@ type ClusterGcpConfigAccessConfig struct {
 	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
 	// Structure is documented below.
 	NetworkConfigs []ClusterGcpConfigAccessConfigNetworkConfig `pulumi:"networkConfigs"`
+	// Public connection configuration for the Kafka cluster.
+	// Structure is documented below.
+	PublicClusterConfig *ClusterGcpConfigAccessConfigPublicClusterConfig `pulumi:"publicClusterConfig"`
 }
 
 // ClusterGcpConfigAccessConfigInput is an input type that accepts ClusterGcpConfigAccessConfigArgs and ClusterGcpConfigAccessConfigOutput values.
@@ -620,6 +623,9 @@ type ClusterGcpConfigAccessConfigArgs struct {
 	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
 	// Structure is documented below.
 	NetworkConfigs ClusterGcpConfigAccessConfigNetworkConfigArrayInput `pulumi:"networkConfigs"`
+	// Public connection configuration for the Kafka cluster.
+	// Structure is documented below.
+	PublicClusterConfig ClusterGcpConfigAccessConfigPublicClusterConfigPtrInput `pulumi:"publicClusterConfig"`
 }
 
 func (ClusterGcpConfigAccessConfigArgs) ElementType() reflect.Type {
@@ -707,6 +713,14 @@ func (o ClusterGcpConfigAccessConfigOutput) NetworkConfigs() ClusterGcpConfigAcc
 	}).(ClusterGcpConfigAccessConfigNetworkConfigArrayOutput)
 }
 
+// Public connection configuration for the Kafka cluster.
+// Structure is documented below.
+func (o ClusterGcpConfigAccessConfigOutput) PublicClusterConfig() ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return o.ApplyT(func(v ClusterGcpConfigAccessConfig) *ClusterGcpConfigAccessConfigPublicClusterConfig {
+		return v.PublicClusterConfig
+	}).(ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput)
+}
+
 type ClusterGcpConfigAccessConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterGcpConfigAccessConfigPtrOutput) ElementType() reflect.Type {
@@ -740,6 +754,17 @@ func (o ClusterGcpConfigAccessConfigPtrOutput) NetworkConfigs() ClusterGcpConfig
 		}
 		return v.NetworkConfigs
 	}).(ClusterGcpConfigAccessConfigNetworkConfigArrayOutput)
+}
+
+// Public connection configuration for the Kafka cluster.
+// Structure is documented below.
+func (o ClusterGcpConfigAccessConfigPtrOutput) PublicClusterConfig() ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterGcpConfigAccessConfig) *ClusterGcpConfigAccessConfigPublicClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PublicClusterConfig
+	}).(ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput)
 }
 
 type ClusterGcpConfigAccessConfigNetworkConfig struct {
@@ -837,6 +862,255 @@ func (o ClusterGcpConfigAccessConfigNetworkConfigArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterGcpConfigAccessConfigNetworkConfig {
 		return vs[0].([]ClusterGcpConfigAccessConfigNetworkConfig)[vs[1].(int)]
 	}).(ClusterGcpConfigAccessConfigNetworkConfigOutput)
+}
+
+type ClusterGcpConfigAccessConfigPublicClusterConfig struct {
+	// A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+	AllowedSourceIpRanges []string `pulumi:"allowedSourceIpRanges"`
+}
+
+// ClusterGcpConfigAccessConfigPublicClusterConfigInput is an input type that accepts ClusterGcpConfigAccessConfigPublicClusterConfigArgs and ClusterGcpConfigAccessConfigPublicClusterConfigOutput values.
+// You can construct a concrete instance of `ClusterGcpConfigAccessConfigPublicClusterConfigInput` via:
+//
+//	ClusterGcpConfigAccessConfigPublicClusterConfigArgs{...}
+type ClusterGcpConfigAccessConfigPublicClusterConfigInput interface {
+	pulumi.Input
+
+	ToClusterGcpConfigAccessConfigPublicClusterConfigOutput() ClusterGcpConfigAccessConfigPublicClusterConfigOutput
+	ToClusterGcpConfigAccessConfigPublicClusterConfigOutputWithContext(context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigOutput
+}
+
+type ClusterGcpConfigAccessConfigPublicClusterConfigArgs struct {
+	// A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+	AllowedSourceIpRanges pulumi.StringArrayInput `pulumi:"allowedSourceIpRanges"`
+}
+
+func (ClusterGcpConfigAccessConfigPublicClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGcpConfigAccessConfigPublicClusterConfig)(nil)).Elem()
+}
+
+func (i ClusterGcpConfigAccessConfigPublicClusterConfigArgs) ToClusterGcpConfigAccessConfigPublicClusterConfigOutput() ClusterGcpConfigAccessConfigPublicClusterConfigOutput {
+	return i.ToClusterGcpConfigAccessConfigPublicClusterConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterGcpConfigAccessConfigPublicClusterConfigArgs) ToClusterGcpConfigAccessConfigPublicClusterConfigOutputWithContext(ctx context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGcpConfigAccessConfigPublicClusterConfigOutput)
+}
+
+func (i ClusterGcpConfigAccessConfigPublicClusterConfigArgs) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput() ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return i.ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterGcpConfigAccessConfigPublicClusterConfigArgs) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(ctx context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGcpConfigAccessConfigPublicClusterConfigOutput).ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterGcpConfigAccessConfigPublicClusterConfigPtrInput is an input type that accepts ClusterGcpConfigAccessConfigPublicClusterConfigArgs, ClusterGcpConfigAccessConfigPublicClusterConfigPtr and ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterGcpConfigAccessConfigPublicClusterConfigPtrInput` via:
+//
+//	        ClusterGcpConfigAccessConfigPublicClusterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterGcpConfigAccessConfigPublicClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput() ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput
+	ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput
+}
+
+type clusterGcpConfigAccessConfigPublicClusterConfigPtrType ClusterGcpConfigAccessConfigPublicClusterConfigArgs
+
+func ClusterGcpConfigAccessConfigPublicClusterConfigPtr(v *ClusterGcpConfigAccessConfigPublicClusterConfigArgs) ClusterGcpConfigAccessConfigPublicClusterConfigPtrInput {
+	return (*clusterGcpConfigAccessConfigPublicClusterConfigPtrType)(v)
+}
+
+func (*clusterGcpConfigAccessConfigPublicClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGcpConfigAccessConfigPublicClusterConfig)(nil)).Elem()
+}
+
+func (i *clusterGcpConfigAccessConfigPublicClusterConfigPtrType) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput() ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return i.ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterGcpConfigAccessConfigPublicClusterConfigPtrType) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(ctx context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput)
+}
+
+type ClusterGcpConfigAccessConfigPublicClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterGcpConfigAccessConfigPublicClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGcpConfigAccessConfigPublicClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigOutput) ToClusterGcpConfigAccessConfigPublicClusterConfigOutput() ClusterGcpConfigAccessConfigPublicClusterConfigOutput {
+	return o
+}
+
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigOutput) ToClusterGcpConfigAccessConfigPublicClusterConfigOutputWithContext(ctx context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigOutput {
+	return o
+}
+
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigOutput) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput() ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return o.ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigOutput) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(ctx context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterGcpConfigAccessConfigPublicClusterConfig) *ClusterGcpConfigAccessConfigPublicClusterConfig {
+		return &v
+	}).(ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput)
+}
+
+// A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigOutput) AllowedSourceIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterGcpConfigAccessConfigPublicClusterConfig) []string { return v.AllowedSourceIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGcpConfigAccessConfigPublicClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput() ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput) ToClusterGcpConfigAccessConfigPublicClusterConfigPtrOutputWithContext(ctx context.Context) ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput) Elem() ClusterGcpConfigAccessConfigPublicClusterConfigOutput {
+	return o.ApplyT(func(v *ClusterGcpConfigAccessConfigPublicClusterConfig) ClusterGcpConfigAccessConfigPublicClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterGcpConfigAccessConfigPublicClusterConfig
+		return ret
+	}).(ClusterGcpConfigAccessConfigPublicClusterConfigOutput)
+}
+
+// A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+func (o ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput) AllowedSourceIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterGcpConfigAccessConfigPublicClusterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedSourceIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterPublicClusterDetail struct {
+	// (Output)
+	// DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+	DiscoveryDnsRecords []string `pulumi:"discoveryDnsRecords"`
+	// (Output)
+	// All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+	ExternalIpAddresses []string `pulumi:"externalIpAddresses"`
+}
+
+// ClusterPublicClusterDetailInput is an input type that accepts ClusterPublicClusterDetailArgs and ClusterPublicClusterDetailOutput values.
+// You can construct a concrete instance of `ClusterPublicClusterDetailInput` via:
+//
+//	ClusterPublicClusterDetailArgs{...}
+type ClusterPublicClusterDetailInput interface {
+	pulumi.Input
+
+	ToClusterPublicClusterDetailOutput() ClusterPublicClusterDetailOutput
+	ToClusterPublicClusterDetailOutputWithContext(context.Context) ClusterPublicClusterDetailOutput
+}
+
+type ClusterPublicClusterDetailArgs struct {
+	// (Output)
+	// DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+	DiscoveryDnsRecords pulumi.StringArrayInput `pulumi:"discoveryDnsRecords"`
+	// (Output)
+	// All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+	ExternalIpAddresses pulumi.StringArrayInput `pulumi:"externalIpAddresses"`
+}
+
+func (ClusterPublicClusterDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPublicClusterDetail)(nil)).Elem()
+}
+
+func (i ClusterPublicClusterDetailArgs) ToClusterPublicClusterDetailOutput() ClusterPublicClusterDetailOutput {
+	return i.ToClusterPublicClusterDetailOutputWithContext(context.Background())
+}
+
+func (i ClusterPublicClusterDetailArgs) ToClusterPublicClusterDetailOutputWithContext(ctx context.Context) ClusterPublicClusterDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPublicClusterDetailOutput)
+}
+
+// ClusterPublicClusterDetailArrayInput is an input type that accepts ClusterPublicClusterDetailArray and ClusterPublicClusterDetailArrayOutput values.
+// You can construct a concrete instance of `ClusterPublicClusterDetailArrayInput` via:
+//
+//	ClusterPublicClusterDetailArray{ ClusterPublicClusterDetailArgs{...} }
+type ClusterPublicClusterDetailArrayInput interface {
+	pulumi.Input
+
+	ToClusterPublicClusterDetailArrayOutput() ClusterPublicClusterDetailArrayOutput
+	ToClusterPublicClusterDetailArrayOutputWithContext(context.Context) ClusterPublicClusterDetailArrayOutput
+}
+
+type ClusterPublicClusterDetailArray []ClusterPublicClusterDetailInput
+
+func (ClusterPublicClusterDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPublicClusterDetail)(nil)).Elem()
+}
+
+func (i ClusterPublicClusterDetailArray) ToClusterPublicClusterDetailArrayOutput() ClusterPublicClusterDetailArrayOutput {
+	return i.ToClusterPublicClusterDetailArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterPublicClusterDetailArray) ToClusterPublicClusterDetailArrayOutputWithContext(ctx context.Context) ClusterPublicClusterDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPublicClusterDetailArrayOutput)
+}
+
+type ClusterPublicClusterDetailOutput struct{ *pulumi.OutputState }
+
+func (ClusterPublicClusterDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPublicClusterDetail)(nil)).Elem()
+}
+
+func (o ClusterPublicClusterDetailOutput) ToClusterPublicClusterDetailOutput() ClusterPublicClusterDetailOutput {
+	return o
+}
+
+func (o ClusterPublicClusterDetailOutput) ToClusterPublicClusterDetailOutputWithContext(ctx context.Context) ClusterPublicClusterDetailOutput {
+	return o
+}
+
+// (Output)
+// DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+func (o ClusterPublicClusterDetailOutput) DiscoveryDnsRecords() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterPublicClusterDetail) []string { return v.DiscoveryDnsRecords }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+func (o ClusterPublicClusterDetailOutput) ExternalIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterPublicClusterDetail) []string { return v.ExternalIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+type ClusterPublicClusterDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterPublicClusterDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPublicClusterDetail)(nil)).Elem()
+}
+
+func (o ClusterPublicClusterDetailArrayOutput) ToClusterPublicClusterDetailArrayOutput() ClusterPublicClusterDetailArrayOutput {
+	return o
+}
+
+func (o ClusterPublicClusterDetailArrayOutput) ToClusterPublicClusterDetailArrayOutputWithContext(ctx context.Context) ClusterPublicClusterDetailArrayOutput {
+	return o
+}
+
+func (o ClusterPublicClusterDetailArrayOutput) Index(i pulumi.IntInput) ClusterPublicClusterDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterPublicClusterDetail {
+		return vs[0].([]ClusterPublicClusterDetail)[vs[1].(int)]
+	}).(ClusterPublicClusterDetailOutput)
 }
 
 type ClusterRebalanceConfig struct {
@@ -2121,6 +2395,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigAccessConfigPtrInput)(nil)).Elem(), ClusterGcpConfigAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigAccessConfigNetworkConfigInput)(nil)).Elem(), ClusterGcpConfigAccessConfigNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigAccessConfigNetworkConfigArrayInput)(nil)).Elem(), ClusterGcpConfigAccessConfigNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigAccessConfigPublicClusterConfigInput)(nil)).Elem(), ClusterGcpConfigAccessConfigPublicClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigAccessConfigPublicClusterConfigPtrInput)(nil)).Elem(), ClusterGcpConfigAccessConfigPublicClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPublicClusterDetailInput)(nil)).Elem(), ClusterPublicClusterDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPublicClusterDetailArrayInput)(nil)).Elem(), ClusterPublicClusterDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRebalanceConfigInput)(nil)).Elem(), ClusterRebalanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRebalanceConfigPtrInput)(nil)).Elem(), ClusterRebalanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTlsConfigInput)(nil)).Elem(), ClusterTlsConfigArgs{})
@@ -2151,6 +2429,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterGcpConfigAccessConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGcpConfigAccessConfigNetworkConfigOutput{})
 	pulumi.RegisterOutputType(ClusterGcpConfigAccessConfigNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterGcpConfigAccessConfigPublicClusterConfigOutput{})
+	pulumi.RegisterOutputType(ClusterGcpConfigAccessConfigPublicClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPublicClusterDetailOutput{})
+	pulumi.RegisterOutputType(ClusterPublicClusterDetailArrayOutput{})
 	pulumi.RegisterOutputType(ClusterRebalanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterRebalanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTlsConfigOutput{})

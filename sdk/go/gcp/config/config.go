@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -442,9 +442,6 @@ func GetMemorystoreCustomEndpoint(ctx *pulumi.Context) string {
 func GetMigrationCenterCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:migrationCenterCustomEndpoint")
 }
-func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:mlEngineCustomEndpoint")
-}
 func GetModelArmorCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:modelArmorCustomEndpoint")
 }
@@ -466,14 +463,14 @@ func GetNetworkConnectivityv1CustomEndpoint(ctx *pulumi.Context) string {
 func GetNetworkManagementCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkManagementCustomEndpoint")
 }
+func GetNetworkManagementv1CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:networkManagementv1CustomEndpoint")
+}
 func GetNetworkSecurityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkSecurityCustomEndpoint")
 }
 func GetNetworkServicesCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkServicesCustomEndpoint")
-}
-func GetNotebooksCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:notebooksCustomEndpoint")
 }
 func GetObservabilityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:observabilityCustomEndpoint")
@@ -620,6 +617,9 @@ func GetServiceNetworkingCustomEndpoint(ctx *pulumi.Context) string {
 func GetServiceUsageCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:serviceUsageCustomEndpoint")
 }
+func GetServiceUsageV2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:serviceUsageV2CustomEndpoint")
+}
 func GetSiteVerificationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:siteVerificationCustomEndpoint")
 }
@@ -651,6 +651,9 @@ func GetStorageControlCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetStorageCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:storageCustomEndpoint")
+}
+func GetStorageFtpCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:storageFtpCustomEndpoint")
 }
 func GetStorageInsightsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:storageInsightsCustomEndpoint")
