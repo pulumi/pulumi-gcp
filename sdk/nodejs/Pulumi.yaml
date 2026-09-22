@@ -1,3 +1,0 @@
-name: gcp
-description: A Pulumi resource provider for gcp.
-language: nodejs
