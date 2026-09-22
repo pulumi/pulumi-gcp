@@ -1,3 +1,17 @@
+# v10-major-alpha-1-history-only
+
+History-only branch. Do not merge, do not base work on it.
+
+This branch preserves the `upgrade-to-v10-major` commits that
+`v10.0.0-alpha.1` was cut from, before that branch was rebased onto
+`master` and moved to upstream `terraform-provider-google-beta` v8.3.0.
+
+- Tag: [`v10.0.0-alpha.1`](https://github.com/pulumi/pulumi-gcp/releases/tag/v10.0.0-alpha.1) (`b4fdcc9fc5`)
+- Upstream: `terraform-provider-google-beta` v8.2.0
+- Integration tests passed on the tagged commit:
+  [run-acceptance-tests #34465223563](https://github.com/pulumi/pulumi-gcp/actions/runs/34465223563)
+- Tracking PR: [#3967](https://github.com/pulumi/pulumi-gcp/pull/3967)
+
 [![Actions Status](https://github.com/pulumi/pulumi-gcp/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-gcp/actions)
 [![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fgcp.svg)](https://npmjs.com/package/@pulumi/gcp)
