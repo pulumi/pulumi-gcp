@@ -7,8 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
+import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigPublicClusterConfigArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,10 +35,28 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
         return this.networkConfigs;
     }
 
+    /**
+     * Public connection configuration for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="publicClusterConfig")
+    private @Nullable Output<ClusterGcpConfigAccessConfigPublicClusterConfigArgs> publicClusterConfig;
+
+    /**
+     * @return Public connection configuration for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterGcpConfigAccessConfigPublicClusterConfigArgs>> publicClusterConfig() {
+        return Optional.ofNullable(this.publicClusterConfig);
+    }
+
     private ClusterGcpConfigAccessConfigArgs() {}
 
     private ClusterGcpConfigAccessConfigArgs(ClusterGcpConfigAccessConfigArgs $) {
         this.networkConfigs = $.networkConfigs;
+        this.publicClusterConfig = $.publicClusterConfig;
     }
 
     public static Builder builder() {
@@ -88,6 +109,29 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
          */
         public Builder networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs... networkConfigs) {
             return networkConfigs(List.of(networkConfigs));
+        }
+
+        /**
+         * @param publicClusterConfig Public connection configuration for the Kafka cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicClusterConfig(@Nullable Output<ClusterGcpConfigAccessConfigPublicClusterConfigArgs> publicClusterConfig) {
+            $.publicClusterConfig = publicClusterConfig;
+            return this;
+        }
+
+        /**
+         * @param publicClusterConfig Public connection configuration for the Kafka cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicClusterConfig(ClusterGcpConfigAccessConfigPublicClusterConfigArgs publicClusterConfig) {
+            return publicClusterConfig(Output.of(publicClusterConfig));
         }
 
         public ClusterGcpConfigAccessConfigArgs build() {

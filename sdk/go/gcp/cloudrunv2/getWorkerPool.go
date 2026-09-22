@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,7 +73,6 @@ type LookupWorkerPoolResult struct {
 	Conditions           []GetWorkerPoolCondition           `pulumi:"conditions"`
 	CreateTime           string                             `pulumi:"createTime"`
 	Creator              string                             `pulumi:"creator"`
-	CustomAudiences      []string                           `pulumi:"customAudiences"`
 	DeleteTime           string                             `pulumi:"deleteTime"`
 	DeletionPolicy       string                             `pulumi:"deletionPolicy"`
 	DeletionProtection   bool                               `pulumi:"deletionProtection"`
@@ -168,10 +167,6 @@ func (o LookupWorkerPoolResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupWorkerPoolResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Creator }).(pulumi.StringOutput)
-}
-
-func (o LookupWorkerPoolResultOutput) CustomAudiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupWorkerPoolResult) []string { return v.CustomAudiences }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupWorkerPoolResultOutput) DeleteTime() pulumi.StringOutput {

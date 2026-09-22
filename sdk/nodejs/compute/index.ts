@@ -530,6 +530,11 @@ export const getServiceAttachment: typeof import("./getServiceAttachment").getSe
 export const getServiceAttachmentOutput: typeof import("./getServiceAttachment").getServiceAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceAttachment","getServiceAttachmentOutput"], () => require("./getServiceAttachment"));
 
+export { GetServiceAttachmentsArgs, GetServiceAttachmentsResult, GetServiceAttachmentsOutputArgs } from "./getServiceAttachments";
+export const getServiceAttachments: typeof import("./getServiceAttachments").getServiceAttachments = null as any;
+export const getServiceAttachmentsOutput: typeof import("./getServiceAttachments").getServiceAttachmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceAttachments","getServiceAttachmentsOutput"], () => require("./getServiceAttachments"));
+
 export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
 export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
 export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;

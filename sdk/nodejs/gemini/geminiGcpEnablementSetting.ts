@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     },
  *     enableCustomerDataSharing: true,
  *     webGroundingType: "WEB_GROUNDING_FOR_ENTERPRISE",
+ *     mutationsEnabled: true,
  * });
  * ```
  *
@@ -115,6 +116,10 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * Whether resource mutations should be enabled.
+     */
+    declare public readonly mutationsEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
      */
@@ -162,6 +167,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["geminiGcpEnablementSettingId"] = state?.geminiGcpEnablementSettingId;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
+            resourceInputs["mutationsEnabled"] = state?.mutationsEnabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
@@ -181,6 +187,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["geminiGcpEnablementSettingId"] = args?.geminiGcpEnablementSettingId;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
+            resourceInputs["mutationsEnabled"] = args?.mutationsEnabled;
             resourceInputs["project"] = args?.project;
             resourceInputs["webGroundingType"] = args?.webGroundingType;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -244,6 +251,10 @@ export interface GeminiGcpEnablementSettingState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * Whether resource mutations should be enabled.
+     */
+    mutationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
@@ -312,6 +323,10 @@ export interface GeminiGcpEnablementSettingArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
+    /**
+     * Whether resource mutations should be enabled.
+     */
+    mutationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -562,16 +562,6 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
-     * (Optional, Deprecated)
-     * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-     *
-     * > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-     *
-     * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-     */
-    declare public readonly customAudiences: pulumi.Output<string[] | undefined>;
-    /**
      * The deletion time.
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
@@ -728,7 +718,6 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["conditions"] = state?.conditions;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["creator"] = state?.creator;
-            resourceInputs["customAudiences"] = state?.customAudiences;
             resourceInputs["deleteTime"] = state?.deleteTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
@@ -768,7 +757,6 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
             resourceInputs["client"] = args?.client;
             resourceInputs["clientVersion"] = args?.clientVersion;
-            resourceInputs["customAudiences"] = args?.customAudiences;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
@@ -846,16 +834,6 @@ export interface WorkerPoolState {
      * Email address of the authenticated creator.
      */
     creator?: pulumi.Input<string | undefined>;
-    /**
-     * (Optional, Deprecated)
-     * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-     *
-     * > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-     *
-     * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-     */
-    customAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The deletion time.
      */
@@ -1020,16 +998,6 @@ export interface WorkerPoolArgs {
      * Arbitrary version identifier for the API client.
      */
     clientVersion?: pulumi.Input<string | undefined>;
-    /**
-     * (Optional, Deprecated)
-     * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-     *
-     * > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-     *
-     * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-     */
-    customAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

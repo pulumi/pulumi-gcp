@@ -203,11 +203,20 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfig',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig',
     'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig',
     'WorkflowTemplatePlacementManagedClusterConfigSecurityConfig',
     'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig',
@@ -215,6 +224,10 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfig',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig',
     'GetMetastoreServiceEncryptionConfigResult',
     'GetMetastoreServiceHiveMetastoreConfigResult',
@@ -12047,8 +12060,8 @@ class WorkflowTemplatePlacement(dict):
                  cluster_selector: Optional['outputs.WorkflowTemplatePlacementClusterSelector'] = None,
                  managed_cluster: Optional['outputs.WorkflowTemplatePlacementManagedCluster'] = None):
         """
-        :param 'WorkflowTemplatePlacementClusterSelectorArgs' cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
-        :param 'WorkflowTemplatePlacementManagedClusterArgs' managed_cluster: A cluster that is managed by the workflow.
+        :param 'WorkflowTemplatePlacementClusterSelectorArgs' cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
+        :param 'WorkflowTemplatePlacementManagedClusterArgs' managed_cluster: A cluster that is managed by the workflow. Structure is documented below.
         """
         if cluster_selector is not None:
             pulumi.set(__self__, "cluster_selector", cluster_selector)
@@ -12059,7 +12072,7 @@ class WorkflowTemplatePlacement(dict):
     @pulumi.getter(name="clusterSelector")
     def cluster_selector(self) -> Optional['outputs.WorkflowTemplatePlacementClusterSelector']:
         """
-        A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
         """
         return pulumi.get(self, "cluster_selector")
 
@@ -12067,7 +12080,7 @@ class WorkflowTemplatePlacement(dict):
     @pulumi.getter(name="managedCluster")
     def managed_cluster(self) -> Optional['outputs.WorkflowTemplatePlacementManagedCluster']:
         """
-        A cluster that is managed by the workflow.
+        A cluster that is managed by the workflow. Structure is documented below.
         """
         return pulumi.get(self, "managed_cluster")
 
@@ -12144,7 +12157,7 @@ class WorkflowTemplatePlacementManagedCluster(dict):
                  labels: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str cluster_name: Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigArgs' config: Required. The cluster configuration.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigArgs' config: Required. The cluster configuration. Structure is documented below.
         :param Mapping[str, _builtins.str] labels: The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -12164,7 +12177,7 @@ class WorkflowTemplatePlacementManagedCluster(dict):
     @pulumi.getter
     def config(self) -> 'outputs.WorkflowTemplatePlacementManagedClusterConfig':
         """
-        Required. The cluster configuration.
+        Required. The cluster configuration. Structure is documented below.
         """
         return pulumi.get(self, "config")
 
@@ -12248,14 +12261,14 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
         :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs' gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
         :param Sequence['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
         :param 'WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs' lifecycle_config: Lifecycle setting for the cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs' master_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs' master_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         :param 'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs' metastore_config: Metastore configuration.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs' secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs' secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs' security_config: Security settings for the cluster.
         :param 'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs' software_config: The config settings for software inside the cluster.
         :param _builtins.str staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         :param _builtins.str temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs' worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs' worker_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
                
                ***
         """
@@ -12350,7 +12363,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="masterConfig")
     def master_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfig']:
         """
-        The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         """
         return pulumi.get(self, "master_config")
 
@@ -12366,7 +12379,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="secondaryWorkerConfig")
     def secondary_worker_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig']:
         """
-        The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         """
         return pulumi.get(self, "secondary_worker_config")
 
@@ -12406,7 +12419,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="workerConfig")
     def worker_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig']:
         """
-        The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 
         ***
         """
@@ -13078,6 +13091,8 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
         suggest = None
         if key == "diskConfig":
             suggest = "disk_config"
+        elif key == "instanceFlexibilityPolicy":
+            suggest = "instance_flexibility_policy"
         elif key == "instanceNames":
             suggest = "instance_names"
         elif key == "isPreemptible":
@@ -13106,6 +13121,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
                  accelerators: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator']] = None,
                  disk_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig'] = None,
                  image: Optional[_builtins.str] = None,
+                 instance_flexibility_policy: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy'] = None,
                  instance_names: Optional[Sequence[_builtins.str]] = None,
                  is_preemptible: Optional[_builtins.bool] = None,
                  machine_type: Optional[_builtins.str] = None,
@@ -13117,6 +13133,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
         :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances.
         :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs' disk_config: Disk option config settings.
         :param _builtins.str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `master_config`, `worker_config`, and `secondary_worker_config` (provisioning models are supported exclusively on `secondary_worker_config`). Structure is documented below.
         :param Sequence[_builtins.str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param _builtins.bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param _builtins.str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
@@ -13131,6 +13148,8 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
             pulumi.set(__self__, "disk_config", disk_config)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if is_preemptible is not None:
@@ -13169,6 +13188,14 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
         The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         """
         return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy']:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `master_config`, `worker_config`, and `secondary_worker_config` (provisioning models are supported exclusively on `secondary_worker_config`). Structure is documented below.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
 
     @_builtins.property
     @pulumi.getter(name="instanceNames")
@@ -13342,6 +13369,246 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
 
 
 @pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceMachineTypes":
+            suggest = "instance_machine_types"
+        elif key == "instanceSelectionLists":
+            suggest = "instance_selection_lists"
+        elif key == "instanceSelectionResults":
+            suggest = "instance_selection_results"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_machine_types: Optional[Mapping[str, _builtins.str]] = None,
+                 instance_selection_lists: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList']] = None,
+                 instance_selection_results: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None):
+        """
+        :param Mapping[str, _builtins.str] instance_machine_types: Output only. A map of instance names to their machine types.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs'] instance_selection_results: Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        if instance_machine_types is not None:
+            pulumi.set(__self__, "instance_machine_types", instance_machine_types)
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMachineTypes")
+    def instance_machine_types(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Output only. A map of instance names to their machine types.
+        """
+        return pulumi.get(self, "instance_machine_types")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList']]:
+        """
+        List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult']]:
+        """
+        Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskConfig":
+            suggest = "disk_config"
+        elif key == "machineTypes":
+            suggest = "machine_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig'] = None,
+                 machine_types: Optional[Sequence[_builtins.str]] = None,
+                 rank: Optional[_builtins.int] = None):
+        """
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs' disk_config: Disk option for the instance group. Structure is documented above.
+        :param Sequence[_builtins.str] machine_types: Full machine-type names, e.g. `n1-standard-16`.
+        :param _builtins.int rank: Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig']:
+        """
+        Disk option for the instance group. Structure is documented above.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> Optional[_builtins.int]:
+        """
+        Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+        elif key == "numLocalSsds":
+            suggest = "num_local_ssds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk_size_gb: Optional[_builtins.int] = None,
+                 boot_disk_type: Optional[_builtins.str] = None,
+                 num_local_ssds: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param _builtins.str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        :param _builtins.int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size in GB of the boot disk (default is 500GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> Optional[_builtins.int]:
+        """
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+        elif key == "vmCount":
+            suggest = "vm_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_type: Optional[_builtins.str] = None,
+                 vm_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str machine_type: Output only. Full machine-type names, e.g. `n1-standard-16`.
+        :param _builtins.int vm_count: Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        Output only. Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> Optional[_builtins.int]:
+        """
+        Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        return pulumi.get(self, "vm_count")
+
+
+@pulumi.output_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -13433,6 +13700,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
         suggest = None
         if key == "diskConfig":
             suggest = "disk_config"
+        elif key == "instanceFlexibilityPolicy":
+            suggest = "instance_flexibility_policy"
         elif key == "instanceNames":
             suggest = "instance_names"
         elif key == "isPreemptible":
@@ -13461,6 +13730,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
                  accelerators: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator']] = None,
                  disk_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig'] = None,
                  image: Optional[_builtins.str] = None,
+                 instance_flexibility_policy: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy'] = None,
                  instance_names: Optional[Sequence[_builtins.str]] = None,
                  is_preemptible: Optional[_builtins.bool] = None,
                  machine_type: Optional[_builtins.str] = None,
@@ -13469,16 +13739,17 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
                  num_instances: Optional[_builtins.int] = None,
                  preemptibility: Optional[_builtins.str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs'] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs' disk_config: Optional. Disk option config settings.
-        :param _builtins.str image: Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-        :param Sequence[_builtins.str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances. Structure is documented below.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs' disk_config: Disk option config settings. Structure is documented below.
+        :param _builtins.str image: The Compute Engine image resource used for cluster instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+        :param Sequence[_builtins.str] instance_names: Output only. The list of instance names.
         :param _builtins.bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param _builtins.str machine_type: Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param _builtins.str min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param _builtins.int num_instances: Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
-        :param _builtins.str preemptibility: Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        :param _builtins.str machine_type: The Compute Engine machine type used for cluster instances.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group.
+        :param _builtins.str min_cpu_platform: The minimum CPU platform and architecture for the cluster.
+        :param _builtins.int num_instances: The number of worker instances in the cluster.
+        :param _builtins.str preemptibility: Specifies the preemptibility of the secondary worker group.
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -13486,6 +13757,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
             pulumi.set(__self__, "disk_config", disk_config)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if is_preemptible is not None:
@@ -13505,7 +13778,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter
     def accelerators(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator']]:
         """
-        Optional. The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances. Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
 
@@ -13513,7 +13786,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig']:
         """
-        Optional. Disk option config settings.
+        Disk option config settings. Structure is documented below.
         """
         return pulumi.get(self, "disk_config")
 
@@ -13521,15 +13794,23 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter
     def image(self) -> Optional[_builtins.str]:
         """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        The Compute Engine image resource used for cluster instances.
         """
         return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy']:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
 
     @_builtins.property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        Output only. The list of instance names.
         """
         return pulumi.get(self, "instance_names")
 
@@ -13545,7 +13826,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[_builtins.str]:
         """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances.
         """
         return pulumi.get(self, "machine_type")
 
@@ -13553,7 +13834,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="managedGroupConfigs")
     def managed_group_configs(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig']]:
         """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        Output only. The config for Compute Engine Instance Group Manager that manages this group.
         """
         return pulumi.get(self, "managed_group_configs")
 
@@ -13561,7 +13842,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[_builtins.str]:
         """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        The minimum CPU platform and architecture for the cluster.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -13569,7 +13850,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[_builtins.int]:
         """
-        Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+        The number of worker instances in the cluster.
         """
         return pulumi.get(self, "num_instances")
 
@@ -13577,7 +13858,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter
     def preemptibility(self) -> Optional[_builtins.str]:
         """
-        Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        Specifies the preemptibility of the secondary worker group.
         """
         return pulumi.get(self, "preemptibility")
 
@@ -13694,6 +13975,310 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
         Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceMachineTypes":
+            suggest = "instance_machine_types"
+        elif key == "instanceSelectionLists":
+            suggest = "instance_selection_lists"
+        elif key == "instanceSelectionResults":
+            suggest = "instance_selection_results"
+        elif key == "provisioningModelMix":
+            suggest = "provisioning_model_mix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_machine_types: Optional[Mapping[str, _builtins.str]] = None,
+                 instance_selection_lists: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']] = None,
+                 instance_selection_results: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None,
+                 provisioning_model_mix: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix'] = None):
+        """
+        :param Mapping[str, _builtins.str] instance_machine_types: Output only. A map of instance names to their machine types.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs'] instance_selection_results: Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs' provisioning_model_mix: Strategy for provisioning model mix for secondary worker instances. Supported only for `secondary_worker_config`. Structure is documented below.
+        """
+        if instance_machine_types is not None:
+            pulumi.set(__self__, "instance_machine_types", instance_machine_types)
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+        if provisioning_model_mix is not None:
+            pulumi.set(__self__, "provisioning_model_mix", provisioning_model_mix)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMachineTypes")
+    def instance_machine_types(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Output only. A map of instance names to their machine types.
+        """
+        return pulumi.get(self, "instance_machine_types")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']]:
+        """
+        List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']]:
+        """
+        Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningModelMix")
+    def provisioning_model_mix(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix']:
+        """
+        Strategy for provisioning model mix for secondary worker instances. Supported only for `secondary_worker_config`. Structure is documented below.
+        """
+        return pulumi.get(self, "provisioning_model_mix")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskConfig":
+            suggest = "disk_config"
+        elif key == "machineTypes":
+            suggest = "machine_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig'] = None,
+                 machine_types: Optional[Sequence[_builtins.str]] = None,
+                 rank: Optional[_builtins.int] = None):
+        """
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs' disk_config: Disk option for the instance group. Structure is documented above.
+        :param Sequence[_builtins.str] machine_types: Full machine-type names, e.g. `n1-standard-16`.
+        :param _builtins.int rank: Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig']:
+        """
+        Disk option for the instance group. Structure is documented above.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> Optional[_builtins.int]:
+        """
+        Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+        elif key == "numLocalSsds":
+            suggest = "num_local_ssds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk_size_gb: Optional[_builtins.int] = None,
+                 boot_disk_type: Optional[_builtins.str] = None,
+                 num_local_ssds: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param _builtins.str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        :param _builtins.int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size in GB of the boot disk (default is 500GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> Optional[_builtins.int]:
+        """
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+        elif key == "vmCount":
+            suggest = "vm_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_type: Optional[_builtins.str] = None,
+                 vm_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str machine_type: Output only. Full machine-type names, e.g. `n1-standard-16`.
+        :param _builtins.int vm_count: Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        Output only. Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> Optional[_builtins.int]:
+        """
+        Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        return pulumi.get(self, "vm_count")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "standardCapacityBase":
+            suggest = "standard_capacity_base"
+        elif key == "standardCapacityPercentAboveBase":
+            suggest = "standard_capacity_percent_above_base"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 standard_capacity_base: Optional[_builtins.int] = None,
+                 standard_capacity_percent_above_base: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int standard_capacity_base: The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+        :param _builtins.int standard_capacity_percent_above_base: The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+        """
+        if standard_capacity_base is not None:
+            pulumi.set(__self__, "standard_capacity_base", standard_capacity_base)
+        if standard_capacity_percent_above_base is not None:
+            pulumi.set(__self__, "standard_capacity_percent_above_base", standard_capacity_percent_above_base)
+
+    @_builtins.property
+    @pulumi.getter(name="standardCapacityBase")
+    def standard_capacity_base(self) -> Optional[_builtins.int]:
+        """
+        The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+        """
+        return pulumi.get(self, "standard_capacity_base")
+
+    @_builtins.property
+    @pulumi.getter(name="standardCapacityPercentAboveBase")
+    def standard_capacity_percent_above_base(self) -> Optional[_builtins.int]:
+        """
+        The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+        """
+        return pulumi.get(self, "standard_capacity_percent_above_base")
 
 
 @pulumi.output_type
@@ -14105,6 +14690,8 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
         suggest = None
         if key == "diskConfig":
             suggest = "disk_config"
+        elif key == "instanceFlexibilityPolicy":
+            suggest = "instance_flexibility_policy"
         elif key == "instanceNames":
             suggest = "instance_names"
         elif key == "isPreemptible":
@@ -14133,6 +14720,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
                  accelerators: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator']] = None,
                  disk_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig'] = None,
                  image: Optional[_builtins.str] = None,
+                 instance_flexibility_policy: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy'] = None,
                  instance_names: Optional[Sequence[_builtins.str]] = None,
                  is_preemptible: Optional[_builtins.bool] = None,
                  machine_type: Optional[_builtins.str] = None,
@@ -14141,15 +14729,16 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
                  num_instances: Optional[_builtins.int] = None,
                  preemptibility: Optional[_builtins.str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs'] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs' disk_config: Optional. Disk option config settings.
-        :param _builtins.str image: Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-        :param Sequence[_builtins.str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances. Structure is documented below.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs' disk_config: Disk option config settings. Structure is documented below.
+        :param _builtins.str image: The Compute Engine image resource used for cluster instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+        :param Sequence[_builtins.str] instance_names: Output only. The list of instance names.
         :param _builtins.bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param _builtins.str machine_type: Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param _builtins.str min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param _builtins.int num_instances: Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+        :param _builtins.str machine_type: The Compute Engine machine type used for cluster instances.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group.
+        :param _builtins.str min_cpu_platform: The minimum CPU platform and architecture for the cluster.
+        :param _builtins.int num_instances: The number of worker instances in the cluster.
         :param _builtins.str preemptibility: Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         if accelerators is not None:
@@ -14158,6 +14747,8 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
             pulumi.set(__self__, "disk_config", disk_config)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if is_preemptible is not None:
@@ -14177,7 +14768,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter
     def accelerators(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator']]:
         """
-        Optional. The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances. Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
 
@@ -14185,7 +14776,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig']:
         """
-        Optional. Disk option config settings.
+        Disk option config settings. Structure is documented below.
         """
         return pulumi.get(self, "disk_config")
 
@@ -14193,15 +14784,23 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter
     def image(self) -> Optional[_builtins.str]:
         """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        The Compute Engine image resource used for cluster instances.
         """
         return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy']:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
 
     @_builtins.property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        Output only. The list of instance names.
         """
         return pulumi.get(self, "instance_names")
 
@@ -14217,7 +14816,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[_builtins.str]:
         """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances.
         """
         return pulumi.get(self, "machine_type")
 
@@ -14225,7 +14824,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="managedGroupConfigs")
     def managed_group_configs(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig']]:
         """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        Output only. The config for Compute Engine Instance Group Manager that manages this group.
         """
         return pulumi.get(self, "managed_group_configs")
 
@@ -14233,7 +14832,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[_builtins.str]:
         """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        The minimum CPU platform and architecture for the cluster.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -14241,7 +14840,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[_builtins.int]:
         """
-        Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+        The number of worker instances in the cluster.
         """
         return pulumi.get(self, "num_instances")
 
@@ -14366,6 +14965,246 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
         Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceMachineTypes":
+            suggest = "instance_machine_types"
+        elif key == "instanceSelectionLists":
+            suggest = "instance_selection_lists"
+        elif key == "instanceSelectionResults":
+            suggest = "instance_selection_results"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_machine_types: Optional[Mapping[str, _builtins.str]] = None,
+                 instance_selection_lists: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']] = None,
+                 instance_selection_results: Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None):
+        """
+        :param Mapping[str, _builtins.str] instance_machine_types: Output only. A map of instance names to their machine types.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs'] instance_selection_results: Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        if instance_machine_types is not None:
+            pulumi.set(__self__, "instance_machine_types", instance_machine_types)
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMachineTypes")
+    def instance_machine_types(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Output only. A map of instance names to their machine types.
+        """
+        return pulumi.get(self, "instance_machine_types")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']]:
+        """
+        List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']]:
+        """
+        Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskConfig":
+            suggest = "disk_config"
+        elif key == "machineTypes":
+            suggest = "machine_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig'] = None,
+                 machine_types: Optional[Sequence[_builtins.str]] = None,
+                 rank: Optional[_builtins.int] = None):
+        """
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs' disk_config: Disk option for the instance group. Structure is documented above.
+        :param Sequence[_builtins.str] machine_types: Full machine-type names, e.g. `n1-standard-16`.
+        :param _builtins.int rank: Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig']:
+        """
+        Disk option for the instance group. Structure is documented above.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> Optional[_builtins.int]:
+        """
+        Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+        elif key == "numLocalSsds":
+            suggest = "num_local_ssds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk_size_gb: Optional[_builtins.int] = None,
+                 boot_disk_type: Optional[_builtins.str] = None,
+                 num_local_ssds: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param _builtins.str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        :param _builtins.int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size in GB of the boot disk (default is 500GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> Optional[_builtins.int]:
+        """
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+        elif key == "vmCount":
+            suggest = "vm_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_type: Optional[_builtins.str] = None,
+                 vm_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str machine_type: Output only. Full machine-type names, e.g. `n1-standard-16`.
+        :param _builtins.int vm_count: Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        Output only. Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> Optional[_builtins.int]:
+        """
+        Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        return pulumi.get(self, "vm_count")
 
 
 @pulumi.output_type

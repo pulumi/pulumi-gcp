@@ -20,6 +20,7 @@ import com.pulumi.gcp.ces.outputs.AgentLlmAgent;
 import com.pulumi.gcp.ces.outputs.AgentModelSettings;
 import com.pulumi.gcp.ces.outputs.AgentRemoteDialogflowAgent;
 import com.pulumi.gcp.ces.outputs.AgentToolset;
+import com.pulumi.gcp.ces.outputs.AgentTransferRule;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -72,6 +73,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.AgentBeforeToolCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentAfterToolCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentTransferRuleArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentTransferRuleDeterministicTransferArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentTransferRuleDeterministicTransferExpressionConditionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -237,6 +241,20 @@ import javax.annotation.Nullable;
  *                 var agentId = values.t3;
  *                 return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
  *             }))
+ *             .transferRules(AgentTransferRuleArgs.builder()
+ *                 .childAgent(Output.tuple(cesAppForAgent.project(), cesAppForAgent.appId(), cesChildAgent.agentId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var appId = values.t2;
+ *                     var agentId = values.t3;
+ *                     return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
+ *                 }))
+ *                 .direction("PARENT_TO_CHILD")
+ *                 .deterministicTransfer(AgentTransferRuleDeterministicTransferArgs.builder()
+ *                     .expressionCondition(AgentTransferRuleDeterministicTransferExpressionConditionArgs.builder()
+ *                         .expression("true")
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .llmAgent(AgentLlmAgentArgs.builder()
  *                 .build())
  *             .build());
@@ -306,6 +324,7 @@ import javax.annotation.Nullable;
  *                 .agent("projects/example/locations/us/agents/fake-agent")
  *                 .flowId("fake-flow")
  *                 .environmentId("fake-env")
+ *                 .languageCodeVariable("language_code")
  *                 .inputVariableMapping(Map.of("example", "1"))
  *                 .outputVariableMapping(Map.of("example", "1"))
  *                 .build())
@@ -859,6 +878,24 @@ public class Agent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AgentToolset>>> toolsets() {
         return Codegen.optional(this.toolsets);
+    }
+    /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="transferRules", refs={List.class,AgentTransferRule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AgentTransferRule>> transferRules;
+
+    /**
+     * @return List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<AgentTransferRule>>> transferRules() {
+        return Codegen.optional(this.transferRules);
     }
     /**
      * Timestamp when the agent was last updated.

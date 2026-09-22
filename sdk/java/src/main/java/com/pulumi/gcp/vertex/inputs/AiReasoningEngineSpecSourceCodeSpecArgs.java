@@ -20,7 +20,6 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
     public static final AiReasoningEngineSpecSourceCodeSpecArgs Empty = new AiReasoningEngineSpecSourceCodeSpecArgs();
 
     /**
-     * (Optional, Beta)
      * Optional. Specification for the deploying from agent config.
      * Structure is documented below.
      * 
@@ -29,8 +28,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
     private @Nullable Output<AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs> agentConfigSource;
 
     /**
-     * @return (Optional, Beta)
-     * Optional. Specification for the deploying from agent config.
+     * @return Optional. Specification for the deploying from agent config.
      * Structure is documented below.
      * 
      */
@@ -135,8 +133,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param agentConfigSource (Optional, Beta)
-         * Optional. Specification for the deploying from agent config.
+         * @param agentConfigSource Optional. Specification for the deploying from agent config.
          * Structure is documented below.
          * 
          * @return builder
@@ -148,8 +145,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param agentConfigSource (Optional, Beta)
-         * Optional. Specification for the deploying from agent config.
+         * @param agentConfigSource Optional. Specification for the deploying from agent config.
          * Structure is documented below.
          * 
          * @return builder

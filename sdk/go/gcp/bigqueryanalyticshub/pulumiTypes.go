@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -3608,10 +3608,2702 @@ func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) ProjectI
 	}).(pulumi.StringPtrOutput)
 }
 
+type ListingSubscriptionDestinationPubsubSubscription struct {
+	// Destination Pub/Sub subscription resource.
+	// Structure is documented below.
+	PubsubSubscription ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription `pulumi:"pubsubSubscription"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionArgs and ListingSubscriptionDestinationPubsubSubscriptionOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionOutput() ListingSubscriptionDestinationPubsubSubscriptionOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionArgs struct {
+	// Destination Pub/Sub subscription resource.
+	// Structure is documented below.
+	PubsubSubscription ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionInput `pulumi:"pubsubSubscription"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscription)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionOutput() ListingSubscriptionDestinationPubsubSubscriptionOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionOutput).ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionArgs, ListingSubscriptionDestinationPubsubSubscriptionPtr and ListingSubscriptionDestinationPubsubSubscriptionPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPtrType ListingSubscriptionDestinationPubsubSubscriptionArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPtr(v *ListingSubscriptionDestinationPubsubSubscriptionArgs) ListingSubscriptionDestinationPubsubSubscriptionPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscription)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscription)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionOutput() ListingSubscriptionDestinationPubsubSubscriptionOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscription {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPtrOutput)
+}
+
+// Destination Pub/Sub subscription resource.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionOutput) PubsubSubscription() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscription) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription {
+		return v.PubsubSubscription
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscription)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscription) ListingSubscriptionDestinationPubsubSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscription
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionOutput)
+}
+
+// Destination Pub/Sub subscription resource.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPtrOutput) PubsubSubscription() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubSubscription
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription struct {
+	// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+	// acknowledge receipt before resending the message. In the interval after the message is delivered
+	// and before it is acknowledged, it is considered to be outstanding. During that time period, the
+	// message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+	// used as the initial value for the ack deadline. To override this value for a given message, call
+	// `ModifyAckDeadline` with the corresponding `ackId` if using non-streaming pull or send the
+	// `ackId` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+	// deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+	// seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+	// delivery, this value is also used to set the request timeout for the call to the push endpoint.
+	// If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+	// the message.
+	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
+	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
+	// Structure is documented below.
+	BigqueryConfig *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig `pulumi:"bigqueryConfig"`
+	// If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+	// Structure is documented below.
+	CloudStorageConfig *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig `pulumi:"cloudStorageConfig"`
+	// A policy that specifies the conditions for dead lettering messages in this subscription. If
+	// `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+	// with this subscriptions's parent project (i.e.,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+	// Acknowledge() messages on this subscription.
+	// Structure is documented below.
+	DeadLetterPolicy *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
+	// Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+	// receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+	// requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+	// to the endpoint will not be made.
+	Detached *bool `pulumi:"detached"`
+	// If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+	// value of `messageId` on this subscription: The message sent to a subscriber is guaranteed not
+	// to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+	// not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+	// message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+	// a publisher client. These copies are considered distinct by Pub/Sub and have distinct `messageId`
+	// values.
+	EnableExactlyOnceDelivery *bool `pulumi:"enableExactlyOnceDelivery"`
+	// If true, messages published with the same `orderingKey` in `PubsubMessage`
+	// will be delivered to the subscribers in the order in which they are received
+	// by the Pub/Sub system. Otherwise, they may be delivered in any order.
+	EnableMessageOrdering *bool `pulumi:"enableMessageOrdering"`
+	// A policy that specifies the conditions for this subscription's expiration. A subscription is
+	// considered active as long as any connected subscriber is successfully consuming messages from
+	// the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+	// set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+	// `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+	// is not set, the subscription never expires.
+	// Structure is documented below.
+	ExpirationPolicy *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy `pulumi:"expirationPolicy"`
+	// An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+	// whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+	// no messages are filtered out.
+	Filter *string `pulumi:"filter"`
+	// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+	Labels map[string]string `pulumi:"labels"`
+	// How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+	// message is published. If `retainAckedMessages` is true, then this also configures the retention
+	// of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+	// to 7 days. Cannot be more than 31 days or less than 10 minutes.
+	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
+	// Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+	Name string `pulumi:"name"`
+	// If push delivery is used with this subscription, this field is used to configure it.
+	// Structure is documented below.
+	PushConfig *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig `pulumi:"pushConfig"`
+	// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+	// the subscription's backlog, even if they are acknowledged, until they fall out of the
+	// `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+	// in the past to replay previously-acknowledged messages.
+	RetainAckedMessages *bool `pulumi:"retainAckedMessages"`
+	// A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+	// the default retry policy is applied. This generally implies that messages will be retried as soon
+	// as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+	// deadline exceeded events for a given message.
+	// Structure is documented below.
+	RetryPolicy *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy `pulumi:"retryPolicy"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs struct {
+	// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+	// acknowledge receipt before resending the message. In the interval after the message is delivered
+	// and before it is acknowledged, it is considered to be outstanding. During that time period, the
+	// message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+	// used as the initial value for the ack deadline. To override this value for a given message, call
+	// `ModifyAckDeadline` with the corresponding `ackId` if using non-streaming pull or send the
+	// `ackId` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+	// deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+	// seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+	// delivery, this value is also used to set the request timeout for the call to the push endpoint.
+	// If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+	// the message.
+	AckDeadlineSeconds pulumi.IntPtrInput `pulumi:"ackDeadlineSeconds"`
+	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
+	// Structure is documented below.
+	BigqueryConfig ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrInput `pulumi:"bigqueryConfig"`
+	// If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+	// Structure is documented below.
+	CloudStorageConfig ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrInput `pulumi:"cloudStorageConfig"`
+	// A policy that specifies the conditions for dead lettering messages in this subscription. If
+	// `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+	// with this subscriptions's parent project (i.e.,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+	// Acknowledge() messages on this subscription.
+	// Structure is documented below.
+	DeadLetterPolicy ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrInput `pulumi:"deadLetterPolicy"`
+	// Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+	// receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+	// requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+	// to the endpoint will not be made.
+	Detached pulumi.BoolPtrInput `pulumi:"detached"`
+	// If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+	// value of `messageId` on this subscription: The message sent to a subscriber is guaranteed not
+	// to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+	// not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+	// message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+	// a publisher client. These copies are considered distinct by Pub/Sub and have distinct `messageId`
+	// values.
+	EnableExactlyOnceDelivery pulumi.BoolPtrInput `pulumi:"enableExactlyOnceDelivery"`
+	// If true, messages published with the same `orderingKey` in `PubsubMessage`
+	// will be delivered to the subscribers in the order in which they are received
+	// by the Pub/Sub system. Otherwise, they may be delivered in any order.
+	EnableMessageOrdering pulumi.BoolPtrInput `pulumi:"enableMessageOrdering"`
+	// A policy that specifies the conditions for this subscription's expiration. A subscription is
+	// considered active as long as any connected subscriber is successfully consuming messages from
+	// the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+	// set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+	// `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+	// is not set, the subscription never expires.
+	// Structure is documented below.
+	ExpirationPolicy ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrInput `pulumi:"expirationPolicy"`
+	// An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+	// whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+	// no messages are filtered out.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+	// message is published. If `retainAckedMessages` is true, then this also configures the retention
+	// of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+	// to 7 days. Cannot be more than 31 days or less than 10 minutes.
+	MessageRetentionDuration pulumi.StringPtrInput `pulumi:"messageRetentionDuration"`
+	// Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If push delivery is used with this subscription, this field is used to configure it.
+	// Structure is documented below.
+	PushConfig ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrInput `pulumi:"pushConfig"`
+	// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+	// the subscription's backlog, even if they are acknowledged, until they fall out of the
+	// `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+	// in the past to replay previously-acknowledged messages.
+	RetainAckedMessages pulumi.BoolPtrInput `pulumi:"retainAckedMessages"`
+	// A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+	// the default retry policy is applied. This generally implies that messages will be retried as soon
+	// as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+	// deadline exceeded events for a given message.
+	// Structure is documented below.
+	RetryPolicy ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrInput `pulumi:"retryPolicy"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput)
+}
+
+// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+// acknowledge receipt before resending the message. In the interval after the message is delivered
+// and before it is acknowledged, it is considered to be outstanding. During that time period, the
+// message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+// used as the initial value for the ack deadline. To override this value for a given message, call
+// `ModifyAckDeadline` with the corresponding `ackId` if using non-streaming pull or send the
+// `ackId` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+// deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+// seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+// delivery, this value is also used to set the request timeout for the call to the push endpoint.
+// If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+// the message.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) AckDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *int {
+		return v.AckDeadlineSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// If delivery to BigQuery is used with this subscription, this field is used to configure it.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) BigqueryConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig {
+		return v.BigqueryConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput)
+}
+
+// If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) CloudStorageConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig {
+		return v.CloudStorageConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput)
+}
+
+// A policy that specifies the conditions for dead lettering messages in this subscription. If
+// `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+// with this subscriptions's parent project (i.e.,
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+// Acknowledge() messages on this subscription.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) DeadLetterPolicy() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy {
+		return v.DeadLetterPolicy
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput)
+}
+
+// Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+// receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+// requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+// to the endpoint will not be made.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) Detached() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool { return v.Detached }).(pulumi.BoolPtrOutput)
+}
+
+// If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+// value of `messageId` on this subscription: The message sent to a subscriber is guaranteed not
+// to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+// not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+// message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+// a publisher client. These copies are considered distinct by Pub/Sub and have distinct `messageId`
+// values.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) EnableExactlyOnceDelivery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool {
+		return v.EnableExactlyOnceDelivery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, messages published with the same `orderingKey` in `PubsubMessage`
+// will be delivered to the subscribers in the order in which they are received
+// by the Pub/Sub system. Otherwise, they may be delivered in any order.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) EnableMessageOrdering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool {
+		return v.EnableMessageOrdering
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A policy that specifies the conditions for this subscription's expiration. A subscription is
+// considered active as long as any connected subscriber is successfully consuming messages from
+// the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+// set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+// `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+// is not set, the subscription never expires.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) ExpirationPolicy() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy {
+		return v.ExpirationPolicy
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput)
+}
+
+// An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+// whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+// no messages are filtered out.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+// message is published. If `retainAckedMessages` is true, then this also configures the retention
+// of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+// to 7 days. Cannot be more than 31 days or less than 10 minutes.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) MessageRetentionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *string {
+		return v.MessageRetentionDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If push delivery is used with this subscription, this field is used to configure it.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) PushConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig {
+		return v.PushConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput)
+}
+
+// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+// the subscription's backlog, even if they are acknowledged, until they fall out of the
+// `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+// in the past to replay previously-acknowledged messages.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) RetainAckedMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool {
+		return v.RetainAckedMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+// the default retry policy is applied. This generally implies that messages will be retried as soon
+// as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+// deadline exceeded events for a given message.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput) RetryPolicy() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy {
+		return v.RetryPolicy
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput)
+}
+
+// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+// acknowledge receipt before resending the message. In the interval after the message is delivered
+// and before it is acknowledged, it is considered to be outstanding. During that time period, the
+// message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+// used as the initial value for the ack deadline. To override this value for a given message, call
+// `ModifyAckDeadline` with the corresponding `ackId` if using non-streaming pull or send the
+// `ackId` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+// deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+// seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+// delivery, this value is also used to set the request timeout for the call to the push endpoint.
+// If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+// the message.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) AckDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AckDeadlineSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// If delivery to BigQuery is used with this subscription, this field is used to configure it.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) BigqueryConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput)
+}
+
+// If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) CloudStorageConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStorageConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput)
+}
+
+// A policy that specifies the conditions for dead lettering messages in this subscription. If
+// `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+// with this subscriptions's parent project (i.e.,
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+// Acknowledge() messages on this subscription.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) DeadLetterPolicy() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterPolicy
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput)
+}
+
+// Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+// receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+// requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+// to the endpoint will not be made.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) Detached() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Detached
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+// value of `messageId` on this subscription: The message sent to a subscriber is guaranteed not
+// to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+// not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+// message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+// a publisher client. These copies are considered distinct by Pub/Sub and have distinct `messageId`
+// values.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) EnableExactlyOnceDelivery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableExactlyOnceDelivery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, messages published with the same `orderingKey` in `PubsubMessage`
+// will be delivered to the subscribers in the order in which they are received
+// by the Pub/Sub system. Otherwise, they may be delivered in any order.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) EnableMessageOrdering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableMessageOrdering
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A policy that specifies the conditions for this subscription's expiration. A subscription is
+// considered active as long as any connected subscriber is successfully consuming messages from
+// the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+// set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+// `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+// is not set, the subscription never expires.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) ExpirationPolicy() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationPolicy
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput)
+}
+
+// An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+// whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+// no messages are filtered out.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+// message is published. If `retainAckedMessages` is true, then this also configures the retention
+// of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+// to 7 days. Cannot be more than 31 days or less than 10 minutes.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) MessageRetentionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageRetentionDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// If push delivery is used with this subscription, this field is used to configure it.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) PushConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PushConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput)
+}
+
+// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+// the subscription's backlog, even if they are acknowledged, until they fall out of the
+// `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+// in the past to replay previously-acknowledged messages.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) RetainAckedMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetainAckedMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+// the default retry policy is applied. This generally implies that messages will be retried as soon
+// as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+// deadline exceeded events for a given message.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput) RetryPolicy() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RetryPolicy
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig struct {
+	// When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+	// not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+	// must be kept in sync and any messages with extra fields are not written and remain in the
+	// subscription's backlog.
+	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. The subscription creator or updater that
+	// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+	// If not specified, the Pub/Sub service agent,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// The name of the table to which to write data, of the form
+	// {projectId}.{datasetId}.{tableId}
+	Table *string `pulumi:"table"`
+	// When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+	// `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+	UseTableSchema *bool `pulumi:"useTableSchema"`
+	// When true, use the topic's schema as the columns to write to in BigQuery,
+	// if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+	UseTopicSchema *bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+	// to additional columns in the table. The subscription name, message_id, and publishTime fields
+	// are put in their own columns while all other message properties (other than data) are written
+	// to a JSON object in the attributes column.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs struct {
+	// When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+	// not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+	// must be kept in sync and any messages with extra fields are not written and remain in the
+	// subscription's backlog.
+	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. The subscription creator or updater that
+	// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+	// If not specified, the Pub/Sub service agent,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// The name of the table to which to write data, of the form
+	// {projectId}.{datasetId}.{tableId}
+	Table pulumi.StringPtrInput `pulumi:"table"`
+	// When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+	// `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+	UseTableSchema pulumi.BoolPtrInput `pulumi:"useTableSchema"`
+	// When true, use the topic's schema as the columns to write to in BigQuery,
+	// if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+	// to additional columns in the table. The subscription name, message_id, and publishTime fields
+	// are put in their own columns while all other message properties (other than data) are written
+	// to a JSON object in the attributes column.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput)
+}
+
+// When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+// not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+// must be kept in sync and any messages with extra fields are not written and remain in the
+// subscription's backlog.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		return v.DropUnknownFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account to use to write to BigQuery. The subscription creator or updater that
+// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+// If not specified, the Pub/Sub service agent,
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *string {
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the table to which to write data, of the form
+// {projectId}.{datasetId}.{tableId}
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *string {
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+// `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		return v.UseTableSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery,
+// if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+// to additional columns in the table. The subscription name, message_id, and publishTime fields
+// are put in their own columns while all other message properties (other than data) are written
+// to a JSON object in the attributes column.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput)
+}
+
+// When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+// not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+// must be kept in sync and any messages with extra fields are not written and remain in the
+// subscription's backlog.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropUnknownFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account to use to write to BigQuery. The subscription creator or updater that
+// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+// If not specified, the Pub/Sub service agent,
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the table to which to write data, of the form
+// {projectId}.{datasetId}.{tableId}
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+// `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTableSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery,
+// if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+// to additional columns in the table. The subscription name, message_id, and publishTime fields
+// are put in their own columns while all other message properties (other than data) are written
+// to a JSON object in the attributes column.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig struct {
+	// If set, message data will be written to Cloud Storage in Avro format.
+	// Structure is documented below.
+	AvroConfig *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+	// The bucket name must be without any prefix like "gs://". See the
+	// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+	Bucket *string `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+	// See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+	FilenameDatetimeFormat *string `pulumi:"filenameDatetimeFormat"`
+	// User-provided prefix for Cloud Storage filename. See the
+	// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenamePrefix *string `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. See the
+	// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	// Must not end in "/".
+	FilenameSuffix *string `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+	// Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+	// than the limit.
+	MaxBytes *string `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created.
+	// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+	// acknowledgement deadline.
+	MaxDuration *string `pulumi:"maxDuration"`
+	// The maximum number of messages that can be written to a Cloud Storage file before a new file
+	// is created. Min 1000 messages.
+	MaxMessages *string `pulumi:"maxMessages"`
+	// The service account to use to write to Cloud Storage. The subscription creator or updater that
+	// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+	// If not specified, the Pub/Sub service agent,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs struct {
+	// If set, message data will be written to Cloud Storage in Avro format.
+	// Structure is documented below.
+	AvroConfig ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+	// The bucket name must be without any prefix like "gs://". See the
+	// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+	// See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+	FilenameDatetimeFormat pulumi.StringPtrInput `pulumi:"filenameDatetimeFormat"`
+	// User-provided prefix for Cloud Storage filename. See the
+	// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenamePrefix pulumi.StringPtrInput `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. See the
+	// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	// Must not end in "/".
+	FilenameSuffix pulumi.StringPtrInput `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+	// Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+	// than the limit.
+	MaxBytes pulumi.StringPtrInput `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created.
+	// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+	// acknowledgement deadline.
+	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
+	// The maximum number of messages that can be written to a Cloud Storage file before a new file
+	// is created. Min 1000 messages.
+	MaxMessages pulumi.StringPtrInput `pulumi:"maxMessages"`
+	// The service account to use to write to Cloud Storage. The subscription creator or updater that
+	// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+	// If not specified, the Pub/Sub service agent,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput)
+}
+
+// If set, message data will be written to Cloud Storage in Avro format.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) AvroConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig {
+		return v.AvroConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+// The bucket name must be without any prefix like "gs://". See the
+// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+// See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.FilenameDatetimeFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided prefix for Cloud Storage filename. See the
+// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.FilenamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. See the
+// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+// Must not end in "/".
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.FilenameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+// Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+// than the limit.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) MaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.MaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created.
+// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+// acknowledgement deadline.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.MaxDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of messages that can be written to a Cloud Storage file before a new file
+// is created. Min 1000 messages.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) MaxMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.MaxMessages
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to use to write to Cloud Storage. The subscription creator or updater that
+// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+// If not specified, the Pub/Sub service agent,
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput)
+}
+
+// If set, message data will be written to Cloud Storage in Avro format.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) AvroConfig() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AvroConfig
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+// The bucket name must be without any prefix like "gs://". See the
+// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+// See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameDatetimeFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided prefix for Cloud Storage filename. See the
+// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. See the
+// [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+// Must not end in "/".
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+// Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+// than the limit.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) MaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created.
+// Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+// acknowledgement deadline.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of messages that can be written to a Cloud Storage file before a new file
+// is created. Min 1000 messages.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) MaxMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMessages
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to use to write to Cloud Storage. The subscription creator or updater that
+// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+// If not specified, the Pub/Sub service agent,
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig struct {
+	// When true, the output Cloud Storage file will be serialized using
+	// the topic schema, if it exists.
+	UseTopicSchema *bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+	// as additional fields in the output. The subscription name, message_id, and publishTime fields
+	// are put in their own fields while all other message properties other than data (for example,
+	// an ordering_key, if present) are added as entries in the attributes map.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs struct {
+	// When true, the output Cloud Storage file will be serialized using
+	// the topic schema, if it exists.
+	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+	// as additional fields in the output. The subscription name, message_id, and publishTime fields
+	// are put in their own fields while all other message properties other than data (for example,
+	// an ordering_key, if present) are added as entries in the attributes map.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// When true, the output Cloud Storage file will be serialized using
+// the topic schema, if it exists.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig) *bool {
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+// as additional fields in the output. The subscription name, message_id, and publishTime fields
+// are put in their own fields while all other message properties other than data (for example,
+// an ordering_key, if present) are added as entries in the attributes map.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig) *bool {
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+// When true, the output Cloud Storage file will be serialized using
+// the topic schema, if it exists.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+// as additional fields in the output. The subscription name, message_id, and publishTime fields
+// are put in their own fields while all other message properties other than data (for example,
+// an ordering_key, if present) are added as entries in the attributes map.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy struct {
+	// The name of the topic to which dead letter messages should be published. Format is
+	// `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+	// subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+	// must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+	// Users should ensure that there is a subscription attached to this topic since messages published to
+	// a topic with no subscriptions are lost.
+	DeadLetterTopic *string `pulumi:"deadLetterTopic"`
+	// The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+	// The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+	// the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+	// ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+	// ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+	// default value of 5 is used.
+	MaxDeliveryAttempts *int `pulumi:"maxDeliveryAttempts"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs struct {
+	// The name of the topic to which dead letter messages should be published. Format is
+	// `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+	// subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+	// must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+	// Users should ensure that there is a subscription attached to this topic since messages published to
+	// a topic with no subscriptions are lost.
+	DeadLetterTopic pulumi.StringPtrInput `pulumi:"deadLetterTopic"`
+	// The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+	// The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+	// the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+	// ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+	// ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+	// default value of 5 is used.
+	MaxDeliveryAttempts pulumi.IntPtrInput `pulumi:"maxDeliveryAttempts"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput)
+}
+
+// The name of the topic to which dead letter messages should be published. Format is
+// `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+// subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+// must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+// Users should ensure that there is a subscription attached to this topic since messages published to
+// a topic with no subscriptions are lost.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy) *string {
+		return v.DeadLetterTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+// The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+// the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+// ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+// ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+// default value of 5 is used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy) *int {
+		return v.MaxDeliveryAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput)
+}
+
+// The name of the topic to which dead letter messages should be published. Format is
+// `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+// subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+// must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+// Users should ensure that there is a subscription attached to this topic since messages published to
+// a topic with no subscriptions are lost.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+// The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+// the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+// ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+// ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+// default value of 5 is used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDeliveryAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy struct {
+	// Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+	// is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+	// associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+	// the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+	Ttl *string `pulumi:"ttl"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs struct {
+	// Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+	// is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+	// associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+	// the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput)
+}
+
+// Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+// is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+// associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+// the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy) *string {
+		return v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput)
+}
+
+// Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+// is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+// associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+// the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig struct {
+	// Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+	// The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+	// pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+	// the shape of the pushed message (i.e., its fields and metadata). If not present during the
+	// `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+	// If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+	// will always return a valid version, even if the subscription was created without this attribute.
+	// The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+	// defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+	Attributes map[string]string `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped.
+	// Structure is documented below.
+	NoWrapper *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper `pulumi:"noWrapper"`
+	// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+	// Authorization header in the HTTP request for every pushed message.
+	// Structure is documented below.
+	OidcToken *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken `pulumi:"oidcToken"`
+	// A URL locating the endpoint to which messages should be pushed.
+	// For example, a Webhook endpoint might use `https://example.com/push`.
+	PushEndpoint *string `pulumi:"pushEndpoint"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs struct {
+	// Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+	// The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+	// pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+	// the shape of the pushed message (i.e., its fields and metadata). If not present during the
+	// `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+	// If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+	// will always return a valid version, even if the subscription was created without this attribute.
+	// The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+	// defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped.
+	// Structure is documented below.
+	NoWrapper ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrInput `pulumi:"noWrapper"`
+	// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+	// Authorization header in the HTTP request for every pushed message.
+	// Structure is documented below.
+	OidcToken ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrInput `pulumi:"oidcToken"`
+	// A URL locating the endpoint to which messages should be pushed.
+	// For example, a Webhook endpoint might use `https://example.com/push`.
+	PushEndpoint pulumi.StringPtrInput `pulumi:"pushEndpoint"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput)
+}
+
+// Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+// The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+// pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+// the shape of the pushed message (i.e., its fields and metadata). If not present during the
+// `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+// If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+// will always return a valid version, even if the subscription was created without this attribute.
+// The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+// defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) map[string]string {
+		return v.Attributes
+	}).(pulumi.StringMapOutput)
+}
+
+// When set, the payload to the push endpoint is not wrapped.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) NoWrapper() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper {
+		return v.NoWrapper
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+// Authorization header in the HTTP request for every pushed message.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) OidcToken() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken {
+		return v.OidcToken
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+// A URL locating the endpoint to which messages should be pushed.
+// For example, a Webhook endpoint might use `https://example.com/push`.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput) PushEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) *string {
+		return v.PushEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput)
+}
+
+// Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+// The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+// pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+// the shape of the pushed message (i.e., its fields and metadata). If not present during the
+// `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+// If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+// will always return a valid version, even if the subscription was created without this attribute.
+// The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+// defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(pulumi.StringMapOutput)
+}
+
+// When set, the payload to the push endpoint is not wrapped.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) NoWrapper() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper {
+		if v == nil {
+			return nil
+		}
+		return v.NoWrapper
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+// Authorization header in the HTTP request for every pushed message.
+// Structure is documented below.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) OidcToken() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+// A URL locating the endpoint to which messages should be pushed.
+// For example, a Webhook endpoint might use `https://example.com/push`.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput) PushEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PushEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper struct {
+	// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+	// HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs struct {
+	// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+	// HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+// HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper) *bool {
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput)
+}
+
+// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+// HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken struct {
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients
+	// that the JWT is intended for. The audience value is a single case-sensitive string. Having
+	// multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+	// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+	// the Push endpoint URL will be used.
+	Audience *string `pulumi:"audience"`
+	// Service account email used for generating the OIDC token. For more information
+	// on setting up authentication, see Push subscriptions.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs struct {
+	// Audience to be used when generating OIDC token. The audience claim identifies the recipients
+	// that the JWT is intended for. The audience value is a single case-sensitive string. Having
+	// multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+	// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+	// the Push endpoint URL will be used.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// Service account email used for generating the OIDC token. For more information
+	// on setting up authentication, see Push subscriptions.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput)
+}
+
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients
+// that the JWT is intended for. The audience value is a single case-sensitive string. Having
+// multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+// the Push endpoint URL will be used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken) *string {
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account email used for generating the OIDC token. For more information
+// on setting up authentication, see Push subscriptions.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken) *string {
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput)
+}
+
+// Audience to be used when generating OIDC token. The audience claim identifies the recipients
+// that the JWT is intended for. The audience value is a single case-sensitive string. Having
+// multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+// the Push endpoint URL will be used.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account email used for generating the OIDC token. For more information
+// on setting up authentication, see Push subscriptions.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy struct {
+	// The maximum delay between consecutive deliveries of a given message.
+	// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+	MaximumBackoff *string `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message.
+	// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+	MinimumBackoff *string `pulumi:"minimumBackoff"`
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyInput` via:
+//
+//	ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs{...}
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs struct {
+	// The maximum delay between consecutive deliveries of a given message.
+	// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+	MaximumBackoff pulumi.StringPtrInput `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message.
+	// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+	MinimumBackoff pulumi.StringPtrInput `pulumi:"minimumBackoff"`
+}
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput)
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput).ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrInput is an input type that accepts ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs, ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtr and ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrInput` via:
+//
+//	        ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput
+	ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput
+}
+
+type listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrType ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs
+
+func ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtr(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrInput {
+	return (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrType)(v)
+}
+
+func (*listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return i.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *listingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrType) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return o.ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy) *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy {
+		return &v
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput)
+}
+
+// The maximum delay between consecutive deliveries of a given message.
+// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy) *string {
+		return v.MaximumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum delay between consecutive deliveries of a given message.
+// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy) *string {
+		return v.MinimumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput) ToListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput) Elem() ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy) ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy
+		return ret
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput)
+}
+
+// The maximum delay between consecutive deliveries of a given message.
+// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum delay between consecutive deliveries of a given message.
+// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+func (o ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
 type ListingSubscriptionLinkedDatasetMap struct {
 	// (Output)
 	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
 	LinkedDataset *string `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+	LinkedPubsubSubscription *string `pulumi:"linkedPubsubSubscription"`
 	// (Output)
 	// Output only. Listing for which linked resource is created.
 	Listing *string `pulumi:"listing"`
@@ -3634,6 +6326,9 @@ type ListingSubscriptionLinkedDatasetMapArgs struct {
 	// (Output)
 	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
 	LinkedDataset pulumi.StringPtrInput `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+	LinkedPubsubSubscription pulumi.StringPtrInput `pulumi:"linkedPubsubSubscription"`
 	// (Output)
 	// Output only. Listing for which linked resource is created.
 	Listing pulumi.StringPtrInput `pulumi:"listing"`
@@ -3699,6 +6394,12 @@ func (o ListingSubscriptionLinkedDatasetMapOutput) LinkedDataset() pulumi.String
 }
 
 // (Output)
+// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+func (o ListingSubscriptionLinkedDatasetMapOutput) LinkedPubsubSubscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionLinkedDatasetMap) *string { return v.LinkedPubsubSubscription }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
 // Output only. Listing for which linked resource is created.
 func (o ListingSubscriptionLinkedDatasetMapOutput) Listing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListingSubscriptionLinkedDatasetMap) *string { return v.Listing }).(pulumi.StringPtrOutput)
@@ -3734,6 +6435,9 @@ type ListingSubscriptionLinkedResource struct {
 	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
 	LinkedDataset *string `pulumi:"linkedDataset"`
 	// (Output)
+	// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+	LinkedPubsubSubscription *string `pulumi:"linkedPubsubSubscription"`
+	// (Output)
 	// Output only. Listing for which linked resource is created.
 	Listing *string `pulumi:"listing"`
 }
@@ -3753,6 +6457,9 @@ type ListingSubscriptionLinkedResourceArgs struct {
 	// (Output)
 	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
 	LinkedDataset pulumi.StringPtrInput `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+	LinkedPubsubSubscription pulumi.StringPtrInput `pulumi:"linkedPubsubSubscription"`
 	// (Output)
 	// Output only. Listing for which linked resource is created.
 	Listing pulumi.StringPtrInput `pulumi:"listing"`
@@ -3813,6 +6520,12 @@ func (o ListingSubscriptionLinkedResourceOutput) ToListingSubscriptionLinkedReso
 // Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
 func (o ListingSubscriptionLinkedResourceOutput) LinkedDataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListingSubscriptionLinkedResource) *string { return v.LinkedDataset }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+func (o ListingSubscriptionLinkedResourceOutput) LinkedPubsubSubscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionLinkedResource) *string { return v.LinkedPubsubSubscription }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -4050,6 +6763,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetPtrInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetDatasetReferenceInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetDatasetReferencePtrInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrInput)(nil)).Elem(), ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedDatasetMapInput)(nil)).Elem(), ListingSubscriptionLinkedDatasetMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedDatasetMapArrayInput)(nil)).Elem(), ListingSubscriptionLinkedDatasetMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedResourceInput)(nil)).Elem(), ListingSubscriptionLinkedResourceArgs{})
@@ -4104,6 +6839,28 @@ func init() {
 	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetPtrOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetDatasetReferenceOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedDatasetMapOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedDatasetMapArrayOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedResourceOutput{})

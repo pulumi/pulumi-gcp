@@ -12,22 +12,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs : global::Pulumi.ResourceArgs
     {
-        [Input("attachment")]
-        private InputList<string>? _attachment;
-
-        /// <summary>
-        /// (Output, Deprecated)
-        /// URLs of Attachments in the given zone, to the given
-        /// region, on Interconnects in the given facility and metro. Every
-        /// Attachment in the AG has such an entry.
-        /// </summary>
-        [Obsolete(@"`Attachment` is deprecated and will be removed in a future major release. Use `Attachments` instead.")]
-        public InputList<string> Attachment
-        {
-            get => _attachment ?? (_attachment = new InputList<string>());
-            set => _attachment = value;
-        }
-
         [Input("attachments")]
         private InputList<string>? _attachments;
 

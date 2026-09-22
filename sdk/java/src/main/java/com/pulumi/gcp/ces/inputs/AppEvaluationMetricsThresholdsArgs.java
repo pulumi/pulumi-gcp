@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,46 @@ public final class AppEvaluationMetricsThresholdsArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.goldenEvaluationMetricsThresholds);
     }
 
+    /**
+     * The hallucination metric behavior for golden evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    @Import(name="goldenHallucinationMetricBehavior")
+    private @Nullable Output<String> goldenHallucinationMetricBehavior;
+
+    /**
+     * @return The hallucination metric behavior for golden evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    public Optional<Output<String>> goldenHallucinationMetricBehavior() {
+        return Optional.ofNullable(this.goldenHallucinationMetricBehavior);
+    }
+
+    /**
+     * The hallucination metric behavior for scenario evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    @Import(name="scenarioHallucinationMetricBehavior")
+    private @Nullable Output<String> scenarioHallucinationMetricBehavior;
+
+    /**
+     * @return The hallucination metric behavior for scenario evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    public Optional<Output<String>> scenarioHallucinationMetricBehavior() {
+        return Optional.ofNullable(this.scenarioHallucinationMetricBehavior);
+    }
+
     private AppEvaluationMetricsThresholdsArgs() {}
 
     private AppEvaluationMetricsThresholdsArgs(AppEvaluationMetricsThresholdsArgs $) {
         this.goldenEvaluationMetricsThresholds = $.goldenEvaluationMetricsThresholds;
+        this.goldenHallucinationMetricBehavior = $.goldenHallucinationMetricBehavior;
+        this.scenarioHallucinationMetricBehavior = $.scenarioHallucinationMetricBehavior;
     }
 
     public static Builder builder() {
@@ -77,6 +114,52 @@ public final class AppEvaluationMetricsThresholdsArgs extends com.pulumi.resourc
          */
         public Builder goldenEvaluationMetricsThresholds(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs goldenEvaluationMetricsThresholds) {
             return goldenEvaluationMetricsThresholds(Output.of(goldenEvaluationMetricsThresholds));
+        }
+
+        /**
+         * @param goldenHallucinationMetricBehavior The hallucination metric behavior for golden evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder goldenHallucinationMetricBehavior(@Nullable Output<String> goldenHallucinationMetricBehavior) {
+            $.goldenHallucinationMetricBehavior = goldenHallucinationMetricBehavior;
+            return this;
+        }
+
+        /**
+         * @param goldenHallucinationMetricBehavior The hallucination metric behavior for golden evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder goldenHallucinationMetricBehavior(String goldenHallucinationMetricBehavior) {
+            return goldenHallucinationMetricBehavior(Output.of(goldenHallucinationMetricBehavior));
+        }
+
+        /**
+         * @param scenarioHallucinationMetricBehavior The hallucination metric behavior for scenario evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scenarioHallucinationMetricBehavior(@Nullable Output<String> scenarioHallucinationMetricBehavior) {
+            $.scenarioHallucinationMetricBehavior = scenarioHallucinationMetricBehavior;
+            return this;
+        }
+
+        /**
+         * @param scenarioHallucinationMetricBehavior The hallucination metric behavior for scenario evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scenarioHallucinationMetricBehavior(String scenarioHallucinationMetricBehavior) {
+            return scenarioHallucinationMetricBehavior(Output.of(scenarioHallucinationMetricBehavior));
         }
 
         public AppEvaluationMetricsThresholdsArgs build() {

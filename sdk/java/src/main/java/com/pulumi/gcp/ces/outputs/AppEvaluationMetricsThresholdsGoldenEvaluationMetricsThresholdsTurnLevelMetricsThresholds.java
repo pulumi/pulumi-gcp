@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,15 @@ public final class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThreshol
      * 
      */
     private @Nullable Double overallToolInvocationCorrectnessThreshold;
+    /**
+     * @return The semantic similarity channel to use for evaluation.
+     * Possible values:
+     * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+     * TEXT
+     * AUDIO
+     * 
+     */
+    private @Nullable String semanticSimilarityChannel;
     /**
      * @return The success threshold for semantic similarity. Must be an integer
      * between 0 and 4. Default is &gt;= 3.
@@ -33,6 +43,17 @@ public final class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThreshol
      */
     public Optional<Double> overallToolInvocationCorrectnessThreshold() {
         return Optional.ofNullable(this.overallToolInvocationCorrectnessThreshold);
+    }
+    /**
+     * @return The semantic similarity channel to use for evaluation.
+     * Possible values:
+     * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+     * TEXT
+     * AUDIO
+     * 
+     */
+    public Optional<String> semanticSimilarityChannel() {
+        return Optional.ofNullable(this.semanticSimilarityChannel);
     }
     /**
      * @return The success threshold for semantic similarity. Must be an integer
@@ -53,11 +74,13 @@ public final class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThreshol
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Double overallToolInvocationCorrectnessThreshold;
+        private @Nullable String semanticSimilarityChannel;
         private @Nullable Integer semanticSimilaritySuccessThreshold;
         public Builder() {}
         public Builder(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.overallToolInvocationCorrectnessThreshold = defaults.overallToolInvocationCorrectnessThreshold;
+    	      this.semanticSimilarityChannel = defaults.semanticSimilarityChannel;
     	      this.semanticSimilaritySuccessThreshold = defaults.semanticSimilaritySuccessThreshold;
         }
 
@@ -65,6 +88,12 @@ public final class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThreshol
         public Builder overallToolInvocationCorrectnessThreshold(@Nullable Double overallToolInvocationCorrectnessThreshold) {
 
             this.overallToolInvocationCorrectnessThreshold = overallToolInvocationCorrectnessThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder semanticSimilarityChannel(@Nullable String semanticSimilarityChannel) {
+
+            this.semanticSimilarityChannel = semanticSimilarityChannel;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +105,7 @@ public final class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThreshol
         public AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds build() {
             final var _resultValue = new AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds();
             _resultValue.overallToolInvocationCorrectnessThreshold = overallToolInvocationCorrectnessThreshold;
+            _resultValue.semanticSimilarityChannel = semanticSimilarityChannel;
             _resultValue.semanticSimilaritySuccessThreshold = semanticSimilaritySuccessThreshold;
             return _resultValue;
         }

@@ -48,6 +48,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ToolsetMcpToolsetTlsConfig? TlsConfig;
+        /// <summary>
+        /// A list of tool overrides for the toolset.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ToolsetMcpToolsetToolOverride> ToolOverrides;
 
         [OutputConstructor]
         private ToolsetMcpToolset(
@@ -59,13 +64,16 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             Outputs.ToolsetMcpToolsetServiceDirectoryConfig? serviceDirectoryConfig,
 
-            Outputs.ToolsetMcpToolsetTlsConfig? tlsConfig)
+            Outputs.ToolsetMcpToolsetTlsConfig? tlsConfig,
+
+            ImmutableArray<Outputs.ToolsetMcpToolsetToolOverride> toolOverrides)
         {
             ApiAuthentication = apiAuthentication;
             CustomHeaders = customHeaders;
             ServerAddress = serverAddress;
             ServiceDirectoryConfig = serviceDirectoryConfig;
             TlsConfig = tlsConfig;
+            ToolOverrides = toolOverrides;
         }
     }
 }

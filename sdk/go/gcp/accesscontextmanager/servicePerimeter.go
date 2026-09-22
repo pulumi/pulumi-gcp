@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,7 +46,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -122,7 +122,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -292,7 +292,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -360,6 +360,8 @@ type ServicePerimeter struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The etag for the version of the ServicePerimeter that this request is based on.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -459,6 +461,8 @@ type servicePerimeterState struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description *string `pulumi:"description"`
+	// The etag for the version of the ServicePerimeter that this request is based on.
+	Etag *string `pulumi:"etag"`
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -523,6 +527,8 @@ type ServicePerimeterState struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description pulumi.StringPtrInput
+	// The etag for the version of the ServicePerimeter that this request is based on.
+	Etag pulumi.StringPtrInput
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -805,6 +811,11 @@ func (o ServicePerimeterOutput) DeletionPolicy() pulumi.StringOutput {
 // behavior.
 func (o ServicePerimeterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The etag for the version of the ServicePerimeter that this request is based on.
+func (o ServicePerimeterOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Resource name for the ServicePerimeter. The shortName component must

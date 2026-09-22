@@ -23,9 +23,10 @@ namespace Pulumi.Gcp.Workstations.Inputs
         private InputList<ImmutableDictionary<string, string>>? _details;
 
         /// <summary>
-        /// (Output)
+        /// (Output, Deprecated)
         /// A list of messages that carry the error details.
         /// </summary>
+        [Obsolete(@"`Details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.")]
         public InputList<ImmutableDictionary<string, string>> Details
         {
             get => _details ?? (_details = new InputList<ImmutableDictionary<string, string>>());

@@ -27,7 +27,8 @@ class RegionalParameterArgs:
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RegionalParameter resource.
 
@@ -57,6 +58,9 @@ class RegionalParameterArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parameter_id", parameter_id)
@@ -70,6 +74,8 @@ class RegionalParameterArgs:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -174,6 +180,20 @@ class RegionalParameterArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _RegionalParameterState:
@@ -190,6 +210,7 @@ class _RegionalParameterState:
                  policy_members: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalParameterPolicyMemberArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalParameter resources.
@@ -228,6 +249,9 @@ class _RegionalParameterState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[_builtins.str] update_time: The time at which the regional Parameter was updated.
         """
         if create_time is not None:
@@ -254,6 +278,8 @@ class _RegionalParameterState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -424,6 +450,20 @@ class _RegionalParameterState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -449,13 +489,19 @@ class RegionalParameter(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        A Regional Parameter is a logical regional parameter.
+        A Regional Parameter is a configuration value stored in a specific region
+        through Parameter Manager. Regional parameters support labels, encryption
+        via Cloud KMS, and resource manager tags for fine-grained access control,
+        organization, and regional compliance.
 
         To get more information about RegionalParameter, see:
 
         * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+        * How-to Guides
+            * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 
         ## Example Usage
 
@@ -508,6 +554,19 @@ class RegionalParameter(pulumi.CustomResource):
             parameter_id="regional_parameter",
             location="us-central1",
             kms_key="kms-key")
+        ```
+        ### Regional Parameter With Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regional_parameter_with_tags = gcp.parametermanager.RegionalParameter("regional-parameter-with-tags",
+            location="us-central1",
+            parameter_id="regional_parameter",
+            tags={
+                "tagKeys/123456": "tagValues/789012",
+            })
         ```
 
         ## Import
@@ -555,6 +614,9 @@ class RegionalParameter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parameter_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         """
         ...
     @overload
@@ -563,11 +625,16 @@ class RegionalParameter(pulumi.CustomResource):
                  args: RegionalParameterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Regional Parameter is a logical regional parameter.
+        A Regional Parameter is a configuration value stored in a specific region
+        through Parameter Manager. Regional parameters support labels, encryption
+        via Cloud KMS, and resource manager tags for fine-grained access control,
+        organization, and regional compliance.
 
         To get more information about RegionalParameter, see:
 
         * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+        * How-to Guides
+            * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 
         ## Example Usage
 
@@ -621,6 +688,19 @@ class RegionalParameter(pulumi.CustomResource):
             location="us-central1",
             kms_key="kms-key")
         ```
+        ### Regional Parameter With Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regional_parameter_with_tags = gcp.parametermanager.RegionalParameter("regional-parameter-with-tags",
+            location="us-central1",
+            parameter_id="regional_parameter",
+            tags={
+                "tagKeys/123456": "tagValues/789012",
+            })
+        ```
 
         ## Import
 
@@ -661,6 +741,7 @@ class RegionalParameter(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -681,6 +762,7 @@ class RegionalParameter(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parameter_id'")
             __props__.__dict__["parameter_id"] = parameter_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -711,6 +793,7 @@ class RegionalParameter(pulumi.CustomResource):
             policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalParameterPolicyMemberArgs', 'RegionalParameterPolicyMemberArgsDict', 'outputs.RegionalParameterPolicyMember']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionalParameter':
         """
         Get an existing RegionalParameter resource's state with the given name, id, and optional extra
@@ -753,6 +836,9 @@ class RegionalParameter(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[_builtins.str] update_time: The time at which the regional Parameter was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -771,6 +857,7 @@ class RegionalParameter(pulumi.CustomResource):
         __props__.__dict__["policy_members"] = policy_members
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["update_time"] = update_time
         return RegionalParameter(resource_name, opts=opts, __props__=__props__)
 
@@ -891,6 +978,16 @@ class RegionalParameter(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

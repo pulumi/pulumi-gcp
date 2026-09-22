@@ -373,7 +373,7 @@ namespace Pulumi.Gcp.BigQuery
         /// - '': empty string. Default to case-sensitive behavior.
         /// </summary>
         [Output("defaultCollation")]
-        public Output<string> DefaultCollation { get; private set; } = null!;
+        public Output<string?> DefaultCollation { get; private set; } = null!;
 
         /// <summary>
         /// The default encryption key for all tables in the dataset. Once this property is set,

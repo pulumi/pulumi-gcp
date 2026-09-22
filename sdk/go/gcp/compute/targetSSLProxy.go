@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -74,9 +74,10 @@ import (
 //				return err
 //			}
 //			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:         pulumi.String("backend-service"),
-//				Protocol:     pulumi.String("SSL"),
-//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				Name:                pulumi.String("backend-service"),
+//				Protocol:            pulumi.String("SSL"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -8,14 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Hive Catalogs in Biglake Metastore
-//
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
 //
 // To get more information about HiveCatalog, see:
 // * How-to Guides
@@ -32,8 +29,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,8 +72,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -115,14 +112,14 @@ import (
 //
 // HiveCatalog can be imported using any of these accepted formats:
 //
-// * `hive/v1beta/projects/{{project}}/catalogs/{{name}}`
+// * `hive/v1/projects/{{project}}/catalogs/{{name}}`
 // * `{{project}}/{{name}}`
 // * `{{name}}`
 //
 // When using the `pulumi import` command, HiveCatalog can be imported using one of the formats above. For example:
 //
 // ```sh
-// $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default hive/v1beta/projects/{{project}}/catalogs/{{name}}
+// $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default hive/v1/projects/{{project}}/catalogs/{{name}}
 // $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default {{project}}/{{name}}
 // $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default {{name}}
 // ```

@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.ToolRemoteAgentToolAgentCardArgs;
+import com.pulumi.gcp.ces.inputs.ToolRemoteAgentToolApiAuthenticationArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,25 @@ public final class ToolRemoteAgentToolArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<List<ToolRemoteAgentToolAgentCardArgs>>> agentCards() {
         return Optional.ofNullable(this.agentCards);
+    }
+
+    /**
+     * (Output)
+     * Authentication information required for calling the remote agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="apiAuthentications")
+    private @Nullable Output<List<ToolRemoteAgentToolApiAuthenticationArgs>> apiAuthentications;
+
+    /**
+     * @return (Output)
+     * Authentication information required for calling the remote agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ToolRemoteAgentToolApiAuthenticationArgs>>> apiAuthentications() {
+        return Optional.ofNullable(this.apiAuthentications);
     }
 
     /**
@@ -74,6 +94,7 @@ public final class ToolRemoteAgentToolArgs extends com.pulumi.resources.Resource
 
     private ToolRemoteAgentToolArgs(ToolRemoteAgentToolArgs $) {
         this.agentCards = $.agentCards;
+        this.apiAuthentications = $.apiAuthentications;
         this.description = $.description;
         this.name = $.name;
     }
@@ -131,6 +152,43 @@ public final class ToolRemoteAgentToolArgs extends com.pulumi.resources.Resource
          */
         public Builder agentCards(ToolRemoteAgentToolAgentCardArgs... agentCards) {
             return agentCards(List.of(agentCards));
+        }
+
+        /**
+         * @param apiAuthentications (Output)
+         * Authentication information required for calling the remote agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiAuthentications(@Nullable Output<List<ToolRemoteAgentToolApiAuthenticationArgs>> apiAuthentications) {
+            $.apiAuthentications = apiAuthentications;
+            return this;
+        }
+
+        /**
+         * @param apiAuthentications (Output)
+         * Authentication information required for calling the remote agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiAuthentications(List<ToolRemoteAgentToolApiAuthenticationArgs> apiAuthentications) {
+            return apiAuthentications(Output.of(apiAuthentications));
+        }
+
+        /**
+         * @param apiAuthentications (Output)
+         * Authentication information required for calling the remote agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiAuthentications(ToolRemoteAgentToolApiAuthenticationArgs... apiAuthentications) {
+            return apiAuthentications(List.of(apiAuthentications));
         }
 
         /**

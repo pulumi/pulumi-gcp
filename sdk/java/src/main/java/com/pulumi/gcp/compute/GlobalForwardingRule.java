@@ -40,8 +40,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.URLMap;
@@ -66,11 +67,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("check-backend")
- *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath("/")
+ *                 .build())
  *             .build());
  * 
  *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
@@ -78,7 +82,7 @@ import javax.annotation.Nullable;
  *             .portName("http")
  *             .protocol("HTTP")
  *             .timeoutSec(10)
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
@@ -985,7 +989,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
@@ -996,7 +1000,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * @return Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */

@@ -22,17 +22,16 @@ __all__ = ['ListingSubscriptionArgs', 'ListingSubscription']
 class ListingSubscriptionArgs:
     def __init__(__self__, *,
                  data_exchange_id: pulumi.Input[_builtins.str],
-                 destination_dataset: pulumi.Input['ListingSubscriptionDestinationDatasetArgs'],
                  listing_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_dataset: pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']] = None,
+                 destination_pubsub_subscription: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ListingSubscription resource.
 
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-        :param pulumi.Input['ListingSubscriptionDestinationDatasetArgs'] destination_dataset: The destination dataset for this subscription.
-               Structure is documented below.
         :param pulumi.Input[_builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -41,15 +40,22 @@ class ListingSubscriptionArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input['ListingSubscriptionDestinationDatasetArgs'] destination_dataset: The destination dataset for this subscription.
+               Structure is documented below.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionArgs'] destination_pubsub_subscription: Destination Pub/Sub subscription to create for the subscriber.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
-        pulumi.set(__self__, "destination_dataset", destination_dataset)
         pulumi.set(__self__, "listing_id", listing_id)
         pulumi.set(__self__, "location", location)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if destination_dataset is not None:
+            pulumi.set(__self__, "destination_dataset", destination_dataset)
+        if destination_pubsub_subscription is not None:
+            pulumi.set(__self__, "destination_pubsub_subscription", destination_pubsub_subscription)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -64,19 +70,6 @@ class ListingSubscriptionArgs:
     @data_exchange_id.setter
     def data_exchange_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "data_exchange_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="destinationDataset")
-    def destination_dataset(self) -> pulumi.Input['ListingSubscriptionDestinationDatasetArgs']:
-        """
-        The destination dataset for this subscription.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "destination_dataset")
-
-    @destination_dataset.setter
-    def destination_dataset(self, value: pulumi.Input['ListingSubscriptionDestinationDatasetArgs']):
-        pulumi.set(self, "destination_dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="listingId")
@@ -120,6 +113,32 @@ class ListingSubscriptionArgs:
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="destinationDataset")
+    def destination_dataset(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']]:
+        """
+        The destination dataset for this subscription.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination_dataset")
+
+    @destination_dataset.setter
+    def destination_dataset(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']]):
+        pulumi.set(self, "destination_dataset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationPubsubSubscription")
+    def destination_pubsub_subscription(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionArgs']]:
+        """
+        Destination Pub/Sub subscription to create for the subscriber.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination_pubsub_subscription")
+
+    @destination_pubsub_subscription.setter
+    def destination_pubsub_subscription(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionArgs']]):
+        pulumi.set(self, "destination_pubsub_subscription", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -141,6 +160,7 @@ class _ListingSubscriptionState:
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset: pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']] = None,
+                 destination_pubsub_subscription: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionArgs']] = None,
                  last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
                  linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]]] = None,
                  linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]] = None,
@@ -169,6 +189,8 @@ class _ListingSubscriptionState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['ListingSubscriptionDestinationDatasetArgs'] destination_dataset: The destination dataset for this subscription.
+               Structure is documented below.
+        :param pulumi.Input['ListingSubscriptionDestinationPubsubSubscriptionArgs'] destination_pubsub_subscription: Destination Pub/Sub subscription to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_modify_time: Timestamp when the subscription was last modified.
         :param pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]] linked_dataset_maps: Output only. Map of listing resource names to associated linked resource,
@@ -199,6 +221,8 @@ class _ListingSubscriptionState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination_dataset is not None:
             pulumi.set(__self__, "destination_dataset", destination_dataset)
+        if destination_pubsub_subscription is not None:
+            pulumi.set(__self__, "destination_pubsub_subscription", destination_pubsub_subscription)
         if last_modify_time is not None:
             pulumi.set(__self__, "last_modify_time", last_modify_time)
         if linked_dataset_maps is not None:
@@ -294,6 +318,19 @@ class _ListingSubscriptionState:
     @destination_dataset.setter
     def destination_dataset(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']]):
         pulumi.set(self, "destination_dataset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationPubsubSubscription")
+    def destination_pubsub_subscription(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionArgs']]:
+        """
+        Destination Pub/Sub subscription to create for the subscriber.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination_pubsub_subscription")
+
+    @destination_pubsub_subscription.setter
+    def destination_pubsub_subscription(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationPubsubSubscriptionArgs']]):
+        pulumi.set(self, "destination_pubsub_subscription", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifyTime")
@@ -477,6 +514,7 @@ class ListingSubscription(pulumi.CustomResource):
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']]] = None,
+                 destination_pubsub_subscription: pulumi.Input[Optional[Union['ListingSubscriptionDestinationPubsubSubscriptionArgs', 'ListingSubscriptionDestinationPubsubSubscriptionArgsDict', 'outputs.ListingSubscriptionDestinationPubsubSubscription']]] = None,
                  listing_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -568,6 +606,37 @@ class ListingSubscription(pulumi.CustomResource):
                 "replica_locations": ["eu"],
             })
         ```
+        ### Bigquery Analyticshub Listing Subscription Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        subscription = gcp.bigqueryanalyticshub.DataExchange("subscription",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example pubsub listing subscription")
+        subscription_topic = gcp.pubsub.Topic("subscription", name="my_pubsub_topic")
+        subscription_listing = gcp.bigqueryanalyticshub.Listing("subscription",
+            location="US",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example pubsub listing subscription",
+            pubsub_topic={
+                "topic": subscription_topic.id,
+            })
+        subscription_listing_subscription = gcp.bigqueryanalyticshub.ListingSubscription("subscription",
+            location="US",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id=subscription_listing.listing_id,
+            destination_pubsub_subscription={
+                "pubsub_subscription": {
+                    "name": subscription_topic.project.apply(lambda project: f"projects/{project}/subscriptions/my_pubsub_subscription"),
+                },
+            })
+        ```
 
         ## Import
 
@@ -596,6 +665,8 @@ class ListingSubscription(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']] destination_dataset: The destination dataset for this subscription.
+               Structure is documented below.
+        :param pulumi.Input[Union['ListingSubscriptionDestinationPubsubSubscriptionArgs', 'ListingSubscriptionDestinationPubsubSubscriptionArgsDict', 'outputs.ListingSubscriptionDestinationPubsubSubscription']] destination_pubsub_subscription: Destination Pub/Sub subscription to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
@@ -695,6 +766,37 @@ class ListingSubscription(pulumi.CustomResource):
                 "replica_locations": ["eu"],
             })
         ```
+        ### Bigquery Analyticshub Listing Subscription Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        subscription = gcp.bigqueryanalyticshub.DataExchange("subscription",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example pubsub listing subscription")
+        subscription_topic = gcp.pubsub.Topic("subscription", name="my_pubsub_topic")
+        subscription_listing = gcp.bigqueryanalyticshub.Listing("subscription",
+            location="US",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example pubsub listing subscription",
+            pubsub_topic={
+                "topic": subscription_topic.id,
+            })
+        subscription_listing_subscription = gcp.bigqueryanalyticshub.ListingSubscription("subscription",
+            location="US",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id=subscription_listing.listing_id,
+            destination_pubsub_subscription={
+                "pubsub_subscription": {
+                    "name": subscription_topic.project.apply(lambda project: f"projects/{project}/subscriptions/my_pubsub_subscription"),
+                },
+            })
+        ```
 
         ## Import
 
@@ -731,6 +833,7 @@ class ListingSubscription(pulumi.CustomResource):
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']]] = None,
+                 destination_pubsub_subscription: pulumi.Input[Optional[Union['ListingSubscriptionDestinationPubsubSubscriptionArgs', 'ListingSubscriptionDestinationPubsubSubscriptionArgsDict', 'outputs.ListingSubscriptionDestinationPubsubSubscription']]] = None,
                  listing_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -747,9 +850,8 @@ class ListingSubscription(pulumi.CustomResource):
                 raise TypeError("Missing required property 'data_exchange_id'")
             __props__.__dict__["data_exchange_id"] = data_exchange_id
             __props__.__dict__["deletion_policy"] = deletion_policy
-            if destination_dataset is None and not opts.urn:
-                raise TypeError("Missing required property 'destination_dataset'")
             __props__.__dict__["destination_dataset"] = destination_dataset
+            __props__.__dict__["destination_pubsub_subscription"] = destination_pubsub_subscription
             if listing_id is None and not opts.urn:
                 raise TypeError("Missing required property 'listing_id'")
             __props__.__dict__["listing_id"] = listing_id
@@ -785,6 +887,7 @@ class ListingSubscription(pulumi.CustomResource):
             data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']]] = None,
+            destination_pubsub_subscription: pulumi.Input[Optional[Union['ListingSubscriptionDestinationPubsubSubscriptionArgs', 'ListingSubscriptionDestinationPubsubSubscriptionArgsDict', 'outputs.ListingSubscriptionDestinationPubsubSubscription']]] = None,
             last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
             linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict', 'outputs.ListingSubscriptionLinkedDatasetMap']]]]] = None,
             linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict', 'outputs.ListingSubscriptionLinkedResource']]]]] = None,
@@ -818,6 +921,8 @@ class ListingSubscription(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict', 'outputs.ListingSubscriptionDestinationDataset']] destination_dataset: The destination dataset for this subscription.
                Structure is documented below.
+        :param pulumi.Input[Union['ListingSubscriptionDestinationPubsubSubscriptionArgs', 'ListingSubscriptionDestinationPubsubSubscriptionArgsDict', 'outputs.ListingSubscriptionDestinationPubsubSubscription']] destination_pubsub_subscription: Destination Pub/Sub subscription to create for the subscriber.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] last_modify_time: Timestamp when the subscription was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict', 'outputs.ListingSubscriptionLinkedDatasetMap']]]] linked_dataset_maps: Output only. Map of listing resource names to associated linked resource,
                e.g. projects/123/locations/US/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
@@ -846,6 +951,7 @@ class ListingSubscription(pulumi.CustomResource):
         __props__.__dict__["data_exchange_id"] = data_exchange_id
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destination_dataset"] = destination_dataset
+        __props__.__dict__["destination_pubsub_subscription"] = destination_pubsub_subscription
         __props__.__dict__["last_modify_time"] = last_modify_time
         __props__.__dict__["linked_dataset_maps"] = linked_dataset_maps
         __props__.__dict__["linked_resources"] = linked_resources
@@ -902,12 +1008,21 @@ class ListingSubscription(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="destinationDataset")
-    def destination_dataset(self) -> pulumi.Output['outputs.ListingSubscriptionDestinationDataset']:
+    def destination_dataset(self) -> pulumi.Output[Optional['outputs.ListingSubscriptionDestinationDataset']]:
         """
         The destination dataset for this subscription.
         Structure is documented below.
         """
         return pulumi.get(self, "destination_dataset")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationPubsubSubscription")
+    def destination_pubsub_subscription(self) -> pulumi.Output[Optional['outputs.ListingSubscriptionDestinationPubsubSubscription']]:
+        """
+        Destination Pub/Sub subscription to create for the subscriber.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination_pubsub_subscription")
 
     @_builtins.property
     @pulumi.getter(name="lastModifyTime")

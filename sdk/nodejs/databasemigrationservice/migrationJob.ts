@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "source-cp",
- *     displayName: "source-cp_display",
+ *     displayName: "source-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "destination-cp",
- *     displayName: "destination-cp_display",
+ *     displayName: "destination-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  * const mysqltomysql = new gcp.databasemigrationservice.MigrationJob("mysqltomysql", {
  *     location: "us-central1",
  *     migrationJobId: "my-migrationid",
- *     displayName: "my-migrationid_display",
+ *     displayName: "my-migrationid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -149,7 +149,7 @@ import * as utilities from "../utilities";
  * const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "source-cp",
- *     displayName: "source-cp_display",
+ *     displayName: "source-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -181,7 +181,7 @@ import * as utilities from "../utilities";
  * const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "destination-cp",
- *     displayName: "destination-cp_display",
+ *     displayName: "destination-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -194,7 +194,7 @@ import * as utilities from "../utilities";
  * const psqltopsql = new gcp.databasemigrationservice.MigrationJob("psqltopsql", {
  *     location: "us-central1",
  *     migrationJobId: "my-migrationid",
- *     displayName: "my-migrationid_display",
+ *     displayName: "my-migrationid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -236,7 +236,7 @@ import * as utilities from "../utilities";
  * const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "source-cp",
- *     displayName: "source-cp_display",
+ *     displayName: "source-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -268,7 +268,7 @@ import * as utilities from "../utilities";
  * const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "destination-cp",
- *     displayName: "destination-cp_display",
+ *     displayName: "destination-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -281,7 +281,7 @@ import * as utilities from "../utilities";
  * const psqltopsqlobjects = new gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects", {
  *     location: "us-central1",
  *     migrationJobId: "my-migrationid",
- *     displayName: "my-migrationid_display",
+ *     displayName: "my-migrationid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -301,10 +301,8 @@ import * as utilities from "../utilities";
  *                 },
  *                 {
  *                     objectIdentifier: {
- *                         type: "TABLE",
+ *                         type: "DATABASE",
  *                         database: "my_other_database",
- *                         schema: "public",
- *                         table: "users",
  *                     },
  *                 },
  *             ],
@@ -344,7 +342,7 @@ import * as utilities from "../utilities";
  * const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "source-cp",
- *     displayName: "source-cp_display",
+ *     displayName: "source-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -400,7 +398,7 @@ import * as utilities from "../utilities";
  * const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
  *     location: "us-central1",
  *     connectionProfileId: "destination-cp",
- *     displayName: "destination-cp_display",
+ *     displayName: "destination-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -416,7 +414,7 @@ import * as utilities from "../utilities";
  * const psqltoalloydb = new gcp.databasemigrationservice.MigrationJob("psqltoalloydb", {
  *     location: "us-central1",
  *     migrationJobId: "my-migrationid",
- *     displayName: "my-migrationid_display",
+ *     displayName: "my-migrationid-display",
  *     labels: {
  *         foo: "bar",
  *     },

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,9 +23,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsupport"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsupport"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -42,7 +42,7 @@ import (
 //			}
 //			supportTopic, err := pubsub.NewTopic(ctx, "support_topic", &pubsub.TopicArgs{
 //				Project: pulumi.String("my-project-name"),
-//				Name:    pulumi.String("test-topic-_88722"),
+//				Name:    pulumi.String("test-topic-_39249"),
 //			})
 //			if err != nil {
 //				return err
@@ -78,9 +78,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsupport"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsupport"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -97,7 +97,7 @@ import (
 //			}
 //			supportTopic2, err := pubsub.NewTopic(ctx, "support_topic_2", &pubsub.TopicArgs{
 //				Project: pulumi.String("my-project-name"),
-//				Name:    pulumi.String("test-topic-2-_39249"),
+//				Name:    pulumi.String("test-topic-2-_74391"),
 //			})
 //			if err != nil {
 //				return err

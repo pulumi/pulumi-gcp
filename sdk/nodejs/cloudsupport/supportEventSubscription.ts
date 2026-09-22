@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * });
  * const supportTopic = new gcp.pubsub.Topic("support_topic", {
  *     project: "my-project-name",
- *     name: "test-topic-_88722",
+ *     name: "test-topic-_39249",
  * });
  * const supportPublisher = new gcp.pubsub.TopicIAMMember("support_publisher", {
  *     project: "my-project-name",
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * });
  * const supportTopic2 = new gcp.pubsub.Topic("support_topic_2", {
  *     project: "my-project-name",
- *     name: "test-topic-2-_39249",
+ *     name: "test-topic-2-_74391",
  * });
  * const supportPublisher2 = new gcp.pubsub.TopicIAMMember("support_publisher_2", {
  *     project: "my-project-name",

@@ -426,39 +426,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta, Deprecated)
-     * The effective scale tier of the storage pool. If `scaleTier` is not
-     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-     * 
-     * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     * 
-     * @deprecated
-     * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     * 
-     */
-    @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
-    @Import(name="scaleTier")
-    private @Nullable Output<String> scaleTier;
-
-    /**
-     * @return (Optional, Beta, Deprecated)
-     * The effective scale tier of the storage pool. If `scaleTier` is not
-     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-     * 
-     * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     * 
-     * @deprecated
-     * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     * 
-     */
-    @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
-    public Optional<Output<String>> scaleTier() {
-        return Optional.ofNullable(this.scaleTier);
-    }
-
-    /**
      * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
      * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
      * 
@@ -619,7 +586,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.qosType = $.qosType;
         this.replicaZone = $.replicaZone;
-        this.scaleTier = $.scaleTier;
         this.scaleType = $.scaleType;
         this.serviceLevel = $.serviceLevel;
         this.totalIops = $.totalIops;
@@ -1196,45 +1162,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder replicaZone(String replicaZone) {
             return replicaZone(Output.of(replicaZone));
-        }
-
-        /**
-         * @param scaleTier (Optional, Beta, Deprecated)
-         * The effective scale tier of the storage pool. If `scaleTier` is not
-         * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-         * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-         * 
-         * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-         * 
-         */
-        @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
-        public Builder scaleTier(@Nullable Output<String> scaleTier) {
-            $.scaleTier = scaleTier;
-            return this;
-        }
-
-        /**
-         * @param scaleTier (Optional, Beta, Deprecated)
-         * The effective scale tier of the storage pool. If `scaleTier` is not
-         * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-         * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-         * 
-         * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-         * 
-         */
-        @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
-        public Builder scaleTier(String scaleTier) {
-            return scaleTier(Output.of(scaleTier));
         }
 
         /**

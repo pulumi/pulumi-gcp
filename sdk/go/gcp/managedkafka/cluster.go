@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,9 +73,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -140,9 +140,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -186,6 +186,58 @@ import (
 //	}
 //
 // ```
+// ### Managedkafka Cluster Public
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = managedkafka.NewCluster(ctx, "example", &managedkafka.ClusterArgs{
+//				ClusterId: pulumi.String("my-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
+//					VcpuCount:   pulumi.String("3"),
+//					MemoryBytes: pulumi.String("3221225472"),
+//				},
+//				GcpConfig: &managedkafka.ClusterGcpConfigArgs{
+//					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
+//						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
+//							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
+//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
+//							},
+//						},
+//						PublicClusterConfig: &managedkafka.ClusterGcpConfigAccessConfigPublicClusterConfigArgs{
+//							AllowedSourceIpRanges: pulumi.StringArray{
+//								pulumi.String("192.168.1.0/24"),
+//							},
+//						},
+//					},
+//				},
+//				RebalanceConfig: &managedkafka.ClusterRebalanceConfigArgs{
+//					Mode: pulumi.String("AUTO_REBALANCE_ON_SCALE_UP"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -205,6 +257,8 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+	BootstrapAddress pulumi.StringOutput `pulumi:"bootstrapAddress"`
 	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
 	// Structure is documented below.
 	BrokerCapacityConfig ClusterBrokerCapacityConfigPtrOutput `pulumi:"brokerCapacityConfig"`
@@ -238,6 +292,9 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Details of the public cluster feature for the Kafka cluster.
+	// Structure is documented below.
+	PublicClusterDetails ClusterPublicClusterDetailArrayOutput `pulumi:"publicClusterDetails"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -300,6 +357,8 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+	BootstrapAddress *string `pulumi:"bootstrapAddress"`
 	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
 	// Structure is documented below.
 	BrokerCapacityConfig *ClusterBrokerCapacityConfig `pulumi:"brokerCapacityConfig"`
@@ -333,6 +392,9 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Details of the public cluster feature for the Kafka cluster.
+	// Structure is documented below.
+	PublicClusterDetails []ClusterPublicClusterDetail `pulumi:"publicClusterDetails"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -349,6 +411,8 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+	BootstrapAddress pulumi.StringPtrInput
 	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
 	// Structure is documented below.
 	BrokerCapacityConfig ClusterBrokerCapacityConfigPtrInput
@@ -382,6 +446,9 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Details of the public cluster feature for the Kafka cluster.
+	// Structure is documented below.
+	PublicClusterDetails ClusterPublicClusterDetailArrayInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -561,6 +628,11 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+func (o ClusterOutput) BootstrapAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.BootstrapAddress }).(pulumi.StringOutput)
+}
+
 // Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
 // Structure is documented below.
 func (o ClusterOutput) BrokerCapacityConfig() ClusterBrokerCapacityConfigPtrOutput {
@@ -625,6 +697,12 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Details of the public cluster feature for the Kafka cluster.
+// Structure is documented below.
+func (o ClusterOutput) PublicClusterDetails() ClusterPublicClusterDetailArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterPublicClusterDetailArrayOutput { return v.PublicClusterDetails }).(ClusterPublicClusterDetailArrayOutput)
 }
 
 // The combination of labels configured directly on the resource

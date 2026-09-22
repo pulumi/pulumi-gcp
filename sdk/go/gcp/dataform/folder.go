@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataform.NewFolder(ctx, "dataform_folder_basic", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Basic Folder-_89313"),
+//				DisplayName: pulumi.String("Basic Folder-_60646"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +55,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,14 +64,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataformFolderRoot, err := dataform.NewFolder(ctx, "dataform_folder_root", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Root Folder-_60646"),
+//				DisplayName: pulumi.String("Root Folder-_9394"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataform.NewFolder(ctx, "dataform_folder_full", &dataform.FolderArgs{
 //				Region:           pulumi.String("us-central1"),
-//				DisplayName:      pulumi.String("Nested Folder-_9394"),
+//				DisplayName:      pulumi.String("Nested Folder-_11380"),
 //				ContainingFolder: dataformFolderRoot.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {

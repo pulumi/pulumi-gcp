@@ -246,6 +246,27 @@ namespace Pulumi.Gcp.Ces
     ///                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
     ///             }),
     ///         },
+    ///         TransferRules = new[]
+    ///         {
+    ///             new Gcp.Ces.Inputs.AgentTransferRuleArgs
+    ///             {
+    ///                 ChildAgent = Output.Tuple(cesAppForAgent.Project, cesAppForAgent.AppId, cesChildAgent.AgentId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var appId = values.Item2;
+    ///                     var agentId = values.Item3;
+    ///                     return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
+    ///                 }),
+    ///                 Direction = "PARENT_TO_CHILD",
+    ///                 DeterministicTransfer = new Gcp.Ces.Inputs.AgentTransferRuleDeterministicTransferArgs
+    ///                 {
+    ///                     ExpressionCondition = new Gcp.Ces.Inputs.AgentTransferRuleDeterministicTransferExpressionConditionArgs
+    ///                     {
+    ///                         Expression = "true",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///         LlmAgent = new() { },
     ///     });
     /// 
@@ -300,6 +321,7 @@ namespace Pulumi.Gcp.Ces
     ///             Agent = "projects/example/locations/us/agents/fake-agent",
     ///             FlowId = "fake-flow",
     ///             EnvironmentId = "fake-env",
+    ///             LanguageCodeVariable = "language_code",
     ///             InputVariableMapping = 
     ///             {
     ///                 { "example", "1" },
@@ -599,6 +621,14 @@ namespace Pulumi.Gcp.Ces
         public Output<ImmutableArray<Outputs.AgentToolset>> Toolsets { get; private set; } = null!;
 
         /// <summary>
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("transferRules")]
+        public Output<ImmutableArray<Outputs.AgentTransferRule>> TransferRules { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the agent was last updated.
         /// </summary>
         [Output("updateTime")]
@@ -884,6 +914,20 @@ namespace Pulumi.Gcp.Ces
             set => _toolsets = value;
         }
 
+        [Input("transferRules")]
+        private InputList<Inputs.AgentTransferRuleArgs>? _transferRules;
+
+        /// <summary>
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AgentTransferRuleArgs> TransferRules
+        {
+            get => _transferRules ?? (_transferRules = new InputList<Inputs.AgentTransferRuleArgs>());
+            set => _transferRules = value;
+        }
+
         public AgentArgs()
         {
         }
@@ -1152,6 +1196,20 @@ namespace Pulumi.Gcp.Ces
         {
             get => _toolsets ?? (_toolsets = new InputList<Inputs.AgentToolsetGetArgs>());
             set => _toolsets = value;
+        }
+
+        [Input("transferRules")]
+        private InputList<Inputs.AgentTransferRuleGetArgs>? _transferRules;
+
+        /// <summary>
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AgentTransferRuleGetArgs> TransferRules
+        {
+            get => _transferRules ?? (_transferRules = new InputList<Inputs.AgentTransferRuleGetArgs>());
+            set => _transferRules = value;
         }
 
         /// <summary>

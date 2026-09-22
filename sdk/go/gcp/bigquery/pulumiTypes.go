@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -4521,8 +4521,8 @@ type DataTransferConfigSensitiveParams struct {
 	//
 	// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 	SecretAccessKeyWo *string `pulumi:"secretAccessKeyWo"`
-	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	SecretAccessKeyWoVersion *int `pulumi:"secretAccessKeyWoVersion"`
+	// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretAccessKeyWoVersion *string `pulumi:"secretAccessKeyWoVersion"`
 }
 
 // DataTransferConfigSensitiveParamsInput is an input type that accepts DataTransferConfigSensitiveParamsArgs and DataTransferConfigSensitiveParamsOutput values.
@@ -4547,8 +4547,8 @@ type DataTransferConfigSensitiveParamsArgs struct {
 	//
 	// > **Note:** One of `secretAccessKey` or `secretAccessKeyWo` can only be set.
 	SecretAccessKeyWo pulumi.StringPtrInput `pulumi:"secretAccessKeyWo"`
-	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	SecretAccessKeyWoVersion pulumi.IntPtrInput `pulumi:"secretAccessKeyWoVersion"`
+	// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretAccessKeyWoVersion pulumi.StringPtrInput `pulumi:"secretAccessKeyWoVersion"`
 }
 
 func (DataTransferConfigSensitiveParamsArgs) ElementType() reflect.Type {
@@ -4644,9 +4644,9 @@ func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWo() pulumi.Stri
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKeyWo }).(pulumi.StringPtrOutput)
 }
 
-// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *int { return v.SecretAccessKeyWoVersion }).(pulumi.IntPtrOutput)
+// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKeyWoVersion }).(pulumi.StringPtrOutput)
 }
 
 type DataTransferConfigSensitiveParamsPtrOutput struct{ *pulumi.OutputState }
@@ -4699,14 +4699,270 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWo() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *int {
+// Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SecretAccessKeyWoVersion
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataTransferDataSourceEnrollmentParameter struct {
+	// (Output)
+	// All possible values for parameters with fixed list of options.
+	AllowedValues []string `pulumi:"allowedValues"`
+	// (Output)
+	// If true, it should not be used in new transfers, and it should not be visible to users.
+	Deprecated *bool `pulumi:"deprecated"`
+	// (Output)
+	// Parameter description.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// User friendly parameter name.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+	Immutable *bool `pulumi:"immutable"`
+	// (Output)
+	// For list parameters, the max size of the list.
+	MaxListSize *int `pulumi:"maxListSize"`
+	// (Output)
+	// For integer and double values specifies maximum allowed value.
+	MaxValue *float64 `pulumi:"maxValue"`
+	// (Output)
+	// For integer and double values specifies minimum allowed value.
+	MinValue *float64 `pulumi:"minValue"`
+	// (Output)
+	// Parameter identifier.
+	ParamId *string `pulumi:"paramId"`
+	// (Output)
+	// Is parameter required.
+	Required *bool `pulumi:"required"`
+	// (Output)
+	// Parameter type.
+	Type *string `pulumi:"type"`
+	// (Output)
+	// Description of the requirements for this field, in case the user input does not fulfill the regex.
+	ValidationDescription *string `pulumi:"validationDescription"`
+	// (Output)
+	// URL to a help document to further explain the naming requirements.
+	ValidationHelpUrl *string `pulumi:"validationHelpUrl"`
+	// (Output)
+	// Regular expression which can be used for parameter validation.
+	ValidationRegex *string `pulumi:"validationRegex"`
+}
+
+// DataTransferDataSourceEnrollmentParameterInput is an input type that accepts DataTransferDataSourceEnrollmentParameterArgs and DataTransferDataSourceEnrollmentParameterOutput values.
+// You can construct a concrete instance of `DataTransferDataSourceEnrollmentParameterInput` via:
+//
+//	DataTransferDataSourceEnrollmentParameterArgs{...}
+type DataTransferDataSourceEnrollmentParameterInput interface {
+	pulumi.Input
+
+	ToDataTransferDataSourceEnrollmentParameterOutput() DataTransferDataSourceEnrollmentParameterOutput
+	ToDataTransferDataSourceEnrollmentParameterOutputWithContext(context.Context) DataTransferDataSourceEnrollmentParameterOutput
+}
+
+type DataTransferDataSourceEnrollmentParameterArgs struct {
+	// (Output)
+	// All possible values for parameters with fixed list of options.
+	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
+	// (Output)
+	// If true, it should not be used in new transfers, and it should not be visible to users.
+	Deprecated pulumi.BoolPtrInput `pulumi:"deprecated"`
+	// (Output)
+	// Parameter description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// User friendly parameter name.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+	Immutable pulumi.BoolPtrInput `pulumi:"immutable"`
+	// (Output)
+	// For list parameters, the max size of the list.
+	MaxListSize pulumi.IntPtrInput `pulumi:"maxListSize"`
+	// (Output)
+	// For integer and double values specifies maximum allowed value.
+	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
+	// (Output)
+	// For integer and double values specifies minimum allowed value.
+	MinValue pulumi.Float64PtrInput `pulumi:"minValue"`
+	// (Output)
+	// Parameter identifier.
+	ParamId pulumi.StringPtrInput `pulumi:"paramId"`
+	// (Output)
+	// Is parameter required.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// (Output)
+	// Parameter type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// (Output)
+	// Description of the requirements for this field, in case the user input does not fulfill the regex.
+	ValidationDescription pulumi.StringPtrInput `pulumi:"validationDescription"`
+	// (Output)
+	// URL to a help document to further explain the naming requirements.
+	ValidationHelpUrl pulumi.StringPtrInput `pulumi:"validationHelpUrl"`
+	// (Output)
+	// Regular expression which can be used for parameter validation.
+	ValidationRegex pulumi.StringPtrInput `pulumi:"validationRegex"`
+}
+
+func (DataTransferDataSourceEnrollmentParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferDataSourceEnrollmentParameter)(nil)).Elem()
+}
+
+func (i DataTransferDataSourceEnrollmentParameterArgs) ToDataTransferDataSourceEnrollmentParameterOutput() DataTransferDataSourceEnrollmentParameterOutput {
+	return i.ToDataTransferDataSourceEnrollmentParameterOutputWithContext(context.Background())
+}
+
+func (i DataTransferDataSourceEnrollmentParameterArgs) ToDataTransferDataSourceEnrollmentParameterOutputWithContext(ctx context.Context) DataTransferDataSourceEnrollmentParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferDataSourceEnrollmentParameterOutput)
+}
+
+// DataTransferDataSourceEnrollmentParameterArrayInput is an input type that accepts DataTransferDataSourceEnrollmentParameterArray and DataTransferDataSourceEnrollmentParameterArrayOutput values.
+// You can construct a concrete instance of `DataTransferDataSourceEnrollmentParameterArrayInput` via:
+//
+//	DataTransferDataSourceEnrollmentParameterArray{ DataTransferDataSourceEnrollmentParameterArgs{...} }
+type DataTransferDataSourceEnrollmentParameterArrayInput interface {
+	pulumi.Input
+
+	ToDataTransferDataSourceEnrollmentParameterArrayOutput() DataTransferDataSourceEnrollmentParameterArrayOutput
+	ToDataTransferDataSourceEnrollmentParameterArrayOutputWithContext(context.Context) DataTransferDataSourceEnrollmentParameterArrayOutput
+}
+
+type DataTransferDataSourceEnrollmentParameterArray []DataTransferDataSourceEnrollmentParameterInput
+
+func (DataTransferDataSourceEnrollmentParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataTransferDataSourceEnrollmentParameter)(nil)).Elem()
+}
+
+func (i DataTransferDataSourceEnrollmentParameterArray) ToDataTransferDataSourceEnrollmentParameterArrayOutput() DataTransferDataSourceEnrollmentParameterArrayOutput {
+	return i.ToDataTransferDataSourceEnrollmentParameterArrayOutputWithContext(context.Background())
+}
+
+func (i DataTransferDataSourceEnrollmentParameterArray) ToDataTransferDataSourceEnrollmentParameterArrayOutputWithContext(ctx context.Context) DataTransferDataSourceEnrollmentParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferDataSourceEnrollmentParameterArrayOutput)
+}
+
+type DataTransferDataSourceEnrollmentParameterOutput struct{ *pulumi.OutputState }
+
+func (DataTransferDataSourceEnrollmentParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferDataSourceEnrollmentParameter)(nil)).Elem()
+}
+
+func (o DataTransferDataSourceEnrollmentParameterOutput) ToDataTransferDataSourceEnrollmentParameterOutput() DataTransferDataSourceEnrollmentParameterOutput {
+	return o
+}
+
+func (o DataTransferDataSourceEnrollmentParameterOutput) ToDataTransferDataSourceEnrollmentParameterOutputWithContext(ctx context.Context) DataTransferDataSourceEnrollmentParameterOutput {
+	return o
+}
+
+// (Output)
+// All possible values for parameters with fixed list of options.
+func (o DataTransferDataSourceEnrollmentParameterOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// If true, it should not be used in new transfers, and it should not be visible to users.
+func (o DataTransferDataSourceEnrollmentParameterOutput) Deprecated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *bool { return v.Deprecated }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Parameter description.
+func (o DataTransferDataSourceEnrollmentParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// User friendly parameter name.
+func (o DataTransferDataSourceEnrollmentParameterOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+func (o DataTransferDataSourceEnrollmentParameterOutput) Immutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *bool { return v.Immutable }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// For list parameters, the max size of the list.
+func (o DataTransferDataSourceEnrollmentParameterOutput) MaxListSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *int { return v.MaxListSize }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// For integer and double values specifies maximum allowed value.
+func (o DataTransferDataSourceEnrollmentParameterOutput) MaxValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// For integer and double values specifies minimum allowed value.
+func (o DataTransferDataSourceEnrollmentParameterOutput) MinValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// Parameter identifier.
+func (o DataTransferDataSourceEnrollmentParameterOutput) ParamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *string { return v.ParamId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Is parameter required.
+func (o DataTransferDataSourceEnrollmentParameterOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Parameter type.
+func (o DataTransferDataSourceEnrollmentParameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Description of the requirements for this field, in case the user input does not fulfill the regex.
+func (o DataTransferDataSourceEnrollmentParameterOutput) ValidationDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *string { return v.ValidationDescription }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// URL to a help document to further explain the naming requirements.
+func (o DataTransferDataSourceEnrollmentParameterOutput) ValidationHelpUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *string { return v.ValidationHelpUrl }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Regular expression which can be used for parameter validation.
+func (o DataTransferDataSourceEnrollmentParameterOutput) ValidationRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferDataSourceEnrollmentParameter) *string { return v.ValidationRegex }).(pulumi.StringPtrOutput)
+}
+
+type DataTransferDataSourceEnrollmentParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (DataTransferDataSourceEnrollmentParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataTransferDataSourceEnrollmentParameter)(nil)).Elem()
+}
+
+func (o DataTransferDataSourceEnrollmentParameterArrayOutput) ToDataTransferDataSourceEnrollmentParameterArrayOutput() DataTransferDataSourceEnrollmentParameterArrayOutput {
+	return o
+}
+
+func (o DataTransferDataSourceEnrollmentParameterArrayOutput) ToDataTransferDataSourceEnrollmentParameterArrayOutputWithContext(ctx context.Context) DataTransferDataSourceEnrollmentParameterArrayOutput {
+	return o
+}
+
+func (o DataTransferDataSourceEnrollmentParameterArrayOutput) Index(i pulumi.IntInput) DataTransferDataSourceEnrollmentParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataTransferDataSourceEnrollmentParameter {
+		return vs[0].([]DataTransferDataSourceEnrollmentParameter)[vs[1].(int)]
+	}).(DataTransferDataSourceEnrollmentParameterOutput)
 }
 
 type Datapolicyv2DataPolicyDataGovernanceTag struct {
@@ -24977,6 +25233,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsPtrInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsPtrInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferDataSourceEnrollmentParameterInput)(nil)).Elem(), DataTransferDataSourceEnrollmentParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferDataSourceEnrollmentParameterArrayInput)(nil)).Elem(), DataTransferDataSourceEnrollmentParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataGovernanceTagInput)(nil)).Elem(), Datapolicyv2DataPolicyDataGovernanceTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataGovernanceTagPtrInput)(nil)).Elem(), Datapolicyv2DataPolicyDataGovernanceTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataMaskingPolicyInput)(nil)).Elem(), Datapolicyv2DataPolicyDataMaskingPolicyArgs{})
@@ -25267,6 +25525,8 @@ func init() {
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsPtrOutput{})
+	pulumi.RegisterOutputType(DataTransferDataSourceEnrollmentParameterOutput{})
+	pulumi.RegisterOutputType(DataTransferDataSourceEnrollmentParameterArrayOutput{})
 	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataGovernanceTagOutput{})
 	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataGovernanceTagPtrOutput{})
 	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataMaskingPolicyOutput{})

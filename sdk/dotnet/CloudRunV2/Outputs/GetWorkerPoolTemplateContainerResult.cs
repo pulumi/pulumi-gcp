@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateContainerResourceResult> Resources;
         /// <summary>
+        /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        public readonly bool SandboxLauncher;
+        /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateContainerStartupProbeResult> StartupProbes;
@@ -76,6 +80,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.GetWorkerPoolTemplateContainerResourceResult> resources,
 
+            bool sandboxLauncher,
+
             ImmutableArray<Outputs.GetWorkerPoolTemplateContainerStartupProbeResult> startupProbes,
 
             ImmutableArray<Outputs.GetWorkerPoolTemplateContainerVolumeMountResult> volumeMounts,
@@ -90,6 +96,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             LivenessProbes = livenessProbes;
             Name = name;
             Resources = resources;
+            SandboxLauncher = sandboxLauncher;
             StartupProbes = startupProbes;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;

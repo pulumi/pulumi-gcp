@@ -34,6 +34,23 @@ public final class ListingSubscriptionLinkedResourceArgs extends com.pulumi.reso
 
     /**
      * (Output)
+     * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+     * 
+     */
+    @Import(name="linkedPubsubSubscription")
+    private @Nullable Output<String> linkedPubsubSubscription;
+
+    /**
+     * @return (Output)
+     * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+     * 
+     */
+    public Optional<Output<String>> linkedPubsubSubscription() {
+        return Optional.ofNullable(this.linkedPubsubSubscription);
+    }
+
+    /**
+     * (Output)
      * Output only. Listing for which linked resource is created.
      * 
      */
@@ -53,6 +70,7 @@ public final class ListingSubscriptionLinkedResourceArgs extends com.pulumi.reso
 
     private ListingSubscriptionLinkedResourceArgs(ListingSubscriptionLinkedResourceArgs $) {
         this.linkedDataset = $.linkedDataset;
+        this.linkedPubsubSubscription = $.linkedPubsubSubscription;
         this.listing = $.listing;
     }
 
@@ -95,6 +113,29 @@ public final class ListingSubscriptionLinkedResourceArgs extends com.pulumi.reso
          */
         public Builder linkedDataset(String linkedDataset) {
             return linkedDataset(Output.of(linkedDataset));
+        }
+
+        /**
+         * @param linkedPubsubSubscription (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedPubsubSubscription(@Nullable Output<String> linkedPubsubSubscription) {
+            $.linkedPubsubSubscription = linkedPubsubSubscription;
+            return this;
+        }
+
+        /**
+         * @param linkedPubsubSubscription (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedPubsubSubscription(String linkedPubsubSubscription) {
+            return linkedPubsubSubscription(Output.of(linkedPubsubSubscription));
         }
 
         /**

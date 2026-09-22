@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.CloudSupport
     ///     var supportTopic = new Gcp.PubSub.Topic("support_topic", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         Name = "test-topic-_88722",
+    ///         Name = "test-topic-_39249",
     ///     });
     /// 
     ///     var supportPublisher = new Gcp.PubSub.TopicIAMMember("support_publisher", new()
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.CloudSupport
     ///     var supportTopic2 = new Gcp.PubSub.Topic("support_topic_2", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         Name = "test-topic-2-_39249",
+    ///         Name = "test-topic-2-_74391",
     ///     });
     /// 
     ///     var supportPublisher2 = new Gcp.PubSub.TopicIAMMember("support_publisher_2", new()

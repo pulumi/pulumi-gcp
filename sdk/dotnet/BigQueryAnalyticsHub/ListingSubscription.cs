@@ -140,6 +140,58 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Listing Subscription Pubsub
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subscription = new Gcp.BigQueryAnalyticsHub.DataExchange("subscription", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         DisplayName = "my_data_exchange",
+    ///         Description = "example pubsub listing subscription",
+    ///     });
+    /// 
+    ///     var subscriptionTopic = new Gcp.PubSub.Topic("subscription", new()
+    ///     {
+    ///         Name = "my_pubsub_topic",
+    ///     });
+    /// 
+    ///     var subscriptionListing = new Gcp.BigQueryAnalyticsHub.Listing("subscription", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = subscription.DataExchangeId,
+    ///         ListingId = "my_listing",
+    ///         DisplayName = "my_listing",
+    ///         Description = "example pubsub listing subscription",
+    ///         PubsubTopic = new Gcp.BigQueryAnalyticsHub.Inputs.ListingPubsubTopicArgs
+    ///         {
+    ///             Topic = subscriptionTopic.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var subscriptionListingSubscription = new Gcp.BigQueryAnalyticsHub.ListingSubscription("subscription", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = subscription.DataExchangeId,
+    ///         ListingId = subscriptionListing.ListingId,
+    ///         DestinationPubsubSubscription = new Gcp.BigQueryAnalyticsHub.Inputs.ListingSubscriptionDestinationPubsubSubscriptionArgs
+    ///         {
+    ///             PubsubSubscription = new Gcp.BigQueryAnalyticsHub.Inputs.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs
+    ///             {
+    ///                 Name = subscriptionTopic.Project.Apply(project =&gt; $"projects/{project}/subscriptions/my_pubsub_subscription"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -195,7 +247,14 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// Structure is documented below.
         /// </summary>
         [Output("destinationDataset")]
-        public Output<Outputs.ListingSubscriptionDestinationDataset> DestinationDataset { get; private set; } = null!;
+        public Output<Outputs.ListingSubscriptionDestinationDataset?> DestinationDataset { get; private set; } = null!;
+
+        /// <summary>
+        /// Destination Pub/Sub subscription to create for the subscriber.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("destinationPubsubSubscription")]
+        public Output<Outputs.ListingSubscriptionDestinationPubsubSubscription?> DestinationPubsubSubscription { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when the subscription was last modified.
@@ -352,8 +411,15 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// The destination dataset for this subscription.
         /// Structure is documented below.
         /// </summary>
-        [Input("destinationDataset", required: true)]
-        public Input<Inputs.ListingSubscriptionDestinationDatasetArgs> DestinationDataset { get; set; } = null!;
+        [Input("destinationDataset")]
+        public Input<Inputs.ListingSubscriptionDestinationDatasetArgs>? DestinationDataset { get; set; }
+
+        /// <summary>
+        /// Destination Pub/Sub subscription to create for the subscriber.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("destinationPubsubSubscription")]
+        public Input<Inputs.ListingSubscriptionDestinationPubsubSubscriptionArgs>? DestinationPubsubSubscription { get; set; }
 
         /// <summary>
         /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -424,6 +490,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("destinationDataset")]
         public Input<Inputs.ListingSubscriptionDestinationDatasetGetArgs>? DestinationDataset { get; set; }
+
+        /// <summary>
+        /// Destination Pub/Sub subscription to create for the subscriber.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("destinationPubsubSubscription")]
+        public Input<Inputs.ListingSubscriptionDestinationPubsubSubscriptionGetArgs>? DestinationPubsubSubscription { get; set; }
 
         /// <summary>
         /// Timestamp when the subscription was last modified.

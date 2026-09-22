@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacement {
     /**
-     * @return A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+     * @return A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
      * 
      */
     private @Nullable WorkflowTemplatePlacementClusterSelector clusterSelector;
     /**
-     * @return A cluster that is managed by the workflow.
+     * @return A cluster that is managed by the workflow. Structure is documented below.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedCluster managedCluster;
 
     private WorkflowTemplatePlacement() {}
     /**
-     * @return A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+     * @return A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
      * 
      */
     public Optional<WorkflowTemplatePlacementClusterSelector> clusterSelector() {
         return Optional.ofNullable(this.clusterSelector);
     }
     /**
-     * @return A cluster that is managed by the workflow.
+     * @return A cluster that is managed by the workflow. Structure is documented below.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedCluster> managedCluster() {

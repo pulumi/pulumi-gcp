@@ -41,7 +41,8 @@ class AgentArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_dialogflow_agent: pulumi.Input[Optional['AgentRemoteDialogflowAgentArgs']] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 toolsets: pulumi.Input[Optional[Sequence[pulumi.Input['AgentToolsetArgs']]]] = None):
+                 toolsets: pulumi.Input[Optional[Sequence[pulumi.Input['AgentToolsetArgs']]]] = None,
+                 transfer_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AgentTransferRuleArgs']]]] = None):
         """
         The set of arguments for constructing a Agent resource.
 
@@ -114,6 +115,9 @@ class AgentArgs:
                Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
         :param pulumi.Input[Sequence[pulumi.Input['AgentToolsetArgs']]] toolsets: List of toolsets for the agent.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AgentTransferRuleArgs']]] transfer_rules: List of transfer rules for the agent.
+               If multiple rules match, the first one in the list will be used.
+               Structure is documented below.
         """
         pulumi.set(__self__, "app", app)
         pulumi.set(__self__, "display_name", display_name)
@@ -154,6 +158,8 @@ class AgentArgs:
             pulumi.set(__self__, "tools", tools)
         if toolsets is not None:
             pulumi.set(__self__, "toolsets", toolsets)
+        if transfer_rules is not None:
+            pulumi.set(__self__, "transfer_rules", transfer_rules)
 
     @_builtins.property
     @pulumi.getter
@@ -455,6 +461,20 @@ class AgentArgs:
     def toolsets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AgentToolsetArgs']]]]):
         pulumi.set(self, "toolsets", value)
 
+    @_builtins.property
+    @pulumi.getter(name="transferRules")
+    def transfer_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AgentTransferRuleArgs']]]]:
+        """
+        List of transfer rules for the agent.
+        If multiple rules match, the first one in the list will be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transfer_rules")
+
+    @transfer_rules.setter
+    def transfer_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AgentTransferRuleArgs']]]]):
+        pulumi.set(self, "transfer_rules", value)
+
 
 @pulumi.input_type
 class _AgentState:
@@ -484,6 +504,7 @@ class _AgentState:
                  remote_dialogflow_agent: pulumi.Input[Optional['AgentRemoteDialogflowAgentArgs']] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  toolsets: pulumi.Input[Optional[Sequence[pulumi.Input['AgentToolsetArgs']]]] = None,
+                 transfer_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AgentTransferRuleArgs']]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Agent resources.
@@ -565,6 +586,9 @@ class _AgentState:
                Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
         :param pulumi.Input[Sequence[pulumi.Input['AgentToolsetArgs']]] toolsets: List of toolsets for the agent.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AgentTransferRuleArgs']]] transfer_rules: List of transfer rules for the agent.
+               If multiple rules match, the first one in the list will be used.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the agent was last updated.
         """
         if after_agent_callbacks is not None:
@@ -617,6 +641,8 @@ class _AgentState:
             pulumi.set(__self__, "tools", tools)
         if toolsets is not None:
             pulumi.set(__self__, "toolsets", toolsets)
+        if transfer_rules is not None:
+            pulumi.set(__self__, "transfer_rules", transfer_rules)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -973,6 +999,20 @@ class _AgentState:
         pulumi.set(self, "toolsets", value)
 
     @_builtins.property
+    @pulumi.getter(name="transferRules")
+    def transfer_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AgentTransferRuleArgs']]]]:
+        """
+        List of transfer rules for the agent.
+        If multiple rules match, the first one in the list will be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transfer_rules")
+
+    @transfer_rules.setter
+    def transfer_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AgentTransferRuleArgs']]]]):
+        pulumi.set(self, "transfer_rules", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1012,6 +1052,7 @@ class Agent(pulumi.CustomResource):
                  remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']]] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]]] = None,
+                 transfer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentTransferRuleArgs', 'AgentTransferRuleArgsDict', 'outputs.AgentTransferRule']]]]] = None,
                  __props__=None):
         """
         Description
@@ -1164,6 +1205,20 @@ class Agent(pulumi.CustomResource):
                 agent_id=ces_child_agent.agent_id
         ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
         ],
+            transfer_rules=[{
+                "child_agent": pulumi.Output.all(
+                    project=ces_app_for_agent.project,
+                    app_id=ces_app_for_agent.app_id,
+                    agent_id=ces_child_agent.agent_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+        ,
+                "direction": "PARENT_TO_CHILD",
+                "deterministic_transfer": {
+                    "expression_condition": {
+                        "expression": "true",
+                    },
+                },
+            }],
             llm_agent={})
         ```
         ### Ces Agent Remote Dialogflow Agent
@@ -1202,6 +1257,7 @@ class Agent(pulumi.CustomResource):
                 "agent": "projects/example/locations/us/agents/fake-agent",
                 "flow_id": "fake-flow",
                 "environment_id": "fake-env",
+                "language_code_variable": "language_code",
                 "input_variable_mapping": {
                     "example": "1",
                 },
@@ -1343,6 +1399,9 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: List of available tools for the agent.
                Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
         :param pulumi.Input[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]] toolsets: List of toolsets for the agent.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentTransferRuleArgs', 'AgentTransferRuleArgsDict', 'outputs.AgentTransferRule']]]] transfer_rules: List of transfer rules for the agent.
+               If multiple rules match, the first one in the list will be used.
                Structure is documented below.
         """
         ...
@@ -1502,6 +1561,20 @@ class Agent(pulumi.CustomResource):
                 agent_id=ces_child_agent.agent_id
         ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
         ],
+            transfer_rules=[{
+                "child_agent": pulumi.Output.all(
+                    project=ces_app_for_agent.project,
+                    app_id=ces_app_for_agent.app_id,
+                    agent_id=ces_child_agent.agent_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+        ,
+                "direction": "PARENT_TO_CHILD",
+                "deterministic_transfer": {
+                    "expression_condition": {
+                        "expression": "true",
+                    },
+                },
+            }],
             llm_agent={})
         ```
         ### Ces Agent Remote Dialogflow Agent
@@ -1540,6 +1613,7 @@ class Agent(pulumi.CustomResource):
                 "agent": "projects/example/locations/us/agents/fake-agent",
                 "flow_id": "fake-flow",
                 "environment_id": "fake-env",
+                "language_code_variable": "language_code",
                 "input_variable_mapping": {
                     "example": "1",
                 },
@@ -1647,6 +1721,7 @@ class Agent(pulumi.CustomResource):
                  remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']]] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]]] = None,
+                 transfer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentTransferRuleArgs', 'AgentTransferRuleArgsDict', 'outputs.AgentTransferRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1683,6 +1758,7 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["remote_dialogflow_agent"] = remote_dialogflow_agent
             __props__.__dict__["tools"] = tools
             __props__.__dict__["toolsets"] = toolsets
+            __props__.__dict__["transfer_rules"] = transfer_rules
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["generated_summary"] = None
@@ -1723,6 +1799,7 @@ class Agent(pulumi.CustomResource):
             remote_dialogflow_agent: pulumi.Input[Optional[Union['AgentRemoteDialogflowAgentArgs', 'AgentRemoteDialogflowAgentArgsDict', 'outputs.AgentRemoteDialogflowAgent']]] = None,
             tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             toolsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]]] = None,
+            transfer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentTransferRuleArgs', 'AgentTransferRuleArgsDict', 'outputs.AgentTransferRule']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Agent':
         """
         Get an existing Agent resource's state with the given name, id, and optional extra
@@ -1808,6 +1885,9 @@ class Agent(pulumi.CustomResource):
                Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
         :param pulumi.Input[Sequence[pulumi.Input[Union['AgentToolsetArgs', 'AgentToolsetArgsDict', 'outputs.AgentToolset']]]] toolsets: List of toolsets for the agent.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentTransferRuleArgs', 'AgentTransferRuleArgsDict', 'outputs.AgentTransferRule']]]] transfer_rules: List of transfer rules for the agent.
+               If multiple rules match, the first one in the list will be used.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the agent was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1839,6 +1919,7 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["remote_dialogflow_agent"] = remote_dialogflow_agent
         __props__.__dict__["tools"] = tools
         __props__.__dict__["toolsets"] = toolsets
+        __props__.__dict__["transfer_rules"] = transfer_rules
         __props__.__dict__["update_time"] = update_time
         return Agent(resource_name, opts=opts, __props__=__props__)
 
@@ -2093,6 +2174,16 @@ class Agent(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "toolsets")
+
+    @_builtins.property
+    @pulumi.getter(name="transferRules")
+    def transfer_rules(self) -> pulumi.Output[Optional[Sequence['outputs.AgentTransferRule']]]:
+        """
+        List of transfer rules for the agent.
+        If multiple rules match, the first one in the list will be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transfer_rules")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

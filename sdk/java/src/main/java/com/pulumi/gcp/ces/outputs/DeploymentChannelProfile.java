@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.DeploymentChannelProfilePersonaProperty;
 import com.pulumi.gcp.ces.outputs.DeploymentChannelProfileWebWidgetConfig;
+import com.pulumi.gcp.ces.outputs.DeploymentChannelProfileWhatsappConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -25,6 +26,8 @@ public final class DeploymentChannelProfile {
      * CONTACT_CENTER_AS_A_SERVICE
      * FIVE9
      * CONTACT_CENTER_INTEGRATION
+     * WHATSAPP
+     * INSTAGRAM
      * 
      */
     private @Nullable String channelType;
@@ -58,6 +61,12 @@ public final class DeploymentChannelProfile {
      * 
      */
     private @Nullable DeploymentChannelProfileWebWidgetConfig webWidgetConfig;
+    /**
+     * @return Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DeploymentChannelProfileWhatsappConfig whatsappConfig;
 
     private DeploymentChannelProfile() {}
     /**
@@ -71,6 +80,8 @@ public final class DeploymentChannelProfile {
      * CONTACT_CENTER_AS_A_SERVICE
      * FIVE9
      * CONTACT_CENTER_INTEGRATION
+     * WHATSAPP
+     * INSTAGRAM
      * 
      */
     public Optional<String> channelType() {
@@ -116,6 +127,14 @@ public final class DeploymentChannelProfile {
     public Optional<DeploymentChannelProfileWebWidgetConfig> webWidgetConfig() {
         return Optional.ofNullable(this.webWidgetConfig);
     }
+    /**
+     * @return Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DeploymentChannelProfileWhatsappConfig> whatsappConfig() {
+        return Optional.ofNullable(this.whatsappConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -132,6 +151,7 @@ public final class DeploymentChannelProfile {
         private @Nullable DeploymentChannelProfilePersonaProperty personaProperty;
         private @Nullable String profileId;
         private @Nullable DeploymentChannelProfileWebWidgetConfig webWidgetConfig;
+        private @Nullable DeploymentChannelProfileWhatsappConfig whatsappConfig;
         public Builder() {}
         public Builder(DeploymentChannelProfile defaults) {
     	      Objects.requireNonNull(defaults);
@@ -141,6 +161,7 @@ public final class DeploymentChannelProfile {
     	      this.personaProperty = defaults.personaProperty;
     	      this.profileId = defaults.profileId;
     	      this.webWidgetConfig = defaults.webWidgetConfig;
+    	      this.whatsappConfig = defaults.whatsappConfig;
         }
 
         @CustomType.Setter
@@ -179,6 +200,12 @@ public final class DeploymentChannelProfile {
             this.webWidgetConfig = webWidgetConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder whatsappConfig(@Nullable DeploymentChannelProfileWhatsappConfig whatsappConfig) {
+
+            this.whatsappConfig = whatsappConfig;
+            return this;
+        }
         public DeploymentChannelProfile build() {
             final var _resultValue = new DeploymentChannelProfile();
             _resultValue.channelType = channelType;
@@ -187,6 +214,7 @@ public final class DeploymentChannelProfile {
             _resultValue.personaProperty = personaProperty;
             _resultValue.profileId = profileId;
             _resultValue.webWidgetConfig = webWidgetConfig;
+            _resultValue.whatsappConfig = whatsappConfig;
             return _resultValue;
         }
     }

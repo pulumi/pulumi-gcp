@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -101,8 +101,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -183,6 +183,77 @@ import (
 //
 // ```
 //
+// ### Dataproc Workflow Template Instance Flexibility Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewWorkflowTemplate(ctx, "template", &dataproc.WorkflowTemplateArgs{
+//				Name:     pulumi.String("template-flexible-vms"),
+//				Location: pulumi.String("us-central1"),
+//				Placement: &dataproc.WorkflowTemplatePlacementArgs{
+//					ManagedCluster: &dataproc.WorkflowTemplatePlacementManagedClusterArgs{
+//						ClusterName: pulumi.String("my-flexible-cluster"),
+//						Config: &dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs{
+//							SoftwareConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{
+//								ImageVersion: pulumi.String("2.0.35-debian10"),
+//							},
+//							MasterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs{
+//								NumInstances: pulumi.Int(1),
+//								MachineType:  pulumi.String("e2-standard-2"),
+//							},
+//							WorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{
+//								NumInstances: pulumi.Int(2),
+//								InstanceFlexibilityPolicy: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{
+//									InstanceSelectionLists: dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{
+//										&dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{
+//											MachineTypes: pulumi.StringArray{
+//												pulumi.String("e2-standard-2"),
+//											},
+//											Rank: pulumi.Int(1),
+//										},
+//									},
+//								},
+//							},
+//							SecondaryWorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{
+//								NumInstances: pulumi.Int(2),
+//								InstanceFlexibilityPolicy: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs{
+//									InstanceSelectionLists: dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{
+//										&dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{
+//											MachineTypes: pulumi.StringArray{
+//												pulumi.String("n1-standard-2"),
+//											},
+//											Rank: pulumi.Int(1),
+//										},
+//									},
+//									ProvisioningModelMix: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{
+//										StandardCapacityBase:             pulumi.Int(1),
+//										StandardCapacityPercentAboveBase: pulumi.Int(50),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // WorkflowTemplate can be imported using any of these accepted formats:
@@ -229,7 +300,7 @@ type WorkflowTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters WorkflowTemplateParameterArrayOutput `pulumi:"parameters"`
-	// (Required) WorkflowTemplate scheduling information.
+	// (Required) WorkflowTemplate scheduling information. Structure is documented below.
 	Placement WorkflowTemplatePlacementOutput `pulumi:"placement"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -315,7 +386,7 @@ type workflowTemplateState struct {
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []WorkflowTemplateParameter `pulumi:"parameters"`
-	// (Required) WorkflowTemplate scheduling information.
+	// (Required) WorkflowTemplate scheduling information. Structure is documented below.
 	Placement *WorkflowTemplatePlacement `pulumi:"placement"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -358,7 +429,7 @@ type WorkflowTemplateState struct {
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters WorkflowTemplateParameterArrayInput
-	// (Required) WorkflowTemplate scheduling information.
+	// (Required) WorkflowTemplate scheduling information. Structure is documented below.
 	Placement WorkflowTemplatePlacementPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -401,7 +472,7 @@ type workflowTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []WorkflowTemplateParameter `pulumi:"parameters"`
-	// (Required) WorkflowTemplate scheduling information.
+	// (Required) WorkflowTemplate scheduling information. Structure is documented below.
 	Placement WorkflowTemplatePlacement `pulumi:"placement"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -437,7 +508,7 @@ type WorkflowTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters WorkflowTemplateParameterArrayInput
-	// (Required) WorkflowTemplate scheduling information.
+	// (Required) WorkflowTemplate scheduling information. Structure is documented below.
 	Placement WorkflowTemplatePlacementInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -592,7 +663,7 @@ func (o WorkflowTemplateOutput) Parameters() WorkflowTemplateParameterArrayOutpu
 	return o.ApplyT(func(v *WorkflowTemplate) WorkflowTemplateParameterArrayOutput { return v.Parameters }).(WorkflowTemplateParameterArrayOutput)
 }
 
-// (Required) WorkflowTemplate scheduling information.
+// (Required) WorkflowTemplate scheduling information. Structure is documented below.
 func (o WorkflowTemplateOutput) Placement() WorkflowTemplatePlacementOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) WorkflowTemplatePlacementOutput { return v.Placement }).(WorkflowTemplatePlacementOutput)
 }

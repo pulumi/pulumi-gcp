@@ -108,6 +108,35 @@ import * as utilities from "../utilities";
  *     service: "managedkafka.googleapis.com",
  * });
  * ```
+ * ### Managedkafka Cluster Public
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.managedkafka.Cluster("example", {
+ *     clusterId: "my-cluster",
+ *     location: "us-central1",
+ *     capacityConfig: {
+ *         vcpuCount: "3",
+ *         memoryBytes: "3221225472",
+ *     },
+ *     gcpConfig: {
+ *         accessConfig: {
+ *             networkConfigs: [{
+ *                 subnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
+ *             }],
+ *             publicClusterConfig: {
+ *                 allowedSourceIpRanges: ["192.168.1.0/24"],
+ *             },
+ *         },
+ *     },
+ *     rebalanceConfig: {
+ *         mode: "AUTO_REBALANCE_ON_SCALE_UP",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -153,6 +182,10 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
+    /**
+     * The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+     */
+    declare public /*out*/ readonly bootstrapAddress: pulumi.Output<string>;
     /**
      * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
      * Structure is documented below.
@@ -209,6 +242,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Details of the public cluster feature for the Kafka cluster.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly publicClusterDetails: pulumi.Output<outputs.managedkafka.ClusterPublicClusterDetail[]>;
+    /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
@@ -245,6 +283,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["bootstrapAddress"] = state?.bootstrapAddress;
             resourceInputs["brokerCapacityConfig"] = state?.brokerCapacityConfig;
             resourceInputs["capacityConfig"] = state?.capacityConfig;
             resourceInputs["clusterId"] = state?.clusterId;
@@ -256,6 +295,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["publicClusterDetails"] = state?.publicClusterDetails;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["rebalanceConfig"] = state?.rebalanceConfig;
             resourceInputs["state"] = state?.state;
@@ -285,9 +325,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["rebalanceConfig"] = args?.rebalanceConfig;
             resourceInputs["tlsConfig"] = args?.tlsConfig;
+            resourceInputs["bootstrapAddress"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["publicClusterDetails"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -303,6 +345,10 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+     */
+    bootstrapAddress?: pulumi.Input<string | undefined>;
     /**
      * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
      * Structure is documented below.
@@ -358,6 +404,11 @@ export interface ClusterState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Details of the public cluster feature for the Kafka cluster.
+     * Structure is documented below.
+     */
+    publicClusterDetails?: pulumi.Input<pulumi.Input<inputs.managedkafka.ClusterPublicClusterDetail>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.

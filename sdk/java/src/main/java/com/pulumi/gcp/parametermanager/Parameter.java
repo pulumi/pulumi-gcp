@@ -18,11 +18,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Parameter resource is a logical parameter.
+ * A Parameter is a configuration value that can be stored and managed
+ * centrally through Parameter Manager. Parameters support labels, encryption
+ * via Cloud KMS, and resource manager tags for fine-grained access control
+ * and organization.
  * 
  * To get more information about Parameter, see:
  * 
  * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+ * * How-to Guides
+ *     * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
  * 
  * ## Example Usage
  * 
@@ -162,6 +167,42 @@ import javax.annotation.Nullable;
  *         var parameter_with_kms_key = new Parameter("parameter-with-kms-key", ParameterArgs.builder()
  *             .parameterId("parameter")
  *             .kmsKey("kms-key")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Parameter With Tags
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.parametermanager.Parameter;
+ * import com.pulumi.gcp.parametermanager.ParameterArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var parameter_with_tags = new Parameter("parameter-with-tags", ParameterArgs.builder()
+ *             .parameterId("parameter")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("tagKeys/123456", "tagValues/789012"),
+ *                 Map.entry("tagKeys/345678", "tagValues/901234")
+ *             ))
  *             .build());
  * 
  *     }
@@ -385,6 +426,24 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The time at which the Parameter was updated.

@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("my_key", "my_value"))
  *             .enableCustomerDataSharing(true)
  *             .webGroundingType("WEB_GROUNDING_FOR_ENTERPRISE")
+ *             .mutationsEnabled(true)
  *             .build());
  * 
  *     }
@@ -213,6 +214,20 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Whether resource mutations should be enabled.
+     * 
+     */
+    @Export(name="mutationsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> mutationsEnabled;
+
+    /**
+     * @return Whether resource mutations should be enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> mutationsEnabled() {
+        return Codegen.optional(this.mutationsEnabled);
     }
     /**
      * Identifier. Name of the resource.

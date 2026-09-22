@@ -290,6 +290,30 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
         return this.failOpen;
     }
     /**
+     * List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     * 
+     */
+    @Export(name="forwardAttributes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> forwardAttributes;
+
+    /**
+     * @return List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     * 
+     */
+    public Output<Optional<List<String>>> forwardAttributes() {
+        return Codegen.optional(this.forwardAttributes);
+    }
+    /**
      * List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
      * 
      */

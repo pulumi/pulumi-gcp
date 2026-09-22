@@ -652,7 +652,7 @@ class ConnectionProfile(pulumi.CustomResource):
         cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
             location="us-central1",
             connection_profile_id="my-fromprofileid",
-            display_name="my-fromprofileid_display",
+            display_name="my-fromprofileid-display",
             labels={
                 "foo": "bar",
             },
@@ -673,7 +673,7 @@ class ConnectionProfile(pulumi.CustomResource):
         cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination",
             location="us-central1",
             connection_profile_id="my-toprofileid",
-            display_name="my-toprofileid_displayname",
+            display_name="my-toprofileid-displayname",
             labels={
                 "foo": "bar",
             },
@@ -726,7 +726,7 @@ class ConnectionProfile(pulumi.CustomResource):
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -770,7 +770,7 @@ class ConnectionProfile(pulumi.CustomResource):
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -811,7 +811,7 @@ class ConnectionProfile(pulumi.CustomResource):
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -836,7 +836,7 @@ class ConnectionProfile(pulumi.CustomResource):
         oracleprofile = gcp.databasemigrationservice.ConnectionProfile("oracleprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -870,16 +870,16 @@ class ConnectionProfile(pulumi.CustomResource):
         alloydbprofile = gcp.databasemigrationservice.ConnectionProfile("alloydbprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_69391",
+                "cluster_id": "tf-test-dbmsalloycluster_8270",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_8270",
-                        "password": "alloypass_41150",
+                        "user": "alloyuser_41150",
+                        "password": "alloypass_89313",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -917,7 +917,7 @@ class ConnectionProfile(pulumi.CustomResource):
         existing_mysql = gcp.databasemigrationservice.ConnectionProfile("existing-mysql",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -944,7 +944,7 @@ class ConnectionProfile(pulumi.CustomResource):
         existing_psql = gcp.databasemigrationservice.ConnectionProfile("existing-psql",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -991,7 +991,7 @@ class ConnectionProfile(pulumi.CustomResource):
         existing_alloydb = gcp.databasemigrationservice.ConnectionProfile("existing-alloydb",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1095,7 +1095,7 @@ class ConnectionProfile(pulumi.CustomResource):
         cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
             location="us-central1",
             connection_profile_id="my-fromprofileid",
-            display_name="my-fromprofileid_display",
+            display_name="my-fromprofileid-display",
             labels={
                 "foo": "bar",
             },
@@ -1116,7 +1116,7 @@ class ConnectionProfile(pulumi.CustomResource):
         cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination",
             location="us-central1",
             connection_profile_id="my-toprofileid",
-            display_name="my-toprofileid_displayname",
+            display_name="my-toprofileid-displayname",
             labels={
                 "foo": "bar",
             },
@@ -1169,7 +1169,7 @@ class ConnectionProfile(pulumi.CustomResource):
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -1213,7 +1213,7 @@ class ConnectionProfile(pulumi.CustomResource):
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -1254,7 +1254,7 @@ class ConnectionProfile(pulumi.CustomResource):
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -1279,7 +1279,7 @@ class ConnectionProfile(pulumi.CustomResource):
         oracleprofile = gcp.databasemigrationservice.ConnectionProfile("oracleprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
@@ -1313,16 +1313,16 @@ class ConnectionProfile(pulumi.CustomResource):
         alloydbprofile = gcp.databasemigrationservice.ConnectionProfile("alloydbprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
+            display_name="my-profileid-display",
             labels={
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_69391",
+                "cluster_id": "tf-test-dbmsalloycluster_8270",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_8270",
-                        "password": "alloypass_41150",
+                        "user": "alloyuser_41150",
+                        "password": "alloypass_89313",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -1360,7 +1360,7 @@ class ConnectionProfile(pulumi.CustomResource):
         existing_mysql = gcp.databasemigrationservice.ConnectionProfile("existing-mysql",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1387,7 +1387,7 @@ class ConnectionProfile(pulumi.CustomResource):
         existing_psql = gcp.databasemigrationservice.ConnectionProfile("existing-psql",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1434,7 +1434,7 @@ class ConnectionProfile(pulumi.CustomResource):
         existing_alloydb = gcp.databasemigrationservice.ConnectionProfile("existing-alloydb",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },

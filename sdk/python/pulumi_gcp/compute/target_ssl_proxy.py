@@ -503,6 +503,7 @@ class TargetSSLProxy(pulumi.CustomResource):
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
             protocol="SSL",
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_health_check.id)
         default_certificate_map = gcp.certificatemanager.CertificateMap("default",
             name="certificate-map-test",
@@ -604,6 +605,7 @@ class TargetSSLProxy(pulumi.CustomResource):
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
             protocol="SSL",
+            load_balancing_scheme="EXTERNAL",
             health_checks=default_health_check.id)
         default_certificate_map = gcp.certificatemanager.CertificateMap("default",
             name="certificate-map-test",

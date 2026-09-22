@@ -1137,14 +1137,6 @@ Object.defineProperty(exports, "migrationCenterCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const mlEngineCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "mlEngineCustomEndpoint", {
-    get() {
-        return __config.get("mlEngineCustomEndpoint");
-    },
-    enumerable: true,
-});
-
 export declare const modelArmorCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "modelArmorCustomEndpoint", {
     get() {
@@ -1201,6 +1193,14 @@ Object.defineProperty(exports, "networkManagementCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const networkManagementv1CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "networkManagementv1CustomEndpoint", {
+    get() {
+        return __config.get("networkManagementv1CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const networkSecurityCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "networkSecurityCustomEndpoint", {
     get() {
@@ -1213,14 +1213,6 @@ export declare const networkServicesCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "networkServicesCustomEndpoint", {
     get() {
         return __config.get("networkServicesCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const notebooksCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "notebooksCustomEndpoint", {
-    get() {
-        return __config.get("notebooksCustomEndpoint");
     },
     enumerable: true,
 });
@@ -1569,6 +1561,14 @@ Object.defineProperty(exports, "serviceUsageCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const serviceUsageV2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "serviceUsageV2CustomEndpoint", {
+    get() {
+        return __config.get("serviceUsageV2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const siteVerificationCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "siteVerificationCustomEndpoint", {
     get() {
@@ -1629,6 +1629,14 @@ export declare const storageCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "storageCustomEndpoint", {
     get() {
         return __config.get("storageCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const storageFtpCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "storageFtpCustomEndpoint", {
+    get() {
+        return __config.get("storageFtpCustomEndpoint");
     },
     enumerable: true,
 });

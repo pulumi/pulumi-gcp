@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.RolloutPlan("default", {
- *     name: "tf-test-rollout-plan-_91980",
+ *     name: "tf-test-rollout-plan-_37118",
  *     description: "A test rollout plan",
  *     locationScope: "ZONAL",
  *     waves: [{

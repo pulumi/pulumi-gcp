@@ -5,7 +5,9 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiSemanticGovernancePolicyEngineGatewayConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -55,6 +57,29 @@ public final class AiSemanticGovernancePolicyEngineState extends com.pulumi.reso
      */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * Configurations for gateways, keyed by a user-defined gateway name. At most
+     * 5 gateway configurations are allowed. Each gateway name must be 1-63
+     * characters, start with a lowercase letter, contain only lowercase letters,
+     * numbers and hyphens, and not end with a hyphen.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gatewayConfigs")
+    private @Nullable Output<List<AiSemanticGovernancePolicyEngineGatewayConfigArgs>> gatewayConfigs;
+
+    /**
+     * @return Configurations for gateways, keyed by a user-defined gateway name. At most
+     * 5 gateway configurations are allowed. Each gateway name must be 1-63
+     * characters, start with a lowercase letter, contain only lowercase letters,
+     * numbers and hyphens, and not end with a hyphen.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AiSemanticGovernancePolicyEngineGatewayConfigArgs>>> gatewayConfigs() {
+        return Optional.ofNullable(this.gatewayConfigs);
     }
 
     /**
@@ -198,6 +223,7 @@ public final class AiSemanticGovernancePolicyEngineState extends com.pulumi.reso
     private AiSemanticGovernancePolicyEngineState(AiSemanticGovernancePolicyEngineState $) {
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
+        this.gatewayConfigs = $.gatewayConfigs;
         this.ipAddress = $.ipAddress;
         this.name = $.name;
         this.project = $.project;
@@ -278,6 +304,49 @@ public final class AiSemanticGovernancePolicyEngineState extends com.pulumi.reso
          */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param gatewayConfigs Configurations for gateways, keyed by a user-defined gateway name. At most
+         * 5 gateway configurations are allowed. Each gateway name must be 1-63
+         * characters, start with a lowercase letter, contain only lowercase letters,
+         * numbers and hyphens, and not end with a hyphen.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayConfigs(@Nullable Output<List<AiSemanticGovernancePolicyEngineGatewayConfigArgs>> gatewayConfigs) {
+            $.gatewayConfigs = gatewayConfigs;
+            return this;
+        }
+
+        /**
+         * @param gatewayConfigs Configurations for gateways, keyed by a user-defined gateway name. At most
+         * 5 gateway configurations are allowed. Each gateway name must be 1-63
+         * characters, start with a lowercase letter, contain only lowercase letters,
+         * numbers and hyphens, and not end with a hyphen.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayConfigs(List<AiSemanticGovernancePolicyEngineGatewayConfigArgs> gatewayConfigs) {
+            return gatewayConfigs(Output.of(gatewayConfigs));
+        }
+
+        /**
+         * @param gatewayConfigs Configurations for gateways, keyed by a user-defined gateway name. At most
+         * 5 gateway configurations are allowed. Each gateway name must be 1-63
+         * characters, start with a lowercase letter, contain only lowercase letters,
+         * numbers and hyphens, and not end with a hyphen.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayConfigs(AiSemanticGovernancePolicyEngineGatewayConfigArgs... gatewayConfigs) {
+            return gatewayConfigs(List.of(gatewayConfigs));
         }
 
         /**

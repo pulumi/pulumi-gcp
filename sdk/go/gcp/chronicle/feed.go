@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,9 +66,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,7 +86,7 @@ import (
 //			}
 //			// 1. Create the Pub/Sub Topic
 //			testTopic, err := pubsub.NewTopic(ctx, "test_topic", &pubsub.TopicArgs{
-//				Name:    pulumi.String("chronicle-test-topic-my-project-name-_64336"),
+//				Name:    pulumi.String("chronicle-test-topic-my-project-name-_34962"),
 //				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //			}
 //			// 3. Create the Pub/Sub Subscription
 //			testSubscription, err := pubsub.NewSubscription(ctx, "test_subscription", &pubsub.SubscriptionArgs{
-//				Name:                     pulumi.String("chronicle-test-sub-my-project-name-_34962"),
+//				Name:                     pulumi.String("chronicle-test-sub-my-project-name-_74000"),
 //				Project:                  pulumi.String("my-project-name"),
 //				Topic:                    testTopic.Name,
 //				MessageRetentionDuration: pulumi.String("1200s"),
@@ -114,7 +114,7 @@ import (
 //			}
 //			// 4. Define the GCS Bucket
 //			testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_74000"),
+//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_75125"),
 //				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
@@ -175,7 +175,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

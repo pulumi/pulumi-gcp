@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.chronicle.EnvironmentArgs;
 import com.pulumi.gcp.chronicle.inputs.EnvironmentState;
+import com.pulumi.gcp.chronicle.outputs.EnvironmentDynamicParameter;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -38,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.chronicle.Environment;
  * import com.pulumi.gcp.chronicle.EnvironmentArgs;
+ * import com.pulumi.gcp.chronicle.inputs.EnvironmentDynamicParameterArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -67,6 +70,13 @@ import javax.annotation.Nullable;
  *                 jsonArray(
  *                 )))
  *             .retentionDuration(3)
+ *             .base64Image("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=")
+ *             .dynamicParameters(EnvironmentDynamicParameterArgs.builder()
+ *                 .dynamicParameterId(123)
+ *                 .value("value1")
+ *                 .build())
+ *             .instanceUri("https://test.backstory.chronicle.security?foo=bar")
+ *             .weight(1)
  *             .deletionProtection(false)
  *             .build());
  * 
@@ -107,6 +117,20 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> aliasesJson() {
         return Codegen.optional(this.aliasesJson);
+    }
+    /**
+     * Environment icon.
+     * 
+     */
+    @Export(name="base64Image", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> base64Image;
+
+    /**
+     * @return Environment icon.
+     * 
+     */
+    public Output<Optional<String>> base64Image() {
+        return Codegen.optional(this.base64Image);
     }
     /**
      * MAX_NAME_LENGTH = 256
@@ -241,6 +265,22 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * Additional custom properties for enriching the environment.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dynamicParameters", refs={List.class,EnvironmentDynamicParameter.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<EnvironmentDynamicParameter>> dynamicParameters;
+
+    /**
+     * @return Additional custom properties for enriching the environment.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<EnvironmentDynamicParameter>>> dynamicParameters() {
+        return Codegen.optional(this.dynamicParameters);
+    }
+    /**
      * Id of the environment record.
      * 
      */
@@ -267,6 +307,22 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instance() {
         return this.instance;
+    }
+    /**
+     * URL of the environment. Used to route UI links to the correct SIEM instance
+     * when making cross-SecOps requests from SOAR.
+     * 
+     */
+    @Export(name="instanceUri", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instanceUri;
+
+    /**
+     * @return URL of the environment. Used to route UI links to the correct SIEM instance
+     * when making cross-SecOps requests from SOAR.
+     * 
+     */
+    public Output<Optional<String>> instanceUri() {
+        return Codegen.optional(this.instanceUri);
     }
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -329,6 +385,24 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> retentionDuration() {
         return this.retentionDuration;
+    }
+    /**
+     * The weight of the environment, enabling customers to control distribution
+     * of resources between the separate environments in a single instance of
+     * Chronicle SOAR.
+     * 
+     */
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> weight;
+
+    /**
+     * @return The weight of the environment, enabling customers to control distribution
+     * of resources between the separate environments in a single instance of
+     * Chronicle SOAR.
+     * 
+     */
+    public Output<Optional<Integer>> weight() {
+        return Codegen.optional(this.weight);
     }
 
     /**

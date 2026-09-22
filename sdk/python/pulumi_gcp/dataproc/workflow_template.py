@@ -37,7 +37,7 @@ class WorkflowTemplateArgs:
 
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: (Required) WorkflowTemplate scheduling information.
+        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: (Required) WorkflowTemplate scheduling information. Structure is documented below.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -106,7 +106,7 @@ class WorkflowTemplateArgs:
     @pulumi.getter
     def placement(self) -> pulumi.Input['WorkflowTemplatePlacementArgs']:
         """
-        (Required) WorkflowTemplate scheduling information.
+        (Required) WorkflowTemplate scheduling information. Structure is documented below.
         """
         return pulumi.get(self, "placement")
 
@@ -259,7 +259,7 @@ class _WorkflowTemplateState:
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: (Required) WorkflowTemplate scheduling information.
+        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: (Required) WorkflowTemplate scheduling information. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time template was last updated.
@@ -431,7 +431,7 @@ class _WorkflowTemplateState:
     @pulumi.getter
     def placement(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementArgs']]:
         """
-        (Required) WorkflowTemplate scheduling information.
+        (Required) WorkflowTemplate scheduling information. Structure is documented below.
         """
         return pulumi.get(self, "placement")
 
@@ -635,6 +635,53 @@ class WorkflowTemplate(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[dataproc_kms_encrypter_decrypter]))
         ```
 
+        ### Dataproc Workflow Template Instance Flexibility Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template = gcp.dataproc.WorkflowTemplate("template",
+            name="template-flexible-vms",
+            location="us-central1",
+            placement={
+                "managed_cluster": {
+                    "cluster_name": "my-flexible-cluster",
+                    "config": {
+                        "software_config": {
+                            "image_version": "2.0.35-debian10",
+                        },
+                        "master_config": {
+                            "num_instances": 1,
+                            "machine_type": "e2-standard-2",
+                        },
+                        "worker_config": {
+                            "num_instances": 2,
+                            "instance_flexibility_policy": {
+                                "instance_selection_lists": [{
+                                    "machine_types": ["e2-standard-2"],
+                                    "rank": 1,
+                                }],
+                            },
+                        },
+                        "secondary_worker_config": {
+                            "num_instances": 2,
+                            "instance_flexibility_policy": {
+                                "instance_selection_lists": [{
+                                    "machine_types": ["n1-standard-2"],
+                                    "rank": 1,
+                                }],
+                                "provisioning_model_mix": {
+                                    "standard_capacity_base": 1,
+                                    "standard_capacity_percent_above_base": 50,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        ```
+
         ## Import
 
         WorkflowTemplate can be imported using any of these accepted formats:
@@ -670,7 +717,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']] placement: (Required) WorkflowTemplate scheduling information.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']] placement: (Required) WorkflowTemplate scheduling information. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.int] version: Output only. The current version of this workflow template.
         """
@@ -808,6 +855,53 @@ class WorkflowTemplate(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[dataproc_kms_encrypter_decrypter]))
         ```
 
+        ### Dataproc Workflow Template Instance Flexibility Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template = gcp.dataproc.WorkflowTemplate("template",
+            name="template-flexible-vms",
+            location="us-central1",
+            placement={
+                "managed_cluster": {
+                    "cluster_name": "my-flexible-cluster",
+                    "config": {
+                        "software_config": {
+                            "image_version": "2.0.35-debian10",
+                        },
+                        "master_config": {
+                            "num_instances": 1,
+                            "machine_type": "e2-standard-2",
+                        },
+                        "worker_config": {
+                            "num_instances": 2,
+                            "instance_flexibility_policy": {
+                                "instance_selection_lists": [{
+                                    "machine_types": ["e2-standard-2"],
+                                    "rank": 1,
+                                }],
+                            },
+                        },
+                        "secondary_worker_config": {
+                            "num_instances": 2,
+                            "instance_flexibility_policy": {
+                                "instance_selection_lists": [{
+                                    "machine_types": ["n1-standard-2"],
+                                    "rank": 1,
+                                }],
+                                "provisioning_model_mix": {
+                                    "standard_capacity_base": 1,
+                                    "standard_capacity_percent_above_base": 50,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        ```
+
         ## Import
 
         WorkflowTemplate can be imported using any of these accepted formats:
@@ -933,7 +1027,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict', 'outputs.WorkflowTemplateParameter']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']] placement: (Required) WorkflowTemplate scheduling information.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict', 'outputs.WorkflowTemplatePlacement']] placement: (Required) WorkflowTemplate scheduling information. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time template was last updated.
@@ -1052,7 +1146,7 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter
     def placement(self) -> pulumi.Output['outputs.WorkflowTemplatePlacement']:
         """
-        (Required) WorkflowTemplate scheduling information.
+        (Required) WorkflowTemplate scheduling information. Structure is documented below.
         """
         return pulumi.get(self, "placement")
 

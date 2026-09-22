@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-fromprofileid",
-    ///         DisplayName = "my-fromprofileid_display",
+    ///         DisplayName = "my-fromprofileid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-toprofileid",
-    ///         DisplayName = "my-toprofileid_displayname",
+    ///         DisplayName = "my-toprofileid-displayname",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-profileid",
-    ///         DisplayName = "my-profileid_display",
+    ///         DisplayName = "my-profileid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-profileid",
-    ///         DisplayName = "my-profileid_display",
+    ///         DisplayName = "my-profileid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -353,7 +353,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-profileid",
-    ///         DisplayName = "my-profileid_display",
+    ///         DisplayName = "my-profileid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -394,7 +394,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-profileid",
-    ///         DisplayName = "my-profileid_display",
+    ///         DisplayName = "my-profileid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -452,20 +452,20 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-profileid",
-    ///         DisplayName = "my-profileid_display",
+    ///         DisplayName = "my-profileid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
     ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
     ///         {
-    ///             ClusterId = "tf-test-dbmsalloycluster_69391",
+    ///             ClusterId = "tf-test-dbmsalloycluster_8270",
     ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
     ///             {
     ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
     ///                 {
-    ///                     User = "alloyuser_8270",
-    ///                     Password = "alloypass_41150",
+    ///                     User = "alloyuser_41150",
+    ///                     Password = "alloypass_89313",
     ///                 },
     ///                 VpcNetwork = @default.Id,
     ///                 Labels = 
@@ -525,7 +525,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-cp",
-    ///         DisplayName = "destination-cp_display",
+    ///         DisplayName = "destination-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -572,7 +572,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-cp",
-    ///         DisplayName = "destination-cp_display",
+    ///         DisplayName = "destination-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -661,7 +661,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-cp",
-    ///         DisplayName = "destination-cp_display",
+    ///         DisplayName = "destination-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },

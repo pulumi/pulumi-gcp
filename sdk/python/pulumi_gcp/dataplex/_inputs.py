@@ -1930,16 +1930,28 @@ class DatascanDataDocumentationSpecArgsDict(TypedDict):
     """
     If set, the latest DataScan job result will be published to Knowledge Catalog.
     """
+    sql_dialect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The SQL dialect to use in the generated SQL queries.
+    If not specified, the default dialect is Google SQL.
+    Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+    """
 
 @pulumi.input_type
 class DatascanDataDocumentationSpecArgs:
     def __init__(__self__, *,
-                 catalog_publishing_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 catalog_publishing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sql_dialect: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] catalog_publishing_enabled: If set, the latest DataScan job result will be published to Knowledge Catalog.
+        :param pulumi.Input[_builtins.str] sql_dialect: The SQL dialect to use in the generated SQL queries.
+               If not specified, the default dialect is Google SQL.
+               Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
         """
         if catalog_publishing_enabled is not None:
             pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
+        if sql_dialect is not None:
+            pulumi.set(__self__, "sql_dialect", sql_dialect)
 
     @_builtins.property
     @pulumi.getter(name="catalogPublishingEnabled")
@@ -1952,6 +1964,20 @@ class DatascanDataDocumentationSpecArgs:
     @catalog_publishing_enabled.setter
     def catalog_publishing_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "catalog_publishing_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlDialect")
+    def sql_dialect(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The SQL dialect to use in the generated SQL queries.
+        If not specified, the default dialect is Google SQL.
+        Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+        """
+        return pulumi.get(self, "sql_dialect")
+
+    @sql_dialect.setter
+    def sql_dialect(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sql_dialect", value)
 
 
 class DatascanDataProfileSpecArgsDict(TypedDict):

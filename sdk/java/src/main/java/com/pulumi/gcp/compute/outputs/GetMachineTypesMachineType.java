@@ -22,6 +22,11 @@ public final class GetMachineTypesMachineType {
      */
     private List<GetMachineTypesMachineTypeAccelerator> accelerators;
     /**
+     * @return The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+     * 
+     */
+    private String architecture;
+    /**
      * @return (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
      * 
      */
@@ -79,6 +84,13 @@ public final class GetMachineTypesMachineType {
      */
     public List<GetMachineTypesMachineTypeAccelerator> accelerators() {
         return this.accelerators;
+    }
+    /**
+     * @return The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+     * 
+     */
+    public String architecture() {
+        return this.architecture;
     }
     /**
      * @return (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
@@ -161,6 +173,7 @@ public final class GetMachineTypesMachineType {
     @CustomType.Builder
     public static final class Builder {
         private List<GetMachineTypesMachineTypeAccelerator> accelerators;
+        private String architecture;
         private List<GetMachineTypesMachineTypeBundledLocalSsd> bundledLocalSsds;
         private List<GetMachineTypesMachineTypeDeprecated> deprecateds;
         private String description;
@@ -175,6 +188,7 @@ public final class GetMachineTypesMachineType {
         public Builder(GetMachineTypesMachineType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerators = defaults.accelerators;
+    	      this.architecture = defaults.architecture;
     	      this.bundledLocalSsds = defaults.bundledLocalSsds;
     	      this.deprecateds = defaults.deprecateds;
     	      this.description = defaults.description;
@@ -197,6 +211,14 @@ public final class GetMachineTypesMachineType {
         }
         public Builder accelerators(GetMachineTypesMachineTypeAccelerator... accelerators) {
             return accelerators(List.of(accelerators));
+        }
+        @CustomType.Setter
+        public Builder architecture(String architecture) {
+            if (architecture == null) {
+              throw new MissingRequiredPropertyException("GetMachineTypesMachineType", "architecture");
+            }
+            this.architecture = architecture;
+            return this;
         }
         @CustomType.Setter
         public Builder bundledLocalSsds(List<GetMachineTypesMachineTypeBundledLocalSsd> bundledLocalSsds) {
@@ -287,6 +309,7 @@ public final class GetMachineTypesMachineType {
         public GetMachineTypesMachineType build() {
             final var _resultValue = new GetMachineTypesMachineType();
             _resultValue.accelerators = accelerators;
+            _resultValue.architecture = architecture;
             _resultValue.bundledLocalSsds = bundledLocalSsds;
             _resultValue.deprecateds = deprecateds;
             _resultValue.description = description;

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const opsAgentPolicy = new gcp.compute.ZoneVmExtensionPolicy("ops_agent_policy", {
- *     name: "zonal-ops-agent-vme-policy-_40289",
+ *     name: "zonal-ops-agent-vme-policy-_33395",
  *     zone: "us-central1-a",
  *     extensionPolicies: [{
  *         extensionName: "ops-agent",

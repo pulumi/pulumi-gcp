@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineSpecBuildSpec {
     /**
+     * @return Optional. The service account that the Cloud Build builder runs as.
+     * 
+     */
+    private @Nullable String serviceAccount;
+    /**
      * @return Optional. The resource name of the Cloud Build WorkerPool to use for the build.
      * 
      */
     private @Nullable String workerPool;
 
     private AiReasoningEngineSpecBuildSpec() {}
+    /**
+     * @return Optional. The service account that the Cloud Build builder runs as.
+     * 
+     */
+    public Optional<String> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
     /**
      * @return Optional. The resource name of the Cloud Build WorkerPool to use for the build.
      * 
@@ -35,13 +47,21 @@ public final class AiReasoningEngineSpecBuildSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String serviceAccount;
         private @Nullable String workerPool;
         public Builder() {}
         public Builder(AiReasoningEngineSpecBuildSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.serviceAccount = defaults.serviceAccount;
     	      this.workerPool = defaults.workerPool;
         }
 
+        @CustomType.Setter
+        public Builder serviceAccount(@Nullable String serviceAccount) {
+
+            this.serviceAccount = serviceAccount;
+            return this;
+        }
         @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
 
@@ -50,6 +70,7 @@ public final class AiReasoningEngineSpecBuildSpec {
         }
         public AiReasoningEngineSpecBuildSpec build() {
             final var _resultValue = new AiReasoningEngineSpecBuildSpec();
+            _resultValue.serviceAccount = serviceAccount;
             _resultValue.workerPool = workerPool;
             return _resultValue;
         }

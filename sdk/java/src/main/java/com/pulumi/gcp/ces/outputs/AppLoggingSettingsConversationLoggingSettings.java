@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,12 @@ public final class AppLoggingSettingsConversationLoggingSettings {
      * 
      */
     private @Nullable Boolean disableConversationLogging;
+    /**
+     * @return Controls the retention window for the conversation.
+     * If not set, the conversation will be retained for 365 days.
+     * 
+     */
+    private @Nullable String retentionWindow;
 
     private AppLoggingSettingsConversationLoggingSettings() {}
     /**
@@ -24,6 +31,14 @@ public final class AppLoggingSettingsConversationLoggingSettings {
      */
     public Optional<Boolean> disableConversationLogging() {
         return Optional.ofNullable(this.disableConversationLogging);
+    }
+    /**
+     * @return Controls the retention window for the conversation.
+     * If not set, the conversation will be retained for 365 days.
+     * 
+     */
+    public Optional<String> retentionWindow() {
+        return Optional.ofNullable(this.retentionWindow);
     }
 
     public static Builder builder() {
@@ -36,10 +51,12 @@ public final class AppLoggingSettingsConversationLoggingSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableConversationLogging;
+        private @Nullable String retentionWindow;
         public Builder() {}
         public Builder(AppLoggingSettingsConversationLoggingSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableConversationLogging = defaults.disableConversationLogging;
+    	      this.retentionWindow = defaults.retentionWindow;
         }
 
         @CustomType.Setter
@@ -48,9 +65,16 @@ public final class AppLoggingSettingsConversationLoggingSettings {
             this.disableConversationLogging = disableConversationLogging;
             return this;
         }
+        @CustomType.Setter
+        public Builder retentionWindow(@Nullable String retentionWindow) {
+
+            this.retentionWindow = retentionWindow;
+            return this;
+        }
         public AppLoggingSettingsConversationLoggingSettings build() {
             final var _resultValue = new AppLoggingSettingsConversationLoggingSettings();
             _resultValue.disableConversationLogging = disableConversationLogging;
+            _resultValue.retentionWindow = retentionWindow;
             return _resultValue;
         }
     }

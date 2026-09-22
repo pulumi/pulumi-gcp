@@ -98,6 +98,10 @@ export class LicenseConfig extends pulumi.CustomResource {
      */
     declare public readonly freeTrial: pulumi.Output<boolean | undefined>;
     /**
+     * Timestamp of the most recent user-initiated update.
+     */
+    declare public readonly lastUserUpdateTime: pulumi.Output<string | undefined>;
+    /**
      * The unique id of the license config.
      */
     declare public readonly licenseConfigId: pulumi.Output<string>;
@@ -152,6 +156,7 @@ export class LicenseConfig extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["endDate"] = state?.endDate;
             resourceInputs["freeTrial"] = state?.freeTrial;
+            resourceInputs["lastUserUpdateTime"] = state?.lastUserUpdateTime;
             resourceInputs["licenseConfigId"] = state?.licenseConfigId;
             resourceInputs["licenseCount"] = state?.licenseCount;
             resourceInputs["location"] = state?.location;
@@ -183,6 +188,7 @@ export class LicenseConfig extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["endDate"] = args?.endDate;
             resourceInputs["freeTrial"] = args?.freeTrial;
+            resourceInputs["lastUserUpdateTime"] = args?.lastUserUpdateTime;
             resourceInputs["licenseConfigId"] = args?.licenseConfigId;
             resourceInputs["licenseCount"] = args?.licenseCount;
             resourceInputs["location"] = args?.location;
@@ -214,6 +220,10 @@ export interface LicenseConfigState {
      * Whether the license config is for free trial.
      */
     freeTrial?: pulumi.Input<boolean | undefined>;
+    /**
+     * Timestamp of the most recent user-initiated update.
+     */
+    lastUserUpdateTime?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the license config.
      */
@@ -271,6 +281,10 @@ export interface LicenseConfigArgs {
      * Whether the license config is for free trial.
      */
     freeTrial?: pulumi.Input<boolean | undefined>;
+    /**
+     * Timestamp of the most recent user-initiated update.
+     */
+    lastUserUpdateTime?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the license config.
      */

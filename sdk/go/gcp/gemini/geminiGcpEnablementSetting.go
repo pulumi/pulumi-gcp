@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,6 +38,7 @@ import (
 //				},
 //				EnableCustomerDataSharing: pulumi.Bool(true),
 //				WebGroundingType:          pulumi.String("WEB_GROUNDING_FOR_ENTERPRISE"),
+//				MutationsEnabled:          pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -94,6 +95,8 @@ type GeminiGcpEnablementSetting struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Whether resource mutations should be enabled.
+	MutationsEnabled pulumi.BoolPtrOutput `pulumi:"mutationsEnabled"`
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -181,6 +184,8 @@ type geminiGcpEnablementSettingState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
+	// Whether resource mutations should be enabled.
+	MutationsEnabled *bool `pulumi:"mutationsEnabled"`
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
 	Name *string `pulumi:"name"`
@@ -228,6 +233,8 @@ type GeminiGcpEnablementSettingState struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
+	// Whether resource mutations should be enabled.
+	MutationsEnabled pulumi.BoolPtrInput
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
 	Name pulumi.StringPtrInput
@@ -275,6 +282,8 @@ type geminiGcpEnablementSettingArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
+	// Whether resource mutations should be enabled.
+	MutationsEnabled *bool `pulumi:"mutationsEnabled"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -311,6 +320,8 @@ type GeminiGcpEnablementSettingArgs struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
+	// Whether resource mutations should be enabled.
+	MutationsEnabled pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -458,6 +469,11 @@ func (o GeminiGcpEnablementSettingOutput) Labels() pulumi.StringMapOutput {
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o GeminiGcpEnablementSettingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Whether resource mutations should be enabled.
+func (o GeminiGcpEnablementSettingOutput) MutationsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.BoolPtrOutput { return v.MutationsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier. Name of the resource.

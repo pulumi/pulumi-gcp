@@ -1529,6 +1529,8 @@ class DatascanDataDocumentationSpec(dict):
         suggest = None
         if key == "catalogPublishingEnabled":
             suggest = "catalog_publishing_enabled"
+        elif key == "sqlDialect":
+            suggest = "sql_dialect"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatascanDataDocumentationSpec. Access the value via the '{suggest}' property getter instead.")
@@ -1542,12 +1544,18 @@ class DatascanDataDocumentationSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 catalog_publishing_enabled: Optional[_builtins.bool] = None):
+                 catalog_publishing_enabled: Optional[_builtins.bool] = None,
+                 sql_dialect: Optional[_builtins.str] = None):
         """
         :param _builtins.bool catalog_publishing_enabled: If set, the latest DataScan job result will be published to Knowledge Catalog.
+        :param _builtins.str sql_dialect: The SQL dialect to use in the generated SQL queries.
+               If not specified, the default dialect is Google SQL.
+               Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
         """
         if catalog_publishing_enabled is not None:
             pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
+        if sql_dialect is not None:
+            pulumi.set(__self__, "sql_dialect", sql_dialect)
 
     @_builtins.property
     @pulumi.getter(name="catalogPublishingEnabled")
@@ -1556,6 +1564,16 @@ class DatascanDataDocumentationSpec(dict):
         If set, the latest DataScan job result will be published to Knowledge Catalog.
         """
         return pulumi.get(self, "catalog_publishing_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlDialect")
+    def sql_dialect(self) -> Optional[_builtins.str]:
+        """
+        The SQL dialect to use in the generated SQL queries.
+        If not specified, the default dialect is Google SQL.
+        Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+        """
+        return pulumi.get(self, "sql_dialect")
 
 
 @pulumi.output_type

@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.ToolRemoteAgentToolAgentCard;
+import com.pulumi.gcp.ces.outputs.ToolRemoteAgentToolApiAuthentication;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,6 +21,13 @@ public final class ToolRemoteAgentTool {
      * 
      */
     private @Nullable List<ToolRemoteAgentToolAgentCard> agentCards;
+    /**
+     * @return (Output)
+     * Authentication information required for calling the remote agent.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ToolRemoteAgentToolApiAuthentication> apiAuthentications;
     /**
      * @return (Output)
      * The description of the system tool.
@@ -42,6 +50,15 @@ public final class ToolRemoteAgentTool {
      */
     public List<ToolRemoteAgentToolAgentCard> agentCards() {
         return this.agentCards == null ? List.of() : this.agentCards;
+    }
+    /**
+     * @return (Output)
+     * Authentication information required for calling the remote agent.
+     * Structure is documented below.
+     * 
+     */
+    public List<ToolRemoteAgentToolApiAuthentication> apiAuthentications() {
+        return this.apiAuthentications == null ? List.of() : this.apiAuthentications;
     }
     /**
      * @return (Output)
@@ -70,12 +87,14 @@ public final class ToolRemoteAgentTool {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ToolRemoteAgentToolAgentCard> agentCards;
+        private @Nullable List<ToolRemoteAgentToolApiAuthentication> apiAuthentications;
         private @Nullable String description;
         private @Nullable String name;
         public Builder() {}
         public Builder(ToolRemoteAgentTool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentCards = defaults.agentCards;
+    	      this.apiAuthentications = defaults.apiAuthentications;
     	      this.description = defaults.description;
     	      this.name = defaults.name;
         }
@@ -88,6 +107,15 @@ public final class ToolRemoteAgentTool {
         }
         public Builder agentCards(ToolRemoteAgentToolAgentCard... agentCards) {
             return agentCards(List.of(agentCards));
+        }
+        @CustomType.Setter
+        public Builder apiAuthentications(@Nullable List<ToolRemoteAgentToolApiAuthentication> apiAuthentications) {
+
+            this.apiAuthentications = apiAuthentications;
+            return this;
+        }
+        public Builder apiAuthentications(ToolRemoteAgentToolApiAuthentication... apiAuthentications) {
+            return apiAuthentications(List.of(apiAuthentications));
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
@@ -104,6 +132,7 @@ public final class ToolRemoteAgentTool {
         public ToolRemoteAgentTool build() {
             final var _resultValue = new ToolRemoteAgentTool();
             _resultValue.agentCards = agentCards;
+            _resultValue.apiAuthentications = apiAuthentications;
             _resultValue.description = description;
             _resultValue.name = name;
             return _resultValue;

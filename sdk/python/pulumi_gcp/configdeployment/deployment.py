@@ -948,7 +948,7 @@ class Deployment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="artifactsGcsBucket")
-    def artifacts_gcs_bucket(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def artifacts_gcs_bucket(self) -> pulumi.Output[_builtins.str]:
         """
         Location for Cloud Build logs and artifacts.
         """

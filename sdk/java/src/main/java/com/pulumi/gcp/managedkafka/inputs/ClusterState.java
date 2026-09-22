@@ -8,9 +8,11 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.managedkafka.inputs.ClusterBrokerCapacityConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
+import com.pulumi.gcp.managedkafka.inputs.ClusterPublicClusterDetailArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterRebalanceConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterTlsConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +22,21 @@ import javax.annotation.Nullable;
 public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterState Empty = new ClusterState();
+
+    /**
+     * The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+     * 
+     */
+    @Import(name="bootstrapAddress")
+    private @Nullable Output<String> bootstrapAddress;
+
+    /**
+     * @return The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+     * 
+     */
+    public Optional<Output<String>> bootstrapAddress() {
+        return Optional.ofNullable(this.bootstrapAddress);
+    }
 
     /**
      * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
@@ -209,6 +226,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Details of the public cluster feature for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="publicClusterDetails")
+    private @Nullable Output<List<ClusterPublicClusterDetailArgs>> publicClusterDetails;
+
+    /**
+     * @return Details of the public cluster feature for the Kafka cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterPublicClusterDetailArgs>>> publicClusterDetails() {
+        return Optional.ofNullable(this.publicClusterDetails);
+    }
+
+    /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      * 
@@ -292,6 +326,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
+        this.bootstrapAddress = $.bootstrapAddress;
         this.brokerCapacityConfig = $.brokerCapacityConfig;
         this.capacityConfig = $.capacityConfig;
         this.clusterId = $.clusterId;
@@ -303,6 +338,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.publicClusterDetails = $.publicClusterDetails;
         this.pulumiLabels = $.pulumiLabels;
         this.rebalanceConfig = $.rebalanceConfig;
         this.state = $.state;
@@ -326,6 +362,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bootstrapAddress The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootstrapAddress(@Nullable Output<String> bootstrapAddress) {
+            $.bootstrapAddress = bootstrapAddress;
+            return this;
+        }
+
+        /**
+         * @param bootstrapAddress The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootstrapAddress(String bootstrapAddress) {
+            return bootstrapAddress(Output.of(bootstrapAddress));
         }
 
         /**
@@ -579,6 +636,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param publicClusterDetails Details of the public cluster feature for the Kafka cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicClusterDetails(@Nullable Output<List<ClusterPublicClusterDetailArgs>> publicClusterDetails) {
+            $.publicClusterDetails = publicClusterDetails;
+            return this;
+        }
+
+        /**
+         * @param publicClusterDetails Details of the public cluster feature for the Kafka cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicClusterDetails(List<ClusterPublicClusterDetailArgs> publicClusterDetails) {
+            return publicClusterDetails(Output.of(publicClusterDetails));
+        }
+
+        /**
+         * @param publicClusterDetails Details of the public cluster feature for the Kafka cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicClusterDetails(ClusterPublicClusterDetailArgs... publicClusterDetails) {
+            return publicClusterDetails(List.of(publicClusterDetails));
         }
 
         /**

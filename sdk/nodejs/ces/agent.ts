@@ -157,6 +157,15 @@ import * as utilities from "../utilities";
  *         toolIds: ["testtoolid"],
  *     }],
  *     childAgents: [pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`],
+ *     transferRules: [{
+ *         childAgent: pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`,
+ *         direction: "PARENT_TO_CHILD",
+ *         deterministicTransfer: {
+ *             expressionCondition: {
+ *                 expression: "true",
+ *             },
+ *         },
+ *     }],
  *     llmAgent: {},
  * });
  * ```
@@ -197,6 +206,7 @@ import * as utilities from "../utilities";
  *         agent: "projects/example/locations/us/agents/fake-agent",
  *         flowId: "fake-flow",
  *         environmentId: "fake-env",
+ *         languageCodeVariable: "language_code",
  *         inputVariableMapping: {
  *             example: "1",
  *         },
@@ -451,6 +461,12 @@ export class Agent extends pulumi.CustomResource {
      */
     declare public readonly toolsets: pulumi.Output<outputs.ces.AgentToolset[] | undefined>;
     /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     */
+    declare public readonly transferRules: pulumi.Output<outputs.ces.AgentTransferRule[] | undefined>;
+    /**
      * Timestamp when the agent was last updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -493,6 +509,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["remoteDialogflowAgent"] = state?.remoteDialogflowAgent;
             resourceInputs["tools"] = state?.tools;
             resourceInputs["toolsets"] = state?.toolsets;
+            resourceInputs["transferRules"] = state?.transferRules;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AgentArgs | undefined;
@@ -526,6 +543,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["remoteDialogflowAgent"] = args?.remoteDialogflowAgent;
             resourceInputs["tools"] = args?.tools;
             resourceInputs["toolsets"] = args?.toolsets;
+            resourceInputs["transferRules"] = args?.transferRules;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["generatedSummary"] = undefined /*out*/;
@@ -694,6 +712,12 @@ export interface AgentState {
      */
     toolsets?: pulumi.Input<pulumi.Input<inputs.ces.AgentToolset>[] | undefined>;
     /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     */
+    transferRules?: pulumi.Input<pulumi.Input<inputs.ces.AgentTransferRule>[] | undefined>;
+    /**
      * Timestamp when the agent was last updated.
      */
     updateTime?: pulumi.Input<string | undefined>;
@@ -835,4 +859,10 @@ export interface AgentArgs {
      * Structure is documented below.
      */
     toolsets?: pulumi.Input<pulumi.Input<inputs.ces.AgentToolset>[] | undefined>;
+    /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     */
+    transferRules?: pulumi.Input<pulumi.Input<inputs.ces.AgentTransferRule>[] | undefined>;
 }

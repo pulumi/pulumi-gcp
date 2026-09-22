@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'CodeToolsSettingEnabledTool',
     'CodeToolsSettingEnabledToolConfig',
+    'GdaObservabilitySettingConversationalAnalyticsSetting',
     'RepositoryGroupIamBindingCondition',
     'RepositoryGroupIamMemberCondition',
     'RepositoryGroupRepository',
@@ -138,6 +139,84 @@ class CodeToolsSettingEnabledToolConfig(dict):
         Value of the configuration item.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GdaObservabilitySettingConversationalAnalyticsSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "feedbackEnabled":
+            suggest = "feedback_enabled"
+        elif key == "loggingEnabled":
+            suggest = "logging_enabled"
+        elif key == "metricsEnabled":
+            suggest = "metrics_enabled"
+        elif key == "tracesEnabled":
+            suggest = "traces_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GdaObservabilitySettingConversationalAnalyticsSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GdaObservabilitySettingConversationalAnalyticsSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GdaObservabilitySettingConversationalAnalyticsSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 feedback_enabled: Optional[_builtins.bool] = None,
+                 logging_enabled: Optional[_builtins.bool] = None,
+                 metrics_enabled: Optional[_builtins.bool] = None,
+                 traces_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool feedback_enabled: Whether to enable feedback.
+        :param _builtins.bool logging_enabled: Whether to enable logging.
+        :param _builtins.bool metrics_enabled: Whether to enable metrics.
+        :param _builtins.bool traces_enabled: Whether to enable traces.
+        """
+        if feedback_enabled is not None:
+            pulumi.set(__self__, "feedback_enabled", feedback_enabled)
+        if logging_enabled is not None:
+            pulumi.set(__self__, "logging_enabled", logging_enabled)
+        if metrics_enabled is not None:
+            pulumi.set(__self__, "metrics_enabled", metrics_enabled)
+        if traces_enabled is not None:
+            pulumi.set(__self__, "traces_enabled", traces_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="feedbackEnabled")
+    def feedback_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable feedback.
+        """
+        return pulumi.get(self, "feedback_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="loggingEnabled")
+    def logging_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable logging.
+        """
+        return pulumi.get(self, "logging_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="metricsEnabled")
+    def metrics_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable metrics.
+        """
+        return pulumi.get(self, "metrics_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="tracesEnabled")
+    def traces_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable traces.
+        """
+        return pulumi.get(self, "traces_enabled")
 
 
 @pulumi.output_type

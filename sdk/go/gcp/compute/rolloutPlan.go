@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRolloutPlan(ctx, "default", &compute.RolloutPlanArgs{
-//				Name:          pulumi.String("tf-test-rollout-plan-_91980"),
+//				Name:          pulumi.String("tf-test-rollout-plan-_37118"),
 //				Description:   pulumi.String("A test rollout plan"),
 //				LocationScope: pulumi.String("ZONAL"),
 //				Waves: compute.RolloutPlanWaveArray{

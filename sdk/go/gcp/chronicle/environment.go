@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,7 +59,16 @@ import (
 //				AliasesJson:          pulumi.String(json0),
 //				DataAccessScopesJson: pulumi.String(json1),
 //				RetentionDuration:    pulumi.Int(3),
-//				DeletionProtection:   pulumi.Bool(false),
+//				Base64Image:          pulumi.String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII="),
+//				DynamicParameters: chronicle.EnvironmentDynamicParameterArray{
+//					&chronicle.EnvironmentDynamicParameterArgs{
+//						DynamicParameterId: pulumi.Int(123),
+//						Value:              pulumi.String("value1"),
+//					},
+//				},
+//				InstanceUri:        pulumi.String("https://test.backstory.chronicle.security?foo=bar"),
+//				Weight:             pulumi.Int(1),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -90,6 +99,8 @@ type Environment struct {
 
 	// Environment nicknames.
 	AliasesJson pulumi.StringPtrOutput `pulumi:"aliasesJson"`
+	// Environment icon.
+	Base64Image pulumi.StringPtrOutput `pulumi:"base64Image"`
 	// MAX_NAME_LENGTH = 256
 	// Name of the contact for the environment.
 	Contact pulumi.StringOutput `pulumi:"contact"`
@@ -116,10 +127,16 @@ type Environment struct {
 	// Name of the environment
 	// MAX_NAME_LENGTH = 256
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Additional custom properties for enriching the environment.
+	// Structure is documented below.
+	DynamicParameters EnvironmentDynamicParameterArrayOutput `pulumi:"dynamicParameters"`
 	// Id of the environment record.
 	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Instance pulumi.StringOutput `pulumi:"instance"`
+	// URL of the environment. Used to route UI links to the correct SIEM instance
+	// when making cross-SecOps requests from SOAR.
+	InstanceUri pulumi.StringPtrOutput `pulumi:"instanceUri"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. The unique name(ID) of the Environment.
@@ -131,6 +148,10 @@ type Environment struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Environment data retention in months.
 	RetentionDuration pulumi.IntOutput `pulumi:"retentionDuration"`
+	// The weight of the environment, enabling customers to control distribution
+	// of resources between the separate environments in a single instance of
+	// Chronicle SOAR.
+	Weight pulumi.IntPtrOutput `pulumi:"weight"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -189,6 +210,8 @@ func GetEnvironment(ctx *pulumi.Context,
 type environmentState struct {
 	// Environment nicknames.
 	AliasesJson *string `pulumi:"aliasesJson"`
+	// Environment icon.
+	Base64Image *string `pulumi:"base64Image"`
 	// MAX_NAME_LENGTH = 256
 	// Name of the contact for the environment.
 	Contact *string `pulumi:"contact"`
@@ -215,10 +238,16 @@ type environmentState struct {
 	// Name of the environment
 	// MAX_NAME_LENGTH = 256
 	DisplayName *string `pulumi:"displayName"`
+	// Additional custom properties for enriching the environment.
+	// Structure is documented below.
+	DynamicParameters []EnvironmentDynamicParameter `pulumi:"dynamicParameters"`
 	// Id of the environment record.
 	EnvironmentId *string `pulumi:"environmentId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Instance *string `pulumi:"instance"`
+	// URL of the environment. Used to route UI links to the correct SIEM instance
+	// when making cross-SecOps requests from SOAR.
+	InstanceUri *string `pulumi:"instanceUri"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
 	// Identifier. The unique name(ID) of the Environment.
@@ -230,11 +259,17 @@ type environmentState struct {
 	Project *string `pulumi:"project"`
 	// Environment data retention in months.
 	RetentionDuration *int `pulumi:"retentionDuration"`
+	// The weight of the environment, enabling customers to control distribution
+	// of resources between the separate environments in a single instance of
+	// Chronicle SOAR.
+	Weight *int `pulumi:"weight"`
 }
 
 type EnvironmentState struct {
 	// Environment nicknames.
 	AliasesJson pulumi.StringPtrInput
+	// Environment icon.
+	Base64Image pulumi.StringPtrInput
 	// MAX_NAME_LENGTH = 256
 	// Name of the contact for the environment.
 	Contact pulumi.StringPtrInput
@@ -261,10 +296,16 @@ type EnvironmentState struct {
 	// Name of the environment
 	// MAX_NAME_LENGTH = 256
 	DisplayName pulumi.StringPtrInput
+	// Additional custom properties for enriching the environment.
+	// Structure is documented below.
+	DynamicParameters EnvironmentDynamicParameterArrayInput
 	// Id of the environment record.
 	EnvironmentId pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Instance pulumi.StringPtrInput
+	// URL of the environment. Used to route UI links to the correct SIEM instance
+	// when making cross-SecOps requests from SOAR.
+	InstanceUri pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
 	// Identifier. The unique name(ID) of the Environment.
@@ -276,6 +317,10 @@ type EnvironmentState struct {
 	Project pulumi.StringPtrInput
 	// Environment data retention in months.
 	RetentionDuration pulumi.IntPtrInput
+	// The weight of the environment, enabling customers to control distribution
+	// of resources between the separate environments in a single instance of
+	// Chronicle SOAR.
+	Weight pulumi.IntPtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -285,6 +330,8 @@ func (EnvironmentState) ElementType() reflect.Type {
 type environmentArgs struct {
 	// Environment nicknames.
 	AliasesJson *string `pulumi:"aliasesJson"`
+	// Environment icon.
+	Base64Image *string `pulumi:"base64Image"`
 	// MAX_NAME_LENGTH = 256
 	// Name of the contact for the environment.
 	Contact string `pulumi:"contact"`
@@ -311,8 +358,14 @@ type environmentArgs struct {
 	// Name of the environment
 	// MAX_NAME_LENGTH = 256
 	DisplayName string `pulumi:"displayName"`
+	// Additional custom properties for enriching the environment.
+	// Structure is documented below.
+	DynamicParameters []EnvironmentDynamicParameter `pulumi:"dynamicParameters"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Instance string `pulumi:"instance"`
+	// URL of the environment. Used to route UI links to the correct SIEM instance
+	// when making cross-SecOps requests from SOAR.
+	InstanceUri *string `pulumi:"instanceUri"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -320,12 +373,18 @@ type environmentArgs struct {
 	Project *string `pulumi:"project"`
 	// Environment data retention in months.
 	RetentionDuration int `pulumi:"retentionDuration"`
+	// The weight of the environment, enabling customers to control distribution
+	// of resources between the separate environments in a single instance of
+	// Chronicle SOAR.
+	Weight *int `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
 	// Environment nicknames.
 	AliasesJson pulumi.StringPtrInput
+	// Environment icon.
+	Base64Image pulumi.StringPtrInput
 	// MAX_NAME_LENGTH = 256
 	// Name of the contact for the environment.
 	Contact pulumi.StringInput
@@ -352,8 +411,14 @@ type EnvironmentArgs struct {
 	// Name of the environment
 	// MAX_NAME_LENGTH = 256
 	DisplayName pulumi.StringInput
+	// Additional custom properties for enriching the environment.
+	// Structure is documented below.
+	DynamicParameters EnvironmentDynamicParameterArrayInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Instance pulumi.StringInput
+	// URL of the environment. Used to route UI links to the correct SIEM instance
+	// when making cross-SecOps requests from SOAR.
+	InstanceUri pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -361,6 +426,10 @@ type EnvironmentArgs struct {
 	Project pulumi.StringPtrInput
 	// Environment data retention in months.
 	RetentionDuration pulumi.IntInput
+	// The weight of the environment, enabling customers to control distribution
+	// of resources between the separate environments in a single instance of
+	// Chronicle SOAR.
+	Weight pulumi.IntPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -455,6 +524,11 @@ func (o EnvironmentOutput) AliasesJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.AliasesJson }).(pulumi.StringPtrOutput)
 }
 
+// Environment icon.
+func (o EnvironmentOutput) Base64Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Base64Image }).(pulumi.StringPtrOutput)
+}
+
 // MAX_NAME_LENGTH = 256
 // Name of the contact for the environment.
 func (o EnvironmentOutput) Contact() pulumi.StringOutput {
@@ -505,6 +579,12 @@ func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Additional custom properties for enriching the environment.
+// Structure is documented below.
+func (o EnvironmentOutput) DynamicParameters() EnvironmentDynamicParameterArrayOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentDynamicParameterArrayOutput { return v.DynamicParameters }).(EnvironmentDynamicParameterArrayOutput)
+}
+
 // Id of the environment record.
 func (o EnvironmentOutput) EnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
@@ -513,6 +593,12 @@ func (o EnvironmentOutput) EnvironmentId() pulumi.StringOutput {
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o EnvironmentOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+}
+
+// URL of the environment. Used to route UI links to the correct SIEM instance
+// when making cross-SecOps requests from SOAR.
+func (o EnvironmentOutput) InstanceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.InstanceUri }).(pulumi.StringPtrOutput)
 }
 
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -536,6 +622,13 @@ func (o EnvironmentOutput) Project() pulumi.StringOutput {
 // Environment data retention in months.
 func (o EnvironmentOutput) RetentionDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v *Environment) pulumi.IntOutput { return v.RetentionDuration }).(pulumi.IntOutput)
+}
+
+// The weight of the environment, enabling customers to control distribution
+// of resources between the separate environments in a single instance of
+// Chronicle SOAR.
+func (o EnvironmentOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
 type EnvironmentArrayOutput struct{ *pulumi.OutputState }

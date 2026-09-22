@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -8220,6 +8220,816 @@ func (o DefaultObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultObjectAccessControlProjectTeam {
 		return vs[0].([]DefaultObjectAccessControlProjectTeam)[vs[1].(int)]
 	}).(DefaultObjectAccessControlProjectTeamOutput)
+}
+
+type FtpServerExternalConfig struct {
+	// A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+	AllowedCidrBlocks []string `pulumi:"allowedCidrBlocks"`
+}
+
+// FtpServerExternalConfigInput is an input type that accepts FtpServerExternalConfigArgs and FtpServerExternalConfigOutput values.
+// You can construct a concrete instance of `FtpServerExternalConfigInput` via:
+//
+//	FtpServerExternalConfigArgs{...}
+type FtpServerExternalConfigInput interface {
+	pulumi.Input
+
+	ToFtpServerExternalConfigOutput() FtpServerExternalConfigOutput
+	ToFtpServerExternalConfigOutputWithContext(context.Context) FtpServerExternalConfigOutput
+}
+
+type FtpServerExternalConfigArgs struct {
+	// A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+	AllowedCidrBlocks pulumi.StringArrayInput `pulumi:"allowedCidrBlocks"`
+}
+
+func (FtpServerExternalConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerExternalConfig)(nil)).Elem()
+}
+
+func (i FtpServerExternalConfigArgs) ToFtpServerExternalConfigOutput() FtpServerExternalConfigOutput {
+	return i.ToFtpServerExternalConfigOutputWithContext(context.Background())
+}
+
+func (i FtpServerExternalConfigArgs) ToFtpServerExternalConfigOutputWithContext(ctx context.Context) FtpServerExternalConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerExternalConfigOutput)
+}
+
+func (i FtpServerExternalConfigArgs) ToFtpServerExternalConfigPtrOutput() FtpServerExternalConfigPtrOutput {
+	return i.ToFtpServerExternalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FtpServerExternalConfigArgs) ToFtpServerExternalConfigPtrOutputWithContext(ctx context.Context) FtpServerExternalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerExternalConfigOutput).ToFtpServerExternalConfigPtrOutputWithContext(ctx)
+}
+
+// FtpServerExternalConfigPtrInput is an input type that accepts FtpServerExternalConfigArgs, FtpServerExternalConfigPtr and FtpServerExternalConfigPtrOutput values.
+// You can construct a concrete instance of `FtpServerExternalConfigPtrInput` via:
+//
+//	        FtpServerExternalConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FtpServerExternalConfigPtrInput interface {
+	pulumi.Input
+
+	ToFtpServerExternalConfigPtrOutput() FtpServerExternalConfigPtrOutput
+	ToFtpServerExternalConfigPtrOutputWithContext(context.Context) FtpServerExternalConfigPtrOutput
+}
+
+type ftpServerExternalConfigPtrType FtpServerExternalConfigArgs
+
+func FtpServerExternalConfigPtr(v *FtpServerExternalConfigArgs) FtpServerExternalConfigPtrInput {
+	return (*ftpServerExternalConfigPtrType)(v)
+}
+
+func (*ftpServerExternalConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FtpServerExternalConfig)(nil)).Elem()
+}
+
+func (i *ftpServerExternalConfigPtrType) ToFtpServerExternalConfigPtrOutput() FtpServerExternalConfigPtrOutput {
+	return i.ToFtpServerExternalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ftpServerExternalConfigPtrType) ToFtpServerExternalConfigPtrOutputWithContext(ctx context.Context) FtpServerExternalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerExternalConfigPtrOutput)
+}
+
+type FtpServerExternalConfigOutput struct{ *pulumi.OutputState }
+
+func (FtpServerExternalConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerExternalConfig)(nil)).Elem()
+}
+
+func (o FtpServerExternalConfigOutput) ToFtpServerExternalConfigOutput() FtpServerExternalConfigOutput {
+	return o
+}
+
+func (o FtpServerExternalConfigOutput) ToFtpServerExternalConfigOutputWithContext(ctx context.Context) FtpServerExternalConfigOutput {
+	return o
+}
+
+func (o FtpServerExternalConfigOutput) ToFtpServerExternalConfigPtrOutput() FtpServerExternalConfigPtrOutput {
+	return o.ToFtpServerExternalConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FtpServerExternalConfigOutput) ToFtpServerExternalConfigPtrOutputWithContext(ctx context.Context) FtpServerExternalConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FtpServerExternalConfig) *FtpServerExternalConfig {
+		return &v
+	}).(FtpServerExternalConfigPtrOutput)
+}
+
+// A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+func (o FtpServerExternalConfigOutput) AllowedCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FtpServerExternalConfig) []string { return v.AllowedCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+type FtpServerExternalConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FtpServerExternalConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FtpServerExternalConfig)(nil)).Elem()
+}
+
+func (o FtpServerExternalConfigPtrOutput) ToFtpServerExternalConfigPtrOutput() FtpServerExternalConfigPtrOutput {
+	return o
+}
+
+func (o FtpServerExternalConfigPtrOutput) ToFtpServerExternalConfigPtrOutputWithContext(ctx context.Context) FtpServerExternalConfigPtrOutput {
+	return o
+}
+
+func (o FtpServerExternalConfigPtrOutput) Elem() FtpServerExternalConfigOutput {
+	return o.ApplyT(func(v *FtpServerExternalConfig) FtpServerExternalConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FtpServerExternalConfig
+		return ret
+	}).(FtpServerExternalConfigOutput)
+}
+
+// A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+func (o FtpServerExternalConfigPtrOutput) AllowedCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FtpServerExternalConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+type FtpServerInternalConfig struct {
+	// A list of consumer projects that are allowed to connect to this server.
+	// Structure is documented below.
+	ConsumerAcceptLists []FtpServerInternalConfigConsumerAcceptList `pulumi:"consumerAcceptLists"`
+	// A list of consumer projects that are rejected from connecting to this server.
+	// Structure is documented below.
+	ConsumerRejectLists []FtpServerInternalConfigConsumerRejectList `pulumi:"consumerRejectLists"`
+}
+
+// FtpServerInternalConfigInput is an input type that accepts FtpServerInternalConfigArgs and FtpServerInternalConfigOutput values.
+// You can construct a concrete instance of `FtpServerInternalConfigInput` via:
+//
+//	FtpServerInternalConfigArgs{...}
+type FtpServerInternalConfigInput interface {
+	pulumi.Input
+
+	ToFtpServerInternalConfigOutput() FtpServerInternalConfigOutput
+	ToFtpServerInternalConfigOutputWithContext(context.Context) FtpServerInternalConfigOutput
+}
+
+type FtpServerInternalConfigArgs struct {
+	// A list of consumer projects that are allowed to connect to this server.
+	// Structure is documented below.
+	ConsumerAcceptLists FtpServerInternalConfigConsumerAcceptListArrayInput `pulumi:"consumerAcceptLists"`
+	// A list of consumer projects that are rejected from connecting to this server.
+	// Structure is documented below.
+	ConsumerRejectLists FtpServerInternalConfigConsumerRejectListArrayInput `pulumi:"consumerRejectLists"`
+}
+
+func (FtpServerInternalConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerInternalConfig)(nil)).Elem()
+}
+
+func (i FtpServerInternalConfigArgs) ToFtpServerInternalConfigOutput() FtpServerInternalConfigOutput {
+	return i.ToFtpServerInternalConfigOutputWithContext(context.Background())
+}
+
+func (i FtpServerInternalConfigArgs) ToFtpServerInternalConfigOutputWithContext(ctx context.Context) FtpServerInternalConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerInternalConfigOutput)
+}
+
+func (i FtpServerInternalConfigArgs) ToFtpServerInternalConfigPtrOutput() FtpServerInternalConfigPtrOutput {
+	return i.ToFtpServerInternalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FtpServerInternalConfigArgs) ToFtpServerInternalConfigPtrOutputWithContext(ctx context.Context) FtpServerInternalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerInternalConfigOutput).ToFtpServerInternalConfigPtrOutputWithContext(ctx)
+}
+
+// FtpServerInternalConfigPtrInput is an input type that accepts FtpServerInternalConfigArgs, FtpServerInternalConfigPtr and FtpServerInternalConfigPtrOutput values.
+// You can construct a concrete instance of `FtpServerInternalConfigPtrInput` via:
+//
+//	        FtpServerInternalConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FtpServerInternalConfigPtrInput interface {
+	pulumi.Input
+
+	ToFtpServerInternalConfigPtrOutput() FtpServerInternalConfigPtrOutput
+	ToFtpServerInternalConfigPtrOutputWithContext(context.Context) FtpServerInternalConfigPtrOutput
+}
+
+type ftpServerInternalConfigPtrType FtpServerInternalConfigArgs
+
+func FtpServerInternalConfigPtr(v *FtpServerInternalConfigArgs) FtpServerInternalConfigPtrInput {
+	return (*ftpServerInternalConfigPtrType)(v)
+}
+
+func (*ftpServerInternalConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FtpServerInternalConfig)(nil)).Elem()
+}
+
+func (i *ftpServerInternalConfigPtrType) ToFtpServerInternalConfigPtrOutput() FtpServerInternalConfigPtrOutput {
+	return i.ToFtpServerInternalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ftpServerInternalConfigPtrType) ToFtpServerInternalConfigPtrOutputWithContext(ctx context.Context) FtpServerInternalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerInternalConfigPtrOutput)
+}
+
+type FtpServerInternalConfigOutput struct{ *pulumi.OutputState }
+
+func (FtpServerInternalConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerInternalConfig)(nil)).Elem()
+}
+
+func (o FtpServerInternalConfigOutput) ToFtpServerInternalConfigOutput() FtpServerInternalConfigOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigOutput) ToFtpServerInternalConfigOutputWithContext(ctx context.Context) FtpServerInternalConfigOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigOutput) ToFtpServerInternalConfigPtrOutput() FtpServerInternalConfigPtrOutput {
+	return o.ToFtpServerInternalConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FtpServerInternalConfigOutput) ToFtpServerInternalConfigPtrOutputWithContext(ctx context.Context) FtpServerInternalConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FtpServerInternalConfig) *FtpServerInternalConfig {
+		return &v
+	}).(FtpServerInternalConfigPtrOutput)
+}
+
+// A list of consumer projects that are allowed to connect to this server.
+// Structure is documented below.
+func (o FtpServerInternalConfigOutput) ConsumerAcceptLists() FtpServerInternalConfigConsumerAcceptListArrayOutput {
+	return o.ApplyT(func(v FtpServerInternalConfig) []FtpServerInternalConfigConsumerAcceptList {
+		return v.ConsumerAcceptLists
+	}).(FtpServerInternalConfigConsumerAcceptListArrayOutput)
+}
+
+// A list of consumer projects that are rejected from connecting to this server.
+// Structure is documented below.
+func (o FtpServerInternalConfigOutput) ConsumerRejectLists() FtpServerInternalConfigConsumerRejectListArrayOutput {
+	return o.ApplyT(func(v FtpServerInternalConfig) []FtpServerInternalConfigConsumerRejectList {
+		return v.ConsumerRejectLists
+	}).(FtpServerInternalConfigConsumerRejectListArrayOutput)
+}
+
+type FtpServerInternalConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FtpServerInternalConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FtpServerInternalConfig)(nil)).Elem()
+}
+
+func (o FtpServerInternalConfigPtrOutput) ToFtpServerInternalConfigPtrOutput() FtpServerInternalConfigPtrOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigPtrOutput) ToFtpServerInternalConfigPtrOutputWithContext(ctx context.Context) FtpServerInternalConfigPtrOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigPtrOutput) Elem() FtpServerInternalConfigOutput {
+	return o.ApplyT(func(v *FtpServerInternalConfig) FtpServerInternalConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FtpServerInternalConfig
+		return ret
+	}).(FtpServerInternalConfigOutput)
+}
+
+// A list of consumer projects that are allowed to connect to this server.
+// Structure is documented below.
+func (o FtpServerInternalConfigPtrOutput) ConsumerAcceptLists() FtpServerInternalConfigConsumerAcceptListArrayOutput {
+	return o.ApplyT(func(v *FtpServerInternalConfig) []FtpServerInternalConfigConsumerAcceptList {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerAcceptLists
+	}).(FtpServerInternalConfigConsumerAcceptListArrayOutput)
+}
+
+// A list of consumer projects that are rejected from connecting to this server.
+// Structure is documented below.
+func (o FtpServerInternalConfigPtrOutput) ConsumerRejectLists() FtpServerInternalConfigConsumerRejectListArrayOutput {
+	return o.ApplyT(func(v *FtpServerInternalConfig) []FtpServerInternalConfigConsumerRejectList {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerRejectLists
+	}).(FtpServerInternalConfigConsumerRejectListArrayOutput)
+}
+
+type FtpServerInternalConfigConsumerAcceptList struct {
+	// The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// The project that is allowed to connect, in the format `projects/{project}`.
+	Project string `pulumi:"project"`
+}
+
+// FtpServerInternalConfigConsumerAcceptListInput is an input type that accepts FtpServerInternalConfigConsumerAcceptListArgs and FtpServerInternalConfigConsumerAcceptListOutput values.
+// You can construct a concrete instance of `FtpServerInternalConfigConsumerAcceptListInput` via:
+//
+//	FtpServerInternalConfigConsumerAcceptListArgs{...}
+type FtpServerInternalConfigConsumerAcceptListInput interface {
+	pulumi.Input
+
+	ToFtpServerInternalConfigConsumerAcceptListOutput() FtpServerInternalConfigConsumerAcceptListOutput
+	ToFtpServerInternalConfigConsumerAcceptListOutputWithContext(context.Context) FtpServerInternalConfigConsumerAcceptListOutput
+}
+
+type FtpServerInternalConfigConsumerAcceptListArgs struct {
+	// The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// The project that is allowed to connect, in the format `projects/{project}`.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (FtpServerInternalConfigConsumerAcceptListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerInternalConfigConsumerAcceptList)(nil)).Elem()
+}
+
+func (i FtpServerInternalConfigConsumerAcceptListArgs) ToFtpServerInternalConfigConsumerAcceptListOutput() FtpServerInternalConfigConsumerAcceptListOutput {
+	return i.ToFtpServerInternalConfigConsumerAcceptListOutputWithContext(context.Background())
+}
+
+func (i FtpServerInternalConfigConsumerAcceptListArgs) ToFtpServerInternalConfigConsumerAcceptListOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerAcceptListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerInternalConfigConsumerAcceptListOutput)
+}
+
+// FtpServerInternalConfigConsumerAcceptListArrayInput is an input type that accepts FtpServerInternalConfigConsumerAcceptListArray and FtpServerInternalConfigConsumerAcceptListArrayOutput values.
+// You can construct a concrete instance of `FtpServerInternalConfigConsumerAcceptListArrayInput` via:
+//
+//	FtpServerInternalConfigConsumerAcceptListArray{ FtpServerInternalConfigConsumerAcceptListArgs{...} }
+type FtpServerInternalConfigConsumerAcceptListArrayInput interface {
+	pulumi.Input
+
+	ToFtpServerInternalConfigConsumerAcceptListArrayOutput() FtpServerInternalConfigConsumerAcceptListArrayOutput
+	ToFtpServerInternalConfigConsumerAcceptListArrayOutputWithContext(context.Context) FtpServerInternalConfigConsumerAcceptListArrayOutput
+}
+
+type FtpServerInternalConfigConsumerAcceptListArray []FtpServerInternalConfigConsumerAcceptListInput
+
+func (FtpServerInternalConfigConsumerAcceptListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FtpServerInternalConfigConsumerAcceptList)(nil)).Elem()
+}
+
+func (i FtpServerInternalConfigConsumerAcceptListArray) ToFtpServerInternalConfigConsumerAcceptListArrayOutput() FtpServerInternalConfigConsumerAcceptListArrayOutput {
+	return i.ToFtpServerInternalConfigConsumerAcceptListArrayOutputWithContext(context.Background())
+}
+
+func (i FtpServerInternalConfigConsumerAcceptListArray) ToFtpServerInternalConfigConsumerAcceptListArrayOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerAcceptListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerInternalConfigConsumerAcceptListArrayOutput)
+}
+
+type FtpServerInternalConfigConsumerAcceptListOutput struct{ *pulumi.OutputState }
+
+func (FtpServerInternalConfigConsumerAcceptListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerInternalConfigConsumerAcceptList)(nil)).Elem()
+}
+
+func (o FtpServerInternalConfigConsumerAcceptListOutput) ToFtpServerInternalConfigConsumerAcceptListOutput() FtpServerInternalConfigConsumerAcceptListOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigConsumerAcceptListOutput) ToFtpServerInternalConfigConsumerAcceptListOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerAcceptListOutput {
+	return o
+}
+
+// The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+func (o FtpServerInternalConfigConsumerAcceptListOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v FtpServerInternalConfigConsumerAcceptList) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// The project that is allowed to connect, in the format `projects/{project}`.
+func (o FtpServerInternalConfigConsumerAcceptListOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v FtpServerInternalConfigConsumerAcceptList) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type FtpServerInternalConfigConsumerAcceptListArrayOutput struct{ *pulumi.OutputState }
+
+func (FtpServerInternalConfigConsumerAcceptListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FtpServerInternalConfigConsumerAcceptList)(nil)).Elem()
+}
+
+func (o FtpServerInternalConfigConsumerAcceptListArrayOutput) ToFtpServerInternalConfigConsumerAcceptListArrayOutput() FtpServerInternalConfigConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigConsumerAcceptListArrayOutput) ToFtpServerInternalConfigConsumerAcceptListArrayOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigConsumerAcceptListArrayOutput) Index(i pulumi.IntInput) FtpServerInternalConfigConsumerAcceptListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FtpServerInternalConfigConsumerAcceptList {
+		return vs[0].([]FtpServerInternalConfigConsumerAcceptList)[vs[1].(int)]
+	}).(FtpServerInternalConfigConsumerAcceptListOutput)
+}
+
+type FtpServerInternalConfigConsumerRejectList struct {
+	// The project that is rejected from connecting, in the format `projects/{project}`.
+	Project string `pulumi:"project"`
+}
+
+// FtpServerInternalConfigConsumerRejectListInput is an input type that accepts FtpServerInternalConfigConsumerRejectListArgs and FtpServerInternalConfigConsumerRejectListOutput values.
+// You can construct a concrete instance of `FtpServerInternalConfigConsumerRejectListInput` via:
+//
+//	FtpServerInternalConfigConsumerRejectListArgs{...}
+type FtpServerInternalConfigConsumerRejectListInput interface {
+	pulumi.Input
+
+	ToFtpServerInternalConfigConsumerRejectListOutput() FtpServerInternalConfigConsumerRejectListOutput
+	ToFtpServerInternalConfigConsumerRejectListOutputWithContext(context.Context) FtpServerInternalConfigConsumerRejectListOutput
+}
+
+type FtpServerInternalConfigConsumerRejectListArgs struct {
+	// The project that is rejected from connecting, in the format `projects/{project}`.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (FtpServerInternalConfigConsumerRejectListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerInternalConfigConsumerRejectList)(nil)).Elem()
+}
+
+func (i FtpServerInternalConfigConsumerRejectListArgs) ToFtpServerInternalConfigConsumerRejectListOutput() FtpServerInternalConfigConsumerRejectListOutput {
+	return i.ToFtpServerInternalConfigConsumerRejectListOutputWithContext(context.Background())
+}
+
+func (i FtpServerInternalConfigConsumerRejectListArgs) ToFtpServerInternalConfigConsumerRejectListOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerRejectListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerInternalConfigConsumerRejectListOutput)
+}
+
+// FtpServerInternalConfigConsumerRejectListArrayInput is an input type that accepts FtpServerInternalConfigConsumerRejectListArray and FtpServerInternalConfigConsumerRejectListArrayOutput values.
+// You can construct a concrete instance of `FtpServerInternalConfigConsumerRejectListArrayInput` via:
+//
+//	FtpServerInternalConfigConsumerRejectListArray{ FtpServerInternalConfigConsumerRejectListArgs{...} }
+type FtpServerInternalConfigConsumerRejectListArrayInput interface {
+	pulumi.Input
+
+	ToFtpServerInternalConfigConsumerRejectListArrayOutput() FtpServerInternalConfigConsumerRejectListArrayOutput
+	ToFtpServerInternalConfigConsumerRejectListArrayOutputWithContext(context.Context) FtpServerInternalConfigConsumerRejectListArrayOutput
+}
+
+type FtpServerInternalConfigConsumerRejectListArray []FtpServerInternalConfigConsumerRejectListInput
+
+func (FtpServerInternalConfigConsumerRejectListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FtpServerInternalConfigConsumerRejectList)(nil)).Elem()
+}
+
+func (i FtpServerInternalConfigConsumerRejectListArray) ToFtpServerInternalConfigConsumerRejectListArrayOutput() FtpServerInternalConfigConsumerRejectListArrayOutput {
+	return i.ToFtpServerInternalConfigConsumerRejectListArrayOutputWithContext(context.Background())
+}
+
+func (i FtpServerInternalConfigConsumerRejectListArray) ToFtpServerInternalConfigConsumerRejectListArrayOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerRejectListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpServerInternalConfigConsumerRejectListArrayOutput)
+}
+
+type FtpServerInternalConfigConsumerRejectListOutput struct{ *pulumi.OutputState }
+
+func (FtpServerInternalConfigConsumerRejectListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpServerInternalConfigConsumerRejectList)(nil)).Elem()
+}
+
+func (o FtpServerInternalConfigConsumerRejectListOutput) ToFtpServerInternalConfigConsumerRejectListOutput() FtpServerInternalConfigConsumerRejectListOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigConsumerRejectListOutput) ToFtpServerInternalConfigConsumerRejectListOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerRejectListOutput {
+	return o
+}
+
+// The project that is rejected from connecting, in the format `projects/{project}`.
+func (o FtpServerInternalConfigConsumerRejectListOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v FtpServerInternalConfigConsumerRejectList) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type FtpServerInternalConfigConsumerRejectListArrayOutput struct{ *pulumi.OutputState }
+
+func (FtpServerInternalConfigConsumerRejectListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FtpServerInternalConfigConsumerRejectList)(nil)).Elem()
+}
+
+func (o FtpServerInternalConfigConsumerRejectListArrayOutput) ToFtpServerInternalConfigConsumerRejectListArrayOutput() FtpServerInternalConfigConsumerRejectListArrayOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigConsumerRejectListArrayOutput) ToFtpServerInternalConfigConsumerRejectListArrayOutputWithContext(ctx context.Context) FtpServerInternalConfigConsumerRejectListArrayOutput {
+	return o
+}
+
+func (o FtpServerInternalConfigConsumerRejectListArrayOutput) Index(i pulumi.IntInput) FtpServerInternalConfigConsumerRejectListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FtpServerInternalConfigConsumerRejectList {
+		return vs[0].([]FtpServerInternalConfigConsumerRejectList)[vs[1].(int)]
+	}).(FtpServerInternalConfigConsumerRejectListOutput)
+}
+
+type FtpUserStorageDirectoryMapping struct {
+	// The Cloud Storage bucket name. Omit the gs://.
+	Bucket *string `pulumi:"bucket"`
+	// The path of a folder within the bucket to set as the root directory for this directory mapping.
+	BucketPrefix *string `pulumi:"bucketPrefix"`
+	// The directory path in the virtual file system.
+	Directory *string `pulumi:"directory"`
+	// The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+	// Possible values are: `READ_ONLY`, `READ_WRITE`.
+	Permission *string `pulumi:"permission"`
+}
+
+// FtpUserStorageDirectoryMappingInput is an input type that accepts FtpUserStorageDirectoryMappingArgs and FtpUserStorageDirectoryMappingOutput values.
+// You can construct a concrete instance of `FtpUserStorageDirectoryMappingInput` via:
+//
+//	FtpUserStorageDirectoryMappingArgs{...}
+type FtpUserStorageDirectoryMappingInput interface {
+	pulumi.Input
+
+	ToFtpUserStorageDirectoryMappingOutput() FtpUserStorageDirectoryMappingOutput
+	ToFtpUserStorageDirectoryMappingOutputWithContext(context.Context) FtpUserStorageDirectoryMappingOutput
+}
+
+type FtpUserStorageDirectoryMappingArgs struct {
+	// The Cloud Storage bucket name. Omit the gs://.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// The path of a folder within the bucket to set as the root directory for this directory mapping.
+	BucketPrefix pulumi.StringPtrInput `pulumi:"bucketPrefix"`
+	// The directory path in the virtual file system.
+	Directory pulumi.StringPtrInput `pulumi:"directory"`
+	// The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+	// Possible values are: `READ_ONLY`, `READ_WRITE`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (FtpUserStorageDirectoryMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpUserStorageDirectoryMapping)(nil)).Elem()
+}
+
+func (i FtpUserStorageDirectoryMappingArgs) ToFtpUserStorageDirectoryMappingOutput() FtpUserStorageDirectoryMappingOutput {
+	return i.ToFtpUserStorageDirectoryMappingOutputWithContext(context.Background())
+}
+
+func (i FtpUserStorageDirectoryMappingArgs) ToFtpUserStorageDirectoryMappingOutputWithContext(ctx context.Context) FtpUserStorageDirectoryMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpUserStorageDirectoryMappingOutput)
+}
+
+// FtpUserStorageDirectoryMappingArrayInput is an input type that accepts FtpUserStorageDirectoryMappingArray and FtpUserStorageDirectoryMappingArrayOutput values.
+// You can construct a concrete instance of `FtpUserStorageDirectoryMappingArrayInput` via:
+//
+//	FtpUserStorageDirectoryMappingArray{ FtpUserStorageDirectoryMappingArgs{...} }
+type FtpUserStorageDirectoryMappingArrayInput interface {
+	pulumi.Input
+
+	ToFtpUserStorageDirectoryMappingArrayOutput() FtpUserStorageDirectoryMappingArrayOutput
+	ToFtpUserStorageDirectoryMappingArrayOutputWithContext(context.Context) FtpUserStorageDirectoryMappingArrayOutput
+}
+
+type FtpUserStorageDirectoryMappingArray []FtpUserStorageDirectoryMappingInput
+
+func (FtpUserStorageDirectoryMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FtpUserStorageDirectoryMapping)(nil)).Elem()
+}
+
+func (i FtpUserStorageDirectoryMappingArray) ToFtpUserStorageDirectoryMappingArrayOutput() FtpUserStorageDirectoryMappingArrayOutput {
+	return i.ToFtpUserStorageDirectoryMappingArrayOutputWithContext(context.Background())
+}
+
+func (i FtpUserStorageDirectoryMappingArray) ToFtpUserStorageDirectoryMappingArrayOutputWithContext(ctx context.Context) FtpUserStorageDirectoryMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpUserStorageDirectoryMappingArrayOutput)
+}
+
+type FtpUserStorageDirectoryMappingOutput struct{ *pulumi.OutputState }
+
+func (FtpUserStorageDirectoryMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpUserStorageDirectoryMapping)(nil)).Elem()
+}
+
+func (o FtpUserStorageDirectoryMappingOutput) ToFtpUserStorageDirectoryMappingOutput() FtpUserStorageDirectoryMappingOutput {
+	return o
+}
+
+func (o FtpUserStorageDirectoryMappingOutput) ToFtpUserStorageDirectoryMappingOutputWithContext(ctx context.Context) FtpUserStorageDirectoryMappingOutput {
+	return o
+}
+
+// The Cloud Storage bucket name. Omit the gs://.
+func (o FtpUserStorageDirectoryMappingOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FtpUserStorageDirectoryMapping) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// The path of a folder within the bucket to set as the root directory for this directory mapping.
+func (o FtpUserStorageDirectoryMappingOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FtpUserStorageDirectoryMapping) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The directory path in the virtual file system.
+func (o FtpUserStorageDirectoryMappingOutput) Directory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FtpUserStorageDirectoryMapping) *string { return v.Directory }).(pulumi.StringPtrOutput)
+}
+
+// The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+// Possible values are: `READ_ONLY`, `READ_WRITE`.
+func (o FtpUserStorageDirectoryMappingOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FtpUserStorageDirectoryMapping) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type FtpUserStorageDirectoryMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (FtpUserStorageDirectoryMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FtpUserStorageDirectoryMapping)(nil)).Elem()
+}
+
+func (o FtpUserStorageDirectoryMappingArrayOutput) ToFtpUserStorageDirectoryMappingArrayOutput() FtpUserStorageDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o FtpUserStorageDirectoryMappingArrayOutput) ToFtpUserStorageDirectoryMappingArrayOutputWithContext(ctx context.Context) FtpUserStorageDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o FtpUserStorageDirectoryMappingArrayOutput) Index(i pulumi.IntInput) FtpUserStorageDirectoryMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FtpUserStorageDirectoryMapping {
+		return vs[0].([]FtpUserStorageDirectoryMapping)[vs[1].(int)]
+	}).(FtpUserStorageDirectoryMappingOutput)
+}
+
+type FtpUserUserCredentials struct {
+	// The name of the credential.
+	CredentialName *string `pulumi:"credentialName"`
+	// The type of the credential.
+	CredentialType *string `pulumi:"credentialType"`
+	// The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+	SshPublicKeyBody *string `pulumi:"sshPublicKeyBody"`
+}
+
+// FtpUserUserCredentialsInput is an input type that accepts FtpUserUserCredentialsArgs and FtpUserUserCredentialsOutput values.
+// You can construct a concrete instance of `FtpUserUserCredentialsInput` via:
+//
+//	FtpUserUserCredentialsArgs{...}
+type FtpUserUserCredentialsInput interface {
+	pulumi.Input
+
+	ToFtpUserUserCredentialsOutput() FtpUserUserCredentialsOutput
+	ToFtpUserUserCredentialsOutputWithContext(context.Context) FtpUserUserCredentialsOutput
+}
+
+type FtpUserUserCredentialsArgs struct {
+	// The name of the credential.
+	CredentialName pulumi.StringPtrInput `pulumi:"credentialName"`
+	// The type of the credential.
+	CredentialType pulumi.StringPtrInput `pulumi:"credentialType"`
+	// The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+	SshPublicKeyBody pulumi.StringPtrInput `pulumi:"sshPublicKeyBody"`
+}
+
+func (FtpUserUserCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpUserUserCredentials)(nil)).Elem()
+}
+
+func (i FtpUserUserCredentialsArgs) ToFtpUserUserCredentialsOutput() FtpUserUserCredentialsOutput {
+	return i.ToFtpUserUserCredentialsOutputWithContext(context.Background())
+}
+
+func (i FtpUserUserCredentialsArgs) ToFtpUserUserCredentialsOutputWithContext(ctx context.Context) FtpUserUserCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpUserUserCredentialsOutput)
+}
+
+func (i FtpUserUserCredentialsArgs) ToFtpUserUserCredentialsPtrOutput() FtpUserUserCredentialsPtrOutput {
+	return i.ToFtpUserUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i FtpUserUserCredentialsArgs) ToFtpUserUserCredentialsPtrOutputWithContext(ctx context.Context) FtpUserUserCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpUserUserCredentialsOutput).ToFtpUserUserCredentialsPtrOutputWithContext(ctx)
+}
+
+// FtpUserUserCredentialsPtrInput is an input type that accepts FtpUserUserCredentialsArgs, FtpUserUserCredentialsPtr and FtpUserUserCredentialsPtrOutput values.
+// You can construct a concrete instance of `FtpUserUserCredentialsPtrInput` via:
+//
+//	        FtpUserUserCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FtpUserUserCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToFtpUserUserCredentialsPtrOutput() FtpUserUserCredentialsPtrOutput
+	ToFtpUserUserCredentialsPtrOutputWithContext(context.Context) FtpUserUserCredentialsPtrOutput
+}
+
+type ftpUserUserCredentialsPtrType FtpUserUserCredentialsArgs
+
+func FtpUserUserCredentialsPtr(v *FtpUserUserCredentialsArgs) FtpUserUserCredentialsPtrInput {
+	return (*ftpUserUserCredentialsPtrType)(v)
+}
+
+func (*ftpUserUserCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FtpUserUserCredentials)(nil)).Elem()
+}
+
+func (i *ftpUserUserCredentialsPtrType) ToFtpUserUserCredentialsPtrOutput() FtpUserUserCredentialsPtrOutput {
+	return i.ToFtpUserUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *ftpUserUserCredentialsPtrType) ToFtpUserUserCredentialsPtrOutputWithContext(ctx context.Context) FtpUserUserCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FtpUserUserCredentialsPtrOutput)
+}
+
+type FtpUserUserCredentialsOutput struct{ *pulumi.OutputState }
+
+func (FtpUserUserCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FtpUserUserCredentials)(nil)).Elem()
+}
+
+func (o FtpUserUserCredentialsOutput) ToFtpUserUserCredentialsOutput() FtpUserUserCredentialsOutput {
+	return o
+}
+
+func (o FtpUserUserCredentialsOutput) ToFtpUserUserCredentialsOutputWithContext(ctx context.Context) FtpUserUserCredentialsOutput {
+	return o
+}
+
+func (o FtpUserUserCredentialsOutput) ToFtpUserUserCredentialsPtrOutput() FtpUserUserCredentialsPtrOutput {
+	return o.ToFtpUserUserCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o FtpUserUserCredentialsOutput) ToFtpUserUserCredentialsPtrOutputWithContext(ctx context.Context) FtpUserUserCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FtpUserUserCredentials) *FtpUserUserCredentials {
+		return &v
+	}).(FtpUserUserCredentialsPtrOutput)
+}
+
+// The name of the credential.
+func (o FtpUserUserCredentialsOutput) CredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FtpUserUserCredentials) *string { return v.CredentialName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the credential.
+func (o FtpUserUserCredentialsOutput) CredentialType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FtpUserUserCredentials) *string { return v.CredentialType }).(pulumi.StringPtrOutput)
+}
+
+// The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+func (o FtpUserUserCredentialsOutput) SshPublicKeyBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FtpUserUserCredentials) *string { return v.SshPublicKeyBody }).(pulumi.StringPtrOutput)
+}
+
+type FtpUserUserCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (FtpUserUserCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FtpUserUserCredentials)(nil)).Elem()
+}
+
+func (o FtpUserUserCredentialsPtrOutput) ToFtpUserUserCredentialsPtrOutput() FtpUserUserCredentialsPtrOutput {
+	return o
+}
+
+func (o FtpUserUserCredentialsPtrOutput) ToFtpUserUserCredentialsPtrOutputWithContext(ctx context.Context) FtpUserUserCredentialsPtrOutput {
+	return o
+}
+
+func (o FtpUserUserCredentialsPtrOutput) Elem() FtpUserUserCredentialsOutput {
+	return o.ApplyT(func(v *FtpUserUserCredentials) FtpUserUserCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret FtpUserUserCredentials
+		return ret
+	}).(FtpUserUserCredentialsOutput)
+}
+
+// The name of the credential.
+func (o FtpUserUserCredentialsPtrOutput) CredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FtpUserUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the credential.
+func (o FtpUserUserCredentialsPtrOutput) CredentialType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FtpUserUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+func (o FtpUserUserCredentialsPtrOutput) SshPublicKeyBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FtpUserUserCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKeyBody
+	}).(pulumi.StringPtrOutput)
 }
 
 type InsightsDatasetConfigExcludeCloudStorageBuckets struct {
@@ -36809,6 +37619,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), ControlProjectIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerExternalConfigInput)(nil)).Elem(), FtpServerExternalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerExternalConfigPtrInput)(nil)).Elem(), FtpServerExternalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerInternalConfigInput)(nil)).Elem(), FtpServerInternalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerInternalConfigPtrInput)(nil)).Elem(), FtpServerInternalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerInternalConfigConsumerAcceptListInput)(nil)).Elem(), FtpServerInternalConfigConsumerAcceptListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerInternalConfigConsumerAcceptListArrayInput)(nil)).Elem(), FtpServerInternalConfigConsumerAcceptListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerInternalConfigConsumerRejectListInput)(nil)).Elem(), FtpServerInternalConfigConsumerRejectListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpServerInternalConfigConsumerRejectListArrayInput)(nil)).Elem(), FtpServerInternalConfigConsumerRejectListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpUserStorageDirectoryMappingInput)(nil)).Elem(), FtpUserStorageDirectoryMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpUserStorageDirectoryMappingArrayInput)(nil)).Elem(), FtpUserStorageDirectoryMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpUserUserCredentialsInput)(nil)).Elem(), FtpUserUserCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FtpUserUserCredentialsPtrInput)(nil)).Elem(), FtpUserUserCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsPtrInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs{})
@@ -37333,6 +38155,18 @@ func init() {
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigTrialConfigArrayOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamArrayOutput{})
+	pulumi.RegisterOutputType(FtpServerExternalConfigOutput{})
+	pulumi.RegisterOutputType(FtpServerExternalConfigPtrOutput{})
+	pulumi.RegisterOutputType(FtpServerInternalConfigOutput{})
+	pulumi.RegisterOutputType(FtpServerInternalConfigPtrOutput{})
+	pulumi.RegisterOutputType(FtpServerInternalConfigConsumerAcceptListOutput{})
+	pulumi.RegisterOutputType(FtpServerInternalConfigConsumerAcceptListArrayOutput{})
+	pulumi.RegisterOutputType(FtpServerInternalConfigConsumerRejectListOutput{})
+	pulumi.RegisterOutputType(FtpServerInternalConfigConsumerRejectListArrayOutput{})
+	pulumi.RegisterOutputType(FtpUserStorageDirectoryMappingOutput{})
+	pulumi.RegisterOutputType(FtpUserStorageDirectoryMappingArrayOutput{})
+	pulumi.RegisterOutputType(FtpUserUserCredentialsOutput{})
+	pulumi.RegisterOutputType(FtpUserUserCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageBucketsOutput{})
 	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput{})
 	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput{})

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -76,7 +76,7 @@ import (
 //			cloudsqlprofile, err := databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-fromprofileid"),
-//				DisplayName:         pulumi.String("my-fromprofileid_display"),
+//				DisplayName:         pulumi.String("my-fromprofileid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -104,7 +104,7 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile_destination", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-toprofileid"),
-//				DisplayName:         pulumi.String("my-toprofileid_displayname"),
+//				DisplayName:         pulumi.String("my-toprofileid-displayname"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -148,8 +148,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -189,7 +189,7 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-profileid"),
-//				DisplayName:         pulumi.String("my-profileid_display"),
+//				DisplayName:         pulumi.String("my-profileid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -226,8 +226,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -267,7 +267,7 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-profileid"),
-//				DisplayName:         pulumi.String("my-profileid_display"),
+//				DisplayName:         pulumi.String("my-profileid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -301,8 +301,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -342,7 +342,7 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-profileid"),
-//				DisplayName:         pulumi.String("my-profileid_display"),
+//				DisplayName:         pulumi.String("my-profileid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -376,7 +376,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -386,7 +386,7 @@ import (
 //			_, err := databasemigrationservice.NewConnectionProfile(ctx, "oracleprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-profileid"),
-//				DisplayName:         pulumi.String("my-profileid_display"),
+//				DisplayName:         pulumi.String("my-profileid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -414,10 +414,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -457,16 +457,16 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "alloydbprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-profileid"),
-//				DisplayName:         pulumi.String("my-profileid_display"),
+//				DisplayName:         pulumi.String("my-profileid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
-//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_69391"),
+//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_8270"),
 //					Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
 //						InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
-//							User:     pulumi.String("alloyuser_8270"),
-//							Password: pulumi.String("alloypass_41150"),
+//							User:     pulumi.String("alloyuser_41150"),
+//							Password: pulumi.String("alloypass_89313"),
 //						},
 //						VpcNetwork: _default.ID().ToIDOutput().ToStringOutput(),
 //						Labels: pulumi.StringMap{
@@ -502,9 +502,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -530,7 +530,7 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-mysql", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-cp"),
-//				DisplayName:         pulumi.String("destination-cp_display"),
+//				DisplayName:         pulumi.String("destination-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -555,9 +555,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -583,7 +583,7 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-psql", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-cp"),
-//				DisplayName:         pulumi.String("destination-cp_display"),
+//				DisplayName:         pulumi.String("destination-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -608,11 +608,11 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -678,7 +678,7 @@ import (
 //			_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-alloydb", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-cp"),
-//				DisplayName:         pulumi.String("destination-cp_display"),
+//				DisplayName:         pulumi.String("destination-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,10 +23,12 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumiverse/pulumi-time/sdk/go/time"
@@ -36,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("dci-tf-_26240"),
+//				ProjectId:      pulumi.String("dci-tf-_35711"),
 //				Name:           pulumi.String("Service Project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -153,11 +155,24 @@ import (
 //				return err
 //			}
 //			// Wait delay after enabling APIs and granting permissions
+//			devconnectApphubViewer, err := projects.NewIAMMember(ctx, "devconnect_apphub_viewer", &projects.IAMMemberArgs{
+//				Project: project.ProjectId,
+//				Role:    pulumi.String("roles/apphub.viewer"),
+//				Member: project.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:service-%v@gcp-sa-devconnect.iam.gserviceaccount.com", number), nil
+//				}).(pulumi.StringOutput),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				devconnectApi,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			waitForPropagation, err := time.NewSleep(ctx, "wait_for_propagation", &time.SleepArgs{
 //				CreateDuration: pulumi.String("120s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apphubPermissions,
 //				insightsAgent,
+//				devconnectApphubViewer,
 //				apphubApiService,
 //				containeranalysisApi,
 //				containerscanningApi,
@@ -174,7 +189,7 @@ import (
 //			}
 //			myApphubApplication, err := apphub.NewApplication(ctx, "my_apphub_application", &apphub.ApplicationArgs{
 //				Location:      pulumi.String("us-central1"),
-//				ApplicationId: pulumi.String("tf-test-example-application_35711"),
+//				ApplicationId: pulumi.String("tf-test-example-application_85072"),
 //				Scope: &apphub.ApplicationScopeArgs{
 //					Type: pulumi.String("REGIONAL"),
 //				},
@@ -198,7 +213,7 @@ import (
 //			}
 //			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config", &developerconnect.InsightsConfigArgs{
 //				Location:          pulumi.String("us-central1"),
-//				InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_85072"),
+//				InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_35762"),
 //				Project:           project.ProjectId,
 //				Annotations:       pulumi.StringMap{},
 //				Labels:            pulumi.StringMap{},
@@ -235,9 +250,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
@@ -246,7 +261,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("dci-tf-_35762"),
+//				ProjectId:      pulumi.String("dci-tf-_24469"),
 //				Name:           pulumi.String("Service Project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -384,7 +399,7 @@ import (
 //			}
 //			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config_projects", &developerconnect.InsightsConfigArgs{
 //				Location:         pulumi.String("us-central1"),
-//				InsightsConfigId: pulumi.String("tf-test-ic-projects-_24469"),
+//				InsightsConfigId: pulumi.String("tf-test-ic-projects-_79580"),
 //				Project:          project.ProjectId,
 //				Annotations:      pulumi.StringMap{},
 //				Labels:           pulumi.StringMap{},

@@ -309,7 +309,7 @@ class SupportEventSubscription(pulumi.CustomResource):
             disable_on_destroy=False)
         support_topic = gcp.pubsub.Topic("support_topic",
             project="my-project-name",
-            name="test-topic-_88722")
+            name="test-topic-_39249")
         support_publisher = gcp.pubsub.TopicIAMMember("support_publisher",
             project="my-project-name",
             topic=support_topic.id,
@@ -335,7 +335,7 @@ class SupportEventSubscription(pulumi.CustomResource):
             disable_on_destroy=False)
         support_topic2 = gcp.pubsub.Topic("support_topic_2",
             project="my-project-name",
-            name="test-topic-2-_39249")
+            name="test-topic-2-_74391")
         support_publisher2 = gcp.pubsub.TopicIAMMember("support_publisher_2",
             project="my-project-name",
             topic=support_topic2.id,
@@ -402,7 +402,7 @@ class SupportEventSubscription(pulumi.CustomResource):
             disable_on_destroy=False)
         support_topic = gcp.pubsub.Topic("support_topic",
             project="my-project-name",
-            name="test-topic-_88722")
+            name="test-topic-_39249")
         support_publisher = gcp.pubsub.TopicIAMMember("support_publisher",
             project="my-project-name",
             topic=support_topic.id,
@@ -428,7 +428,7 @@ class SupportEventSubscription(pulumi.CustomResource):
             disable_on_destroy=False)
         support_topic2 = gcp.pubsub.Topic("support_topic_2",
             project="my-project-name",
-            name="test-topic-2-_39249")
+            name="test-topic-2-_74391")
         support_publisher2 = gcp.pubsub.TopicIAMMember("support_publisher_2",
             project="my-project-name",
             topic=support_topic2.id,

@@ -68,6 +68,7 @@ export interface GetRegionalParameterResult {
     readonly policyMembers: outputs.parametermanager.GetRegionalParameterPolicyMember[];
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
+    readonly tags: {[key: string]: string};
     readonly updateTime: string;
 }
 /**

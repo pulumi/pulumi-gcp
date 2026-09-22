@@ -953,7 +953,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -982,7 +982,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -994,7 +994,7 @@ class MigrationJob(pulumi.CustomResource):
         mysqltomysql = gcp.databasemigrationservice.MigrationJob("mysqltomysql",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },
@@ -1042,7 +1042,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1071,7 +1071,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1082,7 +1082,7 @@ class MigrationJob(pulumi.CustomResource):
         psqltopsql = gcp.databasemigrationservice.MigrationJob("psqltopsql",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },
@@ -1118,7 +1118,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1147,7 +1147,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1158,7 +1158,7 @@ class MigrationJob(pulumi.CustomResource):
         psqltopsqlobjects = gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },
@@ -1178,10 +1178,8 @@ class MigrationJob(pulumi.CustomResource):
                         },
                         {
                             "object_identifier": {
-                                "type": "TABLE",
+                                "type": "DATABASE",
                                 "database": "my_other_database",
-                                "schema": "public",
-                                "table": "users",
                             },
                         },
                     ],
@@ -1215,7 +1213,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1264,7 +1262,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1278,7 +1276,7 @@ class MigrationJob(pulumi.CustomResource):
         psqltoalloydb = gcp.databasemigrationservice.MigrationJob("psqltoalloydb",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },
@@ -1397,7 +1395,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1426,7 +1424,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1438,7 +1436,7 @@ class MigrationJob(pulumi.CustomResource):
         mysqltomysql = gcp.databasemigrationservice.MigrationJob("mysqltomysql",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },
@@ -1486,7 +1484,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1515,7 +1513,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1526,7 +1524,7 @@ class MigrationJob(pulumi.CustomResource):
         psqltopsql = gcp.databasemigrationservice.MigrationJob("psqltopsql",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },
@@ -1562,7 +1560,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1591,7 +1589,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1602,7 +1600,7 @@ class MigrationJob(pulumi.CustomResource):
         psqltopsqlobjects = gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },
@@ -1622,10 +1620,8 @@ class MigrationJob(pulumi.CustomResource):
                         },
                         {
                             "object_identifier": {
-                                "type": "TABLE",
+                                "type": "DATABASE",
                                 "database": "my_other_database",
-                                "schema": "public",
-                                "table": "users",
                             },
                         },
                     ],
@@ -1659,7 +1655,7 @@ class MigrationJob(pulumi.CustomResource):
         source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
             location="us-central1",
             connection_profile_id="source-cp",
-            display_name="source-cp_display",
+            display_name="source-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1708,7 +1704,7 @@ class MigrationJob(pulumi.CustomResource):
         destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
             location="us-central1",
             connection_profile_id="destination-cp",
-            display_name="destination-cp_display",
+            display_name="destination-cp-display",
             labels={
                 "foo": "bar",
             },
@@ -1722,7 +1718,7 @@ class MigrationJob(pulumi.CustomResource):
         psqltoalloydb = gcp.databasemigrationservice.MigrationJob("psqltoalloydb",
             location="us-central1",
             migration_job_id="my-migrationid",
-            display_name="my-migrationid_display",
+            display_name="my-migrationid-display",
             labels={
                 "foo": "bar",
             },

@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -18,22 +19,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
     /**
-     * @return Optional. The Compute Engine accelerator configuration for these instances.
+     * @return The Compute Engine accelerator configuration for these instances. Structure is documented below.
      * 
      */
     private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator> accelerators;
     /**
-     * @return Optional. Disk option config settings.
+     * @return Disk option config settings. Structure is documented below.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig diskConfig;
     /**
-     * @return Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+     * @return The Compute Engine image resource used for cluster instances.
      * 
      */
     private @Nullable String image;
     /**
-     * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+     * @return Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+     * 
+     */
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
+    /**
+     * @return Output only. The list of instance names.
      * 
      */
     private @Nullable List<String> instanceNames;
@@ -43,22 +49,22 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
      */
     private @Nullable Boolean isPreemptible;
     /**
-     * @return Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+     * @return The Compute Engine machine type used for cluster instances.
      * 
      */
     private @Nullable String machineType;
     /**
-     * @return Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+     * @return Output only. The config for Compute Engine Instance Group Manager that manages this group.
      * 
      */
     private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig> managedGroupConfigs;
     /**
-     * @return Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc &gt; Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return The minimum CPU platform and architecture for the cluster.
      * 
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+     * @return The number of worker instances in the cluster.
      * 
      */
     private @Nullable Integer numInstances;
@@ -70,28 +76,35 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
 
     private WorkflowTemplatePlacementManagedClusterConfigWorkerConfig() {}
     /**
-     * @return Optional. The Compute Engine accelerator configuration for these instances.
+     * @return The Compute Engine accelerator configuration for these instances. Structure is documented below.
      * 
      */
     public List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator> accelerators() {
         return this.accelerators == null ? List.of() : this.accelerators;
     }
     /**
-     * @return Optional. Disk option config settings.
+     * @return Disk option config settings. Structure is documented below.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig> diskConfig() {
         return Optional.ofNullable(this.diskConfig);
     }
     /**
-     * @return Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+     * @return The Compute Engine image resource used for cluster instances.
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+     * @return Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+     * 
+     */
+    public Optional<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
+    }
+    /**
+     * @return Output only. The list of instance names.
      * 
      */
     public List<String> instanceNames() {
@@ -105,28 +118,28 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
         return Optional.ofNullable(this.isPreemptible);
     }
     /**
-     * @return Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+     * @return The Compute Engine machine type used for cluster instances.
      * 
      */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
     /**
-     * @return Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+     * @return Output only. The config for Compute Engine Instance Group Manager that manages this group.
      * 
      */
     public List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig> managedGroupConfigs() {
         return this.managedGroupConfigs == null ? List.of() : this.managedGroupConfigs;
     }
     /**
-     * @return Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc &gt; Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return The minimum CPU platform and architecture for the cluster.
      * 
      */
     public Optional<String> minCpuPlatform() {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+     * @return The number of worker instances in the cluster.
      * 
      */
     public Optional<Integer> numInstances() {
@@ -152,6 +165,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
         private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator> accelerators;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig diskConfig;
         private @Nullable String image;
+        private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
         private @Nullable List<String> instanceNames;
         private @Nullable Boolean isPreemptible;
         private @Nullable String machineType;
@@ -165,6 +179,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
     	      this.accelerators = defaults.accelerators;
     	      this.diskConfig = defaults.diskConfig;
     	      this.image = defaults.image;
+    	      this.instanceFlexibilityPolicy = defaults.instanceFlexibilityPolicy;
     	      this.instanceNames = defaults.instanceNames;
     	      this.isPreemptible = defaults.isPreemptible;
     	      this.machineType = defaults.machineType;
@@ -193,6 +208,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
         public Builder image(@Nullable String image) {
 
             this.image = image;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceFlexibilityPolicy(@Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy) {
+
+            this.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             return this;
         }
         @CustomType.Setter
@@ -248,6 +269,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
             _resultValue.accelerators = accelerators;
             _resultValue.diskConfig = diskConfig;
             _resultValue.image = image;
+            _resultValue.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             _resultValue.instanceNames = instanceNames;
             _resultValue.isPreemptible = isPreemptible;
             _resultValue.machineType = machineType;

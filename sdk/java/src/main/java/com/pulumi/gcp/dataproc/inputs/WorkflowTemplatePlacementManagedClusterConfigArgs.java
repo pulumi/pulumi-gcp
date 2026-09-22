@@ -135,14 +135,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     }
 
     /**
-     * The Compute Engine config settings for additional worker instances in a cluster.
+     * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     @Import(name="masterConfig")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs> masterConfig;
 
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs>> masterConfig() {
@@ -165,14 +165,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     }
 
     /**
-     * The Compute Engine config settings for additional worker instances in a cluster.
+     * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     @Import(name="secondaryWorkerConfig")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs> secondaryWorkerConfig;
 
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs>> secondaryWorkerConfig() {
@@ -240,7 +240,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     }
 
     /**
-     * The Compute Engine config settings for additional worker instances in a cluster.
+     * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      * ***
      * 
@@ -249,7 +249,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs> workerConfig;
 
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      * ***
      * 
@@ -454,7 +454,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param masterConfig The Compute Engine config settings for additional worker instances in a cluster.
+         * @param masterConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param masterConfig The Compute Engine config settings for additional worker instances in a cluster.
+         * @param masterConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param secondaryWorkerConfig The Compute Engine config settings for additional worker instances in a cluster.
+         * @param secondaryWorkerConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param secondaryWorkerConfig The Compute Engine config settings for additional worker instances in a cluster.
+         * @param secondaryWorkerConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param workerConfig The Compute Engine config settings for additional worker instances in a cluster.
+         * @param workerConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
          * ***
          * 
@@ -614,7 +614,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param workerConfig The Compute Engine config settings for additional worker instances in a cluster.
+         * @param workerConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
          * ***
          * 

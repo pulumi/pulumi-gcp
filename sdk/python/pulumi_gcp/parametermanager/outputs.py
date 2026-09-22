@@ -211,6 +211,7 @@ class GetParametersParameterResult(dict):
                  policy_members: Sequence['outputs.GetParametersParameterPolicyMemberResult'],
                  project: _builtins.str,
                  pulumi_labels: Mapping[str, _builtins.str],
+                 tags: Mapping[str, _builtins.str],
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: The time at which the parameter was created.
@@ -230,6 +231,9 @@ class GetParametersParameterResult(dict):
         :param _builtins.str project: The ID of the project.
         :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param Mapping[str, _builtins.str] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param _builtins.str update_time: The time at which the parameter was updated.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -243,6 +247,7 @@ class GetParametersParameterResult(dict):
         pulumi.set(__self__, "policy_members", policy_members)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "update_time", update_time)
 
     @_builtins.property
@@ -338,6 +343,16 @@ class GetParametersParameterResult(dict):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
@@ -441,6 +456,7 @@ class GetRegionalParametersParameterResult(dict):
                  policy_members: Sequence['outputs.GetRegionalParametersParameterPolicyMemberResult'],
                  project: _builtins.str,
                  pulumi_labels: Mapping[str, _builtins.str],
+                 tags: Mapping[str, _builtins.str],
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: The time at which the regional parameter was created.
@@ -461,6 +477,9 @@ class GetRegionalParametersParameterResult(dict):
         :param _builtins.str project: The ID of the project.
         :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param Mapping[str, _builtins.str] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param _builtins.str update_time: The time at which the regional parameter was updated.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -475,6 +494,7 @@ class GetRegionalParametersParameterResult(dict):
         pulumi.set(__self__, "policy_members", policy_members)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "update_time", update_time)
 
     @_builtins.property
@@ -578,6 +598,16 @@ class GetRegionalParametersParameterResult(dict):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,9 +31,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
@@ -123,9 +123,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
@@ -227,10 +227,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
@@ -312,7 +312,7 @@ import (
 //					Channel: pulumi.String("REGULAR"),
 //				},
 //				ResourceLabels: pulumi.StringMap{
-//					"rs_test_cluster": pulumi.String("tf-test-_89239"),
+//					"rs_test_cluster": pulumi.String("tf-test-_41898"),
 //				},
 //				Fleet: &container.ClusterFleetArgs{
 //					Project: project.Number,
@@ -331,7 +331,7 @@ import (
 //					return &versions.ReleaseChannelLatestVersion.REGULAR, nil
 //				}).(pulumi.StringPtrOutput),
 //				IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
-//					LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')"),
+//					LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_63399')"),
 //				},
 //				Stages: gkehub.RolloutSequenceStageArray{
 //					&gkehub.RolloutSequenceStageArgs{

@@ -25,9 +25,9 @@ import javax.annotation.Nullable;
  * 
  * To get more information about ReasoningEngine, see:
  * 
- * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+ * * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
  * * How-to Guides
- *     * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+ *     * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
  * 
  * ## Example Usage
  * 
@@ -477,6 +477,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecBuildSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
@@ -603,6 +604,9 @@ import javax.annotation.Nullable;
  *                 .classMethods(serializeJson(
  *                     classMethods))
  *                 .serviceAccount(serviceAccount.email())
+ *                 .buildSpec(AiReasoningEngineSpecBuildSpecArgs.builder()
+ *                     .serviceAccount(serviceAccount.email())
+ *                     .build())
  *                 .deploymentSpec(AiReasoningEngineSpecDeploymentSpecArgs.builder()
  *                     .minInstances(1)
  *                     .maxInstances(3)
@@ -697,6 +701,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs;
@@ -796,6 +802,17 @@ import javax.annotation.Nullable;
  *                                                         .id("exec-result-1")
  *                                                         .outcome("OUTCOME_OK")
  *                                                         .output("pizza")
+ *                                                         .build())
+ *                                                     .build(),
+ *                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+ *                                                     .audioTranscription(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs.builder()
+ *                                                         .speakerLabel("spk_1")
+ *                                                         .text("I like pepperoni pizza")
+ *                                                         .words(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs.builder()
+ *                                                             .startOffset("0.5s")
+ *                                                             .endOffset("1.5s")
+ *                                                             .word("pepperoni")
+ *                                                             .build())
  *                                                         .build())
  *                                                     .build())
  *                                             .build())
@@ -1029,7 +1046,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiReasoningEngine:AiReasoningEngine")
 public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
     /**
-     * (Optional, Beta)
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      * 
@@ -1038,8 +1054,7 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
     private Output<AiReasoningEngineContextSpec> contextSpec;
 
     /**
-     * @return (Optional, Beta)
-     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * @return Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      * 
      */

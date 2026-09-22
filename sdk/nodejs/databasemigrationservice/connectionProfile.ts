@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * const cloudsqlprofile = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile", {
  *     location: "us-central1",
  *     connectionProfileId: "my-fromprofileid",
- *     displayName: "my-fromprofileid_display",
+ *     displayName: "my-fromprofileid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  * const cloudsqlprofileDestination = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination", {
  *     location: "us-central1",
  *     connectionProfileId: "my-toprofileid",
- *     displayName: "my-toprofileid_displayname",
+ *     displayName: "my-toprofileid-displayname",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -132,7 +132,7 @@ import * as utilities from "../utilities";
  * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
  *     location: "us-central1",
  *     connectionProfileId: "my-profileid",
- *     displayName: "my-profileid_display",
+ *     displayName: "my-profileid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -183,7 +183,7 @@ import * as utilities from "../utilities";
  * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
  *     location: "us-central1",
  *     connectionProfileId: "my-profileid",
- *     displayName: "my-profileid_display",
+ *     displayName: "my-profileid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -231,7 +231,7 @@ import * as utilities from "../utilities";
  * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
  *     location: "us-central1",
  *     connectionProfileId: "my-profileid",
- *     displayName: "my-profileid_display",
+ *     displayName: "my-profileid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -258,7 +258,7 @@ import * as utilities from "../utilities";
  * const oracleprofile = new gcp.databasemigrationservice.ConnectionProfile("oracleprofile", {
  *     location: "us-central1",
  *     connectionProfileId: "my-profileid",
- *     displayName: "my-profileid_display",
+ *     displayName: "my-profileid-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -295,16 +295,16 @@ import * as utilities from "../utilities";
  * const alloydbprofile = new gcp.databasemigrationservice.ConnectionProfile("alloydbprofile", {
  *     location: "us-central1",
  *     connectionProfileId: "my-profileid",
- *     displayName: "my-profileid_display",
+ *     displayName: "my-profileid-display",
  *     labels: {
  *         foo: "bar",
  *     },
  *     alloydb: {
- *         clusterId: "tf-test-dbmsalloycluster_69391",
+ *         clusterId: "tf-test-dbmsalloycluster_8270",
  *         settings: {
  *             initialUser: {
- *                 user: "alloyuser_8270",
- *                 password: "alloypass_41150",
+ *                 user: "alloyuser_41150",
+ *                 password: "alloypass_89313",
  *             },
  *             vpcNetwork: _default.id,
  *             labels: {
@@ -345,7 +345,7 @@ import * as utilities from "../utilities";
  * const existing_mysql = new gcp.databasemigrationservice.ConnectionProfile("existing-mysql", {
  *     location: "us-central1",
  *     connectionProfileId: "destination-cp",
- *     displayName: "destination-cp_display",
+ *     displayName: "destination-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -375,7 +375,7 @@ import * as utilities from "../utilities";
  * const existing_psql = new gcp.databasemigrationservice.ConnectionProfile("existing-psql", {
  *     location: "us-central1",
  *     connectionProfileId: "destination-cp",
- *     displayName: "destination-cp_display",
+ *     displayName: "destination-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -429,7 +429,7 @@ import * as utilities from "../utilities";
  * const existing_alloydb = new gcp.databasemigrationservice.ConnectionProfile("existing-alloydb", {
  *     location: "us-central1",
  *     connectionProfileId: "destination-cp",
- *     displayName: "destination-cp_display",
+ *     displayName: "destination-cp-display",
  *     labels: {
  *         foo: "bar",
  *     },

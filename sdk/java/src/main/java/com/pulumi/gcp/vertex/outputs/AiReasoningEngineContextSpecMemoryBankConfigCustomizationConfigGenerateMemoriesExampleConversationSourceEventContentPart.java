@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData;
@@ -19,6 +20,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart {
+    /**
+     * @return Audio (input or output) transcription. This is only set when this Part contains audio data.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription audioTranscription;
     /**
      * @return Result of executing the ExecutableCode.
      * Structure is documented below.
@@ -73,6 +80,14 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata videoMetadata;
 
     private AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart() {}
+    /**
+     * @return Audio (input or output) transcription. This is only set when this Part contains audio data.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription> audioTranscription() {
+        return Optional.ofNullable(this.audioTranscription);
+    }
     /**
      * @return Result of executing the ExecutableCode.
      * Structure is documented below.
@@ -153,6 +168,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription audioTranscription;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult codeExecutionResult;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode executableCode;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFileData fileData;
@@ -165,6 +181,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         public Builder() {}
         public Builder(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.audioTranscription = defaults.audioTranscription;
     	      this.codeExecutionResult = defaults.codeExecutionResult;
     	      this.executableCode = defaults.executableCode;
     	      this.fileData = defaults.fileData;
@@ -176,6 +193,12 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     	      this.videoMetadata = defaults.videoMetadata;
         }
 
+        @CustomType.Setter
+        public Builder audioTranscription(@Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription audioTranscription) {
+
+            this.audioTranscription = audioTranscription;
+            return this;
+        }
         @CustomType.Setter
         public Builder codeExecutionResult(@Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult codeExecutionResult) {
 
@@ -232,6 +255,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         }
         public AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart build() {
             final var _resultValue = new AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart();
+            _resultValue.audioTranscription = audioTranscription;
             _resultValue.codeExecutionResult = codeExecutionResult;
             _resultValue.executableCode = executableCode;
             _resultValue.fileData = fileData;

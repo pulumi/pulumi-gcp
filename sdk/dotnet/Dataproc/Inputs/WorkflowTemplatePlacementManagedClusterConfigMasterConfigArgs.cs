@@ -36,6 +36,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `MasterConfig`, `WorkerConfig`, and `SecondaryWorkerConfig` (provisioning models are supported exclusively on `SecondaryWorkerConfig`). Structure is documented below.
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
+
         [Input("instanceNames")]
         private InputList<string>? _instanceNames;
 

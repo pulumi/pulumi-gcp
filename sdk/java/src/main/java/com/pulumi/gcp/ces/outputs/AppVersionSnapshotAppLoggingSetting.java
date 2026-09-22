@@ -8,6 +8,7 @@ import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLoggingSettingAudioRecord
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLoggingSettingBigqueryExportSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLoggingSettingCloudLoggingSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLoggingSettingConversationLoggingSetting;
+import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppLoggingSettingRedactionConfig;
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +44,14 @@ public final class AppVersionSnapshotAppLoggingSetting {
      * 
      */
     private @Nullable List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting> conversationLoggingSettings;
+    /**
+     * @return (Output)
+     * Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting> metricAnalysisSettings;
     /**
      * @return (Output)
      * Configuration to instruct how sensitive data should be handled.
@@ -90,6 +99,16 @@ public final class AppVersionSnapshotAppLoggingSetting {
     }
     /**
      * @return (Output)
+     * Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting> metricAnalysisSettings() {
+        return this.metricAnalysisSettings == null ? List.of() : this.metricAnalysisSettings;
+    }
+    /**
+     * @return (Output)
      * Configuration to instruct how sensitive data should be handled.
      * Structure is documented below.
      * 
@@ -111,6 +130,7 @@ public final class AppVersionSnapshotAppLoggingSetting {
         private @Nullable List<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting> bigqueryExportSettings;
         private @Nullable List<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting> cloudLoggingSettings;
         private @Nullable List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting> conversationLoggingSettings;
+        private @Nullable List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting> metricAnalysisSettings;
         private @Nullable List<AppVersionSnapshotAppLoggingSettingRedactionConfig> redactionConfigs;
         public Builder() {}
         public Builder(AppVersionSnapshotAppLoggingSetting defaults) {
@@ -119,6 +139,7 @@ public final class AppVersionSnapshotAppLoggingSetting {
     	      this.bigqueryExportSettings = defaults.bigqueryExportSettings;
     	      this.cloudLoggingSettings = defaults.cloudLoggingSettings;
     	      this.conversationLoggingSettings = defaults.conversationLoggingSettings;
+    	      this.metricAnalysisSettings = defaults.metricAnalysisSettings;
     	      this.redactionConfigs = defaults.redactionConfigs;
         }
 
@@ -159,6 +180,15 @@ public final class AppVersionSnapshotAppLoggingSetting {
             return conversationLoggingSettings(List.of(conversationLoggingSettings));
         }
         @CustomType.Setter
+        public Builder metricAnalysisSettings(@Nullable List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting> metricAnalysisSettings) {
+
+            this.metricAnalysisSettings = metricAnalysisSettings;
+            return this;
+        }
+        public Builder metricAnalysisSettings(AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting... metricAnalysisSettings) {
+            return metricAnalysisSettings(List.of(metricAnalysisSettings));
+        }
+        @CustomType.Setter
         public Builder redactionConfigs(@Nullable List<AppVersionSnapshotAppLoggingSettingRedactionConfig> redactionConfigs) {
 
             this.redactionConfigs = redactionConfigs;
@@ -173,6 +203,7 @@ public final class AppVersionSnapshotAppLoggingSetting {
             _resultValue.bigqueryExportSettings = bigqueryExportSettings;
             _resultValue.cloudLoggingSettings = cloudLoggingSettings;
             _resultValue.conversationLoggingSettings = conversationLoggingSettings;
+            _resultValue.metricAnalysisSettings = metricAnalysisSettings;
             _resultValue.redactionConfigs = redactionConfigs;
             return _resultValue;
         }

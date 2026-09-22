@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
- *             .displayName("dbms_pc")
+ *             .displayName("dbms-pc")
  *             .location("us-west1")
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
- *             .displayName("dbms_pc")
+ *             .displayName("dbms-pc")
  *             .location("us-west1")
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))

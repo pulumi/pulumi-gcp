@@ -25,6 +25,7 @@ class GeminiGcpEnablementSettingArgs:
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -46,6 +47,7 @@ class GeminiGcpEnablementSettingArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[_builtins.bool] mutations_enabled: Whether resource mutations should be enabled.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
@@ -66,6 +68,8 @@ class GeminiGcpEnablementSettingArgs:
             pulumi.set(__self__, "enable_customer_data_sharing", enable_customer_data_sharing)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if mutations_enabled is not None:
+            pulumi.set(__self__, "mutations_enabled", mutations_enabled)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if web_grounding_type is not None:
@@ -155,6 +159,18 @@ class GeminiGcpEnablementSettingArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="mutationsEnabled")
+    def mutations_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether resource mutations should be enabled.
+        """
+        return pulumi.get(self, "mutations_enabled")
+
+    @mutations_enabled.setter
+    def mutations_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "mutations_enabled", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -194,6 +210,7 @@ class _GeminiGcpEnablementSettingState:
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -220,6 +237,7 @@ class _GeminiGcpEnablementSettingState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.bool] mutations_enabled: Whether resource mutations should be enabled.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -251,6 +269,8 @@ class _GeminiGcpEnablementSettingState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if mutations_enabled is not None:
+            pulumi.set(__self__, "mutations_enabled", mutations_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -370,6 +390,18 @@ class _GeminiGcpEnablementSettingState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="mutationsEnabled")
+    def mutations_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether resource mutations should be enabled.
+        """
+        return pulumi.get(self, "mutations_enabled")
+
+    @mutations_enabled.setter
+    def mutations_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "mutations_enabled", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -448,6 +480,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -469,7 +502,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                 "my_key": "my_value",
             },
             enable_customer_data_sharing=True,
-            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
+            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE",
+            mutations_enabled=True)
         ```
 
         ## Import
@@ -507,6 +541,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.bool] mutations_enabled: Whether resource mutations should be enabled.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
@@ -538,7 +573,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                 "my_key": "my_value",
             },
             enable_customer_data_sharing=True,
-            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
+            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE",
+            mutations_enabled=True)
         ```
 
         ## Import
@@ -579,6 +615,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -600,6 +637,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["mutations_enabled"] = mutations_enabled
             __props__.__dict__["project"] = project
             __props__.__dict__["web_grounding_type"] = web_grounding_type
             __props__.__dict__["create_time"] = None
@@ -627,6 +665,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -657,6 +696,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.bool] mutations_enabled: Whether resource mutations should be enabled.
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -681,6 +721,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__.__dict__["gemini_gcp_enablement_setting_id"] = gemini_gcp_enablement_setting_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["mutations_enabled"] = mutations_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -762,6 +803,14 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="mutationsEnabled")
+    def mutations_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether resource mutations should be enabled.
+        """
+        return pulumi.get(self, "mutations_enabled")
 
     @_builtins.property
     @pulumi.getter

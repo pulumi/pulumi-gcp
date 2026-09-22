@@ -14831,7 +14831,7 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     name_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+    Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
     """
     network_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigArgsDict']]]
     """
@@ -14922,7 +14922,7 @@ class ClusterNodePoolArgs:
                location.
                
                ***
-        :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        :param pulumi.Input[_builtins.str] name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         :param pulumi.Input['ClusterNodePoolNodeConfigArgs'] node_config: The node configuration of the pool. Structure is documented below.
@@ -15104,7 +15104,7 @@ class ClusterNodePoolArgs:
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         """
         return pulumi.get(self, "name_prefix")
 

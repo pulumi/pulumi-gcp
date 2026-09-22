@@ -9,9 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Hive Catalogs in Biglake Metastore
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about HiveCatalog, see:
  * * How-to Guides
  *     * [QUICKSTART_TITLE](https://docs.cloud.google.com/lakehouse/docs/about-spark-hive-metastore)
@@ -64,14 +61,14 @@ import * as utilities from "../utilities";
  *
  * HiveCatalog can be imported using any of these accepted formats:
  *
- * * `hive/v1beta/projects/{{project}}/catalogs/{{name}}`
+ * * `hive/v1/projects/{{project}}/catalogs/{{name}}`
  * * `{{project}}/{{name}}`
  * * `{{name}}`
  *
  * When using the `pulumi import` command, HiveCatalog can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default hive/v1beta/projects/{{project}}/catalogs/{{name}}
+ * $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default hive/v1/projects/{{project}}/catalogs/{{name}}
  * $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default {{project}}/{{name}}
  * $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default {{name}}
  * ```

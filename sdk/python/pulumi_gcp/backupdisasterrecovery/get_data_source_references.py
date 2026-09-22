@@ -27,7 +27,7 @@ class GetDataSourceReferencesResult:
     """
     A collection of values returned by getDataSourceReferences.
     """
-    def __init__(__self__, data_source_references=None, id=None, location=None, project=None, resource_type=None):
+    def __init__(__self__, data_source_references=None, id=None, location=None, project=None):
         if data_source_references and not isinstance(data_source_references, list):
             raise TypeError("Expected argument 'data_source_references' to be a list")
         pulumi.set(__self__, "data_source_references", data_source_references)
@@ -40,9 +40,6 @@ class GetDataSourceReferencesResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if resource_type and not isinstance(resource_type, str):
-            raise TypeError("Expected argument 'resource_type' to be a str")
-        pulumi.set(__self__, "resource_type", resource_type)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceReferences")
@@ -67,12 +64,6 @@ class GetDataSourceReferencesResult:
     def project(self) -> _builtins.str:
         return pulumi.get(self, "project")
 
-    @_builtins.property
-    @pulumi.getter(name="resourceType")
-    @_utilities.deprecated("""`resource_type` is deprecated and will be removed in a future major release.""")
-    def resource_type(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "resource_type")
-
 
 class AwaitableGetDataSourceReferencesResult(GetDataSourceReferencesResult):
     # pylint: disable=using-constant-test
@@ -83,25 +74,21 @@ class AwaitableGetDataSourceReferencesResult(GetDataSourceReferencesResult):
             data_source_references=self.data_source_references,
             id=self.id,
             location=self.location,
-            project=self.project,
-            resource_type=self.resource_type)
+            project=self.project)
 
 
 def get_data_source_references(location: Optional[_builtins.str] = None,
                                project: Optional[_builtins.str] = None,
-                               resource_type: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataSourceReferencesResult:
     """
     A list of Backup and DR data source references.
 
 
     :param _builtins.str project: - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-    :param _builtins.str resource_type: The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
     """
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    __args__['resourceType'] = resource_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences', __args__, opts=opts, typ=GetDataSourceReferencesResult).value
 
@@ -109,28 +96,23 @@ def get_data_source_references(location: Optional[_builtins.str] = None,
         data_source_references=pulumi.get(__ret__, 'data_source_references'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
-        project=pulumi.get(__ret__, 'project'),
-        resource_type=pulumi.get(__ret__, 'resource_type'))
+        project=pulumi.get(__ret__, 'project'))
 def get_data_source_references_output(location: pulumi.Input[Optional[_builtins.str]] = None,
                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                      resource_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourceReferencesResult]:
     """
     A list of Backup and DR data source references.
 
 
     :param _builtins.str project: - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-    :param _builtins.str resource_type: The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
     """
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    __args__['resourceType'] = resource_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences', __args__, opts=opts, typ=GetDataSourceReferencesResult)
     return __ret__.apply(lambda __response__: GetDataSourceReferencesResult(
         data_source_references=pulumi.get(__response__, 'data_source_references'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
-        project=pulumi.get(__response__, 'project'),
-        resource_type=pulumi.get(__response__, 'resource_type')))
+        project=pulumi.get(__response__, 'project')))

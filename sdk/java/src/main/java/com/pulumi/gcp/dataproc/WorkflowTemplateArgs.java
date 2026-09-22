@@ -160,14 +160,14 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Required) WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information. Structure is documented below.
      * 
      */
     @Import(name="placement", required=true)
     private Output<WorkflowTemplatePlacementArgs> placement;
 
     /**
-     * @return (Required) WorkflowTemplate scheduling information.
+     * @return (Required) WorkflowTemplate scheduling information. Structure is documented below.
      * 
      */
     public Output<WorkflowTemplatePlacementArgs> placement() {
@@ -451,7 +451,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param placement (Required) WorkflowTemplate scheduling information.
+         * @param placement (Required) WorkflowTemplate scheduling information. Structure is documented below.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param placement (Required) WorkflowTemplate scheduling information.
+         * @param placement (Required) WorkflowTemplate scheduling information. Structure is documented below.
          * 
          * @return builder
          * 

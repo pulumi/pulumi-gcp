@@ -1341,6 +1341,11 @@ __all__ = [
     'GetServiceAttachmentConsumerAcceptListResult',
     'GetServiceAttachmentPscServiceAttachmentIdResult',
     'GetServiceAttachmentTunnelingConfigResult',
+    'GetServiceAttachmentsServiceAttachmentResult',
+    'GetServiceAttachmentsServiceAttachmentConnectedEndpointResult',
+    'GetServiceAttachmentsServiceAttachmentConsumerAcceptListResult',
+    'GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdResult',
+    'GetServiceAttachmentsServiceAttachmentTunnelingConfigResult',
     'GetSnapshotParamResult',
     'GetSnapshotSnapshotEncryptionKeyResult',
     'GetSnapshotSourceDiskEncryptionKeyResult',
@@ -12384,6 +12389,8 @@ class InstanceAdvancedMachineFeatures(dict):
         :param _builtins.bool enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
         :param _builtins.bool enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param _builtins.str performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param _builtins.str turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param _builtins.int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -12422,6 +12429,8 @@ class InstanceAdvancedMachineFeatures(dict):
     def performance_monitoring_unit(self) -> Optional[_builtins.str]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -21199,6 +21208,8 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
         :param _builtins.bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param _builtins.bool enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param _builtins.str performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param _builtins.str turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param _builtins.int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -21237,6 +21248,8 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
     def performance_monitoring_unit(self) -> Optional[_builtins.str]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -24452,14 +24465,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility(dict):
 @pulumi.output_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
     def __init__(__self__, *,
-                 attachment: Optional[Sequence[_builtins.str]] = None,
                  attachments: Optional[Sequence[_builtins.str]] = None,
                  zone: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] attachment: (Output, Deprecated)
-               URLs of Attachments in the given zone, to the given
-               region, on Interconnects in the given facility and metro. Every
-               Attachment in the AG has such an entry.
         :param Sequence[_builtins.str] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -24471,24 +24479,10 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
-        if attachment is not None:
-            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-    def attachment(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (Output, Deprecated)
-        URLs of Attachments in the given zone, to the given
-        region, on Interconnects in the given facility and metro. Every
-        Attachment in the AG has such an entry.
-        """
-        return pulumi.get(self, "attachment")
 
     @_builtins.property
     @pulumi.getter
@@ -37179,6 +37173,8 @@ class RegionInstanceTemplateAdvancedMachineFeatures(dict):
         :param _builtins.bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param _builtins.bool enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param _builtins.str performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param _builtins.str turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param _builtins.int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -37217,6 +37213,8 @@ class RegionInstanceTemplateAdvancedMachineFeatures(dict):
     def performance_monitoring_unit(self) -> Optional[_builtins.str]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -81220,6 +81218,7 @@ class GetInterconnectLocationsLocationResult(dict):
 class GetMachineTypesMachineTypeResult(dict):
     def __init__(__self__, *,
                  accelerators: Sequence['outputs.GetMachineTypesMachineTypeAcceleratorResult'],
+                 architecture: _builtins.str,
                  bundled_local_ssds: Sequence['outputs.GetMachineTypesMachineTypeBundledLocalSsdResult'],
                  deprecateds: Sequence['outputs.GetMachineTypesMachineTypeDeprecatedResult'],
                  description: _builtins.str,
@@ -81232,6 +81231,7 @@ class GetMachineTypesMachineTypeResult(dict):
                  self_link: _builtins.str):
         """
         :param Sequence['GetMachineTypesMachineTypeAcceleratorArgs'] accelerators: A list of accelerator configurations assigned to this machine type. Structure is documented below.
+        :param _builtins.str architecture: The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
         :param Sequence['GetMachineTypesMachineTypeBundledLocalSsdArgs'] bundled_local_ssds: (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
         :param Sequence['GetMachineTypesMachineTypeDeprecatedArgs'] deprecateds: The deprecation status associated with this machine type. Structure is documented below.
         :param _builtins.str description: A textual description of the machine type.
@@ -81244,6 +81244,7 @@ class GetMachineTypesMachineTypeResult(dict):
         :param _builtins.str self_link: The server-defined URL for the machine type.
         """
         pulumi.set(__self__, "accelerators", accelerators)
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "bundled_local_ssds", bundled_local_ssds)
         pulumi.set(__self__, "deprecateds", deprecateds)
         pulumi.set(__self__, "description", description)
@@ -81262,6 +81263,14 @@ class GetMachineTypesMachineTypeResult(dict):
         A list of accelerator configurations assigned to this machine type. Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> _builtins.str:
+        """
+        The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+        """
+        return pulumi.get(self, "architecture")
 
     @_builtins.property
     @pulumi.getter(name="bundledLocalSsds")
@@ -92792,6 +92801,492 @@ class GetServiceAttachmentPscServiceAttachmentIdResult(dict):
 
 @pulumi.output_type
 class GetServiceAttachmentTunnelingConfigResult(dict):
+    def __init__(__self__, *,
+                 encapsulation_profile: _builtins.str,
+                 routing_mode: _builtins.str):
+        """
+        :param _builtins.str encapsulation_profile: The encapsulation profile for tunneling traffic.
+        :param _builtins.str routing_mode: The routing mode for tunneling traffic.
+        """
+        pulumi.set(__self__, "encapsulation_profile", encapsulation_profile)
+        pulumi.set(__self__, "routing_mode", routing_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="encapsulationProfile")
+    def encapsulation_profile(self) -> _builtins.str:
+        """
+        The encapsulation profile for tunneling traffic.
+        """
+        return pulumi.get(self, "encapsulation_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> _builtins.str:
+        """
+        The routing mode for tunneling traffic.
+        """
+        return pulumi.get(self, "routing_mode")
+
+
+@pulumi.output_type
+class GetServiceAttachmentsServiceAttachmentResult(dict):
+    def __init__(__self__, *,
+                 connected_endpoints: Sequence['outputs.GetServiceAttachmentsServiceAttachmentConnectedEndpointResult'],
+                 connection_preference: _builtins.str,
+                 consumer_accept_lists: Sequence['outputs.GetServiceAttachmentsServiceAttachmentConsumerAcceptListResult'],
+                 consumer_reject_lists: Sequence[_builtins.str],
+                 deletion_policy: _builtins.str,
+                 description: _builtins.str,
+                 domain_names: Sequence[_builtins.str],
+                 enable_proxy_protocol: _builtins.bool,
+                 fingerprint: _builtins.str,
+                 name: _builtins.str,
+                 nat_subnets: Sequence[_builtins.str],
+                 project: _builtins.str,
+                 propagated_connection_limit: _builtins.int,
+                 psc_service_attachment_ids: Sequence['outputs.GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdResult'],
+                 reconcile_connections: _builtins.bool,
+                 region: _builtins.str,
+                 self_link: _builtins.str,
+                 send_propagated_connection_limit_if_zero: _builtins.bool,
+                 show_nat_ips: _builtins.bool,
+                 target_service: _builtins.str,
+                 tunneling_configs: Sequence['outputs.GetServiceAttachmentsServiceAttachmentTunnelingConfigResult']):
+        """
+        :param Sequence['GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs'] connected_endpoints: An array of the consumer forwarding rules connected to this service
+               attachment.
+        :param _builtins.str connection_preference: The connection preference of the service attachment.
+               Possible values are `ACCEPT_AUTOMATIC` and `ACCEPT_MANUAL`.
+        :param Sequence['GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs'] consumer_accept_lists: An array of projects that are allowed to connect to this service
+               attachment.
+        :param Sequence[_builtins.str] consumer_reject_lists: An array of projects that are not allowed to connect to this service
+               attachment.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+        :param _builtins.str description: An optional description of the service attachment.
+        :param Sequence[_builtins.str] domain_names: A list of domain names for the service attachment.
+        :param _builtins.bool enable_proxy_protocol: Whether the proxy protocol is enabled on the service attachment.
+        :param _builtins.str fingerprint: The fingerprint of the service attachment.
+        :param _builtins.str name: The name of the service attachment.
+        :param Sequence[_builtins.str] nat_subnets: A list of URLs of subnetworks used for NAT in this service attachment.
+        :param _builtins.str project: The project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param _builtins.int propagated_connection_limit: The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+               This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+               
+               If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+               If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+               
+               If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set 'send_propagated_connection_limit_if_zero = true'.
+        :param Sequence['GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs'] psc_service_attachment_ids: An 128-bit global unique ID of the PSC service attachment.
+        :param _builtins.bool reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+               
+               If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+               If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+        :param _builtins.str region: The region in which the resource belongs.
+               If it is not provided, the provider region is used.
+        :param _builtins.str self_link: The URI of the service attachment.
+        :param _builtins.bool send_propagated_connection_limit_if_zero: Controls the behavior of propagated_connection_limit.
+               When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+               When true, the provider will set propagated_connection_limit to zero.
+               Defaults to false.
+        :param _builtins.bool show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
+               Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+               [If true, show NAT IPs of all connected endpoints.]
+        :param _builtins.str target_service: The URL of the forwarding rule that represents the service identified
+               by this service attachment.
+        :param Sequence['GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs'] tunneling_configs: Tunneling configuration for this service attachment.
+        """
+        pulumi.set(__self__, "connected_endpoints", connected_endpoints)
+        pulumi.set(__self__, "connection_preference", connection_preference)
+        pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
+        pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain_names", domain_names)
+        pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nat_subnets", nat_subnets)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "propagated_connection_limit", propagated_connection_limit)
+        pulumi.set(__self__, "psc_service_attachment_ids", psc_service_attachment_ids)
+        pulumi.set(__self__, "reconcile_connections", reconcile_connections)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
+        pulumi.set(__self__, "show_nat_ips", show_nat_ips)
+        pulumi.set(__self__, "target_service", target_service)
+        pulumi.set(__self__, "tunneling_configs", tunneling_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="connectedEndpoints")
+    def connected_endpoints(self) -> Sequence['outputs.GetServiceAttachmentsServiceAttachmentConnectedEndpointResult']:
+        """
+        An array of the consumer forwarding rules connected to this service
+        attachment.
+        """
+        return pulumi.get(self, "connected_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionPreference")
+    def connection_preference(self) -> _builtins.str:
+        """
+        The connection preference of the service attachment.
+        Possible values are `ACCEPT_AUTOMATIC` and `ACCEPT_MANUAL`.
+        """
+        return pulumi.get(self, "connection_preference")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerAcceptLists")
+    def consumer_accept_lists(self) -> Sequence['outputs.GetServiceAttachmentsServiceAttachmentConsumerAcceptListResult']:
+        """
+        An array of projects that are allowed to connect to this service
+        attachment.
+        """
+        return pulumi.get(self, "consumer_accept_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerRejectLists")
+    def consumer_reject_lists(self) -> Sequence[_builtins.str]:
+        """
+        An array of projects that are not allowed to connect to this service
+        attachment.
+        """
+        return pulumi.get(self, "consumer_reject_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        An optional description of the service attachment.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Sequence[_builtins.str]:
+        """
+        A list of domain names for the service attachment.
+        """
+        return pulumi.get(self, "domain_names")
+
+    @_builtins.property
+    @pulumi.getter(name="enableProxyProtocol")
+    def enable_proxy_protocol(self) -> _builtins.bool:
+        """
+        Whether the proxy protocol is enabled on the service attachment.
+        """
+        return pulumi.get(self, "enable_proxy_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> _builtins.str:
+        """
+        The fingerprint of the service attachment.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the service attachment.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="natSubnets")
+    def nat_subnets(self) -> Sequence[_builtins.str]:
+        """
+        A list of URLs of subnetworks used for NAT in this service attachment.
+        """
+        return pulumi.get(self, "nat_subnets")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        The project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="propagatedConnectionLimit")
+    def propagated_connection_limit(self) -> _builtins.int:
+        """
+        The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+        This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+
+        If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+        If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+
+        If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set 'send_propagated_connection_limit_if_zero = true'.
+        """
+        return pulumi.get(self, "propagated_connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="pscServiceAttachmentIds")
+    def psc_service_attachment_ids(self) -> Sequence['outputs.GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdResult']:
+        """
+        An 128-bit global unique ID of the PSC service attachment.
+        """
+        return pulumi.get(self, "psc_service_attachment_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="reconcileConnections")
+    def reconcile_connections(self) -> _builtins.bool:
+        """
+        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+
+        If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+        If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+        """
+        return pulumi.get(self, "reconcile_connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region in which the resource belongs.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> _builtins.str:
+        """
+        The URI of the service attachment.
+        """
+        return pulumi.get(self, "self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="sendPropagatedConnectionLimitIfZero")
+    def send_propagated_connection_limit_if_zero(self) -> _builtins.bool:
+        """
+        Controls the behavior of propagated_connection_limit.
+        When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+        When true, the provider will set propagated_connection_limit to zero.
+        Defaults to false.
+        """
+        return pulumi.get(self, "send_propagated_connection_limit_if_zero")
+
+    @_builtins.property
+    @pulumi.getter(name="showNatIps")
+    def show_nat_ips(self) -> _builtins.bool:
+        """
+        NOTE: This field is temporarily non-functional due to an underlying API issue.
+        Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        [If true, show NAT IPs of all connected endpoints.]
+        """
+        return pulumi.get(self, "show_nat_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="targetService")
+    def target_service(self) -> _builtins.str:
+        """
+        The URL of the forwarding rule that represents the service identified
+        by this service attachment.
+        """
+        return pulumi.get(self, "target_service")
+
+    @_builtins.property
+    @pulumi.getter(name="tunnelingConfigs")
+    def tunneling_configs(self) -> Sequence['outputs.GetServiceAttachmentsServiceAttachmentTunnelingConfigResult']:
+        """
+        Tunneling configuration for this service attachment.
+        """
+        return pulumi.get(self, "tunneling_configs")
+
+
+@pulumi.output_type
+class GetServiceAttachmentsServiceAttachmentConnectedEndpointResult(dict):
+    def __init__(__self__, *,
+                 consumer_network: _builtins.str,
+                 endpoint: _builtins.str,
+                 nat_ips: Sequence[_builtins.str],
+                 propagated_connection_count: _builtins.int,
+                 psc_connection_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str consumer_network: The url of the consumer network.
+        :param _builtins.str endpoint: The URL of the consumer forwarding rule.
+        :param Sequence[_builtins.str] nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
+               Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+               'The nat IPs of the connected endpoint.'
+        :param _builtins.int propagated_connection_count: The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+        :param _builtins.str psc_connection_id: The PSC connection id of the connected endpoint.
+        :param _builtins.str status: The status of the connection from the consumer forwarding rule to
+               this service attachment.
+        """
+        pulumi.set(__self__, "consumer_network", consumer_network)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "nat_ips", nat_ips)
+        pulumi.set(__self__, "propagated_connection_count", propagated_connection_count)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerNetwork")
+    def consumer_network(self) -> _builtins.str:
+        """
+        The url of the consumer network.
+        """
+        return pulumi.get(self, "consumer_network")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        The URL of the consumer forwarding rule.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> Sequence[_builtins.str]:
+        """
+        NOTE: This field is temporarily non-functional due to an underlying API issue.
+        Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        'The nat IPs of the connected endpoint.'
+        """
+        return pulumi.get(self, "nat_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="propagatedConnectionCount")
+    def propagated_connection_count(self) -> _builtins.int:
+        """
+        The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+        """
+        return pulumi.get(self, "propagated_connection_count")
+
+    @_builtins.property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> _builtins.str:
+        """
+        The PSC connection id of the connected endpoint.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the connection from the consumer forwarding rule to
+        this service attachment.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetServiceAttachmentsServiceAttachmentConsumerAcceptListResult(dict):
+    def __init__(__self__, *,
+                 connection_limit: _builtins.int,
+                 endpoint_url: _builtins.str,
+                 network_url: _builtins.str,
+                 project_id_or_num: _builtins.str):
+        """
+        :param _builtins.int connection_limit: The number of consumer forwarding rules the consumer project can
+               create.
+        :param _builtins.str endpoint_url: The endpoint that is allowed to connect to this service attachment.
+               Only one of project_id_or_num, network_url and endpoint_url may be set.
+        :param _builtins.str network_url: The network that is allowed to connect to this service attachment.
+               Only one of project_id_or_num and network_url may be set.
+        :param _builtins.str project_id_or_num: A project that is allowed to connect to this service attachment.
+               Only one of project_id_or_num and network_url may be set.
+        """
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "endpoint_url", endpoint_url)
+        pulumi.set(__self__, "network_url", network_url)
+        pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> _builtins.int:
+        """
+        The number of consumer forwarding rules the consumer project can
+        create.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointUrl")
+    def endpoint_url(self) -> _builtins.str:
+        """
+        The endpoint that is allowed to connect to this service attachment.
+        Only one of project_id_or_num, network_url and endpoint_url may be set.
+        """
+        return pulumi.get(self, "endpoint_url")
+
+    @_builtins.property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> _builtins.str:
+        """
+        The network that is allowed to connect to this service attachment.
+        Only one of project_id_or_num and network_url may be set.
+        """
+        return pulumi.get(self, "network_url")
+
+    @_builtins.property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> _builtins.str:
+        """
+        A project that is allowed to connect to this service attachment.
+        Only one of project_id_or_num and network_url may be set.
+        """
+        return pulumi.get(self, "project_id_or_num")
+
+
+@pulumi.output_type
+class GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdResult(dict):
+    def __init__(__self__, *,
+                 high: _builtins.str,
+                 low: _builtins.str):
+        """
+        :param _builtins.str high: The high 64 bits of the PSC service attachment ID.
+        :param _builtins.str low: The low 64 bits of the PSC service attachment ID.
+        """
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+
+    @_builtins.property
+    @pulumi.getter
+    def high(self) -> _builtins.str:
+        """
+        The high 64 bits of the PSC service attachment ID.
+        """
+        return pulumi.get(self, "high")
+
+    @_builtins.property
+    @pulumi.getter
+    def low(self) -> _builtins.str:
+        """
+        The low 64 bits of the PSC service attachment ID.
+        """
+        return pulumi.get(self, "low")
+
+
+@pulumi.output_type
+class GetServiceAttachmentsServiceAttachmentTunnelingConfigResult(dict):
     def __init__(__self__, *,
                  encapsulation_profile: _builtins.str,
                  routing_mode: _builtins.str):

@@ -5,8 +5,10 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,6 +20,24 @@ public final class AppVersionSnapshotAppEvaluationMetricsThreshold {
      * 
      */
     private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold> goldenEvaluationMetricsThresholds;
+    /**
+     * @return (Output)
+     * The hallucination metric behavior for golden evaluations.
+     * Possible values:
+     * DISABLED
+     * ENABLED
+     * 
+     */
+    private @Nullable String goldenHallucinationMetricBehavior;
+    /**
+     * @return (Output)
+     * The hallucination metric behavior for scenario evaluations.
+     * Possible values:
+     * DISABLED
+     * ENABLED
+     * 
+     */
+    private @Nullable String scenarioHallucinationMetricBehavior;
 
     private AppVersionSnapshotAppEvaluationMetricsThreshold() {}
     /**
@@ -28,6 +48,28 @@ public final class AppVersionSnapshotAppEvaluationMetricsThreshold {
      */
     public List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold> goldenEvaluationMetricsThresholds() {
         return this.goldenEvaluationMetricsThresholds == null ? List.of() : this.goldenEvaluationMetricsThresholds;
+    }
+    /**
+     * @return (Output)
+     * The hallucination metric behavior for golden evaluations.
+     * Possible values:
+     * DISABLED
+     * ENABLED
+     * 
+     */
+    public Optional<String> goldenHallucinationMetricBehavior() {
+        return Optional.ofNullable(this.goldenHallucinationMetricBehavior);
+    }
+    /**
+     * @return (Output)
+     * The hallucination metric behavior for scenario evaluations.
+     * Possible values:
+     * DISABLED
+     * ENABLED
+     * 
+     */
+    public Optional<String> scenarioHallucinationMetricBehavior() {
+        return Optional.ofNullable(this.scenarioHallucinationMetricBehavior);
     }
 
     public static Builder builder() {
@@ -40,10 +82,14 @@ public final class AppVersionSnapshotAppEvaluationMetricsThreshold {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold> goldenEvaluationMetricsThresholds;
+        private @Nullable String goldenHallucinationMetricBehavior;
+        private @Nullable String scenarioHallucinationMetricBehavior;
         public Builder() {}
         public Builder(AppVersionSnapshotAppEvaluationMetricsThreshold defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.goldenEvaluationMetricsThresholds = defaults.goldenEvaluationMetricsThresholds;
+    	      this.goldenHallucinationMetricBehavior = defaults.goldenHallucinationMetricBehavior;
+    	      this.scenarioHallucinationMetricBehavior = defaults.scenarioHallucinationMetricBehavior;
         }
 
         @CustomType.Setter
@@ -55,9 +101,23 @@ public final class AppVersionSnapshotAppEvaluationMetricsThreshold {
         public Builder goldenEvaluationMetricsThresholds(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold... goldenEvaluationMetricsThresholds) {
             return goldenEvaluationMetricsThresholds(List.of(goldenEvaluationMetricsThresholds));
         }
+        @CustomType.Setter
+        public Builder goldenHallucinationMetricBehavior(@Nullable String goldenHallucinationMetricBehavior) {
+
+            this.goldenHallucinationMetricBehavior = goldenHallucinationMetricBehavior;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scenarioHallucinationMetricBehavior(@Nullable String scenarioHallucinationMetricBehavior) {
+
+            this.scenarioHallucinationMetricBehavior = scenarioHallucinationMetricBehavior;
+            return this;
+        }
         public AppVersionSnapshotAppEvaluationMetricsThreshold build() {
             final var _resultValue = new AppVersionSnapshotAppEvaluationMetricsThreshold();
             _resultValue.goldenEvaluationMetricsThresholds = goldenEvaluationMetricsThresholds;
+            _resultValue.goldenHallucinationMetricBehavior = goldenHallucinationMetricBehavior;
+            _resultValue.scenarioHallucinationMetricBehavior = scenarioHallucinationMetricBehavior;
             return _resultValue;
         }
     }

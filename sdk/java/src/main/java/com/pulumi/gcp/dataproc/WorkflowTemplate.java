@@ -223,6 +223,88 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Dataproc Workflow Template Instance Flexibility Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.WorkflowTemplate;
+ * import com.pulumi.gcp.dataproc.WorkflowTemplateArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var template = new WorkflowTemplate("template", WorkflowTemplateArgs.builder()
+ *             .name("template-flexible-vms")
+ *             .location("us-central1")
+ *             .placement(WorkflowTemplatePlacementArgs.builder()
+ *                 .managedCluster(WorkflowTemplatePlacementManagedClusterArgs.builder()
+ *                     .clusterName("my-flexible-cluster")
+ *                     .config(WorkflowTemplatePlacementManagedClusterConfigArgs.builder()
+ *                         .softwareConfig(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs.builder()
+ *                             .imageVersion("2.0.35-debian10")
+ *                             .build())
+ *                         .masterConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs.builder()
+ *                             .numInstances(1)
+ *                             .machineType("e2-standard-2")
+ *                             .build())
+ *                         .workerConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs.builder()
+ *                             .numInstances(2)
+ *                             .instanceFlexibilityPolicy(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs.builder()
+ *                                 .instanceSelectionLists(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs.builder()
+ *                                     .machineTypes("e2-standard-2")
+ *                                     .rank(1)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .secondaryWorkerConfig(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs.builder()
+ *                             .numInstances(2)
+ *                             .instanceFlexibilityPolicy(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs.builder()
+ *                                 .instanceSelectionLists(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs.builder()
+ *                                     .machineTypes("n1-standard-2")
+ *                                     .rank(1)
+ *                                     .build())
+ *                                 .provisioningModelMix(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs.builder()
+ *                                     .standardCapacityBase(1)
+ *                                     .standardCapacityPercentAboveBase(50)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * WorkflowTemplate can be imported using any of these accepted formats:
@@ -399,14 +481,14 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parameters);
     }
     /**
-     * (Required) WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information. Structure is documented below.
      * 
      */
     @Export(name="placement", refs={WorkflowTemplatePlacement.class}, tree="[0]")
     private Output<WorkflowTemplatePlacement> placement;
 
     /**
-     * @return (Required) WorkflowTemplate scheduling information.
+     * @return (Required) WorkflowTemplate scheduling information. Structure is documented below.
      * 
      */
     public Output<WorkflowTemplatePlacement> placement() {

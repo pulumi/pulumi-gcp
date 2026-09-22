@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold;
+import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,15 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
      * 
      */
     private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold> expectationLevelMetricsThresholds;
+    /**
+     * @return (Output)
+     * The tool matching settings. An extra tool call is a tool call that is
+     * present in the execution but does not match any tool call in the golden
+     * expectation.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting> toolMatchingSettings;
     /**
      * @return (Output)
      * Turn level metrics thresholds.
@@ -36,6 +46,17 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
      */
     public List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold> expectationLevelMetricsThresholds() {
         return this.expectationLevelMetricsThresholds == null ? List.of() : this.expectationLevelMetricsThresholds;
+    }
+    /**
+     * @return (Output)
+     * The tool matching settings. An extra tool call is a tool call that is
+     * present in the execution but does not match any tool call in the golden
+     * expectation.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting> toolMatchingSettings() {
+        return this.toolMatchingSettings == null ? List.of() : this.toolMatchingSettings;
     }
     /**
      * @return (Output)
@@ -57,11 +78,13 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold> expectationLevelMetricsThresholds;
+        private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting> toolMatchingSettings;
         private @Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold> turnLevelMetricsThresholds;
         public Builder() {}
         public Builder(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expectationLevelMetricsThresholds = defaults.expectationLevelMetricsThresholds;
+    	      this.toolMatchingSettings = defaults.toolMatchingSettings;
     	      this.turnLevelMetricsThresholds = defaults.turnLevelMetricsThresholds;
         }
 
@@ -75,6 +98,15 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
             return expectationLevelMetricsThresholds(List.of(expectationLevelMetricsThresholds));
         }
         @CustomType.Setter
+        public Builder toolMatchingSettings(@Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting> toolMatchingSettings) {
+
+            this.toolMatchingSettings = toolMatchingSettings;
+            return this;
+        }
+        public Builder toolMatchingSettings(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting... toolMatchingSettings) {
+            return toolMatchingSettings(List.of(toolMatchingSettings));
+        }
+        @CustomType.Setter
         public Builder turnLevelMetricsThresholds(@Nullable List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold> turnLevelMetricsThresholds) {
 
             this.turnLevelMetricsThresholds = turnLevelMetricsThresholds;
@@ -86,6 +118,7 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
         public AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold build() {
             final var _resultValue = new AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold();
             _resultValue.expectationLevelMetricsThresholds = expectationLevelMetricsThresholds;
+            _resultValue.toolMatchingSettings = toolMatchingSettings;
             _resultValue.turnLevelMetricsThresholds = turnLevelMetricsThresholds;
             return _resultValue;
         }

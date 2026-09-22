@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "dci-tf-_26240",
+ *     projectId: "dci-tf-_35711",
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
@@ -101,10 +101,18 @@ import * as utilities from "../utilities";
  *     dependsOn: [project],
  * });
  * // Wait delay after enabling APIs and granting permissions
+ * const devconnectApphubViewer = new gcp.projects.IAMMember("devconnect_apphub_viewer", {
+ *     project: project.projectId,
+ *     role: "roles/apphub.viewer",
+ *     member: pulumi.interpolate`serviceAccount:service-${project.number}@gcp-sa-devconnect.iam.gserviceaccount.com`,
+ * }, {
+ *     dependsOn: [devconnectApi],
+ * });
  * const waitForPropagation = new time.Sleep("wait_for_propagation", {createDuration: "120s"}, {
  *     dependsOn: [
  *         apphubPermissions,
  *         insightsAgent,
+ *         devconnectApphubViewer,
  *         apphubApiService,
  *         containeranalysisApi,
  *         containerscanningApi,
@@ -119,7 +127,7 @@ import * as utilities from "../utilities";
  * });
  * const myApphubApplication = new gcp.apphub.Application("my_apphub_application", {
  *     location: "us-central1",
- *     applicationId: "tf-test-example-application_35711",
+ *     applicationId: "tf-test-example-application_85072",
  *     scope: {
  *         type: "REGIONAL",
  *     },
@@ -129,7 +137,7 @@ import * as utilities from "../utilities";
  * });
  * const insightsConfig = new gcp.developerconnect.InsightsConfig("insights_config", {
  *     location: "us-central1",
- *     insightsConfigId: "tf-test-ic-apphub-_85072",
+ *     insightsConfigId: "tf-test-ic-apphub-_35762",
  *     project: project.projectId,
  *     annotations: {},
  *     labels: {},
@@ -163,7 +171,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "dci-tf-_35762",
+ *     projectId: "dci-tf-_24469",
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
@@ -262,7 +270,7 @@ import * as utilities from "../utilities";
  * });
  * const insightsConfigProjects = new gcp.developerconnect.InsightsConfig("insights_config_projects", {
  *     location: "us-central1",
- *     insightsConfigId: "tf-test-ic-projects-_24469",
+ *     insightsConfigId: "tf-test-ic-projects-_79580",
  *     project: project.projectId,
  *     annotations: {},
  *     labels: {},

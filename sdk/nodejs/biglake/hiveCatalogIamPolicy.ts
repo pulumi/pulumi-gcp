@@ -19,9 +19,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * ## gcp.biglake.HiveCatalogIamPolicy
  *
  * ```typescript
@@ -88,9 +85,6 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.biglake.HiveCatalogIamPolicy` **cannot** be used in conjunction with `gcp.biglake.HiveCatalogIamBinding` and `gcp.biglake.HiveCatalogIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
- *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
  *
  * ## gcp.biglake.HiveCatalogIamPolicy
  *

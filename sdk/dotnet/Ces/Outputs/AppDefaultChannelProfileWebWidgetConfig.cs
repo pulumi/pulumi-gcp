@@ -23,6 +23,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly string? Modality;
         /// <summary>
+        /// The security settings of the web widget.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettings? SecuritySettings;
+        /// <summary>
         /// The theme of the web widget.
         /// Possible values:
         /// UNKNOWN_THEME
@@ -39,11 +44,14 @@ namespace Pulumi.Gcp.Ces.Outputs
         private AppDefaultChannelProfileWebWidgetConfig(
             string? modality,
 
+            Outputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettings? securitySettings,
+
             string? theme,
 
             string? webWidgetTitle)
         {
             Modality = modality;
+            SecuritySettings = securitySettings;
             Theme = theme;
             WebWidgetTitle = webWidgetTitle;
         }

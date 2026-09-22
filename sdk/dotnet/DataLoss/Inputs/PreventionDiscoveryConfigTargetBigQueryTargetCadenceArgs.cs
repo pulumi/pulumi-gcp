@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs>? InspectTemplateModifiedCadence { get; set; }
 
         /// <summary>
+        /// Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+        /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        /// </summary>
+        [Input("refreshFrequency")]
+        public Input<string>? RefreshFrequency { get; set; }
+
+        /// <summary>
         /// Governs when to update data profiles when a schema is modified
         /// Structure is documented below.
         /// </summary>

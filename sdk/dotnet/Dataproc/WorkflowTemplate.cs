@@ -200,6 +200,85 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
+    /// ### Dataproc Workflow Template Instance Flexibility Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var template = new Gcp.Dataproc.WorkflowTemplate("template", new()
+    ///     {
+    ///         Name = "template-flexible-vms",
+    ///         Location = "us-central1",
+    ///         Placement = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementArgs
+    ///         {
+    ///             ManagedCluster = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterArgs
+    ///             {
+    ///                 ClusterName = "my-flexible-cluster",
+    ///                 Config = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigArgs
+    ///                 {
+    ///                     SoftwareConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs
+    ///                     {
+    ///                         ImageVersion = "2.0.35-debian10",
+    ///                     },
+    ///                     MasterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
+    ///                     {
+    ///                         NumInstances = 1,
+    ///                         MachineType = "e2-standard-2",
+    ///                     },
+    ///                     WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
+    ///                     {
+    ///                         NumInstances = 2,
+    ///                         InstanceFlexibilityPolicy = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs
+    ///                         {
+    ///                             InstanceSelectionLists = new[]
+    ///                             {
+    ///                                 new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs
+    ///                                 {
+    ///                                     MachineTypes = new[]
+    ///                                     {
+    ///                                         "e2-standard-2",
+    ///                                     },
+    ///                                     Rank = 1,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     SecondaryWorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs
+    ///                     {
+    ///                         NumInstances = 2,
+    ///                         InstanceFlexibilityPolicy = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs
+    ///                         {
+    ///                             InstanceSelectionLists = new[]
+    ///                             {
+    ///                                 new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs
+    ///                                 {
+    ///                                     MachineTypes = new[]
+    ///                                     {
+    ///                                         "n1-standard-2",
+    ///                                     },
+    ///                                     Rank = 1,
+    ///                                 },
+    ///                             },
+    ///                             ProvisioningModelMix = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs
+    ///                             {
+    ///                                 StandardCapacityBase = 1,
+    ///                                 StandardCapacityPercentAboveBase = 50,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WorkflowTemplate can be imported using any of these accepted formats:
@@ -288,7 +367,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableArray<Outputs.WorkflowTemplateParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// (Required) WorkflowTemplate scheduling information.
+        /// (Required) WorkflowTemplate scheduling information. Structure is documented below.
         /// </summary>
         [Output("placement")]
         public Output<Outputs.WorkflowTemplatePlacement> Placement { get; private set; } = null!;
@@ -443,7 +522,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// (Required) WorkflowTemplate scheduling information.
+        /// (Required) WorkflowTemplate scheduling information. Structure is documented below.
         /// </summary>
         [Input("placement", required: true)]
         public Input<Inputs.WorkflowTemplatePlacementArgs> Placement { get; set; } = null!;
@@ -565,7 +644,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// (Required) WorkflowTemplate scheduling information.
+        /// (Required) WorkflowTemplate scheduling information. Structure is documented below.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.WorkflowTemplatePlacementGetArgs>? Placement { get; set; }

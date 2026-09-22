@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("dci-tf-_26240")
+ *             .projectId("dci-tf-_35711")
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
@@ -161,12 +161,21 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         // Wait delay after enabling APIs and granting permissions
+ *         var devconnectApphubViewer = new IAMMember("devconnectApphubViewer", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/apphub.viewer")
+ *             .member(project.number().applyValue(_number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-devconnect.iam.gserviceaccount.com", _number)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(devconnectApi)
+ *                 .build());
+ * 
  *         var waitForPropagation = new Sleep("waitForPropagation", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     apphubPermissions,
  *                     insightsAgent,
+ *                     devconnectApphubViewer,
  *                     apphubApiService,
  *                     containeranalysisApi,
  *                     containerscanningApi,
@@ -181,7 +190,7 @@ import javax.annotation.Nullable;
  * 
  *         var myApphubApplication = new Application("myApphubApplication", ApplicationArgs.builder()
  *             .location("us-central1")
- *             .applicationId("tf-test-example-application_35711")
+ *             .applicationId("tf-test-example-application_85072")
  *             .scope(ApplicationScopeArgs.builder()
  *                 .type("REGIONAL")
  *                 .build())
@@ -192,7 +201,7 @@ import javax.annotation.Nullable;
  * 
  *         var insightsConfig = new InsightsConfig("insightsConfig", InsightsConfigArgs.builder()
  *             .location("us-central1")
- *             .insightsConfigId("tf-test-ic-apphub-_85072")
+ *             .insightsConfigId("tf-test-ic-apphub-_35762")
  *             .project(project.projectId())
  *             .annotations(Map.ofEntries(
  *             ))
@@ -261,7 +270,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("dci-tf-_35762")
+ *             .projectId("dci-tf-_24469")
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
@@ -374,7 +383,7 @@ import javax.annotation.Nullable;
  * 
  *         var insightsConfigProjects = new InsightsConfig("insightsConfigProjects", InsightsConfigArgs.builder()
  *             .location("us-central1")
- *             .insightsConfigId("tf-test-ic-projects-_24469")
+ *             .insightsConfigId("tf-test-ic-projects-_79580")
  *             .project(project.projectId())
  *             .annotations(Map.ofEntries(
  *             ))

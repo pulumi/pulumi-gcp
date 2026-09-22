@@ -388,6 +388,20 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The etag for the version of the ServicePerimeter that this request is based on.
+     * 
+     */
+    @Export(name="etag", refs={String.class}, tree="[0]")
+    private Output<String> etag;
+
+    /**
+     * @return The etag for the version of the ServicePerimeter that this request is based on.
+     * 
+     */
+    public Output<String> etag() {
+        return this.etag;
+    }
+    /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}

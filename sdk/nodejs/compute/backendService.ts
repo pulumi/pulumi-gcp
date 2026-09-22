@@ -34,15 +34,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "health-check",
- *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "backend-service",
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     healthChecks: defaultHealthCheck.id,
  * });
  * ```
  * ### Backend Service External Iap
@@ -68,15 +71,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "health-check",
- *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "backend-service",
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     healthChecks: defaultHealthCheck.id,
  *     enableCdn: true,
  *     cdnPolicy: {
  *         signedUrlCacheMaxAgeSec: 7200,
@@ -135,15 +141,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "health-check",
- *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "backend-service",
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     healthChecks: defaultHealthCheck.id,
  *     enableCdn: true,
  *     cdnPolicy: {
  *         cacheMode: "CACHE_ALL_STATIC",
@@ -161,15 +170,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "health-check",
- *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "backend-service",
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     healthChecks: defaultHealthCheck.id,
  *     enableCdn: true,
  *     cdnPolicy: {
  *         cacheMode: "CACHE_ALL_STATIC",
@@ -708,7 +720,7 @@ export class BackendService extends pulumi.CustomResource {
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
     declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
@@ -1148,7 +1160,7 @@ export interface BackendServiceState {
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
@@ -1469,7 +1481,7 @@ export interface BackendServiceArgs {
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-     * Default value is `EXTERNAL`.
+     * Default value is `EXTERNAL_MANAGED`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;

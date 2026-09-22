@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -152,7 +152,6 @@ type Provider struct {
 	MemcacheCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"memcacheCustomEndpoint"`
 	MemorystoreCustomEndpoint              pulumi.StringPtrOutput `pulumi:"memorystoreCustomEndpoint"`
 	MigrationCenterCustomEndpoint          pulumi.StringPtrOutput `pulumi:"migrationCenterCustomEndpoint"`
-	MlEngineCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"mlEngineCustomEndpoint"`
 	ModelArmorCustomEndpoint               pulumi.StringPtrOutput `pulumi:"modelArmorCustomEndpoint"`
 	ModelArmorGlobalCustomEndpoint         pulumi.StringPtrOutput `pulumi:"modelArmorGlobalCustomEndpoint"`
 	MonitoringCustomEndpoint               pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
@@ -160,9 +159,9 @@ type Provider struct {
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkConnectivityv1CustomEndpoint    pulumi.StringPtrOutput `pulumi:"networkConnectivityv1CustomEndpoint"`
 	NetworkManagementCustomEndpoint        pulumi.StringPtrOutput `pulumi:"networkManagementCustomEndpoint"`
+	NetworkManagementv1CustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkManagementv1CustomEndpoint"`
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkServicesCustomEndpoint"`
-	NotebooksCustomEndpoint                pulumi.StringPtrOutput `pulumi:"notebooksCustomEndpoint"`
 	ObservabilityCustomEndpoint            pulumi.StringPtrOutput `pulumi:"observabilityCustomEndpoint"`
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrOutput `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                pulumi.StringPtrOutput `pulumi:"orgPolicyCustomEndpoint"`
@@ -203,6 +202,7 @@ type Provider struct {
 	ServiceManagementCustomEndpoint        pulumi.StringPtrOutput `pulumi:"serviceManagementCustomEndpoint"`
 	ServiceNetworkingCustomEndpoint        pulumi.StringPtrOutput `pulumi:"serviceNetworkingCustomEndpoint"`
 	ServiceUsageCustomEndpoint             pulumi.StringPtrOutput `pulumi:"serviceUsageCustomEndpoint"`
+	ServiceUsageV2CustomEndpoint           pulumi.StringPtrOutput `pulumi:"serviceUsageV2CustomEndpoint"`
 	SiteVerificationCustomEndpoint         pulumi.StringPtrOutput `pulumi:"siteVerificationCustomEndpoint"`
 	SourceRepoCustomEndpoint               pulumi.StringPtrOutput `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"spannerCustomEndpoint"`
@@ -210,6 +210,7 @@ type Provider struct {
 	StorageBatchOperationsCustomEndpoint   pulumi.StringPtrOutput `pulumi:"storageBatchOperationsCustomEndpoint"`
 	StorageControlCustomEndpoint           pulumi.StringPtrOutput `pulumi:"storageControlCustomEndpoint"`
 	StorageCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"storageCustomEndpoint"`
+	StorageFtpCustomEndpoint               pulumi.StringPtrOutput `pulumi:"storageFtpCustomEndpoint"`
 	StorageInsightsCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageInsightsCustomEndpoint"`
 	StorageTransferCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageTransferCustomEndpoint"`
 	TagsCustomEndpoint                     pulumi.StringPtrOutput `pulumi:"tagsCustomEndpoint"`
@@ -408,7 +409,6 @@ type providerArgs struct {
 	MemcacheCustomEndpoint                 *string                      `pulumi:"memcacheCustomEndpoint"`
 	MemorystoreCustomEndpoint              *string                      `pulumi:"memorystoreCustomEndpoint"`
 	MigrationCenterCustomEndpoint          *string                      `pulumi:"migrationCenterCustomEndpoint"`
-	MlEngineCustomEndpoint                 *string                      `pulumi:"mlEngineCustomEndpoint"`
 	ModelArmorCustomEndpoint               *string                      `pulumi:"modelArmorCustomEndpoint"`
 	ModelArmorGlobalCustomEndpoint         *string                      `pulumi:"modelArmorGlobalCustomEndpoint"`
 	MonitoringCustomEndpoint               *string                      `pulumi:"monitoringCustomEndpoint"`
@@ -416,9 +416,9 @@ type providerArgs struct {
 	NetworkConnectivityCustomEndpoint      *string                      `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkConnectivityv1CustomEndpoint    *string                      `pulumi:"networkConnectivityv1CustomEndpoint"`
 	NetworkManagementCustomEndpoint        *string                      `pulumi:"networkManagementCustomEndpoint"`
+	NetworkManagementv1CustomEndpoint      *string                      `pulumi:"networkManagementv1CustomEndpoint"`
 	NetworkSecurityCustomEndpoint          *string                      `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint          *string                      `pulumi:"networkServicesCustomEndpoint"`
-	NotebooksCustomEndpoint                *string                      `pulumi:"notebooksCustomEndpoint"`
 	ObservabilityCustomEndpoint            *string                      `pulumi:"observabilityCustomEndpoint"`
 	OracleDatabaseCustomEndpoint           *string                      `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                *string                      `pulumi:"orgPolicyCustomEndpoint"`
@@ -462,6 +462,7 @@ type providerArgs struct {
 	ServiceManagementCustomEndpoint        *string                      `pulumi:"serviceManagementCustomEndpoint"`
 	ServiceNetworkingCustomEndpoint        *string                      `pulumi:"serviceNetworkingCustomEndpoint"`
 	ServiceUsageCustomEndpoint             *string                      `pulumi:"serviceUsageCustomEndpoint"`
+	ServiceUsageV2CustomEndpoint           *string                      `pulumi:"serviceUsageV2CustomEndpoint"`
 	SiteVerificationCustomEndpoint         *string                      `pulumi:"siteVerificationCustomEndpoint"`
 	SourceRepoCustomEndpoint               *string                      `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                  *string                      `pulumi:"spannerCustomEndpoint"`
@@ -469,6 +470,7 @@ type providerArgs struct {
 	StorageBatchOperationsCustomEndpoint   *string                      `pulumi:"storageBatchOperationsCustomEndpoint"`
 	StorageControlCustomEndpoint           *string                      `pulumi:"storageControlCustomEndpoint"`
 	StorageCustomEndpoint                  *string                      `pulumi:"storageCustomEndpoint"`
+	StorageFtpCustomEndpoint               *string                      `pulumi:"storageFtpCustomEndpoint"`
 	StorageInsightsCustomEndpoint          *string                      `pulumi:"storageInsightsCustomEndpoint"`
 	StorageTransferCustomEndpoint          *string                      `pulumi:"storageTransferCustomEndpoint"`
 	TagsCustomEndpoint                     *string                      `pulumi:"tagsCustomEndpoint"`
@@ -631,7 +633,6 @@ type ProviderArgs struct {
 	MemcacheCustomEndpoint                 pulumi.StringPtrInput
 	MemorystoreCustomEndpoint              pulumi.StringPtrInput
 	MigrationCenterCustomEndpoint          pulumi.StringPtrInput
-	MlEngineCustomEndpoint                 pulumi.StringPtrInput
 	ModelArmorCustomEndpoint               pulumi.StringPtrInput
 	ModelArmorGlobalCustomEndpoint         pulumi.StringPtrInput
 	MonitoringCustomEndpoint               pulumi.StringPtrInput
@@ -639,9 +640,9 @@ type ProviderArgs struct {
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrInput
 	NetworkConnectivityv1CustomEndpoint    pulumi.StringPtrInput
 	NetworkManagementCustomEndpoint        pulumi.StringPtrInput
+	NetworkManagementv1CustomEndpoint      pulumi.StringPtrInput
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrInput
 	NetworkServicesCustomEndpoint          pulumi.StringPtrInput
-	NotebooksCustomEndpoint                pulumi.StringPtrInput
 	ObservabilityCustomEndpoint            pulumi.StringPtrInput
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrInput
 	OrgPolicyCustomEndpoint                pulumi.StringPtrInput
@@ -685,6 +686,7 @@ type ProviderArgs struct {
 	ServiceManagementCustomEndpoint        pulumi.StringPtrInput
 	ServiceNetworkingCustomEndpoint        pulumi.StringPtrInput
 	ServiceUsageCustomEndpoint             pulumi.StringPtrInput
+	ServiceUsageV2CustomEndpoint           pulumi.StringPtrInput
 	SiteVerificationCustomEndpoint         pulumi.StringPtrInput
 	SourceRepoCustomEndpoint               pulumi.StringPtrInput
 	SpannerCustomEndpoint                  pulumi.StringPtrInput
@@ -692,6 +694,7 @@ type ProviderArgs struct {
 	StorageBatchOperationsCustomEndpoint   pulumi.StringPtrInput
 	StorageControlCustomEndpoint           pulumi.StringPtrInput
 	StorageCustomEndpoint                  pulumi.StringPtrInput
+	StorageFtpCustomEndpoint               pulumi.StringPtrInput
 	StorageInsightsCustomEndpoint          pulumi.StringPtrInput
 	StorageTransferCustomEndpoint          pulumi.StringPtrInput
 	TagsCustomEndpoint                     pulumi.StringPtrInput
@@ -1308,10 +1311,6 @@ func (o ProviderOutput) MigrationCenterCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MigrationCenterCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) MlEngineCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MlEngineCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
 func (o ProviderOutput) ModelArmorCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ModelArmorCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1340,16 +1339,16 @@ func (o ProviderOutput) NetworkManagementCustomEndpoint() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkManagementCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) NetworkManagementv1CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkManagementv1CustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) NetworkSecurityCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkSecurityCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) NetworkServicesCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkServicesCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderOutput) NotebooksCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NotebooksCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ObservabilityCustomEndpoint() pulumi.StringPtrOutput {
@@ -1512,6 +1511,10 @@ func (o ProviderOutput) ServiceUsageCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceUsageCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) ServiceUsageV2CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceUsageV2CustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) SiteVerificationCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SiteVerificationCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1538,6 +1541,10 @@ func (o ProviderOutput) StorageControlCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) StorageCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StorageCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) StorageFtpCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StorageFtpCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) StorageInsightsCustomEndpoint() pulumi.StringPtrOutput {

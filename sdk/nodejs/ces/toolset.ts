@@ -450,6 +450,11 @@ import * as utilities from "../utilities";
  *         apiAuthentication: {
  *             serviceAgentIdTokenAuthConfig: {},
  *         },
+ *         toolOverrides: [{
+ *             tool: "my-tool",
+ *             nameOverride: "my_tool_override",
+ *             descriptionOverride: "A tool description override",
+ *         }],
  *     },
  * });
  * ```

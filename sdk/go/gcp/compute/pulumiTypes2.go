@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15346,6 +15346,8 @@ func (o GetInterconnectLocationsLocationArrayOutput) Index(i pulumi.IntInput) Ge
 type GetMachineTypesMachineType struct {
 	// A list of accelerator configurations assigned to this machine type. Structure is documented below.
 	Accelerators []GetMachineTypesMachineTypeAccelerator `pulumi:"accelerators"`
+	// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+	Architecture string `pulumi:"architecture"`
 	// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
 	BundledLocalSsds []GetMachineTypesMachineTypeBundledLocalSsd `pulumi:"bundledLocalSsds"`
 	// The deprecation status associated with this machine type. Structure is documented below.
@@ -15382,6 +15384,8 @@ type GetMachineTypesMachineTypeInput interface {
 type GetMachineTypesMachineTypeArgs struct {
 	// A list of accelerator configurations assigned to this machine type. Structure is documented below.
 	Accelerators GetMachineTypesMachineTypeAcceleratorArrayInput `pulumi:"accelerators"`
+	// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+	Architecture pulumi.StringInput `pulumi:"architecture"`
 	// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
 	BundledLocalSsds GetMachineTypesMachineTypeBundledLocalSsdArrayInput `pulumi:"bundledLocalSsds"`
 	// The deprecation status associated with this machine type. Structure is documented below.
@@ -15458,6 +15462,11 @@ func (o GetMachineTypesMachineTypeOutput) ToGetMachineTypesMachineTypeOutputWith
 // A list of accelerator configurations assigned to this machine type. Structure is documented below.
 func (o GetMachineTypesMachineTypeOutput) Accelerators() GetMachineTypesMachineTypeAcceleratorArrayOutput {
 	return o.ApplyT(func(v GetMachineTypesMachineType) []GetMachineTypesMachineTypeAccelerator { return v.Accelerators }).(GetMachineTypesMachineTypeAcceleratorArrayOutput)
+}
+
+// The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+func (o GetMachineTypesMachineTypeOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
@@ -44159,6 +44168,870 @@ func (o GetServiceAttachmentTunnelingConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(GetServiceAttachmentTunnelingConfigOutput)
 }
 
+type GetServiceAttachmentsServiceAttachment struct {
+	// An array of the consumer forwarding rules connected to this service
+	// attachment.
+	ConnectedEndpoints []GetServiceAttachmentsServiceAttachmentConnectedEndpoint `pulumi:"connectedEndpoints"`
+	// The connection preference of the service attachment.
+	// Possible values are `ACCEPT_AUTOMATIC` and `ACCEPT_MANUAL`.
+	ConnectionPreference string `pulumi:"connectionPreference"`
+	// An array of projects that are allowed to connect to this service
+	// attachment.
+	ConsumerAcceptLists []GetServiceAttachmentsServiceAttachmentConsumerAcceptList `pulumi:"consumerAcceptLists"`
+	// An array of projects that are not allowed to connect to this service
+	// attachment.
+	ConsumerRejectLists []string `pulumi:"consumerRejectLists"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	// An optional description of the service attachment.
+	Description string `pulumi:"description"`
+	// A list of domain names for the service attachment.
+	DomainNames []string `pulumi:"domainNames"`
+	// Whether the proxy protocol is enabled on the service attachment.
+	EnableProxyProtocol bool `pulumi:"enableProxyProtocol"`
+	// The fingerprint of the service attachment.
+	Fingerprint string `pulumi:"fingerprint"`
+	// The name of the service attachment.
+	Name string `pulumi:"name"`
+	// A list of URLs of subnetworks used for NAT in this service attachment.
+	NatSubnets []string `pulumi:"natSubnets"`
+	// The project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+	// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+	// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+	//
+	// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+	//
+	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set 'send_propagated_connection_limit_if_zero = true'.
+	PropagatedConnectionLimit int `pulumi:"propagatedConnectionLimit"`
+	// An 128-bit global unique ID of the PSC service attachment.
+	PscServiceAttachmentIds []GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId `pulumi:"pscServiceAttachmentIds"`
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+	//
+	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+	ReconcileConnections bool `pulumi:"reconcileConnections"`
+	// The region in which the resource belongs.
+	// If it is not provided, the provider region is used.
+	Region string `pulumi:"region"`
+	// The URI of the service attachment.
+	SelfLink string `pulumi:"selfLink"`
+	// Controls the behavior of propagated_connection_limit.
+	// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+	// When true, the provider will set propagatedConnectionLimit to zero.
+	// Defaults to false.
+	SendPropagatedConnectionLimitIfZero bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// [If true, show NAT IPs of all connected endpoints.]
+	ShowNatIps bool `pulumi:"showNatIps"`
+	// The URL of the forwarding rule that represents the service identified
+	// by this service attachment.
+	TargetService string `pulumi:"targetService"`
+	// Tunneling configuration for this service attachment.
+	TunnelingConfigs []GetServiceAttachmentsServiceAttachmentTunnelingConfig `pulumi:"tunnelingConfigs"`
+}
+
+// GetServiceAttachmentsServiceAttachmentInput is an input type that accepts GetServiceAttachmentsServiceAttachmentArgs and GetServiceAttachmentsServiceAttachmentOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentArgs{...}
+type GetServiceAttachmentsServiceAttachmentInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentOutput() GetServiceAttachmentsServiceAttachmentOutput
+	ToGetServiceAttachmentsServiceAttachmentOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentArgs struct {
+	// An array of the consumer forwarding rules connected to this service
+	// attachment.
+	ConnectedEndpoints GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayInput `pulumi:"connectedEndpoints"`
+	// The connection preference of the service attachment.
+	// Possible values are `ACCEPT_AUTOMATIC` and `ACCEPT_MANUAL`.
+	ConnectionPreference pulumi.StringInput `pulumi:"connectionPreference"`
+	// An array of projects that are allowed to connect to this service
+	// attachment.
+	ConsumerAcceptLists GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayInput `pulumi:"consumerAcceptLists"`
+	// An array of projects that are not allowed to connect to this service
+	// attachment.
+	ConsumerRejectLists pulumi.StringArrayInput `pulumi:"consumerRejectLists"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
+	// An optional description of the service attachment.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A list of domain names for the service attachment.
+	DomainNames pulumi.StringArrayInput `pulumi:"domainNames"`
+	// Whether the proxy protocol is enabled on the service attachment.
+	EnableProxyProtocol pulumi.BoolInput `pulumi:"enableProxyProtocol"`
+	// The fingerprint of the service attachment.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The name of the service attachment.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of URLs of subnetworks used for NAT in this service attachment.
+	NatSubnets pulumi.StringArrayInput `pulumi:"natSubnets"`
+	// The project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+	// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+	//
+	// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+	//
+	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set 'send_propagated_connection_limit_if_zero = true'.
+	PropagatedConnectionLimit pulumi.IntInput `pulumi:"propagatedConnectionLimit"`
+	// An 128-bit global unique ID of the PSC service attachment.
+	PscServiceAttachmentIds GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayInput `pulumi:"pscServiceAttachmentIds"`
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+	//
+	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+	ReconcileConnections pulumi.BoolInput `pulumi:"reconcileConnections"`
+	// The region in which the resource belongs.
+	// If it is not provided, the provider region is used.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The URI of the service attachment.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// Controls the behavior of propagated_connection_limit.
+	// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+	// When true, the provider will set propagatedConnectionLimit to zero.
+	// Defaults to false.
+	SendPropagatedConnectionLimitIfZero pulumi.BoolInput `pulumi:"sendPropagatedConnectionLimitIfZero"`
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// [If true, show NAT IPs of all connected endpoints.]
+	ShowNatIps pulumi.BoolInput `pulumi:"showNatIps"`
+	// The URL of the forwarding rule that represents the service identified
+	// by this service attachment.
+	TargetService pulumi.StringInput `pulumi:"targetService"`
+	// Tunneling configuration for this service attachment.
+	TunnelingConfigs GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayInput `pulumi:"tunnelingConfigs"`
+}
+
+func (GetServiceAttachmentsServiceAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachment)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentArgs) ToGetServiceAttachmentsServiceAttachmentOutput() GetServiceAttachmentsServiceAttachmentOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentArgs) ToGetServiceAttachmentsServiceAttachmentOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentOutput)
+}
+
+// GetServiceAttachmentsServiceAttachmentArrayInput is an input type that accepts GetServiceAttachmentsServiceAttachmentArray and GetServiceAttachmentsServiceAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentArrayInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentArray{ GetServiceAttachmentsServiceAttachmentArgs{...} }
+type GetServiceAttachmentsServiceAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentArrayOutput() GetServiceAttachmentsServiceAttachmentArrayOutput
+	ToGetServiceAttachmentsServiceAttachmentArrayOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentArrayOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentArray []GetServiceAttachmentsServiceAttachmentInput
+
+func (GetServiceAttachmentsServiceAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachment)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentArray) ToGetServiceAttachmentsServiceAttachmentArrayOutput() GetServiceAttachmentsServiceAttachmentArrayOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentArray) ToGetServiceAttachmentsServiceAttachmentArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentArrayOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachment)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentOutput) ToGetServiceAttachmentsServiceAttachmentOutput() GetServiceAttachmentsServiceAttachmentOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentOutput) ToGetServiceAttachmentsServiceAttachmentOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentOutput {
+	return o
+}
+
+// An array of the consumer forwarding rules connected to this service
+// attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) ConnectedEndpoints() GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) []GetServiceAttachmentsServiceAttachmentConnectedEndpoint {
+		return v.ConnectedEndpoints
+	}).(GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput)
+}
+
+// The connection preference of the service attachment.
+// Possible values are `ACCEPT_AUTOMATIC` and `ACCEPT_MANUAL`.
+func (o GetServiceAttachmentsServiceAttachmentOutput) ConnectionPreference() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.ConnectionPreference }).(pulumi.StringOutput)
+}
+
+// An array of projects that are allowed to connect to this service
+// attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) ConsumerAcceptLists() GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) []GetServiceAttachmentsServiceAttachmentConsumerAcceptList {
+		return v.ConsumerAcceptLists
+	}).(GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput)
+}
+
+// An array of projects that are not allowed to connect to this service
+// attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) ConsumerRejectLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) []string { return v.ConsumerRejectLists }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetServiceAttachmentsServiceAttachmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// An optional description of the service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of domain names for the service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) []string { return v.DomainNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether the proxy protocol is enabled on the service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) EnableProxyProtocol() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) bool { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
+}
+
+// The fingerprint of the service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The name of the service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of URLs of subnetworks used for NAT in this service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) NatSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) []string { return v.NatSubnets }).(pulumi.StringArrayOutput)
+}
+
+// The project in which the resource belongs.
+// If it is not provided, the provider project is used.
+func (o GetServiceAttachmentsServiceAttachmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+//
+// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+//
+// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set 'send_propagated_connection_limit_if_zero = true'.
+func (o GetServiceAttachmentsServiceAttachmentOutput) PropagatedConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) int { return v.PropagatedConnectionLimit }).(pulumi.IntOutput)
+}
+
+// An 128-bit global unique ID of the PSC service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) PscServiceAttachmentIds() GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) []GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId {
+		return v.PscServiceAttachmentIds
+	}).(GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput)
+}
+
+// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+//
+// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+func (o GetServiceAttachmentsServiceAttachmentOutput) ReconcileConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) bool { return v.ReconcileConnections }).(pulumi.BoolOutput)
+}
+
+// The region in which the resource belongs.
+// If it is not provided, the provider region is used.
+func (o GetServiceAttachmentsServiceAttachmentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The URI of the service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Controls the behavior of propagated_connection_limit.
+// When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+// When true, the provider will set propagatedConnectionLimit to zero.
+// Defaults to false.
+func (o GetServiceAttachmentsServiceAttachmentOutput) SendPropagatedConnectionLimitIfZero() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) bool { return v.SendPropagatedConnectionLimitIfZero }).(pulumi.BoolOutput)
+}
+
+// NOTE: This field is temporarily non-functional due to an underlying API issue.
+// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+// [If true, show NAT IPs of all connected endpoints.]
+func (o GetServiceAttachmentsServiceAttachmentOutput) ShowNatIps() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) bool { return v.ShowNatIps }).(pulumi.BoolOutput)
+}
+
+// The URL of the forwarding rule that represents the service identified
+// by this service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) TargetService() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) string { return v.TargetService }).(pulumi.StringOutput)
+}
+
+// Tunneling configuration for this service attachment.
+func (o GetServiceAttachmentsServiceAttachmentOutput) TunnelingConfigs() GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachment) []GetServiceAttachmentsServiceAttachmentTunnelingConfig {
+		return v.TunnelingConfigs
+	}).(GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachment)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentArrayOutput) ToGetServiceAttachmentsServiceAttachmentArrayOutput() GetServiceAttachmentsServiceAttachmentArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentArrayOutput) ToGetServiceAttachmentsServiceAttachmentArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentsServiceAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentsServiceAttachment {
+		return vs[0].([]GetServiceAttachmentsServiceAttachment)[vs[1].(int)]
+	}).(GetServiceAttachmentsServiceAttachmentOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentConnectedEndpoint struct {
+	// The url of the consumer network.
+	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// The URL of the consumer forwarding rule.
+	Endpoint string `pulumi:"endpoint"`
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// 'The nat IPs of the connected endpoint.'
+	NatIps []string `pulumi:"natIps"`
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount int `pulumi:"propagatedConnectionCount"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The status of the connection from the consumer forwarding rule to
+	// this service attachment.
+	Status string `pulumi:"status"`
+}
+
+// GetServiceAttachmentsServiceAttachmentConnectedEndpointInput is an input type that accepts GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs and GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentConnectedEndpointInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs{...}
+type GetServiceAttachmentsServiceAttachmentConnectedEndpointInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentConnectedEndpointOutput() GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput
+	ToGetServiceAttachmentsServiceAttachmentConnectedEndpointOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs struct {
+	// The url of the consumer network.
+	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// The URL of the consumer forwarding rule.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// 'The nat IPs of the connected endpoint.'
+	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount pulumi.IntInput `pulumi:"propagatedConnectionCount"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// The status of the connection from the consumer forwarding rule to
+	// this service attachment.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointOutput() GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentConnectedEndpointOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput)
+}
+
+// GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayInput is an input type that accepts GetServiceAttachmentsServiceAttachmentConnectedEndpointArray and GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentConnectedEndpointArray{ GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs{...} }
+type GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput() GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput
+	ToGetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentConnectedEndpointArray []GetServiceAttachmentsServiceAttachmentConnectedEndpointInput
+
+func (GetServiceAttachmentsServiceAttachmentConnectedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConnectedEndpointArray) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput() GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConnectedEndpointArray) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointOutput() GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+// The url of the consumer network.
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) ConsumerNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConnectedEndpoint) string { return v.ConsumerNetwork }).(pulumi.StringOutput)
+}
+
+// The URL of the consumer forwarding rule.
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConnectedEndpoint) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// NOTE: This field is temporarily non-functional due to an underlying API issue.
+// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+// 'The nat IPs of the connected endpoint.'
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) NatIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConnectedEndpoint) []string { return v.NatIps }).(pulumi.StringArrayOutput)
+}
+
+// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) PropagatedConnectionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConnectedEndpoint) int {
+		return v.PropagatedConnectionCount
+	}).(pulumi.IntOutput)
+}
+
+// The PSC connection id of the connected endpoint.
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConnectedEndpoint) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The status of the connection from the consumer forwarding rule to
+// this service attachment.
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConnectedEndpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput() GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput) ToGetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentsServiceAttachmentConnectedEndpoint {
+		return vs[0].([]GetServiceAttachmentsServiceAttachmentConnectedEndpoint)[vs[1].(int)]
+	}).(GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentConsumerAcceptList struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// The endpoint that is allowed to connect to this service attachment.
+	// Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+	EndpointUrl string `pulumi:"endpointUrl"`
+	// The network that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	NetworkUrl string `pulumi:"networkUrl"`
+	// A project that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
+}
+
+// GetServiceAttachmentsServiceAttachmentConsumerAcceptListInput is an input type that accepts GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs and GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentConsumerAcceptListInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs{...}
+type GetServiceAttachmentsServiceAttachmentConsumerAcceptListInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput() GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput
+	ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// The endpoint that is allowed to connect to this service attachment.
+	// Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+	EndpointUrl pulumi.StringInput `pulumi:"endpointUrl"`
+	// The network that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+	// A project that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	ProjectIdOrNum pulumi.StringInput `pulumi:"projectIdOrNum"`
+}
+
+func (GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput() GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput)
+}
+
+// GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayInput is an input type that accepts GetServiceAttachmentsServiceAttachmentConsumerAcceptListArray and GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentConsumerAcceptListArray{ GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs{...} }
+type GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput() GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput
+	ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentConsumerAcceptListArray []GetServiceAttachmentsServiceAttachmentConsumerAcceptListInput
+
+func (GetServiceAttachmentsServiceAttachmentConsumerAcceptListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConsumerAcceptListArray) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput() GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentConsumerAcceptListArray) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput() GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+// The number of consumer forwarding rules the consumer project can
+// create.
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConsumerAcceptList) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// The endpoint that is allowed to connect to this service attachment.
+// Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput) EndpointUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConsumerAcceptList) string { return v.EndpointUrl }).(pulumi.StringOutput)
+}
+
+// The network that is allowed to connect to this service attachment.
+// Only one of projectIdOrNum and networkUrl may be set.
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConsumerAcceptList) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+// A project that is allowed to connect to this service attachment.
+// Only one of projectIdOrNum and networkUrl may be set.
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput) ProjectIdOrNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentConsumerAcceptList) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput() GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput) ToGetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentsServiceAttachmentConsumerAcceptList {
+		return vs[0].([]GetServiceAttachmentsServiceAttachmentConsumerAcceptList)[vs[1].(int)]
+	}).(GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId struct {
+	// The high 64 bits of the PSC service attachment ID.
+	High string `pulumi:"high"`
+	// The low 64 bits of the PSC service attachment ID.
+	Low string `pulumi:"low"`
+}
+
+// GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdInput is an input type that accepts GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs and GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs{...}
+type GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput() GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput
+	ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs struct {
+	// The high 64 bits of the PSC service attachment ID.
+	High pulumi.StringInput `pulumi:"high"`
+	// The low 64 bits of the PSC service attachment ID.
+	Low pulumi.StringInput `pulumi:"low"`
+}
+
+func (GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput() GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput)
+}
+
+// GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayInput is an input type that accepts GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArray and GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArray{ GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs{...} }
+type GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput() GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput
+	ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArray []GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdInput
+
+func (GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArray) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput() GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArray) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput() GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput {
+	return o
+}
+
+// The high 64 bits of the PSC service attachment ID.
+func (o GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput) High() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId) string { return v.High }).(pulumi.StringOutput)
+}
+
+// The low 64 bits of the PSC service attachment ID.
+func (o GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput) Low() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId) string { return v.Low }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput() GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput) ToGetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId {
+		return vs[0].([]GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId)[vs[1].(int)]
+	}).(GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentTunnelingConfig struct {
+	// The encapsulation profile for tunneling traffic.
+	EncapsulationProfile string `pulumi:"encapsulationProfile"`
+	// The routing mode for tunneling traffic.
+	RoutingMode string `pulumi:"routingMode"`
+}
+
+// GetServiceAttachmentsServiceAttachmentTunnelingConfigInput is an input type that accepts GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs and GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentTunnelingConfigInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs{...}
+type GetServiceAttachmentsServiceAttachmentTunnelingConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentTunnelingConfigOutput() GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput
+	ToGetServiceAttachmentsServiceAttachmentTunnelingConfigOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs struct {
+	// The encapsulation profile for tunneling traffic.
+	EncapsulationProfile pulumi.StringInput `pulumi:"encapsulationProfile"`
+	// The routing mode for tunneling traffic.
+	RoutingMode pulumi.StringInput `pulumi:"routingMode"`
+}
+
+func (GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigOutput() GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentTunnelingConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput)
+}
+
+// GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayInput is an input type that accepts GetServiceAttachmentsServiceAttachmentTunnelingConfigArray and GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayInput` via:
+//
+//	GetServiceAttachmentsServiceAttachmentTunnelingConfigArray{ GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs{...} }
+type GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput() GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput
+	ToGetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutputWithContext(context.Context) GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput
+}
+
+type GetServiceAttachmentsServiceAttachmentTunnelingConfigArray []GetServiceAttachmentsServiceAttachmentTunnelingConfigInput
+
+func (GetServiceAttachmentsServiceAttachmentTunnelingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (i GetServiceAttachmentsServiceAttachmentTunnelingConfigArray) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput() GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput {
+	return i.ToGetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAttachmentsServiceAttachmentTunnelingConfigArray) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigOutput() GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput {
+	return o
+}
+
+// The encapsulation profile for tunneling traffic.
+func (o GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput) EncapsulationProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentTunnelingConfig) string { return v.EncapsulationProfile }).(pulumi.StringOutput)
+}
+
+// The routing mode for tunneling traffic.
+func (o GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAttachmentsServiceAttachmentTunnelingConfig) string { return v.RoutingMode }).(pulumi.StringOutput)
+}
+
+type GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAttachmentsServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (o GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput() GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput) ToGetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutputWithContext(ctx context.Context) GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput) Index(i pulumi.IntInput) GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAttachmentsServiceAttachmentTunnelingConfig {
+		return vs[0].([]GetServiceAttachmentsServiceAttachmentTunnelingConfig)[vs[1].(int)]
+	}).(GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput)
+}
+
 type GetSnapshotParam struct {
 	// Resource manager tags to be bound to the snapshot. Tag keys and values have the
 	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -46124,6 +46997,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentPscServiceAttachmentIdArrayInput)(nil)).Elem(), GetServiceAttachmentPscServiceAttachmentIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentTunnelingConfigInput)(nil)).Elem(), GetServiceAttachmentTunnelingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentTunnelingConfigArrayInput)(nil)).Elem(), GetServiceAttachmentTunnelingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentArrayInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConnectedEndpointInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentConnectedEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConsumerAcceptListInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentConsumerAcceptListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentTunnelingConfigInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayInput)(nil)).Elem(), GetServiceAttachmentsServiceAttachmentTunnelingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotParamInput)(nil)).Elem(), GetSnapshotParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotParamArrayInput)(nil)).Elem(), GetSnapshotParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArgs{})
@@ -46792,6 +47675,16 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceAttachmentPscServiceAttachmentIdArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceAttachmentTunnelingConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceAttachmentTunnelingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentConnectedEndpointOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentConnectedEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentConsumerAcceptListOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentConsumerAcceptListArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentTunnelingConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceAttachmentsServiceAttachmentTunnelingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotParamOutput{})
 	pulumi.RegisterOutputType(GetSnapshotParamArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyOutput{})

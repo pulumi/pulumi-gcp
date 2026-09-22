@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = @default.Id,
     ///     });
     /// 
@@ -739,6 +740,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///     });
     /// 
@@ -748,6 +750,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///     });
     /// 
@@ -757,6 +760,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///     });
     /// 
@@ -857,6 +861,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///     });
     /// 
@@ -866,6 +871,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///     });
     /// 
@@ -875,6 +881,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///     });
     /// 
@@ -1667,6 +1674,7 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = health_check.Id,
     ///     });
     /// 

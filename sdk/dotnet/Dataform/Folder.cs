@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformFolderBasic = new Gcp.Dataform.Folder("dataform_folder_basic", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Basic Folder-_89313",
+    ///         DisplayName = "Basic Folder-_60646",
     ///     });
     /// 
     /// });
@@ -51,13 +51,13 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformFolderRoot = new Gcp.Dataform.Folder("dataform_folder_root", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Root Folder-_60646",
+    ///         DisplayName = "Root Folder-_9394",
     ///     });
     /// 
     ///     var dataformFolderFull = new Gcp.Dataform.Folder("dataform_folder_full", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Nested Folder-_9394",
+    ///         DisplayName = "Nested Folder-_11380",
     ///         ContainingFolder = dataformFolderRoot.Id,
     ///     });
     /// 

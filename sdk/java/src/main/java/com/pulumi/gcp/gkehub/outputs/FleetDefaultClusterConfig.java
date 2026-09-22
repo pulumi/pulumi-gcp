@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkehub.outputs.FleetDefaultClusterConfigBinaryAuthorizationConfig;
+import com.pulumi.gcp.gkehub.outputs.FleetDefaultClusterConfigCompliancePostureConfig;
 import com.pulumi.gcp.gkehub.outputs.FleetDefaultClusterConfigSecurityPostureConfig;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +19,12 @@ public final class FleetDefaultClusterConfig {
      * 
      */
     private @Nullable FleetDefaultClusterConfigBinaryAuthorizationConfig binaryAuthorizationConfig;
+    /**
+     * @return Enable/Disable Compliance Posture features for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FleetDefaultClusterConfigCompliancePostureConfig compliancePostureConfig;
     /**
      * @return Enable/Disable Security Posture features for the cluster.
      * Structure is documented below.
@@ -33,6 +40,14 @@ public final class FleetDefaultClusterConfig {
      */
     public Optional<FleetDefaultClusterConfigBinaryAuthorizationConfig> binaryAuthorizationConfig() {
         return Optional.ofNullable(this.binaryAuthorizationConfig);
+    }
+    /**
+     * @return Enable/Disable Compliance Posture features for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FleetDefaultClusterConfigCompliancePostureConfig> compliancePostureConfig() {
+        return Optional.ofNullable(this.compliancePostureConfig);
     }
     /**
      * @return Enable/Disable Security Posture features for the cluster.
@@ -53,11 +68,13 @@ public final class FleetDefaultClusterConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FleetDefaultClusterConfigBinaryAuthorizationConfig binaryAuthorizationConfig;
+        private @Nullable FleetDefaultClusterConfigCompliancePostureConfig compliancePostureConfig;
         private @Nullable FleetDefaultClusterConfigSecurityPostureConfig securityPostureConfig;
         public Builder() {}
         public Builder(FleetDefaultClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.binaryAuthorizationConfig = defaults.binaryAuthorizationConfig;
+    	      this.compliancePostureConfig = defaults.compliancePostureConfig;
     	      this.securityPostureConfig = defaults.securityPostureConfig;
         }
 
@@ -65,6 +82,12 @@ public final class FleetDefaultClusterConfig {
         public Builder binaryAuthorizationConfig(@Nullable FleetDefaultClusterConfigBinaryAuthorizationConfig binaryAuthorizationConfig) {
 
             this.binaryAuthorizationConfig = binaryAuthorizationConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder compliancePostureConfig(@Nullable FleetDefaultClusterConfigCompliancePostureConfig compliancePostureConfig) {
+
+            this.compliancePostureConfig = compliancePostureConfig;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +99,7 @@ public final class FleetDefaultClusterConfig {
         public FleetDefaultClusterConfig build() {
             final var _resultValue = new FleetDefaultClusterConfig();
             _resultValue.binaryAuthorizationConfig = binaryAuthorizationConfig;
+            _resultValue.compliancePostureConfig = compliancePostureConfig;
             _resultValue.securityPostureConfig = securityPostureConfig;
             return _resultValue;
         }

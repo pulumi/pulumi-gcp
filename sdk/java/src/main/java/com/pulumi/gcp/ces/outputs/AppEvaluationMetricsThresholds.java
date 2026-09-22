@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,18 @@ public final class AppEvaluationMetricsThresholds {
      * 
      */
     private @Nullable AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds goldenEvaluationMetricsThresholds;
+    /**
+     * @return The hallucination metric behavior for golden evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    private @Nullable String goldenHallucinationMetricBehavior;
+    /**
+     * @return The hallucination metric behavior for scenario evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    private @Nullable String scenarioHallucinationMetricBehavior;
 
     private AppEvaluationMetricsThresholds() {}
     /**
@@ -26,6 +39,22 @@ public final class AppEvaluationMetricsThresholds {
      */
     public Optional<AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds> goldenEvaluationMetricsThresholds() {
         return Optional.ofNullable(this.goldenEvaluationMetricsThresholds);
+    }
+    /**
+     * @return The hallucination metric behavior for golden evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    public Optional<String> goldenHallucinationMetricBehavior() {
+        return Optional.ofNullable(this.goldenHallucinationMetricBehavior);
+    }
+    /**
+     * @return The hallucination metric behavior for scenario evaluations.
+     * Possible values are: `DISABLED`, `ENABLED`.
+     * 
+     */
+    public Optional<String> scenarioHallucinationMetricBehavior() {
+        return Optional.ofNullable(this.scenarioHallucinationMetricBehavior);
     }
 
     public static Builder builder() {
@@ -38,10 +67,14 @@ public final class AppEvaluationMetricsThresholds {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds goldenEvaluationMetricsThresholds;
+        private @Nullable String goldenHallucinationMetricBehavior;
+        private @Nullable String scenarioHallucinationMetricBehavior;
         public Builder() {}
         public Builder(AppEvaluationMetricsThresholds defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.goldenEvaluationMetricsThresholds = defaults.goldenEvaluationMetricsThresholds;
+    	      this.goldenHallucinationMetricBehavior = defaults.goldenHallucinationMetricBehavior;
+    	      this.scenarioHallucinationMetricBehavior = defaults.scenarioHallucinationMetricBehavior;
         }
 
         @CustomType.Setter
@@ -50,9 +83,23 @@ public final class AppEvaluationMetricsThresholds {
             this.goldenEvaluationMetricsThresholds = goldenEvaluationMetricsThresholds;
             return this;
         }
+        @CustomType.Setter
+        public Builder goldenHallucinationMetricBehavior(@Nullable String goldenHallucinationMetricBehavior) {
+
+            this.goldenHallucinationMetricBehavior = goldenHallucinationMetricBehavior;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scenarioHallucinationMetricBehavior(@Nullable String scenarioHallucinationMetricBehavior) {
+
+            this.scenarioHallucinationMetricBehavior = scenarioHallucinationMetricBehavior;
+            return this;
+        }
         public AppEvaluationMetricsThresholds build() {
             final var _resultValue = new AppEvaluationMetricsThresholds();
             _resultValue.goldenEvaluationMetricsThresholds = goldenEvaluationMetricsThresholds;
+            _resultValue.goldenHallucinationMetricBehavior = goldenHallucinationMetricBehavior;
+            _resultValue.scenarioHallucinationMetricBehavior = scenarioHallucinationMetricBehavior;
             return _resultValue;
         }
     }

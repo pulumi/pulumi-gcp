@@ -12,11 +12,13 @@ import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscriptionArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionState;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionCommercialInfo;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionDestinationDataset;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionDestinationPubsubSubscription;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionLinkedDatasetMap;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionLinkedResource;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -176,6 +178,76 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Bigquery Analyticshub Listing Subscription Pubsub
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPubsubTopicArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscription;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscriptionArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationPubsubSubscriptionArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var subscription = new DataExchange("subscription", DataExchangeArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId("my_data_exchange")
+ *             .displayName("my_data_exchange")
+ *             .description("example pubsub listing subscription")
+ *             .build());
+ * 
+ *         var subscriptionTopic = new Topic("subscriptionTopic", TopicArgs.builder()
+ *             .name("my_pubsub_topic")
+ *             .build());
+ * 
+ *         var subscriptionListing = new Listing("subscriptionListing", ListingArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(subscription.dataExchangeId())
+ *             .listingId("my_listing")
+ *             .displayName("my_listing")
+ *             .description("example pubsub listing subscription")
+ *             .pubsubTopic(ListingPubsubTopicArgs.builder()
+ *                 .topic(subscriptionTopic.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var subscriptionListingSubscription = new ListingSubscription("subscriptionListingSubscription", ListingSubscriptionArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(subscription.dataExchangeId())
+ *             .listingId(subscriptionListing.listingId())
+ *             .destinationPubsubSubscription(ListingSubscriptionDestinationPubsubSubscriptionArgs.builder()
+ *                 .pubsubSubscription(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs.builder()
+ *                     .name(subscriptionTopic.project().applyValue(_project -> String.format("projects/%s/subscriptions/my_pubsub_subscription", _project)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -270,15 +342,31 @@ public class ListingSubscription extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="destinationDataset", refs={ListingSubscriptionDestinationDataset.class}, tree="[0]")
-    private Output<ListingSubscriptionDestinationDataset> destinationDataset;
+    private Output</* @Nullable */ ListingSubscriptionDestinationDataset> destinationDataset;
 
     /**
      * @return The destination dataset for this subscription.
      * Structure is documented below.
      * 
      */
-    public Output<ListingSubscriptionDestinationDataset> destinationDataset() {
-        return this.destinationDataset;
+    public Output<Optional<ListingSubscriptionDestinationDataset>> destinationDataset() {
+        return Codegen.optional(this.destinationDataset);
+    }
+    /**
+     * Destination Pub/Sub subscription to create for the subscriber.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="destinationPubsubSubscription", refs={ListingSubscriptionDestinationPubsubSubscription.class}, tree="[0]")
+    private Output</* @Nullable */ ListingSubscriptionDestinationPubsubSubscription> destinationPubsubSubscription;
+
+    /**
+     * @return Destination Pub/Sub subscription to create for the subscriber.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ListingSubscriptionDestinationPubsubSubscription>> destinationPubsubSubscription() {
+        return Codegen.optional(this.destinationPubsubSubscription);
     }
     /**
      * Timestamp when the subscription was last modified.

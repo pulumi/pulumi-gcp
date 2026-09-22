@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPubSubArgs;
-import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishToStackdriverArgs;
@@ -69,35 +68,6 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
      */
     public Optional<Output<PreventionJobTriggerInspectJobActionPubSubArgs>> pubSub() {
         return Optional.ofNullable(this.pubSub);
-    }
-
-    /**
-     * (Optional, Deprecated)
-     * Publish findings of a DlpJob to Data Catalog.
-     * 
-     * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     * @deprecated
-     * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     */
-    @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
-    @Import(name="publishFindingsToCloudDataCatalog")
-    private @Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs> publishFindingsToCloudDataCatalog;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Publish findings of a DlpJob to Data Catalog.
-     * 
-     * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     * @deprecated
-     * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     */
-    @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
-    public Optional<Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs>> publishFindingsToCloudDataCatalog() {
-        return Optional.ofNullable(this.publishFindingsToCloudDataCatalog);
     }
 
     /**
@@ -168,7 +138,6 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         this.deidentify = $.deidentify;
         this.jobNotificationEmails = $.jobNotificationEmails;
         this.pubSub = $.pubSub;
-        this.publishFindingsToCloudDataCatalog = $.publishFindingsToCloudDataCatalog;
         this.publishFindingsToDataplexCatalog = $.publishFindingsToDataplexCatalog;
         this.publishSummaryToCscc = $.publishSummaryToCscc;
         this.publishToStackdriver = $.publishToStackdriver;
@@ -258,41 +227,6 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
          */
         public Builder pubSub(PreventionJobTriggerInspectJobActionPubSubArgs pubSub) {
             return pubSub(Output.of(pubSub));
-        }
-
-        /**
-         * @param publishFindingsToCloudDataCatalog (Optional, Deprecated)
-         * Publish findings of a DlpJob to Data Catalog.
-         * 
-         * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         * 
-         */
-        @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
-        public Builder publishFindingsToCloudDataCatalog(@Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs> publishFindingsToCloudDataCatalog) {
-            $.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
-            return this;
-        }
-
-        /**
-         * @param publishFindingsToCloudDataCatalog (Optional, Deprecated)
-         * Publish findings of a DlpJob to Data Catalog.
-         * 
-         * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         * 
-         */
-        @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
-        public Builder publishFindingsToCloudDataCatalog(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs publishFindingsToCloudDataCatalog) {
-            return publishFindingsToCloudDataCatalog(Output.of(publishFindingsToCloudDataCatalog));
         }
 
         /**

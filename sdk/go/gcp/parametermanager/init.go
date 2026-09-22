@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionalParameter{}
 	case "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion":
 		r = &RegionalParameterVersion{}
+	case "gcp:parametermanager/template:Template":
+		r = &Template{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"parametermanager/regionalParameterVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"parametermanager/template",
 		&module{version},
 	)
 }

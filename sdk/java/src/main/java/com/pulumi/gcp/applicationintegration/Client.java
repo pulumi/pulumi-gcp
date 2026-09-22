@@ -236,30 +236,6 @@ public class Client extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    /**
-     * (Optional, Deprecated)
-     * User input run-as service account, if empty, will bring up a new default service account.
-     * 
-     * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     * 
-     * @deprecated
-     * `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
-    @Export(name="runAsServiceAccount", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> runAsServiceAccount;
-
-    /**
-     * @return (Optional, Deprecated)
-     * User input run-as service account, if empty, will bring up a new default service account.
-     * 
-     * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-     * 
-     */
-    public Output<Optional<String>> runAsServiceAccount() {
-        return Codegen.optional(this.runAsServiceAccount);
-    }
 
     /**
      *

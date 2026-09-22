@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,9 +30,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -136,9 +136,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -228,6 +228,10 @@ type Settings struct {
 	// * projects/{project_id}/iap_web/compute-{region}
 	// * projects/{project_id}/iap_web/compute/services/{service_id}
 	// * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}
+	// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -286,6 +290,10 @@ type settingsState struct {
 	// * projects/{project_id}/iap_web/compute-{region}
 	// * projects/{project_id}/iap_web/compute/services/{service_id}
 	// * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}
+	// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -315,6 +323,10 @@ type SettingsState struct {
 	// * projects/{project_id}/iap_web/compute-{region}
 	// * projects/{project_id}/iap_web/compute/services/{service_id}
 	// * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}
+	// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -348,6 +360,10 @@ type settingsArgs struct {
 	// * projects/{project_id}/iap_web/compute-{region}
 	// * projects/{project_id}/iap_web/compute/services/{service_id}
 	// * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}
+	// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -378,6 +394,10 @@ type SettingsArgs struct {
 	// * projects/{project_id}/iap_web/compute-{region}
 	// * projects/{project_id}/iap_web/compute/services/{service_id}
 	// * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}
+	// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+	// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
 	// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -502,6 +522,10 @@ func (o SettingsOutput) DeletionPolicy() pulumi.StringOutput {
 // * projects/{project_id}/iap_web/compute-{region}
 // * projects/{project_id}/iap_web/compute/services/{service_id}
 // * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+// * projects/{project_id}/iap_web/forwarding_rule
+// * projects/{project_id}/iap_web/forwarding_rule-{region}
+// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
 // * projects/{project_id}/iap_web/appengine-{app_id}
 // * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
 // * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}

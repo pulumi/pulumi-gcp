@@ -14,6 +14,7 @@ import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAgentLlmAgent;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAgentModelSetting;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAgentRemoteDialogflowAgent;
 import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAgentToolset;
+import com.pulumi.gcp.ces.outputs.AppVersionSnapshotAgentTransferRule;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -185,6 +186,14 @@ public final class AppVersionSnapshotAgent {
      * 
      */
     private @Nullable List<AppVersionSnapshotAgentToolset> toolsets;
+    /**
+     * @return (Output)
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppVersionSnapshotAgentTransferRule> transferRules;
     /**
      * @return (Output)
      * Timestamp when the toolset was last updated.
@@ -398,6 +407,16 @@ public final class AppVersionSnapshotAgent {
     }
     /**
      * @return (Output)
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppVersionSnapshotAgentTransferRule> transferRules() {
+        return this.transferRules == null ? List.of() : this.transferRules;
+    }
+    /**
+     * @return (Output)
      * Timestamp when the toolset was last updated.
      * 
      */
@@ -434,6 +453,7 @@ public final class AppVersionSnapshotAgent {
         private @Nullable List<AppVersionSnapshotAgentRemoteDialogflowAgent> remoteDialogflowAgents;
         private @Nullable List<String> tools;
         private @Nullable List<AppVersionSnapshotAgentToolset> toolsets;
+        private @Nullable List<AppVersionSnapshotAgentTransferRule> transferRules;
         private @Nullable String updateTime;
         public Builder() {}
         public Builder(AppVersionSnapshotAgent defaults) {
@@ -458,6 +478,7 @@ public final class AppVersionSnapshotAgent {
     	      this.remoteDialogflowAgents = defaults.remoteDialogflowAgents;
     	      this.tools = defaults.tools;
     	      this.toolsets = defaults.toolsets;
+    	      this.transferRules = defaults.transferRules;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -621,6 +642,15 @@ public final class AppVersionSnapshotAgent {
             return toolsets(List.of(toolsets));
         }
         @CustomType.Setter
+        public Builder transferRules(@Nullable List<AppVersionSnapshotAgentTransferRule> transferRules) {
+
+            this.transferRules = transferRules;
+            return this;
+        }
+        public Builder transferRules(AppVersionSnapshotAgentTransferRule... transferRules) {
+            return transferRules(List.of(transferRules));
+        }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
 
             this.updateTime = updateTime;
@@ -648,6 +678,7 @@ public final class AppVersionSnapshotAgent {
             _resultValue.remoteDialogflowAgents = remoteDialogflowAgents;
             _resultValue.tools = tools;
             _resultValue.toolsets = toolsets;
+            _resultValue.transferRules = transferRules;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

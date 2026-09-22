@@ -1037,7 +1037,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deployConfig")
-    def deploy_config(self) -> pulumi.Output[Optional['outputs.AiEndpointWithModelGardenDeploymentDeployConfig']]:
+    def deploy_config(self) -> pulumi.Output['outputs.AiEndpointWithModelGardenDeploymentDeployConfig']:
         """
         The deploy config to use for the deployment.
         Structure is documented below.

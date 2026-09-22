@@ -562,7 +562,7 @@ class Router(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_37118",
+            name="tf-test-subnet_80332",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -724,7 +724,7 @@ class Router(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_37118",
+            name="tf-test-subnet_80332",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)

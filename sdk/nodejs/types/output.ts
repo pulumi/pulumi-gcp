@@ -7524,6 +7524,18 @@ export namespace appengine {
         instances: number;
     }
 
+    export interface StandardAppVersionVpcAccess {
+        /**
+         * The egress setting for the VPC Access, controlling what traffic is diverted through it.
+         */
+        egressSetting?: string;
+        /**
+         * List of network interfaces for the VPC Access. Currently only a single network interface is supported.
+         * Structure is documented below.
+         */
+        networkInterfaces?: outputs.appengine.StandardAppVersionVpcAccessNetworkInterface[];
+    }
+
     export interface StandardAppVersionVpcAccessConnector {
         /**
          * The egress setting for the connector, controlling what traffic is diverted through it.
@@ -7533,6 +7545,21 @@ export namespace appengine {
          * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
+    }
+
+    export interface StandardAppVersionVpcAccessNetworkInterface {
+        /**
+         * The name of the VPC network to which the version connects (e.g. `projects/my-project/global/networks/default`).
+         */
+        network?: string;
+        /**
+         * The name of the subnetwork to which the version connects (e.g. `projects/my-project/regions/us-central1/subnetworks/default`).
+         */
+        subnetwork?: string;
+        /**
+         * Network tags applied to this App Engine version.
+         */
+        tags?: string[];
     }
 
 }
@@ -9939,9 +9966,6 @@ export namespace backupdisasterrecovery {
          */
         lastSuccessfulBackupTime: string;
         name: string;
-        /**
-         * The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
-         */
         resourceType: string;
     }
 
@@ -11017,123 +11041,6 @@ export namespace backupdisasterrecovery {
 }
 
 export namespace beyondcorp {
-    export interface AppConnectionApplicationEndpoint {
-        /**
-         * Hostname or IP address of the remote application endpoint.
-         */
-        host: string;
-        /**
-         * Port of the remote application endpoint.
-         */
-        port: number;
-    }
-
-    export interface AppConnectionGateway {
-        /**
-         * AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
-         */
-        appGateway: string;
-        /**
-         * (Output)
-         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
-         */
-        ingressPort: number;
-        /**
-         * The type of hosting used by the gateway. Refer to
-         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-         * for a list of possible values.
-         */
-        type?: string;
-        /**
-         * (Output)
-         * Server-defined URI for this resource.
-         */
-        uri: string;
-    }
-
-    export interface AppConnectorPrincipalInfo {
-        /**
-         * ServiceAccount represents a GCP service account.
-         * Structure is documented below.
-         */
-        serviceAccount: outputs.beyondcorp.AppConnectorPrincipalInfoServiceAccount;
-    }
-
-    export interface AppConnectorPrincipalInfoServiceAccount {
-        /**
-         * Email address of the service account.
-         */
-        email: string;
-    }
-
-    export interface AppGatewayAllocatedConnection {
-        /**
-         * The ingress port of an allocated connection.
-         */
-        ingressPort?: number;
-        /**
-         * The PSC uri of an allocated connection.
-         */
-        pscUri?: string;
-    }
-
-    export interface GetAppConnectionApplicationEndpoint {
-        /**
-         * Hostname or IP address of the remote application endpoint.
-         */
-        host: string;
-        /**
-         * Port of the remote application endpoint.
-         */
-        port: number;
-    }
-
-    export interface GetAppConnectionGateway {
-        /**
-         * AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
-         */
-        appGateway: string;
-        /**
-         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
-         */
-        ingressPort: number;
-        /**
-         * The type of hosting used by the gateway. Refer to
-         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-         * for a list of possible values.
-         */
-        type: string;
-        /**
-         * Server-defined URI for this resource.
-         */
-        uri: string;
-    }
-
-    export interface GetAppConnectorPrincipalInfo {
-        /**
-         * ServiceAccount represents a GCP service account.
-         */
-        serviceAccounts: outputs.beyondcorp.GetAppConnectorPrincipalInfoServiceAccount[];
-    }
-
-    export interface GetAppConnectorPrincipalInfoServiceAccount {
-        /**
-         * Email address of the service account.
-         */
-        email: string;
-    }
-
-    export interface GetAppGatewayAllocatedConnection {
-        /**
-         * The ingress port of an allocated connection.
-         */
-        ingressPort: number;
-        /**
-         * The PSC uri of an allocated connection.
-         */
-        pscUri: string;
-    }
-
     export interface GetSecurityGatewayHub {
         /**
          * Internet Gateway configuration.
@@ -12526,9 +12433,82 @@ export namespace bigquery {
          */
         secretAccessKeyWo?: string;
         /**
-         * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          */
-        secretAccessKeyWoVersion?: number;
+        secretAccessKeyWoVersion?: string;
+    }
+
+    export interface DataTransferDataSourceEnrollmentParameter {
+        /**
+         * (Output)
+         * All possible values for parameters with fixed list of options.
+         */
+        allowedValues: string[];
+        /**
+         * (Output)
+         * If true, it should not be used in new transfers, and it should not be visible to users.
+         */
+        deprecated: boolean;
+        /**
+         * (Output)
+         * Parameter description.
+         */
+        description: string;
+        /**
+         * (Output)
+         * User friendly parameter name.
+         */
+        displayName: string;
+        /**
+         * (Output)
+         * Cannot be changed after initial transfer config creation. Applies only to custom data sources.
+         */
+        immutable: boolean;
+        /**
+         * (Output)
+         * For list parameters, the max size of the list.
+         */
+        maxListSize: number;
+        /**
+         * (Output)
+         * For integer and double values specifies maximum allowed value.
+         */
+        maxValue: number;
+        /**
+         * (Output)
+         * For integer and double values specifies minimum allowed value.
+         */
+        minValue: number;
+        /**
+         * (Output)
+         * Parameter identifier.
+         */
+        paramId: string;
+        /**
+         * (Output)
+         * Is parameter required.
+         */
+        required: boolean;
+        /**
+         * (Output)
+         * Parameter type.
+         */
+        type: string;
+        /**
+         * (Output)
+         * Description of the requirements for this field, in case the user input does not fulfill the regex.
+         */
+        validationDescription: string;
+        /**
+         * (Output)
+         * URL to a help document to further explain the naming requirements.
+         */
+        validationHelpUrl: string;
+        /**
+         * (Output)
+         * Regular expression which can be used for parameter validation.
+         */
+        validationRegex: string;
     }
 
     export interface Datapolicyv2DataPolicyDataGovernanceTag {
@@ -15309,12 +15289,343 @@ export namespace bigqueryanalyticshub {
         projectId: string;
     }
 
+    export interface ListingSubscriptionDestinationPubsubSubscription {
+        /**
+         * Destination Pub/Sub subscription resource.
+         * Structure is documented below.
+         */
+        pubsubSubscription: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription {
+        /**
+         * The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+         * acknowledge receipt before resending the message. In the interval after the message is delivered
+         * and before it is acknowledged, it is considered to be outstanding. During that time period, the
+         * message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+         * used as the initial value for the ack deadline. To override this value for a given message, call
+         * `ModifyAckDeadline` with the corresponding `ackId` if using non-streaming pull or send the
+         * `ackId` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+         * deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+         * seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+         * delivery, this value is also used to set the request timeout for the call to the push endpoint.
+         * If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+         * the message.
+         */
+        ackDeadlineSeconds?: number;
+        /**
+         * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        bigqueryConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig;
+        /**
+         * If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        cloudStorageConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig;
+        /**
+         * A policy that specifies the conditions for dead lettering messages in this subscription. If
+         * `deadLetterPolicy` is not set, dead lettering is disabled. The Pub/Sub service account associated
+         * with this subscriptions's parent project (i.e.,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+         * Acknowledge() messages on this subscription.
+         * Structure is documented below.
+         */
+        deadLetterPolicy?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy;
+        /**
+         * Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+         * receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull`
+         * requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+         * to the endpoint will not be made.
+         */
+        detached?: boolean;
+        /**
+         * If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+         * value of `messageId` on this subscription: The message sent to a subscriber is guaranteed not
+         * to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+         * not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+         * message when `enableExactlyOnceDelivery` is true if the message was published multiple times by
+         * a publisher client. These copies are considered distinct by Pub/Sub and have distinct `messageId`
+         * values.
+         */
+        enableExactlyOnceDelivery?: boolean;
+        /**
+         * If true, messages published with the same `orderingKey` in `PubsubMessage`
+         * will be delivered to the subscribers in the order in which they are received
+         * by the Pub/Sub system. Otherwise, they may be delivered in any order.
+         */
+        enableMessageOrdering?: boolean;
+        /**
+         * A policy that specifies the conditions for this subscription's expiration. A subscription is
+         * considered active as long as any connected subscriber is successfully consuming messages from
+         * the subscription or is issuing operations on the subscription. If `expirationPolicy` is not
+         * set, a default policy with `ttl` of 31 days will be used. The minimum allowed value for
+         * `expirationPolicy.ttl` is 1 day. If `expirationPolicy` is set, but `expirationPolicy.ttl`
+         * is not set, the subscription never expires.
+         * Structure is documented below.
+         */
+        expirationPolicy?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy;
+        /**
+         * An expression written in the Pub/Sub filter language. If non-empty, then only `PubsubMessage`s
+         * whose `attributes` field matches the filter are delivered on this subscription. If empty, then
+         * no messages are filtered out.
+         */
+        filter?: string;
+        /**
+         * See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+         */
+        labels?: {[key: string]: string};
+        /**
+         * How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+         * message is published. If `retainAckedMessages` is true, then this also configures the retention
+         * of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+         * to 7 days. Cannot be more than 31 days or less than 10 minutes.
+         */
+        messageRetentionDuration?: string;
+        /**
+         * Name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.
+         */
+        name: string;
+        /**
+         * If push delivery is used with this subscription, this field is used to configure it.
+         * Structure is documented below.
+         */
+        pushConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig;
+        /**
+         * Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+         * the subscription's backlog, even if they are acknowledged, until they fall out of the
+         * `messageRetentionDuration` window. This must be true if you would like to Seek to a timestamp
+         * in the past to replay previously-acknowledged messages.
+         */
+        retainAckedMessages?: boolean;
+        /**
+         * A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+         * the default retry policy is applied. This generally implies that messages will be retried as soon
+         * as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+         * deadline exceeded events for a given message.
+         * Structure is documented below.
+         */
+        retryPolicy?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig {
+        /**
+         * When true and `useTopicSchema` is true, any fields that are a part of the topic schema that are
+         * not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+         * must be kept in sync and any messages with extra fields are not written and remain in the
+         * subscription's backlog.
+         */
+        dropUnknownFields?: boolean;
+        /**
+         * The service account to use to write to BigQuery. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub service agent,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
+        /**
+         * The name of the table to which to write data, of the form
+         * {projectId}.{datasetId}.{tableId}
+         */
+        table?: string;
+        /**
+         * When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+         * `useTableSchema` and `useTopicSchema` cannot be enabled at the same time.
+         */
+        useTableSchema?: boolean;
+        /**
+         * When true, use the topic's schema as the columns to write to in BigQuery,
+         * if it exists. `useTopicSchema` and `useTableSchema` cannot be enabled at the same time.
+         */
+        useTopicSchema?: boolean;
+        /**
+         * When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+         * to additional columns in the table. The subscription name, message_id, and publishTime fields
+         * are put in their own columns while all other message properties (other than data) are written
+         * to a JSON object in the attributes column.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig {
+        /**
+         * If set, message data will be written to Cloud Storage in Avro format.
+         * Structure is documented below.
+         */
+        avroConfig?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig;
+        /**
+         * User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+         * The bucket name must be without any prefix like "gs://". See the
+         * [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+         */
+        bucket?: string;
+        /**
+         * User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+         * See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+         */
+        filenameDatetimeFormat?: string;
+        /**
+         * User-provided prefix for Cloud Storage filename. See the
+         * [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+         */
+        filenamePrefix?: string;
+        /**
+         * User-provided suffix for Cloud Storage filename. See the
+         * [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+         * Must not end in "/".
+         */
+        filenameSuffix?: string;
+        /**
+         * The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+         * Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+         * than the limit.
+         */
+        maxBytes?: string;
+        /**
+         * The maximum duration that can elapse before a new Cloud Storage file is created.
+         * Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+         * acknowledgement deadline.
+         */
+        maxDuration?: string;
+        /**
+         * The maximum number of messages that can be written to a Cloud Storage file before a new file
+         * is created. Min 1000 messages.
+         */
+        maxMessages?: string;
+        /**
+         * The service account to use to write to Cloud Storage. The subscription creator or updater that
+         * specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+         * If not specified, the Pub/Sub service agent,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig {
+        /**
+         * When true, the output Cloud Storage file will be serialized using
+         * the topic schema, if it exists.
+         */
+        useTopicSchema?: boolean;
+        /**
+         * When true, write the subscription name, message_id, publish_time, attributes, and orderingKey
+         * as additional fields in the output. The subscription name, message_id, and publishTime fields
+         * are put in their own fields while all other message properties other than data (for example,
+         * an ordering_key, if present) are added as entries in the attributes map.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy {
+        /**
+         * The name of the topic to which dead letter messages should be published. Format is
+         * `projects/{project}/topics/{topic}`. The Pub/Sub service account associated with the enclosing
+         * subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+         * must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+         * Users should ensure that there is a subscription attached to this topic since messages published to
+         * a topic with no subscriptions are lost.
+         */
+        deadLetterTopic?: string;
+        /**
+         * The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+         * The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+         * the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+         * ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+         * ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+         * default value of 5 is used.
+         */
+        maxDeliveryAttempts?: number;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy {
+        /**
+         * Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+         * is not active for a period of `ttl`. The definition of "activity" depends on the type of the
+         * associated resource. The minimum and maximum allowed values for `ttl` depend on the type of
+         * the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+         */
+        ttl?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig {
+        /**
+         * Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+         * The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+         * pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+         * the shape of the pushed message (i.e., its fields and metadata). If not present during the
+         * `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call.
+         * If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls
+         * will always return a valid version, even if the subscription was created without this attribute.
+         * The only supported values for the `x-goog-version` attribute are: `v1beta1`: uses the push format
+         * defined in the v1beta1 Pub/Sub API. `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+         */
+        attributes?: {[key: string]: string};
+        /**
+         * When set, the payload to the push endpoint is not wrapped.
+         * Structure is documented below.
+         */
+        noWrapper?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper;
+        /**
+         * If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+         * Authorization header in the HTTP request for every pushed message.
+         * Structure is documented below.
+         */
+        oidcToken?: outputs.bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken;
+        /**
+         * A URL locating the endpoint to which messages should be pushed.
+         * For example, a Webhook endpoint might use `https://example.com/push`.
+         */
+        pushEndpoint?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper {
+        /**
+         * When true, writes the Pub/Sub message metadata to `x-goog-pubsub-<KEY>:<VAL>` headers of the
+         * HTTP request. Writes the Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. The audience claim identifies the recipients
+         * that the JWT is intended for. The audience value is a single case-sensitive string. Having
+         * multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+         * token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+         * the Push endpoint URL will be used.
+         */
+        audience?: string;
+        /**
+         * Service account email used for generating the OIDC token. For more information
+         * on setting up authentication, see Push subscriptions.
+         */
+        serviceAccountEmail?: string;
+    }
+
+    export interface ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy {
+        /**
+         * The maximum delay between consecutive deliveries of a given message.
+         * Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+         */
+        maximumBackoff?: string;
+        /**
+         * The minimum delay between consecutive deliveries of a given message.
+         * Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+         */
+        minimumBackoff?: string;
+    }
+
     export interface ListingSubscriptionLinkedDatasetMap {
         /**
          * (Output)
          * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
          */
         linkedDataset: string;
+        /**
+         * (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         */
+        linkedPubsubSubscription: string;
         /**
          * (Output)
          * Output only. Listing for which linked resource is created.
@@ -15332,6 +15643,11 @@ export namespace bigqueryanalyticshub {
          * Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
          */
         linkedDataset: string;
+        /**
+         * (Output)
+         * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+         */
+        linkedPubsubSubscription: string;
         /**
          * (Output)
          * Output only. Listing for which linked resource is created.
@@ -19023,6 +19339,12 @@ export namespace ces {
          */
         inputVariableMapping?: {[key: string]: string};
         /**
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session. If unspecified, the default language code of the
+         * Dialogflow agent will be used.
+         */
+        languageCodeVariable?: string;
+        /**
          * The mapping of the Dialogflow session parameters names to the app
          * variables names to be sent back to the CES agent after the Dialogflow
          * agent execution ends.
@@ -19045,6 +19367,76 @@ export namespace ces {
          * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
          */
         toolset: string;
+    }
+
+    export interface AgentTransferRule {
+        /**
+         * The resource name of the child agent the rule applies to.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+         */
+        childAgent: string;
+        /**
+         * Deterministic transfer rule. When the condition evaluates to true, the
+         * transfer occurs.
+         * Structure is documented below.
+         */
+        deterministicTransfer?: outputs.ces.AgentTransferRuleDeterministicTransfer;
+        /**
+         * The direction of the transfer.
+         * Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+         */
+        direction: string;
+        /**
+         * A rule that prevents the planner from transferring to the target agent.
+         * Structure is documented below.
+         */
+        disablePlannerTransfer?: outputs.ces.AgentTransferRuleDisablePlannerTransfer;
+    }
+
+    export interface AgentTransferRuleDeterministicTransfer {
+        /**
+         * A rule that evaluates a session state condition. If the condition
+         * evaluates to true, the transfer occurs.
+         * Structure is documented below.
+         */
+        expressionCondition?: outputs.ces.AgentTransferRuleDeterministicTransferExpressionCondition;
+        /**
+         * A rule that uses Python code block to evaluate the conditions. If the
+         * condition evaluates to true, the transfer occurs.
+         * Structure is documented below.
+         */
+        pythonCodeCondition?: outputs.ces.AgentTransferRuleDeterministicTransferPythonCodeCondition;
+    }
+
+    export interface AgentTransferRuleDeterministicTransferExpressionCondition {
+        /**
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression: string;
+    }
+
+    export interface AgentTransferRuleDeterministicTransferPythonCodeCondition {
+        /**
+         * The python code to execute. The function must be named
+         * `shouldTriggerTransferCallback`.
+         */
+        pythonCode: string;
+    }
+
+    export interface AgentTransferRuleDisablePlannerTransfer {
+        /**
+         * If the condition evaluates to true, planner will not be allowed to
+         * transfer to the target agent.
+         * Structure is documented below.
+         */
+        expressionCondition: outputs.ces.AgentTransferRuleDisablePlannerTransferExpressionCondition;
+    }
+
+    export interface AgentTransferRuleDisablePlannerTransferExpressionCondition {
+        /**
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression: string;
     }
 
     export interface AppAudioProcessingConfig {
@@ -19219,6 +19611,11 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfig?: outputs.ces.AppDefaultChannelProfileWebWidgetConfig;
+        /**
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfig?: outputs.ces.AppDefaultChannelProfileWhatsappConfig;
     }
 
     export interface AppDefaultChannelProfilePersonaProperty {
@@ -19243,6 +19640,11 @@ export namespace ces {
          */
         modality?: string;
         /**
+         * The security settings of the web widget.
+         * Structure is documented below.
+         */
+        securitySettings?: outputs.ces.AppDefaultChannelProfileWebWidgetConfigSecuritySettings;
+        /**
          * The theme of the web widget.
          * Possible values:
          * UNKNOWN_THEME
@@ -19256,12 +19658,125 @@ export namespace ces {
         webWidgetTitle?: string;
     }
 
+    export interface AppDefaultChannelProfileWebWidgetConfigSecuritySettings {
+        /**
+         * The origins that are allowed to host the web widget. An origin is
+         * defined by RFC 6454. If empty, all origins are allowed.
+         * A maximum of 100 origins is allowed.
+         * Example: "https://example.com"
+         */
+        allowedOrigins?: string[];
+        /**
+         * Indicates whether origin check for the web widget is enabled.
+         * If `true`, the web widget will check the origin of the website that
+         * loads the web widget and only allow it to be loaded in the same origin
+         * or any of the allowed origins.
+         */
+        enableOriginCheck?: boolean;
+        /**
+         * Indicates whether public access to the web widget is enabled.
+         * If `true`, the web widget will be publicly accessible.
+         * If `false`, the web widget must be integrated with your own
+         * authentication and authorization system to return valid credentials for
+         * accessing the CES agent.
+         */
+        enablePublicAccess?: boolean;
+        /**
+         * Indicates whether reCAPTCHA verification for the web widget is enabled.
+         */
+        enableRecaptcha?: boolean;
+    }
+
+    export interface AppDefaultChannelProfileWhatsappConfig {
+        /**
+         * (Output)
+         * The description of the Meta business page or profile.
+         */
+        description: string;
+        /**
+         * (Output)
+         * The fetched Meta business page name.
+         */
+        displayName: string;
+        /**
+         * The phone number in E.164 format.
+         */
+        phoneNumber?: string;
+        /**
+         * The Meta phone number ID.
+         */
+        phoneNumberId: string;
+        /**
+         * (Output)
+         * The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl: string;
+        /**
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: string;
+    }
+
+    export interface AppErrorHandlingSettings {
+        /**
+         * Configuration for ending the session in case of system errors (e.g. LLM
+         * errors).
+         * Structure is documented below.
+         */
+        endSessionConfig?: outputs.ces.AppErrorHandlingSettingsEndSessionConfig;
+        /**
+         * The strategy to use for error handling.
+         * Possible values:
+         * NONE
+         * FALLBACK_RESPONSE
+         * END_SESSION
+         */
+        errorHandlingStrategy?: string;
+        /**
+         * Configuration for handling fallback responses.
+         * Structure is documented below.
+         */
+        fallbackResponseConfig?: outputs.ces.AppErrorHandlingSettingsFallbackResponseConfig;
+    }
+
+    export interface AppErrorHandlingSettingsEndSessionConfig {
+        /**
+         * Whether to escalate the session in EndSession. If session is escalated,
+         * metadata in EndSession will contain sessionEscalated = true.
+         */
+        escalateSession?: boolean;
+    }
+
+    export interface AppErrorHandlingSettingsFallbackResponseConfig {
+        /**
+         * The fallback messages in case of system errors (e.g. LLM errors),
+         * mapped by supported language code
+         * (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+         */
+        customFallbackMessages?: {[key: string]: string};
+        /**
+         * The maximum number of fallback attempts to make before the agent
+         * emitting EndSession Signal.
+         */
+        maxFallbackAttempts?: number;
+    }
+
     export interface AppEvaluationMetricsThresholds {
         /**
          * Settings for golden evaluations.
          * Structure is documented below.
          */
         goldenEvaluationMetricsThresholds?: outputs.ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds;
+        /**
+         * The hallucination metric behavior for golden evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        goldenHallucinationMetricBehavior?: string;
+        /**
+         * The hallucination metric behavior for scenario evaluations.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        scenarioHallucinationMetricBehavior?: string;
     }
 
     export interface AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
@@ -19270,6 +19785,13 @@ export namespace ces {
          * Structure is documented below.
          */
         expectationLevelMetricsThresholds?: outputs.ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds;
+        /**
+         * The tool matching settings. An extra tool call is a tool call that is
+         * present in the execution but does not match any tool call in the golden
+         * expectation.
+         * Structure is documented below.
+         */
+        toolMatchingSettings?: outputs.ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings;
         /**
          * Turn level metrics thresholds.
          * Structure is documented below.
@@ -19285,12 +19807,30 @@ export namespace ces {
         toolInvocationParameterCorrectnessThreshold?: number;
     }
 
+    export interface AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings {
+        /**
+         * Defines the behavior when an extra tool call is encountered. An extra
+         * tool call is a tool call that is present in the execution but does
+         * not match any tool call in the golden expectation.
+         * Possible values are: `FAIL`, `ALLOW`.
+         */
+        extraToolCallBehavior?: string;
+    }
+
     export interface AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds {
         /**
          * The success threshold for overall tool invocation correctness. Must be
          * a float between 0 and 1. Default is 1.0.
          */
         overallToolInvocationCorrectnessThreshold?: number;
+        /**
+         * The semantic similarity channel to use for evaluation.
+         * Possible values:
+         * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+         * TEXT
+         * AUDIO
+         */
+        semanticSimilarityChannel?: string;
         /**
          * The success threshold for semantic similarity. Must be an integer
          * between 0 and 4. Default is >= 3.
@@ -19347,6 +19887,12 @@ export namespace ces {
          * Structure is documented below.
          */
         conversationLoggingSettings?: outputs.ces.AppLoggingSettingsConversationLoggingSettings;
+        /**
+         * Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         */
+        metricAnalysisSettings?: outputs.ces.AppLoggingSettingsMetricAnalysisSettings;
         /**
          * Configuration to instruct how sensitive data should be handled.
          * Structure is documented below.
@@ -19408,6 +19954,20 @@ export namespace ces {
          * Whether to disable conversation logging for the sessions.
          */
         disableConversationLogging?: boolean;
+        /**
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         */
+        retentionWindow: string;
+    }
+
+    export interface AppLoggingSettingsMetricAnalysisSettings {
+        /**
+         * Whether to collect conversation data for llm analysis metrics. If true,
+         * conversation data will not be collected for llm analysis metrics;
+         * otherwise, conversation data will be collected.
+         */
+        llmMetricsOptedOut?: boolean;
     }
 
     export interface AppLoggingSettingsRedactionConfig {
@@ -19752,6 +20312,13 @@ export namespace ces {
         toolsets: outputs.ces.AppVersionSnapshotAgentToolset[];
         /**
          * (Output)
+         * List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         */
+        transferRules: outputs.ces.AppVersionSnapshotAgentTransferRule[];
+        /**
+         * (Output)
          * Timestamp when the toolset was last updated.
          */
         updateTime: string;
@@ -19907,6 +20474,12 @@ export namespace ces {
         inputVariableMapping: {[key: string]: string};
         /**
          * (Output)
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session.
+         */
+        languageCodeVariable: string;
+        /**
+         * (Output)
          * The mapping of the Dialogflow session parameters names to the app
          * variables names to be sent back to the CES agent after the Dialogflow
          * agent execution ends.
@@ -19927,6 +20500,87 @@ export namespace ces {
          * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
          */
         toolset: string;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRule {
+        /**
+         * (Output)
+         * The resource name of the child agent the rule applies to.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+         */
+        childAgent: string;
+        /**
+         * (Output)
+         * Deterministic transfer rule. When the condition evaluates to true, the
+         * transfer occurs.
+         * Structure is documented below.
+         */
+        deterministicTransfers: outputs.ces.AppVersionSnapshotAgentTransferRuleDeterministicTransfer[];
+        /**
+         * (Output)
+         * The direction of the transfer.
+         * Possible values:
+         * * PARENT_TO_CHILD
+         * * CHILD_TO_PARENT
+         */
+        direction: string;
+        /**
+         * (Output)
+         * A rule that prevents the planner from transferring to the target agent.
+         * Structure is documented below.
+         */
+        disablePlannerTransfers: outputs.ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer[];
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDeterministicTransfer {
+        /**
+         * (Output)
+         * If the condition evaluates to true, planner will not be allowed to
+         * transfer to the target agent.
+         * Structure is documented below.
+         */
+        expressionConditions: outputs.ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition[];
+        /**
+         * (Output)
+         * A rule that uses Python code block to evaluate the conditions. If the
+         * condition evaluates to true, the transfer occurs.
+         * Structure is documented below.
+         */
+        pythonCodeConditions: outputs.ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition[];
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition {
+        /**
+         * (Output)
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression: string;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition {
+        /**
+         * (Output)
+         * The Python code to execute for the tool.
+         */
+        pythonCode: string;
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer {
+        /**
+         * (Output)
+         * If the condition evaluates to true, planner will not be allowed to
+         * transfer to the target agent.
+         * Structure is documented below.
+         */
+        expressionConditions: outputs.ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition[];
+    }
+
+    export interface AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition {
+        /**
+         * (Output)
+         * The string representation of cloud.api.Expression condition.
+         */
+        expression: string;
     }
 
     export interface AppVersionSnapshotApp {
@@ -19974,6 +20628,12 @@ export namespace ces {
          * The display name of the app version.
          */
         displayName: string;
+        /**
+         * (Output)
+         * Settings to describe how errors should be handled in the app.
+         * Structure is documented below.
+         */
+        errorHandlingSettings: outputs.ces.AppVersionSnapshotAppErrorHandlingSetting[];
         /**
          * (Output)
          * ETag used to ensure the object hasn't changed during a read-modify-write
@@ -20055,6 +20715,12 @@ export namespace ces {
          * Structure is documented below.
          */
         variableDeclarations: outputs.ces.AppVersionSnapshotAppVariableDeclaration[];
+        /**
+         * (Output)
+         * VPC-SC settings for the app.
+         * Structure is documented below.
+         */
+        vpcScSettings: outputs.ces.AppVersionSnapshotAppVpcScSetting[];
     }
 
     export interface AppVersionSnapshotAppAudioProcessingConfig {
@@ -20252,6 +20918,12 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfigs: outputs.ces.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig[];
+        /**
+         * (Output)
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfigs: outputs.ces.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig[];
     }
 
     export interface AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
@@ -20293,6 +20965,87 @@ export namespace ces {
         webWidgetTitle: string;
     }
 
+    export interface AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig {
+        /**
+         * The description of the app version.
+         */
+        description: string;
+        /**
+         * The display name of the app version.
+         */
+        displayName: string;
+        /**
+         * (Output)
+         * The phone number in E.164 format.
+         */
+        phoneNumber: string;
+        /**
+         * (Output)
+         * The Meta phone number ID.
+         */
+        phoneNumberId: string;
+        /**
+         * (Output)
+         * The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl: string;
+        /**
+         * (Output)
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: string;
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSetting {
+        /**
+         * (Output)
+         * Configuration for ending the session in case of system errors (e.g. LLM
+         * errors).
+         * Structure is documented below.
+         */
+        endSessionConfigs: outputs.ces.AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig[];
+        /**
+         * (Output)
+         * The strategy to use for error handling.
+         * Possible values:
+         * NONE
+         * FALLBACK_RESPONSE
+         * END_SESSION
+         */
+        errorHandlingStrategy: string;
+        /**
+         * (Output)
+         * Configuration for handling fallback responses.
+         * Structure is documented below.
+         */
+        fallbackResponseConfigs: outputs.ces.AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig[];
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig {
+        /**
+         * (Output)
+         * Whether to escalate the session in EndSession. If session is escalated,
+         * metadata in EndSession will contain sessionEscalated = true.
+         */
+        escalateSession: boolean;
+    }
+
+    export interface AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig {
+        /**
+         * (Output)
+         * The fallback messages in case of system errors (e.g. LLM errors),
+         * mapped by supported language code
+         * (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+         */
+        customFallbackMessages: {[key: string]: string};
+        /**
+         * (Output)
+         * The maximum number of fallback attempts to make before the agent
+         * emitting EndSession Signal.
+         */
+        maxFallbackAttempts: number;
+    }
+
     export interface AppVersionSnapshotAppEvaluationMetricsThreshold {
         /**
          * (Output)
@@ -20300,6 +21053,22 @@ export namespace ces {
          * Structure is documented below.
          */
         goldenEvaluationMetricsThresholds: outputs.ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold[];
+        /**
+         * (Output)
+         * The hallucination metric behavior for golden evaluations.
+         * Possible values:
+         * DISABLED
+         * ENABLED
+         */
+        goldenHallucinationMetricBehavior: string;
+        /**
+         * (Output)
+         * The hallucination metric behavior for scenario evaluations.
+         * Possible values:
+         * DISABLED
+         * ENABLED
+         */
+        scenarioHallucinationMetricBehavior: string;
     }
 
     export interface AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold {
@@ -20309,6 +21078,14 @@ export namespace ces {
          * Structure is documented below.
          */
         expectationLevelMetricsThresholds: outputs.ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold[];
+        /**
+         * (Output)
+         * The tool matching settings. An extra tool call is a tool call that is
+         * present in the execution but does not match any tool call in the golden
+         * expectation.
+         * Structure is documented below.
+         */
+        toolMatchingSettings: outputs.ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting[];
         /**
          * (Output)
          * Turn level metrics thresholds.
@@ -20326,6 +21103,19 @@ export namespace ces {
         toolInvocationParameterCorrectnessThreshold: number;
     }
 
+    export interface AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting {
+        /**
+         * (Output)
+         * Defines the behavior when an extra tool call is encountered. An extra
+         * tool call is a tool call that is present in the execution but does
+         * not match any tool call in the golden expectation.
+         * Possible values:
+         * FAIL
+         * ALLOW
+         */
+        extraToolCallBehavior: string;
+    }
+
     export interface AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold {
         /**
          * (Output)
@@ -20333,6 +21123,15 @@ export namespace ces {
          * a float between 0 and 1. Default is 1.0.
          */
         overallToolInvocationCorrectnessThreshold: number;
+        /**
+         * (Output)
+         * The semantic similarity channel to use for evaluation.
+         * Possible values:
+         * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+         * TEXT
+         * AUDIO
+         */
+        semanticSimilarityChannel: string;
         /**
          * (Output)
          * The success threshold for semantic similarity. Must be an integer
@@ -20400,6 +21199,13 @@ export namespace ces {
         conversationLoggingSettings: outputs.ces.AppVersionSnapshotAppLoggingSettingConversationLoggingSetting[];
         /**
          * (Output)
+         * Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         */
+        metricAnalysisSettings: outputs.ces.AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting[];
+        /**
+         * (Output)
          * Configuration to instruct how sensitive data should be handled.
          * Structure is documented below.
          */
@@ -20464,6 +21270,22 @@ export namespace ces {
          * Whether to disable conversation logging for the sessions.
          */
         disableConversationLogging: boolean;
+        /**
+         * (Output)
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         */
+        retentionWindow: string;
+    }
+
+    export interface AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting {
+        /**
+         * (Output)
+         * Whether to collect conversation data for llm analysis metrics. If true,
+         * conversation data will not be collected for llm analysis metrics;
+         * otherwise, conversation data will be collected.
+         */
+        llmMetricsOptedOut: boolean;
     }
 
     export interface AppVersionSnapshotAppLoggingSettingRedactionConfig {
@@ -20639,6 +21461,18 @@ export namespace ces {
          * Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
          */
         uniqueItems: boolean;
+    }
+
+    export interface AppVersionSnapshotAppVpcScSetting {
+        /**
+         * (Output)
+         * The allowed HTTP(s) origins that OpenAPI tools in the App are
+         * able to directly call when VPC Service Controls are enabled. These strings
+         * must match the origin exactly, including the port if specified. For
+         * example, "https://example.com" or "https://example.com:443". This list does
+         * not yet apply to Python tools that may make direct HTTP calls.
+         */
+        allowedOrigins: string[];
     }
 
     export interface AppVersionSnapshotExample {
@@ -22532,6 +23366,17 @@ export namespace ces {
         displayName: string;
     }
 
+    export interface AppVpcScSettings {
+        /**
+         * The allowed HTTP(s) origins that OpenAPI tools in the App are
+         * able to directly call when VPC Service Controls are enabled. These strings
+         * must match the origin exactly, including the port if specified. For
+         * example, "https://example.com" or "https://example.com:443". This list does
+         * not yet apply to Python tools that may make direct HTTP calls.
+         */
+        allowedOrigins?: string[];
+    }
+
     export interface DeploymentChannelProfile {
         /**
          * The type of the channel profile.
@@ -22544,6 +23389,8 @@ export namespace ces {
          * CONTACT_CENTER_AS_A_SERVICE
          * FIVE9
          * CONTACT_CENTER_INTEGRATION
+         * WHATSAPP
+         * INSTAGRAM
          */
         channelType?: string;
         /**
@@ -22571,6 +23418,11 @@ export namespace ces {
          * Structure is documented below.
          */
         webWidgetConfig?: outputs.ces.DeploymentChannelProfileWebWidgetConfig;
+        /**
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         */
+        whatsappConfig?: outputs.ces.DeploymentChannelProfileWhatsappConfig;
     }
 
     export interface DeploymentChannelProfilePersonaProperty {
@@ -22631,6 +23483,116 @@ export namespace ces {
          * Indicates whether reCAPTCHA verification for the web widget is enabled.
          */
         enableRecaptcha?: boolean;
+    }
+
+    export interface DeploymentChannelProfileWhatsappConfig {
+        /**
+         * (Output)
+         * Output only. The description of the Meta business page or profile.
+         */
+        description: string;
+        /**
+         * (Output)
+         * Output only. The fetched Meta business page name.
+         */
+        displayName: string;
+        /**
+         * Optional. The phone number in E.164 format.
+         */
+        phoneNumber?: string;
+        /**
+         * Required. The Meta phone number ID.
+         */
+        phoneNumberId: string;
+        /**
+         * (Output)
+         * Output only. The fetched Meta business profile thumbnail URL.
+         */
+        thumbnailUrl: string;
+        /**
+         * Required. The WhatsApp Business Account ID.
+         */
+        wabaId: string;
+    }
+
+    export interface DeploymentInstagramCredentials {
+        /**
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        authCode?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `authCode` or `authCodeWo` can only be set.
+         */
+        authCodeWo?: string;
+        /**
+         * Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        authCodeWoVersion?: string;
+        /**
+         * The Conversation Profile ID to use for the deployment.
+         */
+        conversationProfileId?: string;
+    }
+
+    export interface DeploymentWhatsappCredentials {
+        /**
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        authCode?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The Meta auth code provided by the embedded signup flow.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `authCode` or `authCodeWo` can only be set.
+         */
+        authCodeWo?: string;
+        /**
+         * Triggers update of `authCodeWo` write-only. Increment this value when an update to `authCodeWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        authCodeWoVersion?: string;
+        /**
+         * The Business Account ID to use for the phone number.
+         */
+        businessAccountId: string;
+        /**
+         * The Conversation Profile ID to use for the deployment.
+         */
+        conversationProfileId?: string;
+        /**
+         * The phone number to register with WhatsApp.
+         */
+        phoneNumber: string;
+        /**
+         * The 6-digit PIN created by the user for two-step verification.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        pin?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The 6-digit PIN created by the user for two-step verification.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `pin` or `pinWo` can only be set.
+         */
+        pinWo?: string;
+        /**
+         * Triggers update of `pinWo` write-only. Increment this value when an update to `pinWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        pinWoVersion?: string;
+        /**
+         * The WhatsApp Business Account ID.
+         */
+        wabaId: string;
     }
 
     export interface EvaluationGolden {
@@ -23708,6 +24670,15 @@ export namespace ces {
          */
         disabled?: boolean;
         /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: boolean;
+        /**
          * The python code to execute for the callback.
          */
         pythonCode: string;
@@ -23723,6 +24694,15 @@ export namespace ces {
          * agent.
          */
         disabled?: boolean;
+        /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: boolean;
         /**
          * The python code to execute for the callback.
          */
@@ -23740,6 +24720,15 @@ export namespace ces {
          */
         disabled?: boolean;
         /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: boolean;
+        /**
          * The python code to execute for the callback.
          */
         pythonCode: string;
@@ -23755,6 +24744,15 @@ export namespace ces {
          * agent.
          */
         disabled?: boolean;
+        /**
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         */
+        proactiveExecutionEnabled?: boolean;
         /**
          * The python code to execute for the callback.
          */
@@ -24835,7 +25833,7 @@ export namespace ces {
     export interface ToolMcpTool {
         /**
          * (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          */
         apiAuthentications: outputs.ces.ToolMcpToolApiAuthentication[];
@@ -24991,7 +25989,8 @@ export namespace ces {
         oauthGrantType: string;
         /**
          * (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          */
         scopes: string[];
         /**
@@ -25063,7 +26062,7 @@ export namespace ces {
     export interface ToolOpenApiTool {
         /**
          * (Output)
-         * Authentication information required for API calls.
+         * Authentication information required for calling the remote agent.
          * Structure is documented below.
          */
         apiAuthentications: outputs.ces.ToolOpenApiToolApiAuthentication[];
@@ -25200,7 +26199,8 @@ export namespace ces {
         oauthGrantType: string;
         /**
          * (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          */
         scopes: string[];
         /**
@@ -25310,6 +26310,12 @@ export namespace ces {
         agentCards: outputs.ces.ToolRemoteAgentToolAgentCard[];
         /**
          * (Output)
+         * Authentication information required for calling the remote agent.
+         * Structure is documented below.
+         */
+        apiAuthentications: outputs.ces.ToolRemoteAgentToolApiAuthentication[];
+        /**
+         * (Output)
          * The description of the system tool.
          */
         description: string;
@@ -25416,6 +26422,133 @@ export namespace ces {
          * HTTPS URL in production.
          */
         url: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthentication {
+        /**
+         * (Output)
+         * Configurations for authentication with API key.
+         * Structure is documented below.
+         */
+        apiKeyConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationApiKeyConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         */
+        bearerTokenConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationBearerTokenConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication with OAuth.
+         * Structure is documented below.
+         */
+        oauthConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationOauthConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication using a custom service account.
+         * Structure is documented below.
+         */
+        serviceAccountAuthConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig[];
+        /**
+         * (Output)
+         * Configurations for authentication with [ID
+         * token](https://cloud.google.com/docs/authentication/token-types#id) generated
+         * from service agent.
+         */
+        serviceAgentIdTokenAuthConfigs: outputs.ces.ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig[];
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationApiKeyConfig {
+        /**
+         * (Output)
+         * The name of the SecretManager secret version resource storing the API key.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         * Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+         * service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        apiKeySecretVersion: string;
+        /**
+         * (Output)
+         * The parameter name or the header name of the API key.
+         * E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+         */
+        keyName: string;
+        /**
+         * (Output)
+         * Key location in the request.
+         * Possible values:
+         * HEADER
+         * QUERY_STRING
+         */
+        requestLocation: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationBearerTokenConfig {
+        /**
+         * (Output)
+         * The bearer token. Must be in the format $context.variables.<name_of_variable>.
+         */
+        token: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationOauthConfig {
+        /**
+         * (Output)
+         * The client ID from the OAuth provider.
+         */
+        clientId: string;
+        /**
+         * (Output)
+         * The name of the SecretManager secret version resource storing the
+         * client secret.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         * Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+         * service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        clientSecretVersion: string;
+        /**
+         * (Output)
+         * OAuth grant types.
+         * Possible values:
+         * CLIENT_CREDENTIAL
+         */
+        oauthGrantType: string;
+        /**
+         * (Output)
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         */
+        scopes: string[];
+        /**
+         * (Output)
+         * The token endpoint in the OAuth provider to exchange for an access token.
+         */
+        tokenEndpoint: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig {
+        /**
+         * (Output)
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         */
+        scopes: string[];
+        /**
+         * (Output)
+         * The email address of the service account used for authenticatation. CES
+         * uses this service account to exchange an access token and the access token
+         * is then sent in the `Authorization` header of the request.
+         * The service account must have the
+         * `roles/iam.serviceAccountTokenCreator` role granted to the
+         * CES service agent
+         * `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+         */
+        serviceAccount: string;
+    }
+
+    export interface ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfig {
     }
 
     export interface ToolSystemTool {
@@ -25816,6 +26949,11 @@ export namespace ces {
          * Structure is documented below.
          */
         tlsConfig?: outputs.ces.ToolsetMcpToolsetTlsConfig;
+        /**
+         * A list of tool overrides for the toolset.
+         * Structure is documented below.
+         */
+        toolOverrides?: outputs.ces.ToolsetMcpToolsetToolOverride[];
     }
 
     export interface ToolsetMcpToolsetApiAuthentication {
@@ -25968,6 +27106,21 @@ export namespace ces {
          * can be used to disambiguate the custom CA certificates.
          */
         displayName: string;
+    }
+
+    export interface ToolsetMcpToolsetToolOverride {
+        /**
+         * The description override for the tool.
+         */
+        descriptionOverride?: string;
+        /**
+         * The name override for the tool.
+         */
+        nameOverride?: string;
+        /**
+         * The name of the tool to be overridden.
+         */
+        tool: string;
     }
 
     export interface ToolsetOpenApiToolset {
@@ -27438,6 +28591,22 @@ export namespace chronicle {
          * "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
          */
         dataAccessScopes: string[];
+    }
+
+    export interface EnvironmentDynamicParameter {
+        /**
+         * The ID of the dynamic parameter.
+         */
+        dynamicParameterId: number;
+        /**
+         * (Output)
+         * The ID of the environment.
+         */
+        environmentId: number;
+        /**
+         * The value of the dynamic parameter.
+         */
+        value: string;
     }
 
     export interface FeedDetails {
@@ -40765,6 +41934,10 @@ export namespace cloudrunv2 {
          */
         resources: outputs.cloudrunv2.GetWorkerPoolTemplateContainerResource[];
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher: boolean;
+        /**
          * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
          */
         startupProbes: outputs.cloudrunv2.GetWorkerPoolTemplateContainerStartupProbe[];
@@ -40874,10 +42047,6 @@ export namespace cloudrunv2 {
          */
         name: string;
         /**
-         * Required. The header field name
-         */
-        port: number;
-        /**
          * Optional. The header field value
          */
         value: string;
@@ -40959,10 +42128,6 @@ export namespace cloudrunv2 {
          * The name of the Cloud Run v2 Worker Pool.
          */
         name: string;
-        /**
-         * Required. The header field name
-         */
-        port: number;
         /**
          * Optional. The header field value
          */
@@ -42996,6 +44161,10 @@ export namespace cloudrunv2 {
          */
         resources: outputs.cloudrunv2.WorkerPoolTemplateContainerResources;
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: boolean;
+        /**
          * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
          * Structure is documented below.
          */
@@ -43096,7 +44265,7 @@ export namespace cloudrunv2 {
          * Optional. Custom headers to set in the request. HTTP allows repeated headers.
          * Structure is documented below.
          */
-        httpHeaders?: outputs.cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders;
+        httpHeaders?: outputs.cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader[];
         /**
          * Optional. Path to access on the HTTP server. Defaults to '/'.
          */
@@ -43107,20 +44276,11 @@ export namespace cloudrunv2 {
         port?: number;
     }
 
-    export interface WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+    export interface WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
         /**
          * Required. The header field name
          */
-        name?: string;
-        /**
-         * (Optional, Deprecated)
-         * Required. The header field name
-         *
-         * > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         *
-         * @deprecated `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         */
-        port?: number;
+        name: string;
         /**
          * Optional. The header field value
          */
@@ -43191,7 +44351,7 @@ export namespace cloudrunv2 {
          * Optional. Custom headers to set in the request. HTTP allows repeated headers.
          * Structure is documented below.
          */
-        httpHeaders?: outputs.cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders;
+        httpHeaders?: outputs.cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader[];
         /**
          * Optional. Path to access on the HTTP server. Defaults to '/'.
          */
@@ -43202,20 +44362,11 @@ export namespace cloudrunv2 {
         port?: number;
     }
 
-    export interface WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+    export interface WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
         /**
          * Required. The header field name
          */
-        name?: string;
-        /**
-         * (Optional, Deprecated)
-         * Required. The header field name
-         *
-         * > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         *
-         * @deprecated `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-         */
-        port?: number;
+        name: string;
         /**
          * Optional. The header field value
          */
@@ -43712,6 +44863,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -43720,6 +44876,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: string;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue;
+    }
+
+    export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
     }
 
     export interface CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue {
@@ -43758,6 +44953,11 @@ export namespace cloudsecuritycompliance {
          * The name of the parameter.
          */
         name: string;
+        /**
+         * The parameter spec of the cloud control.
+         * Structure is documented below.
+         */
+        subParameters?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameter[];
         /**
          * List of parameter substitutions.
          * Structure is documented below.
@@ -43827,6 +45027,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -43835,6 +45040,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: string;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue;
+    }
+
+    export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
     }
 
     export interface CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue {
@@ -43849,6 +45093,264 @@ export namespace cloudsecuritycompliance {
          * The strings in the list.
          */
         values: string[];
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameter {
+        /**
+         * Possible parameter value types.
+         * Structure is documented below.
+         */
+        defaultValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValue;
+        /**
+         * The description of the parameter. The maximum length is 2000 characters.
+         */
+        description?: string;
+        /**
+         * The display name of the parameter. The maximum length is 200 characters.
+         */
+        displayName?: string;
+        /**
+         * if the parameter is required
+         */
+        isRequired: boolean;
+        /**
+         * The name of the parameter.
+         */
+        name: string;
+        /**
+         * List of parameter substitutions.
+         * Structure is documented below.
+         */
+        substitutionRules?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRule[];
+        /**
+         * Validation of the parameter.
+         * Structure is documented below.
+         */
+        validation?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidation;
+        /**
+         * Parameter value type.
+         * Possible values:
+         * STRING
+         * BOOLEAN
+         * STRINGLIST
+         * NUMBER
+         * ONEOF
+         */
+        valueType: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValue;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: string;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterSubstitutionRule {
+        /**
+         * Attribute at the given path is substituted entirely.
+         * Structure is documented below.
+         */
+        attributeSubstitutionRule?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRule;
+        /**
+         * Placeholder is substituted in the rendered string.
+         * Structure is documented below.
+         */
+        placeholderSubstitutionRule?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRule;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRule {
+        /**
+         * Fully qualified proto attribute path (in dot notation).
+         * Example: rules[0].cel_expression.resource_types_values
+         */
+        attribute?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRule {
+        /**
+         * Fully qualified proto attribute path (e.g., dot notation)
+         */
+        attribute?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidation {
+        /**
+         * Allowed set of values for the parameter.
+         * Structure is documented below.
+         */
+        allowedValues?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues;
+        /**
+         * Number range for number parameters.
+         * Structure is documented below.
+         */
+        intRange?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationIntRange;
+        /**
+         * Regular Expression Validator for parameter values.
+         * Structure is documented below.
+         */
+        regexpPattern?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationRegexpPattern;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues {
+        /**
+         * List of allowed values for the parameter.
+         * Structure is documented below.
+         */
+        values: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValue[];
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValue;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: string;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationIntRange {
+        /**
+         * Maximum allowed value for the numeric parameter (inclusive).
+         */
+        max: string;
+        /**
+         * Minimum allowed value for the numeric parameter (inclusive).
+         */
+        min: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterSubParameterValidationRegexpPattern {
+        /**
+         * Regex Pattern to match the value(s) of parameter.
+         */
+        pattern: string;
     }
 
     export interface CloudControlParameterSpecSubParameterSubstitutionRule {
@@ -43952,6 +45454,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -43960,6 +45467,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: string;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue;
+    }
+
+    export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
     }
 
     export interface CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
@@ -44095,6 +45641,11 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
+         * Sub-parameter values.
+         * Structure is documented below.
+         */
+        oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue;
+        /**
          * A list of strings.
          * Structure is documented below.
          */
@@ -44103,6 +45654,45 @@ export namespace cloudsecuritycompliance {
          * Represents a string value.
          */
         stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue {
+        /**
+         * The name of the parameter.
+         */
+        name?: string;
+        /**
+         * The value of the parameter.
+         * Structure is documented below.
+         */
+        parameterValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue;
+    }
+
+    export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: boolean;
+        /**
+         * Represents a double value.
+         */
+        numberValue?: number;
+        /**
+         * A list of strings.
+         * Structure is documented below.
+         */
+        stringListValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: string;
+    }
+
+    export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue {
+        /**
+         * The strings in the list.
+         */
+        values: string[];
     }
 
     export interface CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue {
@@ -52588,6 +54178,10 @@ export namespace compute {
          */
         accelerators: outputs.compute.GetMachineTypesMachineTypeAccelerator[];
         /**
+         * The architecture of the machine type, either `X86_64` or `ARM64` when reported by the API. May be empty for legacy machine types.
+         */
+        architecture: string;
+        /**
          * (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
          */
         bundledLocalSsds: outputs.compute.GetMachineTypesMachineTypeBundledLocalSsd[];
@@ -57012,6 +58606,194 @@ export namespace compute {
         routingMode: string;
     }
 
+    export interface GetServiceAttachmentsServiceAttachment {
+        /**
+         * An array of the consumer forwarding rules connected to this service
+         * attachment.
+         */
+        connectedEndpoints: outputs.compute.GetServiceAttachmentsServiceAttachmentConnectedEndpoint[];
+        /**
+         * The connection preference of the service attachment.
+         * Possible values are `ACCEPT_AUTOMATIC` and `ACCEPT_MANUAL`.
+         */
+        connectionPreference: string;
+        /**
+         * An array of projects that are allowed to connect to this service
+         * attachment.
+         */
+        consumerAcceptLists: outputs.compute.GetServiceAttachmentsServiceAttachmentConsumerAcceptList[];
+        /**
+         * An array of projects that are not allowed to connect to this service
+         * attachment.
+         */
+        consumerRejectLists: string[];
+        /**
+         * Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+         * When a 'terraform destroy' or 'terraform apply' would delete the instance,
+         * the command will fail if this field is set to "PREVENT" in Terraform state.
+         * When set to "ABANDON", the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to "DELETE", deleting the resource is allowed.
+         */
+        deletionPolicy: string;
+        /**
+         * An optional description of the service attachment.
+         */
+        description: string;
+        /**
+         * A list of domain names for the service attachment.
+         */
+        domainNames: string[];
+        /**
+         * Whether the proxy protocol is enabled on the service attachment.
+         */
+        enableProxyProtocol: boolean;
+        /**
+         * The fingerprint of the service attachment.
+         */
+        fingerprint: string;
+        /**
+         * The name of the service attachment.
+         */
+        name: string;
+        /**
+         * A list of URLs of subnetworks used for NAT in this service attachment.
+         */
+        natSubnets: string[];
+        /**
+         * The project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         */
+        project: string;
+        /**
+         * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+         * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+         *
+         * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+         * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+         *
+         * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set 'send_propagated_connection_limit_if_zero = true'.
+         */
+        propagatedConnectionLimit: number;
+        /**
+         * An 128-bit global unique ID of the PSC service attachment.
+         */
+        pscServiceAttachmentIds: outputs.compute.GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId[];
+        /**
+         * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+         *
+         * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+         * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+         */
+        reconcileConnections: boolean;
+        /**
+         * The region in which the resource belongs.
+         * If it is not provided, the provider region is used.
+         */
+        region: string;
+        /**
+         * The URI of the service attachment.
+         */
+        selfLink: string;
+        /**
+         * Controls the behavior of propagated_connection_limit.
+         * When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
+         * When true, the provider will set propagatedConnectionLimit to zero.
+         * Defaults to false.
+         */
+        sendPropagatedConnectionLimitIfZero: boolean;
+        /**
+         * NOTE: This field is temporarily non-functional due to an underlying API issue.
+         * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+         * [If true, show NAT IPs of all connected endpoints.]
+         */
+        showNatIps: boolean;
+        /**
+         * The URL of the forwarding rule that represents the service identified
+         * by this service attachment.
+         */
+        targetService: string;
+        /**
+         * Tunneling configuration for this service attachment.
+         */
+        tunnelingConfigs: outputs.compute.GetServiceAttachmentsServiceAttachmentTunnelingConfig[];
+    }
+
+    export interface GetServiceAttachmentsServiceAttachmentConnectedEndpoint {
+        /**
+         * The url of the consumer network.
+         */
+        consumerNetwork: string;
+        /**
+         * The URL of the consumer forwarding rule.
+         */
+        endpoint: string;
+        /**
+         * NOTE: This field is temporarily non-functional due to an underlying API issue.
+         * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+         * 'The nat IPs of the connected endpoint.'
+         */
+        natIps: string[];
+        /**
+         * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+         */
+        propagatedConnectionCount: number;
+        /**
+         * The PSC connection id of the connected endpoint.
+         */
+        pscConnectionId: string;
+        /**
+         * The status of the connection from the consumer forwarding rule to
+         * this service attachment.
+         */
+        status: string;
+    }
+
+    export interface GetServiceAttachmentsServiceAttachmentConsumerAcceptList {
+        /**
+         * The number of consumer forwarding rules the consumer project can
+         * create.
+         */
+        connectionLimit: number;
+        /**
+         * The endpoint that is allowed to connect to this service attachment.
+         * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
+         */
+        endpointUrl: string;
+        /**
+         * The network that is allowed to connect to this service attachment.
+         * Only one of projectIdOrNum and networkUrl may be set.
+         */
+        networkUrl: string;
+        /**
+         * A project that is allowed to connect to this service attachment.
+         * Only one of projectIdOrNum and networkUrl may be set.
+         */
+        projectIdOrNum: string;
+    }
+
+    export interface GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId {
+        /**
+         * The high 64 bits of the PSC service attachment ID.
+         */
+        high: string;
+        /**
+         * The low 64 bits of the PSC service attachment ID.
+         */
+        low: string;
+    }
+
+    export interface GetServiceAttachmentsServiceAttachmentTunnelingConfig {
+        /**
+         * The encapsulation profile for tunneling traffic.
+         */
+        encapsulationProfile: string;
+        /**
+         * The routing mode for tunneling traffic.
+         */
+        routingMode: string;
+    }
+
     export interface GetSnapshotParam {
         /**
          * Resource manager tags to be bound to the snapshot. Tag keys and values have the
@@ -58073,6 +59855,8 @@ export namespace compute {
         enableUefiNetworking?: boolean;
         /**
          * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         *
+         * > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
          */
         performanceMonitoringUnit?: string;
         /**
@@ -60531,6 +62315,8 @@ export namespace compute {
         enableUefiNetworking?: boolean;
         /**
          * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         *
+         * > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
          */
         performanceMonitoringUnit?: string;
         /**
@@ -61526,15 +63312,6 @@ export namespace compute {
     }
 
     export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
-        /**
-         * (Output, Deprecated)
-         * URLs of Attachments in the given zone, to the given
-         * region, on Interconnects in the given facility and metro. Every
-         * Attachment in the AG has such an entry.
-         *
-         * @deprecated `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-         */
-        attachment: string[];
         /**
          * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
          * strings. Users are encouraged, but not required, to use their preferred
@@ -65440,6 +67217,8 @@ export namespace compute {
         enableUefiNetworking?: boolean;
         /**
          * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         *
+         * > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
          */
         performanceMonitoringUnit?: string;
         /**
@@ -79928,7 +81707,7 @@ export namespace container {
          */
         name: string;
         /**
-         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
          */
         namePrefix: string;
         /**
@@ -83807,7 +85586,7 @@ export namespace container {
          */
         name: string;
         /**
-         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
          */
         namePrefix: string;
         /**
@@ -88555,6 +90334,704 @@ export namespace datalineage {
 }
 
 export namespace dataloss {
+    export interface PreventionContentPolicyDefaultAction {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: string;
+    }
+
+    export interface PreventionContentPolicyError {
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details: outputs.dataloss.PreventionContentPolicyErrorDetail[];
+        /**
+         * (Output)
+         * Additional information about the error.
+         */
+        extraInfo: string;
+        /**
+         * (Output)
+         * The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+         */
+        timestamps: string[];
+    }
+
+    export interface PreventionContentPolicyErrorDetail {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details: {[key: string]: string}[];
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English.
+         */
+        message: string;
+    }
+
+    export interface PreventionContentPolicyFailedToScanSupportedFileType {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: string;
+    }
+
+    export interface PreventionContentPolicyInputTooLarge {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfig {
+        /**
+         * List of options defining data content to scan. If empty, text, images, and other content will be included.
+         * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+         */
+        contentOptions?: string[];
+        /**
+         * Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+         * Structure is documented below.
+         */
+        customInfoTypes?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoType[];
+        /**
+         * When true, excludes type information of the findings.
+         */
+        excludeInfoTypes?: boolean;
+        /**
+         * When true, a contextual quote from the data that triggered a finding is included in the response.
+         */
+        includeQuote?: boolean;
+        /**
+         * Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+         * By default this may be all types, but may change over time as detectors are updated.
+         * Structure is documented below.
+         */
+        infoTypes?: outputs.dataloss.PreventionContentPolicyInspectConfigInfoType[];
+        /**
+         * Configuration to control the number of findings returned.
+         * Structure is documented below.
+         */
+        limits?: outputs.dataloss.PreventionContentPolicyInspectConfigLimits;
+        /**
+         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+         * Default value is `POSSIBLE`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        minLikelihood?: string;
+        /**
+         * Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+         * The system only returns a finding if its likelihood is above this threshold. If this field
+         * is not set, the system uses the InspectConfig min_likelihood.
+         * Structure is documented below.
+         */
+        minLikelihoodPerInfoTypes?: outputs.dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType[];
+        /**
+         * Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+         * other rules are executed in the order they are specified for each info type.
+         * Structure is documented below.
+         */
+        ruleSets?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSet[];
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoType {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionary;
+        /**
+         * If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+         * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+         */
+        exclusionType?: string;
+        /**
+         * CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+         * infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+         * one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+         * treated as a custom info type.
+         * Structure is documented below.
+         */
+        infoType: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoType;
+        /**
+         * Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+         * specified by the rule.
+         * Default value is `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        likelihood?: string;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeRegex;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore;
+        /**
+         * A reference to a StoredInfoType to use with scanning.
+         * Structure is documented below.
+         */
+        storedType?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeStoredType;
+        /**
+         * Message for detecting output from deidentification transformations that support reversing.
+         */
+        surrogateType?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: string[];
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeStoredType {
+        /**
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
+         */
+        name: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateType {
+    }
+
+    export interface PreventionContentPolicyInspectConfigInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionContentPolicyInspectConfigInfoTypeSensitivityScore;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimits {
+        /**
+         * Configuration of findings limit given for specified infoTypes.
+         * Structure is documented below.
+         */
+        maxFindingsPerInfoTypes?: outputs.dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType[];
+        /**
+         * Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+         */
+        maxFindingsPerItem: number;
+        /**
+         * Max number of findings that will be returned per request/job. The maximum returned is 2000.
+         */
+        maxFindingsPerRequest: number;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType {
+        /**
+         * Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+         * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+         * specified in another InfoTypeLimit.
+         * Structure is documented below.
+         */
+        infoType?: outputs.dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType;
+        /**
+         * Max findings limit for the given infoType.
+         */
+        maxFindings: number;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType {
+        /**
+         * Type of information the likeliness threshold applies to. Only one likelihood per infoType should be provided.
+         * If InfoTypeLikelihood does not have an info_type, the configuration fails.
+         * Structure is documented below.
+         */
+        infoType?: outputs.dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType;
+        /**
+         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        minLikelihood: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSet {
+        /**
+         * List of infoTypes this rule set is applied to.
+         * Structure is documented below.
+         */
+        infoTypes: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetInfoType[];
+        /**
+         * Set of rules to be applied to infoTypes. The rules are applied in order.
+         * Structure is documented below.
+         */
+        rules: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRule[];
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRule {
+        /**
+         * The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+         * Structure is documented below.
+         */
+        exclusionRule?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule;
+        /**
+         * Hotword-based detection rule.
+         * Structure is documented below.
+         */
+        hotwordRule?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary;
+        /**
+         * Drop if the hotword rule is contained in the proximate context.
+         * For tabular data, the context includes the column name.
+         * Structure is documented below.
+         */
+        excludeByHotword?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
+        /**
+         * Set of infoTypes for which findings would affect this rule.
+         * Structure is documented below.
+         */
+        excludeInfoTypes?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
+        /**
+         * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+         */
+        matchingType: string;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: string[];
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+        /**
+         * Number of characters after the finding to consider.
+         */
+        windowAfter?: number;
+        /**
+         * Number of characters before the finding to consider.
+         */
+        windowBefore?: number;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+        /**
+         * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * Structure is documented below.
+         */
+        infoTypes: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType[];
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex;
+        /**
+         * Likelihood adjustment to apply to all matching findings.
+         * Structure is documented below.
+         */
+        likelihoodAdjustment: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity: outputs.dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: string;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+        /**
+         * Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        fixedLikelihood?: string;
+        /**
+         * Increase or decrease the likelihood by the specified number of levels. For example,
+         * if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+         * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+         * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+         * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+         * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+         */
+        relativeLikelihood?: number;
+    }
+
+    export interface PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity {
+        /**
+         * Number of characters after the finding to consider.
+         */
+        windowAfter?: number;
+        /**
+         * Number of characters before the finding to consider.
+         */
+        windowBefore?: number;
+    }
+
+    export interface PreventionContentPolicyLoggingConfig {
+        /**
+         * Log actions to BigQuery.
+         * Structure is documented below.
+         */
+        logToBigQuery?: outputs.dataloss.PreventionContentPolicyLoggingConfigLogToBigQuery;
+    }
+
+    export interface PreventionContentPolicyLoggingConfigLogToBigQuery {
+        /**
+         * The dataset ID of the BigQuery table to log to.
+         */
+        datasetId: string;
+        /**
+         * The project ID of the BigQuery table to log to.
+         */
+        projectId: string;
+        /**
+         * The table ID of the BigQuery table to log to.
+         */
+        tableId: string;
+    }
+
+    export interface PreventionContentPolicyRule {
+        /**
+         * The action to take if the rule matches.
+         * Structure is documented below.
+         */
+        action: outputs.dataloss.PreventionContentPolicyRuleAction;
+        /**
+         * List of conditions that must be met for this rule to apply.
+         * Structure is documented below.
+         */
+        conditions?: outputs.dataloss.PreventionContentPolicyRuleCondition[];
+    }
+
+    export interface PreventionContentPolicyRuleAction {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: string;
+    }
+
+    export interface PreventionContentPolicyRuleCondition {
+        /**
+         * A condition based on info types.
+         * Structure is documented below.
+         */
+        infoTypeCondition?: outputs.dataloss.PreventionContentPolicyRuleConditionInfoTypeCondition;
+    }
+
+    export interface PreventionContentPolicyRuleConditionInfoTypeCondition {
+        /**
+         * Match any info type.
+         */
+        anyInfoType?: outputs.dataloss.PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType;
+        /**
+         * List of info types to match.
+         * Structure is documented below.
+         */
+        infoTypes?: outputs.dataloss.PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes;
+        /**
+         * The minimum number of findings required for this condition to be met. Defaults to 1.
+         */
+        minCount?: number;
+    }
+
+    export interface PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoType {
+    }
+
+    export interface PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes {
+        /**
+         * List of info type names.
+         */
+        infoTypeNames: string[];
+    }
+
+    export interface PreventionContentPolicyUnsupportedFileType {
+        /**
+         * If set, the verdict will be returned to the user.
+         * Possible values: ["ALLOW", "BLOCK"]
+         * Possible values are: `ALLOW`, `BLOCK`.
+         */
+        returnVerdict?: string;
+    }
+
     export interface PreventionDeidentifyTemplateDeidentifyConfig {
         /**
          * Treat the dataset as an image and redact.
@@ -92096,6 +94573,11 @@ export namespace dataloss {
          */
         inspectTemplateModifiedCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence;
         /**
+         * Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        refreshFrequency?: string;
+        /**
          * Governs when to update data profiles when a schema is modified
          * Structure is documented below.
          */
@@ -93339,15 +95821,6 @@ export namespace dataloss {
          */
         pubSub?: outputs.dataloss.PreventionJobTriggerInspectJobActionPubSub;
         /**
-         * (Optional, Deprecated)
-         * Publish findings of a DlpJob to Data Catalog.
-         *
-         * > **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         *
-         * @deprecated `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-         */
-        publishFindingsToCloudDataCatalog?: outputs.dataloss.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog;
-        /**
          * Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
          */
         publishFindingsToDataplexCatalog?: outputs.dataloss.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog;
@@ -93442,9 +95915,6 @@ export namespace dataloss {
          * Cloud Pub/Sub topic to send notifications to.
          */
         topic: string;
-    }
-
-    export interface PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog {
     }
 
     export interface PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog {
@@ -94814,6 +97284,12 @@ export namespace dataplex {
          * If set, the latest DataScan job result will be published to Knowledge Catalog.
          */
         catalogPublishingEnabled?: boolean;
+        /**
+         * The SQL dialect to use in the generated SQL queries.
+         * If not specified, the default dialect is Google SQL.
+         * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+         */
+        sqlDialect: string;
     }
 
     export interface DatascanDataProfileSpec {
@@ -99469,11 +101945,11 @@ export namespace dataproc {
 
     export interface WorkflowTemplatePlacement {
         /**
-         * A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+         * A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
          */
         clusterSelector?: outputs.dataproc.WorkflowTemplatePlacementClusterSelector;
         /**
-         * A cluster that is managed by the workflow.
+         * A cluster that is managed by the workflow. Structure is documented below.
          */
         managedCluster?: outputs.dataproc.WorkflowTemplatePlacementManagedCluster;
     }
@@ -99495,7 +101971,7 @@ export namespace dataproc {
          */
         clusterName: string;
         /**
-         * Required. The cluster configuration.
+         * Required. The cluster configuration. Structure is documented below.
          */
         config: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfig;
         /**
@@ -99534,7 +102010,7 @@ export namespace dataproc {
          */
         lifecycleConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig;
         /**
-         * The Compute Engine config settings for additional worker instances in a cluster.
+         * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          */
         masterConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfig;
         /**
@@ -99542,7 +102018,7 @@ export namespace dataproc {
          */
         metastoreConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig;
         /**
-         * The Compute Engine config settings for additional worker instances in a cluster.
+         * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          */
         secondaryWorkerConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig;
         /**
@@ -99562,7 +102038,7 @@ export namespace dataproc {
          */
         tempBucket?: string;
         /**
-         * The Compute Engine config settings for additional worker instances in a cluster.
+         * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          *
          * ***
          */
@@ -99744,6 +102220,10 @@ export namespace dataproc {
          */
         image?: string;
         /**
+         * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+         */
+        instanceFlexibilityPolicy: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy;
+        /**
          * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          */
         instanceNames: string[];
@@ -99788,15 +102268,71 @@ export namespace dataproc {
         /**
          * Size in GB of the boot disk (default is 500GB).
          */
-        bootDiskSizeGb?: number;
+        bootDiskSizeGb: number;
         /**
          * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
          */
-        bootDiskType?: string;
+        bootDiskType: string;
         /**
          * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy {
+        /**
+         * Output only. A map of instance names to their machine types.
+         */
+        instanceMachineTypes: {[key: string]: string};
+        /**
+         * List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+         */
+        instanceSelectionLists: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList[];
+        /**
+         * Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+         */
+        instanceSelectionResults: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult[];
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+        /**
+         * Disk option for the instance group. Structure is documented above.
+         */
+        diskConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig;
+        /**
+         * Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineTypes: string[];
+        /**
+         * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         */
+        rank: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+        /**
+         * Size in GB of the boot disk (default is 500GB).
+         */
+        bootDiskSizeGb: number;
+        /**
+         * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+         */
+        bootDiskType: string;
+        /**
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         */
+        numLocalSsds: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+        /**
+         * Output only. Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineType: string;
+        /**
+         * Output only. Number of VM provisioned with the corresponding machine_type.
+         */
+        vmCount: number;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
@@ -99819,19 +102355,23 @@ export namespace dataproc {
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
         /**
-         * Optional. The Compute Engine accelerator configuration for these instances.
+         * The Compute Engine accelerator configuration for these instances. Structure is documented below.
          */
         accelerators: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator[];
         /**
-         * Optional. Disk option config settings.
+         * Disk option config settings. Structure is documented below.
          */
         diskConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig;
         /**
-         * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+         * The Compute Engine image resource used for cluster instances.
          */
         image?: string;
         /**
-         * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+         * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+         */
+        instanceFlexibilityPolicy: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy;
+        /**
+         * Output only. The list of instance names.
          */
         instanceNames: string[];
         /**
@@ -99839,23 +102379,23 @@ export namespace dataproc {
          */
         isPreemptible: boolean;
         /**
-         * Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+         * The Compute Engine machine type used for cluster instances.
          */
         machineType?: string;
         /**
-         * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+         * Output only. The config for Compute Engine Instance Group Manager that manages this group.
          */
         managedGroupConfigs: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig[];
         /**
-         * Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * The minimum CPU platform and architecture for the cluster.
          */
         minCpuPlatform: string;
         /**
-         * Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+         * The number of worker instances in the cluster.
          */
         numInstances?: number;
         /**
-         * Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+         * Specifies the preemptibility of the secondary worker group.
          */
         preemptibility?: string;
     }
@@ -99875,15 +102415,86 @@ export namespace dataproc {
         /**
          * Size in GB of the boot disk (default is 500GB).
          */
-        bootDiskSizeGb?: number;
+        bootDiskSizeGb: number;
         /**
          * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
          */
-        bootDiskType?: string;
+        bootDiskType: string;
         /**
          * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy {
+        /**
+         * Output only. A map of instance names to their machine types.
+         */
+        instanceMachineTypes: {[key: string]: string};
+        /**
+         * List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+         */
+        instanceSelectionLists: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList[];
+        /**
+         * Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+         */
+        instanceSelectionResults: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult[];
+        /**
+         * Strategy for provisioning model mix for secondary worker instances. Supported only for `secondaryWorkerConfig`. Structure is documented below.
+         */
+        provisioningModelMix: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+        /**
+         * Disk option for the instance group. Structure is documented above.
+         */
+        diskConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig;
+        /**
+         * Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineTypes: string[];
+        /**
+         * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         */
+        rank: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+        /**
+         * Size in GB of the boot disk (default is 500GB).
+         */
+        bootDiskSizeGb: number;
+        /**
+         * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+         */
+        bootDiskType: string;
+        /**
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         */
+        numLocalSsds: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+        /**
+         * Output only. Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineType: string;
+        /**
+         * Output only. Number of VM provisioned with the corresponding machine_type.
+         */
+        vmCount: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+        /**
+         * The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+         */
+        standardCapacityBase: number;
+        /**
+         * The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+         */
+        standardCapacityPercentAboveBase: number;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
@@ -99998,19 +102609,23 @@ export namespace dataproc {
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
         /**
-         * Optional. The Compute Engine accelerator configuration for these instances.
+         * The Compute Engine accelerator configuration for these instances. Structure is documented below.
          */
         accelerators: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator[];
         /**
-         * Optional. Disk option config settings.
+         * Disk option config settings. Structure is documented below.
          */
         diskConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig;
         /**
-         * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+         * The Compute Engine image resource used for cluster instances.
          */
         image?: string;
         /**
-         * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+         * Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+         */
+        instanceFlexibilityPolicy: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy;
+        /**
+         * Output only. The list of instance names.
          */
         instanceNames: string[];
         /**
@@ -100018,19 +102633,19 @@ export namespace dataproc {
          */
         isPreemptible: boolean;
         /**
-         * Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+         * The Compute Engine machine type used for cluster instances.
          */
         machineType?: string;
         /**
-         * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+         * Output only. The config for Compute Engine Instance Group Manager that manages this group.
          */
         managedGroupConfigs: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig[];
         /**
-         * Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * The minimum CPU platform and architecture for the cluster.
          */
         minCpuPlatform: string;
         /**
-         * Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+         * The number of worker instances in the cluster.
          */
         numInstances?: number;
         /**
@@ -100054,15 +102669,71 @@ export namespace dataproc {
         /**
          * Size in GB of the boot disk (default is 500GB).
          */
-        bootDiskSizeGb?: number;
+        bootDiskSizeGb: number;
         /**
          * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
          */
-        bootDiskType?: string;
+        bootDiskType: string;
         /**
          * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+        /**
+         * Output only. A map of instance names to their machine types.
+         */
+        instanceMachineTypes: {[key: string]: string};
+        /**
+         * List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+         */
+        instanceSelectionLists: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList[];
+        /**
+         * Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+         */
+        instanceSelectionResults: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult[];
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+        /**
+         * Disk option for the instance group. Structure is documented above.
+         */
+        diskConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig;
+        /**
+         * Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineTypes: string[];
+        /**
+         * Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         */
+        rank: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+        /**
+         * Size in GB of the boot disk (default is 500GB).
+         */
+        bootDiskSizeGb: number;
+        /**
+         * Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+         */
+        bootDiskType: string;
+        /**
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         */
+        numLocalSsds: number;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+        /**
+         * Output only. Full machine-type names, e.g. `n1-standard-16`.
+         */
+        machineType: string;
+        /**
+         * Output only. Number of VM provisioned with the corresponding machine_type.
+         */
+        vmCount: number;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
@@ -111345,6 +114016,18 @@ export namespace eventarc {
         schemaDefinition?: string;
     }
 
+    export interface PipelineIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface PipelineIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface PipelineInputPayloadFormat {
         /**
          * The format of an AVRO message payload.
@@ -113830,6 +116513,25 @@ export namespace gemini {
         value: string;
     }
 
+    export interface GdaObservabilitySettingConversationalAnalyticsSetting {
+        /**
+         * Whether to enable feedback.
+         */
+        feedbackEnabled?: boolean;
+        /**
+         * Whether to enable logging.
+         */
+        loggingEnabled?: boolean;
+        /**
+         * Whether to enable metrics.
+         */
+        metricsEnabled?: boolean;
+        /**
+         * Whether to enable traces.
+         */
+        tracesEnabled?: boolean;
+    }
+
     export interface RepositoryGroupIamBindingCondition {
         description?: string;
         expression: string;
@@ -115391,6 +118093,11 @@ export namespace gkehub {
          */
         binaryAuthorizationConfig?: outputs.gkehub.FleetDefaultClusterConfigBinaryAuthorizationConfig;
         /**
+         * Enable/Disable Compliance Posture features for the cluster.
+         * Structure is documented below.
+         */
+        compliancePostureConfig?: outputs.gkehub.FleetDefaultClusterConfigCompliancePostureConfig;
+        /**
          * Enable/Disable Security Posture features for the cluster.
          * Structure is documented below.
          */
@@ -115417,6 +118124,26 @@ export namespace gkehub {
          * `projects/{project_number}/platforms/gke/policies/{policy_id}`.
          */
         name?: string;
+    }
+
+    export interface FleetDefaultClusterConfigCompliancePostureConfig {
+        /**
+         * List of enabled compliance standards.
+         * Structure is documented below.
+         */
+        complianceStandards?: outputs.gkehub.FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard[];
+        /**
+         * Sets which mode to use for Compliance Posture features.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        mode?: string;
+    }
+
+    export interface FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard {
+        /**
+         * Name of the compliance standard.
+         */
+        standard?: string;
     }
 
     export interface FleetDefaultClusterConfigSecurityPostureConfig {
@@ -125300,6 +128027,11 @@ export namespace managedkafka {
          * Structure is documented below.
          */
         networkConfigs: outputs.managedkafka.ClusterGcpConfigAccessConfigNetworkConfig[];
+        /**
+         * Public connection configuration for the Kafka cluster.
+         * Structure is documented below.
+         */
+        publicClusterConfig?: outputs.managedkafka.ClusterGcpConfigAccessConfigPublicClusterConfig;
     }
 
     export interface ClusterGcpConfigAccessConfigNetworkConfig {
@@ -125307,6 +128039,26 @@ export namespace managedkafka {
          * Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
          */
         subnet: string;
+    }
+
+    export interface ClusterGcpConfigAccessConfigPublicClusterConfig {
+        /**
+         * A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+         */
+        allowedSourceIpRanges: string[];
+    }
+
+    export interface ClusterPublicClusterDetail {
+        /**
+         * (Output)
+         * DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+         */
+        discoveryDnsRecords: string[];
+        /**
+         * (Output)
+         * All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+         */
+        externalIpAddresses: string[];
     }
 
     export interface ClusterRebalanceConfig {
@@ -128700,16 +131452,6 @@ export namespace migrationcenter {
 
 }
 
-export namespace ml {
-    export interface EngineModelDefaultVersion {
-        /**
-         * The name specified for the version when it was created.
-         */
-        name: string;
-    }
-
-}
-
 export namespace modelarmor {
     export interface FloorsettingAiPlatformFloorSetting {
         /**
@@ -130657,6 +133399,53 @@ export namespace monitoring {
         min?: number;
     }
 
+    export interface SnoozeCriteria {
+        /**
+         * When you define a snooze, you can also define a filter for that snooze.
+         * The filter is a string containing one or more key-value pairs. The string
+         * uses the standard https://google.aip.dev/160 filter syntax. If you define
+         * a filter for a snooze, then the snooze can only apply to one alert policy.
+         * When the snooze is active, incidents won't be created when the incident
+         * would have key-value pairs (labels) that match those specified by the
+         * filter in the snooze.
+         * Snooze filters support resource, metric, and metadata labels. If multiple
+         * labels are used, then they must be connected with an AND operator. For
+         * example, the following filter applies the snooze to incidents that have a
+         * resource label with an instance ID of 1234567890, a metric label with an
+         * instance name of test_group, a metadata user label with a key of foo and a
+         * value of bar, and a metadata system label with a key of region and a value
+         * of us-central1:
+         * "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\""
+         */
+        filter?: string;
+        /**
+         * The specific AlertPolicy names for the alert that should be snoozed.
+         * The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+         * There is a limit of 16 policies per snooze. This limit is checked during
+         * snooze creation. Exactly 1 alert policy is required if filter is specified
+         * at the same time.
+         */
+        policies?: string[];
+    }
+
+    export interface SnoozeInterval {
+        /**
+         * The end of the time interval.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+         * "2014-10-02T15:01:23.045123456Z".
+         */
+        endTime: string;
+        /**
+         * The beginning of the time interval. The default value for the start time
+         * is the end time. The start time must not be later than the end time.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+         * "2014-10-02T15:01:23.045123456Z".
+         */
+        startTime?: string;
+    }
+
     export interface UptimeCheckConfigContentMatcher {
         /**
          * String or regex content to match (max 1024 bytes)
@@ -130782,7 +133571,7 @@ export namespace monitoring {
          */
         passwordWo?: string;
         /**
-         * The password write-only version.
+         * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          */
         passwordWoVersion?: string;
         /**
@@ -135989,543 +138778,22 @@ export namespace networkservices {
 
 }
 
-export namespace notebooks {
-    export interface EnvironmentContainerImage {
+export namespace observability {
+    export interface BucketCmekSettings {
         /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: string;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: string;
-    }
-
-    export interface EnvironmentVmImage {
-        /**
-         * Use this VM image family to find the image; the newest image in this family will be used.
-         */
-        imageFamily?: string;
-        /**
-         * Use VM image name to find the image.
-         */
-        imageName?: string;
-        /**
-         * The name of the Google Cloud project that this VM image belongs to.
-         * Format: projects/{project_id}
-         */
-        project: string;
-    }
-
-    export interface InstanceAcceleratorConfig {
-        /**
-         * Count of cores of this accelerator.
-         */
-        coreCount: number;
-        /**
-         * Type of this accelerator.
-         * Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
-         */
-        type: string;
-    }
-
-    export interface InstanceContainerImage {
-        /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: string;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: string;
-    }
-
-    export interface InstanceIamBindingCondition {
-        description?: string;
-        expression: string;
-        title: string;
-    }
-
-    export interface InstanceIamMemberCondition {
-        description?: string;
-        expression: string;
-        title: string;
-    }
-
-    export interface InstanceReservationAffinity {
-        /**
-         * The type of Compute Reservation.
-         * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
-         */
-        consumeReservationType: string;
-        /**
-         * Corresponds to the label key of reservation resource.
-         */
-        key?: string;
-        /**
-         * Corresponds to the label values of reservation resource.
-         */
-        values?: string[];
-    }
-
-    export interface InstanceShieldedInstanceConfig {
-        /**
-         * Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
-         * boot integrity of the instance. The attestation is performed against the integrity policy baseline.
-         * This baseline is initially derived from the implicitly trusted boot image when the instance is created.
-         * Enabled by default.
-         */
-        enableIntegrityMonitoring?: boolean;
-        /**
-         * Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
-         * authentic software by verifying the digital signature of all boot components, and halting the boot process
-         * if signature verification fails.
-         * Disabled by default.
-         */
-        enableSecureBoot?: boolean;
-        /**
-         * Defines whether the instance has the vTPM enabled.
-         * Enabled by default.
-         */
-        enableVtpm?: boolean;
-    }
-
-    export interface InstanceVmImage {
-        /**
-         * Use this VM image family to find the image; the newest image in this family will be used.
-         */
-        imageFamily?: string;
-        /**
-         * Use VM image name to find the image.
-         */
-        imageName?: string;
-        /**
-         * The name of the Google Cloud project that this VM image belongs to.
-         * Format: projects/{project_id}
-         */
-        project: string;
-    }
-
-    export interface RuntimeAccessConfig {
-        /**
-         * The type of access mode this instance. For valid values, see
-         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-         * rest/v1/projects.locations.runtimes#RuntimeAccessType`.
-         */
-        accessType?: string;
-        /**
-         * (Output)
-         * The proxy endpoint that is used to access the runtime.
-         */
-        proxyUri: string;
-        /**
-         * The owner of this runtime after creation. Format: `alias@example.com`.
-         * Currently supports one owner only.
-         */
-        runtimeOwner?: string;
-    }
-
-    export interface RuntimeIamBindingCondition {
-        description?: string;
-        expression: string;
-        title: string;
-    }
-
-    export interface RuntimeIamMemberCondition {
-        description?: string;
-        expression: string;
-        title: string;
-    }
-
-    export interface RuntimeMetric {
-        /**
-         * (Output)
-         * Contains runtime daemon metrics, such as OS and kernels and
-         * sessions stats.
-         */
-        systemMetrics: {[key: string]: string};
-    }
-
-    export interface RuntimeSoftwareConfig {
-        /**
-         * Specify a custom Cloud Storage path where the GPU driver is stored.
-         * If not specified, we'll automatically choose from official GPU drivers.
-         */
-        customGpuDriverPath?: string;
-        /**
-         * Verifies core internal services are running. Default: True.
-         */
-        enableHealthMonitoring?: boolean;
-        /**
-         * Runtime will automatically shutdown after idle_shutdown_time.
-         * Default: True
-         */
-        idleShutdown?: boolean;
-        /**
-         * Time in minutes to wait before shuting down runtime.
-         * Default: 180 minutes
-         */
-        idleShutdownTimeout?: number;
-        /**
-         * Install Nvidia Driver automatically.
-         */
-        installGpuDriver?: boolean;
-        /**
-         * Use a list of container images to use as Kernels in the notebook instance.
-         * Structure is documented below.
-         */
-        kernels?: outputs.notebooks.RuntimeSoftwareConfigKernel[];
-        /**
-         * Cron expression in UTC timezone for schedule instance auto upgrade.
-         * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
-         */
-        notebookUpgradeSchedule?: string;
-        /**
-         * Path to a Bash script that automatically runs after a notebook instance
-         * fully boots up. The path must be a URL or
-         * Cloud Storage path (gs://path-to-file/file-name).
-         */
-        postStartupScript?: string;
-        /**
-         * Behavior for the post startup script.
-         * Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-         */
-        postStartupScriptBehavior?: string;
-        /**
-         * (Output)
-         * Bool indicating whether an newer image is available in an image family.
-         */
-        upgradeable: boolean;
-    }
-
-    export interface RuntimeSoftwareConfigKernel {
-        /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: string;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: string;
-    }
-
-    export interface RuntimeVirtualMachine {
-        /**
-         * (Output)
-         * The unique identifier of the Managed Compute Engine instance.
-         */
-        instanceId: string;
-        /**
-         * (Output)
-         * The user-friendly name of the Managed Compute Engine instance.
-         */
-        instanceName: string;
-        /**
-         * Virtual Machine configuration settings.
-         * Structure is documented below.
-         */
-        virtualMachineConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfig;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfig {
-        /**
-         * The Compute Engine accelerator configuration for this runtime.
-         * Structure is documented below.
-         */
-        acceleratorConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig;
-        /**
-         * Use a list of container images to start the notebook instance.
-         * Structure is documented below.
-         */
-        containerImages: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImage[];
-        /**
-         * Data disk option configuration settings.
-         * Structure is documented below.
-         */
-        dataDisk: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDisk;
-        /**
-         * Encryption settings for virtual machine data disk.
-         * Structure is documented below.
-         */
-        encryptionConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig;
-        /**
-         * (Output)
-         * The Compute Engine guest attributes. (see [Project and instance
-         * guest attributes](https://cloud.google.com/compute/docs/
-         * storing-retrieving-metadata#guest_attributes)).
-         */
-        guestAttributes: {[key: string]: string};
-        /**
-         * If true, runtime will only have internal IP addresses. By default,
-         * runtimes are not restricted to internal IP addresses, and will
-         * have ephemeral external IP addresses assigned to each vm. This
-         * `internalIpOnly` restriction can only be enabled for subnetwork
-         * enabled networks, and all dependencies must be configured to be
-         * accessible without external IP addresses.
-         */
-        internalIpOnly?: boolean;
-        /**
-         * The labels to associate with this runtime. Label **keys** must
-         * contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
-         * empty, but, if present, must contain 1 to 63 characters, and must
-         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
-         * more than 32 labels can be associated with a cluster.
-         */
-        labels: {[key: string]: string};
-        /**
-         * The Compute Engine machine type used for runtimes.
-         */
-        machineType: string;
-        /**
-         * The Compute Engine metadata entries to add to virtual machine.
-         * (see [Project and instance metadata](https://cloud.google.com
-         * /compute/docs/storing-retrieving-metadata#project_and_instance
-         * _metadata)).
-         */
-        metadata: {[key: string]: string};
-        /**
-         * The Compute Engine network to be used for machine communications.
-         * Cannot be specified with subnetwork. If neither `network` nor
-         * `subnet` is specified, the "default" network of the project is
-         * used, if it exists. A full URL or partial URI. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-         *   regions/global/default`
-         * * `projects/[projectId]/regions/global/default`
-         *   Runtimes are managed resources inside Google Infrastructure.
-         *   Runtimes support the following network configurations:
-         * * Google Managed Network (Network & subnet are empty)
-         * * Consumer Project VPC (network & subnet are required). Requires
-         *   configuring Private Service Access.
-         * * Shared VPC (network & subnet are required). Requires
-         *   configuring Private Service Access.
-         */
-        network?: string;
-        /**
-         * The type of vNIC to be used on this interface. This may be gVNIC
-         * or VirtioNet.
-         * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
-         */
-        nicType?: string;
-        /**
-         * Reserved IP Range name is used for VPC Peering. The
-         * subnetwork allocation will use the range *name* if it's assigned.
-         */
-        reservedIpRange?: string;
-        /**
-         * Shielded VM Instance configuration settings.
-         * Structure is documented below.
-         */
-        shieldedInstanceConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig;
-        /**
-         * The Compute Engine subnetwork to be used for machine
-         * communications. Cannot be specified with network. A full URL or
-         * partial URI are valid. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-         *   regions/us-east1/subnetworks/sub0`
-         * * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
-         */
-        subnet?: string;
-        /**
-         * The Compute Engine tags to add to runtime (see [Tagging instances]
-         * (https://cloud.google.com/compute/docs/
-         * label-or-tag-resources#tags)).
-         */
-        tags: string[];
-        /**
-         * (Output)
-         * The zone where the virtual machine is located.
-         */
-        zone: string;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
-        /**
-         * Count of cores of this accelerator.
-         */
-        coreCount?: number;
-        /**
-         * Accelerator model. For valid values, see
-         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-         * rest/v1/projects.locations.runtimes#AcceleratorType`
-         */
-        type?: string;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigContainerImage {
-        /**
-         * The path to the container image repository.
-         * For example: gcr.io/{project_id}/{imageName}
-         */
-        repository: string;
-        /**
-         * The tag of the container image. If not specified, this defaults to the latest tag.
-         */
-        tag?: string;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigDataDisk {
-        /**
-         * (Output)
-         * Optional. Specifies whether the disk will be auto-deleted
-         * when the instance is deleted (but not when the disk is
-         * detached from the instance).
-         */
-        autoDelete: boolean;
-        /**
-         * (Output)
-         * Optional. Indicates that this is a boot disk. The virtual
-         * machine will use the first partition of the disk for its
-         * root filesystem.
-         */
-        boot: boolean;
-        /**
-         * (Output)
-         * Optional. Specifies a unique device name of your choice
-         * that is reflected into the /dev/disk/by-id/google-* tree
-         * of a Linux operating system running within the instance.
-         * This name can be used to reference the device for mounting,
-         * resizing, and so on, from within the instance.
-         * If not specified, the server chooses a default device name
-         * to apply to this disk, in the form persistent-disk-x, where
-         * x is a number assigned by Google Compute Engine. This field
-         * is only applicable for persistent disks.
-         */
-        deviceName: string;
-        /**
-         * (Output)
-         * Indicates a list of features to enable on the guest operating
-         * system. Applicable only for bootable images. To see a list of
-         * available features, read `https://cloud.google.com/compute/docs/
-         * images/create-delete-deprecate-private-images#guest-os-features`
-         * options. ``
-         */
-        guestOsFeatures: string[];
-        /**
-         * (Output)
-         * Output only. A zero-based index to this disk, where 0 is
-         * reserved for the boot disk. If you have many disks attached
-         * to an instance, each disk would have a unique index number.
-         */
-        index: number;
-        /**
-         * Input only. Specifies the parameters for a new disk that will
-         * be created alongside the new instance. Use initialization
-         * parameters to create boot disks or local SSDs attached to the
-         * new instance. This property is mutually exclusive with the
-         * source property; you can only define one or the other, but not
-         * both.
-         * Structure is documented below.
-         */
-        initializeParams?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams;
-        /**
-         * "Specifies the disk interface to use for attaching this disk,
-         * which is either SCSI or NVME. The default is SCSI. Persistent
-         * disks must always use SCSI and the request will fail if you attempt
-         * to attach a persistent disk in any other format than SCSI. Local SSDs
-         * can use either NVME or SCSI. For performance characteristics of SCSI
-         * over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
-         */
-        interface?: string;
-        /**
-         * (Output)
-         * Type of the resource. Always compute#attachedDisk for attached
-         * disks.
-         */
-        kind: string;
-        /**
-         * (Output)
-         * Output only. Any valid publicly visible licenses.
-         */
-        licenses: string[];
-        /**
-         * The mode in which to attach this disk, either READ_WRITE
-         * or READ_ONLY. If not specified, the default is to attach
-         * the disk in READ_WRITE mode.
-         */
-        mode?: string;
-        /**
-         * Specifies a valid partial or full URL to an existing
-         * Persistent Disk resource.
-         */
-        source?: string;
-        /**
-         * Specifies the type of the disk, either SCRATCH or PERSISTENT.
-         * If not specified, the default is PERSISTENT.
-         */
-        type?: string;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
-        /**
-         * Provide this property when creating the disk.
-         */
-        description?: string;
-        /**
-         * Specifies the disk name. If not specified, the default is
-         * to use the name of the instance. If the disk with the
-         * instance name exists already in the given zone/region, a
-         * new name will be automatically generated.
-         */
-        diskName?: string;
-        /**
-         * Specifies the size of the disk in base-2 GB. If not
-         * specified, the disk will be the same size as the image
-         * (usually 10GB). If specified, the size must be equal to
-         * or larger than 10GB. Default 100 GB.
-         */
-        diskSizeGb?: number;
-        /**
-         * The type of the boot disk attached to this runtime,
-         * defaults to standard persistent disk. For valid values,
-         * see `https://cloud.google.com/vertex-ai/docs/workbench/
-         * reference/rest/v1/projects.locations.runtimes#disktype`
-         */
-        diskType?: string;
-        /**
-         * Labels to apply to this disk. These can be later modified
-         * by the disks.setLabels method. This field is only
-         * applicable for persistent disks.
-         */
-        labels: {[key: string]: string};
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
-        /**
-         * The Cloud KMS resource identifier of the customer-managed
-         * encryption key used to protect a resource, such as a disks.
-         * It has the following format:
-         * `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
-         * {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+         * The resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]
          */
         kmsKey?: string;
-    }
-
-    export interface RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
         /**
-         * Defines whether the instance has integrity monitoring enabled.
-         * Enables monitoring and attestation of the boot integrity of
-         * the instance. The attestation is performed against the
-         * integrity policy baseline. This baseline is initially derived
-         * from the implicitly trusted boot image when the instance is
-         * created. Enabled by default.
+         * (Output)
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]
          */
-        enableIntegrityMonitoring?: boolean;
+        kmsKeyVersion: string;
         /**
-         * Defines whether the instance has Secure Boot enabled.Secure
-         * Boot helps ensure that the system only runs authentic software
-         * by verifying the digital signature of all boot components, and
-         * halting the boot process if signature verification fails.
-         * Disabled by default.
+         * (Output)
+         * The service account used to access the key.
          */
-        enableSecureBoot?: boolean;
-        /**
-         * Defines whether the instance has the vTPM enabled. Enabled by
-         * default.
-         */
-        enableVtpm?: boolean;
+        serviceAccountId: string;
     }
 
 }
@@ -149701,6 +151969,12 @@ export namespace parametermanager {
          */
         pulumiLabels: {[key: string]: string};
         /**
+         * A map of resource manager tags.
+         * Resource manager tag keys and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+         */
+        tags: {[key: string]: string};
+        /**
          * The time at which the parameter was updated.
          */
         updateTime: string;
@@ -149793,6 +152067,12 @@ export namespace parametermanager {
          *  and default labels configured on the provider.
          */
         pulumiLabels: {[key: string]: string};
+        /**
+         * A map of resource manager tags.
+         * Resource manager tag keys and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+         */
+        tags: {[key: string]: string};
         /**
          * The time at which the regional parameter was updated.
          */
@@ -155830,6 +158110,16 @@ export namespace servicedirectory {
 
 }
 
+export namespace serviceusage {
+    export interface V2ConsumerPolicyEnableRule {
+        /**
+         * (Optional): List of service names to be enabled in the format of services/<service_name>
+         */
+        services?: string[];
+    }
+
+}
+
 export namespace siteverification {
     export interface WebResourceSite {
         /**
@@ -159859,6 +162149,79 @@ export namespace storage {
          * Possible values are: `editors`, `owners`, `viewers`.
          */
         team?: string;
+    }
+
+    export interface FtpServerExternalConfig {
+        /**
+         * A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
+         */
+        allowedCidrBlocks?: string[];
+    }
+
+    export interface FtpServerInternalConfig {
+        /**
+         * A list of consumer projects that are allowed to connect to this server.
+         * Structure is documented below.
+         */
+        consumerAcceptLists?: outputs.storage.FtpServerInternalConfigConsumerAcceptList[];
+        /**
+         * A list of consumer projects that are rejected from connecting to this server.
+         * Structure is documented below.
+         */
+        consumerRejectLists?: outputs.storage.FtpServerInternalConfigConsumerRejectList[];
+    }
+
+    export interface FtpServerInternalConfigConsumerAcceptList {
+        /**
+         * The maximum number of Private Service Connect endpoints that can be created in the consumer project.
+         */
+        connectionLimit: number;
+        /**
+         * The project that is allowed to connect, in the format `projects/{project}`.
+         */
+        project: string;
+    }
+
+    export interface FtpServerInternalConfigConsumerRejectList {
+        /**
+         * The project that is rejected from connecting, in the format `projects/{project}`.
+         */
+        project: string;
+    }
+
+    export interface FtpUserStorageDirectoryMapping {
+        /**
+         * The Cloud Storage bucket name. Omit the gs://.
+         */
+        bucket?: string;
+        /**
+         * The path of a folder within the bucket to set as the root directory for this directory mapping.
+         */
+        bucketPrefix?: string;
+        /**
+         * The directory path in the virtual file system.
+         */
+        directory?: string;
+        /**
+         * The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
+         */
+        permission?: string;
+    }
+
+    export interface FtpUserUserCredentials {
+        /**
+         * The name of the credential.
+         */
+        credentialName?: string;
+        /**
+         * The type of the credential.
+         */
+        credentialType?: string;
+        /**
+         * The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config.
+         */
+        sshPublicKeyBody?: string;
     }
 
     export interface GetBucketAutoclass {
@@ -165022,7 +167385,7 @@ export namespace vertex {
          * number of cores in the selected machine type) and (max_replica_count *
          * number of GPUs per replica in the selected machine type).
          */
-        maxReplicaCount?: number;
+        maxReplicaCount: number;
         /**
          * The minimum number of machine replicas that will be always deployed on.
          * This value must be greater than or equal to 1.
@@ -166744,6 +169107,96 @@ export namespace vertex {
         enableCustomServiceAccount: boolean;
     }
 
+    export interface AiRagCorpusCorpusStatus {
+        /**
+         * (Output)
+         * Output only. Only populated when the state is ERROR.
+         */
+        errorStatus: string;
+        /**
+         * (Output)
+         * Output only. RagCorpus life state.
+         */
+        state: string;
+    }
+
+    export interface AiRagCorpusEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed
+         * encryption key used to protect the resource. Has the form:
+         * projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+         * The key needs to be in the same region as where the resource is
+         * created.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface AiRagCorpusVectorDbConfig {
+        /**
+         * Optional. Immutable. The embedding model config of the Vector DB.
+         * Structure is documented below.
+         */
+        ragEmbeddingModelConfig?: outputs.vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfig;
+        /**
+         * The config for the default RAG-managed Vector DB.
+         * Structure is documented below.
+         */
+        ragManagedDb?: outputs.vertex.AiRagCorpusVectorDbConfigRagManagedDb;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagEmbeddingModelConfig {
+        /**
+         * The Vertex AI Prediction Endpoint used for dense vector search.
+         * Structure is documented below.
+         */
+        vertexPredictionEndpoint?: outputs.vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpoint;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpoint {
+        /**
+         * Required. The endpoint resource name. Format:
+         * projects/{project}/locations/{location}/publishers/{publisher}/models/{model}
+         * or projects/{project}/locations/{location}/endpoints/{endpoint}.
+         */
+        endpoint: string;
+        /**
+         * (Output)
+         * Output only. The resource name of the model that is deployed on the endpoint.
+         */
+        model: string;
+        /**
+         * (Output)
+         * Output only. Version ID of the model that is deployed on the endpoint.
+         */
+        modelVersionId: string;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagManagedDb {
+        /**
+         * Performs an ANN search on RagCorpus.
+         * Structure is documented below.
+         */
+        ann?: outputs.vertex.AiRagCorpusVectorDbConfigRagManagedDbAnn;
+        /**
+         * Performs a KNN search on RagCorpus. This is the default choice if not specified.
+         */
+        knn?: outputs.vertex.AiRagCorpusVectorDbConfigRagManagedDbKnn;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagManagedDbAnn {
+        /**
+         * Number of leaf nodes in the tree-based structure. Default value is 500.
+         */
+        leafCount: number;
+        /**
+         * The depth of the tree-based structure. Only depth values of 2 and 3 are supported. Default value is 2.
+         */
+        treeDepth: number;
+    }
+
+    export interface AiRagCorpusVectorDbConfigRagManagedDbKnn {
+    }
+
     export interface AiRagEngineConfigRagManagedDbConfig {
         /**
          * Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
@@ -166911,6 +169364,11 @@ export namespace vertex {
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart {
         /**
+         * Audio (input or output) transcription. This is only set when this Part contains audio data.
+         * Structure is documented below.
+         */
+        audioTranscription?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription;
+        /**
          * Result of executing the ExecutableCode.
          * Structure is documented below.
          */
@@ -166953,6 +169411,37 @@ export namespace vertex {
          * Structure is documented below.
          */
         videoMetadata?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription {
+        /**
+         * A label identifying the speaker of this audio segment (e.g. spk_1, spk_2). Present when diarization is set.
+         */
+        speakerLabel?: string;
+        /**
+         * The transcription text of this audio segment.
+         */
+        text: string;
+        /**
+         * Detailed word-level transcriptions and timing details. Present when wordTimestamp is set.
+         * Structure is documented below.
+         */
+        words?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWord[];
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWord {
+        /**
+         * End offset in time of the word relative to the start of the audio.
+         */
+        endOffset?: string;
+        /**
+         * Start offset in time of the word relative to the start of the audio.
+         */
+        startOffset?: string;
+        /**
+         * Transcript of the word.
+         */
+        word: string;
     }
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult {
@@ -167301,6 +169790,10 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecBuildSpec {
         /**
+         * Optional. The service account that the Cloud Build builder runs as.
+         */
+        serviceAccount?: string;
+        /**
          * Optional. The resource name of the Cloud Build WorkerPool to use for the build.
          */
         workerPool?: string;
@@ -167321,7 +169814,6 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecDeploymentSpec {
         /**
-         * (Optional, Beta)
          * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
          * Structure is documented below.
          */
@@ -167557,7 +170049,6 @@ export namespace vertex {
 
     export interface AiReasoningEngineSpecSourceCodeSpec {
         /**
-         * (Optional, Beta)
          * Optional. Specification for the deploying from agent config.
          * Structure is documented below.
          */
@@ -167713,425 +170204,71 @@ export namespace vertex {
         runtimeRevisionName: string;
     }
 
-    export interface AiScheduleCreateNotebookExecutionJobRequest {
+    export interface AiSemanticGovernancePolicyEngineGatewayConfig {
         /**
-         * NotebookExecutionJob represents an instance of a notebook execution.
-         * Structure is documented below.
+         * Additional consumer projects permitted to attach their own PSC endpoint
+         * to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+         * the customer creates the PSC endpoint in a project other than this
+         * gateway's network project. Each listed project is VPC-SC enforced: it
+         * must be within the caller's service perimeter. The owning
+         * SemanticGovernancePolicyEngine's own project is always permitted
+         * implicitly and need not be listed. Format: projects/{project} (ID or number).
          */
-        notebookExecutionJob: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob;
-        /**
-         * User specified ID for the NotebookExecutionJob.
-         */
-        notebookExecutionJobId?: string;
-        /**
-         * The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
-         */
-        parent: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+        allowedProjects?: string[];
         /**
          * (Output)
-         * Timestamp when this NotebookExecutionJob was created.
+         * The fully qualified record name of the A-record the backend writes into
+         * `dnsZoneName` for this gateway. Populated after the gateway reaches
+         * `ACTIVE`; empty until then.
          */
-        createTime: string;
+        dnsRecord: string;
         /**
-         * Compute configuration to use for an execution job.
-         * Structure is documented below.
+         * The name of the private Cloud DNS managed zone in which the backend
+         * creates the DNS record set for this gateway's PSC endpoint. This is the
+         * managed-zone resource name, not a fully-qualified domain name. The zone
+         * must already exist and be attached to the gateway's VPC at provision
+         * time. The name must match `^[a-z0-9.-]{1,63}$`. Must be set together
+         * with `network` and `subnetwork` (all three or none).
          */
-        customEnvironmentSpec?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec;
-        /**
-         * The Dataform Repository containing the input notebook.
-         * Structure is documented below.
-         */
-        dataformRepositorySource?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource;
-        /**
-         * The content of the input notebook in ipynb format.
-         * Structure is documented below.
-         */
-        directNotebookSource?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource;
-        /**
-         * The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-         */
-        displayName?: string;
-        /**
-         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
-         * Structure is documented below.
-         */
-        encryptionSpec?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec;
-        /**
-         * Max running time of the execution job in seconds (default 86400s / 24 hrs).
-         */
-        executionTimeout?: string;
-        /**
-         * The user email to run the execution as. Only supported by Colab runtimes.
-         */
-        executionUser?: string;
-        /**
-         * The Cloud Storage uri for the input notebook.
-         * Structure is documented below.
-         */
-        gcsNotebookSource?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource;
-        /**
-         * The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
-         */
-        gcsOutputUri?: string;
+        dnsZoneName?: string;
         /**
          * (Output)
-         * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+         * The private IP address of the PSC endpoint. This field is currently
+         * always empty and is slated for deprecation; do not depend on it.
          */
-        jobState: string;
+        ipAddress: string;
         /**
-         * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
-         */
-        kernelName?: string;
-        /**
-         * The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-         */
-        labels?: {[key: string]: string};
-        /**
-         * (Output)
-         * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+         * The identifier for this object. Format specified above.
          */
         name: string;
         /**
-         * The NotebookRuntimeTemplate to source compute configuration from.
-         */
-        notebookRuntimeTemplateResourceName?: string;
-        /**
-         * The user-defined parameters to use during notebook execution.
-         */
-        parameters?: {[key: string]: string};
-        /**
-         * (Output)
-         * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-         */
-        scheduleResourceName: string;
-        /**
-         * The service account to run the execution as.
-         */
-        serviceAccount?: string;
-        /**
-         * (Output)
-         * Timestamp when this NotebookExecutionJob was most recently updated.
-         */
-        updateTime: string;
-        /**
-         * Configuration for a Workbench Instances-based environment.
-         */
-        workbenchRuntime?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
-        /**
-         * Specification of a single machine.
-         * Structure is documented below.
-         */
-        machineSpec?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec;
-        /**
-         * Network spec.
-         * Structure is documented below.
-         */
-        networkSpec?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec;
-        /**
-         * Represents the spec of persistent disk options.
-         * Structure is documented below.
-         */
-        persistentDiskSpec?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
-        /**
-         * The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
-         */
-        acceleratorCount?: number;
-        /**
-         * Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
-         */
-        acceleratorType?: string;
-        /**
-         * The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
-         */
-        gpuPartitionSize?: string;
-        /**
-         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
-         */
-        machineType?: string;
-        /**
-         * A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
-         * Structure is documented below.
-         */
-        reservationAffinity?: outputs.vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity;
-        /**
-         * The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
-         */
-        tpuTopology?: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
-        /**
-         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
-         */
-        key?: string;
-        /**
-         * Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
-         */
-        reservationAffinityType: string;
-        /**
-         * When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
-         */
-        useReservationPool?: boolean;
-        /**
-         * Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
-         */
-        values?: string[];
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
-        /**
-         * Whether to enable public internet access. Default false.
-         */
-        enableInternetAccess?: boolean;
-        /**
-         * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+         * The URI of the network resource where the gateway's PSC endpoint is
+         * provisioned. Format: projects/{project}/global/networks/{network}.
+         * `network`, `subnetwork`, and `dnsZoneName` must all be set together
+         * or all omitted; setting only some is rejected by the API.
          */
         network?: string;
         /**
-         * The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+         * (Output)
+         * The self-link or name of the Private Service Connect endpoint forwarding
+         * rule.
          */
-        subnetwork?: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
-        /**
-         * Size in GB of the disk (default is 100GB).
-         */
-        diskSizeGb?: string;
-        /**
-         * Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
-         */
-        diskType?: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
-        /**
-         * The commit SHA to read repository with. If unset, the file will be read at HEAD.
-         */
-        commitSha?: string;
-        /**
-         * The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
-         */
-        dataformRepositoryResourceName?: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource {
-        /**
-         * The base64-encoded contents of the input notebook file.
-         */
-        content?: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
-        /**
-         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-         */
-        kmsKeyName: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
-        /**
-         * The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-         */
-        generation?: string;
-        /**
-         * The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
-         */
-        uri?: string;
-    }
-
-    export interface AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
-    }
-
-    export interface AiScheduleCreatePipelineJobRequest {
-        /**
-         * The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
-         */
-        parent: string;
-        /**
-         * An instance of a machine learning PipelineJob.
-         * Structure is documented below.
-         */
-        pipelineJob: outputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJob;
-        /**
-         * The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
-         */
-        pipelineJobId?: string;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJob {
+        pscEndpoint: string;
         /**
          * (Output)
-         * Pipeline creation time.
-         */
-        createTime: string;
-        /**
-         * The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-         */
-        displayName?: string;
-        /**
-         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
-         * Structure is documented below.
-         */
-        encryptionSpec?: outputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec;
-        /**
-         * (Output)
-         * Pipeline end time.
-         */
-        endTime: string;
-        /**
-         * The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
-         */
-        labels: {[key: string]: string};
-        /**
-         * (Output)
-         * The resource name of the PipelineJob.
-         */
-        name: string;
-        /**
-         * The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
-         */
-        network?: string;
-        /**
-         * A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
-         */
-        pipelineSpec?: string;
-        /**
-         * Whether to do component level validations before job creation.
-         */
-        preflightValidations?: boolean;
-        /**
-         * Configuration for PSC-I.
-         * Structure is documented below.
-         */
-        pscInterfaceConfig?: outputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig;
-        /**
-         * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
-         */
-        reservedIpRanges: string[];
-        /**
-         * The runtime config of a PipelineJob.
-         * Structure is documented below.
-         */
-        runtimeConfig?: outputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig;
-        /**
-         * (Output)
-         * The schedule resource name. Only returned if the Pipeline is created by Schedule API.
-         */
-        scheduleName: string;
-        /**
-         * The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
-         */
-        serviceAccount?: string;
-        /**
-         * (Output)
-         * Pipeline start time.
-         */
-        startTime: string;
-        /**
-         * (Output)
-         * Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+         * The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+         * PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED. A `FAILED`
+         * gateway is surfaced here without a provider error; the engine as a
+         * whole may still be `ACTIVE`.
          */
         state: string;
         /**
-         * (Output)
-         * Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
-         * Structure is documented below.
+         * The URI of the subnetwork resource where the gateway's PSC endpoint is
+         * provisioned. Format:
+         * projects/{project}/regions/{region}/subnetworks/{subnetwork}. Must be
+         * set together with `network` and `dnsZoneName` (all three or none).
          */
-        templateMetadatas: outputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata[];
-        /**
-         * A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
-         */
-        templateUri?: string;
-        /**
-         * (Output)
-         * Timestamp when this PipelineJob was most recently updated.
-         */
-        updateTime: string;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
-        /**
-         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-         */
-        kmsKeyName: string;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
-        /**
-         * DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
-         * Structure is documented below.
-         */
-        dnsPeeringConfigs?: outputs.vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig[];
-        /**
-         * The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
-         */
-        networkAttachment?: string;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig {
-        /**
-         * The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
-         */
-        domain: string;
-        /**
-         * The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
-         */
-        targetNetwork: string;
-        /**
-         * The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
-         */
-        targetProject: string;
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
-        /**
-         * Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
-         */
-        failurePolicy?: string;
-        /**
-         * A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
-         */
-        gcsOutputDirectory: string;
-        /**
-         * The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-         */
-        inputArtifacts: {[key: string]: string};
-        /**
-         * The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-         *
-         * <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
-         */
-        parameterValues: {[key: string]: string};
-    }
-
-    export interface AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata {
-        /**
-         * The versionName in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
-         */
-        version: string;
-    }
-
-    export interface AiScheduleLastScheduledRunResponse {
-        /**
-         * (Output)
-         * The response of the scheduled run.
-         */
-        runResponse: string;
-        /**
-         * (Output)
-         * The scheduled run time based on the user-specified schedule.
-         */
-        scheduledRunTime: string;
+        subnetwork?: string;
     }
 
     export interface AiTensorboardEncryptionSpec {
@@ -169937,8 +172074,10 @@ export namespace workstations {
          */
         code: number;
         /**
-         * (Output)
+         * (Output, Deprecated)
          * A list of messages that carry the error details.
+         *
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          */
         details: {[key: string]: string}[];
         /**
@@ -169999,8 +172138,10 @@ export namespace workstations {
          */
         code: number;
         /**
-         * (Output)
+         * (Output, Deprecated)
          * A list of messages that carry the error details.
+         *
+         * @deprecated `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
          */
         details: {[key: string]: string}[];
         /**

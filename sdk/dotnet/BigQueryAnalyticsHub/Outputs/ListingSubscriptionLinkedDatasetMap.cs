@@ -20,6 +20,11 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         public readonly string? LinkedDataset;
         /// <summary>
         /// (Output)
+        /// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+        /// </summary>
+        public readonly string? LinkedPubsubSubscription;
+        /// <summary>
+        /// (Output)
         /// Output only. Listing for which linked resource is created.
         /// </summary>
         public readonly string? Listing;
@@ -32,11 +37,14 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         private ListingSubscriptionLinkedDatasetMap(
             string? linkedDataset,
 
+            string? linkedPubsubSubscription,
+
             string? listing,
 
             string resourceName)
         {
             LinkedDataset = linkedDataset;
+            LinkedPubsubSubscription = linkedPubsubSubscription;
             Listing = listing;
             ResourceName = resourceName;
         }
