@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-gcp/examples/test-pulumi-labels-secret/go
 go 1.26.6
 
 require (
-	github.com/pulumi/pulumi-gcp/sdk/v10 v10.0.0-alpha.2
+	github.com/pulumi/pulumi-gcp/sdk/v10 v10.0.0-beta.1
 	github.com/pulumi/pulumi/sdk/v3 v3.263.0
 )
 
