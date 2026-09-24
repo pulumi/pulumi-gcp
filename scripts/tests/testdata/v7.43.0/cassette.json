@@ -1,0 +1,200 @@
+{
+  "calls": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>/upstream",
+        "rev-parse",
+        "--verify",
+        "v7.43.0^{commit}"
+      ],
+      "stdout": "c1a4c311722ebacc3e768641f41bdfa6b2d9f0d4"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>/upstream",
+        "tag",
+        "--points-at",
+        "c1a4c311722ebacc3e768641f41bdfa6b2d9f0d4"
+      ],
+      "stdout": "v7.43.0"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>/upstream",
+        "show",
+        "c1a4c311722ebacc3e768641f41bdfa6b2d9f0d4:CHANGELOG.md"
+      ],
+      "stdout": "## 7.43.0 (Unreleased)\n\nNOTES:\n* docs(workflows): added warning to `source_contents` field on `google_workflows_workflow` noting that it will become required in version 8.0.0 ([#12788](https://github.com/hashicorp/terraform-provider-google-beta/pull/12788))\n* firestore: clarified which resource to use for which kind of index in Standard and Enterprise editions ([#12793](https://github.com/hashicorp/terraform-provider-google-beta/pull/12793))\n\nFEATURES:\n* **New List Resource:** `google_compute_instance` ([#12797](https://github.com/hashicorp/terraform-provider-google-beta/pull/12797))\n* **New List Resource:** `google_discovery_engine_assistant` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_chat_engine` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_cmek_config` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_control` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_data_store` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_license_config` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_recommendation_engine` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_schema` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_search_engine` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_serving_config` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_sitemap` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_target_site` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_discovery_engine_user_store` ([#12790](https://github.com/hashicorp/terraform-provider-google-beta/pull/12790))\n* **New List Resource:** `google_project_iam_custom_role` ([#12791](https://github.com/hashicorp/terraform-provider-google-beta/pull/12791))\n* **New List Resource:** `google_pubsub_subscription_iam_member` ([#12798](https://github.com/hashicorp/terraform-provider-google-beta/pull/12798))\n* **New List Resource:** `google_service_account_iam_member` ([#12802](https://github.com/hashicorp/terraform-provider-google-beta/pull/12802))\n* * **New Resource:** `google_apihub_runtime_project_attachment` ([#12764](https://github.com/hashicorp/terraform-provider-google-beta/pull/12764))\n* **New Resource:** `google_cloud_support_support_event_subscription` ([#12783](https://github.com/hashicorp/terraform-provider-google-beta/pull/12783))\n* **New Resource:** `google_compute_region_network_policy_traffic_classification_rule` ([#12778](https://github.com/hashicorp/terraform-provider-google-beta/pull/12778))\n* **New Resource:** `google_apihub_runtime_project_attachment` ([#12764](https://github.com/hashicorp/terraform-provider-google-beta/pull/12764))\n* **New Resource:** `google_netapp_trial` ([#12777](https://github.com/hashicorp/terraform-provider-google-beta/pull/12777))\n\nIMPROVEMENTS:\n* apigee: added `service_account` field to `google_apigee_api_deployment` resource ([#12801](https://github.com/hashicorp/terraform-provider-google-beta/pull/12801))\n* apihub: added `source_project_id` field to `google_apihub_plugin_instance` resource ([#12794](https://github.com/hashicorp/terraform-provider-google-beta/pull/12794))\n* artifactregistry: added `no_cache` field to `google_artifact_registry_repository.remote_repository_config` ([#12779](https://github.com/hashicorp/terraform-provider-google-beta/pull/12779))\n* bigquery: added `data_governance_tags_info` field to `google_bigquery_table` resource ([#12796](https://github.com/hashicorp/terraform-provider-google-beta/pull/12796))\n* bigqueryanalyticshub: added `proposer` field to `google_bigquery_analytics_hub_query_template` ([#12784](https://github.com/hashicorp/terraform-provider-google-beta/pull/12784))\n* bigquerydatapolicyv2: added `data_governance_tag` field to `google_bigquery_datapolicyv2_data_policy` resource ([#12766](https://github.com/hashicorp/terraform-provider-google-beta/pull/12766))\n* bigqueryreservation: added `principal` field to `google_bigquery_reservation_assignment` resource ([#12781](https://github.com/hashicorp/terraform-provider-google-beta/pull/12781))\n* cloudrunv: added `sandbox_launcher` field to the containers of  `google_cloud_run_service` resource ([#12786](https://github.com/hashicorp/terraform-provider-google-beta/pull/12786))\n* cloudrunv2: added `sandbox_launcher` field to the containers of  `google_cloud_run_v2_service` resource ([#12786](https://github.com/hashicorp/terraform-provider-google-beta/pull/12786))\n* discoveryengine: added `acl_enabled` field to `google_discovery_engine_data_store` resource ([#12768](https://github.com/hashicorp/terraform-provider-google-beta/pull/12768))\n* privateca: made `config.subject_config.subject.organization` optional in `google_privateca_certificate` ([#12767](https://github.com/hashicorp/terraform-provider-google-beta/pull/12767))\n* vertexai: added `traffic_config` field and live traffic split update support to `google_vertex_ai_reasoning_engine` ([#12775](https://github.com/hashicorp/terraform-provider-google-beta/pull/12775))\n* workstations: added `idle_action` field to `google_workstations_workstation_config` ([#12804](https://github.com/hashicorp/terraform-provider-google-beta/pull/12804))\n\nBUG FIXES:\n* apigee: fixed `continue_on_error` argument being dropped in `google_apigee_flowhook`, aligning provider behavior with the Apigee API ([#12803](https://github.com/hashicorp/terraform-provider-google-beta/pull/12803))\n* gkehub2: made field `spec.workloadidentity.scopeTenancyPool` in resource `google_gke_hub_feature` not required. ([#12774](https://github.com/hashicorp/terraform-provider-google-beta/pull/12774))\n\n## 7.42.0 (July 28, 2026)\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/hashicorp/terraform-provider-google-beta/pulls/12783",
+        "--jq",
+        "{body}"
+      ],
+      "stdout": "{\"body\":\"\\u003c!--\\nComplete the self-review checklist to help speed up the review process: https://googlecloudplatform.github.io/magic-modules/contribute/review-pr/\\n\\nIf your PR is still work in progress, please create it in draft mode.\\n\\nPut a description of what this PR is for here, along with any references to issues that this resolves or contributes to.\\nFor example: Fixes https://github.com/hashicorp/terraform-provider-google/issues/ISSUE_ID\\n--\\u003e\\n\\nAdd `google_cloud_support_support_event_subscription` resource to manage Cloud Support API event subscriptions.\\n\\nReference Issue: b/512502308\\n\\nTESTS:\\n- TestAccCloudSupportSupportEventSubscription_cloudSupportEventSubscriptionBasicExample\\n- TestAccCloudSupportSupportEventSubscription_cloudSupportEventSubscriptionUpdateExample\\n\\n### REQUIRED CI TEST ENVIRONMENT VARIABLES\\n- ORG_ID: \\\"401744978176\\\"\\n- PROJECT_NAME: \\\"terraform-project-503121\\\"\\n- ORGANIZATION_ID: \\\"401744978176\\\"\\n- GOOGLE_PROJECT: \\\"terraform-project-503121\\\"\\n\\n\\n```release-note:new-resource\\n`google_cloud_support_support_event_subscription`\\n```\\n\\nDerived from https://github.com/GoogleCloudPlatform/magic-modules/pull/18377\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18377",
+        "--jq",
+        "{merge: .merge_commit_sha, head: .head.sha}"
+      ],
+      "stdout": "{\"head\":\"171a6249c0908ee69d95ebdb2c53330e29544cc9\",\"merge\":\"33fddb6c7de663bf6fccb234b7d81afcba2a598c\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18377/files",
+        "--paginate",
+        "--jq",
+        ".[].filename"
+      ],
+      "stdout": ".ci/infra/terraform/main.tf\nmmv1/products/cloudsupport/SupportEventSubscription.yaml\nmmv1/products/cloudsupport/product.yaml\nmmv1/templates/terraform/custom_check_destroy/cloud_support_event_subscription.go.tmpl\nmmv1/templates/terraform/examples/cloud_support_event_subscription_basic.tf.tmpl\nmmv1/templates/terraform/examples/cloud_support_event_subscription_update.tf.tmpl\nmmv1/third_party/terraform/.teamcity/components/inputs/services_beta.kt\nmmv1/third_party/terraform/.teamcity/components/inputs/services_ga.kt\ntools/issue-labeler/labeler/enrolled_teams.yml"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/contents/mmv1/products/cloudsupport/product.yaml?ref=33fddb6c7de663bf6fccb234b7d81afcba2a598c",
+        "--jq",
+        "{content}"
+      ],
+      "stdout": "{\"content\":\"IyBDb3B5cmlnaHQgMjAyNiBHb29nbGUgSW5jLgojIExpY2Vuc2VkIHVuZGVy\\nIHRoZSBBcGFjaGUgTGljZW5zZSwgVmVyc2lvbiAyLjAgKHRoZSAiTGljZW5z\\nZSIpOwojIHlvdSBtYXkgbm90IHVzZSB0aGlzIGZpbGUgZXhjZXB0IGluIGNv\\nbXBsaWFuY2Ugd2l0aCB0aGUgTGljZW5zZS4KIyBZb3UgbWF5IG9idGFpbiBh\\nIGNvcHkgb2YgdGhlIExpY2Vuc2UgYXQKIwojICAgICBodHRwOi8vd3d3LmFw\\nYWNoZS5vcmcvbGljZW5zZXMvTElDRU5TRS0yLjAKIwojIFVubGVzcyByZXF1\\naXJlZCBieSBhcHBsaWNhYmxlIGxhdyBvciBhZ3JlZWQgdG8gaW4gd3JpdGlu\\nZywgc29mdHdhcmUKIyBkaXN0cmlidXRlZCB1bmRlciB0aGUgTGljZW5zZSBp\\ncyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLAojIFdJVEhPVVQg\\nV0FSUkFOVElFUyBPUiBDT05ESVRJT05TIE9GIEFOWSBLSU5ELCBlaXRoZXIg\\nZXhwcmVzcyBvciBpbXBsaWVkLgojIFNlZSB0aGUgTGljZW5zZSBmb3IgdGhl\\nIHNwZWNpZmljIGxhbmd1YWdlIGdvdmVybmluZyBwZXJtaXNzaW9ucyBhbmQK\\nIyBsaW1pdGF0aW9ucyB1bmRlciB0aGUgTGljZW5zZS4KCi0tLQpuYW1lOiAn\\nQ2xvdWRTdXBwb3J0JwpkaXNwbGF5X25hbWU6ICdDbG91ZCBTdXBwb3J0Jwpz\\nY29wZXM6CiAgICAtIGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgv\\nY2xvdWQtcGxhdGZvcm0KdmVyc2lvbnM6CiAgICAtIGJhc2VfdXJsOiBodHRw\\nczovL2Nsb3Vkc3VwcG9ydC5nb29nbGVhcGlzLmNvbS92Mi8KICAgICAgbmFt\\nZTogZ2EKICAgIC0gYmFzZV91cmw6IGh0dHBzOi8vY2xvdWRzdXBwb3J0Lmdv\\nb2dsZWFwaXMuY29tL3YyYmV0YS8KICAgICAgbmFtZTogYmV0YQo=\\n\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/hashicorp/terraform-provider-google-beta/pulls/12778",
+        "--jq",
+        "{body}"
+      ],
+      "stdout": "{\"body\":\"\\u003c!--\\nComplete the self-review checklist to help speed up the review process: https://googlecloudplatform.github.io/magic-modules/contribute/review-pr/\\n\\nIf your PR is still work in progress, please create it in draft mode.\\n\\nPut a description of what this PR is for here, along with any references to issues that this resolves or contributes to.\\nFor example: Fixes https://github.com/hashicorp/terraform-provider-google/issues/ISSUE_ID\\n--\\u003e\\n\\nAdds new resource `google_compute_region_network_policy_traffic_classification_rule`.\\n\\n**Release Note Template for Downstream PRs (will be copied)**\\n\\nSee [Write release notes](https://googlecloudplatform.github.io/magic-modules/contribute/release-notes/) for guidance.\\n\\n```release-note:new-resource\\n`google_compute_region_network_policy_traffic_classification_rule`\\n```\\n\\n\\nDerived from https://github.com/GoogleCloudPlatform/magic-modules/pull/18087\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18087",
+        "--jq",
+        "{merge: .merge_commit_sha, head: .head.sha}"
+      ],
+      "stdout": "{\"head\":\"b1b710a8b369ce07e3b20bf238a4437e12871846\",\"merge\":\"d68679716c9463541e6682ba21017da291f66791\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18087/files",
+        "--paginate",
+        "--jq",
+        ".[].filename"
+      ],
+      "stdout": "mmv1/products/compute/RegionNetworkPolicyTrafficClassificationRule.yaml\nmmv1/templates/terraform/samples/services/compute/region_network_policy_traffic_classification_rule_basic.tf.tmpl\nmmv1/third_party/terraform/services/compute/resource_compute_region_network_policy_traffic_classification_rule_test.go.tmpl"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/contents/mmv1/products/compute/product.yaml?ref=d68679716c9463541e6682ba21017da291f66791",
+        "--jq",
+        "{content}"
+      ],
+      "stdout": "{\"content\":\"IyBDb3B5cmlnaHQgMjAyNCBHb29nbGUgSW5jLgojIExpY2Vuc2VkIHVuZGVy\\nIHRoZSBBcGFjaGUgTGljZW5zZSwgVmVyc2lvbiAyLjAgKHRoZSAiTGljZW5z\\nZSIpOwojIHlvdSBtYXkgbm90IHVzZSB0aGlzIGZpbGUgZXhjZXB0IGluIGNv\\nbXBsaWFuY2Ugd2l0aCB0aGUgTGljZW5zZS4KIyBZb3UgbWF5IG9idGFpbiBh\\nIGNvcHkgb2YgdGhlIExpY2Vuc2UgYXQKIwojICAgICBodHRwOi8vd3d3LmFw\\nYWNoZS5vcmcvbGljZW5zZXMvTElDRU5TRS0yLjAKIwojIFVubGVzcyByZXF1\\naXJlZCBieSBhcHBsaWNhYmxlIGxhdyBvciBhZ3JlZWQgdG8gaW4gd3JpdGlu\\nZywgc29mdHdhcmUKIyBkaXN0cmlidXRlZCB1bmRlciB0aGUgTGljZW5zZSBp\\ncyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLAojIFdJVEhPVVQg\\nV0FSUkFOVElFUyBPUiBDT05ESVRJT05TIE9GIEFOWSBLSU5ELCBlaXRoZXIg\\nZXhwcmVzcyBvciBpbXBsaWVkLgojIFNlZSB0aGUgTGljZW5zZSBmb3IgdGhl\\nIHNwZWNpZmljIGxhbmd1YWdlIGdvdmVybmluZyBwZXJtaXNzaW9ucyBhbmQK\\nIyBsaW1pdGF0aW9ucyB1bmRlciB0aGUgTGljZW5zZS4KCi0tLQpuYW1lOiAn\\nQ29tcHV0ZScKZGlzcGxheV9uYW1lOiAnQ29tcHV0ZSBFbmdpbmUnCnZlcnNp\\nb25zOgogIC0gbmFtZTogJ2dhJwogICAgYmFzZV91cmw6ICdodHRwczovL2Nv\\nbXB1dGUuZ29vZ2xlYXBpcy5jb20vY29tcHV0ZS92MS8nCiAgICBjYWlfbGVn\\nYWN5X2Jhc2VfdXJsOiAnaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vY29t\\ncHV0ZS92MS8nCiAgLSBuYW1lOiAnYmV0YScKICAgIGJhc2VfdXJsOiAnaHR0\\ncHM6Ly9jb21wdXRlLmdvb2dsZWFwaXMuY29tL2NvbXB1dGUvYmV0YS8nCiAg\\nICBjYWlfbGVnYWN5X2Jhc2VfdXJsOiAnaHR0cHM6Ly93d3cuZ29vZ2xlYXBp\\ncy5jb20vY29tcHV0ZS92MS8nCnNjb3BlczoKICAtICdodHRwczovL3d3dy5n\\nb29nbGVhcGlzLmNvbS9hdXRoL2NvbXB1dGUnCg==\\n\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/hashicorp/terraform-provider-google-beta/pulls/12764",
+        "--jq",
+        "{body}"
+      ],
+      "stdout": "{\"body\":\"Adds the `google_apihub_runtime_project_attachment` resource to API Hub.\\n\\n```release-note:new-resource\\napihub: added `google_apihub_runtime_project_attachment` resource\\n```\\n\\nDerived from https://github.com/GoogleCloudPlatform/magic-modules/pull/18360\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18360",
+        "--jq",
+        "{merge: .merge_commit_sha, head: .head.sha}"
+      ],
+      "stdout": "{\"head\":\"932d92caf2276f83bb6c7a63b9df95121476c0b5\",\"merge\":\"708e200535a26dd5123e5fe7b03b8cd1d10c45c8\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18360/files",
+        "--paginate",
+        "--jq",
+        ".[].filename"
+      ],
+      "stdout": "mmv1/products/apihub/RuntimeProjectAttachment.yaml\nmmv1/templates/terraform/examples/apihub_runtime_project_attachment_basic.tf.tmpl"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/contents/mmv1/products/apihub/product.yaml?ref=708e200535a26dd5123e5fe7b03b8cd1d10c45c8",
+        "--jq",
+        "{content}"
+      ],
+      "stdout": "{\"content\":\"IyBDb3B5cmlnaHQgMjAyNCBHb29nbGUgSW5jLgojIExpY2Vuc2VkIHVuZGVy\\nIHRoZSBBcGFjaGUgTGljZW5zZSwgVmVyc2lvbiAyLjAgKHRoZSAiTGljZW5z\\nZSIpOwojIHlvdSBtYXkgbm90IHVzZSB0aGlzIGZpbGUgZXhjZXB0IGluIGNv\\nbXBsaWFuY2Ugd2l0aCB0aGUgTGljZW5zZS4KIyBZb3UgbWF5IG9idGFpbiBh\\nIGNvcHkgb2YgdGhlIExpY2Vuc2UgYXQKIwojICAgICBodHRwOi8vd3d3LmFw\\nYWNoZS5vcmcvbGljZW5zZXMvTElDRU5TRS0yLjAKIwojIFVubGVzcyByZXF1\\naXJlZCBieSBhcHBsaWNhYmxlIGxhdyBvciBhZ3JlZWQgdG8gaW4gd3JpdGlu\\nZywgc29mdHdhcmUKIyBkaXN0cmlidXRlZCB1bmRlciB0aGUgTGljZW5zZSBp\\ncyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLAojIFdJVEhPVVQg\\nV0FSUkFOVElFUyBPUiBDT05ESVRJT05TIE9GIEFOWSBLSU5ELCBlaXRoZXIg\\nZXhwcmVzcyBvciBpbXBsaWVkLgojIFNlZSB0aGUgTGljZW5zZSBmb3IgdGhl\\nIHNwZWNpZmljIGxhbmd1YWdlIGdvdmVybmluZyBwZXJtaXNzaW9ucyBhbmQK\\nIyBsaW1pdGF0aW9ucyB1bmRlciB0aGUgTGljZW5zZS4KCi0tLQpuYW1lOiBB\\ncGlodWIKZGlzcGxheV9uYW1lOiBBUEkgSHViCnNjb3BlczoKICAtIGh0dHBz\\nOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZvcm0KdmVy\\nc2lvbnM6CiAgLSBiYXNlX3VybDogaHR0cHM6Ly9hcGlodWIuZ29vZ2xlYXBp\\ncy5jb20vdjEvCiAgICBuYW1lOiBnYQo=\\n\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/hashicorp/terraform-provider-google-beta/pulls/12777",
+        "--jq",
+        "{body}"
+      ],
+      "stdout": "{\"body\":\"Adds Terraform support for the Google Cloud NetApp Volumes (GCNV) Trial resource.\\n\\n### Implementation Details:\\n- **Custom Delete Logic:** The `endTrial` API endpoint requires `exitReason` and optionally `optOutReasons` to be passed in the request body. Because these fields are not part of the `subscribeTrial` (CREATE) request body, they are implemented as Terraform-only parameters (`action_on_destroy` and `provided_opt_out_reasons`) using the `url_param_only: true` flag. This isolates them from the `CREATE` request, and a custom `pre_delete` hook maps them directly into the `endTrial` JSON payload during `terraform destroy`.\\n- **AIP-156 Singleton Validation:** Because the Trial resource behaves as a pseudo-singleton, ending the trial transitions it to an `INACTIVE` state and returns `200 OK` rather than yielding standard `404 Not Found` teardown responses. A custom `test_check_destroy` template has been added to safely validate the `INACTIVE` REST response during testing.\\n- **Testing**: The automated VCR tests use skip_test natively inside the generated test file. Google Cloud NetApp Volumes strictly enforces a quota of 1 free trial per project every 12 months. Running automated tests in the shared CI projects would instantly exhaust this quota and permanently break the pipeline for a year.\\n- **Verification:** The full `CREATE`, `READ` (import), and `DELETE` lifecycle (including the custom parameter injection and the `INACTIVE` destroy validation) has been manually verified end-to-end against the Google Cloud Staging sandbox.\\n\\n```\\n [hi on] anujjagrawal@anujagrawal:~/go/src/github.com/hashicorp/terraform-provider-google-beta$ TF_ACC=1 go test ./google-beta/services/netapp -v -run TestAccNetappTrial_netappTrialExample\\n  === RUN   TestAccNetappTrial_netappTrialExample\\n  === PAUSE TestAccNetappTrial_netappTrialExample\\n  === CONT  TestAccNetappTrial_netappTrialExample\\n  --- PASS: TestAccNetappTrial_netappTrialExample (37.01s)\\n  PASS\\n  ok      github.com/hashicorp/terraform-provider-google-beta/google-beta/services/netapp    37.241s\\n```\\n\\n\\u003c!--\\nComplete the self-review checklist to help speed up the review process: https://googlecloudplatform.github.io/magic-modules/contribute/review-pr/\\n\\nIf your PR is still work in progress, please create it in draft mode.\\n\\nPut a description of what this PR is for here, along with any references to issues that this resolves or contributes to.\\nFor example: Fixes https://github.com/hashicorp/terraform-provider-google/issues/ISSUE_ID\\n--\\u003e\\n\\n**Release Note Template for Downstream PRs (will be copied)**\\n\\nSee [Write release notes](https://googlecloudplatform.github.io/magic-modules/contribute/release-notes/) for guidance.\\n\\n```release-note:new-resource\\nresource `google_netapp_trial`: added support for Google Cloud NetApp Volumes Trial\\n```\\n\\n\\nDerived from https://github.com/GoogleCloudPlatform/magic-modules/pull/18102\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18102",
+        "--jq",
+        "{merge: .merge_commit_sha, head: .head.sha}"
+      ],
+      "stdout": "{\"head\":\"04859866cc207373df67d622a087fe0a2e841c33\",\"merge\":\"4b277e1b5bf0afc9eef4e773762465ca694f7d52\"}"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/pulls/18102/files",
+        "--paginate",
+        "--jq",
+        ".[].filename"
+      ],
+      "stdout": "mmv1/products/netapp/Trial.yaml\nmmv1/templates/terraform/custom_check_destroy/netapp_trial.go.tmpl\nmmv1/templates/terraform/examples/netapp_trial.tf.tmpl\nmmv1/templates/terraform/pre_delete/netapp_trial.go.tmpl"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/GoogleCloudPlatform/magic-modules/contents/mmv1/products/netapp/product.yaml?ref=4b277e1b5bf0afc9eef4e773762465ca694f7d52",
+        "--jq",
+        "{content}"
+      ],
+      "stdout": "{\"content\":\"IyBDb3B5cmlnaHQgMjAyNCBHb29nbGUgSW5jLgojIExpY2Vuc2VkIHVuZGVy\\nIHRoZSBBcGFjaGUgTGljZW5zZSwgVmVyc2lvbiAyLjAgKHRoZSAiTGljZW5z\\nZSIpOwojIHlvdSBtYXkgbm90IHVzZSB0aGlzIGZpbGUgZXhjZXB0IGluIGNv\\nbXBsaWFuY2Ugd2l0aCB0aGUgTGljZW5zZS4KIyBZb3UgbWF5IG9idGFpbiBh\\nIGNvcHkgb2YgdGhlIExpY2Vuc2UgYXQKIwojICAgICBodHRwOi8vd3d3LmFw\\nYWNoZS5vcmcvbGljZW5zZXMvTElDRU5TRS0yLjAKIwojIFVubGVzcyByZXF1\\naXJlZCBieSBhcHBsaWNhYmxlIGxhdyBvciBhZ3JlZWQgdG8gaW4gd3JpdGlu\\nZywgc29mdHdhcmUKIyBkaXN0cmlidXRlZCB1bmRlciB0aGUgTGljZW5zZSBp\\ncyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLAojIFdJVEhPVVQg\\nV0FSUkFOVElFUyBPUiBDT05ESVRJT05TIE9GIEFOWSBLSU5ELCBlaXRoZXIg\\nZXhwcmVzcyBvciBpbXBsaWVkLgojIFNlZSB0aGUgTGljZW5zZSBmb3IgdGhl\\nIHNwZWNpZmljIGxhbmd1YWdlIGdvdmVybmluZyBwZXJtaXNzaW9ucyBhbmQK\\nIyBsaW1pdGF0aW9ucyB1bmRlciB0aGUgTGljZW5zZS4KCi0tLQpuYW1lOiBO\\nZXRhcHAKZGlzcGxheV9uYW1lOiBHb29nbGUgQ2xvdWQgTmV0QXBwIFZvbHVt\\nZXMKc2NvcGVzOgogIC0gaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0\\naC9jbG91ZC1wbGF0Zm9ybQp2ZXJzaW9uczoKICAtIG5hbWU6IGdhCiAgICBi\\nYXNlX3VybDogaHR0cHM6Ly9uZXRhcHAuZ29vZ2xlYXBpcy5jb20vdjEvCiAg\\nLSBuYW1lOiBiZXRhCiAgICBiYXNlX3VybDogaHR0cHM6Ly9uZXRhcHAuZ29v\\nZ2xlYXBpcy5jb20vdjFiZXRhMS8K\\n\"}"
+    }
+  ]
+}

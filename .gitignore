@@ -43,3 +43,4 @@ mise.local.toml
 
 # Don't ignore schema.go if it's part of the Go SDK
 !sdk/go/**/schema.go
+**/__pycache__/
