@@ -14,6 +14,64 @@ pulumi up --refresh                 # before the bump, with 9.x still installed
 pulumi up --refresh --run-program   # after the bump
 ```
 
+The bump itself, per language:
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
+
+```bash
+npm install @pulumi/gcp@^10.0.0
+```
+
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```bash
+pip install --upgrade 'pulumi-gcp>=10.0.0,<11.0.0'
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```bash
+go get github.com/pulumi/pulumi-gcp/sdk/v10@latest
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```bash
+dotnet add package Pulumi.Gcp --version 10.*
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```xml
+<dependency>
+  <groupId>com.pulumi</groupId>
+  <artifactId>gcp</artifactId>
+  <version>10.0.0</version>
+</dependency>
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```bash
+pulumi package add gcp 10.0.0
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
+
 Run the detection commands in this guide before the bump, while 9.x is still installed. They read your stack's state and change nothing.
 
 ## Breaking changes
@@ -90,6 +148,10 @@ Reading it:
 
 When migrating from v9, build the `guestAccelerators` list so that it is omitted when you want no accelerator, rather than present with `count: 0`. Omitting it leaves an attached accelerator in place, so nothing is replaced.
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
+
 ```typescript
 const gpu = new gcp.compute.Instance("gpu-instance", {
     name: "gpu-instance",
@@ -112,6 +174,253 @@ const gpu = new gcp.compute.Instance("gpu-instance", {
     scheduling: { onHostMaintenance: "TERMINATE", automaticRestart: true },
 });
 ```
+
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+gpu = gcp.compute.Instance("gpu-instance",
+    name="gpu-instance",
+    zone=zone,
+    machine_type="n1-standard-1",
+    boot_disk={
+        "initialize_params": {
+            "image": image,
+            "size": 10,
+        },
+    },
+    scratch_disks=[{
+        "interface": "NVME",
+    }],
+    attached_disks=[{
+        "source": data_disk.self_link,
+        "device_name": "data-disk",
+    }],
+    network_interfaces=[{
+        "network": "default",
+        "access_configs": [{}],
+    }],
+    metadata_startup_script=startup_script,
+    guest_accelerators=[{
+        "count": 1,
+        "type": "nvidia-tesla-t4",
+    }] if enable_gpu else None,
+    scheduling={
+        "on_host_maintenance": "TERMINATE",
+        "automatic_restart": True,
+    })
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+var tmp0 compute.InstanceGuestAcceleratorArray
+if enableGpu {
+	tmp0 = compute.InstanceGuestAcceleratorArray{
+		&compute.InstanceGuestAcceleratorArgs{
+			Count: pulumi.Int(1),
+			Type:  pulumi.String("nvidia-tesla-t4"),
+		},
+	}
+} else {
+	tmp0 = nil
+}
+_, err := compute.NewInstance(ctx, "gpu-instance", &compute.InstanceArgs{
+	Name:        pulumi.String("gpu-instance"),
+	Zone:        pulumi.String(zone),
+	MachineType: pulumi.String("n1-standard-1"),
+	BootDisk: &compute.InstanceBootDiskArgs{
+		InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+			Image: pulumi.String(image),
+			Size:  pulumi.Int(10),
+		},
+	},
+	ScratchDisks: compute.InstanceScratchDiskArray{
+		&compute.InstanceScratchDiskArgs{
+			Interface: pulumi.String("NVME"),
+		},
+	},
+	AttachedDisks: compute.InstanceAttachedDiskArray{
+		&compute.InstanceAttachedDiskArgs{
+			Source:     dataDisk.SelfLink,
+			DeviceName: pulumi.String("data-disk"),
+		},
+	},
+	NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+		&compute.InstanceNetworkInterfaceArgs{
+			Network: pulumi.String("default"),
+			AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+				&compute.InstanceNetworkInterfaceAccessConfigArgs{},
+			},
+		},
+	},
+	MetadataStartupScript: pulumi.String(startupScript),
+	GuestAccelerators:     tmp0,
+	Scheduling: &compute.InstanceSchedulingArgs{
+		OnHostMaintenance: pulumi.String("TERMINATE"),
+		AutomaticRestart:  pulumi.Bool(true),
+	},
+})
+if err != nil {
+	return err
+}
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var args = new Gcp.Compute.InstanceArgs
+{
+    Name = "gpu-instance",
+    Zone = zone,
+    MachineType = "n1-standard-1",
+    BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    {
+        InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        {
+            Image = image,
+            Size = 10,
+        },
+    },
+    ScratchDisks = new[]
+    {
+        new Gcp.Compute.Inputs.InstanceScratchDiskArgs
+        {
+            Interface = "NVME",
+        },
+    },
+    AttachedDisks = new[]
+    {
+        new Gcp.Compute.Inputs.InstanceAttachedDiskArgs
+        {
+            Source = dataDisk.SelfLink,
+            DeviceName = "data-disk",
+        },
+    },
+    NetworkInterfaces = new[]
+    {
+        new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+        {
+            Network = "default",
+            AccessConfigs = new[]
+            {
+                new Gcp.Compute.Inputs.InstanceNetworkInterfaceAccessConfigArgs(),
+            },
+        },
+    },
+    MetadataStartupScript = startupScript,
+    Scheduling = new Gcp.Compute.Inputs.InstanceSchedulingArgs
+    {
+        OnHostMaintenance = "TERMINATE",
+        AutomaticRestart = true,
+    },
+};
+
+// Set the property only when an accelerator is wanted, rather than assigning
+// null: the list conversion does not treat null as "omitted".
+if (enableGpu)
+{
+    args.GuestAccelerators = new[]
+    {
+        new Gcp.Compute.Inputs.InstanceGuestAcceleratorArgs
+        {
+            Count = 1,
+            Type = "nvidia-tesla-t4",
+        },
+    };
+}
+
+var gpu = new Gcp.Compute.Instance("gpu-instance", args);
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var builder = InstanceArgs.builder()
+    .name("gpu-instance")
+    .zone(zone)
+    .machineType("n1-standard-1")
+    .bootDisk(InstanceBootDiskArgs.builder()
+        .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+            .image(image)
+            .size(10)
+            .build())
+        .build())
+    .scratchDisks(InstanceScratchDiskArgs.builder()
+        .interface_("NVME")
+        .build())
+    .attachedDisks(InstanceAttachedDiskArgs.builder()
+        .source(dataDisk.selfLink())
+        .deviceName("data-disk")
+        .build())
+    .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+        .network("default")
+        .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+            .build())
+        .build())
+    .metadataStartupScript(startupScript)
+    .scheduling(InstanceSchedulingArgs.builder()
+        .onHostMaintenance("TERMINATE")
+        .automaticRestart(true)
+        .build());
+
+// Call the setter only when an accelerator is wanted: passing null to the
+// varargs overload adds a null element rather than omitting the property.
+if (enableGpu) {
+    builder.guestAccelerators(InstanceGuestAcceleratorArgs.builder()
+        .count(1)
+        .type("nvidia-tesla-t4")
+        .build());
+}
+
+var gpu = new Instance("gpu-instance", builder.build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  gpu:
+    type: gcp:compute:Instance
+    name: gpu-instance
+    properties:
+      name: gpu-instance
+      zone: ${zone}
+      machineType: n1-standard-1
+      bootDisk:
+        initializeParams:
+          image: ${image}
+          size: 10
+      scratchDisks:
+        - interface: NVME
+      attachedDisks:
+        - source: ${dataDisk.selfLink}
+          deviceName: data-disk
+      networkInterfaces:
+        - network: default
+          accessConfigs:
+            - {}
+      metadataStartupScript: ${startupScript}
+      guestAccelerators:
+        - count: 1
+          type: nvidia-tesla-t4
+      scheduling:
+        onHostMaintenance: TERMINATE
+        automaticRestart: true
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
 
 **If you do want the accelerators detached**, a `count: 0` block will detach and replace your instance.
 
@@ -267,6 +576,10 @@ pulumi import gcp:workbench/instance:Instance my-notebook \
 
 v9:
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
+
 ```typescript
 const instance = new gcp.notebooks.Instance("legacy-notebook", {
     name: "legacy-notebook",
@@ -289,7 +602,157 @@ const viewer = new gcp.notebooks.InstanceIamMember("legacy-notebook-viewer", {
 });
 ```
 
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+instance = gcp.notebooks.Instance("legacy-notebook",
+    name="legacy-notebook",
+    location="europe-west2-a",
+    machine_type="e2-medium",
+    vm_image={
+        "project": "cloud-notebooks-managed",
+        "image_family": "workbench-instances",
+    },
+    data_disk_size_gb=100,
+    data_disk_type="PD_BALANCED")
+viewer = gcp.notebooks.InstanceIamMember("legacy-notebook-viewer",
+    project=instance.project,
+    location=instance.location,
+    instance_name=instance.name,
+    role="roles/notebooks.viewer",
+    member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+instance, err := notebooks.NewInstance(ctx, "legacy-notebook", &notebooks.InstanceArgs{
+	Name:        pulumi.String("legacy-notebook"),
+	Location:    pulumi.String("europe-west2-a"),
+	MachineType: pulumi.String("e2-medium"),
+	VmImage: &notebooks.InstanceVmImageArgs{
+		Project:     pulumi.String("cloud-notebooks-managed"),
+		ImageFamily: pulumi.String("workbench-instances"),
+	},
+	DataDiskSizeGb: pulumi.Int(100),
+	DataDiskType:   pulumi.String("PD_BALANCED"),
+})
+if err != nil {
+	return err
+}
+_, err = notebooks.NewInstanceIamMember(ctx, "legacy-notebook-viewer", &notebooks.InstanceIamMemberArgs{
+	Project:      instance.Project,
+	Location:     instance.Location,
+	InstanceName: instance.Name,
+	Role:         pulumi.String("roles/notebooks.viewer"),
+	Member: sa.Email.ApplyT(func(email string) (string, error) {
+		return fmt.Sprintf("serviceAccount:%v", email), nil
+	}).(pulumi.StringOutput),
+})
+if err != nil {
+	return err
+}
+```
+
+Go needs `fmt` imported for the interpolation.
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var instance = new Gcp.Notebooks.Instance("legacy-notebook", new()
+{
+    Name = "legacy-notebook",
+    Location = "europe-west2-a",
+    MachineType = "e2-medium",
+    VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    {
+        Project = "cloud-notebooks-managed",
+        ImageFamily = "workbench-instances",
+    },
+    DataDiskSizeGb = 100,
+    DataDiskType = "PD_BALANCED",
+});
+
+var viewer = new Gcp.Notebooks.InstanceIamMember("legacy-notebook-viewer", new()
+{
+    Project = instance.Project,
+    Location = instance.Location,
+    InstanceName = instance.Name,
+    Role = "roles/notebooks.viewer",
+    Member = sa.Email.Apply(email => $"serviceAccount:{email}"),
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var instance = new Instance("legacy-notebook", InstanceArgs.builder()
+    .name("legacy-notebook")
+    .location("europe-west2-a")
+    .machineType("e2-medium")
+    .vmImage(InstanceVmImageArgs.builder()
+        .project("cloud-notebooks-managed")
+        .imageFamily("workbench-instances")
+        .build())
+    .dataDiskSizeGb(100)
+    .dataDiskType("PD_BALANCED")
+    .build());
+
+var viewer = new InstanceIamMember("legacy-notebook-viewer", InstanceIamMemberArgs.builder()
+    .project(instance.project())
+    .location(instance.location())
+    .instanceName(instance.name())
+    .role("roles/notebooks.viewer")
+    .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+    .build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  instance:
+    type: gcp:notebooks:Instance
+    name: legacy-notebook
+    properties:
+      name: legacy-notebook
+      location: europe-west2-a
+      machineType: e2-medium
+      vmImage:
+        project: cloud-notebooks-managed
+        imageFamily: workbench-instances
+      dataDiskSizeGb: 100
+      dataDiskType: PD_BALANCED
+  viewer:
+    type: gcp:notebooks:InstanceIamMember
+    name: legacy-notebook-viewer
+    properties:
+      project: ${instance.project}
+      location: ${instance.location}
+      instanceName: ${instance.name}
+      role: roles/notebooks.viewer
+      member: serviceAccount:${sa.email}
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
+
 v10:
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
 
 ```typescript
 const instance = new gcp.workbench.Instance("workbench-instance", {
@@ -312,6 +775,152 @@ const viewer = new gcp.workbench.InstanceIamMember("workbench-viewer", {
     member: sa.email.apply(e => `serviceAccount:${e}`),
 });
 ```
+
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+instance = gcp.workbench.Instance("workbench-instance",
+    name="workbench-instance",
+    location="europe-west2-a",
+    gce_setup={
+        "machine_type": "e2-medium",
+        "data_disks": {
+            "disk_size_gb": "100",
+            "disk_type": "PD_BALANCED",
+        },
+    })
+viewer = gcp.workbench.InstanceIamMember("workbench-viewer",
+    project=instance.project,
+    location=instance.location,
+    name=instance.name,
+    role="roles/notebooks.viewer",
+    member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+instance, err := workbench.NewInstance(ctx, "workbench-instance", &workbench.InstanceArgs{
+	Name:     pulumi.String("workbench-instance"),
+	Location: pulumi.String("europe-west2-a"),
+	GceSetup: &workbench.InstanceGceSetupArgs{
+		MachineType: pulumi.String("e2-medium"),
+		DataDisks: &workbench.InstanceGceSetupDataDisksArgs{
+			DiskSizeGb: pulumi.String("100"),
+			DiskType:   pulumi.String("PD_BALANCED"),
+		},
+	},
+})
+if err != nil {
+	return err
+}
+_, err = workbench.NewInstanceIamMember(ctx, "workbench-viewer", &workbench.InstanceIamMemberArgs{
+	Project:  instance.Project,
+	Location: instance.Location,
+	Name:     instance.Name,
+	Role:     pulumi.String("roles/notebooks.viewer"),
+	Member: sa.Email.ApplyT(func(email string) (string, error) {
+		return fmt.Sprintf("serviceAccount:%v", email), nil
+	}).(pulumi.StringOutput),
+})
+if err != nil {
+	return err
+}
+```
+
+Go needs `fmt` imported for the interpolation.
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var instance = new Gcp.Workbench.Instance("workbench-instance", new()
+{
+    Name = "workbench-instance",
+    Location = "europe-west2-a",
+    GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
+    {
+        MachineType = "e2-medium",
+        DataDisks = new Gcp.Workbench.Inputs.InstanceGceSetupDataDisksArgs
+        {
+            DiskSizeGb = "100",
+            DiskType = "PD_BALANCED",
+        },
+    },
+});
+
+var viewer = new Gcp.Workbench.InstanceIamMember("workbench-viewer", new()
+{
+    Project = instance.Project,
+    Location = instance.Location,
+    Name = instance.Name,
+    Role = "roles/notebooks.viewer",
+    Member = sa.Email.Apply(email => $"serviceAccount:{email}"),
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var instance = new Instance("workbench-instance", InstanceArgs.builder()
+    .name("workbench-instance")
+    .location("europe-west2-a")
+    .gceSetup(InstanceGceSetupArgs.builder()
+        .machineType("e2-medium")
+        .dataDisks(InstanceGceSetupDataDisksArgs.builder()
+            .diskSizeGb("100")
+            .diskType("PD_BALANCED")
+            .build())
+        .build())
+    .build());
+
+var viewer = new InstanceIamMember("workbench-viewer", InstanceIamMemberArgs.builder()
+    .project(instance.project())
+    .location(instance.location())
+    .name(instance.name())
+    .role("roles/notebooks.viewer")
+    .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+    .build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  instance:
+    type: gcp:workbench:Instance
+    name: workbench-instance
+    properties:
+      name: workbench-instance
+      location: europe-west2-a
+      gceSetup:
+        machineType: e2-medium
+        dataDisks:
+          diskSizeGb: '100'
+          diskType: PD_BALANCED
+  viewer:
+    type: gcp:workbench:InstanceIamMember
+    name: workbench-viewer
+    properties:
+      project: ${instance.project}
+      location: ${instance.location}
+      name: ${instance.name}
+      role: roles/notebooks.viewer
+      member: serviceAccount:${sa.email}
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
 
 `gcp.notebooks.Runtime` and `gcp.notebooks.Environment` are removed the same way and have the same replacement: a Runtime becomes a `gcp.workbench.Instance`, and an Environment's settings (VM or container image, post-startup script) are set directly on `gcp.workbench.Instance`.
 
@@ -370,6 +979,10 @@ Reading it:
 
 **If your program does not set `defaultCollation` and the dataset has one**, name it. This is an in-place update; the dataset is not replaced.
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
+
 ```typescript
 const ci = new gcp.bigquery.Dataset("ci-dataset", {
     datasetId: "ci_dataset",
@@ -381,7 +994,86 @@ const ci = new gcp.bigquery.Dataset("ci-dataset", {
 });
 ```
 
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+ci = gcp.bigquery.Dataset("ci-dataset",
+    dataset_id="ci_dataset",
+    location="europe-west2",
+    default_collation="und:ci",
+    delete_contents_on_destroy=True)
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+_, err := bigquery.NewDataset(ctx, "ci-dataset", &bigquery.DatasetArgs{
+	DatasetId:               pulumi.String("ci_dataset"),
+	Location:                pulumi.String("europe-west2"),
+	DefaultCollation:        pulumi.String("und:ci"),
+	DeleteContentsOnDestroy: pulumi.Bool(true),
+})
+if err != nil {
+	return err
+}
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
+{
+    DatasetId = "ci_dataset",
+    Location = "europe-west2",
+    DefaultCollation = "und:ci",
+    DeleteContentsOnDestroy = true,
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var ci = new Dataset("ci-dataset", DatasetArgs.builder()
+    .datasetId("ci_dataset")
+    .location("europe-west2")
+    .defaultCollation("und:ci")
+    .deleteContentsOnDestroy(true)
+    .build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  ci:
+    type: gcp:bigquery:Dataset
+    name: ci-dataset
+    properties:
+      datasetId: ci_dataset
+      location: europe-west2
+      defaultCollation: und:ci
+      deleteContentsOnDestroy: true
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
+
 **If your program sets `defaultCollation: ""` and the dataset has a collation**, the same fix applies: on v10 the empty string clears it for real. In-place update, no replacement.
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
 
 ```typescript
 const ci = new gcp.bigquery.Dataset("ci-dataset", {
@@ -394,6 +1086,81 @@ const ci = new gcp.bigquery.Dataset("ci-dataset", {
     deleteContentsOnDestroy: true,
 });
 ```
+
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+ci = gcp.bigquery.Dataset("ci-dataset",
+    dataset_id="ci_dataset",
+    location="europe-west2",
+    default_collation="und:ci",
+    delete_contents_on_destroy=True)
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+_, err := bigquery.NewDataset(ctx, "ci-dataset", &bigquery.DatasetArgs{
+	DatasetId:               pulumi.String("ci_dataset"),
+	Location:                pulumi.String("europe-west2"),
+	DefaultCollation:        pulumi.String("und:ci"),
+	DeleteContentsOnDestroy: pulumi.Bool(true),
+})
+if err != nil {
+	return err
+}
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
+{
+    DatasetId = "ci_dataset",
+    Location = "europe-west2",
+    DefaultCollation = "und:ci",
+    DeleteContentsOnDestroy = true,
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var ci = new Dataset("ci-dataset", DatasetArgs.builder()
+    .datasetId("ci_dataset")
+    .location("europe-west2")
+    .defaultCollation("und:ci")
+    .deleteContentsOnDestroy(true)
+    .build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  ci:
+    type: gcp:bigquery:Dataset
+    name: ci-dataset
+    properties:
+      datasetId: ci_dataset
+      location: europe-west2
+      defaultCollation: und:ci
+      deleteContentsOnDestroy: true
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
 
 **If your code reads the `defaultCollation` output**, give it a fallback. Setting it was always optional; reading it was not. Because the field was computed, the output was typed `string` on v9 and is `string | undefined` on v10, so an unguarded read stops compiling.
 
@@ -706,6 +1473,10 @@ startupProbe: {
 
 **If you set `customAudiences`**, delete the line. Nothing is replaced.
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
+
 ```typescript
 const audiences = new gcp.cloudrunv2.WorkerPool("worker-pool", {
     name: "worker-pool",
@@ -719,6 +1490,121 @@ const audiences = new gcp.cloudrunv2.WorkerPool("worker-pool", {
     },
 });
 ```
+
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+audiences = gcp.cloudrunv2.WorkerPool("worker-pool",
+    name="worker-pool",
+    location=location,
+    deletion_protection=False,
+    scaling={
+        "manual_instance_count": 1,
+    },
+    template={
+        "containers": [{
+            "image": image,
+        }],
+    })
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+_, err := cloudrunv2.NewWorkerPool(ctx, "worker-pool", &cloudrunv2.WorkerPoolArgs{
+	Name:               pulumi.String("worker-pool"),
+	Location:           pulumi.String(location),
+	DeletionProtection: pulumi.Bool(false),
+	Scaling: &cloudrunv2.WorkerPoolScalingArgs{
+		ManualInstanceCount: pulumi.Int(1),
+	},
+	Template: &cloudrunv2.WorkerPoolTemplateArgs{
+		Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
+			&cloudrunv2.WorkerPoolTemplateContainerArgs{
+				Image: pulumi.String(image),
+			},
+		},
+	},
+})
+if err != nil {
+	return err
+}
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var audiences = new Gcp.CloudRunV2.WorkerPool("worker-pool", new()
+{
+    Name = "worker-pool",
+    Location = location,
+    DeletionProtection = false,
+    Scaling = new Gcp.CloudRunV2.Inputs.WorkerPoolScalingArgs
+    {
+        ManualInstanceCount = 1,
+    },
+    Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
+    {
+        Containers = new[]
+        {
+            new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
+            {
+                Image = image,
+            },
+        },
+    },
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var audiences = new WorkerPool("worker-pool", WorkerPoolArgs.builder()
+    .name("worker-pool")
+    .location(location)
+    .deletionProtection(false)
+    .scaling(WorkerPoolScalingArgs.builder()
+        .manualInstanceCount(1)
+        .build())
+    .template(WorkerPoolTemplateArgs.builder()
+        .containers(WorkerPoolTemplateContainerArgs.builder()
+            .image(image)
+            .build())
+        .build())
+    .build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  audiences:
+    type: gcp:cloudrunv2:WorkerPool
+    name: worker-pool
+    properties:
+      name: worker-pool
+      location: ${location}
+      deletionProtection: false
+      scaling:
+        manualInstanceCount: 1
+      template:
+        containers:
+          - image: ${image}
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
 
 ### `gcp.compute.ServiceAttachment`: `natSubnets` and `consumerRejectLists` are now sets
 
@@ -773,6 +1659,10 @@ The same command after the upgrade and a refresh shows the new order, so you can
 
 **If nothing reads the two collections back**, there is nothing to change. The program below is valid on both versions, and on v10 it previews clean where on v9 it showed an update on every run.
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
+
 ```typescript
 const attachment = new gcp.compute.ServiceAttachment("service-attachment", {
     name: "service-attachment",
@@ -789,6 +1679,154 @@ const attachment = new gcp.compute.ServiceAttachment("service-attachment", {
     }],
 });
 ```
+
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+attachment = gcp.compute.ServiceAttachment("service-attachment",
+    name="service-attachment",
+    region=region,
+    description="example service attachment",
+    enable_proxy_protocol=False,
+    connection_preference="ACCEPT_MANUAL",
+    target_service=target_service.id,
+    nat_subnets=[
+        nat_a.id,
+        nat_b.id,
+    ],
+    consumer_reject_lists=[
+        "pulumi-k8s-provider",
+        "pulumi-k8s-operator",
+    ],
+    consumer_accept_lists=[{
+        "project_id_or_num": "pulumi-ci-gcp-provider",
+        "connection_limit": 1,
+    }])
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+_, err := compute.NewServiceAttachment(ctx, "service-attachment", &compute.ServiceAttachmentArgs{
+	Name:                 pulumi.String("service-attachment"),
+	Region:               pulumi.String(region),
+	Description:          pulumi.String("example service attachment"),
+	EnableProxyProtocol:  pulumi.Bool(false),
+	ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
+	TargetService:        targetService.ID().ToIDOutput().ToStringOutput(),
+	NatSubnets: pulumi.StringArray{
+		natA.ID().ToIDOutput().ToStringOutput(),
+		natB.ID().ToIDOutput().ToStringOutput(),
+	},
+	ConsumerRejectLists: pulumi.StringArray{
+		pulumi.String("pulumi-k8s-provider"),
+		pulumi.String("pulumi-k8s-operator"),
+	},
+	ConsumerAcceptLists: compute.ServiceAttachmentConsumerAcceptListArray{
+		&compute.ServiceAttachmentConsumerAcceptListArgs{
+			ProjectIdOrNum:  pulumi.String("pulumi-ci-gcp-provider"),
+			ConnectionLimit: pulumi.Int(1),
+		},
+	},
+})
+if err != nil {
+	return err
+}
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var attachment = new Gcp.Compute.ServiceAttachment("service-attachment", new()
+{
+    Name = "service-attachment",
+    Region = region,
+    Description = "example service attachment",
+    EnableProxyProtocol = false,
+    ConnectionPreference = "ACCEPT_MANUAL",
+    TargetService = targetService.Id,
+    NatSubnets = new[]
+    {
+        natA.Id,
+        natB.Id,
+    },
+    ConsumerRejectLists = new[]
+    {
+        "pulumi-k8s-provider",
+        "pulumi-k8s-operator",
+    },
+    ConsumerAcceptLists = new[]
+    {
+        new Gcp.Compute.Inputs.ServiceAttachmentConsumerAcceptListArgs
+        {
+            ProjectIdOrNum = "pulumi-ci-gcp-provider",
+            ConnectionLimit = 1,
+        },
+    },
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var attachment = new ServiceAttachment("service-attachment", ServiceAttachmentArgs.builder()
+    .name("service-attachment")
+    .region(region)
+    .description("example service attachment")
+    .enableProxyProtocol(false)
+    .connectionPreference("ACCEPT_MANUAL")
+    .targetService(targetService.id())
+    .natSubnets(
+        natA.id(),
+        natB.id())
+    .consumerRejectLists(
+        "pulumi-k8s-provider",
+        "pulumi-k8s-operator")
+    .consumerAcceptLists(ServiceAttachmentConsumerAcceptListArgs.builder()
+        .projectIdOrNum("pulumi-ci-gcp-provider")
+        .connectionLimit(1)
+        .build())
+    .build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  attachment:
+    type: gcp:compute:ServiceAttachment
+    name: service-attachment
+    properties:
+      name: service-attachment
+      region: ${region}
+      description: example service attachment
+      enableProxyProtocol: false
+      connectionPreference: ACCEPT_MANUAL
+      targetService: ${targetService.id}
+      natSubnets:
+        - ${natA.id}
+        - ${natB.id}
+      consumerRejectLists:
+        - pulumi-k8s-provider
+        - pulumi-k8s-operator
+      consumerAcceptLists:
+        - projectIdOrNum: pulumi-ci-gcp-provider
+          connectionLimit: 1
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
 
 **If you index into either collection**, stop indexing the value the provider returns and index the value you supplied. Nothing is replaced by this edit.
 
