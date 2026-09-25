@@ -1,6 +1,6 @@
 # Pulumi GCP Provider Version Upgrade Guide
 
-Version 10.0.0 of the GCP provider for Pulumi is a major release and includes changes that you need to consider when upgrading. This guide will help with that process and focuses only on changes from version 9.x to version 10.0.0. See the [Version 9 Upgrade Guide](https://www.pulumi.com/registry/packages/gcp/how-to-guides/9-0-migration) for information on upgrading from 8.x to version 9.0.0.
+Version 10.0.0 of the GCP provider for Pulumi is a major release and includes changes that you need to consider when upgrading. This guide will help with that process and focuses only on changes from version 9.x to version 10.0.0. See the [Version 9 Upgrade Guide](https://www.pulumi.com/registry/packages/gcp/how-to-guides/9-0-migration) for information on upgrading from 8.x to version 9.0.0. Version 10.0.0 tracks the upstream Terraform provider's v8 release, so the [google-beta v8 upgrade guide](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade) is the companion document; each breaking change below links to the upstream section it comes from, where there is one.
 
 Version 10.0.0 tracks the upstream `terraform-provider-google-beta` v8.x release.
 
@@ -98,6 +98,8 @@ GCP provider v10.0 includes several breaking changes. These are the ones we cons
 The block is still ignored in one case: nothing attached, and exactly one block declared. Attach an accelerator, or declare a second zero-count block, and the instance is replaced.
 
 An empty `guestAccelerators` list and omitting the block are never affected.
+
+*Upstream: [`google_compute_instance`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_instance) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
@@ -447,6 +449,8 @@ Google shut down the IAP OAuth Admin APIs and there is no replacement resource.
 
 So `gcp.iap.Brand`, `gcp.iap.Client` and the `gcp.iap.getClient` data source are removed in v10. OAuth clients keep existing in Google Cloud; manage them in the [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
 
+*Upstream: [`google_iap_brand` and `google_iap_client`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_iap_brand-and-google_iap_client-are-now-removed) in the google-beta v8 upgrade guide.*
+
 #### Impact/Risk
 
 **Unaffected:** stacks that declare no `gcp.iap.Brand`, no `gcp.iap.Client` and no `gcp.iap.getClient`. The rest of the IAP module, including `gcp.iap.Settings`, `gcp.iap.TunnelDestGroup` and the IAP IAM resources, is unchanged.
@@ -528,6 +532,8 @@ export const iapClientSecret = cfg.requireSecret("iapClientSecret");
 The whole `gcp.notebooks` namespace has been removed: `Instance`, `Runtime`, `Environment`, their IAM resources (`InstanceIamPolicy`, `InstanceIamBinding`, `InstanceIamMember`, `RuntimeIamPolicy`, `RuntimeIamBinding`, `RuntimeIamMember`) and the `getInstanceIamPolicy` and `getRuntimeIamPolicy` functions. The products behind them, Vertex AI Workbench User-Managed and Google-Managed Notebooks, have reached end of life, and Google already refuses to create new instances of either. Use `gcp.workbench.Instance` and `gcp.workbench.InstanceIamMember` instead.
 
 There is no setting that keeps the old behaviour. `gcp.notebooks` does not exist on v10.
+
+*Upstream: [`google_notebooks_instance`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_notebooks_instance-is-now-removed) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
@@ -947,6 +953,8 @@ resources:
 
 `defaultCollation` is also now an optional output, so code that reads `dataset.defaultCollation` has to handle an absent value.
 
+*Upstream: [`google_bigquery_dataset`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_bigquery_dataset) in the google-beta v8 upgrade guide.*
+
 #### Impact/Risk
 
 **Unaffected: a `gcp.bigquery.Dataset` with no collation on it.** That is most datasets. Nothing changes and nothing is deployed.
@@ -1220,6 +1228,8 @@ export const ciCollationUpper = ci.defaultCollation.apply(c => (c ?? "").toUpper
 - `secretDataWo` and `secretDataWoVersion` must now be set together. On v9 `secretDataWoVersion` defaulted to `0` and could be omitted; on v10 it is required.
 - `secretDataWoVersion` changed type from integer to string.
 
+*Upstream: [`google_secret_manager_secret_version`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_secret_manager_secret_version) in the google-beta v8 upgrade guide.*
+
 #### Impact/Risk
 
 **Unaffected:** anyone using `secretData` instead of the write-only pair.
@@ -1299,6 +1309,8 @@ const unpinned = new gcp.secretmanager.SecretVersion("unpinned-payload", {
 ### `gcp.monitoring.UptimeCheckConfig`: the two password fields are now mutually exclusive
 
 `gcp.monitoring.UptimeCheckConfig`'s `httpCheck.authInfo` block must now set **exactly one** of `password` and `passwordWo`. On v9 both fields were optional.
+
+*Upstream: [`google_monitoring_uptime_check_config`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_monitoring_uptime_check_config) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
@@ -1405,6 +1417,8 @@ The suffix used to be 26 characters long, which capped `namePrefix` at 14. It no
 
 Node pool names already recorded in state are not regenerated.
 
+*Upstream: [`google_container_node_pool` and `google_container_cluster`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_container_node_pool-and-google_container_cluster) in the google-beta v8 upgrade guide.*
+
 #### Impact/Risk
 
 Beware: changing `namePrefix` on a live node pool replaces it, deleting the nodes and everything running on them.
@@ -1427,6 +1441,8 @@ N/A
 
 Google has always rejected a workflow with no source code, so the change turns an error you got from the cloud on `pulumi up` into one you get locally at preview.
 
+*Upstream: [`google_workflows_workflow`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_workflows_workflow) in the google-beta v8 upgrade guide.*
+
 #### Impact/Risk
 
 N/A
@@ -1446,6 +1462,8 @@ N/A
 - `httpGet.httpHeaders`, on both the startup probe and the liveness probe of a container, changed from a single header to a list of headers.
 - `httpGet.httpHeaders.name` is now required, and `httpGet.httpHeaders.port` was removed.
 - The top-level `customAudiences` was removed, from the resource and from the `gcp.cloudrunv2.getWorkerPool` data source.
+
+*Upstream: [`google_cloud_run_v2_worker_pool`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_cloud_run_v2_worker_pool) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
@@ -1664,6 +1682,8 @@ resources:
 On `gcp.compute.ServiceAttachment`, `natSubnets` and `consumerRejectLists` are now sets rather than lists. The order of their entries is no longer significant: reordering them in your program produces no diff, and the order the provider stores and hands back is its own, not the order you wrote.
 
 This removes a recurring diff. On v9 a service attachment with more than one NAT subnet could show an update on every `pulumi up` and never settle, because GCP returns the subnets in its own order and in a different URL form than the one you supplied. That no longer happens.
+
+*Upstream: [`google_compute_service_attachment`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_service_attachment) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
@@ -1905,6 +1925,8 @@ Make this edit before the refresh. The reorder lands on the first `pulumi up --r
 
 The declared type is unchanged. Both fields are still arrays of strings and no resource argument needs editing. What changes is order: the values you read back from the cluster now come back sorted alphabetically rather than in the order GKE returned them, and the order you write them in no longer has any effect. That reaches your program only if it reads a position out of one of those arrays.
 
+*Upstream: [`google_container_cluster`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_container_cluster) in the google-beta v8 upgrade guide.*
+
 #### Impact/Risk
 
 **Unaffected:** anyone who sets `loggingConfig.enableComponents` or `monitoringConfig.enableComponents` and never reads the value back, which is nearly everyone. Nothing is replaced, before or after the upgrade.
@@ -1975,6 +1997,8 @@ export const monitoringComponentsSorted = cluster.monitoringConfig.apply(c => [.
 The top-level `reservationBlockCount` attribute has been removed from `gcp.compute.Reservation` and from the `gcp.compute.getReservation` function. Read `resourceStatuses[0].reservationBlockCount` instead, which is available in v9 as well.
 
 `reservationBlockCount` was never settable, so no configuration changes. Only code that reads the value has to move.
+
+*Upstream: [`google_compute_reservation`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_reservation) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
@@ -2062,6 +2086,7 @@ Everything in the release that is not covered above, listed for completeness.
 - `gcp.beyondcorp.getAppConnection`
 - `gcp.beyondcorp.getAppConnector`
 - `gcp.beyondcorp.getAppGateway`
+- `gcp.iap.getClient`, covered in detail [above](#gcpiapbrand-and-gcpiapclient-removed)
 
 ### Changed resources
 
@@ -2081,8 +2106,11 @@ Everything in the release that is not covered above, listed for completeness.
 - Resource `gcp.compute.GlobalForwardingRule`:
   - Field `loadBalancingScheme` default value changed to `EXTERNAL_MANAGED`.
 
+- Resource `gcp.compute.ServiceAttachment`:
+  - Fields `consumerAcceptLists[].projectIdOrNum`, `consumerAcceptLists[].networkUrl` and `consumerAcceptLists[].endpointUrl` now default to an empty string rather than to null, so that the API omitting an unpopulated attribute no longer produces a perpetual diff. A program that reads one of those values back gets `""` where v9 gave no value; the change lands on the first refresh after the upgrade. The set conversions on the same resource are covered in detail [above](#gcpcomputeserviceattachment-natsubnets-and-consumerrejectlists-are-now-sets).
+
 - Resource `gcp.compute.InterconnectAttachmentGroup`:
-  - Field `logicalStructure.zones.attachment` is removed.
+  - Field `logicalStructures[].regions[].metros[].facilities[].zones[].attachment` is removed. Use `attachments` instead.
 
 - Resource `gcp.dataloss.PreventionJobTrigger`:
   - Field `actions.publishFindingsToCloudDataCatalog` is removed.
