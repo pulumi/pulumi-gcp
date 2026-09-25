@@ -202,6 +202,9 @@ gpu = gcp.compute.Instance("gpu-instance",
         "access_configs": [{}],
     }],
     metadata_startup_script=startup_script,
+    # v9 (will cause replacement)
+    # guest_accelerators=[{"count": 1 if enable_gpu else 0, "type": "nvidia-tesla-t4"}],
+    # v10 (fixed)
     guest_accelerators=[{
         "count": 1,
         "type": "nvidia-tesla-t4",
@@ -217,6 +220,11 @@ gpu = gcp.compute.Instance("gpu-instance",
 {{% choosable language go %}}
 
 ```go
+// v9 (will cause replacement)
+// GuestAccelerators: compute.InstanceGuestAcceleratorArray{&compute.InstanceGuestAcceleratorArgs{
+//     Count: pulumi.Int(gpuCount), Type: pulumi.String("nvidia-tesla-t4"),
+// }},
+// v10 (fixed)
 var tmp0 compute.InstanceGuestAcceleratorArray
 if enableGpu {
 	tmp0 = compute.InstanceGuestAcceleratorArray{
@@ -321,8 +329,11 @@ var args = new Gcp.Compute.InstanceArgs
     },
 };
 
-// Set the property only when an accelerator is wanted, rather than assigning
-// null: the list conversion does not treat null as "omitted".
+// v9 (will cause replacement)
+// GuestAccelerators = new[] { new Gcp.Compute.Inputs.InstanceGuestAcceleratorArgs
+//     { Count = enableGpu ? 1 : 0, Type = "nvidia-tesla-t4" } },
+// v10 (fixed): set the property only when an accelerator is wanted, rather than
+// assigning null, because the list conversion does not treat null as "omitted".
 if (enableGpu)
 {
     args.GuestAccelerators = new[]
@@ -371,8 +382,11 @@ var builder = InstanceArgs.builder()
         .automaticRestart(true)
         .build());
 
-// Call the setter only when an accelerator is wanted: passing null to the
-// varargs overload adds a null element rather than omitting the property.
+// v9 (will cause replacement)
+// .guestAccelerators(InstanceGuestAcceleratorArgs.builder()
+//     .count(enableGpu ? 1 : 0).type("nvidia-tesla-t4").build())
+// v10 (fixed): call the setter only when an accelerator is wanted, because
+// passing null to the varargs overload adds a null element.
 if (enableGpu) {
     builder.guestAccelerators(InstanceGuestAcceleratorArgs.builder()
         .count(1)
@@ -410,6 +424,9 @@ resources:
           accessConfigs:
             - {}
       metadataStartupScript: ${startupScript}
+      # v9 (will cause replacement): count: 0 meant "no accelerator"
+      # v10 (fixed): omit the whole guestAccelerators key instead. Pulumi YAML
+      # has no conditional, so this arm shows the accelerator attached.
       guestAccelerators:
         - count: 1
           type: nvidia-tesla-t4
@@ -1002,6 +1019,8 @@ const ci = new gcp.bigquery.Dataset("ci-dataset", {
 ci = gcp.bigquery.Dataset("ci-dataset",
     dataset_id="ci_dataset",
     location="europe-west2",
+    # v9: the field was computed, so the collation survived being unset.
+    # v10 (fixed): name it, or it is cleared.
     default_collation="und:ci",
     delete_contents_on_destroy=True)
 ```
@@ -1014,6 +1033,8 @@ ci = gcp.bigquery.Dataset("ci-dataset",
 _, err := bigquery.NewDataset(ctx, "ci-dataset", &bigquery.DatasetArgs{
 	DatasetId:               pulumi.String("ci_dataset"),
 	Location:                pulumi.String("europe-west2"),
+	// v9: the field was computed, so the collation survived being unset.
+	// v10 (fixed): name it, or it is cleared.
 	DefaultCollation:        pulumi.String("und:ci"),
 	DeleteContentsOnDestroy: pulumi.Bool(true),
 })
@@ -1031,6 +1052,8 @@ var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
 {
     DatasetId = "ci_dataset",
     Location = "europe-west2",
+    // v9: the field was computed, so the collation survived being unset.
+    // v10 (fixed): name it, or it is cleared.
     DefaultCollation = "und:ci",
     DeleteContentsOnDestroy = true,
 });
@@ -1044,6 +1067,8 @@ var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
 var ci = new Dataset("ci-dataset", DatasetArgs.builder()
     .datasetId("ci_dataset")
     .location("europe-west2")
+    // v9: the field was computed, so the collation survived being unset.
+    // v10 (fixed): name it, or it is cleared.
     .defaultCollation("und:ci")
     .deleteContentsOnDestroy(true)
     .build());
@@ -1061,6 +1086,8 @@ resources:
     properties:
       datasetId: ci_dataset
       location: europe-west2
+      # v9: the field was computed, so the collation survived being unset.
+      # v10 (fixed): name it, or it is cleared.
       defaultCollation: und:ci
       deleteContentsOnDestroy: true
 ```
@@ -1095,6 +1122,9 @@ const ci = new gcp.bigquery.Dataset("ci-dataset", {
 ci = gcp.bigquery.Dataset("ci-dataset",
     dataset_id="ci_dataset",
     location="europe-west2",
+    # v9
+    # default_collation="",
+    # v10 (fixed)
     default_collation="und:ci",
     delete_contents_on_destroy=True)
 ```
@@ -1107,6 +1137,9 @@ ci = gcp.bigquery.Dataset("ci-dataset",
 _, err := bigquery.NewDataset(ctx, "ci-dataset", &bigquery.DatasetArgs{
 	DatasetId:               pulumi.String("ci_dataset"),
 	Location:                pulumi.String("europe-west2"),
+	// v9
+	// DefaultCollation: pulumi.String(""),
+	// v10 (fixed)
 	DefaultCollation:        pulumi.String("und:ci"),
 	DeleteContentsOnDestroy: pulumi.Bool(true),
 })
@@ -1124,6 +1157,9 @@ var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
 {
     DatasetId = "ci_dataset",
     Location = "europe-west2",
+    // v9
+    // DefaultCollation = "",
+    // v10 (fixed)
     DefaultCollation = "und:ci",
     DeleteContentsOnDestroy = true,
 });
@@ -1137,6 +1173,9 @@ var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
 var ci = new Dataset("ci-dataset", DatasetArgs.builder()
     .datasetId("ci_dataset")
     .location("europe-west2")
+    // v9
+    // .defaultCollation("")
+    // v10 (fixed)
     .defaultCollation("und:ci")
     .deleteContentsOnDestroy(true)
     .build());
@@ -1154,6 +1193,9 @@ resources:
     properties:
       datasetId: ci_dataset
       location: europe-west2
+      # v9
+      # defaultCollation: ""
+      # v10 (fixed)
       defaultCollation: und:ci
       deleteContentsOnDestroy: true
 ```
@@ -1503,6 +1545,8 @@ audiences = gcp.cloudrunv2.WorkerPool("worker-pool",
     scaling={
         "manual_instance_count": 1,
     },
+    # v9, removed in v10
+    # custom_audiences=["https://worker-pool.example.com"],
     template={
         "containers": [{
             "image": image,
@@ -1522,6 +1566,8 @@ _, err := cloudrunv2.NewWorkerPool(ctx, "worker-pool", &cloudrunv2.WorkerPoolArg
 	Scaling: &cloudrunv2.WorkerPoolScalingArgs{
 		ManualInstanceCount: pulumi.Int(1),
 	},
+	// v9, removed in v10
+	// CustomAudiences: pulumi.StringArray{pulumi.String("https://worker-pool.example.com")},
 	Template: &cloudrunv2.WorkerPoolTemplateArgs{
 		Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 			&cloudrunv2.WorkerPoolTemplateContainerArgs{
@@ -1549,6 +1595,8 @@ var audiences = new Gcp.CloudRunV2.WorkerPool("worker-pool", new()
     {
         ManualInstanceCount = 1,
     },
+    // v9, removed in v10
+    // CustomAudiences = new[] { "https://worker-pool.example.com" },
     Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     {
         Containers = new[]
@@ -1574,6 +1622,8 @@ var audiences = new WorkerPool("worker-pool", WorkerPoolArgs.builder()
     .scaling(WorkerPoolScalingArgs.builder()
         .manualInstanceCount(1)
         .build())
+    // v9, removed in v10
+    // .customAudiences("https://worker-pool.example.com")
     .template(WorkerPoolTemplateArgs.builder()
         .containers(WorkerPoolTemplateContainerArgs.builder()
             .image(image)
@@ -1597,6 +1647,9 @@ resources:
       deletionProtection: false
       scaling:
         manualInstanceCount: 1
+      # v9, removed in v10
+      # customAudiences:
+      #   - https://worker-pool.example.com
       template:
         containers:
           - image: ${image}
