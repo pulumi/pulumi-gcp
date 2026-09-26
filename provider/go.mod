@@ -9,8 +9,8 @@ require (
 	github.com/hexops/autogold/v2 v2.3.1
 	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.140.0
-	github.com/pulumi/pulumi/pkg/v3 v3.264.0
-	github.com/pulumi/pulumi/sdk/v3 v3.264.0
+	github.com/pulumi/pulumi/pkg/v3 v3.265.0
+	github.com/pulumi/pulumi/sdk/v3 v3.265.0
 	github.com/stretchr/testify v1.12.1
 	google.golang.org/api v0.293.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -141,7 +141,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.23.0 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0 // indirect
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.31.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/aws-sdk-go-base/v2 v2.0.0-beta.72 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -271,8 +271,8 @@ require (
 	go.opentelemetry.io/collector/pdata v1.67.0 // indirect
 	go.opentelemetry.io/contrib/bridges/otelslog v0.20.1 // indirect
 	go.opentelemetry.io/contrib/detectors/gcp v1.44.0 // indirect
-	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.70.0 // indirect
-	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.70.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.71.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.71.0 // indirect
 	go.opentelemetry.io/otel v1.46.0 // indirect
 	go.opentelemetry.io/otel/bridge/opentracing v1.45.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc v0.22.0 // indirect
@@ -292,7 +292,7 @@ require (
 	gocloud.dev v0.46.1-0.20260810195832-b5401c07b5f1 // indirect
 	gocloud.dev/secrets/hashivault v0.46.0 // indirect
 	golang.org/x/crypto v0.57.0 // indirect
-	golang.org/x/exp v0.0.0-20260813180055-c1d0aacb2297 // indirect
+	golang.org/x/exp v0.0.0-20260908205506-85c1c2202aba // indirect
 	golang.org/x/mod v0.41.0 // indirect
 	golang.org/x/net v0.59.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
@@ -301,7 +301,7 @@ require (
 	golang.org/x/term v0.46.0 // indirect
 	golang.org/x/text v0.42.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
-	golang.org/x/tools v0.49.0 // indirect
+	golang.org/x/tools v0.50.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto v0.0.0-20260724162435-b2f20204f0df // indirect
